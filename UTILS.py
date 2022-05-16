@@ -6,6 +6,94 @@ import networkx as nx
 from gurobipy import *
 
 
+def get_data(name, target, encoded=False):
+    # Return dataset from 'name' in Pandas dataframe
+    # dataset located in workspace folder named 'Datasets'
+    # Remove any non-numerical features from dataset
+    global data, encoding_map
+    try:
+        data = pd.read_csv('Code/Datasets/'+name+'.csv', na_values='?')
+        if encoded:
+            data, encoding_map = encode_data(data, target)
+    except:
+        print("Dataset Not Found or Error in Encoding Process!")
+    return (data, encoding_map)
+
+
+def encode_data(data, target, cont_bin_num=2):
+    columns, data_types = data.columns[data.columns != target], data.dtypes
+    new_data_columns, encoding_map = [], {column: [None, [], []] for column in columns}
+    data.dropna(inplace=True)
+    data = data.reset_index(drop=True)
+    # data_name = name.replace('_enc', '')
+    sub_iter = 0
+    for column in columns:
+        if data_types[column] == int:
+            encoding_map[column][0] = data_types[column]
+            if len(data[column].unique()) == 2:
+                encoding_map[column][1] = list(data[column].unique())
+                encoding_map[column].append(sub_iter)
+                encoding_map[column][2].append(f'{column}')
+                new_data_columns.append(f'{column}')
+                sub_iter += 1
+            else:
+                for item in data[column].unique():
+                    encoding_map[column][1].append(item)
+                    encoding_map[column][2].append(f'{column}.{item}')
+                    encoding_map[column].append(sub_iter)
+                    new_data_columns.append(f'{column}.{item}')
+                    sub_iter += 1
+        elif data_types[column] == float:
+            encoding_map[column][0] = data_types[column]
+            test_values = np.linspace(min(data[column]), max(data[column]), cont_bin_num + 1).tolist()
+            encoding_map[column][1] = list(zip(test_values, test_values[1:]))
+            for item in range(len(encoding_map[column][1])):
+                encoding_map[column][2].append(f'{column}.{item}')
+                encoding_map[column].append(sub_iter)
+                new_data_columns.append(f'{column}.{item}')
+                sub_iter += 1
+        elif data_types[column] == str or object:
+            encoding_map[column][0] = data_types[column]
+            if len(data[column].unique()) == 2:
+                encoding_map[column][1] = list(data[column].unique())
+                encoding_map[column][2].append(f'{column}')
+                encoding_map[column].append(sub_iter)
+                new_data_columns.append(f'{column}')
+                sub_iter += 1
+            else:
+                for item in data[column].unique():
+                    encoding_map[column][1].append(item)
+                    index = list(data[column].unique()).index(item)
+                    encoding_map[column][2].append(f'{column}.{index}')
+                    encoding_map[column].append(sub_iter)
+                    new_data_columns.append(f'{column}.{index}')
+                    sub_iter += 1
+    else:
+        new_data = pd.DataFrame(0, index=data.index, columns=new_data_columns)
+        for i in data.index:
+            for col in columns:
+                if encoding_map[col][0] == int:
+                    if len(data[col].unique()) == 2:
+                        if data.at[i, col] == data[col].unique()[0]: new_data.at[i, col] = 1
+                    else:
+                        for sub_value in encoding_map[col][1]:
+                            if data.at[i, col] == sub_value: new_data.at[i, f'{col}.{sub_value}'] = 1
+                elif encoding_map[col][0] == float:
+                    for pair in encoding_map[col][1]:
+                        if pair[0] <= data.at[i, col] <= pair[1]: new_data.at[
+                            i, f'{col}.{encoding_map[col][1].index(pair)}'] = 1
+                elif encoding_map[col][0] == str or object:
+                    if len(data[col].unique()) == 2:
+                        if data.at[i, col] == data[col].unique()[0]: new_data.at[i, col] = 1
+                    else:
+                        for item in encoding_map[col][1]:
+                            sub_col = list(data[col].unique()).index(item)
+                            if data.at[i, col] == item: new_data.at[i, f'{col}.{sub_col}'] = 1
+        encoding_map = {list(encoding_map.keys()).index(col): value for col, value in encoding_map.items()}
+        new_data['target'] = data.target
+    return new_data, encoding_map
+
+
 class HM_Linear_SVM():
     """ Hard-margin linear SVM trained using quadratic programming.
 
@@ -104,5 +192,19 @@ def data_predict(tree, data, target):
             else:
                 results[i][0] = 'ERROR'
 
-    return
+    return acc, results
 
+
+class consol_log:
+    def __init__(self, filename="Default.log"):
+        self.terminal = sys.stdout
+        self.log = open(filename, "a")
+
+    def write(self, message):
+        self.terminal.write(message)
+        self.log.write(message)
+
+    def flush(self):
+        # Handles the flush command by doing nothing and needed for python3 compatability
+        # Specify extra behavior here
+        pass
