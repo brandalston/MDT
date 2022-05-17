@@ -12,7 +12,7 @@ def get_data(name, target):
     # Ensure all features are in [0,1] through encoding process
     global data
     try:
-        data = pd.read_csv('Datasets/'+name+'.csv', na_values='?')
+        data = pd.read_csv('Datasets/' + name + '.csv', na_values='?')
         data = preprocess(data, target)
     except:
         print("Dataset Not Found or Error in Encoding Process!")
@@ -24,10 +24,12 @@ def preprocess(data, target):
     numeric_col = [f for f in data.columns if target != f and np.issubdtype(data[f].dtype, np.number)]
     cat_col = [f for f in data.columns if (f in data.select_dtypes(include='object').columns or
                                            f in data.select_dtypes(include='category').columns)
-                                       and f != target]
+               and f != target]
     for f in numeric_col:
         if 0 <= data[f].min() and data[f].max() <= 1:
             new_data[f] = data[f]
+        elif len(data[f].unique()) == 1:
+            new_data[f] = LabelEncoder().fit_transform(data[f])
         else:
             new_data[f] = (data[f] - data[f].min()) / (data[f].max() - data[f].min())
     for f in cat_col:
@@ -48,16 +50,20 @@ class Linear_Separator():
     Solve dual (generated using Lagrange multipliers) of traditional hard-margin linear SVM
     """
 
+    def __init__(self):
+        self.a_v = 0
+        self.c_v = 0
+
     def SVM_fit(self, data):
-        print('finding svm')
+        print('Finding (a,c)')
         featureset = [col for col in data.columns if col != 'svm']
         if not np.array_equal(np.unique(data.svm), [-1, 1]):
             print("Class labels must be -1 and +1")
             raise ValueError
         try:
             m = Model("HM_Linear_SVM")
-            m.Params.NumericFocus = 3
             m.Params.LogToConsole = 0
+            m.Params.NumericFocus = 3
             alpha = m.addVars(data.index, vtype=GRB.CONTINUOUS, lb=0, ub=GRB.INFINITY)
             W = m.addVars(featureset, vtype=GRB.CONTINUOUS, lb=-GRB.INFINITY, ub=GRB.INFINITY)
 
@@ -69,32 +75,38 @@ class Linear_Separator():
 
             # Any i with positive alpha[i] works
             for i in data.index:
-                if alpha[i].X > m.Params.FeasibilityTol:
-                    b = data.at[i, 'svm'] - sum(W[f].X * data.at[i, f] for f in featureset)
+                if alpha[i].x > m.Params.FeasibilityTol:
+                    b = data.at[i, 'svm'] - sum(W[f].x * data.at[i, f] for f in featureset)
                     break
-            a_v = {f: W[f].X for f in featureset}
+            a_v = {f: W[f].x for f in featureset}
             c_v = -b  # Must flip intercept because of how QP was setup
+            print('Solved SVM problem')
             self.a_v, self.c_v = a_v, c_v
-
             return self
-        except:
+        except Exception:
+            print('Generating any separating hyperplane')
             # If QP fails to solve, return any separating hyperplane
             Lv_I = [i for i in data.index if data.at[i, 'svm'] == -1]
             Rv_I = [i for i in data.index if data.at[i, 'svm'] == +1]
+            print(Lv_I)
+            print(Rv_I)
+            m_hyperplane = Model("Separating hyperplane")
+            m_hyperplane.Params.LogToConsole = 1
+            a_hyperplane = m_hyperplane.addVars(featureset, vtype=GRB.CONTINUOUS, lb=-GRB.INFINITY, ub=GRB.INFINITY)
+            c_hyperplane = m_hyperplane.addVar(vtype=GRB.CONTINUOUS, lb=-GRB.INFINITY, ub=GRB.INFINITY)
 
-            m = Model("separating hyperplane")
-            m.Params.LogToConsole = 0
-            a_hyperplane = m.addVars(featureset, vtype=GRB.CONTINUOUS, lb=-GRB.INFINITY, ub=GRB.INFINITY)
-            c_hyperplane = m.addVar(vtype=GRB.CONTINUOUS, lb=-GRB.INFINITY, ub=GRB.INFINITY)
-            m.addConstrs(quicksum(a_hyperplane[f] * data.at[i, f] for f in featureset) + 1 <= c_hyperplane for i in Lv_I)
-            m.addConstrs(quicksum(a_hyperplane[f] * data.at[i, f] for f in featureset) - 1 >= c_hyperplane for i in Rv_I)
-            m.setObjective(0, GRB.MINIMIZE)
-            m.optimize()
+            m_hyperplane.addConstrs(
+                quicksum(a_hyperplane[f] * data.at[i, f] for f in featureset) + 1 <= c_hyperplane for i in Lv_I)
+            m_hyperplane.addConstrs(
+                quicksum(a_hyperplane[f] * data.at[i, f] for f in featureset) - 1 >= c_hyperplane for i in Rv_I)
+            m_hyperplane.setObjective(0, GRB.MINIMIZE)
+            m_hyperplane.optimize()
 
-            a_v = {f: a_hyperplane[f].X for f in featureset}
-            c_v = c_hyperplane.X
-            self.a_v, self.c_v = a_v, c_v
-
+            if m_hyperplane.status == GRB.OPTIMAL:
+                a_v = {f: a_hyperplane[f].x for f in featureset}
+                c_v = c_hyperplane.X
+                self.a_v, self.c_v = a_v, c_v
+                print('found a generic separating hyperplane')
             return self
 
 
@@ -188,12 +200,14 @@ def BU_rand_tree(tree, data, target):
                 tree.a_v[v], tree.c_v[v] = {f: random.random() for f in featureset}, random.random()
                 tree.DG_prime.nodes[v]['branching'] = (tree.a_v[v], tree.c_v[v])
                 node_list.remove(v)
-            else: break
+            else:
+                break
         for c in tree.child[selected]:
             if c in node_list:
                 tree.DG_prime.nodes[c]['pruned'] = 0
                 node_list.remove(c)
-            else: break
+            else:
+                break
         node_list.remove(selected)
 
     return tree

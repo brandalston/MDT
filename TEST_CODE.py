@@ -22,8 +22,8 @@ model_runs.main(
 time_limit = 600
 rand_states = [138]
 file = 'testing.csv'
-heights = [2]
-data_names = ['monk1']
+heights = [3]
+data_names = ['house-votes-84']
 models = ['CUT1-ALL']
 warm_start = {'use': False, 'values': None}
 model_runs.main(

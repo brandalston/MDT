@@ -1,4 +1,5 @@
 import time
+import pandas as pd
 import networkx as nx
 import random
 from gurobipy import *
@@ -49,8 +50,10 @@ class MBDT:
         """ Gurobi Optimization Parameters """
         self.model = Model(f'{self.modeltype}')
         self.model.Params.TimeLimit = time_limit
-        self.model.Params.LogToConsole = 0
         self.model.Params.Threads = 1
+        self.model.Params.LogToConsole = 0
+        self.model.Params.LazyConstraints = 1
+        self.model.Params.PreCrush = 1
         
         """ Separation Procedure """
         self.cut_type = self.modeltype[5:]
@@ -102,7 +105,7 @@ class MBDT:
         # Datapoint terminal vertex
         self.S = self.model.addVars(self.datapoints, self.tree.V, vtype=GRB.BINARY, name='S')
         # Datapoint selected vertices in root-terminal path
-        self.Q = self.model.addVars(self.datapoints, self.tree.V, vtype=GRB.BINARY, name='Q')
+        self.Q = self.model.addVars(self.datapoints, self.tree.V, vtype=GRB.CONTINUOUS, name='Q')
         
         """ Model Objective and Constraints """
         # Objective: Maximize the number of correctly classified datapoints
@@ -132,6 +135,23 @@ class MBDT:
             self.model.addConstrs(self.S[i, v] <= self.W[v, self.data.at[i, self.target]]
                                   for i in self.datapoints)
 
+        # each datapoint has at most one terminal vertex
+        self.model.addConstrs(quicksum(self.S[i, v] for v in self.tree.V) <= 1 for i in self.datapoints)
+
+        # terminal vertex of datapoint must be in reachable path
+        if 'CUT1' in self.modeltype:
+            for i in self.datapoints:
+                for v in self.tree.V:
+                    if v == 0: continue
+                    self.model.addConstrs(self.S[i, v] <= self.Q[i, c] for c in self.tree.path[v][1:])
+        # terminal vertex of datapoint must be in reachable path for vertex and all children
+        elif 'CUT2' in self.modeltype:
+            for i in self.datapoints:
+                for v in self.tree.V:
+                    if v == 0: continue
+                    self.model.addConstrs(self.S[i, v] + quicksum(self.S[i, u] for u in self.tree.child[v]) <=
+                                          self.Q[i, c] for c in self.tree.path[v][1:])
+        """
         # Lazy feasible path constraints
         if ('GRB' in self.cut_type) or ('FRAC' in self.cut_type):
             # each datapoint has at most one terminal vertex
@@ -178,6 +198,7 @@ class MBDT:
                         if v == 0: continue
                         self.model.addConstrs(self.S[i, v] + quicksum(self.S[i, u] for u in self.tree.child[v]) <=
                                               self.Q[i, c] for c in self.tree.path[v][1:])
+        """
 
         """ Pass to Model DV for Callback / Optimization Purposes """
         self.model._B = self.B
@@ -211,15 +232,15 @@ class MBDT:
         """
         # VIS of Branching Nodes Cuts at Feasible Solution
         if where == GRB.Callback.MIPSOL:
-            print('at feasible solution\n')
             model._visnum += 1
             start = time.perf_counter()
             B = model.cbGetSolution(model._B)
             Q = model.cbGetSolution(model._Q)
+            P = model.cbGetSolution(model._P)
 
             for v in model._tree.B:
                 if B[v] < 0.5: continue
-                print('finding vis on', v)
+                if P[v] > .5: continue
                 # Define L_v(I), R_v(I) for each v in B
                 Lv_I = []  # set of i: q^i_l(v) = 1
                 Rv_I = []  # set of i: q^i_r(v) = 1
@@ -228,7 +249,6 @@ class MBDT:
                         Lv_I.append(i)
                     elif Q[i, model._tree.RC[v]] > 0.5:
                         Rv_I.append(i)
-                print(Lv_I, Rv_I)
                 # Find a VIS for B_v(Q)
                 VIS = MBDT.VIS(model._data, model._featureset, Lv_I, Rv_I, vis_weight=model._vis_weight)
                 if VIS is None:
@@ -241,7 +261,8 @@ class MBDT:
                                   len(B_v_left) + len(B_v_right) - 1)
                 model._viscuts += 1
             model._vistime += time.perf_counter() - start
-        
+
+        """
         # Feasible Path for Datapoint Cuts in Branch and Bound Tree
         if (where == GRB.Callback.MIPNODE) and (model.cbGet(GRB.Callback.MIPNODE_STATUS) == GRB.OPTIMAL):
             print('At mipnode')
@@ -307,20 +328,19 @@ class MBDT:
                                     model._sepcuts += 1
                                     break
                 model._septime += (time.perf_counter() - start)
+        """
 
         if where == GRB.Callback.MIP:
-            if abs(model.cbGet(GRB.Callback.MIP_OBJBST) - model.cbGet(GRB.Callback.MIP_OBJBND)) < .00001:
+            if abs(model.cbGet(GRB.Callback.MIP_OBJBST) - model.cbGet(GRB.Callback.MIP_OBJBND)) < 10^-(model._eps):
                 model.terminate()
-                print('Optimal solution found in '+str(round(model.Runtime, 2))+'s. '
+                print('Optimal solution found in '+str(round(model.Runtime, 4))+'s. '
                     '('+str(time.strftime("%I:%M %p", time.localtime()))+')\n')
-
 
     ##############################################
     # Find Valid Infeasible Subsystem (VIS) of Model
     ##############################################
     @staticmethod
     def VIS(data, featureset, Lv_I, Rv_I, vis_weight):
-        print('In VIS')
         """
         Find a minimal set of points that cannot be linearly separated by a split (a_v, c_v).
         Use the support of Farkas dual (with heuristic objective) of the feasible primal LP to identify VIS of primal
@@ -336,7 +356,6 @@ class MBDT:
         Returns
         (B_v_left, B_v_right) : two lists of left and right datapoint indices in the VIS of B_v(Q)
         """
-        print(vis_weight)
 
         if vis_weight is None:
             vis_weight = {i: 0 for i in data.index}
@@ -346,7 +365,7 @@ class MBDT:
 
         # VIS Dual Model
         VIS_model = Model("VIS Dual")
-        VIS_model.Params.LogToConsole = 1
+        VIS_model.Params.LogToConsole = 0
 
         # VIS Dual Variables
         lambda_L = VIS_model.addVars(Lv_I, vtype=GRB.CONTINUOUS, lb=0, name='lambda_L')
@@ -365,13 +384,11 @@ class MBDT:
                                quicksum(vis_weight[i] * lambda_R[i] for i in Rv_I), GRB.MINIMIZE)
 
         # Optimize
-        print('solving vis dual')
         VIS_model.optimize()
 
         # Infeasiblity implies B_v(Q) is valid for all I in L_v(I), R_v(I)
         # i.e. each i is correctly sent to left, right child (linearly separable points)
         if VIS_model.Status == GRB.INFEASIBLE:
-            print('correct B_v(Q)')
             return None
 
         lambda_L_sol = VIS_model.getAttr('X', lambda_L)
@@ -487,14 +504,14 @@ class MBDT:
                 for k in self.classes:
                     if W_sol[v, k] > 0.5:
                         self.tree.DG_prime.nodes[v]['class'] = k
-                        print('Vertex ' + str(v) + ' class ' + str(k))
+                        print('\nVertex ' + str(v) + ' class ' + str(k))
             # Assign no class or branching rule to pruned nodes
             elif P_sol[v] < 0.5 and B_sol[v] < 0.5:
                 self.tree.DG_prime.nodes[v]['pruned'] = 0
-                print('Vertex ' + str(v) + ' pruned')
+                print('\nVertex ' + str(v) + ' pruned')
             # Define (a_v, c_v) on branching nodes
             elif P_sol[v] < 0.5 and B_sol[v] > 0.5:
-                print('Vertex ' + str(v) + ' branching')
+                print('\nVertex ' + str(v) + ' branching')
                 # Lv_I, Rv_I index sets of observations sent to left, right child vertex of branching vertex v
                 # svm_y maps Lv_I to -1, Rv_I to +1 for training hard margin linear SVM
                 Lv_I, Rv_I = [], []
@@ -517,8 +534,8 @@ class MBDT:
                     self.tree.c_v[v] = 1
                 # Train hard margin linear SVM to find (a_v, c_v) corresponding to Lv_I, Rv_I
                 else:
-                    data_svm = self.data.loc[:, self.data.columns != self.target]
-                    data_svm["svm"] = self.data[self.target].map(svm_y)
+                    data_svm = self.data.loc[Lv_I+Rv_I, self.data.columns != self.target]
+                    data_svm['svm'] = pd.Series(svm_y)
                     svm = UTILS.Linear_Separator()
                     svm.SVM_fit(data_svm)
                     self.tree.a_v[v], self.tree.c_v[v] = svm.a_v, svm.c_v
