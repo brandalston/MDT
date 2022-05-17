@@ -10,7 +10,7 @@ class TREE():
         Binary Height h Tree Information including P_v and CHILD_v for each vertex
         Also pass initial information for plotting assigned tree
         '''
-        # Initialize tree for model
+        # Initialize tree for modeltype
         self.height = h
         self.G = nx.generators.balanced_tree(r=2, h=h)
         self.DG = nx.DiGraph(self.G)  # bi-directed version of G
@@ -27,7 +27,7 @@ class TREE():
                 self.B.append(node)
             else:
                 print("Error: tree must not have isolated vertices!")
-        self.V = self.L + self.B
+        self.V = self.B + self.L
 
         # Tree node relation information
         self.path = nx.single_source_shortest_path(self.DG_prime, 0)
@@ -40,15 +40,14 @@ class TREE():
         self.RC = {n: v for v in self.DG_prime.nodes
                    for n in self.B
                    if (v % 2 == 0 and v in self.successor[n])}
-
         self.depth = nx.shortest_path_length(self.DG_prime, 0)
         self.levels = list(range(h + 1))
         self.node_level = {level: [n for n in self.DG_prime.nodes if self.depth[n] == level] for level in self.levels}
 
-        # Empty objects for node assignment information to be updated after solving model
+        # Empty objects for node assignment information to be updated after solving modeltype
         self.color_map = []
         self.labels = {n: None for n in self.DG_prime.nodes}
-        self.pos = nx.nx_pydot.graphviz_layout(self.DG_prime, prog="dot", root=0)
+        # self.pos = nx.nx_pydot.graphviz_layout(self.DG_prime, prog="dot", root=0)
 
         self.branch_nodes = {}
         self.class_nodes = {}
