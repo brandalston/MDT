@@ -63,7 +63,6 @@ def data_predict(tree, data, target):
         while results[i][0] is None:
             results[i][1].append(v)
             if v in branching_nodes:
-                print(i, v)
                 (a_v, c_v) = tree.DG_prime.nodes[v]['branching']
                 v = tree.LC[v] if sum(a_v[f]*data.at[i, f] for f in data.columns if f != target) <= c_v else tree.RC[v]
             elif v in class_nodes:
