@@ -88,22 +88,26 @@ class Linear_Separator():
             # If QP fails to solve, return any separating hyperplane
             Lv_I = [i for i in data.index if data.at[i, 'svm'] == -1]
             Rv_I = [i for i in data.index if data.at[i, 'svm'] == +1]
+            print(Lv_I)
+            print(Rv_I)
+            m_hyperplane = Model("Separating hyperplane")
+            m_hyperplane.Params.LogToConsole = 1
+            a_hyperplane = m_hyperplane.addVars(featureset, vtype=GRB.CONTINUOUS, lb=-GRB.INFINITY, ub=GRB.INFINITY)
+            c_hyperplane = m_hyperplane.addVar(vtype=GRB.CONTINUOUS, lb=-GRB.INFINITY, ub=GRB.INFINITY)
 
-            m = Model("separating hyperplane")
-            m.Params.LogToConsole = 1
-            w = m.addVars([f for f in data.columns if f != 'svm'], lb=-GRB.INFINITY, ub=GRB.INFINITY)
-            b = m.addVar(lb=-GRB.INFINITY, ub=GRB.INFINITY)
-            m.setObjective(0, GRB.MINIMIZE)
-            m.addConstrs((quicksum(w[f] * data.at[i, f] for f in data.columns if f != 'svm') + 1 <= b for i in Lv_I))
-            m.addConstrs((quicksum(w[f] * data.at[i, j] for f in data.columns if f != 'svm') - 1 >= b for i in Rv_I))
-            m.optimize()
+            m_hyperplane.addConstrs(
+                quicksum(a_hyperplane[f] * data.at[i, f] for f in featureset) + 1 <= c_hyperplane for i in Lv_I)
+            m_hyperplane.addConstrs(
+                quicksum(a_hyperplane[f] * data.at[i, f] for f in featureset) - 1 >= c_hyperplane for i in Rv_I)
+            m_hyperplane.setObjective(0, GRB.MINIMIZE)
+            m_hyperplane.optimize()
 
-            w_vals = np.array([w[f].X for f in data.columns if f != 'svm'])
-            b_val = b.X
-            self.a_v, self.c_v = w_vals, b_val
-            print('found generic hyperplane')
+            if m_hyperplane.status == GRB.OPTIMAL:
+                a_v = {f: a_hyperplane[f].x for f in featureset}
+                c_v = c_hyperplane.X
+                self.a_v, self.c_v = a_v, c_v
+                print('found a generic separating hyperplane')
             return self
-
 
 
 def random_tree(tree, data, target):
