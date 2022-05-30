@@ -4,12 +4,11 @@ import networkx as nx
 import random
 from gurobipy import *
 import UTILS
-import RESULTS
 
 
 class MBDT:
 
-    def __init__(self, data, tree, modeltype, time_limit, target, name, warm_start):
+    def __init__(self, data, tree, modeltype, time_limit, target, warmstart, modelextras):
         """"
         Parameters
         data: training data
@@ -17,7 +16,6 @@ class MBDT:
         modeltype: modeltype to use for connectivity and optimization
         time_limit: gurobi time limit in seconds
         target: target column of training data
-        name: name of dataset
         warm_start: dictionary warm start values
         model_extras: list of modeltype extras
         """
@@ -26,14 +24,15 @@ class MBDT:
         self.modeltype = modeltype
         self.time_limit = time_limit
         self.target = target
-        self.dataname = name
-        self.warm_start = warm_start
+        self.warmstart = warmstart
+        self.modelextras = modelextras
 
         print('Model: ' + str(self.modeltype))
         # Feature, Class and Index Sets
         self.classes = data[target].unique()
         self.featureset = [col for col in self.data.columns.values if col != target]
         self.datapoints = data.index
+        self.dataname = data.name
 
         """ Decision Variables """
         self.B = 0
@@ -76,14 +75,9 @@ class MBDT:
         self.model._vistime, self.model._visnum, self.model._viscuts = 0, 0, 0
         self.model._rootnode, self.model._eps = self.rootnode, self.eps
 
-        """ Warm start values (if applicable) """
-        if self.warm_start['use'] and self.warm_start['values'] is not None:
-            self.warmstart = True
-            self.wsv = warm_start['values']
-        elif warm_start['use']:
-            self.warmstart = True
-        elif not warm_start['use']:
-            self.warmstart = False
+        """ Model Extras """
+        self.regularization = 'None'
+        self.max_features = 'None'
 
     ##############################################
     # MIP Model Formulation
@@ -105,7 +99,7 @@ class MBDT:
         # Datapoint terminal vertex
         self.S = self.model.addVars(self.datapoints, self.tree.V, vtype=GRB.BINARY, name='S')
         # Datapoint selected vertices in root-terminal path
-        self.Q = self.model.addVars(self.datapoints, self.tree.V, vtype=GRB.CONTINUOUS, name='Q')
+        self.Q = self.model.addVars(self.datapoints, self.tree.V, vtype=GRB.BINARY, name='Q')
         
         """ Model Objective and Constraints """
         # Objective: Maximize the number of correctly classified datapoints
@@ -144,6 +138,7 @@ class MBDT:
                 for v in self.tree.V:
                     if v == 0: continue
                     self.model.addConstrs(self.S[i, v] <= self.Q[i, c] for c in self.tree.path[v][1:])
+
         # terminal vertex of datapoint must be in reachable path for vertex and all children
         elif 'CUT2' in self.modeltype:
             for i in self.datapoints:
@@ -210,17 +205,12 @@ class MBDT:
         self.model._data, self.model._tree = self.data, self.tree
         self.model._featureset, self.model._target = self.featureset, self.target
 
-        """ Warm Start Model if Applicable """
-        if self.warm_start['use']:
-            print('Updating with warm start values')
-            self.warm_start(self.wsv)
-
+    ##############################################
+    # Model Optimization / Callbacks
+    ##############################################
     def optimization(self):
         self.model.optimize(MBDT.callbacks)
 
-    ##############################################
-    # Model Optimization Callbacks
-    ##############################################
     @staticmethod
     def callbacks(model, where):
         """
@@ -230,6 +220,13 @@ class MBDT:
         In Branch and Bound Tree check path feasibility for datapoints
             add fractional separation cuts
         """
+        # Model Termination
+        if where == GRB.Callback.MIP:
+            if abs(model.cbGet(GRB.Callback.MIP_OBJBST) - model.cbGet(GRB.Callback.MIP_OBJBND)) < model.Params.FeasibilityTol:
+                model.terminate()
+            print('Optimal solution found in '+str(round(model.Runtime, 4))+'s. (' +
+                  str(time.strftime("%I:%M %p", time.localtime())) + ')\n')
+
         # VIS of Branching Nodes Cuts at Feasible Solution
         if where == GRB.Callback.MIPSOL:
             model._visnum += 1
@@ -237,6 +234,7 @@ class MBDT:
             B = model.cbGetSolution(model._B)
             Q = model.cbGetSolution(model._Q)
             P = model.cbGetSolution(model._P)
+            vis_weights = model._vis_weight
 
             for v in model._tree.B:
                 if B[v] < 0.5: continue
@@ -247,18 +245,18 @@ class MBDT:
                 for i in model._data.index:
                     if Q[i, model._tree.LC[v]] > 0.5:
                         Lv_I.append(i)
-                    elif Q[i, model._tree.RC[v]] > 0.5:
+                    if Q[i, model._tree.RC[v]] > 0.5:
                         Rv_I.append(i)
-                # Find a VIS for B_v(Q)
-                VIS = MBDT.VIS(model._data, model._featureset, Lv_I, Rv_I, vis_weight=model._vis_weight)
+                # Test for VIS of B_v(Q)
+                print('Test for VIS at', v)
+                VIS = MBDT.VIS(model._data, model._featureset, Lv_I, Rv_I, vis_weight=vis_weights)
                 if VIS is None:
                     continue
-
+                # If VIS Found, add cut
                 (B_v_left, B_v_right) = VIS
-
                 model.cbLazy(quicksum(model._Q[i, model._tree.LC[v]] for i in B_v_left) +
-                                  quicksum(model._Q[i, model._tree.LC[v]] for i in B_v_right) <=
-                                  len(B_v_left) + len(B_v_right) - 1)
+                             quicksum(model._Q[i, model._tree.LC[v]] for i in B_v_right) <=
+                             len(B_v_left) + len(B_v_right) - 1)
                 model._viscuts += 1
             model._vistime += time.perf_counter() - start
 
@@ -330,12 +328,6 @@ class MBDT:
                 model._septime += (time.perf_counter() - start)
         """
 
-        if where == GRB.Callback.MIP:
-            if abs(model.cbGet(GRB.Callback.MIP_OBJBST) - model.cbGet(GRB.Callback.MIP_OBJBND)) < 10^-(model._eps):
-                model.terminate()
-                print('Optimal solution found in '+str(round(model.Runtime, 4))+'s. '
-                    '('+str(time.strftime("%I:%M %p", time.localtime()))+')\n')
-
     ##############################################
     # Find Valid Infeasible Subsystem (VIS) of Model
     ##############################################
@@ -368,8 +360,8 @@ class MBDT:
         VIS_model.Params.LogToConsole = 0
 
         # VIS Dual Variables
-        lambda_L = VIS_model.addVars(Lv_I, vtype=GRB.CONTINUOUS, lb=0, name='lambda_L')
-        lambda_R = VIS_model.addVars(Rv_I, vtype=GRB.CONTINUOUS, lb=0, name='lambda_R')
+        lambda_L = VIS_model.addVars(Lv_I, vtype=GRB.CONTINUOUS, name='lambda_L')
+        lambda_R = VIS_model.addVars(Rv_I, vtype=GRB.CONTINUOUS, name='lambda_R')
 
         # VIS Dual Constraints
         VIS_model.addConstrs(
@@ -389,8 +381,9 @@ class MBDT:
         # Infeasiblity implies B_v(Q) is valid for all I in L_v(I), R_v(I)
         # i.e. each i is correctly sent to left, right child (linearly separable points)
         if VIS_model.Status == GRB.INFEASIBLE:
+            print('Linear separable points')
             return None
-
+        print('Found violation')
         lambda_L_sol = VIS_model.getAttr('X', lambda_L)
         lambda_R_sol = VIS_model.getAttr('X', lambda_R)
 
@@ -404,13 +397,12 @@ class MBDT:
             if lambda_R_sol[i] > VIS_model.Params.FeasibilityTol:
                 B_v_right.append(i)
                 vis_weight[i] += 1
-
         return (B_v_left, B_v_right)
 
     ##############################################
     # Warm Start Model
     ##############################################
-    def warm_start(self, warm_start_values):
+    def warm_start(self):
         """
         Warm start tree with random (a,c) and classes
         Generate random tree from UTILS.random_tree()
@@ -418,10 +410,16 @@ class MBDT:
         Update according decision variable values
         """
         # Generate random tree assignments if none were given
-        if warm_start_values is None:
+        if not self.warmstart['use']:
+            return self
+        if self.warmstart['values'] is None:
             warm_start_values = UTILS.random_tree(self.tree, self.data, self.target)
+            print('Warm starting model with randomly generated tree')
+        else:
+            warm_start_values = self.warmstart['values']
+            print('Warm starting model with passed values')
         # Check tree assignments are valid
-        if not RESULTS.tree_check(warm_start_values['tree']):
+        if not UTILS.tree_check(warm_start_values['tree']):
             print('Invalid Tree!!')
 
         # Retrieve node assignments
@@ -462,6 +460,29 @@ class MBDT:
                     self.Q[i, v].Start = 1.0
                 else:
                     self.Q[i, v].Start = 0.0
+
+    ##############################################
+    # Model Extras
+    ##############################################
+    def extras(self):
+        # number of maximum branching nodes
+        if any((match := elem).startswith('max_features') for elem in self.modelextras):
+            self.max_features = int(re.sub("[^0-9]", "", match))
+            print('No more than ' + str(self.max_features) + ' feature(s) used')
+            self.model.addConstr(quicksum(self.B[v] for v in self.tree.B) <= self.max_features)
+
+        # exact number of branching nodes
+        if any((match := elem).startswith('num_features') for elem in self.modelextras):
+            self.max_features = int(re.sub("[^0-9]", "", match))
+            print(str(self.max_features)+' feature(s) used')
+            self.model.addConstr(quicksum(self.B[v] for v in self.tree.B) == self.max_features)
+
+        # regularization
+        if any((match := elem).startswith('regularization') for elem in self.modelextras):
+            self.regularization = int(re.sub("[^0-9]", "", match))
+            print('Regularization: '+ str(self.regularization)+' datapoints required for classification vertices')
+            self.model.addConstrs(quicksum(self.S[i, v] for i in self.datapoints) >= self.regularization * self.P[v]
+                                  for v in self.tree.V)
 
     ##############################################
     # Assign Nodes of Tree from Model Solution
@@ -523,13 +544,16 @@ class MBDT:
                     elif Q_sol[i, self.tree.RC[v]] > 0.5:
                         Rv_I.append(i)
                         svm_y[i] = +1
+
                 # Find (a_v, c_v) for corresponding Lv_I, Rv_I
                 # If |Lv_I| = 0: (a_v, c_v) = (0, -1) sends all points to the right
                 if len(Lv_I) == 0:
+                    print('All going right')
                     self.tree.a_v[v] = {f: 0 for f in self.featureset}
                     self.tree.c_v[v] = -1
                 # If |Rv_I| = 0: (a_v, c_v) = (0, 1) sends all points to the left
                 elif len(Rv_I) == 0:
+                    print('All going left')
                     self.tree.a_v[v] = {f: 0 for f in self.featureset}
                     self.tree.c_v[v] = 1
                 # Train hard margin linear SVM to find (a_v, c_v) corresponding to Lv_I, Rv_I

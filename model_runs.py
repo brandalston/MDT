@@ -11,7 +11,6 @@ import matplotlib.pyplot as plt
 from MBDT import MBDT
 from TREE import TREE
 import UTILS
-import RESULTS
 
 
 def main(argv):
@@ -21,15 +20,16 @@ def main(argv):
     time_limit = None
     modeltypes = None
     rand_states = None
-    warm_start = None
+    warmstart = None
+    model_extras = None
     file_out = None
     consol_log = None
 
     try:
-        opts, args = getopt.getopt(argv, "d:h:t:m:r:w:f:l:",
-                                   ["data_files=", "heights=", "timelimit=",
+        opts, args = getopt.getopt(argv, "d:h:t:m:r:w:e:f:l:",
+                                   ["data_files=", "heights=", "time_limit=",
                                     "models=", "rand_states=", "warm_start=",
-                                    "results_file=", "consol_log"])
+                                    "model_extras=", "results_file=", "consol_log"])
     except getopt.GetoptError:
         sys.exit(2)
     for opt, arg in opts:
@@ -37,14 +37,16 @@ def main(argv):
             data_files = arg
         elif opt in ("-h", "--heights"):
             heights = arg
-        elif opt in ("-t", "--timelimit"):
+        elif opt in ("-t", "--time_limit"):
             time_limit = int(arg)
         elif opt in ("-m", "--model"):
             modeltypes = arg
         elif opt in ("-r", "--rand_states"):
             rand_states = arg
-        elif opt in ("-w", "--tuning"):
-            warm_start = arg
+        elif opt in ("-w", "--warm_start"):
+            warmstart = arg
+        elif opt in ("-e", "--model_extras"):
+            model_extras = arg
         elif opt in ("-f", "--results_file"):
             file_out = arg
         elif opt in ("-l", "--consol_log"):
@@ -54,14 +56,15 @@ def main(argv):
     summary_columns = ['Data', 'H', '|I|',
                        'Out_Acc', 'In_Acc', 'Sol_Time',
                        'MIP_Gap', 'Obj_Val', 'Obj_Bound', 'Model',
-                       'Sep_Time', 'Sep_CB', 'Sep_Cuts', 'Sep_Avg',
-                       'VIS_Time', 'VIS_CB', 'VIS_Cuts',
-                       'Eps', 'Time_Limit', 'Rand_State', 'Warm Start']
+                       'FP_CB_Time', 'FP_Num_CB', 'FP_Cuts', 'FP_Avg',
+                       'VIS_CB_Time', 'VIS_Num_CB', 'VIS_Cuts',
+                       'Eps', 'Time_Limit', 'Rand_State',
+                       'Warm Start', 'Regularization', 'Max_Features']
     output_path = os.getcwd() + '/results_files/'
 
     if file_out is None:
         output_name = str(data_files) + '_H:' + str(heights) + '_' + str(modeltypes) + \
-                      '_T:' + str(time_limit) + '.csv'
+                      '_T:' + str(time_limit) + '_E:'+ str(model_extras)+'.csv'
     else:
         output_name = file_out
     out_file = output_path + output_name
@@ -79,7 +82,8 @@ def main(argv):
     target = 'target'
     for file in data_files:
         # pull dataset to train model with
-        data = UTILS.get_data(file.replace('.csv', ''), target)
+        data = UTILS.get_data(file, target)
+        print(data.head(5))
         for h in heights:
             for i in rand_states:
                 print('\nDataset: '+str(file)+', H: '+str(h)+', '
@@ -87,20 +91,24 @@ def main(argv):
                 train_set, test_set = train_test_split(data, train_size=0.5, random_state=i)
                 cal_set, test_set = train_test_split(test_set, train_size=0.5, random_state=i)
                 model_set = pd.concat([train_set, cal_set])
+                model_set.name = data.name
                 for modeltype in modeltypes:
                     if any([char.isdigit() for char in modeltype]):
                         # Generate tree and necessary structure information
                         tree = TREE(h=h)
                         # Model with 75% training set and time limit
                         opt_model = MBDT(data=model_set, tree=tree, target=target, modeltype=modeltype,
-                                         time_limit=time_limit, warm_start=warm_start, name=file)
+                                         time_limit=time_limit, warmstart=warmstart, modelextras=model_extras)
                         # Add connectivity constraints according to model type and solve
                         opt_model.formulation()
+                        opt_model.warm_start()
+                        if model_extras is not None:
+                            opt_model.extras()
                         opt_model.model.update()
                         opt_model.optimization()
                         opt_model.assign_tree()
-                        RESULTS.model_summary(opt_model=opt_model, tree=tree, test_set=test_set,
-                                              rand_state=i, results_file=out_file)
+                        UTILS.model_summary(opt_model=opt_model, tree=tree, test_set=test_set,
+                                            rand_state=i, results_file=out_file)
                         if consol_log:
                             consol_log_file = output_path + '_' + str(file) + '_' + str(h) + '_' + str(
                                 modeltype) + '_' + 'T:' + str(time_limit) + '.txt'
