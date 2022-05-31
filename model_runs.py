@@ -112,4 +112,3 @@ def main(argv):
                             consol_log_file = output_path + '_' + str(file) + '_' + str(h) + '_' + str(
                                 modeltype) + '_' + 'T:' + str(time_limit) + '.txt'
                             sys.stdout = UTILS.consol_log(consol_log_file)
-

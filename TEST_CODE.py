@@ -5,8 +5,8 @@ import UTILS
 time_limit = 600
 rand_states = [138]
 file = 'testing.csv'
-heights = [4]
-data_names = ['breast-cancer']
+heights = [3]
+data_names = ['soybean-small']
 models = ['CUT1']
 # model_extras = ['regularization-3']
 model_extras = None
