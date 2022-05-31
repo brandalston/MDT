@@ -83,7 +83,6 @@ def main(argv):
     for file in data_files:
         # pull dataset to train model with
         data = UTILS.get_data(file, target)
-        print(data.head(5))
         for h in heights:
             for i in rand_states:
                 print('\nDataset: '+str(file)+', H: '+str(h)+', '
