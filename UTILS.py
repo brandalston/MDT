@@ -267,7 +267,7 @@ class Linear_Separator():
                     if max_cc_inner < test_inner:
                         max_cc_inner = test_inner
                 # print('max inner product of cc',max_cc_inner)
-                margin_ub = max(0, max_cc_inner/len(cc_L|cc_R))
+                margin_ub = max(0, max_cc_inner/np.linalg.norm(cc_L|cc_R,2))
 
                 # Solve dual of Lagrangian of soft margin SVM
                 m = Model("SM_Linear_SVM")
@@ -427,8 +427,8 @@ def model_summary(opt_model, tree, test_set, rand_state, results_file):
         results_writer = csv.writer(results, delimiter=',', quotechar='"')
         results_writer.writerow(
             [opt_model.dataname, tree.height, len(opt_model.datapoints),
-             test_acc / len(test_set), train_acc / len(opt_model.datapoints), opt_model.model.Runtime,
-             opt_model.model.MIPGap, opt_model.model.ObjVal, opt_model.model.ObjBound, opt_model.modeltype,
+             test_acc/len(test_set), train_acc/len(opt_model.datapoints), opt_model.model.Runtime, opt_model.model.MIPGap,
+             opt_model.model.ObjVal, opt_model.model.ObjBound, opt_model.modeltype, opt_model.HP_time,
              opt_model.model._septime, opt_model.model._sepnum, opt_model.model._sepcuts, opt_model.model._sepavg,
              opt_model.model._vistime, opt_model.model._visnum, opt_model.model._viscuts,
              opt_model.eps, opt_model.time_limit, rand_state,

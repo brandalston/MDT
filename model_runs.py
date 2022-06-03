@@ -55,7 +55,7 @@ def main(argv):
     ''' Columns of the results file generated '''
     summary_columns = ['Data', 'H', '|I|',
                        'Out_Acc', 'In_Acc', 'Sol_Time',
-                       'MIP_Gap', 'Obj_Val', 'Obj_Bound', 'Model',
+                       'MIP_Gap', 'Obj_Val', 'Obj_Bound', 'Model', 'HP_Time',
                        'FP_CB_Time', 'FP_Num_CB', 'FP_Cuts', 'FP_Avg',
                        'VIS_CB_Time', 'VIS_Num_CB', 'VIS_Cuts',
                        'Eps', 'Time_Limit', 'Rand_State',
@@ -107,9 +107,7 @@ def main(argv):
                         opt_model.optimization()
                         print('Optimal solution found in ' + str(round(opt_model.model.Runtime, 4)) + 's. (' +
                               str(time.strftime("%I:%M %p", time.localtime())) + ')\n')
-                        assign_time = time.perf_counter()
                         opt_model.assign_tree()
-                        print('Assign tree time', time.perf_counter()-assign_time)
                         UTILS.model_summary(opt_model=opt_model, tree=tree, test_set=test_set,
                                             rand_state=i, results_file=out_file)
                         if consol_log:

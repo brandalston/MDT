@@ -409,6 +409,7 @@ class MBDT:
         Define (a_v, c_v) for v when P[v].x = 0, B[v].x = 1
             Use hard margin linear SVM on B_v(Q) to find (a_v, c_v)
         """
+        start = time.perf_counter()
         # clear any existing node assignments
         for v in self.tree.DG_prime.nodes():
             if 'class' in self.tree.DG_prime.nodes[v]:
@@ -472,6 +473,7 @@ class MBDT:
                     svm.SVM_fit(data_svm)
                     self.tree.a_v[v], self.tree.c_v[v] = svm.a_v, svm.c_v
                 self.tree.DG_prime.nodes[v]['branching'] = (self.tree.a_v[v], self.tree.c_v[v])
+        self.HP_time = time.perf_counter()-start
 
     ##############################################
     # Warm Start Model

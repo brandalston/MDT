@@ -5,11 +5,10 @@ import UTILS
 time_limit = 600
 rand_states = [138]
 rand_states = [138, 15, 89, 42, 0]
-file = 'testing.csv'
+file = 'testing_3.csv'
 heights = [2,3,4,5]
 data_names = ['balance-scale', 'car', 'kr-vs-kp', 'house-votes-84',
               'tic-tac-toe', 'hayes-roth', 'soybean-small', 'breast-cancer']
-data_names = ['kr-vs-kp']
 models = ['CUT1']
 # model_extras = ['regularization-3']
 model_extras = None
