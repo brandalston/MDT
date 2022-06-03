@@ -333,6 +333,7 @@ class Linear_Separator():
                             self.a_v, self.c_v = a_v, c_v
                         return self
                     except Exception:
+                        # Return random separating hyperplane
                         a_v = {f: random.random() for f in feature_set}
                         c_v = random.random()
                         self.a_v, self.c_v = a_v, c_v
