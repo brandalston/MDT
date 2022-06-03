@@ -6,8 +6,6 @@ import getopt
 import sys
 import csv
 from sklearn.model_selection import train_test_split
-from sklearn import tree as HEURTree
-import matplotlib.pyplot as plt
 from MBDT import MBDT
 from TREE import TREE
 import UTILS
@@ -23,13 +21,13 @@ def main(argv):
     warmstart = None
     model_extras = None
     file_out = None
-    consol_log = None
+    log_files = None
 
     try:
         opts, args = getopt.getopt(argv, "d:h:t:m:r:w:e:f:l:",
                                    ["data_files=", "heights=", "time_limit=",
                                     "models=", "rand_states=", "warm_start=",
-                                    "model_extras=", "results_file=", "consol_log"])
+                                    "model_extras=", "results_file=", "log_files"])
     except getopt.GetoptError:
         sys.exit(2)
     for opt, arg in opts:
@@ -49,8 +47,8 @@ def main(argv):
             model_extras = arg
         elif opt in ("-f", "--results_file"):
             file_out = arg
-        elif opt in ("-l", "--consol_log"):
-            consol_log = arg
+        elif opt in ("-l", "--log_files"):
+            log_files = arg
 
     ''' Columns of the results file generated '''
     summary_columns = ['Data', 'H', '|I|',
@@ -61,7 +59,7 @@ def main(argv):
                        'Eps', 'Time_Limit', 'Rand_State',
                        'Warm Start', 'Regularization', 'Max_Features']
     output_path = os.getcwd() + '/results_files/'
-
+    log_path = os.getcwd() + '/log_files/'
     if file_out is None:
         output_name = str(data_files) + '_H:' + str(heights) + '_' + str(modeltypes) + \
                       '_T:' + str(time_limit) + '_E:'+ str(model_extras)+'.csv'
@@ -93,11 +91,16 @@ def main(argv):
                 model_set.name = data.name
                 for modeltype in modeltypes:
                     if any([char.isdigit() for char in modeltype]):
+                        # Log .lp and .txt files name
+                        log = log_path + '_' + str(file) + '_H:' + str(h) + '_M:' + str(
+                                modeltype) + '_T:' + str(time_limit) + '_Seed:' + str(i) + '_E:' + str(
+                                model_extras)
                         # Generate tree and necessary structure information
                         tree = TREE(h=h)
                         # Model with 75% training set and time limit
                         opt_model = MBDT(data=model_set, tree=tree, target=target, modeltype=modeltype,
-                                         time_limit=time_limit, warmstart=warmstart, modelextras=model_extras)
+                                         time_limit=time_limit, warmstart=warmstart,
+                                         modelextras=model_extras, log=log+'.txt')
                         # Add connectivity constraints according to model type and solve
                         opt_model.formulation()
                         opt_model.warm_start()
@@ -110,7 +113,5 @@ def main(argv):
                         opt_model.assign_tree()
                         UTILS.model_summary(opt_model=opt_model, tree=tree, test_set=test_set,
                                             rand_state=i, results_file=out_file)
-                        if consol_log:
-                            consol_log_file = output_path + '_' + str(file) + '_' + str(h) + '_' + str(
-                                modeltype) + '_' + 'T:' + str(time_limit) + '.txt'
-                            sys.stdout = UTILS.consol_log(consol_log_file)
+                        if log_files:
+                            opt_model.model.write(log+'.lp')

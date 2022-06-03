@@ -8,7 +8,7 @@ import UTILS
 
 class MBDT:
 
-    def __init__(self, data, tree, modeltype, time_limit, target, warmstart, modelextras):
+    def __init__(self, data, tree, modeltype, time_limit, target, warmstart, modelextras, log=None):
         """"
         Parameters
         data: training data
@@ -26,6 +26,7 @@ class MBDT:
         self.target = target
         self.warmstart = warmstart
         self.modelextras = modelextras
+        self.log = log
 
         print('Model: ' + str(self.modeltype))
         # Feature, Class and Index Sets
@@ -50,13 +51,13 @@ class MBDT:
         self.cut_type = self.modeltype[5:]
         if 'CUT' in self.modeltype and len(self.cut_type) == 0:
             self.cut_type = 'GRB'
-        self.rootnode = False
+        self.rootcuts = False
         self.eps = 0
         if 'TYPE' in self.cut_type:
             self.eps = -4
             if 'ROOT' in self.cut_type:
-                self.rootnode = True
-            print('User FRAC cuts (ROOT: ' + str(self.rootnode) + ')')
+                self.rootcuts = True
+            print('User FRAC cuts (ROOT: ' + str(self.rootcuts) + ')')
         elif 'ALL' in self.cut_type:
             print('ALL integral connectivity constraints')
         elif 'GRB' in self.cut_type:
@@ -73,11 +74,13 @@ class MBDT:
         self.model.Params.LogToConsole = 0
         self.model.Params.LazyConstraints = 1
         self.model.Params.PreCrush = 1
+        if self.log is not None:
+            self.model.Params.LogFile = self.log
 
         """ Model callback metrics """
         self.model._septime, self.model._sepnum, self.model._sepcuts, self.model._sepavg = 0, 0, 0, 0
         self.model._vistime, self.model._visnum, self.model._viscuts = 0, 0, 0
-        self.model._rootnode, self.model._eps = self.rootnode, self.eps
+        self.model._rootcuts, self.model._eps = self.rootcuts, self.eps
 
     ##############################################
     # MIP Model Formulation
