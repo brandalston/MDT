@@ -45,14 +45,6 @@ class MBDT:
         # CUT model separation constraints
         self.cut_constraint = 0
         self.single_terminal = 0
-
-        """ Gurobi Optimization Parameters """
-        self.model = Model(f'{self.modeltype}')
-        self.model.Params.TimeLimit = time_limit
-        self.model.Params.Threads = 1
-        self.model.Params.LogToConsole = 0
-        self.model.Params.LazyConstraints = 1
-        self.model.Params.PreCrush = 1
         
         """ Separation Procedure """
         self.cut_type = self.modeltype[5:]
@@ -70,14 +62,22 @@ class MBDT:
         elif 'GRB' in self.cut_type:
             print('GRB lazy = 3 constraints')
 
+        """ Model extras """
+        self.regularization = 'None'
+        self.max_features = 'None'
+
+        """ Gurobi Optimization Parameters """
+        self.model = Model(f'{self.modeltype}')
+        self.model.Params.TimeLimit = time_limit
+        self.model.Params.Threads = 1
+        self.model.Params.LogToConsole = 0
+        self.model.Params.LazyConstraints = 1
+        self.model.Params.PreCrush = 1
+
         """ Model callback metrics """
         self.model._septime, self.model._sepnum, self.model._sepcuts, self.model._sepavg = 0, 0, 0, 0
         self.model._vistime, self.model._visnum, self.model._viscuts = 0, 0, 0
         self.model._rootnode, self.model._eps = self.rootnode, self.eps
-
-        """ Model extras """
-        self.regularization = 'None'
-        self.max_features = 'None'
 
     ##############################################
     # MIP Model Formulation
@@ -409,7 +409,6 @@ class MBDT:
         Define (a_v, c_v) for v when P[v].x = 0, B[v].x = 1
             Use hard margin linear SVM on B_v(Q) to find (a_v, c_v)
         """
-        print('assigning tree')
         # clear any existing node assignments
         for v in self.tree.DG_prime.nodes():
             if 'class' in self.tree.DG_prime.nodes[v]:
@@ -439,14 +438,11 @@ class MBDT:
                 for k in self.classes:
                     if W_sol[v, k] > 0.5:
                         self.tree.DG_prime.nodes[v]['class'] = k
-                        print('\nVertex ' + str(v) + ' class ' + str(k))
             # Assign no class or branching rule to pruned nodes
             elif P_sol[v] < 0.5 and B_sol[v] < 0.5:
                 self.tree.DG_prime.nodes[v]['pruned'] = 0
-                print('\nVertex ' + str(v) + ' pruned')
             # Define (a_v, c_v) on branching nodes
             elif P_sol[v] < 0.5 and B_sol[v] > 0.5:
-                print('\nVertex ' + str(v) + ' branching')
                 # Lv_I, Rv_I index sets of observations sent to left, right child vertex of branching vertex v
                 # svm_y maps Lv_I to -1, Rv_I to +1 for training hard margin linear SVM
                 Lv_I, Rv_I = [], []
@@ -462,12 +458,10 @@ class MBDT:
                 # Find (a_v, c_v) for corresponding Lv_I, Rv_I
                 # If |Lv_I| = 0: (a_v, c_v) = (0, -1) sends all points to the right
                 if len(Lv_I) == 0:
-                    print('All going right')
                     self.tree.a_v[v] = {f: 0 for f in self.featureset}
                     self.tree.c_v[v] = -1
                 # If |Rv_I| = 0: (a_v, c_v) = (0, 1) sends all points to the left
                 elif len(Rv_I) == 0:
-                    print('All going left')
                     self.tree.a_v[v] = {f: 0 for f in self.featureset}
                     self.tree.c_v[v] = 1
                 # Train hard margin linear SVM to find (a_v, c_v) corresponding to Lv_I, Rv_I
