@@ -14,85 +14,86 @@ def get_data(file_name, target):
     # Return dataset from 'file_name' in Pandas dataframe
     # dataset located in workspace folder named 'Datasets'
     # Ensure all features are in [0,1] through encoding process
-    global data
-    try:
-        cols_dict = {
-            'auto-mpg': ['target', 'cylinders', 'displacement', 'horsepower', 'weight', 'acceleration', 'model-year',
-                         'origin', 'car_name'],
-            'balance-scale': ['target', 'left-weight', 'left-distance', 'right-weight', 'right-distance'],
-            'banknote_authentication': ['variance-of-wavelet', 'skewness-of-wavelet', 'curtosis-of-wavelet', 'entropy',
-                                        'target'],
-            'blood_transfusion': ['R', 'F', 'M', 'T', 'target'],
-            'breast-cancer': ['target', 'age', 'menopause', 'tumor-size', 'inv-nodes', 'node-caps', 'deg-malig',
-                              'breast', 'breast-quad', 'irradiat'],
-            'car': ['buying', 'maint', 'doors', 'persons', 'lug_boot', 'safety', 'target'],
-            'climate': ['Study', 'Run', 'vconst_corr', 'vconst_2', 'vconst_3', 'vconst_4', 'vconst_5', 'vconst_7',
-                        'ah_corr', 'ah_bolus', 'slm_corr', 'efficiency_factor', 'tidal_mix_max', 'vertical_decay_scale',
-                        'convect_corr', 'bckgrnd_vdc1', 'bckgrnd_vdc_ban', 'bckgrnd_vdc_eq', 'bckgrnd_vdc_psim',
-                        'Prandtl', 'target'],
-            'flare1': ['class', 'largest-spot-size', 'spot-distribution', 'activity', 'evolution',
-                       'previous-24hr-activity', 'historically-complex', 'become-h-c', 'area', 'area-largest-spot',
-                       'c-target', 'm-target', 'x-target'],
-            'flare2': ['class', 'largest-spot-size', 'spot-distribution', 'activity', 'evolution',
-                       'previous-24hr-activity', 'historically-complex', 'become-h-c', 'area', 'area-largest-spot',
-                       'c-target', 'm-target', 'x-target'],
-            'glass': ['Id', 'RI', 'Na', 'Mg', 'Al', 'Si', 'K', 'Ca', 'Ba', 'Fe', 'target'],
-            'hayes-roth': ['file_name', 'hobby', 'age', 'educational-level', 'marital-status', 'target'],
-            'house-votes-84': ['target', 'handicapped-infants', 'water-project-cost-sharing',
-                               'adoption-of-the-budget-resolution', 'physician-fee-freeze', 'el-salvador-aid',
-                               'religious-groups-in-schools', 'anti-satellite-test-ban', 'aid-to-nicaraguan-contras',
-                               'mx-missile', 'immigration', 'synfuels-corporation-cutback', 'education-spending',
-                               'superfund-right-to-sue', 'crime', 'duty-free-exports',
-                               'export-administration-act-south-africa'],
-            'image_segmentation': ['target', 'region-centroid-col', 'region-centroid-row', 'region-pixel-count',
-                                   'short-line-density-5', 'short-line-density-2', 'vedge-mean', 'vegde-sd',
-                                   'hedge-mean', 'hedge-sd', 'intensity-mean', 'rawred-mean', 'rawblue-mean',
-                                   'rawgreen-mean', 'exred-mean', 'exblue-mean', 'exgreen-mean', 'value-mean',
-                                   'saturatoin-mean', 'hue-mean'],
-            'ionosphere': list(range(1, 35)) + ['target'],
-            'iris': ['sepal-length', 'sepal-width', 'petal-length', 'petal-width', 'target'],
-            'kr-vs-kp': ['bkblk', 'bknwy', 'bkon8', 'bkona', 'bkspr', 'bkxbq', 'bkxcr', 'bkxwp', 'blxwp', 'bxqsq',
-                         'cntxt', 'dsopp', 'dwipd', 'hdchk', 'katri', 'mulch', 'qxmsq', 'r2ar8', 'reskd', 'reskr',
-                         'rimmx', 'rkxwp', 'rxmsq', 'simpl', 'skach', 'skewr', 'skrxp', 'spcop', 'stlmt', 'thrsk',
-                         'wkcti', 'wkna8', 'wknck', 'wkovl', 'wkpos', 'wtoeg', 'target'],
-            'monk1': ['target', 'a1', 'a2', 'a3', 'a4', 'a5', 'a6'],
-            'monk2': ['target', 'a1', 'a2', 'a3', 'a4', 'a5', 'a6'],
-            'monk3': ['target', 'a1', 'a2', 'a3', 'a4', 'a5', 'a6'],
-            'parkinsons': ['file_name', 'MDVP:Fo(Hz)', 'MDVP:Fhi(Hz)', 'MDVP:Flo(Hz)', 'MDVP:Jitter(%)',
-                           'MDVP:Jitter(Abs)', 'MDVP:RAP', 'MDVP:PPQ', 'Jitter:DDP', 'MDVP:Shimmer', 'MDVP:Shimmer(dB)',
-                           'Shimmer:APQ3', 'Shimmer:APQ5', 'MDVP:APQ', 'Shimmer:DDA', 'NHR', 'HNR', 'target', 'RPDE',
-                           'DFA', 'spread1', 'spread2', 'D2', 'PPE'],
-            'soybean-small': list(range(1, 36)) + ['target'],
-            'tic-tac-toe': ['top-left-square', 'top-middle-square', 'top-right-square', 'middle-left-square',
-                            'middle-middle-square', 'middle-right-square', 'bottom-left-square', 'bottom-middle-square',
-                            'bottom-right-square', 'target'],
-            'wine-red': ['fixed-acidity', 'volatile-acidity', 'citric-acid', 'residual-sugar', 'chlorides',
-                         'free-sulfur dioxide', 'total-sulfur-dioxide', 'density', 'pH', 'sulphates', 'alcohol',
-                         'target'],
-            'wine-white': ['fixed-acidity', 'volatile-acidity', 'citric-acid', 'residual-sugar', 'chlorides',
-                           'free-sulfur dioxide', 'total-sulfur-dioxide', 'density', 'pH', 'sulphates', 'alcohol',
-                           'target']
-        }
-        numerical_datasets = ['iris', 'wine-red', 'wine-white', 'banknote_authentication', 'blood_transfusion',
-                              'climate', 'glass', 'image_segmentation', 'ionosphere', 'parkinsons']
-        categorical_datasets = ['balance-scale', 'car', 'kr-vs-kp', 'house-votes-84', 'tic-tac-toe',
-                                'hayes-roth', 'monk1', 'monk2', 'monk3', 'soybean-small', 'breast-cancer']
-        if file_name in cols_dict:
-            if file_name not in ['glass', 'hayes-roth', 'parkinsons']:
-                data = pd.read_csv('Datasets/' + file_name + '.data', names=cols_dict[file_name])
-            elif file_name == 'hayes-roth' or 'parkinsons':
-                data = pd.read_csv('Datasets/' + file_name + '.data', names=cols_dict[file_name], index_col='file_name')
-            elif file_name == 'glass':
-                data = pd.read_csv('Datasets/' + file_name + '.data', names=cols_dict[file_name], index_col='Id')
-        if file_name in numerical_datasets:
-            data = preprocess(data, target, numerical_features=[f for f in cols_dict[file_name] if f != target])
-        if file_name in categorical_datasets:
-            data = preprocess(data, target, categorical_features=[f for f in cols_dict[file_name] if f != target])
-        data.name = file_name
-        return data
-    except:
-        print("Dataset not found or error in preprocess!\n")
-        return
+    global data_processed, data
+    # try:
+    cols_dict = {
+        'auto-mpg': ['target', 'cylinders', 'displacement', 'horsepower', 'weight', 'acceleration', 'model-year',
+                     'origin', 'car_name'],
+        'balance-scale': ['target', 'left-weight', 'left-distance', 'right-weight', 'right-distance'],
+        'banknote_authentication': ['variance-of-wavelet', 'skewness-of-wavelet', 'curtosis-of-wavelet', 'entropy',
+                                    'target'],
+        'blood_transfusion': ['R', 'F', 'M', 'T', 'target'],
+        'breast-cancer': ['target', 'age', 'menopause', 'tumor-size', 'inv-nodes', 'node-caps', 'deg-malig',
+                          'breast', 'breast-quad', 'irradiat'],
+        'car': ['buying', 'maint', 'doors', 'persons', 'lug_boot', 'safety', 'target'],
+        'climate': ['Study', 'Run', 'vconst_corr', 'vconst_2', 'vconst_3', 'vconst_4', 'vconst_5', 'vconst_7',
+                    'ah_corr', 'ah_bolus', 'slm_corr', 'efficiency_factor', 'tidal_mix_max', 'vertical_decay_scale',
+                    'convect_corr', 'bckgrnd_vdc1', 'bckgrnd_vdc_ban', 'bckgrnd_vdc_eq', 'bckgrnd_vdc_psim',
+                    'Prandtl', 'target'],
+        'flare1': ['class', 'largest-spot-size', 'spot-distribution', 'activity', 'evolution',
+                   'previous-24hr-activity', 'historically-complex', 'become-h-c', 'area', 'area-largest-spot',
+                   'c-target', 'm-target', 'x-target'],
+        'flare2': ['class', 'largest-spot-size', 'spot-distribution', 'activity', 'evolution',
+                   'previous-24hr-activity', 'historically-complex', 'become-h-c', 'area', 'area-largest-spot',
+                   'c-target', 'm-target', 'x-target'],
+        'glass': ['Id', 'RI', 'Na', 'Mg', 'Al', 'Si', 'K', 'Ca', 'Ba', 'Fe', 'target'],
+        'hayes-roth': ['file_name', 'hobby', 'age', 'educational-level', 'marital-status', 'target'],
+        'house-votes-84': ['target', 'handicapped-infants', 'water-project-cost-sharing',
+                           'adoption-of-the-budget-resolution', 'physician-fee-freeze', 'el-salvador-aid',
+                           'religious-groups-in-schools', 'anti-satellite-test-ban', 'aid-to-nicaraguan-contras',
+                           'mx-missile', 'immigration', 'synfuels-corporation-cutback', 'education-spending',
+                           'superfund-right-to-sue', 'crime', 'duty-free-exports',
+                           'export-administration-act-south-africa'],
+        'image_segmentation': ['target', 'region-centroid-col', 'region-centroid-row', 'region-pixel-count',
+                               'short-line-density-5', 'short-line-density-2', 'vedge-mean', 'vegde-sd',
+                               'hedge-mean', 'hedge-sd', 'intensity-mean', 'rawred-mean', 'rawblue-mean',
+                               'rawgreen-mean', 'exred-mean', 'exblue-mean', 'exgreen-mean', 'value-mean',
+                               'saturatoin-mean', 'hue-mean'],
+        'ionosphere': list(range(1, 35)) + ['target'],
+        'iris': ['sepal-length', 'sepal-width', 'petal-length', 'petal-width', 'target'],
+        'kr-vs-kp': ['bkblk', 'bknwy', 'bkon8', 'bkona', 'bkspr', 'bkxbq', 'bkxcr', 'bkxwp', 'blxwp', 'bxqsq',
+                     'cntxt', 'dsopp', 'dwipd', 'hdchk', 'katri', 'mulch', 'qxmsq', 'r2ar8', 'reskd', 'reskr',
+                     'rimmx', 'rkxwp', 'rxmsq', 'simpl', 'skach', 'skewr', 'skrxp', 'spcop', 'stlmt', 'thrsk',
+                     'wkcti', 'wkna8', 'wknck', 'wkovl', 'wkpos', 'wtoeg', 'target'],
+        'monk1': ['target', 'a1', 'a2', 'a3', 'a4', 'a5', 'a6'],
+        'monk2': ['target', 'a1', 'a2', 'a3', 'a4', 'a5', 'a6'],
+        'monk3': ['target', 'a1', 'a2', 'a3', 'a4', 'a5', 'a6'],
+        'parkinsons': ['file_name', 'MDVP:Fo(Hz)', 'MDVP:Fhi(Hz)', 'MDVP:Flo(Hz)', 'MDVP:Jitter(%)',
+                       'MDVP:Jitter(Abs)', 'MDVP:RAP', 'MDVP:PPQ', 'Jitter:DDP', 'MDVP:Shimmer', 'MDVP:Shimmer(dB)',
+                       'Shimmer:APQ3', 'Shimmer:APQ5', 'MDVP:APQ', 'Shimmer:DDA', 'NHR', 'HNR', 'target', 'RPDE',
+                       'DFA', 'spread1', 'spread2', 'D2', 'PPE'],
+        'soybean-small': list(range(1, 36)) + ['target'],
+        'tic-tac-toe': ['top-left-square', 'top-middle-square', 'top-right-square', 'middle-left-square',
+                        'middle-middle-square', 'middle-right-square', 'bottom-left-square', 'bottom-middle-square',
+                        'bottom-right-square', 'target'],
+        'wine-red': ['fixed-acidity', 'volatile-acidity', 'citric-acid', 'residual-sugar', 'chlorides',
+                     'free-sulfur dioxide', 'total-sulfur-dioxide', 'density', 'pH', 'sulphates', 'alcohol',
+                     'target'],
+        'wine-white': ['fixed-acidity', 'volatile-acidity', 'citric-acid', 'residual-sugar', 'chlorides',
+                       'free-sulfur dioxide', 'total-sulfur-dioxide', 'density', 'pH', 'sulphates', 'alcohol',
+                       'target']
+    }
+    numerical_datasets = ['iris', 'wine-red', 'wine-white', 'banknote_authentication', 'blood_transfusion',
+                          'climate', 'glass', 'image_segmentation', 'ionosphere', 'parkinsons']
+    categorical_datasets = ['balance-scale', 'car', 'kr-vs-kp', 'house-votes-84', 'tic-tac-toe',
+                            'hayes-roth', 'monk1', 'monk2', 'monk3', 'soybean-small', 'breast-cancer']
+    if file_name in cols_dict:
+        if file_name not in ['glass', 'hayes-roth', 'parkinsons']:
+            data = pd.read_csv('Datasets/' + file_name + '.data', names=cols_dict[file_name])
+        elif file_name == 'hayes-roth' or 'parkinsons':
+            data = pd.read_csv('Datasets/' + file_name + '.data', names=cols_dict[file_name], index_col='file_name')
+        elif file_name == 'glass':
+            data = pd.read_csv('Datasets/' + file_name + '.data', names=cols_dict[file_name], index_col='Id')
+    if file_name in numerical_datasets:
+        data_processed = preprocess(data, numerical_features=data.columns != target)
+    if file_name in categorical_datasets:
+        data_processed = preprocess(data, categorical_features=data.columns != target)
+    data_processed.name = file_name
+    data_processed['target'] = data['target']
+    return data_processed
+    # except:
+        # print("Dataset not found or error in preprocess!\n")
+        # return
 
 
 class CandidateThresholdBinarizer(TransformerMixin, BaseEstimator):
@@ -161,7 +162,7 @@ class CandidateThresholdBinarizer(TransformerMixin, BaseEstimator):
         return data_binarized
 
 
-def preprocess(data, target, numerical_features=None, categorical_features=None, binarization=None):
+def preprocess(data, numerical_features=None, categorical_features=None, binarization=None):
     if numerical_features is None:
         numerical_features = []
     if categorical_features is None:
@@ -174,9 +175,7 @@ def preprocess(data, target, numerical_features=None, categorical_features=None,
         numerical_transformer = CandidateThresholdBinarizer()
     ct = ColumnTransformer([("num", numerical_transformer, numerical_features),
                             ("cat", categorical_transformer, categorical_features)])
-    data_new = pd.DataFrame(ct.fit_transform(data.loc[:, data.columns != target]),
-                            index=data.index, columns=ct.get_feature_names_out())
-    data_new['target'] = data[target]
+    data_new = pd.DataFrame(ct.fit_transform(data), index=data.index, columns=ct.get_feature_names_out())
     return data_new
 
 
@@ -195,7 +194,7 @@ class Linear_Separator():
 
     def SVM_fit(self, data):
         print('Finding (a,c)')
-        feature_set = [col for col in data.columns if col != 'svm']
+        feature_set = [f for f in data.columns if f != 'svm']
         if not np.array_equal(np.unique(data.svm), [-1, 1]):
             print("Class labels must be -1 and +1")
             raise ValueError
@@ -224,7 +223,7 @@ class Linear_Separator():
             self.a_v, self.c_v = a_v, c_v
             return self
         except Exception:
-            print('Failed to solve SVM. Generating any separating hyperplane\n')
+            print('Failed to solve SVM. Generating any separating hyperplane')
             # If Lagrange multipliers of SVM fails to solve, return any separating hyperplane
             Lv_I = set(i for i in data.index if data.at[i, 'svm'] == -1)
             Rv_I = set(i for i in data.index if data.at[i, 'svm'] == +1)
@@ -233,7 +232,6 @@ class Linear_Separator():
             if len(Lv_I & Rv_I) > 0:
                 print('Common points to both sets', Lv_I & Rv_I)
 
-            print('Testing for points represented as convex combination of given Lv_I, Rv_I')
             cc_L, cc_R = set(), set()
             for i in Lv_I:
                 convex_combo = Model("Convex Combination")
@@ -284,9 +282,7 @@ class Linear_Separator():
             c_v = -b  # Must flip intercept because of how QP was setup
             print('Solved SVM problem')
             self.a_v, self.c_v = a_v, c_v
-            """
-
-            """
+    
             print('l convex', cc_L)
             print('r convex', cc_R)
             print('union', cc_L | cc_R)
@@ -300,13 +296,12 @@ class Linear_Separator():
                 continue
             """
 
-
             Lv_I_prop = Lv_I - cc_L
             Rv_I_prop = Rv_I - cc_R
-            print(Lv_I_prop)
-            print(Rv_I_prop)
+            # print('Lv_I', Lv_I_prop)
+            # print('Rv_I', Rv_I_prop)
             gen_hyperplane = Model("Separating hyperplane")
-            gen_hyperplane.Params.LogToConsole = 1
+            gen_hyperplane.Params.LogToConsole = 0
             a_hyperplane = gen_hyperplane.addVars(feature_set, lb=-GRB.INFINITY, ub=GRB.INFINITY)
             c_hyperplane = gen_hyperplane.addVar(lb=-GRB.INFINITY, ub=GRB.INFINITY)
 
@@ -319,11 +314,13 @@ class Linear_Separator():
             gen_hyperplane.setObjective(0, GRB.MINIMIZE)
             gen_hyperplane.optimize()
 
-            if gen_hyperplane.status == GRB.OPTIMAL:
+            if gen_hyperplane.status != GRB.INFEASIBLE:
                 a_v = {f: a_hyperplane[f].X for f in feature_set}
                 c_v = c_hyperplane.X
                 self.a_v, self.c_v = a_v, c_v
-                print('found a generic separating hyperplane')
+                print('Found a generic separating hyperplane')
+            else:
+                print('Infeasible model')
 
             return self
 

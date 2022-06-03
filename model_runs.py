@@ -105,6 +105,8 @@ def main(argv):
                             opt_model.extras()
                         opt_model.model.update()
                         opt_model.optimization()
+                        print('Optimal solution found in ' + str(round(opt_model.model.Runtime, 4)) + 's. (' +
+                              str(time.strftime("%I:%M %p", time.localtime())) + ')\n')
                         opt_model.assign_tree()
                         UTILS.model_summary(opt_model=opt_model, tree=tree, test_set=test_set,
                                             rand_state=i, results_file=out_file)
