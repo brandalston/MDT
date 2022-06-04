@@ -1,0 +1,50 @@
+
+Gurobi 9.5.0 (mac64[rosetta2]) logging started Fri Jun  3 14:50:22 2022
+
+Set parameter LogFile to value "/Users/brandonalston/PycharmProjects/MDT/log_files/_car_H:3_M:CUT1_T:600_Seed:15_E:None.txt"
+Gurobi Optimizer version 9.5.0 build v9.5.0rc5 (mac64[rosetta2])
+Thread count: 8 physical cores, 8 logical processors, using up to 1 threads
+Optimize a model with 64830 rows, 38970 columns and 146587 nonzeros
+Model fingerprint: 0x5d9a3f93
+Variable types: 19455 continuous, 19515 integer (19515 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 215 rows and 23 columns
+Presolve time: 0.29s
+Presolved: 64615 rows, 38947 columns, 150217 nonzeros
+Variable types: 19440 continuous, 19507 integer (19507 binary)
+Found heuristic solution: objective 905.0000000
+
+Use crossover to convert LP symmetric solution to basic solution...
+
+Root simplex log...
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+   47111    1.2959999e+03   1.987800e+03   0.000000e+00      5s
+   66086    1.2959999e+03   3.035736e+03   0.000000e+00     10s
+   71966    1.2959998e+03   4.429200e+03   0.000000e+00     15s
+   77966    1.2959998e+03   1.802806e+04   0.000000e+00     20s
+   83756    1.2959997e+03   1.466087e+03   0.000000e+00     25s
+   89286    1.2959997e+03   1.869867e+03   0.000000e+00     30s
+   95226    1.2959997e+03   6.494690e+02   0.000000e+00     35s
+   99946    1.2960000e+03   0.000000e+00   0.000000e+00     39s
+
+Root relaxation: objective 1.296000e+03, 99946 iterations, 38.12 seconds (134.69 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+*    0     0               0    1296.0000000 1296.00000  0.00%     -   40s
+
+Explored 1 nodes (133236 simplex iterations) in 40.81 seconds (138.85 work units)
+Thread count was 1 (of 8 available processors)
+
+Solution count 2: 1296 905 
+
+Solve interrupted
+Best objective 1.296000000000e+03, best bound 1.296000000000e+03, gap 0.0000%
+
+User-callback calls 1491, time in user-callback 0.54 sec

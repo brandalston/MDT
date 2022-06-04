@@ -1,0 +1,47 @@
+
+Gurobi 9.5.0 (mac64[rosetta2]) logging started Fri Jun  3 14:54:22 2022
+
+Set parameter LogFile to value "/Users/brandonalston/PycharmProjects/MDT/log_files/_car_H:3_M:CUT1_T:600_Seed:42_E:None.txt"
+Gurobi Optimizer version 9.5.0 build v9.5.0rc5 (mac64[rosetta2])
+Thread count: 8 physical cores, 8 logical processors, using up to 1 threads
+Optimize a model with 64830 rows, 38970 columns and 146587 nonzeros
+Model fingerprint: 0xff3dbac2
+Variable types: 19455 continuous, 19515 integer (19515 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 212 rows and 23 columns
+Presolve time: 0.30s
+Presolved: 64618 rows, 38947 columns, 150229 nonzeros
+Variable types: 19440 continuous, 19507 integer (19507 binary)
+Found heuristic solution: objective 902.0000000
+
+Use crossover to convert LP symmetric solution to basic solution...
+
+Root simplex log...
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+   44802    1.2959999e+03   2.228218e+03   0.000000e+00      5s
+   65885    1.2959999e+03   1.929326e+03   0.000000e+00     10s
+   76671    1.2959999e+03   8.778061e+03   0.000000e+00     15s
+   84181    1.2959999e+03   2.917828e+03   0.000000e+00     20s
+   87803    1.2960000e+03   0.000000e+00   0.000000e+00     22s
+
+Root relaxation: objective 1.296000e+03, 87803 iterations, 21.74 seconds (64.69 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+*    0     0               0    1296.0000000 1296.00000  0.00%     -   23s
+
+Explored 1 nodes (112304 simplex iterations) in 23.31 seconds (66.50 work units)
+Thread count was 1 (of 8 available processors)
+
+Solution count 2: 1296 902 
+
+Solve interrupted
+Best objective 1.296000000000e+03, best bound 1.296000000000e+03, gap 0.0000%
+
+User-callback calls 996, time in user-callback 0.39 sec

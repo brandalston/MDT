@@ -1,0 +1,79 @@
+
+Gurobi 9.5.0 (mac64[rosetta2]) logging started Fri Jun  3 14:39:01 2022
+
+Set parameter LogFile to value "/Users/brandonalston/PycharmProjects/MDT/log_files/_balance-scale_H:5_M:CUT1_T:600_Seed:42_E:None.txt"
+Gurobi Optimizer version 9.5.0 build v9.5.0rc5 (mac64[rosetta2])
+Thread count: 8 physical cores, 8 logical processors, using up to 1 threads
+Optimize a model with 150822 rows, 59283 columns and 330576 nonzeros
+Model fingerprint: 0x60971540
+Variable types: 29547 continuous, 29736 integer (29736 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 669 rows and 97 columns
+Presolve time: 0.58s
+Presolved: 150153 rows, 59186 columns, 331106 nonzeros
+Variable types: 29484 continuous, 29702 integer (29702 binary)
+
+Use crossover to convert LP symmetric solution to basic solution...
+
+Root simplex log...
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+   35949    4.6799996e+02   5.399848e+03   0.000000e+00      5s
+   41529    4.6799995e+02   9.597112e+03   0.000000e+00     10s
+   46869    4.6799994e+02   1.622260e+04   0.000000e+00     15s
+   51919    4.6799992e+02   1.887504e+03   0.000000e+00     20s
+   56519    4.6799990e+02   1.860278e+04   0.000000e+00     25s
+   61139    4.6799989e+02   8.247017e+03   0.000000e+00     30s
+   65569    4.6799988e+02   2.013210e+04   0.000000e+00     35s
+   69929    4.6799987e+02   5.728092e+03   0.000000e+00     40s
+   74229    4.6799986e+02   3.867234e+03   0.000000e+00     45s
+   78649    4.6799985e+02   1.201070e+05   0.000000e+00     50s
+   82749    4.6799984e+02   1.066073e+04   0.000000e+00     55s
+   86989    4.6799983e+02   1.257206e+04   0.000000e+00     60s
+   91229    4.6799982e+02   8.445296e+03   0.000000e+00     65s
+   95489    4.6799982e+02   1.511382e+03   0.000000e+00     70s
+   99549    4.6799981e+02   1.705515e+04   0.000000e+00     75s
+  103769    4.6799980e+02   4.366034e+03   0.000000e+00     80s
+  107859    4.6799979e+02   1.270759e+04   0.000000e+00     85s
+  112039    4.6799978e+02   6.043763e+03   0.000000e+00     90s
+  116289    4.6799978e+02   4.389728e+04   0.000000e+00     95s
+  120449    4.6799977e+02   3.844879e+03   0.000000e+00    100s
+  124559    4.6799976e+02   1.954160e+03   0.000000e+00    105s
+  128689    4.6799976e+02   9.362246e+03   0.000000e+00    110s
+  132679    4.6799975e+02   2.532925e+04   0.000000e+00    115s
+  136649    4.6799975e+02   1.107502e+03   0.000000e+00    120s
+  140699    4.6799974e+02   6.969578e+02   0.000000e+00    125s
+  144499    4.6799974e+02   7.798445e+03   0.000000e+00    130s
+  148519    4.6799973e+02   4.009892e+03   0.000000e+00    135s
+  152579    4.6799973e+02   1.553986e+03   0.000000e+00    140s
+  156809    4.6799973e+02   2.532624e+02   0.000000e+00    145s
+  160959    4.6799972e+02   1.523806e+03   0.000000e+00    150s
+  165189    4.6799972e+02   3.758806e+02   0.000000e+00    155s
+  169589    4.6799972e+02   7.758121e+03   0.000000e+00    160s
+  173939    4.6799972e+02   2.065025e+03   0.000000e+00    165s
+  178389    4.6799971e+02   5.773176e+02   0.000000e+00    170s
+  182889    4.6799971e+02   6.990288e+02   0.000000e+00    175s
+  187699    4.6799971e+02   1.001030e+03   0.000000e+00    180s
+  192699    4.6799971e+02   3.702077e+01   0.000000e+00    185s
+  196832    4.6800000e+02   0.000000e+00   0.000000e+00    189s
+
+Root relaxation: objective 4.680000e+02, 196832 iterations, 188.00 seconds (909.85 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+*    0     0               0     468.0000000  468.00000  0.00%     -  194s
+
+Explored 1 nodes (252287 simplex iterations) in 194.83 seconds (931.36 work units)
+Thread count was 1 (of 8 available processors)
+
+Solution count 1: 468 
+
+Solve interrupted
+Best objective 4.680000000000e+02, best bound 4.680000000000e+02, gap 0.0000%
+
+User-callback calls 2020, time in user-callback 0.25 sec

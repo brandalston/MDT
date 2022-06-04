@@ -1,0 +1,48 @@
+
+Gurobi 9.5.0 (mac64[rosetta2]) logging started Fri Jun  3 14:48:22 2022
+
+Set parameter LogFile to value "/Users/brandonalston/PycharmProjects/MDT/log_files/_car_H:3_M:CUT1_T:600_Seed:138_E:None.txt"
+Gurobi Optimizer version 9.5.0 build v9.5.0rc5 (mac64[rosetta2])
+Thread count: 8 physical cores, 8 logical processors, using up to 1 threads
+Optimize a model with 64830 rows, 38970 columns and 146587 nonzeros
+Model fingerprint: 0xe5ce44fe
+Variable types: 19455 continuous, 19515 integer (19515 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 215 rows and 23 columns
+Presolve time: 0.29s
+Presolved: 64615 rows, 38947 columns, 150217 nonzeros
+Variable types: 19440 continuous, 19507 integer (19507 binary)
+Found heuristic solution: objective 914.0000000
+
+Use crossover to convert LP symmetric solution to basic solution...
+
+Root simplex log...
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+   46502    1.2959999e+03   1.963094e+03   0.000000e+00      5s
+   66926    1.2959999e+03   1.203619e+03   0.000000e+00     10s
+   76955    1.2959999e+03   1.763490e+03   0.000000e+00     15s
+   83566    1.2960000e+03   0.000000e+00   0.000000e+00     19s
+
+Root relaxation: objective 1.296000e+03, 83566 iterations, 18.45 seconds (57.32 work units)
+Total elapsed time = 20.58s
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+H    0     0                    1296.0000000 19440.0000  1400%     -   20s
+     0     0          -    0      1296.00000 1296.00000  0.00%     -   21s
+
+Explored 1 nodes (131985 simplex iterations) in 21.19 seconds (61.37 work units)
+Thread count was 1 (of 8 available processors)
+
+Solution count 2: 1296 914 
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 1.296000000000e+03, best bound 1.296000000000e+03, gap 0.0000%
+
+User-callback calls 943, time in user-callback 0.54 sec

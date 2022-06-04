@@ -256,18 +256,15 @@ class Linear_Separator():
                     convex_combo.optimize()
                     if convex_combo.Status != GRB.INFEASIBLE:
                         cc_R.add(i)
-                # print('l convex combo', cc_L)
-                # print('r convex combo', cc_R)
 
-                # Find max inner product to use as upper bound in dual of Lagrangian of soft margin SVM
-                max_cc_inner = -1
-                for item in list(combinations(cc_L|cc_R, 2)):
-                    test_inner = np.inner(data.loc[item[0], data.columns != 'svm'],
+                # Find noramlized max inner product to use as upper bound in dual of Lagrangian of soft margin SVM
+                margin_ub = GRB.INFINITY
+                inner_products = {item: np.inner(data.loc[item[0], data.columns != 'svm'],
                                           data.loc[item[1], data.columns != 'svm'])
-                    if max_cc_inner < test_inner:
-                        max_cc_inner = test_inner
-                # print('max inner product of cc',max_cc_inner)
-                margin_ub = max(0, max_cc_inner/np.linalg.norm(cc_L|cc_R,2))
+                                  for item in list(combinations(cc_L|cc_R, 2))}
+                if inner_products:
+                    margin_ub = max(inner_products.values()) / \
+                                min(len(cc_L | cc_R), np.linalg.norm(list(inner_products.values()), 2))
 
                 # Solve dual of Lagrangian of soft margin SVM
                 m = Model("SM_Linear_SVM")
@@ -290,6 +287,7 @@ class Linear_Separator():
                 a_v = {f: W[f].x for f in feature_set}
                 c_v = -b  # Must flip intercept because of how QP was setup
                 self.a_v, self.c_v = a_v, c_v
+                print('solved soft margin')
                 return self
             except Exception:
                 # Find any generic hard margin separating hyperplane
@@ -310,6 +308,7 @@ class Linear_Separator():
                     a_v = {f: a_hyperplane[f].X for f in feature_set}
                     c_v = c_hyperplane.X
                     self.a_v, self.c_v = a_v, c_v
+                    print('solved GEN hyperplane')
                     return self
                 except Exception:
                     # Find any generic separating hyperplane
@@ -331,11 +330,13 @@ class Linear_Separator():
                             a_v = {f: a_hyperplane[f].X for f in feature_set}
                             c_v = c_hyperplane.X
                             self.a_v, self.c_v = a_v, c_v
+                        print('solved any hyperplane')
                         return self
                     except Exception:
                         # Return random separating hyperplane
                         a_v = {f: random.random() for f in feature_set}
                         c_v = random.random()
+                        print('solved random hyperplane')
                         self.a_v, self.c_v = a_v, c_v
 
 

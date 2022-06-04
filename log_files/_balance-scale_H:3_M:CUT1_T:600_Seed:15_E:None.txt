@@ -1,0 +1,36 @@
+
+Gurobi 9.5.0 (mac64[rosetta2]) logging started Fri Jun  3 14:24:40 2022
+
+Set parameter LogFile to value "/Users/brandonalston/PycharmProjects/MDT/log_files/_balance-scale_H:3_M:CUT1_T:600_Seed:15_E:None.txt"
+Gurobi Optimizer version 9.5.0 build v9.5.0rc5 (mac64[rosetta2])
+Thread count: 8 physical cores, 8 logical processors, using up to 1 threads
+Optimize a model with 23430 rows, 14115 columns and 53008 nonzeros
+Model fingerprint: 0x2b3132a1
+Variable types: 7035 continuous, 7080 integer (7080 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 282 rows and 28 columns
+Presolve time: 0.11s
+Presolved: 23148 rows, 14087 columns, 53646 nonzeros
+Variable types: 7020 continuous, 7067 integer (7067 binary)
+Found heuristic solution: objective -0.0000000
+
+Root relaxation: objective 4.680000e+02, 24976 iterations, 3.95 seconds (11.97 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+*    0     0               0     468.0000000  468.00000  0.00%     -    4s
+
+Explored 1 nodes (37063 simplex iterations) in 4.62 seconds (12.80 work units)
+Thread count was 1 (of 8 available processors)
+
+Solution count 2: 468 -0 
+
+Solve interrupted
+Best objective 4.680000000000e+02, best bound 4.680000000000e+02, gap 0.0000%
+
+User-callback calls 683, time in user-callback 0.19 sec

@@ -1,0 +1,52 @@
+
+Gurobi 9.5.0 (mac64[rosetta2]) logging started Fri Jun  3 14:28:01 2022
+
+Set parameter LogFile to value "/Users/brandonalston/PycharmProjects/MDT/log_files/_balance-scale_H:4_M:CUT1_T:600_Seed:42_E:None.txt"
+Gurobi Optimizer version 9.5.0 build v9.5.0rc5 (mac64[rosetta2])
+Thread count: 8 physical cores, 8 logical processors, using up to 1 threads
+Optimize a model with 60902 rows, 29171 columns and 135536 nonzeros
+Model fingerprint: 0x55b3abaa
+Variable types: 14539 continuous, 14632 integer (14632 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+Found heuristic solution: objective 37.0000000
+Presolve removed 509 rows and 49 columns
+Presolve time: 0.28s
+Presolved: 60393 rows, 29122 columns, 135882 nonzeros
+Variable types: 14508 continuous, 14614 integer (14614 binary)
+
+Use crossover to convert LP symmetric solution to basic solution...
+
+Root simplex log...
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+   34237    4.6799996e+02   2.825788e+02   0.000000e+00      5s
+   36924    4.6800000e+02   0.000000e+00   0.000000e+00      6s
+
+Root relaxation: objective 4.680000e+02, 36924 iterations, 5.73 seconds (21.87 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0  468.00000    0  690   37.00000  468.00000  1165%     -    9s
+H    0     0                     322.0000000  468.00000  45.3%     -    9s
+H    0     0                     431.0000000  468.00000  8.58%     -    9s
+     0     0  468.00000    0 3544  431.00000  468.00000  8.58%     -   21s
+*    0     0               0     468.0000000  468.00000  0.00%     -   24s
+
+Cutting planes:
+  Gomory: 14
+  Zero half: 15
+
+Explored 1 nodes (135739 simplex iterations) in 24.92 seconds (92.40 work units)
+Thread count was 1 (of 8 available processors)
+
+Solution count 4: 468 431 322 37 
+
+Solve interrupted
+Best objective 4.680000000000e+02, best bound 4.680000000000e+02, gap 0.0000%
+
+User-callback calls 1438, time in user-callback 0.16 sec

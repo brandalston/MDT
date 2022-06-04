@@ -1,0 +1,75 @@
+
+Gurobi 9.5.0 (mac64[rosetta2]) logging started Fri Jun  3 15:12:24 2022
+
+Set parameter LogFile to value "/Users/brandonalston/PycharmProjects/MDT/log_files/_car_H:4_M:CUT1_T:600_Seed:89_E:None.txt"
+Gurobi Optimizer version 9.5.0 build v9.5.0rc5 (mac64[rosetta2])
+Thread count: 8 physical cores, 8 logical processors, using up to 1 threads
+Optimize a model with 168542 rows, 80538 columns and 374859 nonzeros
+Model fingerprint: 0x277bd3f4
+Variable types: 40207 continuous, 40331 integer (40331 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+Found heuristic solution: objective 910.0000000
+Presolve removed 348 rows and 41 columns
+Presolve time: 0.70s
+Presolved: 168194 rows, 80497 columns, 378381 nonzeros
+Variable types: 40176 continuous, 40321 integer (40321 binary)
+
+Use crossover to convert LP symmetric solution to basic solution...
+
+Root simplex log...
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+   47126    1.2960000e+03   3.425408e+03   0.000000e+00      5s
+   65576    1.2959999e+03   2.709469e+03   0.000000e+00     10s
+   81326    1.2959999e+03   5.362481e+03   0.000000e+00     15s
+   95051    1.2959999e+03   3.689223e+03   0.000000e+00     20s
+  102926    1.2959999e+03   2.717187e+03   0.000000e+00     25s
+  109216    1.2959999e+03   7.041018e+03   0.000000e+00     30s
+  115291    1.2959998e+03   2.557305e+03   0.000000e+00     35s
+  121556    1.2959998e+03   1.383532e+03   0.000000e+00     40s
+  127611    1.2959998e+03   2.760670e+03   0.000000e+00     45s
+  133831    1.2959998e+03   4.002197e+03   0.000000e+00     50s
+  139001    1.2959998e+03   2.902231e+04   0.000000e+00     55s
+  142081    1.2959998e+03   2.626461e+04   0.000000e+00     60s
+  144661    1.2959998e+03   1.704226e+04   0.000000e+00     65s
+  147571    1.2959998e+03   6.017677e+04   0.000000e+00     70s
+  150371    1.2959998e+03   6.351840e+03   0.000000e+00     75s
+  153351    1.2959998e+03   1.776697e+04   0.000000e+00     80s
+  156131    1.2959998e+03   1.422833e+04   0.000000e+00     85s
+  158811    1.2959998e+03   4.780624e+03   0.000000e+00     90s
+  161731    1.2959998e+03   5.427878e+03   0.000000e+00     95s
+  164511    1.2959998e+03   3.743744e+03   0.000000e+00    100s
+  167451    1.2959998e+03   1.742619e+03   0.000000e+00    105s
+  170341    1.2959998e+03   7.618004e+02   0.000000e+00    110s
+  173401    1.2959998e+03   8.212009e+02   0.000000e+00    115s
+  176461    1.2959998e+03   3.173074e+03   0.000000e+00    120s
+  179611    1.2959998e+03   3.635778e+02   0.000000e+00    125s
+  182821    1.2959998e+03   3.444084e+02   0.000000e+00    130s
+  186011    1.2959998e+03   5.461988e+02   0.000000e+00    135s
+  189201    1.2959998e+03   1.090088e+03   0.000000e+00    140s
+  192501    1.2959998e+03   3.405919e+02   0.000000e+00    145s
+  196021    1.2959998e+03   5.102311e+02   0.000000e+00    150s
+  199541    1.2959998e+03   3.343623e+02   0.000000e+00    155s
+  203341    1.2959998e+03   2.691263e+00   0.000000e+00    160s
+  204078    1.2960000e+03   0.000000e+00   0.000000e+00    161s
+
+Root relaxation: objective 1.296000e+03, 204078 iterations, 160.25 seconds (646.51 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+*    0     0               0    1296.0000000 1296.00000  0.00%     -  164s
+
+Explored 1 nodes (242337 simplex iterations) in 164.61 seconds (656.57 work units)
+Thread count was 1 (of 8 available processors)
+
+Solution count 2: 1296 910 
+
+Solve interrupted
+Best objective 1.296000000000e+03, best bound 1.296000000000e+03, gap 0.0000%
+
+User-callback calls 1606, time in user-callback 0.25 sec

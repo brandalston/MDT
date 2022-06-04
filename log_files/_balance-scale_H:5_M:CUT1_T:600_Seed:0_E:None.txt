@@ -1,0 +1,59 @@
+
+Gurobi 9.5.0 (mac64[rosetta2]) logging started Fri Jun  3 14:42:20 2022
+
+Set parameter LogFile to value "/Users/brandonalston/PycharmProjects/MDT/log_files/_balance-scale_H:5_M:CUT1_T:600_Seed:0_E:None.txt"
+Gurobi Optimizer version 9.5.0 build v9.5.0rc5 (mac64[rosetta2])
+Thread count: 8 physical cores, 8 logical processors, using up to 1 threads
+Optimize a model with 150822 rows, 59283 columns and 330576 nonzeros
+Model fingerprint: 0x086b351a
+Variable types: 29547 continuous, 29736 integer (29736 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 667 rows and 97 columns
+Presolve time: 0.58s
+Presolved: 150155 rows, 59186 columns, 331070 nonzeros
+Variable types: 29484 continuous, 29702 integer (29702 binary)
+
+Use crossover to convert LP symmetric solution to basic solution...
+
+Root simplex log...
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+   34935    4.6799996e+02   1.777160e+03   0.000000e+00      5s
+   46393    4.6799994e+02   1.065073e+04   0.000000e+00     10s
+   52073    4.6799993e+02   4.481709e+03   0.000000e+00     15s
+   56953    4.6799991e+02   7.296667e+03   0.000000e+00     20s
+   61953    4.6799990e+02   1.276901e+04   0.000000e+00     25s
+   67033    4.6799989e+02   5.472718e+03   0.000000e+00     30s
+   72033    4.6799988e+02   1.092971e+03   0.000000e+00     35s
+   77093    4.6799987e+02   3.477137e+03   0.000000e+00     40s
+   82173    4.6799987e+02   3.532740e+03   0.000000e+00     45s
+   87403    4.6799986e+02   6.269680e+02   0.000000e+00     50s
+   92293    4.6799985e+02   3.774292e+03   0.000000e+00     55s
+   96983    4.6799985e+02   5.613377e+03   0.000000e+00     60s
+  101833    4.6799985e+02   1.789436e+03   0.000000e+00     65s
+  106743    4.6799984e+02   3.445878e+02   0.000000e+00     70s
+  111563    4.6799984e+02   5.081501e+02   0.000000e+00     75s
+  116673    4.6799984e+02   7.615501e+02   0.000000e+00     80s
+  121993    4.6799983e+02   9.833487e+01   0.000000e+00     85s
+  126111    4.6800000e+02   0.000000e+00   0.000000e+00     88s
+
+Root relaxation: objective 4.680000e+02, 126111 iterations, 87.51 seconds (410.10 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+*    0     0               0     468.0000000  468.00000  0.00%     -   90s
+
+Explored 1 nodes (163213 simplex iterations) in 90.41 seconds (416.10 work units)
+Thread count was 1 (of 8 available processors)
+
+Solution count 1: 468 
+
+Solve interrupted
+Best objective 4.680000000000e+02, best bound 4.680000000000e+02, gap 0.0000%
+
+User-callback calls 1274, time in user-callback 0.27 sec

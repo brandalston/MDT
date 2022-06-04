@@ -72,9 +72,6 @@ def main(argv):
             writer.writerow(summary_columns)
             f.close()
 
-    # Using logger we log the output of the console in a text file
-    # sys.stdout = OU.logger(output_path + output_name + '.txt')
-
     """ We assume the target column of dataset is labeled 'target'
     Change value at your discretion """
     target = 'target'
@@ -104,14 +101,15 @@ def main(argv):
                         # Add connectivity constraints according to model type and solve
                         opt_model.formulation()
                         opt_model.warm_start()
-                        if model_extras is not None:
-                            opt_model.extras()
+                        if model_extras is not None: opt_model.extras()
                         opt_model.model.update()
+                        if log_files: opt_model.model.write(log+'.lp')
                         opt_model.optimization()
-                        print('Optimal solution found in ' + str(round(opt_model.model.Runtime, 4)) + 's. (' +
-                              str(time.strftime("%I:%M %p", time.localtime())) + ')\n')
+                        if opt_model.model.RunTime < time_limit:
+                            print(f'Optimal solution found in {round(opt_model.model.Runtime, 4)}s.'
+                                  f'({time.strftime("%I:%M %p", time.localtime())})\n')
+                        else:
+                            print(f'Time limit reached. ({time.strftime("%I:%M %p", time.localtime())})\n')
                         opt_model.assign_tree()
                         UTILS.model_summary(opt_model=opt_model, tree=tree, test_set=test_set,
                                             rand_state=i, results_file=out_file)
-                        if log_files:
-                            opt_model.model.write(log+'.lp')

@@ -66,6 +66,7 @@ class MBDT:
         """ Model extras """
         self.regularization = 'None'
         self.max_features = 'None'
+        self.HP_time = 0
 
         """ Gurobi Optimization Parameters """
         self.model = Model(f'{self.modeltype}')
@@ -102,7 +103,7 @@ class MBDT:
         # Datapoint terminal vertex
         self.S = self.model.addVars(self.datapoints, self.tree.V, vtype=GRB.BINARY, name='S')
         # Datapoint selected vertices in root-terminal path
-        self.Q = self.model.addVars(self.datapoints, self.tree.V, vtype=GRB.CONTINUOUS, name='Q')
+        self.Q = self.model.addVars(self.datapoints, self.tree.V, vtype=GRB.BINARY, name='Q')
         
         """ Model Objective and Constraints """
         # Objective: Maximize the number of correctly classified datapoints
