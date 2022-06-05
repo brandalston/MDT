@@ -198,7 +198,6 @@ class Linear_Separator():
         if not np.array_equal(np.unique(data.svm), [-1, 1]):
             print("Class labels must be -1 and +1")
             raise ValueError
-
         feature_set = [f for f in data.columns if f != 'svm']
         # Define left and right index sets according to SVM class
         Lv_I = set(i for i in data.index if data.at[i, 'svm'] == -1)
@@ -212,6 +211,7 @@ class Linear_Separator():
                     common_points_R.add(y)
         Lv_I -= common_points_L
         Rv_I -= common_points_R
+        data = data.drop(common_points_L|common_points_R)
 
         # Find separating hyperplane by solving dual of Lagrangian of the standard hard margin linear SVM problem
         try:
@@ -264,7 +264,8 @@ class Linear_Separator():
                     if convex_combo.Status != GRB.INFEASIBLE:
                         cc_R.add(i)
 
-                # Find noramlized max inner product to use as upper bound in dual of Lagrangian of soft margin SVM
+                # Find noramlized max inner product of convex combinations
+                # to use as upper bound in dual of Lagrangian of soft margin SVM
                 margin_ub = GRB.INFINITY
                 inner_products = {item: np.inner(data.loc[item[0], feature_set],
                                           data.loc[item[1], feature_set])
