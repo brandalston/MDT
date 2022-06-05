@@ -209,7 +209,7 @@ class Linear_Separator():
             for y in Rv_I:
                 if data.loc[x, feature_set].equals(data.loc[y, feature_set]):
                     common_points_L.add(x)
-                    common_points_L.add(y)
+                    common_points_R.add(y)
         Lv_I -= common_points_L
         Rv_I -= common_points_R
 

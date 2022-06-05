@@ -14,7 +14,9 @@ warm_start = {'use': False, 'values': None}
 model_runs.main(
     ["-d", data_names, "-h", heights, "-m", models, "-t",time_limit,
      "-r", rand_states, "-w", warm_start, "-e", model_extras, "-f", file, "-l", False])
+
 """
+
 time_limit = 600
 rand_states = [138, 15, 89, 42, 0]
 models = ['CUT1']
@@ -33,4 +35,5 @@ data_names = ['kr-vs-kp', 'house-votes-84',
 model_runs.main(
     ["-d", data_names, "-h", heights, "-m", models, "-t",time_limit,
      "-r", rand_states, "-w", warm_start, "-e", model_extras, "-f", file, "-l", False])
+
 """
