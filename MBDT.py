@@ -71,12 +71,12 @@ class MBDT:
         """ Gurobi Optimization Parameters """
         self.model = Model(f'{self.modeltype}')
         self.model.Params.TimeLimit = time_limit
-        self.model.Params.Threads = 1
         self.model.Params.LogToConsole = 0
+        self.model.Params.Threads = 1
         self.model.Params.LazyConstraints = 1
         self.model.Params.PreCrush = 1
         if self.log is not None:
-            self.model.Params.LogFile = self.log
+            self.model.Params.LogFile = self.log+'.txt'
 
         """ Model callback metrics """
         self.model._septime, self.model._sepnum, self.model._sepcuts, self.model._sepavg = 0, 0, 0, 0

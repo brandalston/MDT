@@ -1,4 +1,0 @@
-
-Gurobi 9.5.0 (mac64[rosetta2]) logging started Fri Jun  3 18:33:34 2022
-
-Set parameter LogFile to value "/Users/brandonalston/PycharmProjects/MDT/log_files/_soybean-small_H:5_M:CUT1_T:600_Seed:42_E:None.txt"

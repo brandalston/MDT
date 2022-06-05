@@ -195,17 +195,24 @@ class Linear_Separator():
 
     def SVM_fit(self, data):
         global cc_L, cc_R
+        if not np.array_equal(np.unique(data.svm), [-1, 1]):
+            print("Class labels must be -1 and +1")
+            raise ValueError
+
         feature_set = [f for f in data.columns if f != 'svm']
         # Define left and right index sets according to SVM class
         Lv_I = set(i for i in data.index if data.at[i, 'svm'] == -1)
         Rv_I = set(i for i in data.index if data.at[i, 'svm'] == +1)
-        # print(len(Lv_I), 'Lv_I:', Lv_I)
-        # print(len(Rv_I), 'Rv_I:', Rv_I)
-        if len(Lv_I & Rv_I) > 0:
-            print('Common points to both sets', Lv_I & Rv_I)
-        if not np.array_equal(np.unique(data.svm), [-1, 1]):
-            print("Class labels must be -1 and +1")
-            raise ValueError
+        # Remove any points in each index set whose featureset are equivalent to some
+        common_points_L, common_points_R = set(), set()
+        for x in Lv_I:
+            for y in Rv_I:
+                if data.loc[x, feature_set].equals(data.loc[y, feature_set]):
+                    common_points_L.add(x)
+                    common_points_L.add(y)
+        Lv_I -= common_points_L
+        Rv_I -= common_points_R
+
         # Find separating hyperplane by solving dual of Lagrangian of the standard hard margin linear SVM problem
         try:
             m = Model("HM_Linear_SVM")
@@ -259,8 +266,8 @@ class Linear_Separator():
 
                 # Find noramlized max inner product to use as upper bound in dual of Lagrangian of soft margin SVM
                 margin_ub = GRB.INFINITY
-                inner_products = {item: np.inner(data.loc[item[0], data.columns != 'svm'],
-                                          data.loc[item[1], data.columns != 'svm'])
+                inner_products = {item: np.inner(data.loc[item[0], feature_set],
+                                          data.loc[item[1], feature_set])
                                   for item in list(combinations(cc_L|cc_R, 2))}
                 if inner_products:
                     margin_ub = max(inner_products.values()) / \
@@ -287,7 +294,6 @@ class Linear_Separator():
                 a_v = {f: W[f].x for f in feature_set}
                 c_v = -b  # Must flip intercept because of how QP was setup
                 self.a_v, self.c_v = a_v, c_v
-                print('solved soft margin')
                 return self
             except Exception:
                 # Find any generic hard margin separating hyperplane
@@ -308,7 +314,6 @@ class Linear_Separator():
                     a_v = {f: a_hyperplane[f].X for f in feature_set}
                     c_v = c_hyperplane.X
                     self.a_v, self.c_v = a_v, c_v
-                    print('solved GEN hyperplane')
                     return self
                 except Exception:
                     # Find any generic separating hyperplane
@@ -330,13 +335,11 @@ class Linear_Separator():
                             a_v = {f: a_hyperplane[f].X for f in feature_set}
                             c_v = c_hyperplane.X
                             self.a_v, self.c_v = a_v, c_v
-                        print('solved any hyperplane')
                         return self
                     except Exception:
                         # Return random separating hyperplane
                         a_v = {f: random.random() for f in feature_set}
                         c_v = random.random()
-                        print('solved random hyperplane')
                         self.a_v, self.c_v = a_v, c_v
 
 

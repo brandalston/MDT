@@ -71,7 +71,6 @@ def main(argv):
             writer = csv.writer(f)
             writer.writerow(summary_columns)
             f.close()
-
     """ We assume the target column of dataset is labeled 'target'
     Change value at your discretion """
     target = 'target'
@@ -92,12 +91,13 @@ def main(argv):
                         log = log_path + '_' + str(file) + '_H:' + str(h) + '_M:' + str(
                                 modeltype) + '_T:' + str(time_limit) + '_Seed:' + str(i) + '_E:' + str(
                                 model_extras)
+                        if not log_files: log = None
                         # Generate tree and necessary structure information
                         tree = TREE(h=h)
                         # Model with 75% training set and time limit
                         opt_model = MBDT(data=model_set, tree=tree, target=target, modeltype=modeltype,
                                          time_limit=time_limit, warmstart=warmstart,
-                                         modelextras=model_extras, log=log+'.txt')
+                                         modelextras=model_extras, log=log)
                         # Add connectivity constraints according to model type and solve
                         opt_model.formulation()
                         opt_model.warm_start()
@@ -105,10 +105,9 @@ def main(argv):
                         opt_model.model.update()
                         if log_files: opt_model.model.write(log+'.lp')
                         opt_model.optimization()
-                        if opt_model.model.RunTime < time_limit:
-                            print(f'Optimal solution found in {round(opt_model.model.Runtime, 4)}s.'
-                                  f'({time.strftime("%I:%M %p", time.localtime())})\n')
-                        else:
+                        print(f'Optimal solution found in {round(opt_model.model.Runtime, 4)}s.'
+                                  f'({time.strftime("%I:%M %p", time.localtime())})\n') if \
+                            opt_model.model.RunTime < time_limit else \
                             print(f'Time limit reached. ({time.strftime("%I:%M %p", time.localtime())})\n')
                         opt_model.assign_tree()
                         UTILS.model_summary(opt_model=opt_model, tree=tree, test_set=test_set,
