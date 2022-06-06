@@ -342,6 +342,7 @@ class Linear_Separator():
                         a_v = {f: random.random() for f in feature_set}
                         c_v = random.random()
                         self.a_v, self.c_v = a_v, c_v
+                        return self
 
 
 def model_results(model):
