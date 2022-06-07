@@ -345,34 +345,33 @@ class Linear_Separator():
                         return self
 
 
-def model_results(model):
+def model_results(model, tree):
     # Print assigned branching, classification, and pruned nodes of tree
-    for v in model._tree.V:
+
+    for v in tree.V:
         if model._P[v].x > 0.5:
             for k in model._data[model._target].unique():
                 if model._W[v, k].x > 0.5:
                     print('Vertex ' + str(v) + ' class ' + str(k))
         elif model._P[v].x < 0.5 and model._B[v].x > 0.5:
-            print('Vertex ' + str(v) + ' branching', model._tree.DG_prime.nodes[v]['branching'])
+            print('Vertex ' + str(v) + ' branching', tree.DG_prime.nodes[v]['branching'])
         elif model._P[v].x < 0.5 and model._B[v].x < 0.5:
-            print('Vertex ' + str(v) + 'pruned')
+            print('Vertex ' + str(v) + ' pruned')
 
     # Print datapoint paths through tree
-    for i in model._data.index:
-        path = []
+    for i in sorted(model._data.index):
+        path = [0]
         for v in model._tree.V:
             if model._Q[i, v].x > 0.5:
                 path.append(v)
                 if model._S[i, v].x > 0.5:
-                    print('datapoint ' + str(i) + ' correctly assigned class ' + str(model._data.at[i, model._target])
-                          + ' at ' + str(v) + '. Path: ', path)
-                '''
-                elif model._S[i, v].x < 0.5:
-                    for k in model._data[model._target].unique():
-                        if model._W[v, k].x > 0.5:
-                            print('datapoint ' + str(i) + ' incorrectly assigned class ' + str(k)
-                                  + ' at ' + str(v) + '. Path: ', path)
-                '''
+                    print('Datapoint ' + str(i) + ' correctly assigned class ' + str(model._data.at[i, model._target])
+                         + ' at ' + str(v) + '. Path: ', path)
+                for k in model._data[model._target].unique():
+                    if model._W[v, k].x > 0.5:
+                        print('datapoint ' + str(i) + ' incorrectly assigned class ' + str(k)
+                              + ' at ' + str(v) + '. Path: ', path)
+
 
 
 def tree_check(tree):

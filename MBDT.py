@@ -53,7 +53,7 @@ class MBDT:
             self.cut_type = 'GRB'
         self.rootcuts = False
         self.eps = 0
-        if 'TYPE' in self.cut_type:
+        if 'FRAC' in self.cut_type:
             self.eps = -4
             if 'ROOT' in self.cut_type:
                 self.rootcuts = True
@@ -74,7 +74,7 @@ class MBDT:
         self.model.Params.LogToConsole = 0
         self.model.Params.Threads = 1
         self.model.Params.LazyConstraints = 1
-        self.model.Params.PreCrush = 1
+        # self.model.Params.PreCrush = 1
         if self.log is not None:
             self.model.Params.LogFile = self.log+'.txt'
 
@@ -137,6 +137,7 @@ class MBDT:
         # each datapoint has at most one terminal vertex
         self.model.addConstrs(self.S.sum(i, '*') <= 1 for i in self.datapoints)
 
+        """
         # terminal vertex of datapoint must be in reachable path
         if 'CUT1' in self.modeltype:
             for i in self.datapoints:
@@ -152,14 +153,9 @@ class MBDT:
                     self.model.addConstrs(self.S[i, v] + quicksum(self.S[i, u] for u in self.tree.child[v]) <=
                                           self.Q[i, c] for c in self.tree.path[v][1:])
         """
+
         # Lazy feasible path constraints
         if ('GRB' in self.cut_type) or ('FRAC' in self.cut_type):
-            # each datapoint has at most one terminal vertex
-            self.single_terminal = self.model.addConstrs(quicksum(self.S[i, v] for v in self.tree.V if v != 0) <= 1
-                                                         for i in self.datapoints)
-            for i in self.datapoints:
-                self.single_terminal[i].lazy = 3
-
             # terminal vertex of datapoint must be in reachable path
             if 'CUT1' in self.modeltype:
                 self.cut_constraint = self.model.addConstrs(self.S[i, v] <= self.Q[i, c]
@@ -168,8 +164,9 @@ class MBDT:
                                                             for c in self.tree.path[v][1:])
             # terminal vertex of datapoint must be in reachable path for vertex and all children
             elif 'CUT2' in self.modeltype:
-                self.cut_constraint = self.model.addConstrs(self.S[i, v] + quicksum(self.S[i, u] for u in self.tree.child[v])
-                                                            <= self.Q[i, c]
+                self.cut_constraint = self.model.addConstrs(self.S[i, v] + quicksum(self.S[i, u]
+                                                                                    for u in self.tree.child[v])
+                                                             <= self.Q[i, c]
                                                             for i in self.datapoints
                                                             for v in self.tree.V if v != 0 
                                                             for c in self.tree.path[v][1:])
@@ -182,23 +179,16 @@ class MBDT:
 
         # All feasible path constraints
         elif 'ALL' in self.cut_type:
-            # each datapoint has at most one terminal vertex
-            self.model.addConstrs(quicksum(self.S[i, v] for v in self.tree.V) <= 1 for i in self.datapoints)
-
-            # terminal vertex of datapoint must be in reachable path
-            if 'CUT1' in self.modeltype:
                 for i in self.datapoints:
                     for v in self.tree.V:
                         if v == 0: continue
-                        self.model.addConstrs(self.S[i, v] <= self.Q[i, c] for c in self.tree.path[v][1:])
-            # terminal vertex of datapoint must be in reachable path for vertex and all children
-            elif 'CUT2' in self.modeltype:
-                for i in self.datapoints:
-                    for v in self.tree.V:
-                        if v == 0: continue
-                        self.model.addConstrs(self.S[i, v] + quicksum(self.S[i, u] for u in self.tree.child[v]) <=
-                                              self.Q[i, c] for c in self.tree.path[v][1:])
-        """
+                        # terminal vertex of datapoint must be in reachable path
+                        if 'CUT1' in self.modeltype:
+                            self.model.addConstrs(self.S[i, v] <= self.Q[i, c] for c in self.tree.path[v][1:])
+                        # terminal vertex of datapoint must be in reachable path for vertex and all children
+                        elif 'CUT2' in self.modeltype:
+                            self.model.addConstrs(self.S[i, v] + quicksum(self.S[i, u] for u in self.tree.child[v]) <=
+                                                  self.Q[i, c] for c in self.tree.path[v][1:])
 
         """ Pass to Model DV for Callback / Optimization Purposes """
         self.model._B = self.B
@@ -229,7 +219,6 @@ class MBDT:
         if where == GRB.Callback.MIP:
             if abs(model.cbGet(GRB.Callback.MIP_OBJBST) - model.cbGet(GRB.Callback.MIP_OBJBND)) < model.Params.FeasibilityTol:
                 model.terminate()
-                # UTILS.model_results(model)
 
         # VIS of Branching Nodes Cuts at Feasible Solution
         if where == GRB.Callback.MIPSOL:
@@ -264,73 +253,71 @@ class MBDT:
                 model._viscuts += 1
             model._vistime += time.perf_counter() - start
 
-        """
         # Feasible Path for Datapoint Cuts in Branch and Bound Tree
         if (where == GRB.Callback.MIPNODE) and (model.cbGet(GRB.Callback.MIPNODE_STATUS) == GRB.OPTIMAL):
-            print('At mipnode')
-            if 'ALL' not in model._cut_type:
-                start = time.perf_counter()
-                if model._rootnode:
-                    # Only add cuts at root-node of branch and bound tree
-                    if model.cbGet(GRB.Callback.MIPNODE_NODCNT) != 0: return
-                model._sepnum += 1
-                q_val = model.cbGetNodeRel(model._Q)
-                s_val = model.cbGetNodeRel(model._S)
-                if 'A' in model._cut_type:
-                    if 'CUT1' in model.ModelName:
-                        for (i, v) in s_val.keys():
-                            for c in model._tree.path[v][1:]:
-                                if s_val[i, v] - q_val[i, c] > 10^(-model._eps):
-                                    model.cbCut(model._S[i, v] <= model._Q[i, c])
-                                    model._sepcuts += 1
-                    elif 'CUT2' in model.ModelName:
-                        for (i, v) in s_val.keys():
-                            for c in model._tree.path[v][1:]:
-                                if s_val[i, v] + sum(s_val[i, u] for u in model._tree.child[v]) - q_val[i, c] > 10^(-model._eps):
-                                    model.cbCut(model._S[i, v] +
-                                                     quicksum(model._S[i, u] for u in model._tree.child[v]) <=
-                                                     model._Q[i, c])
-                                    model._sepcuts += 1
-                elif 'B' in model._cut_type:
-                    if 'CUT1' in model.ModelName:
-                        for (i, v) in s_val.keys():
-                            for c in model._tree.path[v][1:]:
-                                if s_val[i, v] - q_val[i, c] > 10^(-model._eps):
-                                    model.cbCut(model._S[i, v] <= model._Q[i, c])
-                                    model._sepcuts += 1
-                                    break
-                    elif 'CUT2' in model.ModelName:
-                        for (i, v) in s_val.keys():
-                            for c in model._tree.path[v][1:]:
-                                if s_val[i, v] + sum(s_val[i, u] for u in model._tree.child[v]) - q_val[i, c] > 10^(-model._eps):
-                                    model.cbCut(model._S[i, v] +
-                                                     quicksum(model._S[i, u] for u in model._tree.child[v]) <=
-                                                     model._Q[i, c])
-                                    model._sepcuts += 1
-                                    break
-                elif 'C' in model._cut_type:
-                    if 'CUT1' in model.ModelName:
-                        for (i, v) in s_val.keys():
-                            for c in model._tree.path[v][1:]:
-                                if (s_val[i, v] - q_val[i, c] > 10^(-model._eps) and
-                                        s_val[i, v] - q_val[i, c] == max(s_val[i, v] - q_val[i, d] for d in model._tree.path[v][1:])):
-                                    model.cbCut(model._S[i, v] <= model._Q[i, c])
-                                    model._sepcuts += 1
-                                    break
-                    elif 'CUT2' in model.ModelName:
-                        for (i, v) in s_val.keys():
-                            for c in model._tree.path[v][1:]:
-                                if (s_val[i, v] + sum(s_val[i, u] for u in model._tree.child[v]) - q_val[i, c] > 10^(-model._eps)
-                                        and s_val[i, v] + sum(s_val[i, u] for u in model._tree.child[v]) - q_val[i, c] ==
-                                        max(s_val[i, v] + sum(s_val[i, u] for u in model._tree.child[v]) - q_val[i, d]
-                                            for d in model._tree.path[v][1:])):
-                                    model.cbCut(model._S[i, v] +
-                                                     quicksum(model._S[i, u] for u in model._tree.child[v]) <=
-                                                     model._Q[i, c])
-                                    model._sepcuts += 1
-                                    break
-                model._septime += (time.perf_counter() - start)
-        """
+            if 'ALL' in model._cut_type: pass
+            if 'GRB' in model._cut_type: pass
+            start = time.perf_counter()
+            if model._rootcuts:
+                # Only add cuts at root-node of branch and bound tree
+                if model.cbGet(GRB.Callback.MIPNODE_NODCNT) != 0: return
+            model._sepnum += 1
+            q_val = model.cbGetNodeRel(model._Q)
+            s_val = model.cbGetNodeRel(model._S)
+            if 'A' in model._cut_type:
+                if 'CUT1' in model.ModelName:
+                    for (i, v) in s_val.keys():
+                        for c in model._tree.path[v][1:]:
+                            if s_val[i, v] - q_val[i, c] > 10**-model._eps:
+                                model.cbCut(model._S[i, v] <= model._Q[i, c])
+                                model._sepcuts += 1
+                elif 'CUT2' in model.ModelName:
+                    for (i, v) in s_val.keys():
+                        for c in model._tree.path[v][1:]:
+                            if s_val[i, v] + sum(s_val[i, u] for u in model._tree.child[v]) - q_val[i, c] > 10**-model._eps:
+                                model.cbCut(model._S[i, v] +
+                                                 quicksum(model._S[i, u] for u in model._tree.child[v]) <=
+                                                 model._Q[i, c])
+                                model._sepcuts += 1
+            elif 'FF' in model._cut_type:
+                if 'CUT1' in model.ModelName:
+                    for (i, v) in s_val.keys():
+                        for c in model._tree.path[v][1:]:
+                            if s_val[i, v] - q_val[i, c] > 10**-model._eps:
+                                model.cbCut(model._S[i, v] <= model._Q[i, c])
+                                model._sepcuts += 1
+                                break
+                elif 'CUT2' in model.ModelName:
+                    for (i, v) in s_val.keys():
+                        for c in model._tree.path[v][1:]:
+                            if s_val[i, v] + sum(s_val[i, u] for u in model._tree.child[v]) - q_val[i, c] > 10**-model._eps:
+                                model.cbCut(model._S[i, v] +
+                                                 quicksum(model._S[i, u] for u in model._tree.child[v]) <=
+                                                 model._Q[i, c])
+                                model._sepcuts += 1
+                                break
+            elif 'MV' in model._cut_type:
+                if 'CUT1' in model.ModelName:
+                    for (i, v) in s_val.keys():
+                        for c in model._tree.path[v][1:]:
+                            if (s_val[i, v] - q_val[i, c] > 10**-model._eps and
+                                    s_val[i, v] - q_val[i, c] == max(s_val[i, v] - q_val[i, d] for d in model._tree.path[v][1:])):
+                                model.cbCut(model._S[i, v] <= model._Q[i, c])
+                                model._sepcuts += 1
+                                break
+                elif 'CUT2' in model.ModelName:
+                    for (i, v) in s_val.keys():
+                        for c in model._tree.path[v][1:]:
+                            if (s_val[i, v] + sum(s_val[i, u] for u in model._tree.child[v]) - q_val[i, c] > 10**-model._eps
+                                    and s_val[i, v] + sum(s_val[i, u] for u in model._tree.child[v]) - q_val[i, c] ==
+                                    max(s_val[i, v] + sum(s_val[i, u] for u in model._tree.child[v]) - q_val[i, d]
+                                        for d in model._tree.path[v][1:])):
+                                model.cbCut(model._S[i, v] +
+                                                 quicksum(model._S[i, u] for u in model._tree.child[v]) <=
+                                                 model._Q[i, c])
+                                model._sepcuts += 1
+                                break
+            model._septime += (time.perf_counter() - start)
 
     ##############################################
     # Find Valid Infeasible Subsystem (VIS) of Model

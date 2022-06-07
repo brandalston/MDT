@@ -100,7 +100,7 @@ def main(argv):
                                          modelextras=model_extras, log=log)
                         # Add connectivity constraints according to model type and solve
                         opt_model.formulation()
-                        opt_model.warm_start()
+                        if warmstart['use']: opt_model.warm_start()
                         if model_extras is not None: opt_model.extras()
                         opt_model.model.update()
                         if log_files: opt_model.model.write(log+'.lp')
@@ -110,5 +110,7 @@ def main(argv):
                             opt_model.model.RunTime < time_limit else \
                             print(f'Time limit reached. ({time.strftime("%I:%M %p", time.localtime())})\n')
                         opt_model.assign_tree()
+                        # Uncomment to print model results
+                        # UTILS.model_results(opt_model.model, opt_model.tree)
                         UTILS.model_summary(opt_model=opt_model, tree=tree, test_set=test_set,
                                             rand_state=i, results_file=out_file)
