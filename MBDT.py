@@ -72,9 +72,9 @@ class MBDT:
         self.model = Model(f'{self.modeltype}')
         self.model.Params.TimeLimit = time_limit
         self.model.Params.LogToConsole = 0
-        self.model.Params.Threads = 1
+        self.model.Params.Threads = 1  # use one thread for testing purposes
         self.model.Params.LazyConstraints = 1
-        # self.model.Params.PreCrush = 1
+        self.model.Params.PreCrush = 1
         if self.log is not None:
             self.model.Params.LogFile = self.log+'.txt'
 
@@ -108,15 +108,17 @@ class MBDT:
         """ Model Objective and Constraints """
         # Objective: Maximize the number of correctly classified datapoints
         # Max sum(S[i,v], i in I, v in V\1)
-        self.model.setObjective(self.S.sum(), GRB.MAXIMIZE)
+        self.model.setObjective(quicksum(self.S[i, v] for i in self.datapoints for v in self.tree.V if v != 0),
+                                GRB.MAXIMIZE)
 
         # Pruned vertices not assigned to class
         # P[v] = sum(W[v,k], k in K) for v in V
-        self.model.addConstrs(self.P[v] == self.W.sum(v, '*') for v in self.tree.V)
+        self.model.addConstrs(self.P[v] == self.W.sum(v, '*')
+                              for v in self.tree.V)
 
         # Vertices must be branched, assigned to class, or pruned
         # B[v] + sum(P[u], u in path[v]) = 1 for v in V
-        self.model.addConstrs(self.B[v] + quicksum(self.P[u] for u in self.tree.path[v]) == 1
+        self.model.addConstrs(self.B[v] + quicksum(self.P[u]for u in self.tree.path[v]) == 1
                               for v in self.tree.V)
 
         # Cannot branch on leaf vertex
@@ -134,27 +136,11 @@ class MBDT:
         # for v in self.tree.B:
             # self.model.addConstrs(self.Q[i, self.tree.RC[v]] <= self.B[v] for i in self.datapoints)
 
-        # each datapoint has at most one terminal vertex
-        self.model.addConstrs(self.S.sum(i, '*') <= 1 for i in self.datapoints)
+        # Each datapoint has at most one terminal vertex
+        self.model.addConstrs(self.S.sum(i, '*') <= 1
+                              for i in self.datapoints)
 
-        """
-        # terminal vertex of datapoint must be in reachable path
-        if 'CUT1' in self.modeltype:
-            for i in self.datapoints:
-                for v in self.tree.V:
-                    if v == 0: continue
-                    self.model.addConstrs(self.S[i, v] <= self.Q[i, c] for c in self.tree.path[v][1:])
-
-        # terminal vertex of datapoint must be in reachable path for vertex and all children
-        elif 'CUT2' in self.modeltype:
-            for i in self.datapoints:
-                for v in self.tree.V:
-                    if v == 0: continue
-                    self.model.addConstrs(self.S[i, v] + quicksum(self.S[i, u] for u in self.tree.child[v]) <=
-                                          self.Q[i, c] for c in self.tree.path[v][1:])
-        """
-
-        # Lazy feasible path constraints
+        # Lazy feasible path constraints (for fractional separation procedure)
         if ('GRB' in self.cut_type) or ('FRAC' in self.cut_type):
             # terminal vertex of datapoint must be in reachable path
             if 'CUT1' in self.modeltype:
@@ -170,25 +156,24 @@ class MBDT:
                                                             for i in self.datapoints
                                                             for v in self.tree.V if v != 0 
                                                             for c in self.tree.path[v][1:])
-
             for i in self.datapoints:
                 for v in self.tree.V:
                     if v == 0: continue
                     for c in self.tree.path[v][1:]:
                         self.cut_constraint[i, v, c].lazy = 3
 
-        # All feasible path constraints
+        # All feasible path constraints upfront
         elif 'ALL' in self.cut_type:
-                for i in self.datapoints:
-                    for v in self.tree.V:
-                        if v == 0: continue
-                        # terminal vertex of datapoint must be in reachable path
-                        if 'CUT1' in self.modeltype:
-                            self.model.addConstrs(self.S[i, v] <= self.Q[i, c] for c in self.tree.path[v][1:])
-                        # terminal vertex of datapoint must be in reachable path for vertex and all children
-                        elif 'CUT2' in self.modeltype:
-                            self.model.addConstrs(self.S[i, v] + quicksum(self.S[i, u] for u in self.tree.child[v]) <=
-                                                  self.Q[i, c] for c in self.tree.path[v][1:])
+            for i in self.datapoints:
+                for v in self.tree.V:
+                    if v == 0: continue
+                    # terminal vertex of datapoint must be in reachable path
+                    if 'CUT1' in self.modeltype:
+                        self.model.addConstrs(self.S[i, v] <= self.Q[i, c]for c in self.tree.path[v][1:])
+                    # terminal vertex of datapoint must be in reachable path for vertex and all children
+                    elif 'CUT2' in self.modeltype:
+                        self.model.addConstrs(self.S[i, v] + quicksum(self.S[i, u] for u in self.tree.child[v]) <=
+                                              self.Q[i, c] for c in self.tree.path[v][1:])
 
         """ Pass to Model DV for Callback / Optimization Purposes """
         self.model._B = self.B
@@ -217,10 +202,11 @@ class MBDT:
         """
         # Model Termination
         if where == GRB.Callback.MIP:
-            if abs(model.cbGet(GRB.Callback.MIP_OBJBST) - model.cbGet(GRB.Callback.MIP_OBJBND)) < model.Params.FeasibilityTol:
+            if abs(model.cbGet(GRB.Callback.MIP_OBJBST) -
+                   model.cbGet(GRB.Callback.MIP_OBJBND)) < model.Params.FeasibilityTol:
                 model.terminate()
 
-        # VIS of Branching Nodes Cuts at Feasible Solution
+        # Add VIS Cuts at Branching Nodes of Feasible Solution
         if where == GRB.Callback.MIPSOL:
             model._visnum += 1
             start = time.perf_counter()
@@ -253,7 +239,7 @@ class MBDT:
                 model._viscuts += 1
             model._vistime += time.perf_counter() - start
 
-        # Feasible Path for Datapoint Cuts in Branch and Bound Tree
+        # Add Feasible Path for Datapoints Cuts at Fractional Point in Branch and Bound Tree
         if (where == GRB.Callback.MIPNODE) and (model.cbGet(GRB.Callback.MIPNODE_STATUS) == GRB.OPTIMAL):
             if 'ALL' in model._cut_type: pass
             if 'GRB' in model._cut_type: pass
@@ -264,6 +250,7 @@ class MBDT:
             model._sepnum += 1
             q_val = model.cbGetNodeRel(model._Q)
             s_val = model.cbGetNodeRel(model._S)
+            # Add all violating cuts
             if 'A' in model._cut_type:
                 if 'CUT1' in model.ModelName:
                     for (i, v) in s_val.keys():
@@ -279,6 +266,7 @@ class MBDT:
                                                  quicksum(model._S[i, u] for u in model._tree.child[v]) <=
                                                  model._Q[i, c])
                                 model._sepcuts += 1
+            # Add first found violating cut
             elif 'FF' in model._cut_type:
                 if 'CUT1' in model.ModelName:
                     for (i, v) in s_val.keys():
@@ -296,6 +284,7 @@ class MBDT:
                                                  model._Q[i, c])
                                 model._sepcuts += 1
                                 break
+            # Add most violating cut
             elif 'MV' in model._cut_type:
                 if 'CUT1' in model.ModelName:
                     for (i, v) in s_val.keys():
