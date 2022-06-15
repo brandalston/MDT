@@ -312,6 +312,7 @@ class SOCTBenders(ClassifierMixin, BaseEstimator):
         a_vals = {}
         b_vals = {}
         for t in branch_nodes:
+            print('finding split at', t)
             # Define index sets indicating which observations are sent to every node
             left_index_set = [] # Observations going to node 2t
             right_index_set = [] # Observations going to node 2t+1
@@ -322,10 +323,12 @@ class SOCTBenders(ClassifierMixin, BaseEstimator):
                     right_index_set.append(i)
             if len(right_index_set) == 0:
                 # (a,b) = (0,1) will send all points to the left
+                print('all going left')
                 a_vals[t] = np.zeros(p)
                 b_vals[t] = 1
             elif len(left_index_set) == 0:
                 # (a,b) = (0,-1) will send all points to the right
+                print('all going right')
                 a_vals[t] = np.zeros(p)
                 b_vals[t] = -1
             else:

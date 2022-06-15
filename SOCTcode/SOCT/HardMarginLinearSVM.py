@@ -35,6 +35,7 @@ class HardMarginLinearSVM(ClassifierMixin, BaseEstimator):
             w_vals = np.array([w[j].X for j in range(p)])
             b = -b # Must flip intercept because of how QP was setup
             self.w_, self.b_ = w_vals, b
+            print('solved hard margin svm')
             return self
         except Exception:
             # If QP fails to solve, just return any separating hyperplane
@@ -51,6 +52,7 @@ class HardMarginLinearSVM(ClassifierMixin, BaseEstimator):
             w_vals = np.array([w[j].X for j in range(p)])
             b_val = b.X
             self.w_, self.b_ = w_vals, b_val
+            print('found general hyperplane')
             return self
     
     def predict(self, X):

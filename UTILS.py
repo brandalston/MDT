@@ -202,7 +202,7 @@ class Linear_Separator():
         # Define left and right index sets according to SVM class
         Lv_I = set(i for i in data.index if data.at[i, 'svm'] == -1)
         Rv_I = set(i for i in data.index if data.at[i, 'svm'] == +1)
-        # Remove any points in each index set whose featureset are equivalent to some
+        # Remove any points in each index set whose feature_set are equivalent to some
         common_points_L, common_points_R = set(), set()
         for x in Lv_I:
             for y in Rv_I:

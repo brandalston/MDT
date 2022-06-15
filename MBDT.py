@@ -226,15 +226,15 @@ class MBDT:
                 if B[v] < 0.5: continue
                 if P[v] > .5: continue
                 # Define L_v(I), R_v(I) for each v in B
-                Lv_I = []  # set of i: q^i_l(v) = 1
-                Rv_I = []  # set of i: q^i_r(v) = 1
+                Lv_I = set()  # set of i: q^i_l(v) = 1
+                Rv_I = set()  # set of i: q^i_r(v) = 1
                 for i in model._data.index:
                     if Q[i, model._tree.LC[v]] > 0.5:
-                        Lv_I.append(i)
-                    if Q[i, model._tree.RC[v]] > 0.5:
-                        Rv_I.append(i)
+                        Lv_I.add(i)
+                    elif Q[i, model._tree.RC[v]] > 0.5:
+                        Rv_I.add(i)
                 # Test for VIS of B_v(Q)
-                # print('Test for VIS at', v)
+                print('Test for VIS at', v, model._visnum)
                 VIS = MBDT.VIS(model._data, model._featureset, Lv_I, Rv_I, vis_weight=vis_weights)
                 if VIS is None:
                     continue
@@ -268,8 +268,8 @@ class MBDT:
                 elif 'CUT2' in model.ModelName:
                     for (i, v) in s_val.keys():
                         for c in model._tree.path[v][1:]:
-                            if s_val[i, v] + sum(s_val[i, u] for u in model._tree.child[v]) - q_val[
-                                i, c] > 10 ** -model._eps:
+                            if s_val[i, v] + sum(s_val[i, u] for u in model._tree.child[v]) - \
+                                    q_val[i, c] > 10 ** -model._eps:
                                 model.cbCut(model._S[i, v] +
                                             quicksum(model._S[i, u] for u in model._tree.child[v]) <=
                                             model._Q[i, c])
@@ -286,8 +286,8 @@ class MBDT:
                 elif 'CUT2' in model.ModelName:
                     for (i, v) in s_val.keys():
                         for c in model._tree.path[v][1:]:
-                            if s_val[i, v] + sum(s_val[i, u] for u in model._tree.child[v]) - q_val[
-                                i, c] > 10 ** -model._eps:
+                            if s_val[i, v] + sum(s_val[i, u] for u in model._tree.child[v]) - \
+                                    q_val[i, c] > 10 ** -model._eps:
                                 model.cbCut(model._S[i, v] +
                                             quicksum(model._S[i, u] for u in model._tree.child[v]) <=
                                             model._Q[i, c])
@@ -323,7 +323,7 @@ class MBDT:
     # Find Valid Infeasible Subsystem (VIS) of Model
     ##############################################
     @staticmethod
-    def VIS(data, featureset, Lv_I, Rv_I, vis_weight):
+    def VIS(data, feature_set, Lv_I, Rv_I, vis_weight):
         """
         Find a minimal set of points that cannot be linearly separated by a split (a_v, c_v).
         Use the support of Farkas dual (with heuristic objective) of the feasible primal LP to identify VIS of primal
@@ -345,20 +345,30 @@ class MBDT:
 
         if (len(Lv_I) == 0) or (len(Rv_I) == 0):
             return None
+        # Remove any points in each index set whose feature_set are equivalent
+        common_points_L, common_points_R = set(), set()
+        for x in Lv_I:
+            for y in Rv_I:
+                if data.loc[x, feature_set].equals(data.loc[y, feature_set]):
+                    common_points_L.add(x)
+                    common_points_R.add(y)
+        Lv_I -= common_points_L
+        Rv_I -= common_points_R
+        data = data.drop(common_points_L | common_points_R)
 
         # VIS Dual Model
         VIS_model = Model("VIS Dual")
         VIS_model.Params.LogToConsole = 0
 
         # VIS Dual Variables
-        lambda_L = VIS_model.addVars(Lv_I, vtype=GRB.CONTINUOUS, name='lambda_L')
-        lambda_R = VIS_model.addVars(Rv_I, vtype=GRB.CONTINUOUS, name='lambda_R')
+        lambda_L = VIS_model.addVars(Lv_I, vtype=GRB.CONTINUOUS, lb=0, name='lambda_L')
+        lambda_R = VIS_model.addVars(Rv_I, vtype=GRB.CONTINUOUS, lb=0, name='lambda_R')
 
         # VIS Dual Constraints
         VIS_model.addConstrs(
             quicksum(lambda_L[i] * data.at[i, j] for i in Lv_I) ==
             quicksum(lambda_R[i] * data.at[i, j] for i in Rv_I)
-            for j in featureset)
+            for j in feature_set)
         VIS_model.addConstr(lambda_L.sum() == 1)
         VIS_model.addConstr(lambda_R.sum() == 1)
 
@@ -372,13 +382,15 @@ class MBDT:
         # Infeasiblity implies B_v(Q) is valid for all I in L_v(I), R_v(I)
         # i.e. each i is correctly sent to left, right child (linearly separable points)
         if VIS_model.Status == GRB.INFEASIBLE:
+            print('none found')
             return None
-
+        print('found VIS')
         lambda_L_sol = VIS_model.getAttr('X', lambda_L)
         lambda_R_sol = VIS_model.getAttr('X', lambda_R)
 
         B_v_left = []
         B_v_right = []
+        print(B_v_left, B_v_right)
         for i in Lv_I:
             if lambda_L_sol[i] > VIS_model.Params.FeasibilityTol:
                 B_v_left.append(i)
@@ -387,84 +399,8 @@ class MBDT:
             if lambda_R_sol[i] > VIS_model.Params.FeasibilityTol:
                 B_v_right.append(i)
                 vis_weight[i] += 1
+        print(B_v_left, B_v_right)
         return (B_v_left, B_v_right)
-
-    ##############################################
-    # Assign Nodes of Tree from Model Solution
-    ##############################################
-    def assign_tree(self):
-        """
-        Assign nodes of tree from model solution
-        Assign class k to v when P[v].x = 1, W[v, k].x = 1
-        Assign pruned v to when P[v].x = 0, B[v].x = 0
-        Define (a_v, c_v) for v when P[v].x = 0, B[v].x = 1
-            Use hard margin linear SVM on B_v(Q) to find (a_v, c_v)
-        """
-        start = time.perf_counter()
-        # clear any existing node assignments
-        for v in self.tree.DG_prime.nodes():
-            if 'class' in self.tree.DG_prime.nodes[v]:
-                del self.tree.DG_prime.nodes[v]['class']
-            if 'branching' in self.tree.DG_prime.nodes[v]:
-                del self.tree.DG_prime.nodes[v]['branching']
-            if 'pruned' in self.tree.DG_prime.nodes[v]:
-                del self.tree.DG_prime.nodes[v]['pruned']
-
-        # Retrieve solution values
-        try:
-            B_sol = self.model.getAttr('X', self.B)
-            W_sol = self.model.getAttr('X', self.W)
-            P_sol = self.model.getAttr('X', self.P)
-            Q_sol = self.model.getAttr('X', self.Q)
-        # If no incumbent was found, then predict arbitrary class at root node
-        except GurobiError:
-            self.tree.DG_prime.nodes[0]['class'] = random.choice(self.classes)
-            for v in self.tree.V:
-                if v == 0: continue
-                self.tree.DG_prime.nodes[v]['pruned'] = 0
-            return
-
-        for v in self.tree.V:
-            # Assign class k to classification nodes
-            if P_sol[v] > 0.5:
-                for k in self.classes:
-                    if W_sol[v, k] > 0.5:
-                        self.tree.DG_prime.nodes[v]['class'] = k
-            # Assign no class or branching rule to pruned nodes
-            elif P_sol[v] < 0.5 and B_sol[v] < 0.5:
-                self.tree.DG_prime.nodes[v]['pruned'] = 0
-            # Define (a_v, c_v) on branching nodes
-            elif P_sol[v] < 0.5 and B_sol[v] > 0.5:
-                # Lv_I, Rv_I index sets of observations sent to left, right child vertex of branching vertex v
-                # svm_y maps Lv_I to -1, Rv_I to +1 for training hard margin linear SVM
-                Lv_I, Rv_I = [], []
-                svm_y = {i: 0 for i in self.datapoints}
-                for i in self.datapoints:
-                    if Q_sol[i, self.tree.LC[v]] > 0.5:
-                        Lv_I.append(i)
-                        svm_y[i] = -1
-                    elif Q_sol[i, self.tree.RC[v]] > 0.5:
-                        Rv_I.append(i)
-                        svm_y[i] = +1
-
-                # Find (a_v, c_v) for corresponding Lv_I, Rv_I
-                # If |Lv_I| = 0: (a_v, c_v) = (0, -1) sends all points to the right
-                if len(Lv_I) == 0:
-                    self.tree.a_v[v] = {f: 0 for f in self.featureset}
-                    self.tree.c_v[v] = -1
-                # If |Rv_I| = 0: (a_v, c_v) = (0, 1) sends all points to the left
-                elif len(Rv_I) == 0:
-                    self.tree.a_v[v] = {f: 0 for f in self.featureset}
-                    self.tree.c_v[v] = 1
-                # Train hard margin linear SVM to find (a_v, c_v) corresponding to Lv_I, Rv_I
-                else:
-                    data_svm = self.data.loc[Lv_I + Rv_I, self.data.columns != self.target]
-                    data_svm['svm'] = pd.Series(svm_y)
-                    svm = UTILS.Linear_Separator()
-                    svm.SVM_fit(data_svm)
-                    self.tree.a_v[v], self.tree.c_v[v] = svm.a_v, svm.c_v
-                self.tree.DG_prime.nodes[v]['branching'] = (self.tree.a_v[v], self.tree.c_v[v])
-        self.HP_time = time.perf_counter() - start
 
     ##############################################
     # Warm Start Model
@@ -550,3 +486,80 @@ class MBDT:
             print('Regularization: ' + str(self.regularization) + ' datapoints required for classification vertices')
             self.model.addConstrs(quicksum(self.S[i, v] for i in self.datapoints) >= self.regularization * self.P[v]
                                   for v in self.tree.V)
+
+    ##############################################
+    # Assign Nodes of Tree from Model Solution
+    ##############################################
+    def assign_tree(self):
+        """
+        Assign nodes of tree from model solution
+        Assign class k to v when P[v].x = 1, W[v, k].x = 1
+        Assign pruned v to when P[v].x = 0, B[v].x = 0
+        Define (a_v, c_v) for v when P[v].x = 0, B[v].x = 1
+            Use hard margin linear SVM on B_v(Q) to find (a_v, c_v)
+        """
+        start = time.perf_counter()
+        # clear any existing node assignments
+        for v in self.tree.DG_prime.nodes():
+            if 'class' in self.tree.DG_prime.nodes[v]:
+                del self.tree.DG_prime.nodes[v]['class']
+            if 'branching' in self.tree.DG_prime.nodes[v]:
+                del self.tree.DG_prime.nodes[v]['branching']
+            if 'pruned' in self.tree.DG_prime.nodes[v]:
+                del self.tree.DG_prime.nodes[v]['pruned']
+
+        # Retrieve solution values
+        try:
+            B_sol = self.model.getAttr('X', self.B)
+            W_sol = self.model.getAttr('X', self.W)
+            P_sol = self.model.getAttr('X', self.P)
+            Q_sol = self.model.getAttr('X', self.Q)
+        # If no incumbent was found, then predict arbitrary class at root node
+        except GurobiError:
+            self.tree.DG_prime.nodes[0]['class'] = random.choice(self.classes)
+            for v in self.tree.V:
+                if v == 0: continue
+                self.tree.DG_prime.nodes[v]['pruned'] = 0
+            return
+
+        for v in self.tree.V:
+            # Assign class k to classification nodes
+            if P_sol[v] > 0.5:
+                for k in self.classes:
+                    if W_sol[v, k] > 0.5:
+                        self.tree.DG_prime.nodes[v]['class'] = k
+            # Assign no class or branching rule to pruned nodes
+            elif P_sol[v] < 0.5 and B_sol[v] < 0.5:
+                self.tree.DG_prime.nodes[v]['pruned'] = 0
+            # Define (a_v, c_v) on branching nodes
+            elif P_sol[v] < 0.5 and B_sol[v] > 0.5:
+                # Lv_I, Rv_I index sets of observations sent to left, right child vertex of branching vertex v
+                # svm_y maps Lv_I to -1, Rv_I to +1 for training hard margin linear SVM
+                Lv_I, Rv_I = [], []
+                svm_y = {i: 0 for i in self.datapoints}
+                for i in self.datapoints:
+                    if Q_sol[i, self.tree.LC[v]] > 0.5:
+                        Lv_I.append(i)
+                        svm_y[i] = -1
+                    elif Q_sol[i, self.tree.RC[v]] > 0.5:
+                        Rv_I.append(i)
+                        svm_y[i] = +1
+
+                # Find (a_v, c_v) for corresponding Lv_I, Rv_I
+                # If |Lv_I| = 0: (a_v, c_v) = (0, -1) sends all points to the right
+                if len(Lv_I) == 0:
+                    self.tree.a_v[v] = {f: 0 for f in self.featureset}
+                    self.tree.c_v[v] = -1
+                # If |Rv_I| = 0: (a_v, c_v) = (0, 1) sends all points to the left
+                elif len(Rv_I) == 0:
+                    self.tree.a_v[v] = {f: 0 for f in self.featureset}
+                    self.tree.c_v[v] = 1
+                # Find separating hyperplane according to Lv_I, Rv_I index sets
+                else:
+                    data_svm = self.data.loc[Lv_I + Rv_I, self.data.columns != self.target]
+                    data_svm['svm'] = pd.Series(svm_y)
+                    svm = UTILS.Linear_Separator()
+                    svm.SVM_fit(data_svm)
+                    self.tree.a_v[v], self.tree.c_v[v] = svm.a_v, svm.c_v
+                self.tree.DG_prime.nodes[v]['branching'] = (self.tree.a_v[v], self.tree.c_v[v])
+        self.HP_time = time.perf_counter() - start
