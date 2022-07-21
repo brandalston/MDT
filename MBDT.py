@@ -345,7 +345,7 @@ class MBDT:
 
         if (len(Lv_I) == 0) or (len(Rv_I) == 0):
             return None
-        # Remove any points in each index set whose feature_set are equivalent
+        # Remove any points in each index set whose feature set are equivalent
         common_points_L, common_points_R = set(), set()
         for x in Lv_I:
             for y in Rv_I:
@@ -390,7 +390,6 @@ class MBDT:
 
         B_v_left = []
         B_v_right = []
-        print(B_v_left, B_v_right)
         for i in Lv_I:
             if lambda_L_sol[i] > VIS_model.Params.FeasibilityTol:
                 B_v_left.append(i)
@@ -544,7 +543,7 @@ class MBDT:
                     elif Q_sol[i, self.tree.RC[v]] > 0.5:
                         Rv_I.append(i)
                         svm_y[i] = +1
-
+                print(svm_y)
                 # Find (a_v, c_v) for corresponding Lv_I, Rv_I
                 # If |Lv_I| = 0: (a_v, c_v) = (0, -1) sends all points to the right
                 if len(Lv_I) == 0:
@@ -558,6 +557,7 @@ class MBDT:
                 else:
                     data_svm = self.data.loc[Lv_I + Rv_I, self.data.columns != self.target]
                     data_svm['svm'] = pd.Series(svm_y)
+                    print(data_svm.head(5))
                     svm = UTILS.Linear_Separator()
                     svm.SVM_fit(data_svm)
                     self.tree.a_v[v], self.tree.c_v[v] = svm.a_v, svm.c_v
