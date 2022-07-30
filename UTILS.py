@@ -199,6 +199,8 @@ class Linear_Separator():
             print("Class labels must be -1 and +1")
             raise ValueError
         feature_set = [f for f in data.columns if f != 'svm']
+        B = len(feature_set)
+        C = [2**u for u in range(8)]
         # Define left and right index sets according to SVM class
         Lv_I = set(i for i in data.index if data.at[i, 'svm'] == -1)
         Rv_I = set(i for i in data.index if data.at[i, 'svm'] == +1)
@@ -215,70 +217,28 @@ class Linear_Separator():
 
         # Find separating hyperplane by solving dual of Lagrangian of the standard hard margin linear SVM problem
         try:
-            m = Model("HM_Linear_SVM")
+            m = Model("MIP SVM normalized")
             m.Params.LogToConsole = 0
             m.Params.NumericFocus = 3
-            alpha = m.addVars(data.index, vtype=GRB.CONTINUOUS, lb=0, ub=GRB.INFINITY)
-            W = m.addVars(feature_set, vtype=GRB.CONTINUOUS, lb=-GRB.INFINITY, ub=GRB.INFINITY)
+            u = m.addVars(feature_set, vtype=GRB.BINARY, name='U')
+            err = m.addVars(data.index, vtype=GRB.CONTINUOUS, lb=0, name='err')
+            b_mip = m.addVar(vtype=GRB.CONTINUOUS, name='b')
+            w = m.addVars(vtype=GRB.CONTINUOUS, lb=0, name='w')
 
-            m.addConstrs(W[f] == quicksum(alpha[i] * data.at[i, 'svm'] * data.at[i, f] for i in data.index)
-                         for f in feature_set)
-            m.addConstr(quicksum(alpha[i] * data.at[i, 'svm'] for i in data.index) == 0)
-            m.setObjective(alpha.sum() - (1 / 2) * quicksum(W[f] * W[f] for f in feature_set), GRB.MAXIMIZE)
+            m.setObjective(u.sum()+C[0]*err.sum(), GRB.MINIMIZE)
+            m.addConstrs(data.at[i, 'svm'] * (quicksum(w[f]*data.at[i, f] for f in feature_set) + b_mip) >= 1 - err[i]
+                         for i in data.index)
+            m.addConstrs(u.sum() <= B)
+            m.addConstrs(w[f] <= u[f] for f in feature_set)
+            m.addConstr(w.sum() <= 1)
             m.optimize()
 
-            # Any i with positive alpha[i] works
-            for i in data.index:
-                if alpha[i].x > m.Params.FeasibilityTol:
-                    b = data.at[i, 'svm'] - sum(W[f].x * data.at[i, f] for f in feature_set)
-                    break
-            a_v = {f: W[f].x for f in feature_set}
-            c_v = -b  # Must flip intercept because of how QP was setup
-            self.a_v, self.c_v = a_v, c_v
-            return self
         except Exception:
-            # Find separating hyperplane by solving dual of Lagrangian of standard soft margin linear SVM problem
             try:
-                # Find any points in Lv_I, Rv_I which are convex combinations of the other set
-                cc_L, cc_R = set(), set()
-                for i in Lv_I:
-                    convex_combo = Model("Left Index Convex Combination")
-                    convex_combo.Params.LogToConsole = 0
-                    lambdas = convex_combo.addVars(Rv_I, vtype=GRB.CONTINUOUS, lb=0)
-                    convex_combo.addConstrs(quicksum(lambdas[i]*data.at[i, f] for i in Rv_I) == data.at[i, f]
-                                            for f in feature_set)
-                    convex_combo.addConstr(lambdas.sum() == 1)
-                    convex_combo.setObjective(0, GRB.MINIMIZE)
-                    convex_combo.optimize()
-                    if convex_combo.Status != GRB.INFEASIBLE:
-                        cc_L.add(i)
-                for i in Rv_I:
-                    convex_combo = Model("Right Index Convex Combination")
-                    convex_combo.Params.LogToConsole = 0
-                    lambdas = convex_combo.addVars(Lv_I, vtype=GRB.CONTINUOUS, lb=0)
-                    convex_combo.addConstrs(quicksum(lambdas[i]*data.at[i, f] for i in Lv_I) == data.at[i, f]
-                                            for f in feature_set)
-                    convex_combo.addConstr(lambdas.sum() == 1)
-                    convex_combo.setObjective(0, GRB.MINIMIZE)
-                    convex_combo.optimize()
-                    if convex_combo.Status != GRB.INFEASIBLE:
-                        cc_R.add(i)
-
-                # Find noramlized max inner product of convex combinations
-                # to use as upper bound in dual of Lagrangian of soft margin SVM
-                margin_ub = GRB.INFINITY
-                inner_products = {item: np.inner(data.loc[item[0], feature_set],
-                                          data.loc[item[1], feature_set])
-                                  for item in list(combinations(cc_L|cc_R, 2))}
-                if inner_products:
-                    margin_ub = max(inner_products.values()) / \
-                                min(len(cc_L | cc_R), np.linalg.norm(list(inner_products.values()), 2))
-
-                # Solve dual of Lagrangian of soft margin SVM
-                m = Model("SM_Linear_SVM")
+                m = Model("HM_Linear_SVM")
                 m.Params.LogToConsole = 0
                 m.Params.NumericFocus = 3
-                alpha = m.addVars(data.index, vtype=GRB.CONTINUOUS, lb=0, ub=margin_ub)
+                alpha = m.addVars(data.index, vtype=GRB.CONTINUOUS, lb=0, ub=GRB.INFINITY)
                 W = m.addVars(feature_set, vtype=GRB.CONTINUOUS, lb=-GRB.INFINITY, ub=GRB.INFINITY)
 
                 m.addConstrs(W[f] == quicksum(alpha[i] * data.at[i, 'svm'] * data.at[i, f] for i in data.index)
@@ -297,52 +257,112 @@ class Linear_Separator():
                 self.a_v, self.c_v = a_v, c_v
                 return self
             except Exception:
-                # Find any generic hard margin separating hyperplane
+                # Find separating hyperplane by solving dual of Lagrangian of standard soft margin linear SVM problem
                 try:
-                    gen_hyperplane = Model("Separating hyperplane")
-                    gen_hyperplane.Params.LogToConsole = 0
-                    a_hyperplane = gen_hyperplane.addVars(feature_set, lb=-GRB.INFINITY, ub=GRB.INFINITY)
-                    c_hyperplane = gen_hyperplane.addVar(lb=-GRB.INFINITY, ub=GRB.INFINITY)
-                    gen_hyperplane.addConstrs(
-                        quicksum(a_hyperplane[f] * data.at[i, f] for f in feature_set) + 1 <= c_hyperplane
-                        for i in Lv_I)
-                    gen_hyperplane.addConstrs(
-                        quicksum(a_hyperplane[f] * data.at[i, f] for f in feature_set) - 1 >= c_hyperplane
-                        for i in Rv_I)
-                    gen_hyperplane.setObjective(0, GRB.MINIMIZE)
-                    gen_hyperplane.optimize()
+                    # Find any points in Lv_I, Rv_I which are convex combinations of the other set
+                    cc_L, cc_R = set(), set()
+                    for i in Lv_I:
+                        convex_combo = Model("Left Index Convex Combination")
+                        convex_combo.Params.LogToConsole = 0
+                        lambdas = convex_combo.addVars(Rv_I, vtype=GRB.CONTINUOUS, lb=0)
+                        convex_combo.addConstrs(quicksum(lambdas[i]*data.at[i, f] for i in Rv_I) == data.at[i, f]
+                                                for f in feature_set)
+                        convex_combo.addConstr(lambdas.sum() == 1)
+                        convex_combo.setObjective(0, GRB.MINIMIZE)
+                        convex_combo.optimize()
+                        if convex_combo.Status != GRB.INFEASIBLE:
+                            cc_L.add(i)
+                    for i in Rv_I:
+                        convex_combo = Model("Right Index Convex Combination")
+                        convex_combo.Params.LogToConsole = 0
+                        lambdas = convex_combo.addVars(Lv_I, vtype=GRB.CONTINUOUS, lb=0)
+                        convex_combo.addConstrs(quicksum(lambdas[i]*data.at[i, f] for i in Lv_I) == data.at[i, f]
+                                                for f in feature_set)
+                        convex_combo.addConstr(lambdas.sum() == 1)
+                        convex_combo.setObjective(0, GRB.MINIMIZE)
+                        convex_combo.optimize()
+                        if convex_combo.Status != GRB.INFEASIBLE:
+                            cc_R.add(i)
 
-                    a_v = {f: a_hyperplane[f].X for f in feature_set}
-                    c_v = c_hyperplane.X
+                    # Find noramlized max inner product of convex combinations
+                    # to use as upper bound in dual of Lagrangian of soft margin SVM
+                    margin_ub = GRB.INFINITY
+                    inner_products = {item: np.inner(data.loc[item[0], feature_set],
+                                              data.loc[item[1], feature_set])
+                                      for item in list(combinations(cc_L|cc_R, 2))}
+                    if inner_products:
+                        margin_ub = max(inner_products.values()) / \
+                                    min(len(cc_L | cc_R), np.linalg.norm(list(inner_products.values()), 2))
+
+                    # Solve dual of Lagrangian of soft margin SVM
+                    m = Model("SM_Linear_SVM")
+                    m.Params.LogToConsole = 0
+                    m.Params.NumericFocus = 3
+                    alpha = m.addVars(data.index, vtype=GRB.CONTINUOUS, lb=0, ub=margin_ub)
+                    W = m.addVars(feature_set, vtype=GRB.CONTINUOUS, lb=-GRB.INFINITY, ub=GRB.INFINITY)
+
+                    m.addConstrs(W[f] == quicksum(alpha[i] * data.at[i, 'svm'] * data.at[i, f] for i in data.index)
+                                 for f in feature_set)
+                    m.addConstr(quicksum(alpha[i] * data.at[i, 'svm'] for i in data.index) == 0)
+                    m.setObjective(alpha.sum() - (1 / 2) * quicksum(W[f] * W[f] for f in feature_set), GRB.MAXIMIZE)
+                    m.optimize()
+
+                    # Any i with positive alpha[i] works
+                    for i in data.index:
+                        if alpha[i].x > m.Params.FeasibilityTol:
+                            b = data.at[i, 'svm'] - sum(W[f].x * data.at[i, f] for f in feature_set)
+                            break
+                    a_v = {f: W[f].x for f in feature_set}
+                    c_v = -b  # Must flip intercept because of how QP was setup
                     self.a_v, self.c_v = a_v, c_v
                     return self
                 except Exception:
-                    # Find any generic separating hyperplane
+                    # Find any generic hard margin separating hyperplane
                     try:
                         gen_hyperplane = Model("Separating hyperplane")
                         gen_hyperplane.Params.LogToConsole = 0
                         a_hyperplane = gen_hyperplane.addVars(feature_set, lb=-GRB.INFINITY, ub=GRB.INFINITY)
                         c_hyperplane = gen_hyperplane.addVar(lb=-GRB.INFINITY, ub=GRB.INFINITY)
                         gen_hyperplane.addConstrs(
-                            quicksum(a_hyperplane[f] * data.at[i, f] for f in feature_set) <= c_hyperplane
+                            quicksum(a_hyperplane[f] * data.at[i, f] for f in feature_set) + 1 <= c_hyperplane
                             for i in Lv_I)
                         gen_hyperplane.addConstrs(
-                            quicksum(a_hyperplane[f] * data.at[i, f] for f in feature_set) >= c_hyperplane
+                            quicksum(a_hyperplane[f] * data.at[i, f] for f in feature_set) - 1 >= c_hyperplane
                             for i in Rv_I)
                         gen_hyperplane.setObjective(0, GRB.MINIMIZE)
                         gen_hyperplane.optimize()
 
-                        if gen_hyperplane.status != GRB.INFEASIBLE:
-                            a_v = {f: a_hyperplane[f].X for f in feature_set}
-                            c_v = c_hyperplane.X
-                            self.a_v, self.c_v = a_v, c_v
-                        return self
-                    except Exception:
-                        # Return random separating hyperplane
-                        a_v = {f: random.random() for f in feature_set}
-                        c_v = random.random()
+                        a_v = {f: a_hyperplane[f].X for f in feature_set}
+                        c_v = c_hyperplane.X
                         self.a_v, self.c_v = a_v, c_v
                         return self
+                    except Exception:
+                        # Find any generic separating hyperplane
+                        try:
+                            gen_hyperplane = Model("Separating hyperplane")
+                            gen_hyperplane.Params.LogToConsole = 0
+                            a_hyperplane = gen_hyperplane.addVars(feature_set, lb=-GRB.INFINITY, ub=GRB.INFINITY)
+                            c_hyperplane = gen_hyperplane.addVar(lb=-GRB.INFINITY, ub=GRB.INFINITY)
+                            gen_hyperplane.addConstrs(
+                                quicksum(a_hyperplane[f] * data.at[i, f] for f in feature_set) <= c_hyperplane
+                                for i in Lv_I)
+                            gen_hyperplane.addConstrs(
+                                quicksum(a_hyperplane[f] * data.at[i, f] for f in feature_set) >= c_hyperplane
+                                for i in Rv_I)
+                            gen_hyperplane.setObjective(0, GRB.MINIMIZE)
+                            gen_hyperplane.optimize()
+
+                            if gen_hyperplane.status != GRB.INFEASIBLE:
+                                a_v = {f: a_hyperplane[f].X for f in feature_set}
+                                c_v = c_hyperplane.X
+                                self.a_v, self.c_v = a_v, c_v
+                            return self
+                        except Exception:
+                            # Return random separating hyperplane
+                            a_v = {f: random.random() for f in feature_set}
+                            c_v = random.random()
+                            self.a_v, self.c_v = a_v, c_v
+                            return self
 
 
 def model_results(model, tree):
