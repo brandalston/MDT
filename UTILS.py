@@ -241,9 +241,9 @@ class Linear_Separator():
         c_v = c_mip.X  # Must flip intercept because of how QP was setup
 
         u_dict = {f: u[f].X for f in feature_set}
-        print(a_v)
-        print(u_dict)
-        print(c_v)
+        # print(a_v)
+        # print(u_dict)
+        # print(c_v)
         self.a_v, self.c_v = a_v, c_v
         """
         # """
