@@ -181,12 +181,16 @@ def preprocess(data, numerical_features=None, categorical_features=None, binariz
 
 
 class Linear_Separator():
-    """ Hard-margin linear SVM trained using quadratic programming.
-
-    Assumes class labels are -1 and +1, and finds a hyperplane (a, c) such that a'x^i <= c iff y^i = -1.
-    If QP fails for whatever reason, just return any separating hyperplane
-
-    Solve dual (generated using Lagrange multipliers) of traditional hard-margin linear SVM
+    """
+    Assumes class labels are -1 and +1, and finds a hyperplane (a, c) such that a'x^i + 1 <= c iff y^i = -1,
+                                                                                a'x^i - 1 >= c iff y^i = 1,
+    Attempt to find the hyperplane using the following methods (in order):
+        normalized l1-SVM MIP formulation
+        Lagrangian dual of hard-margin linear SVM
+        reduced dataset Lagrangian dual of hard-margin linear SVM
+        generic hard margin hyperplane
+        any generic hyperplane
+        random hyperplane
     """
 
     def __init__(self):
@@ -201,6 +205,7 @@ class Linear_Separator():
         feature_set = [f for f in data.columns if f != 'svm']
         B = len(feature_set)
         C = [2**u for u in range(8)]
+
         # Define left and right index sets according to SVM class
         Lv_I = set(i for i in data.index if data.at[i, 'svm'] == -1)
         Rv_I = set(i for i in data.index if data.at[i, 'svm'] == +1)
@@ -213,13 +218,66 @@ class Linear_Separator():
                     common_points_R.add(y)
         Lv_I -= common_points_L
         Rv_I -= common_points_R
-        data = data.drop(common_points_L|common_points_R)
+        data = data.drop(common_points_L | common_points_R)
 
-        # Find separating hyperplane by solving dual of Lagrangian of the standard hard margin linear SVM problem
+        # """
+        m = Model("MIP SVM normalized")
+        m.Params.LogToConsole = 0
+        # m.Params.NumericFocus = 3
+        u = m.addVars(feature_set, vtype=GRB.BINARY, name='U')
+        err = m.addVars(data.index, vtype=GRB.CONTINUOUS, lb=0, name='err')
+        c_mip = m.addVar(vtype=GRB.CONTINUOUS, name='c')
+        a = m.addVars(feature_set, vtype=GRB.CONTINUOUS, lb=0, name='a')
+
+        m.setObjective(a.sum() + 10*err.sum(), GRB.MINIMIZE)
+        m.addConstrs(data.at[i, 'svm'] * (quicksum(a[f] * data.at[i, f] for f in feature_set) + c_mip) >= 1 - err[i]
+                     for i in data.index)
+        m.addConstr(quicksum(u[f] for f in feature_set) <= len(feature_set))
+        m.addConstrs(a[f] <= u[f] for f in feature_set)
+        m.addConstr(a.sum() <= 1)
+        m.optimize()
+
+        a_v = {f: a[f].X for f in feature_set}
+        c_v = c_mip.X  # Must flip intercept because of how QP was setup
+
+        u_dict = {f: u[f].X for f in feature_set}
+        print(a_v)
+        print(u_dict)
+        print(c_v)
+        self.a_v, self.c_v = a_v, c_v
+        """
+        # """
+        m = Model("MIP SVM normalized split")
+        m.Params.LogToConsole = 0
+        # m.Params.NumericFocus = 3
+        u = m.addVars(feature_set, vtype=GRB.BINARY, name='U')
+        err = m.addVars(data.index, vtype=GRB.CONTINUOUS, lb=0, name='err')
+        c_mip = m.addVar(vtype=GRB.CONTINUOUS, name='c')
+        a_pos = m.addVars(feature_set, vtype=GRB.CONTINUOUS, lb=0, name='a_pos')
+        a_neg = m.addVars(feature_set, vtype=GRB.CONTINUOUS, lb=0, name='a_neg')
+
+        m.setObjective(quicksum(a_pos[f] + a_neg[f] for f in feature_set) + 10 * err.sum(), GRB.MINIMIZE)
+        m.addConstrs(data.at[i, 'svm'] * (quicksum((a_pos[f] - a_neg[f]) * data.at[i, f] for f in feature_set) + c_mip) >= 1 - err[i]
+                     for i in data.index)
+        # m.addConstr(quicksum(u[f] for f in feature_set) <= len(feature_set))
+        m.addConstrs(a_pos[f] <= u[f] for f in feature_set)
+        m.addConstrs(a_neg[f] <= u[f] for f in feature_set)
+        m.addConstr(a_pos.sum() <= 1)
+        m.addConstr(a_neg.sum() <= 1)
+        m.optimize()
+    
+        a_v = {f: a_pos[f].x - a_neg[f].x for f in feature_set}
+        c_v = c_mip.x
+        
+        print(a_v)
+        print(c_v)
+        self.a_v, self.c_v = a_v, c_v
+        # """
+        """
         try:
+            # Find separating hyperplane using l1-SVM normalized MIP formulation
             m = Model("MIP SVM normalized")
             m.Params.LogToConsole = 0
-            m.Params.NumericFocus = 3
             u = m.addVars(feature_set, vtype=GRB.BINARY, name='U')
             err = m.addVars(data.index, vtype=GRB.CONTINUOUS, lb=0, name='err')
             b_mip = m.addVar(vtype=GRB.CONTINUOUS, name='b')
@@ -232,8 +290,9 @@ class Linear_Separator():
             m.addConstrs(w[f] <= u[f] for f in feature_set)
             m.addConstr(w.sum() <= 1)
             m.optimize()
-
+            
         except Exception:
+            # Find separating hyperplane by solving dual of Lagrangian of the standard hard margin linear SVM problem
             try:
                 m = Model("HM_Linear_SVM")
                 m.Params.LogToConsole = 0
@@ -363,6 +422,8 @@ class Linear_Separator():
                             c_v = random.random()
                             self.a_v, self.c_v = a_v, c_v
                             return self
+                            """
+        return self
 
 
 def model_results(model, tree):
@@ -393,7 +454,6 @@ def model_results(model, tree):
                               + ' at ' + str(v) + '. Path: ', path)
 
 
-
 def tree_check(tree):
     class_nodes = {v: tree.DG_prime.nodes[v]['class']
                    for v in tree.DG_prime.nodes if 'class' in tree.DG_prime.nodes[v]}
@@ -415,6 +475,7 @@ def data_predict(tree, data, target):
     # Get branching and class node assignments of tree
     branching_nodes = nx.get_node_attributes(tree.DG_prime, 'branching')
     class_nodes = nx.get_node_attributes(tree.DG_prime, 'class')
+    feature_set = data.columns.drop('target')
     # Results dictionary for datapoint assignments and path through tree
     acc = 0
     results = {i: [None, []] for i in data.index}
@@ -425,7 +486,7 @@ def data_predict(tree, data, target):
             results[i][1].append(v)
             if v in branching_nodes:
                 (a_v, c_v) = tree.DG_prime.nodes[v]['branching']
-                v = tree.LC[v] if sum(a_v[f] * data.at[i, f] for f in data.columns if f != target) <= c_v else tree.RC[
+                v = tree.LC[v] if sum(a_v[f] * data.at[i, f] for f in feature_set) <= c_v else tree.RC[
                     v]
             elif v in class_nodes:
                 results[i][0] = class_nodes[v]
