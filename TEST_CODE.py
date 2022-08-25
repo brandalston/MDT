@@ -1,13 +1,12 @@
 import model_runs
-
+# rand_states = [138, 15, 89, 42, 0]
 # """
 time_limit = 600
-rand_states = [138]
-# rand_states = [138, 15, 89, 42, 0]
+rand_states = [138, 15, 89]
 file = 'testing.csv'
-heights = [2]
-data_names = ['monk1']
-models = ['CUT1-ALL']
+heights = [3,4,5]
+data_names = ['balance-scale']
+models = ['CUT1']
 # model_extras = ['regularization-3']
 model_extras = None
 warm_start = {'use': False, 'values': None}

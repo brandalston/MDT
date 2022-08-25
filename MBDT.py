@@ -140,8 +140,8 @@ class MBDT:
                                   for i in self.datapoints)
 
         # If v not branching then all datapoints sent to left child
-        # for v in self.tree.B:
-        # self.model.addConstrs(self.Q[i, self.tree.RC[v]] <= self.B[v] for i in self.datapoints)
+        for v in self.tree.B:
+            self.model.addConstrs(self.Q[i, self.tree.RC[v]] <= self.B[v] for i in self.datapoints)
 
         # Each datapoint has at most one terminal vertex
         self.model.addConstrs(self.S.sum(i, '*') <= 1
@@ -170,7 +170,7 @@ class MBDT:
                         self.cut_constraint[i, v, c].lazy = 3
 
         # All feasible path constraints upfront
-        elif 'ALL' in self.cut_type:
+        elif 'UF' in self.cut_type:
             for i in self.datapoints:
                 for v in self.tree.V:
                     if v == 0: continue
@@ -234,7 +234,7 @@ class MBDT:
                     elif Q[i, model._tree.RC[v]] > 0.5:
                         Rv_I.add(i)
                 # Test for VIS of B_v(Q)
-                print('Test for VIS at', v, model._visnum)
+                # print('Test for VIS at', v, model._visnum)
                 VIS = MBDT.VIS(model._data, model._featureset, Lv_I, Rv_I, vis_weight=vis_weights)
                 if VIS is None:
                     continue
@@ -248,8 +248,7 @@ class MBDT:
 
         # Add Feasible Path for Datapoints Cuts at Fractional Point in Branch and Bound Tree
         if (where == GRB.Callback.MIPNODE) and (model.cbGet(GRB.Callback.MIPNODE_STATUS) == GRB.OPTIMAL):
-            if ('ALL' in model._cut_type) or ('GRB' in model._cut_type): pass
-            print('in bb tree')
+            if ('UF' in model._cut_type) or ('GRB' in model._cut_type): return
             start = time.perf_counter()
             # Only add cuts at root-node of branch and bound tree
             if model._rootcuts:
@@ -258,7 +257,7 @@ class MBDT:
             q_val = model.cbGetNodeRel(model._Q)
             s_val = model.cbGetNodeRel(model._S)
             # Add all violating cuts
-            if 'A' in model._cut_type:
+            if 'ALL' in model._cut_type:
                 if 'CUT1' in model.ModelName:
                     for (i, v) in s_val.keys():
                         for c in model._tree.path[v][1:]:
@@ -320,7 +319,7 @@ class MBDT:
             model._septime += (time.perf_counter() - start)
 
     ##############################################
-    # Find Valid Infeasible Subsystem (VIS) of Model
+    # Find Valid Infeasible Subsystem (aka IIS) of Model
     ##############################################
     @staticmethod
     def VIS(data, feature_set, Lv_I, Rv_I, vis_weight):
@@ -382,9 +381,7 @@ class MBDT:
         # Infeasiblity implies B_v(Q) is valid for all I in L_v(I), R_v(I)
         # i.e. each i is correctly sent to left, right child (linearly separable points)
         if VIS_model.Status == GRB.INFEASIBLE:
-            print('none found')
             return None
-        print('found VIS')
         lambda_L_sol = VIS_model.getAttr('X', lambda_L)
         lambda_R_sol = VIS_model.getAttr('X', lambda_R)
 
@@ -398,7 +395,6 @@ class MBDT:
             if lambda_R_sol[i] > VIS_model.Params.FeasibilityTol:
                 B_v_right.append(i)
                 vis_weight[i] += 1
-        print(B_v_left, B_v_right)
         return (B_v_left, B_v_right)
 
     ##############################################
@@ -468,15 +464,15 @@ class MBDT:
     ##############################################
     def extras(self):
         # number of maximum branching nodes
-        if any((match := elem).startswith('max_features') for elem in self.modelextras):
+        if any((match := elem).startswith('max_branch') for elem in self.modelextras):
             self.max_features = int(re.sub("[^0-9]", "", match))
-            print('No more than ' + str(self.max_features) + ' feature(s) used')
+            print('No more than ' + str(self.max_features) + ' branching vertices used')
             self.model.addConstr(quicksum(self.B[v] for v in self.tree.B) <= self.max_features)
 
         # exact number of branching nodes
-        if any((match := elem).startswith('num_features') for elem in self.modelextras):
+        if any((match := elem).startswith('num_branch') for elem in self.modelextras):
             self.max_features = int(re.sub("[^0-9]", "", match))
-            print(str(self.max_features) + ' feature(s) used')
+            print(str(self.max_features) + ' branching vertices used')
             self.model.addConstr(quicksum(self.B[v] for v in self.tree.B) == self.max_features)
 
         # regularization
@@ -497,6 +493,7 @@ class MBDT:
         Define (a_v, c_v) for v when P[v].x = 0, B[v].x = 1
             Use hard margin linear SVM on B_v(Q) to find (a_v, c_v)
         """
+        print('assigning tree')
         start = time.perf_counter()
         # clear any existing node assignments
         for v in self.tree.DG_prime.nodes():
@@ -524,14 +521,17 @@ class MBDT:
         for v in self.tree.V:
             # Assign class k to classification nodes
             if P_sol[v] > 0.5:
+                print(f'{v} assigned class')
                 for k in self.classes:
                     if W_sol[v, k] > 0.5:
                         self.tree.DG_prime.nodes[v]['class'] = k
             # Assign no class or branching rule to pruned nodes
             elif P_sol[v] < 0.5 and B_sol[v] < 0.5:
+                print(f'{v} pruned')
                 self.tree.DG_prime.nodes[v]['pruned'] = 0
             # Define (a_v, c_v) on branching nodes
             elif P_sol[v] < 0.5 and B_sol[v] > 0.5:
+                print(f'{v} branched')
                 # Lv_I, Rv_I index sets of observations sent to left, right child vertex of branching vertex v
                 # svm_y maps Lv_I to -1, Rv_I to +1 for training hard margin linear SVM
                 Lv_I, Rv_I = [], []
@@ -543,21 +543,22 @@ class MBDT:
                     elif Q_sol[i, self.tree.RC[v]] > 0.5:
                         Rv_I.append(i)
                         svm_y[i] = +1
-                print(svm_y)
                 # Find (a_v, c_v) for corresponding Lv_I, Rv_I
                 # If |Lv_I| = 0: (a_v, c_v) = (0, -1) sends all points to the right
                 if len(Lv_I) == 0:
+                    print('all going right')
                     self.tree.a_v[v] = {f: 0 for f in self.featureset}
                     self.tree.c_v[v] = -1
                 # If |Rv_I| = 0: (a_v, c_v) = (0, 1) sends all points to the left
                 elif len(Rv_I) == 0:
+                    print('all going left')
                     self.tree.a_v[v] = {f: 0 for f in self.featureset}
                     self.tree.c_v[v] = 1
                 # Find separating hyperplane according to Lv_I, Rv_I index sets
                 else:
+                    print('assigning hyperplane')
                     data_svm = self.data.loc[Lv_I + Rv_I, self.data.columns != self.target]
                     data_svm['svm'] = pd.Series(svm_y)
-                    print(data_svm.head(5))
                     svm = UTILS.Linear_Separator()
                     svm.SVM_fit(data_svm)
                     self.tree.a_v[v], self.tree.c_v[v] = svm.a_v, svm.c_v

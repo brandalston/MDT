@@ -12,7 +12,7 @@ import UTILS
 
 
 def main(argv):
-    print(argv)
+    # print(argv)
     data_files = None
     heights = None
     time_limit = None
