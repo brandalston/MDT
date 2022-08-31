@@ -8,7 +8,7 @@ import UTILS
 
 class MBDT:
 
-    def __init__(self, data, tree, modeltype, time_limit, target, warmstart, modelextras, log=None):
+    def __init__(self, data, tree, modeltype, time_limit, target, warmstart, modelextras, hp_type, log=None):
         """"
         Parameters
         data: training data
@@ -27,6 +27,7 @@ class MBDT:
         self.warmstart = warmstart
         self.modelextras = modelextras
         self.log = log
+        self.hp_type = hp_type
 
         print('Model: ' + str(self.modeltype))
         # Feature, Class and Index Sets
@@ -493,7 +494,7 @@ class MBDT:
         Define (a_v, c_v) for v when P[v].x = 0, B[v].x = 1
             Use hard margin linear SVM on B_v(Q) to find (a_v, c_v)
         """
-        print('assigning tree')
+        print('assigning tree', self.hp_type)
         start = time.perf_counter()
         # clear any existing node assignments
         for v in self.tree.DG_prime.nodes():
@@ -560,7 +561,7 @@ class MBDT:
                     data_svm = self.data.loc[Lv_I + Rv_I, self.data.columns != self.target]
                     data_svm['svm'] = pd.Series(svm_y)
                     svm = UTILS.Linear_Separator()
-                    svm.SVM_fit(data_svm)
+                    svm.SVM_fit(data_svm, self.hp_type)
                     self.tree.a_v[v], self.tree.c_v[v] = svm.a_v, svm.c_v
                 self.tree.DG_prime.nodes[v]['branching'] = (self.tree.a_v[v], self.tree.c_v[v])
         self.HP_time = time.perf_counter() - start

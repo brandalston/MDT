@@ -2,16 +2,17 @@ import model_runs
 # rand_states = [138, 15, 89, 42, 0]
 # """
 time_limit = 600
-rand_states = [138, 15, 89]
-file = 'testing.csv'
-heights = [3,4,5]
+rand_states = [138]
+file = 'testing_svm.csv'
+heights = [4]
 data_names = ['balance-scale']
 models = ['CUT1']
 # model_extras = ['regularization-3']
 model_extras = None
 warm_start = {'use': False, 'values': None}
+hp_type = 'linear'
 model_runs.main(
-    ["-d", data_names, "-h", heights, "-m", models, "-t",time_limit,
+    ["-d", data_names, "-h", heights, "-m", models, "-t", time_limit, "-p", hp_type,
      "-r", rand_states, "-w", warm_start, "-e", model_extras, "-f", file, "-l", False])
 
 """

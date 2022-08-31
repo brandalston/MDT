@@ -87,10 +87,13 @@ def get_data(file_name, target):
             data = pd.read_csv('Datasets/' + file_name + '.data', names=cols_dict[file_name], index_col='Id')
     if file_name in numerical_datasets:
         data_processed = preprocess(data, numerical_features=data.columns != target)
+        data_processed.rename(columns={col: col.replace('num__', '') for col in data_processed.columns}, inplace=True)
     if file_name in categorical_datasets:
         data_processed = preprocess(data, categorical_features=data.columns != target)
+        data_processed.rename(columns={col: col.replace('cat__', '') for col in data_processed.columns}, inplace=True)
     data_processed.name = file_name
     data_processed['target'] = data['target']
+
     return data_processed
     # except:
         # print("Dataset not found or error in preprocess!\n")
@@ -177,6 +180,8 @@ def preprocess(data, numerical_features=None, categorical_features=None, binariz
     ct = ColumnTransformer([("num", numerical_transformer, numerical_features),
                             ("cat", categorical_transformer, categorical_features)])
     data_new = pd.DataFrame(ct.fit_transform(data), index=data.index, columns=ct.get_feature_names_out())
+    # print(data.columns)
+    # print(data_new.columns)
     return data_new
 
 
@@ -197,14 +202,13 @@ class Linear_Separator():
         self.a_v = 0
         self.c_v = 0
 
-    def SVM_fit(self, data):
+    def SVM_fit(self, data, hp_type):
         global cc_L, cc_R
         if not np.array_equal(np.unique(data.svm), [-1, 1]):
             print("Class labels must be -1 and +1")
             raise ValueError
         feature_set = [f for f in data.columns if f != 'svm']
         B = len(feature_set)
-        C = [2**u for u in range(8)]
 
         # Define left and right index sets according to SVM class
         Lv_I = set(i for i in data.index if data.at[i, 'svm'] == -1)
@@ -220,57 +224,45 @@ class Linear_Separator():
         Rv_I -= common_points_R
         data = data.drop(common_points_L | common_points_R)
 
-        # """
         m = Model("MIP SVM normalized")
         m.Params.LogToConsole = 0
-        # m.Params.NumericFocus = 3
         u = m.addVars(feature_set, vtype=GRB.BINARY, name='U')
         err = m.addVars(data.index, vtype=GRB.CONTINUOUS, lb=0, name='err')
-        c_mip = m.addVar(vtype=GRB.CONTINUOUS, name='c')
-        a = m.addVars(feature_set, vtype=GRB.CONTINUOUS, lb=0, name='a')
+        b = m.addVar(vtype=GRB.CONTINUOUS, name='c')
+        w_pos = m.addVars(feature_set, vtype=GRB.CONTINUOUS, lb=0, name='a_pos')
+        w_neg = m.addVars(feature_set, vtype=GRB.CONTINUOUS, lb=0, name='a_neg')
 
-        m.setObjective(a.sum() + 10*err.sum(), GRB.MINIMIZE)
-        m.addConstrs(data.at[i, 'svm'] * (quicksum(a[f] * data.at[i, f] for f in feature_set) + c_mip) >= 1 - err[i]
-                     for i in data.index)
-        m.addConstr(quicksum(u[f] for f in feature_set) <= len(feature_set))
-        m.addConstrs(a[f] <= u[f] for f in feature_set)
-        m.addConstr(a.sum() <= 1)
+        if hp_type == 'linear':
+            m = Model("MIP SVM normalized split weights, w_1 objective")
+            m.setObjective(quicksum(w_pos[f] + w_neg[f] for f in feature_set) +
+                           10 * err.sum(), GRB.MINIMIZE)
+        elif hp_type == 'quadratic':
+            m = Model("MIP SVM normalized split weights, quadratic objective")
+            m.setObjective((1 / 2) * quicksum((w_pos[f] - w_neg[f]) * (w_pos[f] - w_neg[f]) for f in feature_set) +
+                           10 * err.sum(), GRB.MINIMIZE)
+        elif hp_type == 'rank':
+            m = Model("MIP SVM normalized split weights, u objective")
+            m.setObjective(u.sum() +
+                           10 * err.sum(), GRB.MINIMIZE)
+
+        m.addConstrs(data.at[i, 'svm'] * (quicksum((w_pos[f] - w_neg[f]) * data.at[i, f] for f in feature_set) + b)
+                     >= 1 - err[i] for i in data.index)
+        m.addConstr(quicksum(u[f] for f in feature_set) <= B)
+        m.addConstrs(w_pos[f] <= u[f] for f in feature_set)
+        m.addConstrs(w_neg[f] <= u[f] for f in feature_set)
+        m.addConstrs(w_pos[f] - w_neg[f] >= 0 for f in feature_set)
+        m.addConstr(w_neg.sum() <= 1)
+        m.addConstr(w_pos.sum() <= 1)
+
         m.optimize()
-
-        a_v = {f: a[f].X for f in feature_set}
-        c_v = c_mip.X  # Must flip intercept because of how QP was setup
-
-        u_dict = {f: u[f].X for f in feature_set}
-        # print(a_v)
-        # print(u_dict)
-        # print(c_v)
-        self.a_v, self.c_v = a_v, c_v
-        """
-        # """
-        m = Model("MIP SVM normalized split")
-        m.Params.LogToConsole = 0
-        # m.Params.NumericFocus = 3
-        u = m.addVars(feature_set, vtype=GRB.BINARY, name='U')
-        err = m.addVars(data.index, vtype=GRB.CONTINUOUS, lb=0, name='err')
-        c_mip = m.addVar(vtype=GRB.CONTINUOUS, name='c')
-        a_pos = m.addVars(feature_set, vtype=GRB.CONTINUOUS, lb=0, name='a_pos')
-        a_neg = m.addVars(feature_set, vtype=GRB.CONTINUOUS, lb=0, name='a_neg')
-
-        m.setObjective(quicksum(a_pos[f] + a_neg[f] for f in feature_set) + 10 * err.sum(), GRB.MINIMIZE)
-        m.addConstrs(data.at[i, 'svm'] * (quicksum((a_pos[f] - a_neg[f]) * data.at[i, f] for f in feature_set) + c_mip) >= 1 - err[i]
-                     for i in data.index)
-        # m.addConstr(quicksum(u[f] for f in feature_set) <= len(feature_set))
-        m.addConstrs(a_pos[f] <= u[f] for f in feature_set)
-        m.addConstrs(a_neg[f] <= u[f] for f in feature_set)
-        m.addConstr(a_pos.sum() <= 1)
-        m.addConstr(a_neg.sum() <= 1)
-        m.optimize()
-    
-        a_v = {f: a_pos[f].x - a_neg[f].x for f in feature_set}
-        c_v = c_mip.x
-        
-        print(a_v)
-        print(c_v)
+        u_dict = {f: u[f].X for f in feature_set if u[f].X > 0}
+        a_v = {f: w_pos[f].x - w_neg[f].x for f in feature_set}
+        c_v = b.x
+        a_final = {f: (w_pos[f].x, w_neg[f].x) for f in feature_set}
+        print(f'u values: {u_dict}')
+        print(f'w_pos,neg: {a_final}')
+        print(f'final weights: {a_v}')
+        print(f'c: {c_v}')
         self.a_v, self.c_v = a_v, c_v
         # """
         """
@@ -514,7 +506,7 @@ def model_summary(opt_model, tree, test_set, rand_state, results_file):
         results_writer.writerow(
             [opt_model.dataname, tree.height, len(opt_model.datapoints),
              test_acc/len(test_set), train_acc/len(opt_model.datapoints), opt_model.model.Runtime, opt_model.model.MIPGap,
-             opt_model.model.ObjVal, opt_model.model.ObjBound, opt_model.modeltype, opt_model.HP_time,
+             opt_model.model.ObjVal, opt_model.model.ObjBound, opt_model.modeltype, opt_model.HP_time, opt_model.hp_type,
              opt_model.model._septime, opt_model.model._sepnum, opt_model.model._sepcuts, opt_model.model._sepavg,
              opt_model.model._vistime, opt_model.model._visnum, opt_model.model._viscuts,
              opt_model.eps, opt_model.time_limit, rand_state,
