@@ -12,7 +12,7 @@ import UTILS
 
 
 def main(argv):
-    print(argv)
+    # print(argv)
     data_files = None
     heights = None
     time_limit = None
@@ -22,13 +22,13 @@ def main(argv):
     model_extras = None
     file_out = None
     log_files = None
-    hp_type = None
+    hp_info = None
 
     try:
-        opts, args = getopt.getopt(argv, "d:h:t:m:r:w:e:f:l:",
+        opts, args = getopt.getopt(argv, "d:h:t:m:r:w:e:f:p:l:",
                                    ["data_files=", "heights=", "time_limit=",
                                     "models=", "rand_states=", "warm_start=",
-                                    "model_extras=", "results_file=", "hp_type=", "log_files"])
+                                    "model_extras=", "results_file=", "hp_obj=", "log_files"])
     except getopt.GetoptError:
         sys.exit(2)
     for opt, arg in opts:
@@ -48,8 +48,8 @@ def main(argv):
             model_extras = arg
         elif opt in ("-f", "--results_file"):
             file_out = arg
-        elif opt in ("-p", "--hp_type"):
-            hp_type = arg
+        elif opt in ("-p", "--hp_info"):
+            hp_info = arg
         elif opt in ("-l", "--log_files"):
             log_files = arg
 
@@ -57,7 +57,7 @@ def main(argv):
     summary_columns = ['Data', 'H', '|I|',
                        'Out_Acc', 'In_Acc', 'Sol_Time',
                        'MIP_Gap', 'Obj_Val', 'Obj_Bound',
-                       'Model', 'HP_Time', 'HP_type',
+                       'Model', 'HP_Time', 'HP_Obj', 'HP_Rank',
                        'FP_CB_Time', 'FP_Num_CB', 'FP_Cuts', 'FP_Avg',
                        'VIS_CB_Time', 'VIS_Num_CB', 'VIS_Cuts',
                        'Eps', 'Time_Limit', 'Rand_State',
@@ -78,6 +78,7 @@ def main(argv):
     """ We assume the target column of dataset is labeled 'target'
     Change value at your discretion """
     target = 'target'
+
     for file in data_files:
         # pull dataset to train model with
         data = UTILS.get_data(file, target)
@@ -100,7 +101,7 @@ def main(argv):
                         tree = TREE(h=h)
                         # Model with 75% training set and time limit
                         opt_model = MBDT(data=model_set, tree=tree, target=target, modeltype=modeltype,
-                                         time_limit=time_limit, warmstart=warmstart, hp_type=hp_type,
+                                         time_limit=time_limit, warmstart=warmstart, hp_info=hp_info,
                                          modelextras=model_extras, log=log)
                         # Add connectivity constraints according to model type and solve
                         opt_model.formulation()
@@ -110,9 +111,9 @@ def main(argv):
                         if log_files: opt_model.model.write(log+'.lp')
                         opt_model.optimization()
                         print(f'Optimal solution found in {round(opt_model.model.Runtime, 4)}s.'
-                                  f'({time.strftime("%I:%M %p", time.localtime())})\n') if \
+                                  f'({time.strftime("%I:%M %p", time.localtime())})') if \
                             opt_model.model.RunTime < time_limit else \
-                            print(f'Time limit reached. ({time.strftime("%I:%M %p", time.localtime())})\n')
+                            print(f'Time limit reached. ({time.strftime("%I:%M %p", time.localtime())})')
                         opt_model.assign_tree()
                         # Uncomment to print model results
                         # UTILS.model_results(opt_model.model, opt_model.tree)

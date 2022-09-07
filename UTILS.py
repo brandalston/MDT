@@ -202,13 +202,12 @@ class Linear_Separator():
         self.a_v = 0
         self.c_v = 0
 
-    def SVM_fit(self, data, hp_type):
+    def SVM_fit(self, data, hp_info):
         global cc_L, cc_R
         if not np.array_equal(np.unique(data.svm), [-1, 1]):
             print("Class labels must be -1 and +1")
             raise ValueError
         feature_set = [f for f in data.columns if f != 'svm']
-        B = len(feature_set)
 
         # Define left and right index sets according to SVM class
         Lv_I = set(i for i in data.index if data.at[i, 'svm'] == -1)
@@ -223,49 +222,87 @@ class Linear_Separator():
         Lv_I -= common_points_L
         Rv_I -= common_points_R
         data = data.drop(common_points_L | common_points_R)
+        B = len(feature_set)
 
-        m = Model("MIP SVM normalized")
-        m.Params.LogToConsole = 0
-        u = m.addVars(feature_set, vtype=GRB.BINARY, name='U')
+        m = Model("MIP SVM split normalized")
+        u = m.addVars(feature_set, vtype=GRB.BINARY, name='u')
         err = m.addVars(data.index, vtype=GRB.CONTINUOUS, lb=0, name='err')
-        b = m.addVar(vtype=GRB.CONTINUOUS, name='c')
-        w_pos = m.addVars(feature_set, vtype=GRB.CONTINUOUS, lb=0, name='a_pos')
-        w_neg = m.addVars(feature_set, vtype=GRB.CONTINUOUS, lb=0, name='a_neg')
+        b = m.addVar(vtype=GRB.CONTINUOUS, name='b')
+        w_pos = m.addVars(feature_set, vtype=GRB.CONTINUOUS, lb=0, name='w_pos')
+        w_neg = m.addVars(feature_set, vtype=GRB.CONTINUOUS, lb=0, name='w_neg')
 
-        if hp_type == 'linear':
-            m = Model("MIP SVM normalized split weights, w_1 objective")
-            m.setObjective(quicksum(w_pos[f] + w_neg[f] for f in feature_set) +
-                           10 * err.sum(), GRB.MINIMIZE)
-        elif hp_type == 'quadratic':
-            m = Model("MIP SVM normalized split weights, quadratic objective")
+        # Retrieve hyperplane specification
+        #   objective: objective function type : quadratic, linear, rank of hyperplane
+        #   rank: UB on number of features used in hyperplane
+        if hp_info:
+            if 'objective' in hp_info:
+                if hp_info['objective'] == 'linear':
+                    m.setObjective(quicksum(w_pos[f] + w_neg[f] for f in feature_set) + err.sum(), GRB.MINIMIZE)
+                elif hp_info['objective'] == 'quadratic':
+                    m.setObjective((1 / 2) * quicksum((w_pos[f] - w_neg[f]) * (w_pos[f] - w_neg[f]) for f in feature_set) +
+                                   err.sum(), GRB.MINIMIZE)
+                elif hp_info['objective'] == 'rank':
+                    m.setObjective(u.sum() + err.sum(), GRB.MINIMIZE)
+            if 'rank' in hp_info:
+                if type(hp_info['rank']) is float: B = hp_info['rank'] * B
+                else: B -= 1
+        else:
             m.setObjective((1 / 2) * quicksum((w_pos[f] - w_neg[f]) * (w_pos[f] - w_neg[f]) for f in feature_set) +
-                           10 * err.sum(), GRB.MINIMIZE)
-        elif hp_type == 'rank':
-            m = Model("MIP SVM normalized split weights, u objective")
-            m.setObjective(u.sum() +
-                           10 * err.sum(), GRB.MINIMIZE)
+                           err.sum(), GRB.MINIMIZE)
 
         m.addConstrs(data.at[i, 'svm'] * (quicksum((w_pos[f] - w_neg[f]) * data.at[i, f] for f in feature_set) + b)
                      >= 1 - err[i] for i in data.index)
-        m.addConstr(quicksum(u[f] for f in feature_set) <= B)
+        m.addConstr(u.sum() <= B)
         m.addConstrs(w_pos[f] <= u[f] for f in feature_set)
         m.addConstrs(w_neg[f] <= u[f] for f in feature_set)
         m.addConstrs(w_pos[f] - w_neg[f] >= 0 for f in feature_set)
         m.addConstr(w_neg.sum() <= 1)
         m.addConstr(w_pos.sum() <= 1)
 
+        m.Params.LogToConsole = 0
         m.optimize()
-        u_dict = {f: u[f].X for f in feature_set if u[f].X > 0}
-        a_v = {f: w_pos[f].x - w_neg[f].x for f in feature_set}
-        c_v = b.x
-        a_final = {f: (w_pos[f].x, w_neg[f].x) for f in feature_set}
-        print(f'u values: {u_dict}')
-        print(f'w_pos,neg: {a_final}')
-        print(f'final weights: {a_v}')
-        print(f'c: {c_v}')
+
+        a_v = {f: w_pos[f].X - w_neg[f].X for f in feature_set}
+        c_v = b.X
+        # u_dict = {f: u[f].X for f in feature_set}
+        # print(sum(u_dict.values()), u_dict.values())
+        # for f in feature_set:
+            # print(u_dict[f], a_v[f])
         self.a_v, self.c_v = a_v, c_v
-        # """
+
         """
+        elif hp_type == 'double-cube':
+            m = Model("MIP SVM normalized")
+            u = m.addVars(feature_set, vtype=GRB.BINARY, name='u')
+            err = m.addVars(data.index, vtype=GRB.CONTINUOUS, lb=0, name='err')
+            b = m.addVar(vtype=GRB.CONTINUOUS, name='b')
+            w = m.addVars(feature_set, vtype=GRB.CONTINUOUS, lb=-1, name='w')
+            if hp_obj == 'linear':
+                m.setObjective(w.sum() + epsilon*err.sum(), GRB.MINIMIZE)
+            elif hp_obj == 'quadratic':
+                m.setObjective((1 / 2) * quicksum(w[f]*w[f] for f in feature_set) + epsilon * err.sum(), GRB.MINIMIZE)
+            elif hp_obj == 'rank':
+                m.setObjective(u.sum() + 10 * err.sum(), GRB.MINIMIZE)
+            m.addConstrs(data.at[i, 'svm'] * (quicksum(w[f] * data.at[i, f] for f in feature_set) + b)
+                         >= 1 - err[i] for i in data.index)
+            m.addConstr(quicksum(u[f] for f in feature_set) <= B-1)
+            m.addConstrs(w[f] <= u[f] for f in feature_set)
+            m.addConstr(w.sum() <= 1)
+            m.addConstr(w.sum() >= 0)
+            m.addConstrs(-1*(w[f]+1) >= -1*u[f] for f in feature_set)
+
+            m.Params.LogToConsole = 1
+            m.optimize()
+            for f in feature_set:
+                print(f, w[f], u[f])
+            a_v = {f: w[f].x for f in feature_set}
+            c_v = b.x
+            # u_dict = {f: u[f].x for f in feature_set}
+            # print('u values', u_dict)
+            # print('a_values', a_v)
+            self.a_v, self.c_v = a_v, c_v
+
+        
         try:
             # Find separating hyperplane using l1-SVM normalized MIP formulation
             m = Model("MIP SVM normalized")
@@ -505,8 +542,9 @@ def model_summary(opt_model, tree, test_set, rand_state, results_file):
         results_writer = csv.writer(results, delimiter=',', quotechar='"')
         results_writer.writerow(
             [opt_model.dataname, tree.height, len(opt_model.datapoints),
-             test_acc/len(test_set), train_acc/len(opt_model.datapoints), opt_model.model.Runtime, opt_model.model.MIPGap,
-             opt_model.model.ObjVal, opt_model.model.ObjBound, opt_model.modeltype, opt_model.HP_time, opt_model.hp_type,
+             test_acc/len(test_set), train_acc/len(opt_model.datapoints),
+             opt_model.model.Runtime, opt_model.model.MIPGap, opt_model.model.ObjVal, opt_model.model.ObjBound,
+             opt_model.modeltype, opt_model.HP_time, opt_model.hp_info['objective'], opt_model.hp_info['rank'],
              opt_model.model._septime, opt_model.model._sepnum, opt_model.model._sepcuts, opt_model.model._sepavg,
              opt_model.model._vistime, opt_model.model._visnum, opt_model.model._viscuts,
              opt_model.eps, opt_model.time_limit, rand_state,

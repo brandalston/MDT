@@ -8,7 +8,7 @@ import UTILS
 
 class MBDT:
 
-    def __init__(self, data, tree, modeltype, time_limit, target, warmstart, modelextras, hp_type, log=None):
+    def __init__(self, data, tree, modeltype, time_limit, target, warmstart, modelextras, hp_info=None, log=None):
         """"
         Parameters
         data: training data
@@ -27,7 +27,7 @@ class MBDT:
         self.warmstart = warmstart
         self.modelextras = modelextras
         self.log = log
-        self.hp_type = hp_type
+        self.hp_info = hp_info
 
         print('Model: ' + str(self.modeltype))
         # Feature, Class and Index Sets
@@ -90,6 +90,13 @@ class MBDT:
         self.model._septime, self.model._sepnum, self.model._sepcuts, self.model._sepavg = 0, 0, 0, 0
         self.model._vistime, self.model._visnum, self.model._viscuts = 0, 0, 0
         self.model._rootcuts, self.model._eps = self.rootcuts, self.eps
+
+        """ Hyperplane Specifications """
+        if self.hp_info:
+            print(f'Hyperplane Objective:', hp_info['objective'])
+            print(f'Hyperplane Rank:', hp_info['rank'])
+            self.hp_obj, self.hp_rank = hp_info['objective'], hp_info['rank']
+        else: self.hp_info = {'objective': 'quadratic', 'rank': 'full'}
 
     ##############################################
     # MIP Model Formulation
@@ -494,7 +501,6 @@ class MBDT:
         Define (a_v, c_v) for v when P[v].x = 0, B[v].x = 1
             Use hard margin linear SVM on B_v(Q) to find (a_v, c_v)
         """
-        print('assigning tree', self.hp_type)
         start = time.perf_counter()
         # clear any existing node assignments
         for v in self.tree.DG_prime.nodes():
@@ -522,19 +528,19 @@ class MBDT:
         for v in self.tree.V:
             # Assign class k to classification nodes
             if P_sol[v] > 0.5:
-                print(f'{v} assigned class')
+                # print(f'{v} assigned class')
                 for k in self.classes:
                     if W_sol[v, k] > 0.5:
                         self.tree.DG_prime.nodes[v]['class'] = k
             # Assign no class or branching rule to pruned nodes
             elif P_sol[v] < 0.5 and B_sol[v] < 0.5:
-                print(f'{v} pruned')
+                # print(f'{v} pruned')
                 self.tree.DG_prime.nodes[v]['pruned'] = 0
             # Define (a_v, c_v) on branching nodes
             elif P_sol[v] < 0.5 and B_sol[v] > 0.5:
-                print(f'{v} branched')
+                # print(f'{v} branched')
                 # Lv_I, Rv_I index sets of observations sent to left, right child vertex of branching vertex v
-                # svm_y maps Lv_I to -1, Rv_I to +1 for training hard margin linear SVM
+                # svm_y maps Lv_I to -1, Rv_I to +1 for training hyperplane
                 Lv_I, Rv_I = [], []
                 svm_y = {i: 0 for i in self.datapoints}
                 for i in self.datapoints:
@@ -547,21 +553,22 @@ class MBDT:
                 # Find (a_v, c_v) for corresponding Lv_I, Rv_I
                 # If |Lv_I| = 0: (a_v, c_v) = (0, -1) sends all points to the right
                 if len(Lv_I) == 0:
-                    print('all going right')
+                    # print('all going right')
                     self.tree.a_v[v] = {f: 0 for f in self.featureset}
                     self.tree.c_v[v] = -1
                 # If |Rv_I| = 0: (a_v, c_v) = (0, 1) sends all points to the left
                 elif len(Rv_I) == 0:
-                    print('all going left')
+                    # print('all going left')
                     self.tree.a_v[v] = {f: 0 for f in self.featureset}
                     self.tree.c_v[v] = 1
                 # Find separating hyperplane according to Lv_I, Rv_I index sets
                 else:
-                    print('assigning hyperplane')
+                    # print('assigning hyperplane')
                     data_svm = self.data.loc[Lv_I + Rv_I, self.data.columns != self.target]
                     data_svm['svm'] = pd.Series(svm_y)
                     svm = UTILS.Linear_Separator()
-                    svm.SVM_fit(data_svm, self.hp_type)
+                    svm.SVM_fit(data_svm, self.hp_info)
                     self.tree.a_v[v], self.tree.c_v[v] = svm.a_v, svm.c_v
                 self.tree.DG_prime.nodes[v]['branching'] = (self.tree.a_v[v], self.tree.c_v[v])
         self.HP_time = time.perf_counter() - start
+        print(f'Hyperplanes found in {self.HP_time}s. ({time.strftime("%I:%M %p", time.localtime())})\n')

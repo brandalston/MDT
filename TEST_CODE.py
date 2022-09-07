@@ -1,39 +1,38 @@
 import model_runs
-# rand_states = [138, 15, 89, 42, 0]
+"""
+rand_states = [138, 15, 89, 42, 0]
+rand_states = [138, 15]
+time_limit = 600
+heights = [2,3,4,5]
+file = 'hp_variants.csv'
+models = ['CUT1']
+model_extras = None
+warm_start = {'use': False, 'values': None}
+gen = ((obj, rank) for obj in ['linear','quadratic'] for rank in ['|F|-1',0.9,0.75,0.5,0.25,0.1])
+data_names = ['soybean-small']
+for obj, rank in gen:
+    hp_info = {'objective': obj, 'rank': rank}
+    model_runs.main(
+        ["-d", data_names, "-h", heights, "-m", models, "-t", time_limit, "-p", hp_info,
+         "-r", rand_states, "-w", warm_start, "-e", model_extras, "-f", file, "-l", False])
+"""
+
 # """
 time_limit = 600
-rand_states = [138]
-file = 'testing_svm.csv'
+rand_states = [138, 15]
+file = 'hp_variants.csv'
 heights = [4]
-data_names = ['balance-scale']
+data_names = ['soybean-small']
 models = ['CUT1']
 # model_extras = ['regularization-3']
 model_extras = None
 warm_start = {'use': False, 'values': None}
-hp_type = 'linear'
-model_runs.main(
-    ["-d", data_names, "-h", heights, "-m", models, "-t", time_limit, "-p", hp_type,
-     "-r", rand_states, "-w", warm_start, "-e", model_extras, "-f", file, "-l", False])
+# hp_info = {'objective': 'quadratic', 'rank': '|F|-1'}
+gen = ((obj, rank) for obj in ['linear','quadratic'] for rank in ['|F|-1',0.9,0.75])
 
-"""
-
-time_limit = 600
-rand_states = [138, 15, 89, 42, 0]
-models = ['CUT1']
-heights = [5]
-file = 'testing_3.csv'
-data_names = ['car']
-model_extras = None
-warm_start = {'use': False, 'values': None}
-model_runs.main(
-    ["-d", data_names, "-h", heights, "-m", models, "-t",time_limit,
-     "-r", rand_states, "-w", warm_start, "-e", model_extras, "-f", file, "-l", False])
-     
-heights = [2,3,4,5]
-data_names = ['kr-vs-kp', 'house-votes-84',
-              'tic-tac-toe', 'hayes-roth', 'soybean-small', 'breast-cancer']
-model_runs.main(
-    ["-d", data_names, "-h", heights, "-m", models, "-t",time_limit,
-     "-r", rand_states, "-w", warm_start, "-e", model_extras, "-f", file, "-l", False])
-
-"""
+for obj, rank in gen:
+    hp_info = {'objective': obj, 'rank': rank}
+    model_runs.main(
+        ["-d", data_names, "-h", heights, "-m", models, "-t", time_limit, "-p", hp_info,
+         "-r", rand_states, "-w", warm_start, "-e", model_extras, "-f", file, "-l", False])
+# """
