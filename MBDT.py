@@ -571,4 +571,4 @@ class MBDT:
                     self.tree.a_v[v], self.tree.c_v[v] = svm.a_v, svm.c_v
                 self.tree.DG_prime.nodes[v]['branching'] = (self.tree.a_v[v], self.tree.c_v[v])
         self.HP_time = time.perf_counter() - start
-        print(f'Hyperplanes found in {self.HP_time}s. ({time.strftime("%I:%M %p", time.localtime())})\n')
+        print(f'Hyperplanes found in {round(self.HP_time,4)}s. ({time.strftime("%I:%M %p", time.localtime())})\n')
