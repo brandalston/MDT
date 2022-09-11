@@ -1,6 +1,7 @@
 import time
 import pandas as pd
 import networkx as nx
+from math import floor
 import random
 from gurobipy import *
 import UTILS
@@ -75,6 +76,8 @@ class MBDT:
         self.regularization = 'None'
         self.max_features = 'None'
         self.HP_time = 0
+        self.HP_size = 0
+        self.svm_branches = 0
 
         """ Gurobi Optimization Parameters """
         self.model = Model(f'{self.modeltype}')
@@ -92,11 +95,17 @@ class MBDT:
         self.model._rootcuts, self.model._eps = self.rootcuts, self.eps
 
         """ Hyperplane Specifications """
-        if self.hp_info:
-            print(f'Hyperplane Objective:', hp_info['objective'])
-            print(f'Hyperplane Rank:', hp_info['rank'])
-            self.hp_obj, self.hp_rank = hp_info['objective'], hp_info['rank']
-        else: self.hp_info = {'objective': 'quadratic', 'rank': 'full'}
+        self.hp_objective, self.hp_rank = 'quadratic', len(self.featureset)
+        if self.hp_info is not None:
+            print(f'Hyperplane Objective:', self.hp_info['objective'])
+            self.hp_objective = self.hp_info['objective']
+            if type(self.hp_info['rank']) is float:
+                self.hp_rank = floor(hp_info['rank'] * len(self.featureset))
+            elif hp_info['rank'] == 'full':
+                self.hp_rank = len(self.featureset)
+            else:
+                self.hp_rank = len(self.featureset) - 1
+            print(f'Hyperplane Rank:', self.hp_rank)
 
     ##############################################
     # MIP Model Formulation
@@ -406,6 +415,91 @@ class MBDT:
         return B_v_left, B_v_right
 
     ##############################################
+    # Assign Nodes of Tree from Model Solution
+    ##############################################
+    def assign_tree(self):
+        """
+        Assign nodes of tree from model solution
+        Assign class k to v when P[v].x = 1, W[v, k].x = 1
+        Assign pruned v to when P[v].x = 0, B[v].x = 0
+        Define (a_v, c_v) for v when P[v].x = 0, B[v].x = 1
+            Use hard margin linear SVM on B_v(Q) to find (a_v, c_v)
+        """
+        start = time.perf_counter()
+        # clear any existing node assignments
+        for v in self.tree.DG_prime.nodes():
+            if 'class' in self.tree.DG_prime.nodes[v]:
+                del self.tree.DG_prime.nodes[v]['class']
+            if 'branching' in self.tree.DG_prime.nodes[v]:
+                del self.tree.DG_prime.nodes[v]['branching']
+            if 'pruned' in self.tree.DG_prime.nodes[v]:
+                del self.tree.DG_prime.nodes[v]['pruned']
+
+        # Retrieve solution values
+        try:
+            B_sol = self.model.getAttr('X', self.B)
+            W_sol = self.model.getAttr('X', self.W)
+            P_sol = self.model.getAttr('X', self.P)
+            Q_sol = self.model.getAttr('X', self.Q)
+        # If no incumbent was found, then predict arbitrary class at root node
+        except GurobiError:
+            self.tree.class_nodes[0] = random.choice(self.classes)
+            for v in self.tree.V:
+                if v == 0: continue
+                self.tree.pruned_nodes[v] = 0
+            return
+
+        for v in self.tree.V:
+            # Assign class k to classification nodes
+            if P_sol[v] > 0.5:
+                # print(f'{v} assigned class')
+                for k in self.classes:
+                    if W_sol[v, k] > 0.5:
+                        self.tree.class_nodes[v] = k
+            # Assign no class or branching rule to pruned nodes
+            elif P_sol[v] < 0.5 and B_sol[v] < 0.5:
+                # print(f'{v} pruned')
+                self.tree.pruned_nodes[v] = 0
+            # Define (a_v, c_v) on branching nodes
+            elif P_sol[v] < 0.5 and B_sol[v] > 0.5:
+                # print(f'{v} branched')
+                # Lv_I, Rv_I index sets of observations sent to left, right child vertex of branching vertex v
+                # svm_y maps Lv_I to -1, Rv_I to +1 for training hyperplane
+                Lv_I, Rv_I = [], []
+                svm_y = {i: 0 for i in self.datapoints}
+                for i in self.datapoints:
+                    if Q_sol[i, self.tree.LC[v]] > 0.5:
+                        Lv_I.append(i)
+                        svm_y[i] = -1
+                    elif Q_sol[i, self.tree.RC[v]] > 0.5:
+                        Rv_I.append(i)
+                        svm_y[i] = +1
+                # Find (a_v, c_v) for corresponding Lv_I, Rv_I
+                # If |Lv_I| = 0: (a_v, c_v) = (0, -1) sends all points to the right
+                if len(Lv_I) == 0:
+                    # print('all going right')
+                    self.tree.a_v[v] = {f: 0 for f in self.featureset}
+                    self.tree.c_v[v] = -1
+                # If |Rv_I| = 0: (a_v, c_v) = (0, 1) sends all points to the left
+                elif len(Rv_I) == 0:
+                    # print('all going left')
+                    self.tree.a_v[v] = {f: 0 for f in self.featureset}
+                    self.tree.c_v[v] = 1
+                # Find separating hyperplane according to Lv_I, Rv_I index sets
+                else:
+                    # print('assigning hyperplane')
+                    data_svm = self.data.loc[Lv_I + Rv_I, self.data.columns != self.target]
+                    data_svm['svm'] = pd.Series(svm_y)
+                    svm = UTILS.Linear_Separator()
+                    svm.SVM_fit(data_svm, self.hp_info)
+                    self.tree.a_v[v], self.tree.c_v[v] = svm.a_v, svm.c_v
+                    self.HP_size += svm.hp_size
+                    self.svm_branches += 1
+                self.tree.branch_nodes[v] = (self.tree.a_v[v], self.tree.c_v[v])
+        self.HP_time = time.perf_counter() - start
+        print(f'Hyperplanes found in {round(self.HP_time,4)}s. ({time.strftime("%I:%M %p", time.localtime())})\n')
+
+    ##############################################
     # Warm Start Model
     ##############################################
     def warm_start(self):
@@ -489,86 +583,3 @@ class MBDT:
             print('Regularization: ' + str(self.regularization) + ' datapoints required for classification vertices')
             self.model.addConstrs(quicksum(self.S[i, v] for i in self.datapoints) >= self.regularization * self.P[v]
                                   for v in self.tree.V)
-
-    ##############################################
-    # Assign Nodes of Tree from Model Solution
-    ##############################################
-    def assign_tree(self):
-        """
-        Assign nodes of tree from model solution
-        Assign class k to v when P[v].x = 1, W[v, k].x = 1
-        Assign pruned v to when P[v].x = 0, B[v].x = 0
-        Define (a_v, c_v) for v when P[v].x = 0, B[v].x = 1
-            Use hard margin linear SVM on B_v(Q) to find (a_v, c_v)
-        """
-        start = time.perf_counter()
-        # clear any existing node assignments
-        for v in self.tree.DG_prime.nodes():
-            if 'class' in self.tree.DG_prime.nodes[v]:
-                del self.tree.DG_prime.nodes[v]['class']
-            if 'branching' in self.tree.DG_prime.nodes[v]:
-                del self.tree.DG_prime.nodes[v]['branching']
-            if 'pruned' in self.tree.DG_prime.nodes[v]:
-                del self.tree.DG_prime.nodes[v]['pruned']
-
-        # Retrieve solution values
-        try:
-            B_sol = self.model.getAttr('X', self.B)
-            W_sol = self.model.getAttr('X', self.W)
-            P_sol = self.model.getAttr('X', self.P)
-            Q_sol = self.model.getAttr('X', self.Q)
-        # If no incumbent was found, then predict arbitrary class at root node
-        except GurobiError:
-            self.tree.DG_prime.nodes[0]['class'] = random.choice(self.classes)
-            for v in self.tree.V:
-                if v == 0: continue
-                self.tree.DG_prime.nodes[v]['pruned'] = 0
-            return
-
-        for v in self.tree.V:
-            # Assign class k to classification nodes
-            if P_sol[v] > 0.5:
-                # print(f'{v} assigned class')
-                for k in self.classes:
-                    if W_sol[v, k] > 0.5:
-                        self.tree.class_nodes[v] = k
-            # Assign no class or branching rule to pruned nodes
-            elif P_sol[v] < 0.5 and B_sol[v] < 0.5:
-                # print(f'{v} pruned')
-                self.tree.pruned_nodes[v] = 0
-            # Define (a_v, c_v) on branching nodes
-            elif P_sol[v] < 0.5 and B_sol[v] > 0.5:
-                # print(f'{v} branched')
-                # Lv_I, Rv_I index sets of observations sent to left, right child vertex of branching vertex v
-                # svm_y maps Lv_I to -1, Rv_I to +1 for training hyperplane
-                Lv_I, Rv_I = [], []
-                svm_y = {i: 0 for i in self.datapoints}
-                for i in self.datapoints:
-                    if Q_sol[i, self.tree.LC[v]] > 0.5:
-                        Lv_I.append(i)
-                        svm_y[i] = -1
-                    elif Q_sol[i, self.tree.RC[v]] > 0.5:
-                        Rv_I.append(i)
-                        svm_y[i] = +1
-                # Find (a_v, c_v) for corresponding Lv_I, Rv_I
-                # If |Lv_I| = 0: (a_v, c_v) = (0, -1) sends all points to the right
-                if len(Lv_I) == 0:
-                    # print('all going right')
-                    self.tree.a_v[v] = {f: 0 for f in self.featureset}
-                    self.tree.c_v[v] = -1
-                # If |Rv_I| = 0: (a_v, c_v) = (0, 1) sends all points to the left
-                elif len(Rv_I) == 0:
-                    # print('all going left')
-                    self.tree.a_v[v] = {f: 0 for f in self.featureset}
-                    self.tree.c_v[v] = 1
-                # Find separating hyperplane according to Lv_I, Rv_I index sets
-                else:
-                    # print('assigning hyperplane')
-                    data_svm = self.data.loc[Lv_I + Rv_I, self.data.columns != self.target]
-                    data_svm['svm'] = pd.Series(svm_y)
-                    svm = UTILS.Linear_Separator()
-                    svm.SVM_fit(data_svm, self.hp_info)
-                    self.tree.a_v[v], self.tree.c_v[v] = svm.a_v, svm.c_v
-                self.tree.branch_nodes[v] = (self.tree.a_v[v], self.tree.c_v[v])
-        self.HP_time = time.perf_counter() - start
-        print(f'Hyperplanes found in {round(self.HP_time,4)}s. ({time.strftime("%I:%M %p", time.localtime())})\n')

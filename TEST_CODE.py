@@ -20,14 +20,14 @@ for obj, rank in gen:
 # """
 time_limit = 600
 rand_states = [138, 15]
-file = 'benchmark_testing.csv'
-heights = [4]
-data_names = ['soybean-small']
+file = 'hp_size_testing.csv'
+heights = [2]
+data_names = ['soybean-small','house-votes-84']
 models = ['CUT1']
 # model_extras = ['regularization-3']
 model_extras = None
 warm_start = {'use': False, 'values': None}
-hp_info = {'objective': 'quadratic', 'rank': 1}
+hp_info = {'objective': 'quadratic', 'rank': .5}
 model_runs.main(
         ["-d", data_names, "-h", heights, "-m", models, "-t", time_limit, "-p", hp_info,
          "-r", rand_states, "-w", warm_start, "-e", model_extras, "-f", file, "-l", False])

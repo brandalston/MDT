@@ -9,7 +9,7 @@ from sklearn.compose import ColumnTransformer
 from gurobipy import *
 import networkx as nx
 import csv
-
+from math import floor
 
 def get_data(file_name, target):
     # Return dataset from 'file_name' in Pandas dataframe
@@ -201,6 +201,7 @@ class Linear_Separator():
     def __init__(self):
         self.a_v = 0
         self.c_v = 0
+        self.hp_size = 0
 
     def SVM_fit(self, data, hp_info):
         global cc_L, cc_R
@@ -234,22 +235,23 @@ class Linear_Separator():
         # Retrieve hyperplane specification
         #   objective: objective function type : quadratic, linear, rank of hyperplane
         #   rank: UB on number of features used in hyperplane
-        if hp_info:
-            if 'objective' in hp_info:
-                if hp_info['objective'] == 'linear':
-                    m.setObjective(quicksum(w_pos[f] + w_neg[f] for f in feature_set) + err.sum(), GRB.MINIMIZE)
-                elif hp_info['objective'] == 'quadratic':
-                    m.setObjective((1 / 2) * quicksum((w_pos[f] - w_neg[f]) * (w_pos[f] - w_neg[f]) for f in feature_set) +
-                                   err.sum(), GRB.MINIMIZE)
-                elif hp_info['objective'] == 'rank':
-                    m.setObjective(u.sum() + err.sum(), GRB.MINIMIZE)
-            if 'rank' in hp_info:
-                if type(hp_info['rank']) is float: B = hp_info['rank'] * B
-                else: B -= 1
+        if hp_info is not None:
+            if hp_info['objective'] == 'linear':
+                m.setObjective(quicksum(w_pos[f] + w_neg[f] for f in feature_set) + err.sum(), GRB.MINIMIZE)
+            elif hp_info['objective'] == 'quadratic':
+                m.setObjective((1 / 2) * quicksum((w_pos[f] - w_neg[f]) * (w_pos[f] - w_neg[f]) for f in feature_set) +
+                               err.sum(), GRB.MINIMIZE)
+            elif hp_info['objective'] == 'rank':
+                m.setObjective(u.sum() + err.sum(), GRB.MINIMIZE)
+            if type(hp_info['rank']) is float:
+                B = floor(hp_info['rank'] * B)
+            elif hp_info['rank'] == 'full':
+                pass
+            else:
+                B -= 1
         else:
             m.setObjective((1 / 2) * quicksum((w_pos[f] - w_neg[f]) * (w_pos[f] - w_neg[f]) for f in feature_set) +
                            err.sum(), GRB.MINIMIZE)
-
         m.addConstrs(data.at[i, 'svm'] * (quicksum((w_pos[f] - w_neg[f]) * data.at[i, f] for f in feature_set) + b)
                      >= 1 - err[i] for i in data.index)
         m.addConstr(u.sum() <= B)
@@ -264,13 +266,225 @@ class Linear_Separator():
 
         a_v = {f: w_pos[f].X - w_neg[f].X for f in feature_set}
         c_v = b.X
-        # u_dict = {f: u[f].X for f in feature_set}
-        # print(sum(u_dict.values()), u_dict.values())
-        # for f in feature_set:
-            # print(u_dict[f], a_v[f])
+        u_dict = {f: u[f].X for f in feature_set if a_v[f] > 10**(-8)}
         self.a_v, self.c_v = a_v, c_v
+        self.hp_size = sum(u_dict.values())
 
-        """
+        return self
+
+
+def model_results(model, tree):
+    # Print assigned branching, classification, and pruned nodes of tree
+
+    for v in tree.V:
+        if model._P[v].x > 0.5:
+            for k in model._data[model._target].unique():
+                if model._W[v, k].x > 0.5:
+                    print('Vertex ' + str(v) + ' class ' + str(k))
+        elif model._P[v].x < 0.5 and model._B[v].x > 0.5:
+            print('Vertex ' + str(v) + ' branching', tree.DG_prime.nodes[v]['branching'])
+        elif model._P[v].x < 0.5 and model._B[v].x < 0.5:
+            print('Vertex ' + str(v) + ' pruned')
+
+    # Print datapoint paths through tree
+    for i in sorted(model._data.index):
+        path = [0]
+        for v in model._tree.V:
+            if model._Q[i, v].x > 0.5:
+                path.append(v)
+                if model._S[i, v].x > 0.5:
+                    print('Datapoint ' + str(i) + ' correctly assigned class ' + str(model._data.at[i, model._target])
+                         + ' at ' + str(v) + '. Path: ', path)
+                for k in model._data[model._target].unique():
+                    if model._W[v, k].x > 0.5:
+                        print('datapoint ' + str(i) + ' incorrectly assigned class ' + str(k)
+                              + ' at ' + str(v) + '. Path: ', path)
+
+
+def tree_check(tree):
+    class_nodes = {v: tree.DG_prime.nodes[v]['class']
+                   for v in tree.DG_prime.nodes if 'class' in tree.DG_prime.nodes[v]}
+    branch_nodes = {v: tree.DG_prime.nodes[v]['branching']
+                    for v in tree.DG_prime.nodes if 'branching' in tree.DG_prime.nodes[v]}
+    pruned_nodes = {v: tree.DG_prime.nodes[v]['pruned']
+                    for v in tree.DG_prime.nodes if 'pruned' in tree.DG_prime.nodes[v]}
+    for v in class_nodes:
+        if not (all(n in branch_nodes for n in tree.path[v][:-1])):
+            return False
+        if not (all(c in pruned_nodes for c in tree.child[v])):
+            return False
+    return True
+
+
+def data_predict(tree, data, target):
+    # Ensure assigned tree is valid
+    if not tree_check(tree): print('Tree is invalid')
+    feature_set = data.columns.drop('target')
+    # Results dictionary for datapoint assignments and path through tree
+    acc = 0
+    results = {i: [None, []] for i in data.index}
+
+    for i in data.index:
+        v = 0
+        while results[i][0] is None:
+            results[i][1].append(v)
+            if v in tree.branch_nodes:
+                (a_v, c_v) = tree.branch_nodes[v]
+                v = tree.LC[v] if sum(a_v[f] * data.at[i, f] for f in feature_set) <= c_v else tree.RC[
+                    v]
+            elif v in tree.class_nodes:
+                results[i][0] = tree.class_nodes[v]
+                if results[i][0] == data.at[i, target]:
+                    acc += 1
+                    results[i].append('correct')
+                else:
+                    results[i].append('incorrect')
+            else:
+                results[i][0] = 'ERROR'
+
+    return acc, results
+
+
+def model_summary(opt_model, tree, test_set, rand_state, results_file):
+    # Ensure Tree Valid
+    if not tree_check(tree): print('Invalid Tree!!')
+    # Test / Train Acc
+    test_acc, test_assignments = data_predict(tree=tree, data=test_set, target=opt_model.target)
+    train_acc, train_assignments = data_predict(tree=tree, data=opt_model.data, target=opt_model.target)
+
+    # Update .csv file with modeltype metrics
+    with open(results_file, mode='a') as results:
+        results_writer = csv.writer(results, delimiter=',', quotechar='"')
+        results_writer.writerow(
+            [opt_model.dataname, tree.height, len(opt_model.datapoints), len(opt_model.featureset),
+             test_acc/len(test_set), train_acc/len(opt_model.datapoints),
+             opt_model.model.Runtime, opt_model.model.MIPGap, opt_model.model.ObjVal, opt_model.model.ObjBound,
+             opt_model.modeltype, opt_model.HP_time, opt_model.HP_size / opt_model.svm_branches, opt_model.hp_objective, opt_model.hp_rank,
+             opt_model.model._septime, opt_model.model._sepnum, opt_model.model._sepcuts, opt_model.model._sepavg,
+             opt_model.model._vistime, opt_model.model._visnum, opt_model.model._viscuts,
+             opt_model.eps, opt_model.time_limit, rand_state,
+             opt_model.warmstart['use'], opt_model.regularization, opt_model.max_features])
+        results.close()
+
+
+def random_tree(tree, data, target):
+    # Clear any existing node assignments
+    for v in tree.V:
+        if 'class' in tree.DG_prime.nodes[v]:
+            del tree.DG_prime.nodes[v]['class']
+        if 'branching' in tree.DG_prime.nodes[v]:
+            del tree.DG_prime.nodes[v]['branching']
+        if 'pruned' in tree.DG_prime.nodes[v]:
+            del tree.DG_prime.nodes[v]['pruned']
+
+    TD_best_acc = -1
+    BU_best_acc = -1
+    for i in range(50):
+        TD_tree = TD_rand_tree(tree, data, target)
+        TD_acc, TD_results = data_predict(TD_tree, data, target)
+        if TD_acc > TD_best_acc:
+            TD_best_acc = TD_acc
+            TD_best_results = TD_results
+            best_TD_tree = TD_tree
+
+    for i in range(50):
+        BU_tree = BU_rand_tree(tree, data, target)
+        BU_acc, BU_results = data_predict(BU_tree, data, target)
+        if BU_acc > BU_best_acc:
+            BU_best_acc = BU_acc
+            BU_best_results = BU_results
+            best_BU_tree = BU_tree
+    if TD_best_acc > BU_best_acc:
+        return {'tree': best_TD_tree, 'results': TD_best_results}
+    else:
+        return {'tree': best_BU_tree, 'results': BU_best_results}
+
+
+def TD_rand_tree(tree, data, target):
+    # Clear any existing node assignments
+    for v in tree.V:
+        if 'class' in tree.DG_prime.nodes[v]:
+            del tree.DG_prime.nodes[v]['class']
+        if 'branching' in tree.DG_prime.nodes[v]:
+            del tree.DG_prime.nodes[v]['branching']
+        if 'pruned' in tree.DG_prime.nodes[v]:
+            del tree.DG_prime.nodes[v]['pruned']
+    classes = data[target].unique()
+    feature_set = [col for col in data.columns if col != target]
+
+    # Top-down random tree
+    tree.a_v[0], tree.c_v[0] = {f: random.random() for f in feature_set}, random.random()
+    tree.DG_prime.nodes[0]['branching'] = (tree.a_v[0], tree.c_v[0])
+
+    for level in tree.node_level:
+        if level == 0: continue
+        for v in tree.node_level[level]:
+            if 'branching' in tree.DG_prime.nodes[tree.direct_ancestor[v]]:
+                if random.random() > .5 and level != tree.height:
+                    tree.a_v[v], tree.c_v[v] = {f: random.random() for f in feature_set}, random.random()
+                    tree.DG_prime.nodes[v]['branching'] = (tree.a_v[v], tree.c_v[v])
+                else:
+                    tree.DG_prime.nodes[v]['class'] = random.choice(classes)
+            else:
+                tree.DG_prime.nodes[v]['pruned'] = 0
+    return tree
+
+
+def BU_rand_tree(tree, data, target):
+    # Clear any existing node assignments
+    for v in tree.V:
+        if 'class' in tree.DG_prime.nodes[v]:
+            del tree.DG_prime.nodes[v]['class']
+        if 'branching' in tree.DG_prime.nodes[v]:
+            del tree.DG_prime.nodes[v]['branching']
+        if 'pruned' in tree.DG_prime.nodes[v]:
+            del tree.DG_prime.nodes[v]['pruned']
+
+    classes = data[target].unique()
+    feature_set = [col for col in data.columns if col != target]
+
+    # Bottoms-up random tree
+    node_list = tree.V.copy()
+    tree.a_v[0], tree.c_v[0] = {f: random.random() for f in feature_set}, random.random()
+    tree.DG_prime.nodes[0]['branching'] = (tree.a_v[0], tree.c_v[0])
+    node_list.remove(0)
+
+    while len(node_list) > 0:
+        selected = random.choice(node_list)
+        tree.DG_prime.nodes[selected]['class'] = random.choice(classes)
+        for v in reversed(tree.path[selected][1:-1]):
+            if v in node_list:
+                tree.a_v[v], tree.c_v[v] = {f: random.random() for f in feature_set}, random.random()
+                tree.DG_prime.nodes[v]['branching'] = (tree.a_v[v], tree.c_v[v])
+                node_list.remove(v)
+            else:
+                break
+        for c in tree.child[selected]:
+            if c in node_list:
+                tree.DG_prime.nodes[c]['pruned'] = 0
+                node_list.remove(c)
+            else:
+                break
+        node_list.remove(selected)
+
+    return tree
+
+
+class consol_log:
+    def __init__(self, filename="Default.log"):
+        self.terminal = sys.stdout
+        self.log = open(filename, "a")
+
+    def write(self, message):
+        self.terminal.write(message)
+        self.log.write(message)
+
+    def flush(self):
+        # Handles the flush command by doing nothing and needed for python3 compatability
+        # Specify extra behavior here
+        pass
+
+"""
         elif hp_type == 'double-cube':
             m = Model("MIP SVM normalized")
             u = m.addVars(feature_set, vtype=GRB.BINARY, name='u')
@@ -302,7 +516,7 @@ class Linear_Separator():
             # print('a_values', a_v)
             self.a_v, self.c_v = a_v, c_v
 
-        
+
         try:
             # Find separating hyperplane using l1-SVM normalized MIP formulation
             m = Model("MIP SVM normalized")
@@ -319,7 +533,7 @@ class Linear_Separator():
             m.addConstrs(w[f] <= u[f] for f in feature_set)
             m.addConstr(w.sum() <= 1)
             m.optimize()
-            
+
         except Exception:
             # Find separating hyperplane by solving dual of Lagrangian of the standard hard margin linear SVM problem
             try:
@@ -451,220 +665,4 @@ class Linear_Separator():
                             c_v = random.random()
                             self.a_v, self.c_v = a_v, c_v
                             return self
-                            """
-        return self
-
-
-def model_results(model, tree):
-    # Print assigned branching, classification, and pruned nodes of tree
-
-    for v in tree.V:
-        if model._P[v].x > 0.5:
-            for k in model._data[model._target].unique():
-                if model._W[v, k].x > 0.5:
-                    print('Vertex ' + str(v) + ' class ' + str(k))
-        elif model._P[v].x < 0.5 and model._B[v].x > 0.5:
-            print('Vertex ' + str(v) + ' branching', tree.DG_prime.nodes[v]['branching'])
-        elif model._P[v].x < 0.5 and model._B[v].x < 0.5:
-            print('Vertex ' + str(v) + ' pruned')
-
-    # Print datapoint paths through tree
-    for i in sorted(model._data.index):
-        path = [0]
-        for v in model._tree.V:
-            if model._Q[i, v].x > 0.5:
-                path.append(v)
-                if model._S[i, v].x > 0.5:
-                    print('Datapoint ' + str(i) + ' correctly assigned class ' + str(model._data.at[i, model._target])
-                         + ' at ' + str(v) + '. Path: ', path)
-                for k in model._data[model._target].unique():
-                    if model._W[v, k].x > 0.5:
-                        print('datapoint ' + str(i) + ' incorrectly assigned class ' + str(k)
-                              + ' at ' + str(v) + '. Path: ', path)
-
-
-def tree_check(tree):
-    class_nodes = {v: tree.DG_prime.nodes[v]['class']
-                   for v in tree.DG_prime.nodes if 'class' in tree.DG_prime.nodes[v]}
-    branch_nodes = {v: tree.DG_prime.nodes[v]['branching']
-                    for v in tree.DG_prime.nodes if 'branching' in tree.DG_prime.nodes[v]}
-    pruned_nodes = {v: tree.DG_prime.nodes[v]['pruned']
-                    for v in tree.DG_prime.nodes if 'pruned' in tree.DG_prime.nodes[v]}
-    for v in class_nodes:
-        if not (all(n in branch_nodes for n in tree.path[v][:-1])):
-            return False
-        if not (all(c in pruned_nodes for c in tree.child[v])):
-            return False
-    return True
-
-
-def data_predict(tree, data, target):
-    # Ensure assigned tree is valid
-    if not tree_check(tree): print('Tree is invalid')
-    # Get branching and class node assignments of tree
-    branching_nodes = tree.branch_nodes
-    class_nodes = tree.class_nodes
-    feature_set = data.columns.drop('target')
-    # Results dictionary for datapoint assignments and path through tree
-    acc = 0
-    results = {i: [None, []] for i in data.index}
-
-    for i in data.index:
-        v = 0
-        while results[i][0] is None:
-            results[i][1].append(v)
-            if v in branching_nodes:
-                (a_v, c_v) = branching_nodes[v]
-                v = tree.LC[v] if sum(a_v[f] * data.at[i, f] for f in feature_set) <= c_v else tree.RC[
-                    v]
-            elif v in class_nodes:
-                results[i][0] = class_nodes[v]
-                if results[i][0] == data.at[i, target]:
-                    acc += 1
-                    results[i].append('correct')
-                else:
-                    results[i].append('incorrect')
-            else:
-                results[i][0] = 'ERROR'
-
-    return acc, results
-
-
-def model_summary(opt_model, tree, test_set, rand_state, results_file):
-    # Ensure Tree Valid
-    if not tree_check(tree): print('Invalid Tree!!')
-    # Test / Train Acc
-    test_acc, test_assignments = data_predict(tree=tree, data=test_set, target=opt_model.target)
-    train_acc, train_assignments = data_predict(tree=tree, data=opt_model.data, target=opt_model.target)
-
-    # Update .csv file with modeltype metrics
-    with open(results_file, mode='a') as results:
-        results_writer = csv.writer(results, delimiter=',', quotechar='"')
-        results_writer.writerow(
-            [opt_model.dataname, tree.height, len(opt_model.datapoints), len(opt_model.featureset),
-             test_acc/len(test_set), train_acc/len(opt_model.datapoints),
-             opt_model.model.Runtime, opt_model.model.MIPGap, opt_model.model.ObjVal, opt_model.model.ObjBound,
-             opt_model.modeltype, opt_model.HP_time, opt_model.hp_info['objective'], opt_model.hp_info['rank'],
-             opt_model.model._septime, opt_model.model._sepnum, opt_model.model._sepcuts, opt_model.model._sepavg,
-             opt_model.model._vistime, opt_model.model._visnum, opt_model.model._viscuts,
-             opt_model.eps, opt_model.time_limit, rand_state,
-             opt_model.warmstart['use'], opt_model.regularization, opt_model.max_features])
-        results.close()
-
-
-def random_tree(tree, data, target):
-    # Clear any existing node assignments
-    for v in tree.V:
-        if 'class' in tree.DG_prime.nodes[v]:
-            del tree.DG_prime.nodes[v]['class']
-        if 'branching' in tree.DG_prime.nodes[v]:
-            del tree.DG_prime.nodes[v]['branching']
-        if 'pruned' in tree.DG_prime.nodes[v]:
-            del tree.DG_prime.nodes[v]['pruned']
-
-    TD_best_acc = -1
-    BU_best_acc = -1
-    for i in range(50):
-        TD_tree = TD_rand_tree(tree, data, target)
-        TD_acc, TD_results = data_predict(TD_tree, data, target)
-        if TD_acc > TD_best_acc:
-            TD_best_acc = TD_acc
-            TD_best_results = TD_results
-            best_TD_tree = TD_tree
-
-    for i in range(50):
-        BU_tree = BU_rand_tree(tree, data, target)
-        BU_acc, BU_results = data_predict(BU_tree, data, target)
-        if BU_acc > BU_best_acc:
-            BU_best_acc = BU_acc
-            BU_best_results = BU_results
-            best_BU_tree = BU_tree
-    if TD_best_acc > BU_best_acc:
-        return {'tree': best_TD_tree, 'results': TD_best_results}
-    else:
-        return {'tree': best_BU_tree, 'results': BU_best_results}
-
-
-def TD_rand_tree(tree, data, target):
-    # Clear any existing node assignments
-    for v in tree.V:
-        if 'class' in tree.DG_prime.nodes[v]:
-            del tree.DG_prime.nodes[v]['class']
-        if 'branching' in tree.DG_prime.nodes[v]:
-            del tree.DG_prime.nodes[v]['branching']
-        if 'pruned' in tree.DG_prime.nodes[v]:
-            del tree.DG_prime.nodes[v]['pruned']
-    classes = data[target].unique()
-    feature_set = [col for col in data.columns if col != target]
-
-    # Top-down random tree
-    tree.a_v[0], tree.c_v[0] = {f: random.random() for f in feature_set}, random.random()
-    tree.DG_prime.nodes[0]['branching'] = (tree.a_v[0], tree.c_v[0])
-
-    for level in tree.node_level:
-        if level == 0: continue
-        for v in tree.node_level[level]:
-            if 'branching' in tree.DG_prime.nodes[tree.direct_ancestor[v]]:
-                if random.random() > .5 and level != tree.height:
-                    tree.a_v[v], tree.c_v[v] = {f: random.random() for f in feature_set}, random.random()
-                    tree.DG_prime.nodes[v]['branching'] = (tree.a_v[v], tree.c_v[v])
-                else:
-                    tree.DG_prime.nodes[v]['class'] = random.choice(classes)
-            else:
-                tree.DG_prime.nodes[v]['pruned'] = 0
-    return tree
-
-
-def BU_rand_tree(tree, data, target):
-    # Clear any existing node assignments
-    for v in tree.V:
-        if 'class' in tree.DG_prime.nodes[v]:
-            del tree.DG_prime.nodes[v]['class']
-        if 'branching' in tree.DG_prime.nodes[v]:
-            del tree.DG_prime.nodes[v]['branching']
-        if 'pruned' in tree.DG_prime.nodes[v]:
-            del tree.DG_prime.nodes[v]['pruned']
-
-    classes = data[target].unique()
-    feature_set = [col for col in data.columns if col != target]
-
-    # Bottoms-up random tree
-    node_list = tree.V.copy()
-    tree.a_v[0], tree.c_v[0] = {f: random.random() for f in feature_set}, random.random()
-    tree.DG_prime.nodes[0]['branching'] = (tree.a_v[0], tree.c_v[0])
-    node_list.remove(0)
-
-    while len(node_list) > 0:
-        selected = random.choice(node_list)
-        tree.DG_prime.nodes[selected]['class'] = random.choice(classes)
-        for v in reversed(tree.path[selected][1:-1]):
-            if v in node_list:
-                tree.a_v[v], tree.c_v[v] = {f: random.random() for f in feature_set}, random.random()
-                tree.DG_prime.nodes[v]['branching'] = (tree.a_v[v], tree.c_v[v])
-                node_list.remove(v)
-            else:
-                break
-        for c in tree.child[selected]:
-            if c in node_list:
-                tree.DG_prime.nodes[c]['pruned'] = 0
-                node_list.remove(c)
-            else:
-                break
-        node_list.remove(selected)
-
-    return tree
-
-
-class consol_log:
-    def __init__(self, filename="Default.log"):
-        self.terminal = sys.stdout
-        self.log = open(filename, "a")
-
-    def write(self, message):
-        self.terminal.write(message)
-        self.log.write(message)
-
-    def flush(self):
-        # Handles the flush command by doing nothing and needed for python3 compatability
-        # Specify extra behavior here
-        pass
+    """

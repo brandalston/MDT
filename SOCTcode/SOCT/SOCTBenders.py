@@ -33,7 +33,7 @@ class SOCTBenders(ClassifierMixin, BaseEstimator):
         self.mip_gap = mip_gap
         self.time_limit = time_limit
         self.log_to_console = log_to_console
-    
+
     def fit(self, X, y):
         """ Trains a classification tree using the S-OCT model, solved using Benders decomposition.
         
@@ -72,6 +72,8 @@ class SOCTBenders(ClassifierMixin, BaseEstimator):
         
         master = Model("S-OCT Benders")
         self.master_ = master
+        self._svm_hp, self._generic_hp, self._total_branch = 0, 0, 0
+
         if self.log_to_console is not None:
             master.Params.LogToConsole = self.log_to_console
         master.Params.LazyConstraints = 1
@@ -102,8 +104,9 @@ class SOCTBenders(ClassifierMixin, BaseEstimator):
         
         # Objective
         #master.setObjective((N-z.sum())/N + self.ccp_alpha*d.sum(), GRB.MINIMIZE)
-        master.setObjective(-z.sum()/N + self.ccp_alpha*d.sum(), GRB.MINIMIZE)
-        
+        #master.setObjective(-z.sum()/N + self.ccp_alpha*d.sum(), GRB.MINIMIZE)
+        master.setObjective(z.sum(), GRB.MAXIMIZE)
+
         # Constraints
         master.addConstrs((w[i,1] == 1 for i in range(N)))
         master.addConstrs((w[i,t] == w[i,2*t] + w[i,2*t+1] for i in range(N) for t in branch_nodes))
@@ -121,11 +124,16 @@ class SOCTBenders(ClassifierMixin, BaseEstimator):
         
         # Solve model
         master.optimize(SOCTBenders._callback)
+        print(f'Optimal solution found in {round(master.Runtime, 4)}s.'
+              f'({time.strftime("%I:%M %p", time.localtime())})') if \
+            master.RunTime < self.time_limit else \
+            print(f'Time limit reached. ({time.strftime("%I:%M %p", time.localtime())})')
         
         # Find splits for branch nodes and define classification rules at the leaf nodes
         start_time = time.time()
         self._construct_decision_tree()
         self._hp_time = time.time() - start_time
+        print(f'Hyperplanes found in {round(self._hp_time,4)}s. ({time.strftime("%I:%M %p", time.localtime())})\n')
         
         return self
     
@@ -316,7 +324,6 @@ class SOCTBenders(ClassifierMixin, BaseEstimator):
         a_vals = {}
         b_vals = {}
         for t in branch_nodes:
-            print('finding split at', t)
             # Define index sets indicating which observations are sent to every node
             left_index_set = [] # Observations going to node 2t
             right_index_set = [] # Observations going to node 2t+1
@@ -327,20 +334,21 @@ class SOCTBenders(ClassifierMixin, BaseEstimator):
                     right_index_set.append(i)
             if len(right_index_set) == 0:
                 # (a,b) = (0,1) will send all points to the left
-                print('all going left')
                 a_vals[t] = np.zeros(p)
                 b_vals[t] = 1
             elif len(left_index_set) == 0:
                 # (a,b) = (0,-1) will send all points to the right
-                print('all going right')
                 a_vals[t] = np.zeros(p)
                 b_vals[t] = -1
             else:
+                self._total_branch += 1
                 X_svm = np.append(X[left_index_set,:], X[right_index_set,:], axis=0)
                 y_svm = [-1]*len(left_index_set) + [+1]*len(right_index_set)
                 svm = HardMarginLinearSVM()
                 svm.fit(X_svm, y_svm)
                 (a_vals[t], b_vals[t]) = (svm.w_, svm.b_)
+                if svm.type_hp == 'generic': self._generic_hp += 1
+                else: self._svm_hp += 1
         
         # Construct rules
         self.branch_rules_ = {}

@@ -16,7 +16,6 @@ class HardMarginLinearSVM(ClassifierMixin, BaseEstimator):
         (N, p) = X.shape
         if not np.array_equal(np.unique(y), [-1,1]):
             raise ValueError("Class labels must be -1 and +1")
-        
         try:
             m = Model("SVM")
             m.Params.LogToConsole = 0
@@ -35,7 +34,7 @@ class HardMarginLinearSVM(ClassifierMixin, BaseEstimator):
             w_vals = np.array([w[j].X for j in range(p)])
             b = -b # Must flip intercept because of how QP was setup
             self.w_, self.b_ = w_vals, b
-            print('solved hard margin svm')
+            self.type_hp = 'L2-SVM'
             return self
         except Exception:
             # If QP fails to solve, just return any separating hyperplane
@@ -52,7 +51,7 @@ class HardMarginLinearSVM(ClassifierMixin, BaseEstimator):
             w_vals = np.array([w[j].X for j in range(p)])
             b_val = b.X
             self.w_, self.b_ = w_vals, b_val
-            print('found general hyperplane')
+            self.type_hp = 'generic'
             return self
     
     def predict(self, X):
