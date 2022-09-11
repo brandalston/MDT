@@ -85,6 +85,7 @@ class SOCTBenders(ClassifierMixin, BaseEstimator):
         master._nodes = (branch_nodes, leaf_nodes)
         master._callback_calls = 0
         master._callback_time = 0
+        master._callback_cuts = 0
         
         # Variables
         c = master.addVars(classes, leaf_nodes, lb=0, ub=1)
@@ -122,7 +123,9 @@ class SOCTBenders(ClassifierMixin, BaseEstimator):
         master.optimize(SOCTBenders._callback)
         
         # Find splits for branch nodes and define classification rules at the leaf nodes
+        start_time = time.time()
         self._construct_decision_tree()
+        self._hp_time = time.time() - start_time
         
         return self
     
@@ -220,6 +223,7 @@ class SOCTBenders(ClassifierMixin, BaseEstimator):
                     cut_lhs.add(w[i,2*t+1])
                 cut_rhs = len(left_support) + len(right_support) - 1
                 model.cbLazy(cut_lhs <= cut_rhs)
+                model._callback_cuts += 1
             
             model._callback_calls += 1
             model._callback_time += time.time() - start_time

@@ -344,7 +344,7 @@ class MBDT:
             Objective coefficients of Farkas dual
 
         Returns
-        (B_v_left, B_v_right) : two lists of left and right datapoint indices in the VIS of B_v(Q)
+        B_v_left, B_v_right : two lists of left and right datapoint indices in the VIS of B_v(Q)
         """
 
         if vis_weight is None:
@@ -403,7 +403,7 @@ class MBDT:
             if lambda_R_sol[i] > VIS_model.Params.FeasibilityTol:
                 B_v_right.append(i)
                 vis_weight[i] += 1
-        return (B_v_left, B_v_right)
+        return B_v_left, B_v_right
 
     ##############################################
     # Warm Start Model
@@ -531,11 +531,11 @@ class MBDT:
                 # print(f'{v} assigned class')
                 for k in self.classes:
                     if W_sol[v, k] > 0.5:
-                        self.tree.DG_prime.nodes[v]['class'] = k
+                        self.tree.class_nodes[v] = k
             # Assign no class or branching rule to pruned nodes
             elif P_sol[v] < 0.5 and B_sol[v] < 0.5:
                 # print(f'{v} pruned')
-                self.tree.DG_prime.nodes[v]['pruned'] = 0
+                self.tree.pruned_nodes[v] = 0
             # Define (a_v, c_v) on branching nodes
             elif P_sol[v] < 0.5 and B_sol[v] > 0.5:
                 # print(f'{v} branched')
@@ -569,6 +569,6 @@ class MBDT:
                     svm = UTILS.Linear_Separator()
                     svm.SVM_fit(data_svm, self.hp_info)
                     self.tree.a_v[v], self.tree.c_v[v] = svm.a_v, svm.c_v
-                self.tree.DG_prime.nodes[v]['branching'] = (self.tree.a_v[v], self.tree.c_v[v])
+                self.tree.branch_nodes[v] = (self.tree.a_v[v], self.tree.c_v[v])
         self.HP_time = time.perf_counter() - start
         print(f'Hyperplanes found in {round(self.HP_time,4)}s. ({time.strftime("%I:%M %p", time.localtime())})\n')

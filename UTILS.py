@@ -502,8 +502,8 @@ def data_predict(tree, data, target):
     # Ensure assigned tree is valid
     if not tree_check(tree): print('Tree is invalid')
     # Get branching and class node assignments of tree
-    branching_nodes = nx.get_node_attributes(tree.DG_prime, 'branching')
-    class_nodes = nx.get_node_attributes(tree.DG_prime, 'class')
+    branching_nodes = tree.branch_nodes
+    class_nodes = tree.class_nodes
     feature_set = data.columns.drop('target')
     # Results dictionary for datapoint assignments and path through tree
     acc = 0
@@ -514,7 +514,7 @@ def data_predict(tree, data, target):
         while results[i][0] is None:
             results[i][1].append(v)
             if v in branching_nodes:
-                (a_v, c_v) = tree.DG_prime.nodes[v]['branching']
+                (a_v, c_v) = branching_nodes[v]
                 v = tree.LC[v] if sum(a_v[f] * data.at[i, f] for f in feature_set) <= c_v else tree.RC[
                     v]
             elif v in class_nodes:
@@ -541,7 +541,7 @@ def model_summary(opt_model, tree, test_set, rand_state, results_file):
     with open(results_file, mode='a') as results:
         results_writer = csv.writer(results, delimiter=',', quotechar='"')
         results_writer.writerow(
-            [opt_model.dataname, tree.height, len(opt_model.datapoints),
+            [opt_model.dataname, tree.height, len(opt_model.datapoints), len(opt_model.featureset),
              test_acc/len(test_set), train_acc/len(opt_model.datapoints),
              opt_model.model.Runtime, opt_model.model.MIPGap, opt_model.model.ObjVal, opt_model.model.ObjBound,
              opt_model.modeltype, opt_model.HP_time, opt_model.hp_info['objective'], opt_model.hp_info['rank'],

@@ -54,7 +54,7 @@ def main(argv):
             log_files = arg
 
     ''' Columns of the results file generated '''
-    summary_columns = ['Data', 'H', '|I|',
+    summary_columns = ['Data', 'H', '|I|', '|F|',
                        'Out_Acc', 'In_Acc', 'Sol_Time',
                        'MIP_Gap', 'Obj_Val', 'Obj_Bound',
                        'Model', 'HP_Time', 'HP_Obj', 'HP_Rank',

@@ -6,6 +6,7 @@ from SOCTcode.SOCT.SOCTBenders import SOCTBenders
 import pandas as pd
 import time
 import UTILS
+
 file = 'monk1'
 target = 'target'
 data = UTILS.get_data(file, target)
