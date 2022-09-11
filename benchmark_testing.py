@@ -10,7 +10,8 @@ import time
 import UTILS
 
 target = 'target'
-files = ['soybean-small']
+files = ['soybean-small','banknote_authentication','breast-cancer','hayes-roth',
+         'tic-tac-toe','house-votes-84','balance-scale','climate']
 rand_states = [138, 15, 89, 42, 0]
 heights = [2,3,4,5]
 time_lim = 600
