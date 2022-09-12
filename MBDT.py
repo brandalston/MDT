@@ -60,16 +60,18 @@ class MBDT:
             if 'FRAC' not in self.cut_type: self.cut_type = 'FRAC-'+self.cut_type
             if 'ROOT' in self.cut_type:
                 self.rootcuts = True
-            print('User fractional separation cuts, type: ' + str(sep_dict[self.cut_type]) + ', root: ' + str(self.rootcuts))
+            # print('User fractional separation cuts, type: ' + str(sep_dict[self.cut_type]) + ', root: ' + str(self.rootcuts))
         elif 'UF' in self.cut_type:
-            print('ALL integral connectivity constraints')
+            pass
+            # print('ALL integral connectivity constraints')
         elif 'GRB' in self.cut_type:
-            print('GRB lazy = 3 connectivity constraints')
+            pass
+            # print('GRB lazy = 3 connectivity constraints')
         elif 'FRAC' in self.cut_type and len(self.cut_type) == 4:
-            print('Need fractional separation type!!')
-            return
+            # print('Need fractional separation type!!')
+            pass
         else:
-            print('Need separation procedure!!')
+            # print('Need separation procedure!!')
             return
 
         """ Model extras """
@@ -81,8 +83,8 @@ class MBDT:
 
         """ Gurobi Optimization Parameters """
         self.model = Model(f'{self.modeltype}')
-        self.model.Params.TimeLimit = time_limit
         self.model.Params.LogToConsole = 0
+        self.model.Params.TimeLimit = time_limit
         self.model.Params.Threads = 1  # use one thread for testing purposes
         self.model.Params.LazyConstraints = 1
         self.model.Params.PreCrush = 1
@@ -97,7 +99,7 @@ class MBDT:
         """ Hyperplane Specifications """
         self.hp_objective, self.hp_rank = 'quadratic', len(self.featureset)
         if self.hp_info is not None:
-            print(f'Hyperplane Objective:', self.hp_info['objective'])
+            # print(f'Hyperplane Objective:', self.hp_info['objective'])
             self.hp_objective = self.hp_info['objective']
             if type(self.hp_info['rank']) is float:
                 self.hp_rank = floor(hp_info['rank'] * len(self.featureset))
@@ -105,7 +107,7 @@ class MBDT:
                 self.hp_rank = len(self.featureset)
             else:
                 self.hp_rank = len(self.featureset) - 1
-            print(f'Hyperplane Rank:', self.hp_rank)
+            # print(f'Hyperplane Rank:', self.hp_rank)
 
     ##############################################
     # MIP Model Formulation

@@ -84,7 +84,7 @@ def main(argv):
         data = UTILS.get_data(file, target)
         for h in heights:
             for i in rand_states:
-                print('\nDataset: '+str(file)+', H: '+str(h)+', '
+                print('Dataset: '+str(file)+', H: '+str(h)+', '
                       'Rand State: '+str(i)+'. Run Start: '+str(time.strftime("%I:%M %p", time.localtime())))
                 train_set, test_set = train_test_split(data, train_size=0.5, random_state=i)
                 cal_set, test_set = train_test_split(test_set, train_size=0.5, random_state=i)
