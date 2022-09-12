@@ -11,6 +11,7 @@ import networkx as nx
 import csv
 from math import floor
 
+
 def get_data(file_name, target):
     # Return dataset from 'file_name' in Pandas dataframe
     # dataset located in workspace folder named 'Datasets'
@@ -352,6 +353,10 @@ def model_summary(opt_model, tree, test_set, rand_state, results_file):
     test_acc, test_assignments = data_predict(tree=tree, data=test_set, target=opt_model.target)
     train_acc, train_assignments = data_predict(tree=tree, data=opt_model.data, target=opt_model.target)
 
+    if opt_model.svm_branches == 0:
+        model_HP_avg_size = 0
+    else:
+        model_HP_avg_size = opt_model.HP_size / opt_model.svm_branches
     # Update .csv file with modeltype metrics
     with open(results_file, mode='a') as results:
         results_writer = csv.writer(results, delimiter=',', quotechar='"')
@@ -359,7 +364,7 @@ def model_summary(opt_model, tree, test_set, rand_state, results_file):
             [opt_model.dataname, tree.height, len(opt_model.datapoints), len(opt_model.featureset),
              test_acc/len(test_set), train_acc/len(opt_model.datapoints),
              opt_model.model.Runtime, opt_model.model.MIPGap, opt_model.model.ObjVal, opt_model.model.ObjBound,
-             opt_model.modeltype, opt_model.HP_time, opt_model.HP_size / opt_model.svm_branches, opt_model.hp_objective, opt_model.hp_rank,
+             opt_model.modeltype, opt_model.HP_time, model_HP_avg_size, opt_model.hp_objective, opt_model.hp_rank,
              opt_model.model._septime, opt_model.model._sepnum, opt_model.model._sepcuts, opt_model.model._sepavg,
              opt_model.model._vistime, opt_model.model._visnum, opt_model.model._viscuts,
              opt_model.eps, opt_model.time_limit, rand_state,

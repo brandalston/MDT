@@ -489,6 +489,7 @@ class MBDT:
                     self.tree.c_v[v] = 1
                 # Find separating hyperplane according to Lv_I, Rv_I index sets
                 else:
+                    self.svm_branches += 1
                     # print('assigning hyperplane')
                     data_svm = self.data.loc[Lv_I + Rv_I, self.data.columns != self.target]
                     data_svm['svm'] = pd.Series(svm_y)
@@ -496,7 +497,6 @@ class MBDT:
                     svm.SVM_fit(data_svm, self.hp_info)
                     self.tree.a_v[v], self.tree.c_v[v] = svm.a_v, svm.c_v
                     self.HP_size += svm.hp_size
-                    self.svm_branches += 1
                 self.tree.branch_nodes[v] = (self.tree.a_v[v], self.tree.c_v[v])
         self.HP_time = time.perf_counter() - start
         print(f'Hyperplanes found in {round(self.HP_time,4)}s. ({time.strftime("%I:%M %p", time.localtime())})\n')
