@@ -352,7 +352,6 @@ def model_summary(opt_model, tree, test_set, rand_state, results_file):
     # Test / Train Acc
     test_acc, test_assignments = data_predict(tree=tree, data=test_set, target=opt_model.target)
     train_acc, train_assignments = data_predict(tree=tree, data=opt_model.data, target=opt_model.target)
-
     if opt_model.svm_branches == 0:
         model_HP_avg_size = 0
     else:

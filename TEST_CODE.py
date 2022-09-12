@@ -19,10 +19,10 @@ for obj, rank in gen:
 
 # """
 time_limit = 600
-rand_states = [138, 15]
+rand_states = [138]
 file = 'testing_svm.csv'
-heights = [2]
-data_names = ['soybean-small','house-votes-84']
+heights = [2,3,4,5]
+data_names = ['soybean-small']
 models = ['CUT1']
 # model_extras = ['regularization-3']
 model_extras = None
