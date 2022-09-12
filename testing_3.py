@@ -11,6 +11,7 @@ gen = ((obj, rank) for obj in obs for rank in ranks)
 data_names = ['breast-cancer']
 for obj, rank in gen:
     hp_info = {'objective': obj, 'rank': rank}
+    print('HP TYPE:', hp_info)
     model_runs.main(
         ["-d", data_names, "-h", heights, "-m", models, "-t", time_limit, "-p", hp_info,
          "-r", rand_states, "-w", warm_start, "-e", model_extras, "-f", file, "-l", False])
