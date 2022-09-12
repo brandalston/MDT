@@ -20,7 +20,7 @@ for obj, rank in gen:
 # """
 time_limit = 600
 rand_states = [138, 15]
-file = 'hp_size_testing.csv'
+file = 'testing_svm.csv'
 heights = [2]
 data_names = ['soybean-small','house-votes-84']
 models = ['CUT1']
