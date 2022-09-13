@@ -10,7 +10,7 @@ data_names = ['banknote_authentication']
 # linear runs
 rand_states = [138,15,89,42,0]
 heights = [2]
-obs, ranks = ['linear'], ['|F|-1',0.9,0.75,0.5,0.25,0.1]
+obs, ranks = ['linear'], ['full','|F|-1',0.9,0.75,0.5,0.25,0.1]
 gen = ((obj, rank) for obj in obs for rank in ranks)
 for obj, rank in gen:
     hp_info = {'objective': obj, 'rank': rank}
