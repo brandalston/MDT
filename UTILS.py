@@ -9,7 +9,7 @@ from sklearn.compose import ColumnTransformer
 from gurobipy import *
 import networkx as nx
 import csv
-from math import floor
+from math import floor, ceil
 
 
 def get_data(file_name, target):
@@ -245,7 +245,7 @@ class Linear_Separator():
             elif hp_info['objective'] == 'rank':
                 m.setObjective(u.sum() + err.sum(), GRB.MINIMIZE)
             if type(hp_info['rank']) is float:
-                B = floor(hp_info['rank'] * B)
+                B = ceil(hp_info['rank'] * B)
             elif hp_info['rank'] == 'full':
                 pass
             else:
