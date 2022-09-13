@@ -32,7 +32,7 @@ import UTILS
 target = 'target'
 # files = ['soybean-small','banknote_authentication','breast-cancer','hayes-roth',
 #          'tic-tac-toe','house-votes-84','balance-scale','climate']
-files = ['monk1','monk2','monk3']
+files = ['monk1']
 rand_states = [138, 15, 89, 42, 0]
 heights = [2,3,4,5]
 time_lim = 600
