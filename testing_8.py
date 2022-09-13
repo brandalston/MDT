@@ -5,12 +5,12 @@ file = 'testing_svm.csv'
 models = ['CUT1']
 model_extras = None
 warm_start = {'use': False, 'values': None}
-data_names = ['banknote_authentication']
+data_names = ['tic-tac-toe']
 
-# quadratic runs
+# rest of runs
 rand_states = [138,15,89,42,0]
-heights = [4,5]
-obs, ranks = ['quadratic'], ['full','|F|-1',0.9,0.75,0.5,0.25,0.1]
+heights = [5]
+obs, ranks = ['quadratic'], [0.75,0.5,0.25,0.1]
 gen = ((obj, rank) for obj in obs for rank in ranks)
 for obj, rank in gen:
     hp_info = {'objective': obj, 'rank': rank}

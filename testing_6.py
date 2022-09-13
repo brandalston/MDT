@@ -1,14 +1,17 @@
+
 import model_runs
-rand_states = [138,15,89,42,0]
 time_limit = 600
-heights = [2,3,4,5]
 file = 'testing_svm.csv'
 models = ['CUT1']
 model_extras = None
 warm_start = {'use': False, 'values': None}
-obs, ranks = ['linear','quadratic'], ['full','|F|-1',0.9,0.75,0.5,0.25,0.1]
+data_names = ['tic-tac-toe']
+
+# rest of runs
+rand_states = [138,15,89,42,0]
+heights = [3]
+obs, ranks = ['quadratic'], [0.75,0.5,0.25,0.1]
 gen = ((obj, rank) for obj in obs for rank in ranks)
-data_names = ['house-votes-84']
 for obj, rank in gen:
     hp_info = {'objective': obj, 'rank': rank}
     print('\n\nHP TYPE:', hp_info)
