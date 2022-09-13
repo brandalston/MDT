@@ -46,7 +46,7 @@ for file in files:
             train_set, test_set = train_test_split(data, train_size=0.75, random_state=rand)
             X_train, X_test = train_set.loc[:, data.columns != target], test_set.loc[:, data.columns != target]
             y_train, y_test = train_set[target], test_set[target]
-            print('\n\nDataset: ' + str(file) + ', H: ' + str(h) + ', Rand State: ' + str(138) +
+            print('\n\nDataset: ' + str(file) + ', H: ' + str(h) + ', Rand State: ' + str(rand) +
                   '. Run Start: ' + str(time.strftime("%I:%M %p", time.localtime())))
             soct = SOCTBenders(max_depth=h, ccp_alpha=0, time_limit=time_lim, log_to_console=False)
             soct.fit(X_train, y_train)
