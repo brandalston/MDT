@@ -110,7 +110,7 @@ def main(argv):
                         opt_model.model.update()
                         if log_files: opt_model.model.write(log+'.lp')
                         opt_model.optimization()
-                        print(f'Optimal solution found in {round(opt_model.model.Runtime, 4)}s.'
+                        print(f'Optimal solution found in {round(opt_model.model.Runtime/60, 4)} min.'
                                   f'({time.strftime("%I:%M %p", time.localtime())})') if \
                             opt_model.model.RunTime < time_limit else \
                             print(f'Time limit reached. ({time.strftime("%I:%M %p", time.localtime())})')
