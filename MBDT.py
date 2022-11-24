@@ -56,7 +56,7 @@ class MBDT:
         self.cut_type = self.modeltype[5:]
         if len(self.cut_type) == 0:
             self.cut_type = 'GRB'
-        if ('ALL' in self.cut_type) or ('FF' in self.cut_type) or ('MV' in self.cut_type):
+        if any(ele in self.cut_type for ele in ['FF','ALL','MV']):
             if 'FRAC' not in self.cut_type: self.cut_type = 'FRAC-'+self.cut_type
             if 'ROOT' in self.cut_type:
                 self.rootcuts = True
@@ -97,16 +97,16 @@ class MBDT:
         self.model._rootcuts, self.model._eps = self.rootcuts, self.eps
 
         """ Hyperplane Specifications """
-        self.hp_objective, self.hp_rank = 'quadratic', len(self.featureset)
+        self.HP_obj, self.HP_rank = 'quadratic', len(self.featureset)
         if self.hp_info is not None:
             # print(f'Hyperplane Objective:', self.hp_info['objective'])
-            self.hp_objective = self.hp_info['objective']
+            self.HP_obj = self.hp_info['objective']
             if type(self.hp_info['rank']) is float:
-                self.hp_rank = floor(hp_info['rank'] * len(self.featureset))
+                self.HP_rank = floor(hp_info['rank'] * len(self.featureset))
             elif hp_info['rank'] == 'full':
-                self.hp_rank = len(self.featureset)
+                self.HP_rank = len(self.featureset)
             else:
-                self.hp_rank = len(self.featureset) - 1
+                self.HP_rank = len(self.featureset) - 1
             # print(f'Hyperplane Rank:', self.hp_rank)
 
     ##############################################
@@ -167,7 +167,7 @@ class MBDT:
                               for i in self.datapoints)
 
         # Lazy feasible path constraints (for fractional separation procedure)
-        if ('GRB' in self.cut_type) or ('FRAC' in self.cut_type):
+        if any(ele in self.modeltype for ele in ['GRB', 'FRAC']):
             # terminal vertex of datapoint must be in reachable path
             if 'CUT1' in self.modeltype:
                 self.cut_constraint = self.model.addConstrs(self.S[i, v] <= self.Q[i, c]
@@ -239,7 +239,6 @@ class MBDT:
             B = model.cbGetSolution(model._B)
             Q = model.cbGetSolution(model._Q)
             P = model.cbGetSolution(model._P)
-            vis_weights = model._vis_weight
 
             for v in model._tree.B:
                 if B[v] < 0.5: continue
@@ -254,9 +253,8 @@ class MBDT:
                         Rv_I.add(i)
                 # Test for VIS of B_v(Q)
                 # print('Test for VIS at', v, model._visnum)
-                VIS = MBDT.VIS(model._data, model._featureset, Lv_I, Rv_I, vis_weight=vis_weights)
-                if VIS is None:
-                    continue
+                VIS = MBDT.VIS(model._data, model._featureset, Lv_I, Rv_I, vis_weight=model._vis_weight)
+                if VIS is None: continue
                 # If VIS Found, add cut
                 (B_v_left, B_v_right) = VIS
                 model.cbLazy(quicksum(model._Q[i, model._tree.LC[v]] for i in B_v_left) +
@@ -499,6 +497,8 @@ class MBDT:
                         self.HP_size += svm.hp_size
                 self.tree.branch_nodes[v] = (self.tree.a_v[v], self.tree.c_v[v])
         self.HP_time = time.perf_counter() - start
+        if self.svm_branches == 0: self.HP_avg_size = 0
+        else: self.HP_avg_size = self.HP_size / self.svm_branches
         print(f'Hyperplanes found in {round(self.HP_time,4)}s. ({time.strftime("%I:%M %p", time.localtime())})\n')
 
     ##############################################

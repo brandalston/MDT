@@ -56,7 +56,8 @@ def main(argv):
     ''' Columns of the results file generated '''
     summary_columns = ['Data', 'H', '|I|', '|F|',
                        'Out_Acc', 'In_Acc', 'Sol_Time',
-                       'MIP_Gap', 'Obj_Val', 'Obj_Bound', 'Model',
+                       'MIP_Gap', 'Obj_Val', 'Obj_Bound',
+                       'Model', 'Objective'
                        'HP_Time', 'HP_Size', 'HP_Obj', 'HP_Rank',
                        'FP_CB_Time', 'FP_Num_CB', 'FP_Cuts', 'FP_Avg',
                        'VIS_CB_Time', 'VIS_Num_CB', 'VIS_Cuts',

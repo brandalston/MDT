@@ -1,15 +1,13 @@
 import numpy as np
 import pandas as pd
 import random
-from itertools import combinations
 from sklearn.base import BaseEstimator, TransformerMixin
 from sklearn.utils.validation import check_is_fitted
 from sklearn.preprocessing import KBinsDiscretizer, MinMaxScaler, OneHotEncoder
 from sklearn.compose import ColumnTransformer
 from gurobipy import *
-import networkx as nx
 import csv
-from math import floor, ceil
+from math import ceil
 
 
 def get_data(file_name, target):
@@ -267,7 +265,7 @@ class Linear_Separator():
 
         a_v = {f: w_pos[f].X - w_neg[f].X for f in feature_set}
         c_v = b.X
-        u_dict = {f: u[f].X for f in feature_set if a_v[f] > 10**(-8)}
+        u_dict = {f: u[f].X for f in feature_set if abs(a_v[f]) > 10**(-8)}
         self.a_v, self.c_v = a_v, c_v
         self.hp_size = sum(u_dict.values())
 
@@ -331,8 +329,7 @@ def data_predict(tree, data, target):
             results[i][1].append(v)
             if v in tree.branch_nodes:
                 (a_v, c_v) = tree.branch_nodes[v]
-                v = tree.LC[v] if sum(a_v[f] * data.at[i, f] for f in feature_set) <= c_v else tree.RC[
-                    v]
+                v = tree.LC[v] if sum(a_v[f] * data.at[i, f] for f in feature_set) <= c_v else tree.RC[v]
             elif v in tree.class_nodes:
                 results[i][0] = tree.class_nodes[v]
                 if results[i][0] == data.at[i, target]:
@@ -352,18 +349,15 @@ def model_summary(opt_model, tree, test_set, rand_state, results_file):
     # Test / Train Acc
     test_acc, test_assignments = data_predict(tree=tree, data=test_set, target=opt_model.target)
     train_acc, train_assignments = data_predict(tree=tree, data=opt_model.data, target=opt_model.target)
-    if opt_model.svm_branches == 0:
-        model_HP_avg_size = 0
-    else:
-        model_HP_avg_size = opt_model.HP_size / opt_model.svm_branches
     # Update .csv file with modeltype metrics
     with open(results_file, mode='a') as results:
         results_writer = csv.writer(results, delimiter=',', quotechar='"')
         results_writer.writerow(
             [opt_model.dataname, tree.height, len(opt_model.datapoints), len(opt_model.featureset),
-             test_acc/len(test_set), train_acc/len(opt_model.datapoints),
-             opt_model.model.Runtime, opt_model.model.MIPGap, opt_model.model.ObjVal, opt_model.model.ObjBound,
-             opt_model.modeltype, opt_model.HP_time, model_HP_avg_size, opt_model.hp_objective, opt_model.hp_rank,
+             test_acc/len(test_set), train_acc/len(opt_model.datapoints), opt_model.model.Runtime,
+             opt_model.model.MIPGap, opt_model.model.ObjVal, opt_model.model.ObjBound,
+             opt_model.modeltype, opt_model.objective,
+             opt_model.HP_time, opt_model.HP_avg_size, opt_model.HP_obj, opt_model.HP_rank,
              opt_model.model._septime, opt_model.model._sepnum, opt_model.model._sepcuts, opt_model.model._sepavg,
              opt_model.model._vistime, opt_model.model._visnum, opt_model.model._viscuts,
              opt_model.eps, opt_model.time_limit, rand_state,
