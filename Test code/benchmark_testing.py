@@ -1,8 +1,8 @@
-from SOCTcode.SOCT.LinearClassifierHeuristic import LinearClassifierHeuristic
-from SOCTcode.SOCT.SOCTStumpHeuristic import SOCTStumpHeuristic
-from SOCTcode.SOCT.SOCTFull import SOCTFull
+from Benchmarks.SOCT.LinearClassifierHeuristic import LinearClassifierHeuristic
+from Benchmarks.SOCT.SOCTStumpHeuristic import SOCTStumpHeuristic
+from Benchmarks.SOCT.SOCTFull import SOCTFull
 from sklearn.model_selection import train_test_split
-from SOCTcode.SOCT.SOCTBenders import SOCTBenders
+from Benchmarks.SOCT.SOCTBenders import SOCTBenders
 import pandas as pd
 import csv
 import os
