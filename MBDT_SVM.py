@@ -7,7 +7,7 @@ import UTILS
 
 class MBDT_SVM:
 
-    def __init__(self, data, tree, modeltype, time_limit, target, warmstart, modelextras, modelobj=None, log=None):
+    def __init__(self, data, tree, modeltype, time_limit, target, warmstart, modelextras, obj_func=None, log=None):
         """"
         Parameters
         data: training data
@@ -26,7 +26,7 @@ class MBDT_SVM:
         self.warmstart = warmstart
         self.modelextras = modelextras
         self.log = log
-        self.modelobj = modelobj
+        self.obj_func = obj_func
 
         print('Model: ' + str(self.modeltype))
         # Feature, Class and Index Sets
@@ -86,11 +86,13 @@ class MBDT_SVM:
 
         """ Gurobi Optimization Parameters """
         self.model = Model(f'{self.modeltype}')
-        self.model.Params.LogToConsole = 0
+        self.model.Params.LogToConsole = 1
         self.model.Params.TimeLimit = time_limit
         self.model.Params.Threads = 1  # use one thread for testing purposes
-        self.model.Params.LazyConstraints = 1
-        self.model.Params.PreCrush = 1
+        if 'UF' in self.cut_type: self.model.Params.LazyConstraints = 0
+        else: self.model.Params.LazyConstraints = 1
+        if 'UF' in self.cut_type: self.model.Params.PreCrush = 0
+        else: self.model.Params.PreCrush = 1
         if self.log is not None:
             self.model.Params.LogFile = self.log + '.txt'
 
@@ -100,12 +102,12 @@ class MBDT_SVM:
         self.model._rootcuts, self.model._eps = self.rootcuts, self.eps
 
         """ Objective Function Specifications """
-        if self.modelobj is None:
-            self.modelobj = 'Bi-Objective'
+        if self.obj_func is None:
+            self.obj_func = 'Bi-Objective'
             # print(f'Hyperplane Rank:', self.hp_rank)
         self.hp_size = 0
         self.HP_avg_size = 0
-        self.hp_objective, self.hp_rank = 'N/A', 'N/A'
+        self.HP_obj, self.HP_rank = 'N/A', 'N/A'
 
     ##############################################
     # MIP Model Formulation
@@ -129,23 +131,23 @@ class MBDT_SVM:
         # Datapoint selected vertices in root-terminal path
         self.Q = self.model.addVars(self.datapoints, self.tree.V, vtype=GRB.BINARY, name='Q')
         # Hyperplane Decision Variables
-        self.H_pos = self.model.addVars(self.tree.V, self.featureset, vtype=GRB.CONTINUOUS, lb=0, name='H_pos')
-        self.H_neg = self.model.addVars(self.tree.V, self.featureset, vtype=GRB.CONTINUOUS, lb=0, name='H_neg')
+        self.H_pos = self.model.addVars(self.tree.B, self.featureset, vtype=GRB.CONTINUOUS, name='H_pos')
+        self.H_neg = self.model.addVars(self.tree.B, self.featureset, vtype=GRB.CONTINUOUS, name='H_neg')
         # D in y_i*(a^T*x + d) >= 1 - err
-        self.D = self.model.addVars(self.tree.V, vtype=GRB.CONTINUOUS, name='D')
+        self.D = self.model.addVars(self.tree.B, vtype=GRB.CONTINUOUS, ub=1, name='D')
         # Datapoint error
-        self.ERR = self.model.addVars(self.datapoints, self.tree.V, vtype=GRB.CONTINUOUS, name='ERR')
+        self.ERR = self.model.addVars(self.datapoints, self.tree.B, vtype=GRB.CONTINUOUS, name='ERR')
 
         """ Model Objective and Constraints """
         # Objective: Maximize the number of correctly classified datapoints
         # Max sum(S[i,v], i in I, v in V\1)
-        if self.modelobj == 'Bi-objective':
+        if self.obj_func == 'Bi-objective':
             self.model.setObjective(quicksum(self.S[i, v] for i in self.datapoints for v in self.tree.V if v != 0), GRB.MAXIMIZE)
-        elif self.modelobj == 'Combined':
-            self.model.setObjective(1/len(self.datapoints)*quicksum(quicksum(1-self.S[i,v] for v in self.tree.V if v != 0)
+        elif self.obj_func == 'Combined':
+            self.model.setObjective(1/len(self.datapoints)*quicksum(quicksum(1-self.S[i, v] for v in self.tree.V if v != 0)
                                                                     for i in self.datapoints)
-                                    + (1/self.B.sum('*'))*quicksum(self.H_pos[v,f]-self.H_neg[v,f]
-                                                                   for v in self.tree.V for f in self.featureset))
+                                    + (1/self.B.sum('*'))*quicksum(self.H_pos[v, f]-self.H_neg[v, f]
+                                                                   for v in self.tree.B for f in self.featureset))
 
         # Pruned vertices not assigned to class
         # P[v] = sum(W[v,k], k in K) for v in V
@@ -215,22 +217,27 @@ class MBDT_SVM:
         # HYPERPLANE SEPARATION CONSTRAINTS
         # If v not branching then all datapoints sent to left child
         # Q[i,r(v)] <= B[v] for v in V
-        for v in self.tree.V:
+        for v in self.tree.B:
             self.model.addConstrs(self.Q[i, self.tree.RC[v]] <= self.B[v] for i in self.datapoints)
 
-        for v in self.tree.V:
+        for v in self.tree.B:
             self.model.addConstrs(
-                (self.Q[i, self.tree.LC[v]] - self.Q[i, self.tree.RC[v]]) *
-                (quicksum((self.H_pos[v, f] - self.H_neg[v, f]) * self.data.at[i, f] for f in self.featureset)
-                 + self.D[v]) >= 1 - self.ERR[i, v]
+                quicksum((self.H_pos[v, f] - self.H_neg[v, f])*self.data.at[i, f]
+                         for f in self.featureset) <=
+                self.D[v] + self.Q[i, self.tree.RC[v]] - self.ERR[i, v]
+                for i in self.datapoints)
+            self.model.addConstrs(
+                quicksum((self.H_pos[v, f] - self.H_neg[v, f])*self.data.at[i, f]
+                         for f in self.featureset) >=
+                self.D[v] - self.Q[i, self.tree.LC[v]] - self.ERR[i, v]
                 for i in self.datapoints)
 
-        for v in self.tree.V:
+        for v in self.tree.B:
             self.model.addConstrs(self.H_pos[v, f] <= self.B[v] for f in self.featureset)
             self.model.addConstrs(self.H_neg[v, f] <= self.B[v] for f in self.featureset)
 
-        self.model.addConstrs(self.H_pos.sum(v, '*') <= 1 for v in self.tree.V)
-        self.model.addConstrs(self.H_neg.sum(v, '*') <= 1 for v in self.tree.V)
+        self.model.addConstrs(self.H_pos.sum(v, '*') <= 1 for v in self.tree.B)
+        self.model.addConstrs(self.H_neg.sum(v, '*') <= 1 for v in self.tree.B)
 
         """ Pass to Model DV for Callback / Optimization Purposes """
         self.model._B = self.B
@@ -263,8 +270,10 @@ class MBDT_SVM:
                    model.cbGet(GRB.Callback.MIP_OBJBND)) < model.Params.FeasibilityTol:
                 model.terminate()
 
+        """
         # Add VIS Cuts at Branching Nodes of Feasible Solution
         if where == GRB.Callback.MIPSOL:
+            print('in vis')
             model._visnum += 1
             start = time.perf_counter()
             B = model.cbGetSolution(model._B)
@@ -294,9 +303,10 @@ class MBDT_SVM:
                              len(B_v_left) + len(B_v_right) - 1)
                 model._viscuts += 1
             model._vistime += time.perf_counter() - start
-
+        """
         # Add Feasible Path for Datapoints Cuts at Fractional Point in Branch and Bound Tree
         if (where == GRB.Callback.MIPNODE) and (model.cbGet(GRB.Callback.MIPNODE_STATUS) == GRB.OPTIMAL):
+            print('in feasible path')
             if ('UF' in model._cut_type) or ('GRB' in model._cut_type): return
             start = time.perf_counter()
             # Only add cuts at root-node of branch and bound tree
@@ -493,6 +503,7 @@ class MBDT_SVM:
                 # print(f'{v} branched')
                 a_v = {f: H_pos_sol[v, f] - H_neg_sol[v, f] for f in self.featureset}
                 self.tree.branch_nodes[v] = (a_v, D_sol[v])
+                # print(a_v, D_sol[v])
                 u_dict = {f: 1 for f in self.featureset if abs(a_v[f]) > 10 ** (-8)}
                 self.hp_size += sum(u_dict.values())
         self.HP_avg_size = self.hp_size / sum(B_sol.values())

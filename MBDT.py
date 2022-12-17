@@ -80,6 +80,7 @@ class MBDT:
         self.HP_time = 0
         self.HP_size = 0
         self.svm_branches = 0
+        self.obj_func = 'N/A'
 
         """ Gurobi Optimization Parameters """
         self.model = Model(f'{self.modeltype}')

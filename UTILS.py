@@ -356,7 +356,7 @@ def model_summary(opt_model, tree, test_set, rand_state, results_file):
             [opt_model.dataname, tree.height, len(opt_model.datapoints), len(opt_model.featureset),
              test_acc/len(test_set), train_acc/len(opt_model.datapoints), opt_model.model.Runtime,
              opt_model.model.MIPGap, opt_model.model.ObjVal, opt_model.model.ObjBound,
-             opt_model.modeltype, opt_model.objective,
+             opt_model.modeltype, opt_model.obj_func,
              opt_model.HP_time, opt_model.HP_avg_size, opt_model.HP_obj, opt_model.HP_rank,
              opt_model.model._septime, opt_model.model._sepnum, opt_model.model._sepcuts, opt_model.model._sepavg,
              opt_model.model._vistime, opt_model.model._visnum, opt_model.model._viscuts,
