@@ -96,7 +96,7 @@ for ccp_alpha in alphas_to_try:
             best_valid_acc = valid_acc
     else:
         print("Tuning timed out on ccp_alpha =", ccp_alpha)
-print("X_train dimensions:", X_train.shape)
+print("X dimensions:", X_train.shape)
 print("Best ccp_alpha:", best_ccp_alpha)
 
 # Use SVM warm start

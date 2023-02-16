@@ -1,4 +1,4 @@
-import model_runs
+import model_runs, UTILS
 """
 rand_states = [138, 15, 89, 42, 0]
 rand_states = [138, 15]
@@ -17,7 +17,7 @@ for obj, rank in gen:
          "-r", rand_states, "-w", warm_start, "-e", model_extras, "-f", file, "-l", False])
 """
 
-# """
+"""
 time_limit = 600
 rand_states = [138]
 file = 'test_dump_svm.csv'
@@ -36,7 +36,7 @@ model_runs.main_svm(
         ["-d", data_names, "-h", heights, "-m", models, "-t", time_limit, "-o", obj_func,
          "-r", rand_states, "-w", warm_start, "-e", model_extras, "-f", file, "-l", False])
 
-"""
+
 gen = ((obj, rank) for obj in ['linear','quadratic'] for rank in ['|F|-1',0.9,0.75])
 
 for obj, rank in gen:
@@ -45,3 +45,15 @@ for obj, rank in gen:
         ["-d", data_names, "-h", heights, "-m", models, "-t", time_limit, "-p", hp_info,
          "-r", rand_states, "-w", warm_start, "-e", model_extras, "-f", file, "-l", False])
 """
+bin_mode = 'all-candidates'
+# bin_mode = None
+numerical_datasets = ['banknote_authentication', 'blood_transfusion', 'climate_model_crashes', 'wine_white',
+                      'glass_identification', 'image_segmentation', 'ionosphere', 'parkinsons', 'iris', 'wine_red']
+categorical_datasets = ['balance_scale', 'car_evaluation', 'chess', 'congressional_voting_records', 'hayes_roth',
+                            'monk1', 'monk2', 'monk3', 'soybean_small', 'spect', 'tictactoe_endgame', 'breast_cancer',
+                            'fico_binary']
+for dataset in numerical_datasets:
+    print('\npulling', dataset)
+    data = UTILS.get_data(dataset, binarization=bin_mode)
+    print(data.head(3))
+    # data.to_csv(f'Datasets/{dataset}_enc.csv', header=True, index=False)

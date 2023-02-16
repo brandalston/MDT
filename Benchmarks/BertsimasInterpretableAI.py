@@ -61,7 +61,7 @@ for max_depth in [2, 3, 4]:
         # No need to normalize numerical features to [0,1], however need to one-hot encode categorical features
         if dataset in categorical_datasets:
             X_train, X_test = preprocess_dataset(X_train, X_test, categorical_features=X_train.columns)
-        print("X_train dimensions:", X_train.shape)
+        print("X dimensions:", X_train.shape)
         print("{}: Training on full training set".format(datetime.now().time()))
         start_time = time.time()
         grid = iai.GridSearch(iai.OptimalTreeClassifier(max_depth=max_depth, random_seed=1))
@@ -94,7 +94,7 @@ for max_depth in [2, 3, 4]:
         # No need to normalize numerical features to [0,1], however need to one-hot encode categorical features
         if dataset in categorical_datasets:
             X_train, X_test = preprocess_dataset(X_train, X_test, categorical_features=X_train.columns)
-        print("X_train dimensions:", X_train.shape)
+        print("X dimensions:", X_train.shape)
         print("{}: Training on full training set".format(datetime.now().time()))
         start_time = time.time()
         grid = iai.GridSearch(iai.OptimalTreeClassifier(max_depth=max_depth, random_seed=1,

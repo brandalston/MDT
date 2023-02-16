@@ -87,7 +87,7 @@ if dataset in numerical_datasets:
 elif dataset in categorical_datasets:
     X_train, X_test = preprocess_dataset(X_train, X_test, categorical_features=X_train.columns)
 
-print("X_train dimensions:", X_train.shape)
+print("X dimensions:", X_train.shape)
 
 start_time = time.time()
 if method == "Full":

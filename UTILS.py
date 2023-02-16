@@ -1,102 +1,119 @@
+import csv, random
 import numpy as np
-import pandas as pd
-import random
-from sklearn.base import BaseEstimator, TransformerMixin
-from sklearn.utils.validation import check_is_fitted
-from sklearn.preprocessing import KBinsDiscretizer, MinMaxScaler, OneHotEncoder
-from sklearn.compose import ColumnTransformer
 from gurobipy import *
-import csv
-from math import ceil
+from data_load import *
+from sklearn.base import BaseEstimator, TransformerMixin
+from sklearn.compose import ColumnTransformer
+from sklearn.preprocessing import KBinsDiscretizer, MinMaxScaler, OneHotEncoder
+from sklearn.utils.validation import check_is_fitted
 
 
-def get_data(file_name, target):
-    # Return dataset from 'file_name' in Pandas dataframe
-    # dataset located in workspace folder named 'Datasets'
-    # Ensure all features are in [0,1] through encoding process
-    global data_processed, data
-    # try:
-    cols_dict = {
-        'auto-mpg': ['target', 'cylinders', 'displacement', 'horsepower', 'weight', 'acceleration', 'model-year',
-                     'origin', 'car_name'],
-        'balance-scale': ['target', 'left-weight', 'left-distance', 'right-weight', 'right-distance'],
-        'banknote_authentication': ['variance-of-wavelet', 'skewness-of-wavelet', 'curtosis-of-wavelet', 'entropy',
-                                    'target'],
-        'blood_transfusion': ['R', 'F', 'M', 'T', 'target'],
-        'breast-cancer': ['target', 'age', 'menopause', 'tumor-size', 'inv-nodes', 'node-caps', 'deg-malig',
-                          'breast', 'breast-quad', 'irradiat'],
-        'car': ['buying', 'maint', 'doors', 'persons', 'lug_boot', 'safety', 'target'],
-        'climate': ['Study', 'Run', 'vconst_corr', 'vconst_2', 'vconst_3', 'vconst_4', 'vconst_5', 'vconst_7',
-                    'ah_corr', 'ah_bolus', 'slm_corr', 'efficiency_factor', 'tidal_mix_max', 'vertical_decay_scale',
-                    'convect_corr', 'bckgrnd_vdc1', 'bckgrnd_vdc_ban', 'bckgrnd_vdc_eq', 'bckgrnd_vdc_psim',
-                    'Prandtl', 'target'],
-        'flare1': ['class', 'largest-spot-size', 'spot-distribution', 'activity', 'evolution',
-                   'previous-24hr-activity', 'historically-complex', 'become-h-c', 'area', 'area-largest-spot',
-                   'c-target', 'm-target', 'x-target'],
-        'flare2': ['class', 'largest-spot-size', 'spot-distribution', 'activity', 'evolution',
-                   'previous-24hr-activity', 'historically-complex', 'become-h-c', 'area', 'area-largest-spot',
-                   'c-target', 'm-target', 'x-target'],
-        'glass': ['Id', 'RI', 'Na', 'Mg', 'Al', 'Si', 'K', 'Ca', 'Ba', 'Fe', 'target'],
-        'hayes-roth': ['file_name', 'hobby', 'age', 'educational-level', 'marital-status', 'target'],
-        'house-votes-84': ['target', 'handicapped-infants', 'water-project-cost-sharing',
-                           'adoption-of-the-budget-resolution', 'physician-fee-freeze', 'el-salvador-aid',
-                           'religious-groups-in-schools', 'anti-satellite-test-ban', 'aid-to-nicaraguan-contras',
-                           'mx-missile', 'immigration', 'synfuels-corporation-cutback', 'education-spending',
-                           'superfund-right-to-sue', 'crime', 'duty-free-exports',
-                           'export-administration-act-south-africa'],
-        'image_segmentation': ['target', 'region-centroid-col', 'region-centroid-row', 'region-pixel-count',
-                               'short-line-density-5', 'short-line-density-2', 'vedge-mean', 'vegde-sd',
-                               'hedge-mean', 'hedge-sd', 'intensity-mean', 'rawred-mean', 'rawblue-mean',
-                               'rawgreen-mean', 'exred-mean', 'exblue-mean', 'exgreen-mean', 'value-mean',
-                               'saturatoin-mean', 'hue-mean'],
-        'ionosphere': list(range(1, 35)) + ['target'],
-        'iris': ['sepal-length', 'sepal-width', 'petal-length', 'petal-width', 'target'],
-        'kr-vs-kp': ['bkblk', 'bknwy', 'bkon8', 'bkona', 'bkspr', 'bkxbq', 'bkxcr', 'bkxwp', 'blxwp', 'bxqsq',
-                     'cntxt', 'dsopp', 'dwipd', 'hdchk', 'katri', 'mulch', 'qxmsq', 'r2ar8', 'reskd', 'reskr',
-                     'rimmx', 'rkxwp', 'rxmsq', 'simpl', 'skach', 'skewr', 'skrxp', 'spcop', 'stlmt', 'thrsk',
-                     'wkcti', 'wkna8', 'wknck', 'wkovl', 'wkpos', 'wtoeg', 'target'],
-        'monk1': ['target', 'a1', 'a2', 'a3', 'a4', 'a5', 'a6'],
-        'monk2': ['target', 'a1', 'a2', 'a3', 'a4', 'a5', 'a6'],
-        'monk3': ['target', 'a1', 'a2', 'a3', 'a4', 'a5', 'a6'],
-        'parkinsons': ['file_name', 'MDVP:Fo(Hz)', 'MDVP:Fhi(Hz)', 'MDVP:Flo(Hz)', 'MDVP:Jitter(%)',
-                       'MDVP:Jitter(Abs)', 'MDVP:RAP', 'MDVP:PPQ', 'Jitter:DDP', 'MDVP:Shimmer', 'MDVP:Shimmer(dB)',
-                       'Shimmer:APQ3', 'Shimmer:APQ5', 'MDVP:APQ', 'Shimmer:DDA', 'NHR', 'HNR', 'target', 'RPDE',
-                       'DFA', 'spread1', 'spread2', 'D2', 'PPE'],
-        'soybean-small': list(range(1, 36)) + ['target'],
-        'tic-tac-toe': ['top-left-square', 'top-middle-square', 'top-right-square', 'middle-left-square',
-                        'middle-middle-square', 'middle-right-square', 'bottom-left-square', 'bottom-middle-square',
-                        'bottom-right-square', 'target'],
-        'wine-red': ['fixed-acidity', 'volatile-acidity', 'citric-acid', 'residual-sugar', 'chlorides',
-                     'free-sulfur dioxide', 'total-sulfur-dioxide', 'density', 'pH', 'sulphates', 'alcohol',
-                     'target'],
-        'wine-white': ['fixed-acidity', 'volatile-acidity', 'citric-acid', 'residual-sugar', 'chlorides',
-                       'free-sulfur dioxide', 'total-sulfur-dioxide', 'density', 'pH', 'sulphates', 'alcohol',
-                       'target']
+def get_data(dataset, binarization=None):
+    dataset2loadfcn = {
+        'balance_scale': load_balance_scale,
+        'banknote_authentication': load_banknote_authentication,
+        'blood_transfusion': load_blood_transfusion,
+        'breast_cancer': load_breast_cancer,
+        'car_evaluation': load_car_evaluation,
+        'chess': load_chess,
+        'climate_model_crashes': load_climate_model_crashes,
+        'congressional_voting_records': load_congressional_voting_records,
+        'fico_binary': load_fico_binary,
+        'glass_identification': load_glass_identification,
+        'hayes_roth': load_hayes_roth,
+        'image_segmentation': load_image_segmentation,
+        'ionosphere': load_ionosphere,
+        'iris': load_iris,
+        'monk1': load_monk1,
+        'monk2': load_monk2,
+        'monk3': load_monk3,
+        'parkinsons': load_parkinsons,
+        'soybean_small': load_soybean_small,
+        'spect': load_spect,
+        'tictactoe_endgame': load_tictactoe_endgame,
+        'wine_red': load_wine_red,
+        'wine_white': load_wine_white
     }
-    numerical_datasets = ['iris', 'wine-red', 'wine-white', 'banknote_authentication', 'blood_transfusion',
-                          'climate', 'glass', 'image_segmentation', 'ionosphere', 'parkinsons']
-    categorical_datasets = ['balance-scale', 'car', 'kr-vs-kp', 'house-votes-84', 'tic-tac-toe',
-                            'hayes-roth', 'monk1', 'monk2', 'monk3', 'soybean-small', 'breast-cancer']
-    if file_name in cols_dict:
-        if file_name not in ['glass', 'hayes-roth', 'parkinsons']:
-            data = pd.read_csv('Datasets/' + file_name + '.data', names=cols_dict[file_name])
-        elif file_name == 'hayes-roth' or 'parkinsons':
-            data = pd.read_csv('Datasets/' + file_name + '.data', names=cols_dict[file_name], index_col='file_name')
-        elif file_name == 'glass':
-            data = pd.read_csv('Datasets/' + file_name + '.data', names=cols_dict[file_name], index_col='Id')
-    if file_name in numerical_datasets:
-        data_processed = preprocess(data, numerical_features=data.columns != target)
-        data_processed.rename(columns={col: col.replace('num__', '') for col in data_processed.columns}, inplace=True)
-    if file_name in categorical_datasets:
-        data_processed = preprocess(data, categorical_features=data.columns != target)
-        data_processed.rename(columns={col: col.replace('cat__', '') for col in data_processed.columns}, inplace=True)
-    data_processed.name = file_name
-    data_processed['target'] = data['target']
 
-    return data_processed
-    # except:
-        # print("Dataset not found or error in preprocess!\n")
-        # return
+    numerical_datasets = ['iris', 'banknote_authentication', 'blood_transfusion', 'climate_model_crashes', 'wine-white',
+                          'glass_identification', 'image_segmentation', 'ionosphere', 'parkinsons', 'iris', 'wine-red']
+    categorical_datasets = ['balance_scale', 'car_evaluation', 'chess', 'congressional_voting_records', 'hayes_roth',
+                            'monk1', 'monk2', 'monk3', 'soybean_small', 'spect', 'tictactoe_endgame', 'breast_cancer',
+                            'fico_binary']
+    already_processed = ['fico_binary']
+
+    load_function = dataset2loadfcn[dataset]
+    X, y = load_function()
+
+    if dataset in already_processed:
+        X_new = X
+    else:
+        if dataset in numerical_datasets:
+            if binarization is None:
+                X_new, ct = preprocess(X, numerical_features=X.columns)
+                X_new = pd.DataFrame(X_new, columns=X.columns)
+            else:
+                X_new, ct = preprocess(X, y=y, binarization=binarization, numerical_features=X.columns)
+                cols = []
+                for key in ct.transformers_[0][1].candidate_thresholds_:
+                    for item in ct.transformers_[0][1].candidate_thresholds_[key]:
+                        cols.append(f"{key}<={item}")
+                X_new = pd.DataFrame(X_new, columns=cols)
+        else:
+            X_new, ct = preprocess(X, categorical_features=X.columns)
+            X_new = pd.DataFrame(X_new, columns=ct.get_feature_names_out(X.columns))
+            X_new.columns = X_new.columns.str.replace('cat__', '')
+    X_new = X_new.astype(int)
+    data_new = pd.concat([X_new, y], axis=1)
+    return data_new
+
+
+def preprocess(X, y=None, numerical_features=None, categorical_features=None, binarization=None):
+    """ Preprocess a dataset.
+
+    Numerical features are scaled to the [0,1] interval by default, but can also
+    be binarized, either by considering all candidate thresholds for a
+    univariate split, or by binning. Categorical features are one-hot encoded.
+
+    Parameters
+    ----------
+    X
+    X_test
+    y_train : pandas Series of training labels, only needed for binarization
+        with candidate thresholds
+    numerical_features : list of numerical features
+    categorical_features : list of categorical features
+    binarization : {'all-candidates', 'binning'}, default=None
+        Binarization technique for numerical features.
+        all-candidates
+            Use all candidate thresholds.
+        binning
+            Perform binning using scikit-learn's KBinsDiscretizer.
+        None
+            No binarization is performed, features scaled to the [0,1] interval.
+
+    Returns
+    -------
+    X_train_new : pandas DataFrame that is the result of binarizing X
+    """
+
+    if numerical_features is None:
+        numerical_features = []
+    if categorical_features is None:
+        categorical_features = []
+
+    numerical_transformer = MinMaxScaler()
+    if binarization == 'all-candidates':
+        numerical_transformer = CandidateThresholdBinarizer()
+    elif binarization == 'binning':
+        numerical_transformer = KBinsDiscretizer(encode='onehot-dense')
+    # categorical_transformer = OneHotEncoder(drop='if_binary', sparse=False, handle_unknown='ignore') # Should work in scikit-learn 1.0
+    categorical_transformer = OneHotEncoder(sparse=False, handle_unknown='ignore')
+    ct = ColumnTransformer([("num", numerical_transformer, numerical_features),
+                            ("cat", categorical_transformer, categorical_features)])
+    X_train_new = ct.fit_transform(X, y)
+
+    return X_train_new, ct
 
 
 class CandidateThresholdBinarizer(TransformerMixin, BaseEstimator):
@@ -109,79 +126,56 @@ class CandidateThresholdBinarizer(TransformerMixin, BaseEstimator):
 
     Attributes
     ----------
-    candidate_thresholds : dict mapping features to list of thresholds
+    candidate_thresholds_ : dict mapping features to list of thresholds
     """
 
-    def __init__(self):
-        self.candidate_thresholds = {}
-
-    def fit(self, data, target):
+    def fit(self, X, y):
         """ Finds all candidate split thresholds for each feature.
 
         Parameters
         ----------
-        data : pandas DataFrame with observations and labels
-        target: column name of labels
+        X : pandas DataFrame with observations, X.columns used as feature names
+        y : pandas Series with labels
 
         Returns
         -------
         self
         """
-        for f in data.columns:
-            if f == target: continue
+        X_y = X.join(y)
+        self.candidate_thresholds_ = {}
+        for j in X.columns:
             thresholds = []
-            # Sort by feature value, then by label
-            sorted_data = data.sort_values([f, target])
-            prev_feature_val, prev_label = sorted_data.iloc[0][f], sorted_data.iloc[0][target]
-            for idx, row in sorted_data.iterrows():
-                curr_feature_val, curr_label = row[f], row[target]
+            sorted_X_y = X_y.sort_values([j, y.name])  # Sort by feature value, then by label
+            prev_feature_val, prev_label = sorted_X_y.iloc[0][j], sorted_X_y.iloc[0][y.name]
+            for idx, row in sorted_X_y.iterrows():
+                curr_feature_val, curr_label = row[j], row[y.name]
                 if (curr_label != prev_label and
                         not math.isclose(curr_feature_val, prev_feature_val)):
                     thresh = (prev_feature_val + curr_feature_val) / 2
                     thresholds.append(thresh)
                 prev_feature_val, prev_label = curr_feature_val, curr_label
-            self.candidate_thresholds[f] = thresholds
+            self.candidate_thresholds_[j] = thresholds
         return self
 
-    def transform(self, data, target):
-        """
-        Binarize numerical features using candidate thresholds.
+    def transform(self, X):
+        """ Binarize numerical features using candidate thresholds.
 
         Parameters
         ----------
-        data : pandas DataFrame with observations
-        target: column name of data labels
+        X : pandas DataFrame with observations, X.columns used as feature names
 
         Returns
         -------
-        data_binarized : pandas DataFrame that is the result of binarizing X
+        Xb : pandas DataFrame that is the result of binarizing X
         """
         check_is_fitted(self)
-        data_binarized = pd.DataFrame()
-        for f in data.columns:
-            if f == target: continue
-            for threshold in self.candidate_thresholds[f]:
-                data_binarized[f'{f} <= {threshold}'] = (data[f] <= threshold)
-        return data_binarized
-
-
-def preprocess(data, numerical_features=None, categorical_features=None, binarization=None):
-    if numerical_features is None:
-        numerical_features = []
-    if categorical_features is None:
-        categorical_features = []
-    categorical_transformer = OneHotEncoder(sparse=False, handle_unknown='ignore')
-    numerical_transformer = MinMaxScaler()
-    if binarization == 'binning':
-        numerical_transformer = KBinsDiscretizer(encode='onehot-dense')
-    elif binarization == 'candidate':
-        numerical_transformer = CandidateThresholdBinarizer()
-    ct = ColumnTransformer([("num", numerical_transformer, numerical_features),
-                            ("cat", categorical_transformer, categorical_features)])
-    data_new = pd.DataFrame(ct.fit_transform(data), index=data.index, columns=ct.get_feature_names_out())
-    # print(data.columns)
-    # print(data_new.columns)
-    return data_new
+        Xb = pd.DataFrame()
+        for j in X.columns:
+            for threshold in self.candidate_thresholds_[j]:
+                binary_test_name = "{}<={}".format(j, threshold)
+                Xb[binary_test_name] = (X[j] <= threshold)
+        Xb.replace({"False": 0, "True": 1}, inplace=True)
+        return Xb
 
 
 class Linear_Separator():
@@ -243,7 +237,7 @@ class Linear_Separator():
             elif hp_info['objective'] == 'rank':
                 m.setObjective(u.sum() + err.sum(), GRB.MINIMIZE)
             if type(hp_info['rank']) is float:
-                B = ceil(hp_info['rank'] * B)
+                B = math.ceil(hp_info['rank'] * B)
             elif hp_info['rank'] == 'full':
                 pass
             else:

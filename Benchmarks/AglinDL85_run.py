@@ -78,7 +78,7 @@ if dataset in numerical_datasets:
 elif dataset in categorical_datasets:
     # Train on one-hot encoded dataset
     X_train, X_test = preprocess_dataset(X_train, X_test, categorical_features=X_train.columns)
-print("X_train dimensions:", X_train.shape)
+print("X dimensions:", X_train.shape)
 # Run CART to get a bound on the error the optimal tree can get
 clf = DecisionTreeClassifier(max_depth=max_depth, random_state=0)
 clf.fit(X_train, y_train)
