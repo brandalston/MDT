@@ -1,5 +1,8 @@
 import pandas as pd
 
+""" We assume the target column of dataset is labeled 'target'
+    Change value at your discretion """
+
 cols_dict = {
         'auto-mpg': ['target', 'cylinders', 'displacement', 'horsepower', 'weight', 'acceleration', 'model-year',
                      'origin', 'car_name'],
@@ -205,7 +208,7 @@ def load_congressional_voting_records():
     https://archive.ics.uci.edu/ml/datasets/Congressional+Voting+Records
     """
     names = list("a{}".format(j + 1) for j in range(17))
-    df = pd.read_csv("Datasets/house-votes-84.data", names=names)
+    df = pd.read_csv("Datasets/house_votes_84.data", names=names)
     y = df["a1"]
     X = df.drop(columns="a1")
     return X, y
@@ -240,11 +243,11 @@ def load_hayes_roth():
 
     https://archive.ics.uci.edu/ml/datasets/Hayes-Roth
     """
-    df_train = pd.read_csv("Datasets/hayes-roth.data",
-                     names=["name", "hobby", "age", "educational level", "marital status", "target"],
-                     index_col="name")
-    df_test = pd.read_csv("Datasets/hayes-roth.test",
-                     names=["hobby", "age", "educational level", "marital status", "target"])
+    df_train = pd.read_csv("Datasets/hayes_roth.data",
+                           names=["name", "hobby", "age", "educational level", "marital status", "target"],
+                           index_col="name")
+    df_test = pd.read_csv("Datasets/hayes_roth.test",
+                          names=["hobby", "age", "educational level", "marital status", "target"])
     df = pd.concat([df_test, df_train], ignore_index=True)
     y = df["target"]
     X = df.drop(columns="target")

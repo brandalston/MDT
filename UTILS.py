@@ -11,15 +11,15 @@ from sklearn.utils.validation import check_is_fitted
 def get_data(dataset, binarization=None):
     dataset2loadfcn = {
         'balance_scale': load_balance_scale,
-        'banknote_authentication': load_banknote_authentication,
-        'blood_transfusion': load_blood_transfusion,
+        'banknote': load_banknote_authentication,
+        'blood': load_blood_transfusion,
         'breast_cancer': load_breast_cancer,
-        'car_evaluation': load_car_evaluation,
-        'chess': load_chess,
-        'climate_model_crashes': load_climate_model_crashes,
-        'congressional_voting_records': load_congressional_voting_records,
+        'car': load_car_evaluation,
+        'kr_vs_kp': load_chess,
+        'climate': load_climate_model_crashes,
+        'house_votes_84': load_congressional_voting_records,
         'fico_binary': load_fico_binary,
-        'glass_identification': load_glass_identification,
+        'glass': load_glass_identification,
         'hayes_roth': load_hayes_roth,
         'image_segmentation': load_image_segmentation,
         'ionosphere': load_ionosphere,
@@ -30,24 +30,29 @@ def get_data(dataset, binarization=None):
         'parkinsons': load_parkinsons,
         'soybean_small': load_soybean_small,
         'spect': load_spect,
-        'tictactoe_endgame': load_tictactoe_endgame,
+        'tic_tac_toe': load_tictactoe_endgame,
         'wine_red': load_wine_red,
         'wine_white': load_wine_white
     }
 
-    numerical_datasets = ['iris', 'banknote_authentication', 'blood_transfusion', 'climate_model_crashes', 'wine-white',
-                          'glass_identification', 'image_segmentation', 'ionosphere', 'parkinsons', 'iris', 'wine-red']
-    categorical_datasets = ['balance_scale', 'car_evaluation', 'chess', 'congressional_voting_records', 'hayes_roth',
-                            'monk1', 'monk2', 'monk3', 'soybean_small', 'spect', 'tictactoe_endgame', 'breast_cancer',
-                            'fico_binary']
+    numerical_datasets = ['iris', 'banknote', 'blood', 'climate', 'wine-white', 'wine-red'
+                          'glass', 'image_segmentation', 'ionosphere', 'parkinsons']
+    categorical_datasets = ['balance_scale', 'car', 'kr_vs_kp', 'house_votes_84', 'hayes_roth', 'breast_cancer',
+                            'monk1', 'monk2', 'monk3', 'soybean_small', 'spect', 'tic_tac_toe', 'fico_binary']
     already_processed = ['fico_binary']
 
     load_function = dataset2loadfcn[dataset]
     X, y = load_function()
-
-    if dataset in already_processed:
-        X_new = X
+    """ We assume the target column of dataset is labeled 'target'
+        Change value at your discretion """
+    codes, uniques = pd.factorize(y)
+    y = pd.Series(codes, name='target')
+    if dataset in categorical_datasets:
+        X_new, ct = preprocess(X, categorical_features=X.columns)
+        X_new = pd.DataFrame(X_new, columns=ct.get_feature_names_out(X.columns))
+        X_new.columns = X_new.columns.str.replace('cat__', '')
     else:
+        X_new = X
         if dataset in numerical_datasets:
             if binarization is None:
                 X_new, ct = preprocess(X, numerical_features=X.columns)
@@ -59,11 +64,7 @@ def get_data(dataset, binarization=None):
                     for item in ct.transformers_[0][1].candidate_thresholds_[key]:
                         cols.append(f"{key}<={item}")
                 X_new = pd.DataFrame(X_new, columns=cols)
-        else:
-            X_new, ct = preprocess(X, categorical_features=X.columns)
-            X_new = pd.DataFrame(X_new, columns=ct.get_feature_names_out(X.columns))
-            X_new.columns = X_new.columns.str.replace('cat__', '')
-    X_new = X_new.astype(int)
+    if dataset in categorical_datasets: X_new = X_new.astype(int)
     data_new = pd.concat([X_new, y], axis=1)
     return data_new
 
@@ -107,6 +108,8 @@ def preprocess(X, y=None, numerical_features=None, categorical_features=None, bi
         numerical_transformer = CandidateThresholdBinarizer()
     elif binarization == 'binning':
         numerical_transformer = KBinsDiscretizer(encode='onehot-dense')
+    elif binarization is None:
+        numerical_transformer = MinMaxScaler()
     # categorical_transformer = OneHotEncoder(drop='if_binary', sparse=False, handle_unknown='ignore') # Should work in scikit-learn 1.0
     categorical_transformer = OneHotEncoder(sparse=False, handle_unknown='ignore')
     ct = ColumnTransformer([("num", numerical_transformer, numerical_features),
@@ -198,6 +201,7 @@ class Linear_Separator():
 
     def SVM_fit(self, data, hp_info):
         global cc_L, cc_R
+        print('\nFITTING\n')
         if not np.array_equal(np.unique(data.svm), [-1, 1]):
             print("Class labels must be -1 and +1")
             raise ValueError
@@ -269,15 +273,18 @@ class Linear_Separator():
 def model_results(model, tree):
     # Print assigned branching, classification, and pruned nodes of tree
 
+    """
+    # Print tree node assignments (branching hyperplane weights, class, pruned)
     for v in tree.V:
-        if model._P[v].x > 0.5:
-            for k in model._data[model._target].unique():
-                if model._W[v, k].x > 0.5:
+        if model.P[v].x > 0.5:
+            for k in model.classes:
+                if model.W[v, k].x > 0.5:
                     print('Vertex ' + str(v) + ' class ' + str(k))
-        elif model._P[v].x < 0.5 and model._B[v].x > 0.5:
-            print('Vertex ' + str(v) + ' branching', tree.DG_prime.nodes[v]['branching'])
-        elif model._P[v].x < 0.5 and model._B[v].x < 0.5:
+        elif model.P[v].x < 0.5 and model.B[v].x > 0.5:
+            print('Vertex ' + str(v) + ' branching', tree.branch_nodes[v])
+        elif model.P[v].x < 0.5 and model.B[v].x < 0.5:
             print('Vertex ' + str(v) + ' pruned')
+
 
     # Print datapoint paths through tree
     for i in sorted(model._data.index):
@@ -292,6 +299,7 @@ def model_results(model, tree):
                     if model._W[v, k].x > 0.5:
                         print('datapoint ' + str(i) + ' incorrectly assigned class ' + str(k)
                               + ' at ' + str(v) + '. Path: ', path)
+    """
 
 
 def tree_check(tree):
@@ -312,7 +320,6 @@ def tree_check(tree):
 def data_predict(tree, data, target):
     # Ensure assigned tree is valid
     if not tree_check(tree): print('Tree is invalid')
-    feature_set = data.columns.drop('target')
     # Results dictionary for datapoint assignments and path through tree
     acc = 0
     results = {i: [None, []] for i in data.index}
@@ -322,8 +329,8 @@ def data_predict(tree, data, target):
         while results[i][0] is None:
             results[i][1].append(v)
             if v in tree.branch_nodes:
-                (a_v, c_v) = tree.branch_nodes[v]
-                v = tree.LC[v] if sum(a_v[f] * data.at[i, f] for f in feature_set) <= c_v else tree.RC[v]
+                a_v, c_v = tree.branch_nodes[v]
+                v = tree.LC[v] if sum(a_v[f] * data.at[i, f] for f in data.columns.drop('target')) <= c_v else tree.RC[v]
             elif v in tree.class_nodes:
                 results[i][0] = tree.class_nodes[v]
                 if results[i][0] == data.at[i, target]:
@@ -350,7 +357,7 @@ def model_summary(opt_model, tree, test_set, rand_state, results_file):
             [opt_model.dataname, tree.height, len(opt_model.datapoints), len(opt_model.featureset),
              test_acc/len(test_set), train_acc/len(opt_model.datapoints), opt_model.model.Runtime,
              opt_model.model.MIPGap, opt_model.model.ObjVal, opt_model.model.ObjBound,
-             opt_model.modeltype, opt_model.obj_func,
+             opt_model.modeltype, opt_model.b_type, opt_model.obj_func,
              opt_model.HP_time, opt_model.HP_avg_size, opt_model.HP_obj, opt_model.HP_rank,
              opt_model.model._septime, opt_model.model._sepnum, opt_model.model._sepcuts, opt_model.model._sepavg,
              opt_model.model._vistime, opt_model.model._visnum, opt_model.model._viscuts,

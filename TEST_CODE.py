@@ -1,59 +1,37 @@
-import model_runs, UTILS
+import test_runs
+
 """
+numerical_datasets = ['iris', 'banknote', 'blood', 'climate', 'wine-white', 'wine-red'
+                      'glass', 'image_segmentation', 'ionosphere', 'parkinsons', 'iris']
+categorical_datasets = ['balance_scale', 'car', 'kr_vs_kp', 'house-votes-84', 'hayes_roth', 'breast_cancer',
+                        'monk1', 'monk2', 'monk3', 'soybean_small', 'spect', 'tic_tac_toe', 'fico_binary']
 rand_states = [138, 15, 89, 42, 0]
-rand_states = [138, 15]
 time_limit = 600
-heights = [2,3,4,5]
-file = 'hp_variants.csv'
-models = ['CUT1']
+heights = [2, 3, 4, 5]
 model_extras = None
 warm_start = {'use': False, 'values': None}
-gen = ((obj, rank) for obj in ['linear','quadratic'] for rank in ['|F|-1',0.9,0.75,0.5,0.25,0.1])
+file = 'test_dump_svm.csv'
+b_type = 'VIS'
+models = ['CUT1', 'CUT2']
+gen = ((obj, rank) for obj in ['linear','quadratic'] for rank in ['|F|-1', 0.9, 0.75, 0.5, 0.25, 0.1])
 data_names = ['soybean-small']
 for obj, rank in gen:
     hp_info = {'objective': obj, 'rank': rank}
-    model_runs.main(
-        ["-d", data_names, "-h", heights, "-m", models, "-t", time_limit, "-p", hp_info,
+    test_runs.main(
+        ["-d", data_names, "-h", heights, "-m", models, "-b", b_type, "-t", time_limit, "-p", hp_info,
          "-r", rand_states, "-w", warm_start, "-e", model_extras, "-f", file, "-l", False])
 """
 
-"""
+data_names = ['iris']
 time_limit = 600
 rand_states = [138]
-file = 'test_dump_svm.csv'
-heights = [2,3,4,5]
-data_names = ['climate']
-models = ['CUT1-SVM-UF']
-# model_extras = ['regularization-3']
+file = 'ising_testing.csv'
+heights = [5]
+models = ['CUT1']
+b_type = 'VIS'
 model_extras = None
 warm_start = {'use': False, 'values': None}
-hp_info = {'objective': 'quadratic', 'rank': .5}
-obj_func = None
-
-# model_runs.main(["-d", data_names, "-h", heights, "-m", models, "-t", time_limit, "-p", hp_info, "-r", rand_states, "-w", warm_start, "-e", model_extras, "-f", file, "-l", False])
-
-model_runs.main_svm(
-        ["-d", data_names, "-h", heights, "-m", models, "-t", time_limit, "-o", obj_func,
-         "-r", rand_states, "-w", warm_start, "-e", model_extras, "-f", file, "-l", False])
-
-
-gen = ((obj, rank) for obj in ['linear','quadratic'] for rank in ['|F|-1',0.9,0.75])
-
-for obj, rank in gen:
-    hp_info = {'objective': obj, 'rank': rank}
-    model_runs.main(
-        ["-d", data_names, "-h", heights, "-m", models, "-t", time_limit, "-p", hp_info,
-         "-r", rand_states, "-w", warm_start, "-e", model_extras, "-f", file, "-l", False])
-"""
-bin_mode = 'all-candidates'
-# bin_mode = None
-numerical_datasets = ['banknote_authentication', 'blood_transfusion', 'climate_model_crashes', 'wine_white',
-                      'glass_identification', 'image_segmentation', 'ionosphere', 'parkinsons', 'iris', 'wine_red']
-categorical_datasets = ['balance_scale', 'car_evaluation', 'chess', 'congressional_voting_records', 'hayes_roth',
-                            'monk1', 'monk2', 'monk3', 'soybean_small', 'spect', 'tictactoe_endgame', 'breast_cancer',
-                            'fico_binary']
-for dataset in numerical_datasets:
-    print('\npulling', dataset)
-    data = UTILS.get_data(dataset, binarization=bin_mode)
-    print(data.head(3))
-    # data.to_csv(f'Datasets/{dataset}_enc.csv', header=True, index=False)
+hp_info = None
+test_runs.main(
+    ["-d", data_names, "-h", heights, "-t", time_limit, "-m", models, "-b", b_type, "-p", hp_info,
+     "-r", rand_states, "-f", file, "-w", warm_start, "-e", model_extras, "-l", False])

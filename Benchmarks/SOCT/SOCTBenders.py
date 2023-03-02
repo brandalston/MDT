@@ -22,7 +22,7 @@ class SOCTBenders(ClassifierMixin, BaseEstimator):
     
     Attributes
     ----------
-    master_ : Gurobi Model
+    model_ : Gurobi Model
     branch_rules_
     classification_rules_
     """
@@ -67,80 +67,80 @@ class SOCTBenders(ClassifierMixin, BaseEstimator):
         all_nodes = branch_nodes + leaf_nodes
         
         #
-        # S-OCT Benders master
+        # S-OCT Benders model
         #
         
-        master = Model("S-OCT Benders")
-        self.master_ = master
+        model = Model("S-OCT Benders")
+        self.model_ = model
         self._svm_hp, self._generic_hp, self._total_branch = 0, 0, 0
 
         if self.log_to_console is not None:
-            master.Params.LogToConsole = self.log_to_console
-        master.Params.LazyConstraints = 1
+            model.Params.LogToConsole = self.log_to_console
+        model.Params.LazyConstraints = 1
         if self.mip_gap is not None:
-            master.Params.MIPGap = self.mip_gap
+            model.Params.MIPGap = self.mip_gap
         if self.time_limit is not None:
-            master.Params.TimeLimit = self.time_limit
+            model.Params.TimeLimit = self.time_limit
         
         # Pack data into model
-        master._X_y = X, y
-        master._nodes = (branch_nodes, leaf_nodes)
-        master._callback_calls = 0
-        master._callback_time = 0
-        master._callback_cuts = 0
+        model._X_y = X, y
+        model._nodes = (branch_nodes, leaf_nodes)
+        model._callback_calls = 0
+        model._callback_time = 0
+        model._callback_cuts = 0
         
         # Variables
-        c = master.addVars(classes, leaf_nodes, lb=0, ub=1)
-        d = master.addVars(branch_nodes, lb=0, ub=1)
+        c = model.addVars(classes, leaf_nodes, lb=0, ub=1)
+        d = model.addVars(branch_nodes, lb=0, ub=1)
         w_vtype = {}
         for i in range(N):
             for t in branch_nodes:
                 w_vtype[i,t] = GRB.CONTINUOUS
             for t in leaf_nodes:
                 w_vtype[i,t] = GRB.BINARY
-        w = master.addVars(range(N), all_nodes, lb=0, ub=1, vtype=w_vtype)
-        z = master.addVars(range(N), leaf_nodes, lb=0, ub=1)
-        master._vars = (c, d, w, z)
+        w = model.addVars(range(N), all_nodes, lb=0, ub=1, vtype=w_vtype)
+        z = model.addVars(range(N), leaf_nodes, lb=0, ub=1)
+        model._vars = (c, d, w, z)
         
         # Objective
-        #master.setObjective((N-z.sum())/N + self.ccp_alpha*d.sum(), GRB.MINIMIZE)
-        #master.setObjective(-z.sum()/N + self.ccp_alpha*d.sum(), GRB.MINIMIZE)
-        master.setObjective(z.sum(), GRB.MAXIMIZE)
+        #model.setObjective((N-z.sum())/N + self.ccp_alpha*d.sum(), GRB.MINIMIZE)
+        #model.setObjective(-z.sum()/N + self.ccp_alpha*d.sum(), GRB.MINIMIZE)
+        model.setObjective(z.sum(), GRB.MAXIMIZE)
 
         # Constraints
-        master.addConstrs((w[i,1] == 1 for i in range(N)))
-        master.addConstrs((w[i,t] == w[i,2*t] + w[i,2*t+1] for i in range(N) for t in branch_nodes))
-        master.addConstrs((d[t] >= w[i,2*t+1] for i in range(N) for t in branch_nodes))
-        master.addConstrs((c.sum('*',t) == 1 for t in leaf_nodes))
-        master.addConstrs((z[i,t] <= w[i,t] for i in range(N) for t in leaf_nodes))
-        master.addConstrs((z[i,t] <= c[y[i],t] for i in range(N) for t in leaf_nodes))
+        model.addConstrs((w[i,1] == 1 for i in range(N)))
+        model.addConstrs((w[i,t] == w[i,2*t] + w[i,2*t+1] for i in range(N) for t in branch_nodes))
+        model.addConstrs((d[t] >= w[i,2*t+1] for i in range(N) for t in branch_nodes))
+        model.addConstrs((c.sum('*',t) == 1 for t in leaf_nodes))
+        model.addConstrs((z[i,t] <= w[i,t] for i in range(N) for t in leaf_nodes))
+        model.addConstrs((z[i,t] <= c[y[i],t] for i in range(N) for t in leaf_nodes))
         
         # Load warm start
         if self.warm_start_tree is not None:
             self._warm_start()
         
         # Number of times each observation appears in an IIS
-        master._iis_counter = np.zeros(N)
+        model._iis_counter = np.zeros(N)
         
         # Solve model
-        master.optimize(SOCTBenders._callback)
-        print(f'Optimal solution found in {round(master.Runtime, 4)}s.'
+        model.optimize(SOCTBenders._callback)
+        """print(f'Optimal solution found in {round(model.Runtime, 4)}s.'
               f'({time.strftime("%I:%M %p", time.localtime())})') if \
-            master.RunTime < self.time_limit else \
-            print(f'Time limit reached. ({time.strftime("%I:%M %p", time.localtime())})')
+            model.RunTime < self.time_limit else \
+            print(f'Time limit reached. ({time.strftime("%I:%M %p", time.localtime())})')"""
         
         # Find splits for branch nodes and define classification rules at the leaf nodes
         start_time = time.time()
         self._construct_decision_tree()
         self._hp_time = time.time() - start_time
-        print(f'Hyperplanes found in {round(self._hp_time,4)}s. ({time.strftime("%I:%M %p", time.localtime())})\n')
+        # print(f'Hyperplanes found in {round(self._hp_time,4)}s. ({time.strftime("%I:%M %p", time.localtime())})\n')
         
         return self
     
     def _warm_start(self):
         # Extract variables and data from model
         branch_rules, classification_rules = self.warm_start_tree
-        model = self.master_
+        model = self.model_
         (c, d, w, z) = model._vars
         (X, y) = model._X_y
         (N, p) = np.shape(X)
@@ -304,16 +304,16 @@ class SOCTBenders(ClassifierMixin, BaseEstimator):
     def _construct_decision_tree(self):
         """ After initial MIP training, define the learned decision tree. """
         # Extract variables and data from model
-        master = self.master_
-        (c, d, w, z) = master._vars
-        (X, y) = master._X_y
+        model = self.model_
+        (c, d, w, z) = model._vars
+        (X, y) = model._X_y
         (N, p) = np.shape(X)
         classes = unique_labels(y)
-        (branch_nodes, leaf_nodes) = master._nodes
+        (branch_nodes, leaf_nodes) = model._nodes
         # Extract solution values
         try:
-            c_vals = master.getAttr('X', c)
-            w_vals = master.getAttr('X', w)
+            c_vals = model.getAttr('X', c)
+            w_vals = model.getAttr('X', w)
         # If no incumbent was found, then return
         except GurobiError:
             self.branch_rules_ = None
@@ -370,7 +370,7 @@ class SOCTBenders(ClassifierMixin, BaseEstimator):
         -------
         y : pandas Series of predicted labels
         """
-        check_is_fitted(self,['master_','branch_rules_','classification_rules_'])
+        check_is_fitted(self,['model_','branch_rules_','classification_rules_'])
         index = None
         if isinstance(X, pd.DataFrame):
             index = X.index

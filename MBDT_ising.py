@@ -7,19 +7,19 @@ from gurobipy import *
 import UTILS
 
 
-class MBDT:
+class MBDT_ising:
 
-    def __init__(self, data, tree, modeltype, time_limit, target, warmstart, modelextras, hp_info=None, log=None):
+    def __init__(self, data, tree, modeltype, time_limit, target, warmstart, modelextras, log=None):
         """"
-        Parameters
-        data: training data
-        tree: input decision tree object of prespecified user height
-        modeltype: modeltype to use for connectivity and optimization
-        time_limit: gurobi time limit in seconds
-        target: target column of training data
-        warm_start: dictionary warm start values
-        model_extras: list of modeltype extras
-        """
+                Parameters
+                data: training data
+                tree: input decision tree object of prespecified user height
+                modeltype: modeltype to use for connectivity and optimization
+                time_limit: gurobi time limit in seconds
+                target: target column of training data
+                warm_start: dictionary warm start values
+                model_extras: list of modeltype extras
+                """
         self.data = data
         self.tree = tree
         self.modeltype = modeltype
@@ -28,10 +28,9 @@ class MBDT:
         self.warmstart = warmstart
         self.modelextras = modelextras
         self.log = log
-        self.hp_info = hp_info
-        self.b_type = 'VIS'
+        self.b_type = 'ISING'
 
-        print('Model: ' + str(self.modeltype))
+        print(f'Model: {self.modeltype}_Ising')
         # Feature, Class and Index Sets
         self.classes = data[target].unique()
         self.featureset = [col for col in self.data.columns.values if col != target]
@@ -44,6 +43,11 @@ class MBDT:
         self.P = 0
         self.S = 0
         self.Q = 0
+        self.Z = 0
+        self.H_pos = 0
+        self.H_neg = 0
+        self.D = 0
+        self.E = 0
         # VIS Weights
         self.vis_weight = {i: 0 for i in self.datapoints}
         # CUT model separation constraints
@@ -51,41 +55,23 @@ class MBDT:
         self.single_terminal = 0
 
         """ Separation Procedure """
-        sep_dict = {'FRAC-ALL': 'all', 'FRAC-FF': 'first found', 'FRAC-MV': 'most violating'}
         self.rootcuts = False
         self.eps = 0
         self.cut_type = self.modeltype[5:]
         if len(self.cut_type) == 0:
             self.cut_type = 'GRB'
-        if any(ele in self.cut_type for ele in ['FF','ALL','MV']):
-            if 'FRAC' not in self.cut_type: self.cut_type = 'FRAC-'+self.cut_type
+        if any(ele in self.cut_type for ele in ['FF', 'ALL', 'MV']):
+            if 'FRAC' not in self.cut_type: self.cut_type = 'FRAC-' + self.cut_type
             if 'ROOT' in self.cut_type:
                 self.rootcuts = True
-            # print('User fractional separation cuts, type: ' + str(sep_dict[self.cut_type]) + ', root: ' + str(self.rootcuts))
-        elif 'UF' in self.cut_type:
-            pass
-            # print('ALL integral connectivity constraints')
-        elif 'GRB' in self.cut_type:
-            pass
-            # print('GRB lazy = 3 connectivity constraints')
-        elif 'FRAC' in self.cut_type and len(self.cut_type) == 4:
-            # print('Need fractional separation type!!')
-            pass
-        else:
-            # print('Need separation procedure!!')
-            return
 
         """ Model extras """
         self.regularization = 'None'
         self.max_features = 'None'
-        self.HP_time = 0
-        self.HP_size = 0
-        self.svm_branches = 0
-        self.obj_func = 'N/A'
 
         """ Gurobi Optimization Parameters """
-        self.model = Model(f'{self.modeltype}_SVM')
-        self.model.Params.LogToConsole = 0
+        self.model = Model(f'{self.modeltype}')
+        self.model.Params.LogToConsole = 1
         self.model.Params.TimeLimit = time_limit
         self.model.Params.Threads = 1  # use one thread for testing purposes
         self.model.Params.LazyConstraints = 1
@@ -95,21 +81,10 @@ class MBDT:
 
         """ Model callback metrics """
         self.model._septime, self.model._sepnum, self.model._sepcuts, self.model._sepavg = 0, 0, 0, 0
-        self.model._vistime, self.model._visnum, self.model._viscuts = 0, 0, 0
-        self.model._rootcuts, self.model._eps = self.rootcuts, self.eps
+        self.model._rootcuts, self.model._eps, self.model._numcb = self.rootcuts, self.eps, 0
 
-        """ Hyperplane Specifications """
-        self.HP_obj, self.HP_rank = 'quadratic', len(self.featureset)
-        if self.hp_info is not None:
-            # print(f'Hyperplane Objective:', self.hp_info['objective'])
-            self.HP_obj = self.hp_info['objective']
-            if type(self.hp_info['rank']) is float:
-                self.HP_rank = floor(hp_info['rank'] * len(self.featureset))
-            elif hp_info['rank'] == 'full':
-                self.HP_rank = len(self.featureset)
-            else:
-                self.HP_rank = len(self.featureset) - 1
-            # print(f'Hyperplane Rank:', self.hp_rank)
+        self.obj_func, self.HP_time, self.HP_avg_size, self.HP_obj, self.HP_rank = 'N/A', 0, 0, 0, 0
+        self.model._vistime, self.model._visnum, self.model._viscuts, = 0, 0, 0
 
     ##############################################
     # MIP Model Formulation
@@ -132,6 +107,13 @@ class MBDT:
         self.S = self.model.addVars(self.datapoints, self.tree.V, vtype=GRB.BINARY, name='S')
         # Datapoint selected vertices in root-terminal path
         self.Q = self.model.addVars(self.datapoints, self.tree.V, vtype=GRB.BINARY, name='Q')
+        # Left-right branching variable
+        self.Z = self.model.addVars(self.datapoints, self.tree.V, vtype=GRB.CONTINUOUS, name='Z')
+        # Hyperplane variables
+        self.H_pos = self.model.addVars(self.tree.V, self.featureset, vtype=GRB.CONTINUOUS, lb=0, name='H_pos')
+        self.H_neg = self.model.addVars(self.tree.V, self.featureset, vtype=GRB.CONTINUOUS, lb=0, name='H_neg')
+        self.D = self.model.addVars(self.tree.V, vtype=GRB.CONTINUOUS, name='D')
+        self.E = self.model.addVars(self.datapoints, vtype=GRB.CONTINUOUS, lb=0, ub=1, name='E')
 
         """ Model Objective and Constraints """
         # Objective: Maximize the number of correctly classified datapoints
@@ -141,8 +123,7 @@ class MBDT:
 
         # Pruned vertices not assigned to class
         # P[v] = sum(W[v,k], k in K) for v in V
-        self.model.addConstrs(self.P[v] == self.W.sum(v, '*')
-                              for v in self.tree.V)
+        self.model.addConstrs(self.P[v] == self.W.sum(v, '*') for v in self.tree.V)
 
         # Vertices must be branched, assigned to class, or pruned
         # B[v] + sum(P[u], u in path[v]) = 1 for v in V
@@ -150,9 +131,12 @@ class MBDT:
                               for v in self.tree.V)
 
         # Cannot branch on leaf vertex
-        # B[v] = 0 for v in L
+        # B[v] = 0 for v in L, H[v,f] for v in L, for f in F
         for v in self.tree.L:
             self.B[v].ub = 0
+            for f in self.featureset:
+                self.H_pos[v, f].ub = 0
+                self.H_neg[v, f].ub = 0
 
         # Terminal vertex of correctly classified datapoint matches datapoint class
         # S[i,v] <= W[v,k=y^i] for v in V, for i in I
@@ -160,16 +144,11 @@ class MBDT:
             self.model.addConstrs(self.S[i, v] <= self.W[v, self.data.at[i, self.target]]
                                   for i in self.datapoints)
 
-        # If v not branching then all datapoints sent to left child
-        for v in self.tree.B:
-            self.model.addConstrs(self.Q[i, self.tree.RC[v]] <= self.B[v] for i in self.datapoints)
-
         # Each datapoint has at most one terminal vertex
-        self.model.addConstrs(self.S.sum(i, '*') <= 1
-                              for i in self.datapoints)
+        self.model.addConstrs(self.S.sum(i, '*') <= 1 for i in self.datapoints)
 
         # Lazy feasible path constraints (for fractional separation procedure)
-        if any(ele in self.modeltype for ele in ['GRB', 'FRAC']):
+        if self.cut_type in ['GRB', 'FRAC']:
             # terminal vertex of datapoint must be in reachable path
             if 'CUT1' in self.modeltype:
                 self.cut_constraint = self.model.addConstrs(self.S[i, v] <= self.Q[i, c]
@@ -203,6 +182,23 @@ class MBDT:
                         self.model.addConstrs(self.S[i, v] + quicksum(self.S[i, u] for u in self.tree.child[v]) <=
                                               self.Q[i, c] for c in self.tree.path[v][1:])
 
+        # Left-right branching using soft-margin SVM
+        for v in self.tree.B:
+            self.model.addConstrs(self.Q[i, self.tree.RC[v]] + self.Q[i, self.tree.LC[v]] == 1
+                                  for i in self.datapoints)
+            self.model.addConstrs(self.Q[i, self.tree.LC[v]] - self.Q[i, self.tree.RC[v]] == self.Z[i, v]
+                                  for i in self.datapoints)
+            self.model.addConstrs(
+                (self.Q[i,self.tree.LC[v]]-self.Q[i,self.tree.RC[v]]) * (quicksum(
+                    (self.H_pos[v, f] - self.H_neg[v, f])*self.data.at[i, f] for f in self.featureset) + self.D[v])
+                >= 1 - self.E[i]
+                for i in self.datapoints)
+            """self.model.addConstrs(
+                self.Z[i, v] * quicksum(
+                    (self.H_pos[v, f] - self.H_neg[v, f]) * self.data.at[i, f] for f in self.featureset)
+                >= 1 - self.E[i]
+                for i in self.datapoints)"""
+            # self.model.addConstrs(self.H_pos[v, f]-self.H_neg[v, f] >= 0 for f in self.featureset)
         """ Pass to Model DV for Callback / Optimization Purposes """
         self.model._B = self.B
         self.model._W = self.W
@@ -217,7 +213,16 @@ class MBDT:
     # Model Optimization / Callbacks
     ##############################################
     def optimization(self):
-        self.model.optimize(MBDT.callbacks)
+        self.model.optimize(MBDT_ising.callbacks)
+        if self.model.status == GRB.OPTIMAL:
+            print('Optimal solution found in ' + str(round(self.model.Runtime, 2)) + 's. (' + str(
+                time.strftime("%I:%M %p", time.localtime())) + ')\n')
+        else:
+            print('Time limit reached. (' + str(time.strftime("%I:%M %p", time.localtime())) + ')\n')
+        if self.model._numcb > 0:
+            self.model._avgcuts = self.model._numcuts / self.model._numcb
+        else:
+            self.model._avgcuts = 0
 
     @staticmethod
     def callbacks(model, where):
@@ -234,7 +239,7 @@ class MBDT:
                    model.cbGet(GRB.Callback.MIP_OBJBND)) < model.Params.FeasibilityTol:
                 model.terminate()
 
-        # Add VIS Cuts at Branching Nodes of Feasible Solution
+        """# Add VIS Cuts at Branching Nodes of Feasible Solution
         if where == GRB.Callback.MIPSOL:
             model._visnum += 1
             start = time.perf_counter()
@@ -254,21 +259,19 @@ class MBDT:
                     elif Q[i, model._tree.RC[v]] > 0.5:
                         Rv_I.add(i)
                 # Test for VIS of B_v(Q)
-                print(f'Test for VIS at {v}, VIS test count: {model._visnum}')
-                VIS = MBDT.VIS(model._data, model._featureset, Lv_I, Rv_I, vis_weight=model._vis_weight)
+                # print('Test for VIS at', v, model._visnum)
+                VIS = MBDT_ising.VIS(model._data, model._featureset, Lv_I, Rv_I, vis_weight=model._vis_weight)
                 if VIS is None: continue
                 # If VIS Found, add cut
-                print(f'VIS Found at {v}, test count: {model._visnum}')
                 (B_v_left, B_v_right) = VIS
                 model.cbLazy(quicksum(model._Q[i, model._tree.LC[v]] for i in B_v_left) +
                              quicksum(model._Q[i, model._tree.LC[v]] for i in B_v_right) <=
                              len(B_v_left) + len(B_v_right) - 1)
                 model._viscuts += 1
-            model._vistime += time.perf_counter() - start
+            model._vistime += time.perf_counter() - start"""
 
         # Add Feasible Path for Datapoints Cuts at Fractional Point in Branch and Bound Tree
         if (where == GRB.Callback.MIPNODE) and (model.cbGet(GRB.Callback.MIPNODE_STATUS) == GRB.OPTIMAL):
-            print('SOLVING FP')
             if ('UF' in model._cut_type) or ('GRB' in model._cut_type): return
             start = time.perf_counter()
             # Only add cuts at root-node of branch and bound tree
@@ -339,12 +342,8 @@ class MBDT:
                                 break
             model._septime += (time.perf_counter() - start)
 
-    ##############################################
-    # Find Valid Infeasible Subsystem (aka IIS) of Model
-    ##############################################
     @staticmethod
     def VIS(data, feature_set, Lv_I, Rv_I, vis_weight):
-        print('in VIS')
         """
         Find a minimal set of points that cannot be linearly separated by a split (a_v, c_v).
         Use the support of Farkas dual (with heuristic objective) of the feasible primal LP to identify VIS of primal
@@ -360,6 +359,7 @@ class MBDT:
         Returns
         B_v_left, B_v_right : two lists of left and right datapoint indices in the VIS of B_v(Q)
         """
+
         if vis_weight is None:
             vis_weight = {i: 0 for i in data.index}
 
@@ -429,7 +429,6 @@ class MBDT:
         Define (a_v, c_v) for v when P[v].x = 0, B[v].x = 1
             Use hard margin linear SVM on B_v(Q) to find (a_v, c_v)
         """
-        start = time.perf_counter()
         # clear any existing node assignments
         for v in self.tree.DG_prime.nodes():
             if 'class' in self.tree.DG_prime.nodes[v]:
@@ -444,7 +443,9 @@ class MBDT:
             B_sol = self.model.getAttr('X', self.B)
             W_sol = self.model.getAttr('X', self.W)
             P_sol = self.model.getAttr('X', self.P)
-            Q_sol = self.model.getAttr('X', self.Q)
+            H_pos_sol = self.model.getAttr('X', self.H_pos)
+            H_neg_sol = self.model.getAttr('X', self.H_neg)
+
         # If no incumbent was found, then predict arbitrary class at root node
         except GurobiError:
             self.tree.class_nodes[0] = random.choice(self.classes)
@@ -467,44 +468,10 @@ class MBDT:
             # Define (a_v, c_v) on branching nodes
             elif P_sol[v] < 0.5 and B_sol[v] > 0.5:
                 # print(f'{v} branched')
-                # Lv_I, Rv_I index sets of observations sent to left, right child vertex of branching vertex v
-                # svm_y maps Lv_I to -1, Rv_I to +1 for training hyperplane
-                Lv_I, Rv_I = [], []
-                svm_y = {i: 0 for i in self.datapoints}
-                for i in self.datapoints:
-                    if Q_sol[i, self.tree.LC[v]] > 0.5:
-                        Lv_I.append(i)
-                        svm_y[i] = -1
-                    elif Q_sol[i, self.tree.RC[v]] > 0.5:
-                        Rv_I.append(i)
-                        svm_y[i] = +1
-                # Find (a_v, c_v) for corresponding Lv_I, Rv_I
-                # If |Lv_I| = 0: (a_v, c_v) = (0, -1) sends all points to the right
-                if len(Lv_I) == 0:
-                    print(f'all going right at {v}')
-                    self.tree.a_v[v] = {f: 0 for f in self.featureset}
-                    self.tree.c_v[v] = -1
-                # If |Rv_I| = 0: (a_v, c_v) = (0, 1) sends all points to the left
-                elif len(Rv_I) == 0:
-                    print(f'all going left at {v}')
-                    self.tree.a_v[v] = {f: 0 for f in self.featureset}
-                    self.tree.c_v[v] = 1
-                # Find separating hyperplane according to Lv_I, Rv_I index sets
-                else:
-                    print('BRANCHING!!')
-                    data_svm = self.data.loc[Lv_I + Rv_I, self.data.columns != self.target]
-                    data_svm['svm'] = pd.Series(svm_y)
-                    svm = UTILS.Linear_Separator()
-                    svm.SVM_fit(data_svm, self.hp_info)
-                    self.tree.a_v[v], self.tree.c_v[v] = svm.a_v, svm.c_v
-                    if svm.hp_size != 0:
-                        self.svm_branches += 1
-                        self.HP_size += svm.hp_size
-                self.tree.branch_nodes[v] = (self.tree.a_v[v], self.tree.c_v[v])
-        self.HP_time = time.perf_counter() - start
-        if self.svm_branches == 0: self.HP_avg_size = 0
-        else: self.HP_avg_size = self.HP_size / self.svm_branches
-        print(f'Hyperplanes found in {round(self.HP_time,4)}s. ({time.strftime("%I:%M %p", time.localtime())})\n')
+                self.tree.a_v[v] = {f: H_pos_sol[v, f] - H_neg_sol[v, f] for f in self.featureset}
+                # self.tree.c_v[v] = D_sol[v]
+                # self.tree.branch_nodes[v] = (self.tree.a_v[v], self.tree.c_v[v])
+                self.tree.branch_nodes[v] = self.tree.a_v[v]
 
     ##############################################
     # Warm Start Model
@@ -587,6 +554,7 @@ class MBDT:
         # regularization
         if any((match := elem).startswith('regularization') for elem in self.modelextras):
             self.regularization = int(re.sub("[^0-9]", "", match))
-            print('Regularization: ' + str(self.regularization) + ' datapoints required for classification vertices')
+            print(
+                'Regularization: ' + str(self.regularization) + ' datapoints required for classification vertices')
             self.model.addConstrs(quicksum(self.S[i, v] for i in self.datapoints) >= self.regularization * self.P[v]
                                   for v in self.tree.V)

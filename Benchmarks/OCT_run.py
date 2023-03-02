@@ -1,12 +1,9 @@
-import sys, time, csv, os, getopt
+import sys, time, os, getopt, csv
 import pandas as pd
 from sklearn.model_selection import train_test_split
-from sklearn.svm import LinearSVC
+from OCT.OCT import OCT
+from OCT.OCTH import OCTH
 import UTILS as OU
-from SOCT.LinearClassifierHeuristic import LinearClassifierHeuristic
-from SOCT.SOCTStumpHeuristic import SOCTStumpHeuristic
-from SOCT.SOCTFull import SOCTFull
-from SOCT.SOCTBenders import SOCTBenders
 
 # I'm so fkn sick n tired of the warnings -Kendrick Lamar Duckworth
 import warnings
@@ -20,14 +17,13 @@ def main(argv):
     time_limit = None
     modeltypes = None
     rand_states = None
-    warm_start = None
     file_out = None
     log_files = None
 
     try:
-        opts, args = getopt.getopt(argv, "d:h:t:m:r:w:f:l:",
+        opts, args = getopt.getopt(argv, "d:h:t:m:r:f:l:",
                                    ["data_files=", "heights=", "timelimit=",
-                                    "models=", "rand_states=", "warm_start=",
+                                    "models=", "rand_states=",
                                     "results_file=", "log_files"])
     except getopt.GetoptError:
         sys.exit(2)
@@ -42,15 +38,14 @@ def main(argv):
             modeltypes = arg
         elif opt in ("-r", "--rand_states"):
             rand_states = arg
-        elif opt in ("-w", "--warm_start"):
-            warm_start = arg
         elif opt in ("-f", "--results_file"):
             file_out = arg
         elif opt in ("-l", "--log_files"):
             log_files = arg
 
     ''' Columns of the results file generated '''
-    summary_columns = ['Data', 'H', '|I|', 'Out_Acc', 'In_Acc', 'Sol_Time',
+    summary_columns = ['Data', 'H', '|I|',
+                       'Out_Acc', 'In_Acc', 'Sol_Time',
                        'MIP_Gap', 'Obj_Val', 'Obj_Bound', 'Model', 'Warm_Start', 'Warm_Start_Time',
                        'Num_CB', 'User_Cuts', 'Cuts_per_CB', 'Total_CB_Time', 'INT_CB_Time', 'FRAC_CB_Time', 'CB_Eps',
                        'Time_Limit', 'Rand_State', 'Calibration', 'Single_Feature_Use', 'Max_Features']
@@ -58,7 +53,7 @@ def main(argv):
     log_path = os.getcwd() + '/log_files/'
     if file_out is None:
         output_name = str(data_files) + '_H:' + str(heights) + '_' + str(modeltypes) + \
-                      '_T:' + str(time_limit) + '_' + str(warm_start) + '.csv'
+                      '_T:' + str(time_limit) + '.csv'
     else:
         output_name = file_out
     out_file = output_path + output_name
@@ -93,66 +88,30 @@ def main(argv):
                 model_set = pd.concat([train_set, cal_set])
                 X_train, y_train = model_set.drop('target'), model_set['target']
                 X_test, y_test = test_set.drop('target'), test_set['target']
-                X_valid, y_valid = cal_set.drop('target'), cal_set['target']
                 for modeltype in modeltypes:
                     method = modeltype[5:]
                     # Log .lp and .txt files name
                     if log_files:
                         log = log_path + '_' + str(file) + '_H:' + str(h) + '_M:' + str(modeltype) \
-                              + '_' + 'T:' + str(time_limit) + '_E:' + str(warm_start)
+                              + '_' + 'T:' + str(time_limit)
                     else:
                         log = False
-                    alphas_to_try = [0.00001, 0.0001, 0.001, 0.01, 0.1]
-                    best_ccp_alpha = min(alphas_to_try)
-                    if warm_start == 'SVM':
-                        start_time = time.perf_counter()
-                        best_valid_acc = 0
-                        for ccp_alpha in alphas_to_try:
-                            # For the purposes of tuning alpha, use an SVM warm start
-                            lch = LinearClassifierHeuristic(max_depth=h,
-                                                            linear_classifier=LinearSVC(random_state=0))
-                            lch.fit(X_valid, y_valid)
-                            test_svm_warm_start = lch.branch_rules_, lch.classification_rules_
-                            if method == "Full":
-                                soct = SOCTFull(max_depth=h, ccp_alpha=ccp_alpha, warm_start_tree=test_svm_warm_start,
-                                                time_limit=time_limit/5, log_to_console=False)
-                            elif method == "Benders":
-                                soct = SOCTBenders(max_depth=h, ccp_alpha=ccp_alpha, warm_start_tree=test_svm_warm_start,
-                                                   time_limit=time_limit/5, log_to_console=False)
-                            soct.fit(X_valid, y_valid)
-                            if soct.branch_rules_ is not None:
-                                valid_acc = soct.score(X_test, y_test)
-                                if valid_acc > best_valid_acc:
-                                    best_ccp_alpha = ccp_alpha
-                                    warm_start = test_svm_warm_start
-                                    best_valid_acc = valid_acc
-                            else: print("Tuning timed out on ccp_alpha =", ccp_alpha)
-                        warm_start_time = time.perf_counter()-start_time
-                    elif warm_start == 'STUMP':
-                        start_time = time.perf_counter()
-                        stump = SOCTStumpHeuristic(max_depth=h, time_limit=time_limit/10)
-                        stump.fit(X_train, y_train)
-                        warm_start = stump.branch_rules_, stump.classification_rules_
-                        warm_start_time = time.perf_counter() - start_time
-
-                    if method == "Full":
-                        soct = SOCTFull(max_depth=h, ccp_alpha=best_ccp_alpha, warm_start_tree=warm_start,
-                                        time_limit=time_limit, log_to_console=False)
-                    elif method == "Benders":
-                        soct = SOCTBenders(max_depth=h, ccp_alpha=best_ccp_alpha, warm_start_tree=warm_start,
-                                           time_limit=time_limit, log_to_console=False)
-                    soct.fit(X_train, y_train)
-                    if soct.branch_rules_ is not None:
-                        train_acc = soct.score(X_train, y_train)
-                        test_acc = soct.score(X_test, y_test)
-
+                    if method == "Univariate":
+                        oct = OCT(max_depth=h, ccp_alpha=0, time_limit=time_limit, log_to_console=False)
+                    elif method == "Multivariate":
+                        oct = OCTH(max_depth=h, ccp_alpha=0, time_limit=time_limit, log_to_console=False)
+                    oct.fit(X_train, y_train)
+                    if oct.branch_rules_ is not None:
+                        train_acc = oct.score(X_train, y_train)
+                        test_acc = oct.score(X_test, y_test)
                     with open(out_file, mode='a') as results:
                         results_writer = csv.writer(results, delimiter=',', quotechar='"')
                         results_writer.writerow(
-                            [file.replace('.csv', ''), h, len(model_set), test_acc, train_acc, soct.model_.RunTime,
-                             soct.model_.MIPGap, soct.model_.ObjBound, soct.model_.ObjVal, modeltype, warm_start, warm_start_time,
+                            [file.replace('.csv', ''), h, len(model_set), test_acc, train_acc, oct.model_.RunTime,
+                             oct.model_.MIPGap, oct.model_.ObjBound, oct.model_.ObjVal, modeltype, False, 0,
                              0, 0, 0, 0, 0, 0, 0,
                              time_limit, i, False, False, False])
                         results.close()
                     if log_files:
-                        soct.model_.write(log + '.lp')
+                        oct.model_.write(log + '.lp')
+
