@@ -6,6 +6,7 @@ from sklearn.model_selection import train_test_split
 import os, time, getopt, sys, csv
 import pandas as pd
 import UTILS as OU
+
 # I'm so fkn sick n tired of the warnings -Kendrick Lamar Duckworth
 import warnings
 warnings.filterwarnings("ignore")
@@ -48,11 +49,10 @@ def main(argv):
             log_files = arg
 
     ''' Columns of the results file generated '''
-    summary_columns = ['Data', 'H', '|I|',
-                       'Out_Acc', 'In_Acc', 'Sol_Time',
-                       'MIP_Gap', 'Obj_Val', 'Obj_Bound', 'Model',
-                       'Num_CB', 'User_Cuts', 'Cuts_per_CB',
-                       'Total_CB_Time', 'INT_CB_Time', 'FRAC_CB_Time', 'CB_Eps',
+    ''' Columns of the results file generated '''
+    summary_columns = ['Data', 'H', '|I|', 'Out_Acc', 'In_Acc', 'Sol_Time',
+                       'MIP_Gap', 'Obj_Val', 'Obj_Bound', 'Model', 'Branch_Type', 'Warm_Start', 'Warm_Start_Time',
+                       'Num_CB', 'User_Cuts', 'Cuts_per_CB', 'Total_CB_Time', 'INT_CB_Time', 'FRAC_CB_Time', 'CB_Eps',
                        'Time_Limit', 'Rand_State', 'Calibration', 'Single_Feature_Use', 'Max_Features']
     output_path = os.getcwd() + '/results_files/'
     log_path = os.getcwd() + '/log_files/'
@@ -155,9 +155,8 @@ def main(argv):
                         with open(out_file, mode='a') as results:
                             results_writer = csv.writer(results, delimiter=',', quotechar='"')
                             results_writer.writerow(
-                                [file.replace('.csv', ''), h, len(model_set),
-                                 test_acc, train_acc, master.model.Runtime,
-                                 master.model.MIPGap, master.model.ObjBound, master.model.ObjVal, modeltype,
+                                [file.replace('.csv', ''), h, len(model_set), test_acc, train_acc, master.model.Runtime,
+                                 master.model.MIPGap, master.model.ObjBound, master.model.ObjVal, modeltype, 'N/A', 0,
                                  0, 0, 0, 0, 0, 0, 0, time_limit, i, False, False, False])
                             results.close()
                         if log_files:

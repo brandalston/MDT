@@ -354,7 +354,7 @@ def model_summary(opt_model, tree, test_set, rand_state, results_file):
     with open(results_file, mode='a') as results:
         results_writer = csv.writer(results, delimiter=',', quotechar='"')
         results_writer.writerow(
-            [opt_model.dataname, tree.height, len(opt_model.datapoints), len(opt_model.featureset),
+            [opt_model.dataname, tree.height, len(opt_model.datapoints),
              test_acc/len(test_set), train_acc/len(opt_model.datapoints), opt_model.model.Runtime,
              opt_model.model.MIPGap, opt_model.model.ObjVal, opt_model.model.ObjBound,
              opt_model.modeltype, opt_model.b_type, opt_model.obj_func,
