@@ -1,7 +1,7 @@
-from Strong_Tree.FlowOCTTree import Tree as FB_OCT_Tree
-from Strong_Tree.FlowOCT import FlowOCT
-from Strong_Tree.BendersOCT import BendersOCT
-import Strong_Tree.FBOCTutils as FBOCTutils
+from Benchmarks.Strong_Tree.FlowOCTTree import Tree as FB_OCT_Tree
+from Benchmarks.Strong_Tree.FlowOCT import FlowOCT
+from Benchmarks.Strong_Tree.BendersOCT import BendersOCT
+import Benchmarks.Strong_Tree.FBOCTutils as FBOCTutils
 from sklearn.model_selection import train_test_split
 import os, time, getopt, sys, csv
 import pandas as pd
@@ -49,8 +49,8 @@ def main(argv):
     ''' Columns of the results file generated '''
     ''' Columns of the results file generated '''
     summary_columns = ['Data', 'H', '|I|', 'Out_Acc', 'In_Acc', 'Sol_Time',
-                       'MIP_Gap', 'Obj_Val', 'Obj_Bound',
-                       'Model', 'Warm_Start', 'Warm_Start_Time', 'Time_Limit', 'Rand_State']
+                       'Model', 'Warm_Start', 'Warm_Start_Time', 'Time_Limit', 'Rand_State',
+                       'MIP_Gap', 'Obj_Val', 'Obj_Bound']
     output_path = os.getcwd() + '/results_files/'
     log_path = os.getcwd() + '/log_files/'
     if file_out is None:
@@ -72,8 +72,7 @@ def main(argv):
     Change value at your discretion '''
     target = 'target'
     numerical_datasets = ['iris', 'banknote', 'blood', 'climate', 'wine-white', 'wine-red'
-                                                                                'glass', 'image_segmentation',
-                          'ionosphere', 'parkinsons', 'iris']
+                          'glass', 'image_segmentation', 'ionosphere', 'parkinsons', 'iris']
     categorical_datasets = ['balance_scale', 'car', 'kr_vs_kp', 'house-votes-84', 'hayes_roth', 'breast_cancer',
                             'monk1', 'monk2', 'monk3', 'soybean_small', 'spect', 'tic_tac_toe', 'fico_binary']
     for file in data_files:
@@ -89,12 +88,8 @@ def main(argv):
                 OCT_tree = FB_OCT_Tree(d=h)
                 # Log files
                 for modeltype in modeltypes:
-                    print('\nModel: ' + str(modeltype) + 'Dataset: ' + str(file) + ', H: ' + str(h) + ', Rand State: '
+                    print('\n' + str(modeltype) + 'Dataset: ' + str(file) + ', H: ' + str(h) + ', Rand State: '
                           + str(i) + '. Run Start: ' + str(time.strftime("%I:%M %p", time.localtime())))
-                    # Log .lp and .txt files name
-                    log = log_path + '_' + str(file) + '_H:' + str(h) + '_M:' + str(modeltype) \
-                          + '_' + 'T:' + str(time_limit) if log_files else False
-
                     if 'Flow' in modeltype:
                         stoct = FlowOCT(data=model_set, label=target, tree=OCT_tree,
                                         _lambda=0, time_limit=time_limit, mode='classification')
@@ -122,8 +117,10 @@ def main(argv):
                         results_writer = csv.writer(results, delimiter=',', quotechar='"')
                         results_writer.writerow(
                             [file.replace('.csv', ''), h, len(model_set), test_acc, train_acc, stoct.model.Runtime,
-                             stoct.model.MIPGap, stoct.model.ObjBound, stoct.model.ObjVal,
-                             modeltype, 'N/A', 0, time_limit, i])
+                             modeltype, 'N/A', 0, time_limit, i,
+                             stoct.model.MIPGap, stoct.model.ObjBound, stoct.model.ObjVal])
                         results.close()
                     if log_files:
+                        log = log_path + '_' + str(file) + '_H:' + str(h) + '_M:' + str(modeltype) + \
+                              '_T:' + str(time_limit)
                         stoct.model.write(log + '.lp')

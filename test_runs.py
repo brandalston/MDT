@@ -97,11 +97,6 @@ def main(argv):
                 model_set = pd.concat([train_set, cal_set])
                 model_set.name = data.name
                 for modeltype in modeltypes:
-                    # Log .lp and .txt files name
-                    log = log_path + '_' + str(file) + '_H:' + str(h) + '_M:' + str(
-                            modeltype) + '_T:' + str(time_limit) + '_Seed:' + str(i) + '_E:' + str(
-                            model_extras)
-                    if not log_files: log = None
                     # Generate tree and necessary structure information
                     tree = TREE(h=h)
                     # Model with 75% training set and time limit
@@ -119,7 +114,11 @@ def main(argv):
                     if warmstart['use']: opt_model.warm_start()
                     if model_extras is not None: opt_model.extras()
                     opt_model.model.update()
-                    if log_files: opt_model.model.write(log + '.lp')
+                    if log_files:
+                        log = log_path + '_' + str(file) + '_H:' + str(h) + '_M:' + str(
+                            modeltype) + '_T:' + str(time_limit) + '_Seed:' + str(i) + '_E:' + str(
+                            model_extras)
+                        opt_model.model.write(log + '.lp')
                     opt_model.optimization()
                     print(f'Optimal solution found in {round(opt_model.model.Runtime / 60, 4)} min. '
                           f'({time.strftime("%I:%M %p", time.localtime())})') if \

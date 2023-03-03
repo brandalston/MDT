@@ -14,9 +14,8 @@ using LinearAlgebra
 using Printf
 using CSV, Tables, DataFrames, Dates
 
-cols = ["Data","H","|I|","Out-Acc","In-Acc","Sol-Time","Gap","ObjVal","ObjBound","Model","# CB",
-        "User Cuts","Cuts/CB", "CB-Time", "INT-CB-time","FRAC-CB-TIME","CB-Eps","Time Limit",
-        "Rand. State","Warm Start","Single Feature Use","Max Features"]
+cols = ["Data","H","|I|","Out-Acc","In-Acc","Sol-Time",
+        "Model","Time Limit", "Rand. State"]
 outfile = pwd()*"/results_files/abcd.csv"
 timelimit = 600
 rand_states = [138, 15, 89, 42, 0]
@@ -28,7 +27,7 @@ summary = DataFrame([name => [] for name in cols])
 for file in datasets
     for h in heights
         for seed in rand_states
-            println("\n\nQuantBnB run\nDataset: ", file, ". H: ", h , ". Rand State: ", seed, ". Run Start: (", Dates.format(now(), "HH:MM"),")")
+            println("\nQuantBnB, Dataset: ", file, ". H: ", h , ". Rand State: ", seed, ". Run Start: (", Dates.format(now(), "HH:MM"),")")
             X_train, X_test, Y_train, Y_test = generate_realdata(file,0.75,seed)
             n_train, m = size(Y_train)
             n_test, _ = size(Y_test)
@@ -46,7 +45,7 @@ for file in datasets
                     print("Time limit reached. ","(", Dates.format(now(), "HH:MM"),")")
             end
             push!(summary, [file, h, size(X_train)[1], 1-opt_test/size(X_test)[1], 1-opt_train/size(X_train)[1], opt_time,
-            "N/A", "N/A", "N/A", "QuantBnB", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", timelimit, seed, "N/A", "N/A", "N/A"])
+            "QuantBnB", "False", 0, timelimit, seed])
             CSV.write(outfile, last(summary,1),append=true)
         end
     end

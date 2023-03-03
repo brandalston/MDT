@@ -33,7 +33,7 @@ class SOCTBenders(ClassifierMixin, BaseEstimator):
         self.mip_gap = mip_gap
         self.time_limit = time_limit
         self.log_to_console = log_to_console
-
+    
     def fit(self, X, y):
         """ Trains a classification tree using the S-OCT model, solved using Benders decomposition.
         
@@ -72,8 +72,6 @@ class SOCTBenders(ClassifierMixin, BaseEstimator):
         
         model = Model("S-OCT Benders")
         self.model_ = model
-        self._svm_hp, self._generic_hp, self._total_branch = 0, 0, 0
-
         if self.log_to_console is not None:
             model.Params.LogToConsole = self.log_to_console
         model.Params.LazyConstraints = 1
@@ -87,7 +85,6 @@ class SOCTBenders(ClassifierMixin, BaseEstimator):
         model._nodes = (branch_nodes, leaf_nodes)
         model._callback_calls = 0
         model._callback_time = 0
-        model._callback_cuts = 0
         
         # Variables
         c = model.addVars(classes, leaf_nodes, lb=0, ub=1)
@@ -104,9 +101,8 @@ class SOCTBenders(ClassifierMixin, BaseEstimator):
         
         # Objective
         #model.setObjective((N-z.sum())/N + self.ccp_alpha*d.sum(), GRB.MINIMIZE)
-        #model.setObjective(-z.sum()/N + self.ccp_alpha*d.sum(), GRB.MINIMIZE)
-        model.setObjective(z.sum(), GRB.MAXIMIZE)
-
+        model.setObjective(-z.sum()/N + self.ccp_alpha*d.sum(), GRB.MINIMIZE)
+        
         # Constraints
         model.addConstrs((w[i,1] == 1 for i in range(N)))
         model.addConstrs((w[i,t] == w[i,2*t] + w[i,2*t+1] for i in range(N) for t in branch_nodes))
@@ -124,16 +120,9 @@ class SOCTBenders(ClassifierMixin, BaseEstimator):
         
         # Solve model
         model.optimize(SOCTBenders._callback)
-        """print(f'Optimal solution found in {round(model.Runtime, 4)}s.'
-              f'({time.strftime("%I:%M %p", time.localtime())})') if \
-            model.RunTime < self.time_limit else \
-            print(f'Time limit reached. ({time.strftime("%I:%M %p", time.localtime())})')"""
         
         # Find splits for branch nodes and define classification rules at the leaf nodes
-        start_time = time.time()
         self._construct_decision_tree()
-        self._hp_time = time.time() - start_time
-        # print(f'Hyperplanes found in {round(self._hp_time,4)}s. ({time.strftime("%I:%M %p", time.localtime())})\n')
         
         return self
     
@@ -231,7 +220,6 @@ class SOCTBenders(ClassifierMixin, BaseEstimator):
                     cut_lhs.add(w[i,2*t+1])
                 cut_rhs = len(left_support) + len(right_support) - 1
                 model.cbLazy(cut_lhs <= cut_rhs)
-                model._callback_cuts += 1
             
             model._callback_calls += 1
             model._callback_time += time.time() - start_time
@@ -341,14 +329,11 @@ class SOCTBenders(ClassifierMixin, BaseEstimator):
                 a_vals[t] = np.zeros(p)
                 b_vals[t] = -1
             else:
-                self._total_branch += 1
                 X_svm = np.append(X[left_index_set,:], X[right_index_set,:], axis=0)
                 y_svm = [-1]*len(left_index_set) + [+1]*len(right_index_set)
                 svm = HardMarginLinearSVM()
                 svm.fit(X_svm, y_svm)
                 (a_vals[t], b_vals[t]) = (svm.w_, svm.b_)
-                if svm.type_hp == 'generic': self._generic_hp += 1
-                else: self._svm_hp += 1
         
         # Construct rules
         self.branch_rules_ = {}

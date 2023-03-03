@@ -273,7 +273,6 @@ class Linear_Separator():
 def model_results(model, tree):
     # Print assigned branching, classification, and pruned nodes of tree
 
-    """
     # Print tree node assignments (branching hyperplane weights, class, pruned)
     for v in tree.V:
         if model.P[v].x > 0.5:
@@ -299,7 +298,6 @@ def model_results(model, tree):
                     if model._W[v, k].x > 0.5:
                         print('datapoint ' + str(i) + ' incorrectly assigned class ' + str(k)
                               + ' at ' + str(v) + '. Path: ', path)
-    """
 
 
 def tree_check(tree):
@@ -356,13 +354,13 @@ def model_summary(opt_model, tree, test_set, rand_state, results_file):
         results_writer.writerow(
             [opt_model.dataname, tree.height, len(opt_model.datapoints),
              test_acc/len(test_set), train_acc/len(opt_model.datapoints), opt_model.model.Runtime,
+             opt_model.modeltype, False, 0, opt_model.time_limit, rand_state,
              opt_model.model.MIPGap, opt_model.model.ObjVal, opt_model.model.ObjBound,
-             opt_model.modeltype, opt_model.b_type, opt_model.obj_func,
+             opt_model.b_type, opt_model.obj_func,
              opt_model.HP_time, opt_model.HP_avg_size, opt_model.HP_obj, opt_model.HP_rank,
              opt_model.model._septime, opt_model.model._sepnum, opt_model.model._sepcuts, opt_model.model._sepavg,
              opt_model.model._vistime, opt_model.model._visnum, opt_model.model._viscuts,
-             opt_model.eps, opt_model.time_limit, rand_state,
-             opt_model.warmstart['use'], opt_model.regularization, opt_model.max_features])
+             opt_model.eps, opt_model.warmstart['use'], opt_model.regularization, opt_model.max_features])
         results.close()
 
 

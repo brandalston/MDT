@@ -42,10 +42,8 @@ def main(argv):
 
     ''' Columns of the results file generated '''
     summary_columns = ['Data', 'H', '|I|', 'Out_Acc', 'In_Acc', 'Sol_Time',
-                       'MIP_Gap', 'Obj_Val', 'Obj_Bound',
                        'Model', 'Warm_Start', 'Warm_Start_Time', 'Time_Limit', 'Rand_State']
     output_path = os.getcwd() + '/results_files/'
-    log_path = os.getcwd() + '/log_files/'
     if file_out is None:
         output_name = str(data_files) + '_H:' + str(heights) + '_' + str(modeltypes) + \
                       '_T:' + str(time_limit) + '.csv'
@@ -65,29 +63,23 @@ def main(argv):
     Change value at your discretion '''
     target = 'target'
     numerical_datasets = ['iris', 'banknote', 'blood', 'climate', 'wine-white', 'wine-red'
-                                                                                'glass', 'image_segmentation',
-                          'ionosphere', 'parkinsons', 'iris']
+                          'glass', 'image_segmentation', 'ionosphere', 'parkinsons', 'iris']
     categorical_datasets = ['balance_scale', 'car', 'kr_vs_kp', 'house-votes-84', 'hayes_roth', 'breast_cancer',
                             'monk1', 'monk2', 'monk3', 'soybean_small', 'spect', 'tic_tac_toe', 'fico_binary']
     for file in data_files:
-        if file in numerical_datasets: binarization = 'all-candidates'
-        else: binarization = False
-        # pull dataset to train model with
-        data = OU.get_data(file.replace('.csv', ''), binarization=binarization)
+        data = OU.get_data(file.replace('.csv', ''))
         for h in heights:
             for i in rand_states:
                 train_set, test_set = train_test_split(data, train_size=0.5, random_state=i)
                 cal_set, test_set = train_test_split(test_set, train_size=0.5, random_state=i)
                 model_set = pd.concat([train_set, cal_set])
-                X_train, y_train = model_set.drop('target'), model_set['target']
-                X_test, y_test = test_set.drop('target'), test_set['target']
+                X_train, y_train = model_set.drop('target', axis=1), model_set['target']
+                X_test, y_test = test_set.drop('target', axis=1), test_set['target']
+
                 for modeltype in modeltypes:
-                    print('\nModel: ' + str(modeltype) + 'Dataset: ' + str(file) + ', H: ' + str(h) + ', Rand State: '
+                    print('\n' + str(modeltype) + 'Dataset: ' + str(file) + ', H: ' + str(h) + ', Rand State: '
                           + str(i) + '. Run Start: ' + str(time.strftime("%I:%M %p", time.localtime())))
-                    method = modeltype[5:]
-                    # Log .lp and .txt files name
-                    log = log_path + '_' + str(file) + '_H:' + str(h) + '_M:' + str(modeltype) \
-                          + '_' + 'T:' + str(time_limit) if log_files else False
+                    method = modeltype[4:]
                     if method == "Univariate":
                         grid = iai.GridSearch(iai.OptimalTreeClassifier(max_depth=h, random_seed=1))
                     elif method == "Multivariate":
@@ -108,6 +100,5 @@ def main(argv):
                         results_writer = csv.writer(results, delimiter=',', quotechar='"')
                         results_writer.writerow(
                             [file.replace('.csv', ''), h, len(model_set), test_acc, train_acc, run_time,
-                             0, 0, 0,
                              modeltype, False, 0, time_limit, i])
                         results.close()

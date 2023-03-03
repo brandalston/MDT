@@ -3,10 +3,10 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.svm import LinearSVC
 import UTILS as OU
-from SOCT.LinearClassifierHeuristic import LinearClassifierHeuristic
-from SOCT.SOCTStumpHeuristic import SOCTStumpHeuristic
-from SOCT.SOCTFull import SOCTFull
-from SOCT.SOCTBenders import SOCTBenders
+from Benchmarks.SOCT.LinearClassifierHeuristic import LinearClassifierHeuristic
+from Benchmarks.SOCT.SOCTStumpHeuristic import SOCTStumpHeuristic
+from Benchmarks.SOCT.SOCTFull import SOCTFull
+from Benchmarks.SOCT.SOCTBenders import SOCTBenders
 
 # I'm so fkn sick n tired of the warnings -Kendrick Lamar Duckworth
 import warnings
@@ -50,8 +50,9 @@ def main(argv):
             log_files = arg
 
     ''' Columns of the results file generated '''
-    summary_columns = ['Data', 'H', '|I|', 'Out_Acc', 'In_Acc', 'Sol_Time', 'MIP_Gap', 'Obj_Val', 'Obj_Bound',
-                       'Model', 'Warm_Start', 'Warm_Start_Time', 'Time_Limit', 'Rand_State']
+    summary_columns = ['Data', 'H', '|I|', 'Out_Acc', 'In_Acc', 'Sol_Time',
+                       'Model', 'Warm_Start', 'Warm_Start_Time', 'Time_Limit', 'Rand_State',
+                       'MIP_Gap', 'Obj_Val', 'Obj_Bound']
     output_path = os.getcwd() + '/results_files/'
     log_path = os.getcwd() + '/log_files/'
     if file_out is None:
@@ -73,31 +74,24 @@ def main(argv):
     Change value at your discretion '''
     target = 'target'
     numerical_datasets = ['iris', 'banknote', 'blood', 'climate', 'wine-white', 'wine-red'
-                                                                                'glass', 'image_segmentation',
-                          'ionosphere', 'parkinsons', 'iris']
+                          'glass', 'image_segmentation', 'ionosphere', 'parkinsons', 'iris']
     categorical_datasets = ['balance_scale', 'car', 'kr_vs_kp', 'house-votes-84', 'hayes_roth', 'breast_cancer',
                             'monk1', 'monk2', 'monk3', 'soybean_small', 'spect', 'tic_tac_toe', 'fico_binary']
     for file in data_files:
-        if file in numerical_datasets: binarization = 'all-candidates'
-        else: binarization = False
-        # pull dataset to train model with
-        data = OU.get_data(file.replace('.csv', ''), binarization=binarization)
+        data = OU.get_data(file.replace('.csv', ''))
         for h in heights:
             for i in rand_states:
                 train_set, test_set = train_test_split(data, train_size=0.5, random_state=i)
                 cal_set, test_set = train_test_split(test_set, train_size=0.5, random_state=i)
                 model_set = pd.concat([train_set, cal_set])
-                X_train, y_train = model_set.drop('target'), model_set['target']
-                X_test, y_test = test_set.drop('target'), test_set['target']
-                X_valid, y_valid = cal_set.drop('target'), cal_set['target']
+                X_train, y_train = model_set.drop('target', axis=1), model_set['target']
+                X_test, y_test = test_set.drop('target', axis=1), test_set['target']
+                X_valid, y_valid = cal_set.drop('target', axis=1), cal_set['target']
+
                 for modeltype in modeltypes:
-                    print('\nModel: ' + str(modeltype) + 'Dataset: ' + str(file) + ', H: ' + str(h) + ', Rand State: '
+                    print('\n' + str(modeltype) + 'Dataset: ' + str(file) + ', H: ' + str(h) + ', Rand State: '
                           + str(i) + '. Run Start: ' + str(time.strftime("%I:%M %p", time.localtime())))
                     method = modeltype[5:]
-                    # Log .lp and .txt files name
-                    log = log_path + '_' + str(file) + '_H:' + str(h) + '_M:' + str(modeltype) + '_T:'\
-                          + str(time_limit) + '_W:' + str(warm_start) if log_files else False
-
                     alphas_to_try = [0.00001, 0.0001, 0.001, 0.01, 0.1]
                     best_ccp_alpha = min(alphas_to_try)
                     if warm_start == 'SVM':
@@ -151,8 +145,10 @@ def main(argv):
                         results_writer = csv.writer(results, delimiter=',', quotechar='"')
                         results_writer.writerow(
                             [file.replace('.csv', ''), h, len(model_set), test_acc, train_acc, soct.model_.RunTime,
-                             soct.model_.MIPGap, soct.model_.ObjBound, soct.model_.ObjVal,
-                             modeltype, warm_start, warm_start_time, time_limit, i])
+                             modeltype, warm_start, warm_start_time, time_limit, i,
+                             soct.model_.MIPGap, soct.model_.ObjBound, soct.model_.ObjVal])
                         results.close()
                     if log_files:
+                        log = log_path + '_' + str(file) + '_H:' + str(h) + '_M:' + str(modeltype) + \
+                              '_T:' + str(time_limit) + '_W:' + str(warm_start)
                         soct.model_.write(log + '.lp')
