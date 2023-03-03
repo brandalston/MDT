@@ -79,6 +79,8 @@ def main(argv):
                             'monk1', 'monk2', 'monk3', 'soybean_small', 'spect', 'tic_tac_toe', 'fico_binary']
     for file in data_files:
         data = OU.get_data(file.replace('.csv', ''))
+        print(data.head(5))
+        print(data.shape)
         for h in heights:
             for i in rand_states:
                 train_set, test_set = train_test_split(data, train_size=0.5, random_state=i)
@@ -89,7 +91,7 @@ def main(argv):
                 X_valid, y_valid = cal_set.drop('target', axis=1), cal_set['target']
 
                 for modeltype in modeltypes:
-                    print('\n' + str(modeltype) + 'Dataset: ' + str(file) + ', H: ' + str(h) + ', Rand State: '
+                    print('\n' + str(modeltype) + ', Dataset: ' + str(file) + ', H: ' + str(h) + ', Rand State: '
                           + str(i) + '. Run Start: ' + str(time.strftime("%I:%M %p", time.localtime())))
                     method = modeltype[5:]
                     alphas_to_try = [0.00001, 0.0001, 0.001, 0.01, 0.1]
@@ -127,10 +129,10 @@ def main(argv):
 
                     if method == "Full":
                         soct = SOCTFull(max_depth=h, ccp_alpha=best_ccp_alpha, warm_start_tree=warm_start,
-                                        time_limit=time_limit, log_to_console=False)
+                                        time_limit=time_limit, log_to_console=True)
                     elif method == "Benders":
                         soct = SOCTBenders(max_depth=h, ccp_alpha=best_ccp_alpha, warm_start_tree=warm_start,
-                                           time_limit=time_limit, log_to_console=False)
+                                           time_limit=time_limit, log_to_console=True)
                     soct.fit(X_train, y_train)
                     if soct.model_.RunTime < time_limit:
                         print(f'Optimal solution found in {round(soct.model_.RunTime,4)}s. '

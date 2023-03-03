@@ -81,7 +81,7 @@ def main(argv):
                 X_train, y_train = model_set.drop('target', axis=1), model_set['target']
                 X_test, y_test = test_set.drop('target', axis=1), test_set['target']
                 for modeltype in modeltypes:
-                    print('\n' + str(modeltype) + 'Dataset: ' + str(file) + ', H: ' + str(h) + ', Rand State: '
+                    print('\n' + str(modeltype) + ', Dataset: ' + str(file) + ', H: ' + str(h) + ', Rand State: '
                           + str(i) + '. Run Start: ' + str(time.strftime("%I:%M %p", time.localtime())))
                     method = modeltype[4:]
                     # Log .lp and .txt files name
