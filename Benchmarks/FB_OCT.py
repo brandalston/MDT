@@ -88,7 +88,7 @@ def main(argv):
                 OCT_tree = FB_OCT_Tree(d=h)
                 # Log files
                 for modeltype in modeltypes:
-                    print('\n' + str(modeltype) + 'Dataset: ' + str(file) + ', H: ' + str(h) + ', Rand State: '
+                    print('\n' + str(modeltype) + ', Dataset: ' + str(file) + ', H: ' + str(h) + ', Rand State: '
                           + str(i) + '. Run Start: ' + str(time.strftime("%I:%M %p", time.localtime())))
                     if 'Flow' in modeltype:
                         stoct = FlowOCT(data=model_set, label=target, tree=OCT_tree,
