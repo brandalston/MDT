@@ -50,10 +50,8 @@ def main(argv):
             log_files = arg
 
     ''' Columns of the results file generated '''
-    summary_columns = ['Data', 'H', '|I|', 'Out_Acc', 'In_Acc', 'Sol_Time',
-                       'MIP_Gap', 'Obj_Val', 'Obj_Bound', 'Model', 'Warm_Start', 'Warm_Start_Time',
-                       'Num_CB', 'User_Cuts', 'Cuts_per_CB', 'Total_CB_Time', 'INT_CB_Time', 'FRAC_CB_Time', 'CB_Eps',
-                       'Time_Limit', 'Rand_State', 'Calibration', 'Single_Feature_Use', 'Max_Features']
+    summary_columns = ['Data', 'H', '|I|', 'Out_Acc', 'In_Acc', 'Sol_Time', 'MIP_Gap', 'Obj_Val', 'Obj_Bound',
+                       'Model', 'Warm_Start', 'Warm_Start_Time', 'Time_Limit', 'Rand_State']
     output_path = os.getcwd() + '/results_files/'
     log_path = os.getcwd() + '/log_files/'
     if file_out is None:
@@ -86,8 +84,6 @@ def main(argv):
         data = OU.get_data(file.replace('.csv', ''), binarization=binarization)
         for h in heights:
             for i in rand_states:
-                print('\nDataset: '+str(file)+', H: '+str(h)+', ' 'Rand State: '+str(i)
-                      + '. Run Start: '+str(time.strftime("%I:%M %p", time.localtime())))
                 train_set, test_set = train_test_split(data, train_size=0.5, random_state=i)
                 cal_set, test_set = train_test_split(test_set, train_size=0.5, random_state=i)
                 model_set = pd.concat([train_set, cal_set])
@@ -95,13 +91,13 @@ def main(argv):
                 X_test, y_test = test_set.drop('target'), test_set['target']
                 X_valid, y_valid = cal_set.drop('target'), cal_set['target']
                 for modeltype in modeltypes:
+                    print('\nModel: ' + str(modeltype) + 'Dataset: ' + str(file) + ', H: ' + str(h) + ', Rand State: '
+                          + str(i) + '. Run Start: ' + str(time.strftime("%I:%M %p", time.localtime())))
                     method = modeltype[5:]
                     # Log .lp and .txt files name
-                    if log_files:
-                        log = log_path + '_' + str(file) + '_H:' + str(h) + '_M:' + str(modeltype) \
-                              + '_' + 'T:' + str(time_limit) + '_E:' + str(warm_start)
-                    else:
-                        log = False
+                    log = log_path + '_' + str(file) + '_H:' + str(h) + '_M:' + str(modeltype) + '_T:'\
+                          + str(time_limit) + '_W:' + str(warm_start) if log_files else False
+
                     alphas_to_try = [0.00001, 0.0001, 0.001, 0.01, 0.1]
                     best_ccp_alpha = min(alphas_to_try)
                     if warm_start == 'SVM':
@@ -142,6 +138,11 @@ def main(argv):
                         soct = SOCTBenders(max_depth=h, ccp_alpha=best_ccp_alpha, warm_start_tree=warm_start,
                                            time_limit=time_limit, log_to_console=False)
                     soct.fit(X_train, y_train)
+                    if soct.model_.RunTime < time_limit:
+                        print(f'Optimal solution found in {round(soct.model_.RunTime,4)}s. '
+                              f'('+str(time.strftime("%I:%M %p", time.localtime()))+')')
+                    else:
+                        print('Time limit reached. ('+str(time.strftime("%I:%M %p", time.localtime()))+')')
                     if soct.branch_rules_ is not None:
                         train_acc = soct.score(X_train, y_train)
                         test_acc = soct.score(X_test, y_test)
@@ -150,9 +151,8 @@ def main(argv):
                         results_writer = csv.writer(results, delimiter=',', quotechar='"')
                         results_writer.writerow(
                             [file.replace('.csv', ''), h, len(model_set), test_acc, train_acc, soct.model_.RunTime,
-                             soct.model_.MIPGap, soct.model_.ObjBound, soct.model_.ObjVal, modeltype, warm_start, warm_start_time,
-                             0, 0, 0, 0, 0, 0, 0,
-                             time_limit, i, False, False, False])
+                             soct.model_.MIPGap, soct.model_.ObjBound, soct.model_.ObjVal,
+                             modeltype, warm_start, warm_start_time, time_limit, i])
                         results.close()
                     if log_files:
                         soct.model_.write(log + '.lp')

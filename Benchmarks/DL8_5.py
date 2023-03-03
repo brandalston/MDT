@@ -40,12 +40,8 @@ def main(argv):
             file_out = arg
 
     ''' Columns of the results file generated '''
-    summary_columns = ['Data', 'H', '|I|',
-                       'Out_Acc', 'In_Acc', 'Sol_Time',
-                       'MIP_Gap', 'Obj_Val', 'Obj_Bound', 'Model',
-                       'Num_CB', 'User_Cuts', 'Cuts_per_CB',
-                       'Total_CB_Time', 'INT_CB_Time', 'FRAC_CB_Time', 'CB_Eps',
-                       'Time_Limit', 'Rand_State', 'Calibration', 'Single_Feature_Use', 'Max_Features']
+    summary_columns = ['Data', 'H', '|I|', 'Out_Acc', 'In_Acc', 'Sol_Time', 'MIP_Gap', 'Obj_Val', 'Obj_Bound',
+                       'Model', 'Warm_Start', 'Warm_Start_Time', 'Time_Limit', 'Rand_State']
     output_path = 'results_files/'
     if file_out is None:
         output_name = str(data_files) + '_H:' + str(heights) + '_DL8.5' + \
@@ -62,17 +58,18 @@ def main(argv):
         data = OU.get_data(file.replace('.csv', ''), binarization='all-candidates')
         for h in heights:
             for i in rand_states:
-                print('\nDataset: ' + str(file) + ', H: ' + str(h) + ', Rand State: ' + str(i) + '. Run Start: ' +
-                      str(time.strftime("%I:%M %p", time.localtime())))
                 # data split
                 train_set, test_set = train_test_split(data, train_size=0.75, random_state=i)
                 X_train, Y_train = train_set.drop('target', axis=1), train_set['target']
                 X_test, Y_test = test_set.drop('target', axis=1), test_set['target']
                 # initialize the classifier , train and predict
+                print('\nModel: Dl8.5, Dataset: ' + str(file) + ', H: ' + str(h) + ', Rand State: '
+                      + str(i) + '. Run Start: ' + str(time.strftime("%I:%M %p", time.localtime())))
                 clf = DL85Classifier(max_depth=h, time_limit=time_limit)
                 clf.fit(X_train, Y_train)
                 if clf.runtime_ < time_limit:
-                    print('Optimal solution found in '+str(round(clf.runtime_, 4))+'s')
+                    print(f'Optimal solution found in {round(clf.runtime_,4)}s. '
+                          f'('+str(time.strftime("%I:%M %p", time.localtime()))+')')
                 else:
                     print('Time limit reached.'+str(time.strftime("%I:%M %p", time.localtime())))
                 y_pred = clf.predict(X_test)
@@ -81,6 +78,6 @@ def main(argv):
                     results_writer.writerow(
                         [file.replace('.csv', ''), h, len(train_set),
                          accuracy_score(Y_test, y_pred), clf.accuracy_, clf.runtime_,
-                         'N/A', 'N/A', 'N/A', 'DL8.5', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', time_limit, i,
-                         'N/A', 'N/A', 'N/A'])
+                         0, 0, 0,
+                         'DL8.5', time_limit, i])
                     results.close()

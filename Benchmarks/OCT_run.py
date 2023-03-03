@@ -44,11 +44,8 @@ def main(argv):
             log_files = arg
 
     ''' Columns of the results file generated '''
-    summary_columns = ['Data', 'H', '|I|',
-                       'Out_Acc', 'In_Acc', 'Sol_Time',
-                       'MIP_Gap', 'Obj_Val', 'Obj_Bound', 'Model', 'Warm_Start', 'Warm_Start_Time',
-                       'Num_CB', 'User_Cuts', 'Cuts_per_CB', 'Total_CB_Time', 'INT_CB_Time', 'FRAC_CB_Time', 'CB_Eps',
-                       'Time_Limit', 'Rand_State', 'Calibration', 'Single_Feature_Use', 'Max_Features']
+    summary_columns = ['Data', 'H', '|I|', 'Out_Acc', 'In_Acc', 'Sol_Time', 'MIP_Gap', 'Obj_Val', 'Obj_Bound',
+                       'Model', 'Warm_Start', 'Warm_Start_Time', 'Time_Limit', 'Rand_State']
     output_path = os.getcwd() + '/results_files/'
     log_path = os.getcwd() + '/log_files/'
     if file_out is None:
@@ -81,37 +78,39 @@ def main(argv):
         data = OU.get_data(file.replace('.csv', ''), binarization=binarization)
         for h in heights:
             for i in rand_states:
-                print('\nDataset: '+str(file)+', H: '+str(h)+', ' 'Rand State: '+str(i)
-                      + '. Run Start: '+str(time.strftime("%I:%M %p", time.localtime())))
                 train_set, test_set = train_test_split(data, train_size=0.5, random_state=i)
                 cal_set, test_set = train_test_split(test_set, train_size=0.5, random_state=i)
                 model_set = pd.concat([train_set, cal_set])
                 X_train, y_train = model_set.drop('target'), model_set['target']
                 X_test, y_test = test_set.drop('target'), test_set['target']
                 for modeltype in modeltypes:
+                    print('\nModel: ' + str(modeltype) + 'Dataset: ' + str(file) + ', H: ' + str(h) + ', Rand State: '
+                          + str(i) + '. Run Start: ' + str(time.strftime("%I:%M %p", time.localtime())))
                     method = modeltype[5:]
                     # Log .lp and .txt files name
-                    if log_files:
-                        log = log_path + '_' + str(file) + '_H:' + str(h) + '_M:' + str(modeltype) \
-                              + '_' + 'T:' + str(time_limit)
-                    else:
-                        log = False
+                    log = log_path + '_' + str(file) + '_H:' + str(h) + '_M:' + str(modeltype) \
+                          + '_' + 'T:' + str(time_limit) if log_files else False
+
                     if method == "Univariate":
                         oct = OCT(max_depth=h, ccp_alpha=0, time_limit=time_limit, log_to_console=False)
                     elif method == "Multivariate":
                         oct = OCTH(max_depth=h, ccp_alpha=0, time_limit=time_limit, log_to_console=False)
                     oct.fit(X_train, y_train)
+                    if oct.model_.RunTime < time_limit:
+                        print(f'Optimal solution found in {round(oct.model_.RunTime,4)}s. '
+                              f'('+str(time.strftime("%I:%M %p", time.localtime()))+')')
+                    else:
+                        print('Time limit reached. ('+str(time.strftime("%I:%M %p", time.localtime()))+')')
                     if oct.branch_rules_ is not None:
                         train_acc = oct.score(X_train, y_train)
                         test_acc = oct.score(X_test, y_test)
+
                     with open(out_file, mode='a') as results:
                         results_writer = csv.writer(results, delimiter=',', quotechar='"')
                         results_writer.writerow(
                             [file.replace('.csv', ''), h, len(model_set), test_acc, train_acc, oct.model_.RunTime,
-                             oct.model_.MIPGap, oct.model_.ObjBound, oct.model_.ObjVal, modeltype, False, 0,
-                             0, 0, 0, 0, 0, 0, 0,
-                             time_limit, i, False, False, False])
+                             oct.model_.MIPGap, oct.model_.ObjBound, oct.model_.ObjVal,
+                             modeltype, False, 0, time_limit, i])
                         results.close()
                     if log_files:
                         oct.model_.write(log + '.lp')
-

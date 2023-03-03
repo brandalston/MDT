@@ -26,7 +26,7 @@ def main(argv):
     try:
         opts, args = getopt.getopt(argv, "d:h:t:m:r:e:c:f:l:",
                                    ["data_files=", "heights=", "timelimit=",
-                                    "models=", "rand_states=", "extras=", "calibration=",
+                                    "models=", "rand_states=",
                                     "results_file=", "log_files"])
     except getopt.GetoptError:
         sys.exit(2)
@@ -41,8 +41,6 @@ def main(argv):
             modeltypes = arg
         elif opt in ("-r", "--rand_states"):
             rand_states = arg
-        elif opt in ("-e", "--extras"):
-            model_extras = arg
         elif opt in ("-f", "--results_file"):
             file_out = arg
         elif opt in ("-l", "--log_files"):
@@ -51,9 +49,8 @@ def main(argv):
     ''' Columns of the results file generated '''
     ''' Columns of the results file generated '''
     summary_columns = ['Data', 'H', '|I|', 'Out_Acc', 'In_Acc', 'Sol_Time',
-                       'MIP_Gap', 'Obj_Val', 'Obj_Bound', 'Model', 'Branch_Type', 'Warm_Start', 'Warm_Start_Time',
-                       'Num_CB', 'User_Cuts', 'Cuts_per_CB', 'Total_CB_Time', 'INT_CB_Time', 'FRAC_CB_Time', 'CB_Eps',
-                       'Time_Limit', 'Rand_State', 'Calibration', 'Single_Feature_Use', 'Max_Features']
+                       'MIP_Gap', 'Obj_Val', 'Obj_Bound',
+                       'Model', 'Warm_Start', 'Warm_Start_Time', 'Time_Limit', 'Rand_State']
     output_path = os.getcwd() + '/results_files/'
     log_path = os.getcwd() + '/log_files/'
     if file_out is None:
@@ -86,78 +83,47 @@ def main(argv):
         data = OU.get_data(file.replace('.csv', ''), binarization=binarization)
         for h in heights:
             for i in rand_states:
-                print('\nDataset: '+str(file)+', H: '+str(h)+', ' 'Rand State: '+str(i)
-                      + '. Run Start: '+str(time.strftime("%I:%M %p", time.localtime())))
                 train_set, test_set = train_test_split(data, train_size=0.5, random_state=i)
                 cal_set, test_set = train_test_split(test_set, train_size=0.5, random_state=i)
                 model_set = pd.concat([train_set, cal_set])
                 OCT_tree = FB_OCT_Tree(d=h)
                 # Log files
                 for modeltype in modeltypes:
+                    print('\nModel: ' + str(modeltype) + 'Dataset: ' + str(file) + ', H: ' + str(h) + ', Rand State: '
+                          + str(i) + '. Run Start: ' + str(time.strftime("%I:%M %p", time.localtime())))
                     # Log .lp and .txt files name
-                    if log_files:
-                        log = log_path + '_' + str(file) + '_H:' + str(h) + '_M:' + str(modeltype) \
-                              + '_' + 'T:' + str(time_limit) + '_E:' + str(model_extras)
-                    else:
-                        log = False
-                    # FlowOCT model
+                    log = log_path + '_' + str(file) + '_H:' + str(h) + '_M:' + str(modeltype) \
+                          + '_' + 'T:' + str(time_limit) if log_files else False
+
                     if 'Flow' in modeltype:
-                        print('Model: FlowOCT')
-                        primal = FlowOCT(data=model_set, label=target, tree=OCT_tree,
-                                         _lambda=0, time_limit=time_limit, mode='classification')
-                        if log_files:
-                            primal.model.Params.LogFile = log + '.txt'
-                        primal.create_primal_problem()
-                        primal.model.update()
-                        print('Optimizing Model')
-                        primal.model.optimize()
-                        if primal.model.RunTime < time_limit:
-                            print('Optimal solution found in ' + str(round(primal.model.Runtime, 2)) + 's. (' + str(
-                                time.strftime("%I:%M %p", time.localtime())) + ')\n')
-                        else:
-                            print('Time limit reached. (', time.strftime("%I:%M %p", time.localtime()), ')\n')
-                        b_value = primal.model.getAttr("X", primal.b)
-                        beta_value = primal.model.getAttr("X", primal.beta)
-                        p_value = primal.model.getAttr("X", primal.p)
-                        train_acc = FBOCTutils.get_acc(primal, train_set, b_value, beta_value, p_value)
-                        test_acc = FBOCTutils.get_acc(primal, test_set, b_value, beta_value, p_value)
-                        with open(out_file, mode='a') as results:
-                            results_writer = csv.writer(results, delimiter=',', quotechar='"')
-                            results_writer.writerow(
-                                [file.replace('.csv', ''), h, len(model_set),
-                                 test_acc, train_acc, primal.model.Runtime,
-                                 primal.model.MIPGap, primal.model.ObjBound, primal.model.ObjVal, modeltype,
-                                 0, 0, 0, 0, 0, 0, 0, time_limit, i, False, False, False])
-                            results.close()
-                        if log_files:
-                            primal.model.write(log + '.lp')
-                    # BendersOCT model
+                        stoct = FlowOCT(data=model_set, label=target, tree=OCT_tree,
+                                        _lambda=0, time_limit=time_limit, mode='classification')
+                        stoct.create_primal_problem()
+                        stoct.model.update()
+                        stoct.model.optimize()
                     elif 'Benders' in modeltype:
-                        print('Model: BendersOCT')
-                        master = BendersOCT(data=model_set, label=target, tree=OCT_tree,
-                                            _lambda=0, time_limit=time_limit, mode='classification')
-                        if log_files:
-                            master.model.Params.LogFile = log + '.txt'
-                        master.create_master_problem()
-                        master.model.update()
-                        print('Optimizing Model')
-                        master.model.optimize(FBOCTutils.mycallback)
-                        if master.model.RunTime < time_limit:
-                            print('Optimal solution found in ' + str(round(master.model.Runtime, 2)) + 's. (' + str(
-                                time.strftime("%I:%M %p", time.localtime())) + ')\n')
-                        else:
-                            print('Time limit reached. (', time.strftime("%I:%M %p", time.localtime()), ')\n')
-                        b_value = master.model.getAttr("X", master.b)
-                        beta_value = master.model.getAttr("X", master.beta)
-                        p_value = master.model.getAttr("X", master.p)
-                        train_acc = FBOCTutils.get_acc(master, train_set, b_value, beta_value, p_value)
-                        test_acc = FBOCTutils.get_acc(master, test_set, b_value, beta_value, p_value)
-                        with open(out_file, mode='a') as results:
-                            results_writer = csv.writer(results, delimiter=',', quotechar='"')
-                            results_writer.writerow(
-                                [file.replace('.csv', ''), h, len(model_set), test_acc, train_acc, master.model.Runtime,
-                                 master.model.MIPGap, master.model.ObjBound, master.model.ObjVal, modeltype, 'N/A', 0,
-                                 0, 0, 0, 0, 0, 0, 0, time_limit, i, False, False, False])
-                            results.close()
-                        if log_files:
-                            master.model.write(log + '.lp')
+                        stoct = BendersOCT(data=model_set, label=target, tree=OCT_tree,
+                                           _lambda=0, time_limit=time_limit, mode='classification')
+                        stoct.create_master_problem()
+                        stoct.model.update()
+                        stoct.model.optimize(FBOCTutils.mycallback)
+                    if stoct.model.RunTime < time_limit:
+                        print(f'Optimal solution found in {round(stoct.model.RunTime,4)}s. '
+                              f'('+str(time.strftime("%I:%M %p", time.localtime()))+')')
+                    else:
+                        print('Time limit reached. ('+str(time.strftime("%I:%M %p", time.localtime()))+')')
+                    b_value = stoct.model.getAttr("X", stoct.b)
+                    beta_value = stoct.model.getAttr("X", stoct.beta)
+                    p_value = stoct.model.getAttr("X", stoct.p)
+                    train_acc = FBOCTutils.get_acc(stoct, train_set, b_value, beta_value, p_value)
+                    test_acc = FBOCTutils.get_acc(stoct, test_set, b_value, beta_value, p_value)
+
+                    with open(out_file, mode='a') as results:
+                        results_writer = csv.writer(results, delimiter=',', quotechar='"')
+                        results_writer.writerow(
+                            [file.replace('.csv', ''), h, len(model_set), test_acc, train_acc, stoct.model.Runtime,
+                             stoct.model.MIPGap, stoct.model.ObjBound, stoct.model.ObjVal,
+                             modeltype, 'N/A', 0, time_limit, i])
+                        results.close()
+                    if log_files:
+                        stoct.model.write(log + '.lp')
