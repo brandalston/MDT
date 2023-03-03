@@ -96,6 +96,7 @@ def main(argv):
                     method = modeltype[5:]
                     alphas_to_try = [0.00001, 0.0001, 0.001, 0.01, 0.1]
                     best_ccp_alpha = min(alphas_to_try)
+                    warm_start_time = 0
                     if warm_start == 'SVM':
                         start_time = time.perf_counter()
                         best_valid_acc = 0

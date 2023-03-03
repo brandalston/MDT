@@ -38,9 +38,10 @@ GOSDTg.main(
 
 time_limit = 600
 rand_states = [138, 15, 89, 42, 0]
-file = 'benchmarks_testing.csv'
+file = 'benchmark_testing.csv'
 """
-test_data = ['blood', 'hayes_roth']
+
+test_data = ['iris']
 heights = [2]
 time_limit = 600
 file = 'benchmark_testing.csv'
@@ -48,11 +49,11 @@ log_file = False
 rand_states = [138]
 ############ SOCT ###############
 models = ['SOCT-Benders', 'SOCT-Full']
-warm_start = [None,'STUMP', 'SVM']  # CHOOSE ONE
+warm_start = [None, 'STUMP', 'SVM']  # CHOOSE ONE
 SOCT_run.main(
    ["-d", test_data, "-h", heights, "-t", time_limit, "-m", models, 
     "-r", rand_states, "-f", file, "-w", warm_start[0], "-l", log_file])
-
+"""
 ############ OCT ###############
 models = ['OCT-Univariate', 'OCT-Multivariate']
 print(models[0][4:])
@@ -66,10 +67,4 @@ DL8_5.main(
 ############ GOSDT+g ###############
 GOSDTg.main(
    ["-d", test_data, "-h", heights, "-t", time_limit, "-r", rand_states, "-f", file])
-
-############ Bertsimas iAI ###############
-""""
-models = ['iAI-Univariate', 'iAI-Multivariate']
-Bertsimas_iAI.main(
-   ["-d", test_data, "-h", heights, "-t", time_limit, "-m", models, "-r", rand_states, "-f", file])
-   """
+"""
