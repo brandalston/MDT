@@ -1,11 +1,11 @@
 import time
-import numpy as np
 import pandas as pd
 from sklearn.base import BaseEstimator, ClassifierMixin
 from sklearn.utils.validation import check_X_y, check_array, check_is_fitted
 from sklearn.utils.multiclass import unique_labels
 from gurobipy import *
 from .utils import *
+
 
 class OCTH(ClassifierMixin, BaseEstimator):
     """ Our implementation of OCT-H from Bertsimas and Dunn.

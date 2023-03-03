@@ -1,6 +1,7 @@
 import numpy as np
 from sklearn.tree import _tree
 
+
 def cart_to_rules(cart):
     """ Convert a fitted DecisionTreeClassifier to rules. """
     branch_rules = {}
@@ -30,6 +31,7 @@ def cart_to_rules(cart):
     
     return branch_rules, classification_rules
 
+
 def extend_rules_to_full_tree(depth, branch_rules, classification_rules, n_features):
     """ A lot of the code assumes the rules are for a full binary tree of a given depth. """
     new_branch_rules = {}
@@ -56,6 +58,7 @@ def extend_rules_to_full_tree(depth, branch_rules, classification_rules, n_featu
     
     return new_branch_rules, new_classification_rules
 
+
 def predict_with_rules(x, branch_rules, classification_rules):
     """ Classify a single observation using rules. """
     # Assume that if branch_rules is None, then classification_rules[1] returns some class label
@@ -67,6 +70,7 @@ def predict_with_rules(x, branch_rules, classification_rules):
         a, b = branch_rules[t]
         t = 2*t if np.dot(a, x) <= b else 2*t+1
     return classification_rules[t]
+
 
 def define_branch_ancestors(leaf_nodes):
     """ Define the left/right-branch ancestors of leaf nodes.

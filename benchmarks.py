@@ -1,8 +1,6 @@
 from Benchmarks import FB_OCT, DL8_5, OCT_run, SOCT_run
-try:
-   from Benchmarks import GOSDTg
-except:
-   print("gosdt modeule not found")
+try: from Benchmarks import GOSDTg
+except: pass
 
 """numerical_datasets = ['iris', 'banknote', 'blood', 'climate', 'wine-white', 'wine-red'
                       'glass', 'image_segmentation', 'ionosphere', 'parkinsons', 'iris']
@@ -51,7 +49,7 @@ rand_states = [138]
 models = ['SOCT-Benders', 'SOCT-Full']
 warm_start = [None, 'STUMP', 'SVM']  # CHOOSE ONE
 SOCT_run.main(
-   ["-d", test_data, "-h", heights, "-t", time_limit, "-m", models, 
+   ["-d", test_data, "-h", heights, "-t", time_limit, "-m", models,
     "-r", rand_states, "-f", file, "-w", warm_start[0], "-l", log_file])
 """
 ############ OCT ###############
@@ -59,7 +57,7 @@ models = ['OCT-Univariate', 'OCT-Multivariate']
 print(models[0][4:])
 OCT_run.main(
    ["-d", test_data, "-h", heights, "-t", time_limit, "-m", models, "-r", rand_states, "-f", file, "-l", log_file])
-
+   
 ############ DL8.5 ###############
 DL8_5.main(
    ["-d", test_data, "-h", heights, "-t", time_limit, "-r", rand_states, "-f", file])

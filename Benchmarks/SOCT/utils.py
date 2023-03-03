@@ -1,6 +1,7 @@
 import numpy as np
 from sklearn.tree import _tree
 
+
 def cart_to_rules(cart):
     """ Convert a fitted DecisionTreeClassifier to rules. """
     branch_rules = {}
@@ -30,6 +31,7 @@ def cart_to_rules(cart):
     
     return branch_rules, classification_rules
 
+
 def extend_rules_to_full_tree(depth, branch_rules, classification_rules, n_features):
     """ A lot of the code assumes the rules are for a full binary tree of a given depth. """
     new_branch_rules = {}
@@ -55,6 +57,7 @@ def extend_rules_to_full_tree(depth, branch_rules, classification_rules, n_featu
             recurse(t, classification_rules[t])
     
     return new_branch_rules, new_classification_rules
+
 
 def predict_with_rules(x, branch_rules, classification_rules):
     """ Classify a single observation using rules. """

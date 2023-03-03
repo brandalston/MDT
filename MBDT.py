@@ -363,7 +363,7 @@ class MBDT:
         if vis_weight is None:
             vis_weight = {i: 0 for i in data.index}
 
-        if (len(Lv_I) == 0) or (len(Rv_I) == 0):
+        """if (len(Lv_I) == 0) or (len(Rv_I) == 0):
             return None
         # Remove any points in each index set whose feature set are equivalent
         common_points_L, common_points_R = set(), set()
@@ -374,7 +374,7 @@ class MBDT:
                     common_points_R.add(y)
         Lv_I -= common_points_L
         Rv_I -= common_points_R
-        data = data.drop(common_points_L | common_points_R)
+        data = data.drop(common_points_L | common_points_R)"""
 
         # VIS Dual Model
         VIS_model = Model("VIS Dual")

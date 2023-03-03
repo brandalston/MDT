@@ -1,5 +1,4 @@
 import time
-import numpy as np
 import pandas as pd
 from sklearn.base import BaseEstimator, ClassifierMixin
 from sklearn.utils.validation import check_X_y, check_array, check_is_fitted
@@ -7,6 +6,7 @@ from sklearn.utils.multiclass import unique_labels
 from gurobipy import *
 from .HardMarginLinearSVM import HardMarginLinearSVM
 from .utils import *
+
 
 class SOCTBenders(ClassifierMixin, BaseEstimator):
     """ S-OCT solved using Benders decomposition.
@@ -85,7 +85,7 @@ class SOCTBenders(ClassifierMixin, BaseEstimator):
         model._nodes = (branch_nodes, leaf_nodes)
         model._callback_calls = 0
         model._callback_time = 0
-        
+        model._callback_cuts = 0
         # Variables
         c = model.addVars(classes, leaf_nodes, lb=0, ub=1)
         d = model.addVars(branch_nodes, lb=0, ub=1)
@@ -220,6 +220,7 @@ class SOCTBenders(ClassifierMixin, BaseEstimator):
                     cut_lhs.add(w[i,2*t+1])
                 cut_rhs = len(left_support) + len(right_support) - 1
                 model.cbLazy(cut_lhs <= cut_rhs)
+                model._callback_cuts += 1
             
             model._callback_calls += 1
             model._callback_time += time.time() - start_time
@@ -365,3 +366,38 @@ class SOCTBenders(ClassifierMixin, BaseEstimator):
             y_pred.append(predict_with_rules(x, self.branch_rules_, self.classification_rules_))
         y_pred = pd.Series(y_pred, index=index)
         return y_pred
+
+    def solution_values(self):
+        model = self.model_
+        (c, d, w, z) = model._vars
+        (X, y) = model._X_y
+        (N, p) = np.shape(X)
+        classes = unique_labels(y)
+        (branch_nodes, leaf_nodes) = model._nodes
+        # Extract solution values
+        try:
+            c_vals = model.getAttr('X', c)
+            w_vals = model.getAttr('X', w)
+            z_vals = model.getAttr('X', z)
+        # If no incumbent was found, then return
+        except GurobiError:
+            self.branch_rules_ = None
+            self.classification_rules_ = {1: classes[0]}  # Predict an arbitrary class
+            return
+        a_vals, b_vals, classes, paths = {}, {}, {}, {i: [1] for i in range(N)}
+        for t in branch_nodes:
+            # Define index sets indicating which observations are sent to every node
+            for i in range(N):
+                if w_vals[i, 2 * t] > 0.5:
+                    paths[i].append(2*t)
+                elif w_vals[i, 2 * t + 1] > 0.5:
+                    paths[i].append(2*t+1)
+            (a_vals[t], b_vals[t]) = self.branch_rules_[t]
+        for t in leaf_nodes:
+            classes[t] = self.classification_rules_[t]
+        for t in branch_nodes:
+            print(t, len(a_vals[t]), a_vals[t], b_vals[t])
+        for t in leaf_nodes:
+            print(t, classes[t])
+        for i in range(10):
+            print(i, paths[i])

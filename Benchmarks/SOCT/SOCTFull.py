@@ -1,4 +1,3 @@
-import numpy as np
 import pandas as pd
 from sklearn.base import BaseEstimator, ClassifierMixin
 from sklearn.utils.validation import check_X_y, check_array, check_is_fitted
@@ -6,6 +5,7 @@ from sklearn.utils.multiclass import unique_labels
 from gurobipy import *
 from .HardMarginLinearSVM import HardMarginLinearSVM
 from .utils import *
+
 
 class SOCTFull(ClassifierMixin, BaseEstimator):
     """ S-OCT solved as a full MIP, without Benders decomposition and using big-M constraints.
@@ -122,6 +122,7 @@ class SOCTFull(ClassifierMixin, BaseEstimator):
         # Load warm start
         if self.warm_start_tree is not None:
             self._warm_start()
+        model._callback_calls, model._callback_cuts, model._callback_time = 0, 0, 0
         
         # Solve model
         model.optimize(SOCTFull._callback)
@@ -271,3 +272,37 @@ class SOCTFull(ClassifierMixin, BaseEstimator):
             y_pred.append(predict_with_rules(x, self.branch_rules_, self.classification_rules_))
         y_pred = pd.Series(y_pred, index=index)
         return y_pred
+
+    def solution_values(self):
+        model = self.model_
+        (c, d, w, z, a, a_abs, b) = model._vars
+        (X, y) = model._X_y
+        (N, p) = np.shape(X)
+        classes = unique_labels(y)
+        (branch_nodes, leaf_nodes) = model._nodes
+        # Extract solution values
+        try:
+            c_vals = model.getAttr('X', c)
+            w_vals = model.getAttr('X', w)
+            z_vals = model.getAttr('X', z)
+        # If no incumbent was found, then return
+        except GurobiError:
+            self.branch_rules_ = None
+            self.classification_rules_ = {1: classes[0]}  # Predict an arbitrary class
+            return
+        a_vals, b_vals, classes, paths = {}, {}, {}, {i: [1] for i in range(N)}
+        for t in branch_nodes:
+            for i in range(N):
+                if w_vals[i, 2 * t] > 0.5:
+                    paths[i].append(2 * t)
+                elif w_vals[i, 2 * t + 1] > 0.5:
+                    paths[i].append(2 * t + 1)
+            (a_vals[t], b_vals[t]) = self.branch_rules_[t]
+        for t in leaf_nodes:
+            classes[t] = self.classification_rules_[t]
+        for t in branch_nodes:
+            print(t, len(a_vals[t]), a_vals[t], b_vals[t])
+        for t in leaf_nodes:
+            print(t, classes[t])
+        for i in range(10):
+            print(i, paths[i])

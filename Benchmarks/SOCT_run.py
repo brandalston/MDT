@@ -52,7 +52,7 @@ def main(argv):
     ''' Columns of the results file generated '''
     summary_columns = ['Data', 'H', '|I|', 'Out_Acc', 'In_Acc', 'Sol_Time',
                        'Model', 'Warm_Start', 'Warm_Start_Time', 'Time_Limit', 'Rand_State',
-                       'MIP_Gap', 'Obj_Val', 'Obj_Bound']
+                       'MIP_Gap', 'Obj_Val', 'Obj_Bound', 'VIS_calls','VIS_cuts', 'VIS_time']
     output_path = os.getcwd() + '/results_files/'
     log_path = os.getcwd() + '/log_files/'
     if file_out is None:
@@ -79,8 +79,6 @@ def main(argv):
                             'monk1', 'monk2', 'monk3', 'soybean_small', 'spect', 'tic_tac_toe', 'fico_binary']
     for file in data_files:
         data = OU.get_data(file.replace('.csv', ''))
-        print(data.head(5))
-        print(data.shape)
         for h in heights:
             for i in rand_states:
                 train_set, test_set = train_test_split(data, train_size=0.5, random_state=i)
@@ -130,10 +128,10 @@ def main(argv):
 
                     if method == "Full":
                         soct = SOCTFull(max_depth=h, ccp_alpha=best_ccp_alpha, warm_start_tree=warm_start,
-                                        time_limit=time_limit, log_to_console=True)
+                                        time_limit=time_limit, log_to_console=False)
                     elif method == "Benders":
                         soct = SOCTBenders(max_depth=h, ccp_alpha=best_ccp_alpha, warm_start_tree=warm_start,
-                                           time_limit=time_limit, log_to_console=True)
+                                           time_limit=time_limit, log_to_console=False)
                     soct.fit(X_train, y_train)
                     if soct.model_.RunTime < time_limit:
                         print(f'Optimal solution found in {round(soct.model_.RunTime,4)}s. '
@@ -143,13 +141,14 @@ def main(argv):
                     if soct.branch_rules_ is not None:
                         train_acc = soct.score(X_train, y_train)
                         test_acc = soct.score(X_test, y_test)
-
+                    soct.solution_values()
                     with open(out_file, mode='a') as results:
                         results_writer = csv.writer(results, delimiter=',', quotechar='"')
                         results_writer.writerow(
                             [file.replace('.csv', ''), h, len(model_set), test_acc, train_acc, soct.model_.RunTime,
                              modeltype, warm_start, warm_start_time, time_limit, i,
-                             soct.model_.MIPGap, soct.model_.ObjBound, soct.model_.ObjVal])
+                             soct.model_.MIPGap, soct.model_.ObjBound, soct.model_.ObjVal,
+                             soct.model_._callback_calls, soct.model_._callback_cuts, soct.model_._callback_time])
                         results.close()
                     if log_files:
                         log = log_path + '_' + str(file) + '_H:' + str(h) + '_M:' + str(modeltype) + \
