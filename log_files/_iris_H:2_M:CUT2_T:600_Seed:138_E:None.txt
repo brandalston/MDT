@@ -1,0 +1,45 @@
+
+Gurobi 10.0.1 (mac64[arm]) logging started Sat Mar  4 09:20:34 2023
+
+Set parameter LogFile to value "/Users/brandonalston/Desktop/Code/MDT/log_files/_iris_H:2_M:CUT2_T:600_Seed:138_E:None.txt"
+Gurobi Optimizer version 10.0.1 build v10.0.1rc0 (mac64[arm])
+
+CPU model: Apple M1
+Thread count: 8 physical cores, 8 logical processors, using up to 1 threads
+
+Optimize a model with 2366 rows, 1603 columns and 5764 nonzeros
+Model fingerprint: 0x3fc0ca74
+Variable types: 7 continuous, 1596 integer (1596 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [9e-03, 9e-03]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+Found heuristic solution: objective 0.0000000
+Presolve removed 455 rows and 11 columns
+Presolve time: 0.01s
+Presolved: 1911 rows, 1592 columns, 4846 nonzeros
+Extracted 672 lazy constraints
+Variable types: 0 continuous, 1592 integer (1592 binary)
+
+Root relaxation: objective -1.000000e+00, 452 iterations, 0.00 seconds (0.01 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0   -1.00000    0    -    0.00000   -1.00000      -     -    0s
+     0     0   -1.00000    0    -    0.00000   -1.00000      -     -    0s
+*    0     0               0      -1.0000000   -1.00000  0.00%     -    0s
+
+Cutting planes:
+  Lazy constraints: 301
+
+Explored 1 nodes (892 simplex iterations) in 0.02 seconds (0.03 work units)
+Thread count was 1 (of 8 available processors)
+
+Solution count 2: -1 0 
+
+Solve interrupted
+Best objective -1.000000000000e+00, best bound -1.000000000000e+00, gap 0.0000%
+
+User-callback calls 164, time in user-callback 0.00 sec

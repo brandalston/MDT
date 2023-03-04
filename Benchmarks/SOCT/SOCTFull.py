@@ -1,4 +1,5 @@
 import pandas as pd
+import time
 from sklearn.base import BaseEstimator, ClassifierMixin
 from sklearn.utils.validation import check_X_y, check_array, check_is_fitted
 from sklearn.utils.multiclass import unique_labels
@@ -218,6 +219,7 @@ class SOCTFull(ClassifierMixin, BaseEstimator):
         # Create dicts with values for a and b parameters
         a_vals = {}
         b_vals = {}
+        self.hp_time = 0
         for t in branch_nodes:
             # Define index sets indicating which observations are sent to every node
             left_index_set = [] # Observations going to node 2t
@@ -236,10 +238,12 @@ class SOCTFull(ClassifierMixin, BaseEstimator):
                 a_vals[t] = np.zeros(p)
                 b_vals[t] = -1
             else:
+                start = time.perf_counter()
                 X_svm = np.append(X[left_index_set,:], X[right_index_set,:], axis=0)
                 y_svm = [-1]*len(left_index_set) + [+1]*len(right_index_set)
                 svm = HardMarginLinearSVM()
                 svm.fit(X_svm, y_svm)
+                self.hp_time += time.perf_counter() - start
                 (a_vals[t], b_vals[t]) = (svm.w_, svm.b_)
         
         # Construct rules
@@ -300,9 +304,4 @@ class SOCTFull(ClassifierMixin, BaseEstimator):
             (a_vals[t], b_vals[t]) = self.branch_rules_[t]
         for t in leaf_nodes:
             classes[t] = self.classification_rules_[t]
-        for t in branch_nodes:
-            print(t, len(a_vals[t]), a_vals[t], b_vals[t])
-        for t in leaf_nodes:
-            print(t, classes[t])
-        for i in range(10):
-            print(i, paths[i])
+        return a_vals, b_vals, paths

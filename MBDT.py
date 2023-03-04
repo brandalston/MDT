@@ -9,7 +9,7 @@ import UTILS
 
 class MBDT:
 
-    def __init__(self, data, tree, modeltype, time_limit, target, warmstart, modelextras, hp_info=None, log=None):
+    def __init__(self, data, tree, modeltype, time_limit, target, warmstart, modelextras, log=None, hp_info=None):
         """"
         Parameters
         data: training data
@@ -28,7 +28,7 @@ class MBDT:
         self.warmstart = warmstart
         self.modelextras = modelextras
         self.log = log
-        self.hp_info = hp_info
+        # self.hp_info = hp_info
         self.b_type = 'VIS'
 
         print('Model: ' + str(self.modeltype))
@@ -85,7 +85,7 @@ class MBDT:
 
         """ Gurobi Optimization Parameters """
         self.model = Model(f'{self.modeltype}_SVM')
-        self.model.Params.LogToConsole = 0
+        self.model.Params.LogToConsole = 1
         self.model.Params.TimeLimit = time_limit
         self.model.Params.Threads = 1  # use one thread for testing purposes
         self.model.Params.LazyConstraints = 1
@@ -98,7 +98,7 @@ class MBDT:
         self.model._vistime, self.model._visnum, self.model._viscuts = 0, 0, 0
         self.model._rootcuts, self.model._eps = self.rootcuts, self.eps
 
-        """ Hyperplane Specifications """
+        """ Hyperplane Specifications 
         self.HP_obj, self.HP_rank = 'quadratic', len(self.featureset)
         if self.hp_info is not None:
             # print(f'Hyperplane Objective:', self.hp_info['objective'])
@@ -109,7 +109,7 @@ class MBDT:
                 self.HP_rank = len(self.featureset)
             else:
                 self.HP_rank = len(self.featureset) - 1
-            # print(f'Hyperplane Rank:', self.hp_rank)
+            # print(f'Hyperplane Rank:', self.hp_rank) """
 
     ##############################################
     # MIP Model Formulation
@@ -122,12 +122,12 @@ class MBDT:
         """
 
         """ Decision Variables """
+        # Pruned vertex
+        self.P = self.model.addVars(self.tree.V, vtype=GRB.CONTINUOUS, lb=0, name='P')
         # Branching vertex
         self.B = self.model.addVars(self.tree.V, vtype=GRB.BINARY, name='B')
         # Classification vertex
         self.W = self.model.addVars(self.tree.V, self.classes, vtype=GRB.BINARY, name='W')
-        # Pruned vertex
-        self.P = self.model.addVars(self.tree.V, vtype=GRB.CONTINUOUS, lb=0, name='P')
         # Datapoint terminal vertex
         self.S = self.model.addVars(self.datapoints, self.tree.V, vtype=GRB.BINARY, name='S')
         # Datapoint selected vertices in root-terminal path
@@ -169,21 +169,22 @@ class MBDT:
                               for i in self.datapoints)
 
         # Lazy feasible path constraints (for fractional separation procedure)
-        if any(ele in self.modeltype for ele in ['GRB', 'FRAC']):
+        if any(ele in self.cut_type for ele in ['GRB', 'FRAC']):
             # terminal vertex of datapoint must be in reachable path
             if 'CUT1' in self.modeltype:
-                self.cut_constraint = self.model.addConstrs(self.S[i, v] <= self.Q[i, c]
-                                                            for i in self.datapoints
-                                                            for v in self.tree.V if v != 0
-                                                            for c in self.tree.path[v][1:])
+                self.cut_constraint = self.model.addConstrs(
+                    self.S[i, v] <= self.Q[i, c]
+                    for i in self.datapoints
+                    for v in self.tree.V if v != 0
+                    for c in self.tree.path[v][1:])
             # terminal vertex of datapoint must be in reachable path for vertex and all children
             elif 'CUT2' in self.modeltype:
-                self.cut_constraint = self.model.addConstrs(self.S[i, v] + quicksum(self.S[i, u]
-                                                                                    for u in self.tree.child[v])
-                                                            <= self.Q[i, c]
-                                                            for i in self.datapoints
-                                                            for v in self.tree.V if v != 0
-                                                            for c in self.tree.path[v][1:])
+                self.cut_constraint = self.model.addConstrs(
+                    self.S[i, v] + quicksum(self.S[i, u] for u in self.tree.child[v])
+                    <= self.Q[i, c]
+                    for i in self.datapoints
+                    for v in self.tree.V if v != 0
+                    for c in self.tree.path[v][1:])
             for i in self.datapoints:
                 for v in self.tree.V:
                     if v == 0: continue
@@ -192,9 +193,9 @@ class MBDT:
 
         # All feasible path constraints upfront
         elif 'UF' in self.cut_type:
-            for i in self.datapoints:
-                for v in self.tree.V:
-                    if v == 0: continue
+            for v in self.tree.V:
+                if v == 0: continue
+                for i in self.datapoints:
                     # terminal vertex of datapoint must be in reachable path
                     if 'CUT1' in self.modeltype:
                         self.model.addConstrs(self.S[i, v] <= self.Q[i, c] for c in self.tree.path[v][1:])
@@ -254,15 +255,16 @@ class MBDT:
                     elif Q[i, model._tree.RC[v]] > 0.5:
                         Rv_I.add(i)
                 # Test for VIS of B_v(Q)
-                print(f'Test for VIS at {v}, VIS test count: {model._visnum}')
-                VIS = MBDT.VIS(model._data, model._featureset, Lv_I, Rv_I, vis_weight=model._vis_weight)
-                if VIS is None: continue
+                # print(f'Test for VIS at {v}, VIS test count: {model._visnum}')
+                VIS = MBDT.VIS(model._data, Lv_I, Rv_I, vis_weight=model._vis_weight)
+
                 # If VIS Found, add cut
-                print(f'VIS Found at {v}, test count: {model._visnum}')
-                (B_v_left, B_v_right) = VIS
-                model.cbLazy(quicksum(model._Q[i, model._tree.LC[v]] for i in B_v_left) +
-                             quicksum(model._Q[i, model._tree.LC[v]] for i in B_v_right) <=
-                             len(B_v_left) + len(B_v_right) - 1)
+                if VIS is None: continue
+                # print(f'VIS Found at {v}, test count: {model._visnum}')
+                (VIS_left, VIS_right) = VIS
+                model.cbLazy(quicksum(model._Q[i, model._tree.LC[v]] for i in VIS_left) +
+                             quicksum(model._Q[i, model._tree.LC[v]] for i in VIS_right) <=
+                             len(VIS_left) + len(VIS_right) - 1)
                 model._viscuts += 1
             model._vistime += time.perf_counter() - start
 
@@ -343,8 +345,7 @@ class MBDT:
     # Find Valid Infeasible Subsystem (aka IIS) of Model
     ##############################################
     @staticmethod
-    def VIS(data, feature_set, Lv_I, Rv_I, vis_weight):
-        print('in VIS')
+    def VIS(data, Lv_I, Rv_I, vis_weight):
         """
         Find a minimal set of points that cannot be linearly separated by a split (a_v, c_v).
         Use the support of Farkas dual (with heuristic objective) of the feasible primal LP to identify VIS of primal
@@ -363,8 +364,10 @@ class MBDT:
         if vis_weight is None:
             vis_weight = {i: 0 for i in data.index}
 
-        """if (len(Lv_I) == 0) or (len(Rv_I) == 0):
+        if (len(Lv_I) == 0) or (len(Rv_I) == 0):
             return None
+
+        """
         # Remove any points in each index set whose feature set are equivalent
         common_points_L, common_points_R = set(), set()
         for x in Lv_I:
@@ -381,14 +384,14 @@ class MBDT:
         VIS_model.Params.LogToConsole = 0
 
         # VIS Dual Variables
-        lambda_L = VIS_model.addVars(Lv_I, vtype=GRB.CONTINUOUS, lb=0, name='lambda_L')
-        lambda_R = VIS_model.addVars(Rv_I, vtype=GRB.CONTINUOUS, lb=0, name='lambda_R')
+        lambda_L = VIS_model.addVars(Lv_I, vtype=GRB.CONTINUOUS, name='lambda_L')
+        lambda_R = VIS_model.addVars(Rv_I, vtype=GRB.CONTINUOUS, name='lambda_R')
 
         # VIS Dual Constraints
         VIS_model.addConstrs(
-            quicksum(lambda_L[i] * data.at[i, j] for i in Lv_I) ==
-            quicksum(lambda_R[i] * data.at[i, j] for i in Rv_I)
-            for j in feature_set)
+            quicksum(lambda_L[i] * data.at[i, f] for i in Lv_I) ==
+            quicksum(lambda_R[i] * data.at[i, f] for i in Rv_I)
+            for f in data.columns.drop('target'))
         VIS_model.addConstr(lambda_L.sum() == 1)
         VIS_model.addConstr(lambda_R.sum() == 1)
 
@@ -406,17 +409,17 @@ class MBDT:
         lambda_L_sol = VIS_model.getAttr('X', lambda_L)
         lambda_R_sol = VIS_model.getAttr('X', lambda_R)
 
-        B_v_left = []
-        B_v_right = []
+        VIS_left = []
+        VIS_right = []
         for i in Lv_I:
             if lambda_L_sol[i] > VIS_model.Params.FeasibilityTol:
-                B_v_left.append(i)
+                VIS_left.append(i)
                 vis_weight[i] += 1
         for i in Rv_I:
             if lambda_R_sol[i] > VIS_model.Params.FeasibilityTol:
-                B_v_right.append(i)
+                VIS_right.append(i)
                 vis_weight[i] += 1
-        return B_v_left, B_v_right
+        return VIS_left, VIS_right
 
     ##############################################
     # Assign Nodes of Tree from Model Solution
@@ -470,41 +473,39 @@ class MBDT:
                 # Lv_I, Rv_I index sets of observations sent to left, right child vertex of branching vertex v
                 # svm_y maps Lv_I to -1, Rv_I to +1 for training hyperplane
                 Lv_I, Rv_I = [], []
-                svm_y = {i: 0 for i in self.datapoints}
+                svm = {i: 0 for i in self.datapoints}
                 for i in self.datapoints:
                     if Q_sol[i, self.tree.LC[v]] > 0.5:
                         Lv_I.append(i)
-                        svm_y[i] = -1
+                        svm[i] = -1
                     elif Q_sol[i, self.tree.RC[v]] > 0.5:
                         Rv_I.append(i)
-                        svm_y[i] = +1
+                        svm[i] = +1
                 # Find (a_v, c_v) for corresponding Lv_I, Rv_I
                 # If |Lv_I| = 0: (a_v, c_v) = (0, -1) sends all points to the right
                 if len(Lv_I) == 0:
-                    print(f'all going right at {v}')
+                    # print(f'all going right at {v}')
                     self.tree.a_v[v] = {f: 0 for f in self.featureset}
                     self.tree.c_v[v] = -1
                 # If |Rv_I| = 0: (a_v, c_v) = (0, 1) sends all points to the left
                 elif len(Rv_I) == 0:
-                    print(f'all going left at {v}')
+                    # print(f'all going left at {v}')
                     self.tree.a_v[v] = {f: 0 for f in self.featureset}
                     self.tree.c_v[v] = 1
                 # Find separating hyperplane according to Lv_I, Rv_I index sets
                 else:
-                    print('BRANCHING!!')
+                    # print('BRANCHING!!')
                     data_svm = self.data.loc[Lv_I + Rv_I, self.data.columns != self.target]
-                    data_svm['svm'] = pd.Series(svm_y)
+                    data_svm['svm'] = pd.Series(svm)
                     svm = UTILS.Linear_Separator()
-                    svm.SVM_fit(data_svm, self.hp_info)
+                    svm.SVM_fit(data_svm)
                     self.tree.a_v[v], self.tree.c_v[v] = svm.a_v, svm.c_v
                     if svm.hp_size != 0:
                         self.svm_branches += 1
                         self.HP_size += svm.hp_size
                 self.tree.branch_nodes[v] = (self.tree.a_v[v], self.tree.c_v[v])
         self.HP_time = time.perf_counter() - start
-        if self.svm_branches == 0: self.HP_avg_size = 0
-        else: self.HP_avg_size = self.HP_size / self.svm_branches
-        print(f'Hyperplanes found in {round(self.HP_time,4)}s. ({time.strftime("%I:%M %p", time.localtime())})\n')
+        # print(f'Hyperplanes found in {round(self.HP_time,4)}s. ({time.strftime("%I:%M %p", time.localtime())})\n')
 
     ##############################################
     # Warm Start Model

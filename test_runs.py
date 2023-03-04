@@ -20,10 +20,9 @@ def main(argv):
     file_out = None
     log_files = None
     b_type = None
-    hp_info = None
     try:
-        opts, args = getopt.getopt(argv, "d:h:t:m:b:p:r:f:e:w:l:",
-                                   ["data_files=", "heights=", "time_limit=", "models=", "branch_type=", "hp_info=",
+        opts, args = getopt.getopt(argv, "d:h:t:m:b:r:f:e:w:l:",
+                                   ["data_files=", "heights=", "time_limit=", "models=", "branch_type=",
                                     "rand_states=", "results_file=", "model_extras=", "warm_start=", "log_files"])
     except getopt.GetoptError:
         sys.exit(2)
@@ -38,8 +37,6 @@ def main(argv):
             modeltypes = arg
         elif opt in ("-b", "--branch_type"):
             b_type = arg
-        elif opt in ("-p", "--hp_info"):
-            hp_info = arg
         elif opt in ("-r", "--rand_states"):
             rand_states = arg
         elif opt in ("-f", "--results_file"):
@@ -52,7 +49,11 @@ def main(argv):
             log_files = arg
 
     ''' Columns of the results file generated '''
-    summary_columns = ['Data', 'H', '|I|', '|F|',
+    summary_columns = ['Data', 'H', '|I|', 'Out_Acc', 'In_Acc', 'Sol_Time',
+                       'Model', 'Warm_Start', 'Warm_Start_Time', 'Time_Limit', 'Rand_State',
+                       'MIP_Gap', 'Obj_Val', 'Obj_Bound', 'VIS_calls', 'VIS_cuts', 'VIS_time', 'HP_time',
+                       'FP_CB_Time', 'FP_Num_CB', 'FP_Cuts', 'Eps', 'Branch_Type']
+    """summary_columns = ['Data', 'H', '|I|', '|F|',
                        'Out_Acc', 'In_Acc', 'Sol_Time',
                        'MIP_Gap', 'Obj_Val', 'Obj_Bound',
                        'Model', 'Branch_Type',
@@ -60,7 +61,7 @@ def main(argv):
                        'FP_CB_Time', 'FP_Num_CB', 'FP_Cuts', 'FP_Avg',
                        'VIS_CB_Time', 'VIS_Num_CB', 'VIS_Cuts',
                        'Eps', 'Time_Limit', 'Rand_State',
-                       'Warm Start', 'Regularization', 'Max_Features']
+                       'Warm Start', 'Regularization', 'Max_Features']"""
     output_path = os.getcwd() + '/results_files/'
     log_path = os.getcwd() + '/log_files/'
     if file_out is None:
@@ -87,7 +88,6 @@ def main(argv):
         # pull dataset to train model with
         data = UTILS.get_data(file.replace('.csv', ''), binarization=None)
         data.name = file
-        print(data.shape, data.head(3))
         for h in heights:
             for i in rand_states:
                 print('Dataset: '+str(file)+', H: '+str(h)+', '
@@ -97,6 +97,10 @@ def main(argv):
                 model_set = pd.concat([train_set, cal_set])
                 model_set.name = data.name
                 for modeltype in modeltypes:
+                    if log_files: log = log_path + '_' + str(file) + '_H:' + str(h) + '_M:' + str(
+                        modeltype) + '_T:' + str(time_limit) + '_Seed:' + str(i) + '_E:' + str(
+                        model_extras)
+                    else: log = None
                     # Generate tree and necessary structure information
                     tree = TREE(h=h)
                     # Model with 75% training set and time limit
@@ -107,7 +111,7 @@ def main(argv):
                                                modelextras=model_extras, log=log)
                     else:
                         opt_model = MBDT(data=model_set, tree=tree, target=target, modeltype=modeltype,
-                                         time_limit=time_limit, warmstart=warmstart, hp_info=hp_info,
+                                         time_limit=time_limit, warmstart=warmstart,
                                          modelextras=model_extras, log=log)
                     # Add connectivity constraints according to model type and solve
                     opt_model.formulation()
@@ -115,18 +119,15 @@ def main(argv):
                     if model_extras is not None: opt_model.extras()
                     opt_model.model.update()
                     if log_files:
-                        log = log_path + '_' + str(file) + '_H:' + str(h) + '_M:' + str(
-                            modeltype) + '_T:' + str(time_limit) + '_Seed:' + str(i) + '_E:' + str(
-                            model_extras)
                         opt_model.model.write(log + '.lp')
                     opt_model.optimization()
-                    print(f'Optimal solution found in {round(opt_model.model.Runtime / 60, 4)} min. '
-                          f'({time.strftime("%I:%M %p", time.localtime())})') if \
-                        opt_model.model.RunTime < time_limit else \
-                        print(f'Time limit reached. ({time.strftime("%I:%M %p", time.localtime())})')
+                    if opt_model.model.RunTime < time_limit:
+                        print(f'Optimal solution found in {round(opt_model.model.RunTime,4)}s. '
+                              f'('+str(time.strftime("%I:%M %p", time.localtime()))+')')
+                    else:
+                        print('Time limit reached. ('+str(time.strftime("%I:%M %p", time.localtime()))+')')
                     opt_model.assign_tree()
-                    UTILS.model_results(opt_model, tree)
                     # Uncomment to print model results
-                    # UTILS.model_results(opt_model.model, opt_model.tree)
+                    # UTILS.model_results(opt_model, tree)
                     UTILS.model_summary(opt_model=opt_model, tree=tree, test_set=test_set,
                                         rand_state=i, results_file=out_file)

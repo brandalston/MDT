@@ -199,9 +199,8 @@ class Linear_Separator():
         self.c_v = 0
         self.hp_size = 0
 
-    def SVM_fit(self, data, hp_info):
-        global cc_L, cc_R
-        print('\nFITTING\n')
+    def SVM_fit(self, data):
+        # print('\nFITTING\n')
         if not np.array_equal(np.unique(data.svm), [-1, 1]):
             print("Class labels must be -1 and +1")
             raise ValueError
@@ -229,26 +228,8 @@ class Linear_Separator():
         w_pos = m.addVars(feature_set, vtype=GRB.CONTINUOUS, lb=0, name='w_pos')
         w_neg = m.addVars(feature_set, vtype=GRB.CONTINUOUS, lb=0, name='w_neg')
 
-        # Retrieve hyperplane specification
-        #   objective: objective function type : quadratic, linear, rank of hyperplane
-        #   rank: UB on number of features used in hyperplane
-        if hp_info is not None:
-            if hp_info['objective'] == 'linear':
-                m.setObjective(quicksum(w_pos[f] + w_neg[f] for f in feature_set) + err.sum(), GRB.MINIMIZE)
-            elif hp_info['objective'] == 'quadratic':
-                m.setObjective((1 / 2) * quicksum((w_pos[f] - w_neg[f]) * (w_pos[f] - w_neg[f]) for f in feature_set) +
-                               err.sum(), GRB.MINIMIZE)
-            elif hp_info['objective'] == 'rank':
-                m.setObjective(u.sum() + err.sum(), GRB.MINIMIZE)
-            if type(hp_info['rank']) is float:
-                B = math.ceil(hp_info['rank'] * B)
-            elif hp_info['rank'] == 'full':
-                pass
-            else:
-                B -= 1
-        else:
-            m.setObjective((1 / 2) * quicksum((w_pos[f] - w_neg[f]) * (w_pos[f] - w_neg[f]) for f in feature_set) +
-                           err.sum(), GRB.MINIMIZE)
+        m.setObjective((1 / 2) * quicksum((w_pos[f] - w_neg[f]) * (w_pos[f] - w_neg[f]) for f in feature_set) +
+                       err.sum(), GRB.MINIMIZE)
         m.addConstrs(data.at[i, 'svm'] * (quicksum((w_pos[f] - w_neg[f]) * data.at[i, f] for f in feature_set) + b)
                      >= 1 - err[i] for i in data.index)
         m.addConstr(u.sum() <= B)
@@ -284,18 +265,17 @@ def model_results(model, tree):
         elif model.P[v].x < 0.5 and model.B[v].x < 0.5:
             print('Vertex ' + str(v) + ' pruned')
 
-
     # Print datapoint paths through tree
-    for i in sorted(model._data.index):
+    for i in sorted(model.data.index):
         path = [0]
-        for v in model._tree.V:
-            if model._Q[i, v].x > 0.5:
+        for v in tree.V:
+            if model.Q[i, v].x > 0.5:
                 path.append(v)
-                if model._S[i, v].x > 0.5:
-                    print('Datapoint ' + str(i) + ' correctly assigned class ' + str(model._data.at[i, model._target])
+                if model.S[i, v].x > 0.5:
+                    print('Datapoint ' + str(i) + ' correctly assigned class ' + str(model.data.at[i, model.target])
                          + ' at ' + str(v) + '. Path: ', path)
-                for k in model._data[model._target].unique():
-                    if model._W[v, k].x > 0.5:
+                for k in model.data[model.target].unique():
+                    if model.W[v, k].x > 0.5:
                         print('datapoint ' + str(i) + ' incorrectly assigned class ' + str(k)
                               + ' at ' + str(v) + '. Path: ', path)
 
@@ -356,13 +336,10 @@ def model_summary(opt_model, tree, test_set, rand_state, results_file):
              test_acc/len(test_set), train_acc/len(opt_model.datapoints), opt_model.model.Runtime,
              opt_model.modeltype, False, 0, opt_model.time_limit, rand_state,
              opt_model.model.MIPGap, opt_model.model.ObjVal, opt_model.model.ObjBound,
-             opt_model.b_type, opt_model.obj_func,
-             opt_model.HP_time, opt_model.HP_avg_size, opt_model.HP_obj, opt_model.HP_rank,
-             opt_model.model._septime, opt_model.model._sepnum, opt_model.model._sepcuts, opt_model.model._sepavg,
-             opt_model.model._vistime, opt_model.model._visnum, opt_model.model._viscuts,
-             opt_model.eps, opt_model.warmstart['use'], opt_model.regularization, opt_model.max_features])
+             opt_model.model._visnum, opt_model.model._viscuts, opt_model.model._vistime, opt_model.HP_time,
+             opt_model.model._septime, opt_model.model._sepnum, opt_model.model._sepcuts,
+             opt_model.model._eps, opt_model.b_type])
         results.close()
-
 
 def random_tree(tree, data, target):
     # Clear any existing node assignments
