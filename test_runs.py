@@ -87,15 +87,13 @@ def main(argv):
         # else: binarization = False
         # pull dataset to train model with
         data = UTILS.get_data(file.replace('.csv', ''), binarization=None)
-        data.name = file
         for h in heights:
             for i in rand_states:
-                print('Dataset: '+str(file)+', H: '+str(h)+', '
+                print('\nDataset: '+str(file)+', H: '+str(h)+', '
                       'Rand State: '+str(i)+'. Run Start: '+str(time.strftime("%I:%M %p", time.localtime())))
                 train_set, test_set = train_test_split(data, train_size=0.5, random_state=i)
                 cal_set, test_set = train_test_split(test_set, train_size=0.5, random_state=i)
                 model_set = pd.concat([train_set, cal_set])
-                model_set.name = data.name
                 for modeltype in modeltypes:
                     if log_files: log = log_path + '_' + str(file) + '_H:' + str(h) + '_M:' + str(
                         modeltype) + '_T:' + str(time_limit) + '_Seed:' + str(i) + '_E:' + str(
@@ -129,5 +127,17 @@ def main(argv):
                     opt_model.assign_tree()
                     # Uncomment to print model results
                     # UTILS.model_results(opt_model, tree)
-                    UTILS.model_summary(opt_model=opt_model, tree=tree, test_set=test_set,
-                                        rand_state=i, results_file=out_file)
+                    test_acc, test_assignments = UTILS.data_predict(tree=tree, data=test_set, target=opt_model.target)
+                    train_acc, train_assignments = UTILS.data_predict(tree=tree, data=model_set, target=opt_model.target)
+                    with open(out_file, mode='a') as results:
+                        results_writer = csv.writer(results, delimiter=',', quotechar='"')
+                        results_writer.writerow(
+                            [file, tree.height, len(opt_model.datapoints),
+                             test_acc / len(test_set), train_acc / len(opt_model.datapoints), opt_model.model.Runtime,
+                             opt_model.modeltype, False, 0, opt_model.time_limit, i,
+                             opt_model.model.MIPGap, opt_model.model.ObjVal, opt_model.model.ObjBound,
+                             opt_model.model._visnum, opt_model.model._viscuts, opt_model.model._vistime,
+                             opt_model.HP_time,
+                             opt_model.model._septime, opt_model.model._sepnum, opt_model.model._sepcuts,
+                             opt_model.model._eps, opt_model.b_type])
+                        results.close()

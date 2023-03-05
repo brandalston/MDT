@@ -199,7 +199,7 @@ class Linear_Separator():
         self.c_v = 0
         self.hp_size = 0
 
-    def SVM_fit(self, data):
+    def Lin_SVM_fit(self, data):
         # print('\nFITTING\n')
         if not np.array_equal(np.unique(data.svm), [-1, 1]):
             print("Class labels must be -1 and +1")
@@ -228,8 +228,9 @@ class Linear_Separator():
         w_pos = m.addVars(feature_set, vtype=GRB.CONTINUOUS, lb=0, name='w_pos')
         w_neg = m.addVars(feature_set, vtype=GRB.CONTINUOUS, lb=0, name='w_neg')
 
-        m.setObjective((1 / 2) * quicksum((w_pos[f] - w_neg[f]) * (w_pos[f] - w_neg[f]) for f in feature_set) +
-                       err.sum(), GRB.MINIMIZE)
+        # m.setObjective((1 / 2) * quicksum((w_pos[f] - w_neg[f]) * (w_pos[f] - w_neg[f]) for f in feature_set) +
+        #               err.sum(), GRB.MINIMIZE)
+        m.setObjective(quicksum(w_pos[f] + w_neg[f] for f in feature_set) + err.sum(), GRB.MINIMIZE)
         m.addConstrs(data.at[i, 'svm'] * (quicksum((w_pos[f] - w_neg[f]) * data.at[i, f] for f in feature_set) + b)
                      >= 1 - err[i] for i in data.index)
         m.addConstr(u.sum() <= B)
@@ -250,6 +251,46 @@ class Linear_Separator():
 
         return self
 
+    def SVM_fit(self, data):
+        feature_set = [f for f in data.columns if f != 'svm']
+        left_index_set = [i for i in data.index if data.at[i, 'svm'] == -1]
+        right_index_set = [i for i in data.index if data.at[i, 'svm'] == +1]
+        try:
+            # print('\n\nHM-SVM')
+            # print(data.index)
+            m = Model("SVM")
+            m.Params.LogToConsole = 0
+            m.Params.NumericFocus = 3 # Prevents Gurobi from returning status code 12 (NUMERIC)
+            alpha = m.addVars(data.index, lb=0, ub=GRB.INFINITY)
+            w = m.addVars(feature_set, lb=-GRB.INFINITY, ub=GRB.INFINITY)
+            m.setObjective(alpha.sum() - (1/2)*quicksum(w[f]*w[f] for f in feature_set), GRB.MAXIMIZE)
+            m.addConstrs((w[f] == quicksum(alpha[i]*data.at[i, 'svm']*data.at[i, f] for i in data.index)
+                          for f in feature_set))
+            m.addConstr(quicksum(alpha[i]*data.at[i, 'svm'] for i in data.index) == 0)
+            m.optimize()
+            # Any i with positive alpha[i] works
+            for i in data.index:
+                if alpha[i].X > m.Params.FeasibilityTol:
+                    b = data.at[i, 'svm'] - sum(w[f].X*data.at[i, f] for f in feature_set)
+                    break
+            self.a_v = {f: w[f].X for f in feature_set}
+            self.c_v = -b # Must flip intercept because of how QP was setup
+            return self
+        except Exception:
+            print('\n\nGeneric')
+            # If QP fails to solve, just return any separating hyperplane
+            m = Model("separating hyperplane")
+            m.Params.LogToConsole = 1
+            w = m.addVars(feature_set, lb=-GRB.INFINITY, ub=GRB.INFINITY)
+            b = m.addVar(lb=-GRB.INFINITY, ub=GRB.INFINITY)
+            m.setObjective(0, GRB.MINIMIZE)
+            m.addConstrs((quicksum(w[f]*data.at[i, f] for f in feature_set) + 1 <= b for i in left_index_set))
+            m.addConstrs((quicksum(w[f]*data.at[i, f] for f in feature_set) - 1 >= b for i in right_index_set))
+            m.optimize()
+            self.a_v = {f: w[f].X for f in feature_set}
+            self.c_v = b.X
+            return self
+
 
 def model_results(model, tree):
     # Print assigned branching, classification, and pruned nodes of tree
@@ -261,12 +302,12 @@ def model_results(model, tree):
                 if model.W[v, k].x > 0.5:
                     print('Vertex ' + str(v) + ' class ' + str(k))
         elif model.P[v].x < 0.5 and model.B[v].x > 0.5:
-            print('Vertex ' + str(v) + ' branching', tree.branch_nodes[v])
-        elif model.P[v].x < 0.5 and model.B[v].x < 0.5:
-            print('Vertex ' + str(v) + ' pruned')
+            print('Vertex ' + str(v) + ' branching', tree.a_v[v], tree.c_v[v])
+        # elif model.P[v].x < 0.5 and model.B[v].x < 0.5:
+            # print('Vertex ' + str(v) + ' pruned')
 
     # Print datapoint paths through tree
-    for i in sorted(model.data.index):
+    """for i in sorted(model.data.index):
         path = [0]
         for v in tree.V:
             if model.Q[i, v].x > 0.5:
@@ -277,7 +318,7 @@ def model_results(model, tree):
                 for k in model.data[model.target].unique():
                     if model.W[v, k].x > 0.5:
                         print('datapoint ' + str(i) + ' incorrectly assigned class ' + str(k)
-                              + ' at ' + str(v) + '. Path: ', path)
+                              + ' at ' + str(v) + '. Path: ', path)"""
 
 
 def tree_check(tree):
@@ -307,8 +348,8 @@ def data_predict(tree, data, target):
         while results[i][0] is None:
             results[i][1].append(v)
             if v in tree.branch_nodes:
-                a_v, c_v = tree.branch_nodes[v]
-                v = tree.LC[v] if sum(a_v[f] * data.at[i, f] for f in data.columns.drop('target')) <= c_v else tree.RC[v]
+                a_v, c_v = tree.a_v[v], tree.c_v[v]
+                v = tree.LC[v] if sum(a_v[f] * data.at[i, f] for f in data.columns if f != 'target') <= c_v else tree.RC[v]
             elif v in tree.class_nodes:
                 results[i][0] = tree.class_nodes[v]
                 if results[i][0] == data.at[i, target]:
@@ -320,128 +361,6 @@ def data_predict(tree, data, target):
                 results[i][0] = 'ERROR'
 
     return acc, results
-
-
-def model_summary(opt_model, tree, test_set, rand_state, results_file):
-    # Ensure Tree Valid
-    if not tree_check(tree): print('Invalid Tree!!')
-    # Test / Train Acc
-    test_acc, test_assignments = data_predict(tree=tree, data=test_set, target=opt_model.target)
-    train_acc, train_assignments = data_predict(tree=tree, data=opt_model.data, target=opt_model.target)
-    # Update .csv file with modeltype metrics
-    with open(results_file, mode='a') as results:
-        results_writer = csv.writer(results, delimiter=',', quotechar='"')
-        results_writer.writerow(
-            [opt_model.dataname, tree.height, len(opt_model.datapoints),
-             test_acc/len(test_set), train_acc/len(opt_model.datapoints), opt_model.model.Runtime,
-             opt_model.modeltype, False, 0, opt_model.time_limit, rand_state,
-             opt_model.model.MIPGap, opt_model.model.ObjVal, opt_model.model.ObjBound,
-             opt_model.model._visnum, opt_model.model._viscuts, opt_model.model._vistime, opt_model.HP_time,
-             opt_model.model._septime, opt_model.model._sepnum, opt_model.model._sepcuts,
-             opt_model.model._eps, opt_model.b_type])
-        results.close()
-
-def random_tree(tree, data, target):
-    # Clear any existing node assignments
-    for v in tree.V:
-        if 'class' in tree.DG_prime.nodes[v]:
-            del tree.DG_prime.nodes[v]['class']
-        if 'branching' in tree.DG_prime.nodes[v]:
-            del tree.DG_prime.nodes[v]['branching']
-        if 'pruned' in tree.DG_prime.nodes[v]:
-            del tree.DG_prime.nodes[v]['pruned']
-
-    TD_best_acc = -1
-    BU_best_acc = -1
-    for i in range(50):
-        TD_tree = TD_rand_tree(tree, data, target)
-        TD_acc, TD_results = data_predict(TD_tree, data, target)
-        if TD_acc > TD_best_acc:
-            TD_best_acc = TD_acc
-            TD_best_results = TD_results
-            best_TD_tree = TD_tree
-
-    for i in range(50):
-        BU_tree = BU_rand_tree(tree, data, target)
-        BU_acc, BU_results = data_predict(BU_tree, data, target)
-        if BU_acc > BU_best_acc:
-            BU_best_acc = BU_acc
-            BU_best_results = BU_results
-            best_BU_tree = BU_tree
-    if TD_best_acc > BU_best_acc:
-        return {'tree': best_TD_tree, 'results': TD_best_results}
-    else:
-        return {'tree': best_BU_tree, 'results': BU_best_results}
-
-
-def TD_rand_tree(tree, data, target):
-    # Clear any existing node assignments
-    for v in tree.V:
-        if 'class' in tree.DG_prime.nodes[v]:
-            del tree.DG_prime.nodes[v]['class']
-        if 'branching' in tree.DG_prime.nodes[v]:
-            del tree.DG_prime.nodes[v]['branching']
-        if 'pruned' in tree.DG_prime.nodes[v]:
-            del tree.DG_prime.nodes[v]['pruned']
-    classes = data[target].unique()
-    feature_set = [col for col in data.columns if col != target]
-
-    # Top-down random tree
-    tree.a_v[0], tree.c_v[0] = {f: random.random() for f in feature_set}, random.random()
-    tree.DG_prime.nodes[0]['branching'] = (tree.a_v[0], tree.c_v[0])
-
-    for level in tree.node_level:
-        if level == 0: continue
-        for v in tree.node_level[level]:
-            if 'branching' in tree.DG_prime.nodes[tree.direct_ancestor[v]]:
-                if random.random() > .5 and level != tree.height:
-                    tree.a_v[v], tree.c_v[v] = {f: random.random() for f in feature_set}, random.random()
-                    tree.DG_prime.nodes[v]['branching'] = (tree.a_v[v], tree.c_v[v])
-                else:
-                    tree.DG_prime.nodes[v]['class'] = random.choice(classes)
-            else:
-                tree.DG_prime.nodes[v]['pruned'] = 0
-    return tree
-
-
-def BU_rand_tree(tree, data, target):
-    # Clear any existing node assignments
-    for v in tree.V:
-        if 'class' in tree.DG_prime.nodes[v]:
-            del tree.DG_prime.nodes[v]['class']
-        if 'branching' in tree.DG_prime.nodes[v]:
-            del tree.DG_prime.nodes[v]['branching']
-        if 'pruned' in tree.DG_prime.nodes[v]:
-            del tree.DG_prime.nodes[v]['pruned']
-
-    classes = data[target].unique()
-    feature_set = [col for col in data.columns if col != target]
-
-    # Bottoms-up random tree
-    node_list = tree.V.copy()
-    tree.a_v[0], tree.c_v[0] = {f: random.random() for f in feature_set}, random.random()
-    tree.DG_prime.nodes[0]['branching'] = (tree.a_v[0], tree.c_v[0])
-    node_list.remove(0)
-
-    while len(node_list) > 0:
-        selected = random.choice(node_list)
-        tree.DG_prime.nodes[selected]['class'] = random.choice(classes)
-        for v in reversed(tree.path[selected][1:-1]):
-            if v in node_list:
-                tree.a_v[v], tree.c_v[v] = {f: random.random() for f in feature_set}, random.random()
-                tree.DG_prime.nodes[v]['branching'] = (tree.a_v[v], tree.c_v[v])
-                node_list.remove(v)
-            else:
-                break
-        for c in tree.child[selected]:
-            if c in node_list:
-                tree.DG_prime.nodes[c]['pruned'] = 0
-                node_list.remove(c)
-            else:
-                break
-        node_list.remove(selected)
-
-    return tree
 
 
 class consol_log:
@@ -458,185 +377,3 @@ class consol_log:
         # Specify extra behavior here
         pass
 
-"""
-        elif hp_type == 'double-cube':
-            m = Model("MIP SVM normalized")
-            u = m.addVars(feature_set, vtype=GRB.BINARY, name='u')
-            err = m.addVars(data.index, vtype=GRB.CONTINUOUS, lb=0, name='err')
-            b = m.addVar(vtype=GRB.CONTINUOUS, name='b')
-            w = m.addVars(feature_set, vtype=GRB.CONTINUOUS, lb=-1, name='w')
-            if hp_obj == 'linear':
-                m.setObjective(w.sum() + epsilon*err.sum(), GRB.MINIMIZE)
-            elif hp_obj == 'quadratic':
-                m.setObjective((1 / 2) * quicksum(w[f]*w[f] for f in feature_set) + epsilon * err.sum(), GRB.MINIMIZE)
-            elif hp_obj == 'rank':
-                m.setObjective(u.sum() + 10 * err.sum(), GRB.MINIMIZE)
-            m.addConstrs(data.at[i, 'svm'] * (quicksum(w[f] * data.at[i, f] for f in feature_set) + b)
-                         >= 1 - err[i] for i in data.index)
-            m.addConstr(quicksum(u[f] for f in feature_set) <= B-1)
-            m.addConstrs(w[f] <= u[f] for f in feature_set)
-            m.addConstr(w.sum() <= 1)
-            m.addConstr(w.sum() >= 0)
-            m.addConstrs(-1*(w[f]+1) >= -1*u[f] for f in feature_set)
-
-            m.Params.LogToConsole = 1
-            m.optimize()
-            for f in feature_set:
-                print(f, w[f], u[f])
-            a_v = {f: w[f].x for f in feature_set}
-            c_v = b.x
-            # u_dict = {f: u[f].x for f in feature_set}
-            # print('u values', u_dict)
-            # print('a_values', a_v)
-            self.a_v, self.c_v = a_v, c_v
-
-
-        try:
-            # Find separating hyperplane using l1-SVM normalized MIP formulation
-            m = Model("MIP SVM normalized")
-            m.Params.LogToConsole = 0
-            u = m.addVars(feature_set, vtype=GRB.BINARY, name='U')
-            err = m.addVars(data.index, vtype=GRB.CONTINUOUS, lb=0, name='err')
-            b_mip = m.addVar(vtype=GRB.CONTINUOUS, name='b')
-            w = m.addVars(vtype=GRB.CONTINUOUS, lb=0, name='w')
-
-            m.setObjective(u.sum()+C[0]*err.sum(), GRB.MINIMIZE)
-            m.addConstrs(data.at[i, 'svm'] * (quicksum(w[f]*data.at[i, f] for f in feature_set) + b_mip) >= 1 - err[i]
-                         for i in data.index)
-            m.addConstrs(u.sum() <= B)
-            m.addConstrs(w[f] <= u[f] for f in feature_set)
-            m.addConstr(w.sum() <= 1)
-            m.optimize()
-
-        except Exception:
-            # Find separating hyperplane by solving dual of Lagrangian of the standard hard margin linear SVM problem
-            try:
-                m = Model("HM_Linear_SVM")
-                m.Params.LogToConsole = 0
-                m.Params.NumericFocus = 3
-                alpha = m.addVars(data.index, vtype=GRB.CONTINUOUS, lb=0, ub=GRB.INFINITY)
-                W = m.addVars(feature_set, vtype=GRB.CONTINUOUS, lb=-GRB.INFINITY, ub=GRB.INFINITY)
-
-                m.addConstrs(W[f] == quicksum(alpha[i] * data.at[i, 'svm'] * data.at[i, f] for i in data.index)
-                             for f in feature_set)
-                m.addConstr(quicksum(alpha[i] * data.at[i, 'svm'] for i in data.index) == 0)
-                m.setObjective(alpha.sum() - (1 / 2) * quicksum(W[f] * W[f] for f in feature_set), GRB.MAXIMIZE)
-                m.optimize()
-
-                # Any i with positive alpha[i] works
-                for i in data.index:
-                    if alpha[i].x > m.Params.FeasibilityTol:
-                        b = data.at[i, 'svm'] - sum(W[f].x * data.at[i, f] for f in feature_set)
-                        break
-                a_v = {f: W[f].x for f in feature_set}
-                c_v = -b  # Must flip intercept because of how QP was setup
-                self.a_v, self.c_v = a_v, c_v
-                return self
-            except Exception:
-                # Find separating hyperplane by solving dual of Lagrangian of standard soft margin linear SVM problem
-                try:
-                    # Find any points in Lv_I, Rv_I which are convex combinations of the other set
-                    cc_L, cc_R = set(), set()
-                    for i in Lv_I:
-                        convex_combo = Model("Left Index Convex Combination")
-                        convex_combo.Params.LogToConsole = 0
-                        lambdas = convex_combo.addVars(Rv_I, vtype=GRB.CONTINUOUS, lb=0)
-                        convex_combo.addConstrs(quicksum(lambdas[i]*data.at[i, f] for i in Rv_I) == data.at[i, f]
-                                                for f in feature_set)
-                        convex_combo.addConstr(lambdas.sum() == 1)
-                        convex_combo.setObjective(0, GRB.MINIMIZE)
-                        convex_combo.optimize()
-                        if convex_combo.Status != GRB.INFEASIBLE:
-                            cc_L.add(i)
-                    for i in Rv_I:
-                        convex_combo = Model("Right Index Convex Combination")
-                        convex_combo.Params.LogToConsole = 0
-                        lambdas = convex_combo.addVars(Lv_I, vtype=GRB.CONTINUOUS, lb=0)
-                        convex_combo.addConstrs(quicksum(lambdas[i]*data.at[i, f] for i in Lv_I) == data.at[i, f]
-                                                for f in feature_set)
-                        convex_combo.addConstr(lambdas.sum() == 1)
-                        convex_combo.setObjective(0, GRB.MINIMIZE)
-                        convex_combo.optimize()
-                        if convex_combo.Status != GRB.INFEASIBLE:
-                            cc_R.add(i)
-
-                    # Find noramlized max inner product of convex combinations
-                    # to use as upper bound in dual of Lagrangian of soft margin SVM
-                    margin_ub = GRB.INFINITY
-                    inner_products = {item: np.inner(data.loc[item[0], feature_set],
-                                              data.loc[item[1], feature_set])
-                                      for item in list(combinations(cc_L|cc_R, 2))}
-                    if inner_products:
-                        margin_ub = max(inner_products.values()) / \
-                                    min(len(cc_L | cc_R), np.linalg.norm(list(inner_products.values()), 2))
-
-                    # Solve dual of Lagrangian of soft margin SVM
-                    m = Model("SM_Linear_SVM")
-                    m.Params.LogToConsole = 0
-                    m.Params.NumericFocus = 3
-                    alpha = m.addVars(data.index, vtype=GRB.CONTINUOUS, lb=0, ub=margin_ub)
-                    W = m.addVars(feature_set, vtype=GRB.CONTINUOUS, lb=-GRB.INFINITY, ub=GRB.INFINITY)
-
-                    m.addConstrs(W[f] == quicksum(alpha[i] * data.at[i, 'svm'] * data.at[i, f] for i in data.index)
-                                 for f in feature_set)
-                    m.addConstr(quicksum(alpha[i] * data.at[i, 'svm'] for i in data.index) == 0)
-                    m.setObjective(alpha.sum() - (1 / 2) * quicksum(W[f] * W[f] for f in feature_set), GRB.MAXIMIZE)
-                    m.optimize()
-
-                    # Any i with positive alpha[i] works
-                    for i in data.index:
-                        if alpha[i].x > m.Params.FeasibilityTol:
-                            b = data.at[i, 'svm'] - sum(W[f].x * data.at[i, f] for f in feature_set)
-                            break
-                    a_v = {f: W[f].x for f in feature_set}
-                    c_v = -b  # Must flip intercept because of how QP was setup
-                    self.a_v, self.c_v = a_v, c_v
-                    return self
-                except Exception:
-                    # Find any generic hard margin separating hyperplane
-                    try:
-                        gen_hyperplane = Model("Separating hyperplane")
-                        gen_hyperplane.Params.LogToConsole = 0
-                        a_hyperplane = gen_hyperplane.addVars(feature_set, lb=-GRB.INFINITY, ub=GRB.INFINITY)
-                        c_hyperplane = gen_hyperplane.addVar(lb=-GRB.INFINITY, ub=GRB.INFINITY)
-                        gen_hyperplane.addConstrs(
-                            quicksum(a_hyperplane[f] * data.at[i, f] for f in feature_set) + 1 <= c_hyperplane
-                            for i in Lv_I)
-                        gen_hyperplane.addConstrs(
-                            quicksum(a_hyperplane[f] * data.at[i, f] for f in feature_set) - 1 >= c_hyperplane
-                            for i in Rv_I)
-                        gen_hyperplane.setObjective(0, GRB.MINIMIZE)
-                        gen_hyperplane.optimize()
-
-                        a_v = {f: a_hyperplane[f].X for f in feature_set}
-                        c_v = c_hyperplane.X
-                        self.a_v, self.c_v = a_v, c_v
-                        return self
-                    except Exception:
-                        # Find any generic separating hyperplane
-                        try:
-                            gen_hyperplane = Model("Separating hyperplane")
-                            gen_hyperplane.Params.LogToConsole = 0
-                            a_hyperplane = gen_hyperplane.addVars(feature_set, lb=-GRB.INFINITY, ub=GRB.INFINITY)
-                            c_hyperplane = gen_hyperplane.addVar(lb=-GRB.INFINITY, ub=GRB.INFINITY)
-                            gen_hyperplane.addConstrs(
-                                quicksum(a_hyperplane[f] * data.at[i, f] for f in feature_set) <= c_hyperplane
-                                for i in Lv_I)
-                            gen_hyperplane.addConstrs(
-                                quicksum(a_hyperplane[f] * data.at[i, f] for f in feature_set) >= c_hyperplane
-                                for i in Rv_I)
-                            gen_hyperplane.setObjective(0, GRB.MINIMIZE)
-                            gen_hyperplane.optimize()
-
-                            if gen_hyperplane.status != GRB.INFEASIBLE:
-                                a_v = {f: a_hyperplane[f].X for f in feature_set}
-                                c_v = c_hyperplane.X
-                                self.a_v, self.c_v = a_v, c_v
-                            return self
-                        except Exception:
-                            # Return random separating hyperplane
-                            a_v = {f: random.random() for f in feature_set}
-                            c_v = random.random()
-                            self.a_v, self.c_v = a_v, c_v
-                            return self
-    """

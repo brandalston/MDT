@@ -6,7 +6,7 @@ import UTILS as OU
 from Benchmarks.SOCT.LinearClassifierHeuristic import LinearClassifierHeuristic
 from Benchmarks.SOCT.SOCTStumpHeuristic import SOCTStumpHeuristic
 from Benchmarks.SOCT.SOCTFull import SOCTFull
-from Benchmarks.SOCT.SOCTBenders import SOCTBenders
+from Benchmarks.SOCT.SOCTBenders2 import SOCTBenders
 
 # I'm so fkn sick n tired of the warnings -Kendrick Lamar Duckworth
 import warnings
@@ -79,7 +79,6 @@ def main(argv):
                             'monk1', 'monk2', 'monk3', 'soybean_small', 'spect', 'tic_tac_toe', 'fico_binary']
     for file in data_files:
         data = OU.get_data(file.replace('.csv', ''))
-        feat = data.columns.drop(['target'])
         for h in heights:
             for i in rand_states:
                 train_set, test_set = train_test_split(data, train_size=0.5, random_state=i)
@@ -90,8 +89,9 @@ def main(argv):
                 X_valid, y_valid = cal_set.drop('target', axis=1), cal_set['target']
                 data_map = {i: X_train.index[i] for i in range(len(X_train))}
                 for modeltype in modeltypes:
-                    print('\n' + str(modeltype) + ', Dataset: ' + str(file) + ', H: ' + str(h) + ', Rand State: '
-                          + str(i) + '. Run Start: ' + str(time.strftime("%I:%M %p", time.localtime())))
+                    print('\n' + str(modeltype) + ', Warm Start: ' + str(warm_start)+ ', Dataset: ' + str(file) +
+                          ', H: ' + str(h) + ', Rand State: ' + str(i) +
+                          '. Run Start: ' + str(time.strftime("%I:%M %p", time.localtime())))
                     method = modeltype[5:]
                     alphas_to_try = [0.00001, 0.0001, 0.001, 0.01, 0.1]
                     best_ccp_alpha = min(alphas_to_try)
@@ -132,7 +132,7 @@ def main(argv):
                                         time_limit=time_limit, log_to_console=False)
                     elif method == "Benders":
                         soct = SOCTBenders(max_depth=h, ccp_alpha=best_ccp_alpha, warm_start_tree=warm_start,
-                                           time_limit=time_limit, log_to_console=True)
+                                           time_limit=time_limit, log_to_console=False)
                     soct.fit(X_train, y_train)
                     if soct.model_.RunTime < time_limit:
                         print(f'Optimal solution found in {round(soct.model_.RunTime,4)}s. '
@@ -142,7 +142,7 @@ def main(argv):
                     if soct.branch_rules_ is not None:
                         train_acc = soct.score(X_train, y_train)
                         test_acc = soct.score(X_test, y_test)
-                    a_v, b_v, paths = soct.solution_values()
+                    # a_v, b_v, paths = soct.solution_values(data_map)
                     with open(out_file, mode='a') as results:
                         results_writer = csv.writer(results, delimiter=',', quotechar='"')
                         results_writer.writerow(

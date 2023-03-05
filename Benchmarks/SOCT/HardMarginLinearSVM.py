@@ -15,9 +15,9 @@ class HardMarginLinearSVM(ClassifierMixin, BaseEstimator):
         # Check that dimensions are consistent, convert X and y to ndarrays
         X, y = check_X_y(X, y)
         (N, p) = X.shape
+
         if not np.array_equal(np.unique(y), [-1,1]):
             raise ValueError("Class labels must be -1 and +1")
-        
         try:
             m = Model("SVM")
             m.Params.LogToConsole = 0
@@ -38,9 +38,9 @@ class HardMarginLinearSVM(ClassifierMixin, BaseEstimator):
             self.w_, self.b_ = w_vals, b
             return self
         except Exception:
-            # If QP fails to solve, just return any separating hyperplane
             left_index_set = [i for i in range(N) if y[i] == -1]
             right_index_set = [i for i in range(N) if y[i] == +1]
+            # If QP fails to solve, just return any separating hyperplane
             m = Model("separating hyperplane")
             m.Params.LogToConsole = 0
             w = m.addVars(range(p), lb=-GRB.INFINITY, ub=GRB.INFINITY)

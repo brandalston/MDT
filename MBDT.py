@@ -36,7 +36,6 @@ class MBDT:
         self.classes = data[target].unique()
         self.featureset = [col for col in self.data.columns.values if col != target]
         self.datapoints = data.index
-        self.dataname = data.name
 
         """ Decision Variables """
         self.B = 0
@@ -85,7 +84,7 @@ class MBDT:
 
         """ Gurobi Optimization Parameters """
         self.model = Model(f'{self.modeltype}_SVM')
-        self.model.Params.LogToConsole = 1
+        self.model.Params.LogToConsole = 0
         self.model.Params.TimeLimit = time_limit
         self.model.Params.Threads = 1  # use one thread for testing purposes
         self.model.Params.LazyConstraints = 1
@@ -161,8 +160,8 @@ class MBDT:
                                   for i in self.datapoints)
 
         # If v not branching then all datapoints sent to left child
-        for v in self.tree.B:
-            self.model.addConstrs(self.Q[i, self.tree.RC[v]] <= self.B[v] for i in self.datapoints)
+        # for v in self.tree.B:
+        #    self.model.addConstrs(self.B[v] >= self.Q[i, self.tree.RC[v]] for i in self.datapoints)
 
         # Each datapoint has at most one terminal vertex
         self.model.addConstrs(self.S.sum(i, '*') <= 1
@@ -263,14 +262,13 @@ class MBDT:
                 # print(f'VIS Found at {v}, test count: {model._visnum}')
                 (VIS_left, VIS_right) = VIS
                 model.cbLazy(quicksum(model._Q[i, model._tree.LC[v]] for i in VIS_left) +
-                             quicksum(model._Q[i, model._tree.LC[v]] for i in VIS_right) <=
+                             quicksum(model._Q[i, model._tree.RC[v]] for i in VIS_right) <=
                              len(VIS_left) + len(VIS_right) - 1)
                 model._viscuts += 1
             model._vistime += time.perf_counter() - start
 
         # Add Feasible Path for Datapoints Cuts at Fractional Point in Branch and Bound Tree
         if (where == GRB.Callback.MIPNODE) and (model.cbGet(GRB.Callback.MIPNODE_STATUS) == GRB.OPTIMAL):
-            print('SOLVING FP')
             if ('UF' in model._cut_type) or ('GRB' in model._cut_type): return
             start = time.perf_counter()
             # Only add cuts at root-node of branch and bound tree
@@ -455,55 +453,56 @@ class MBDT:
                 if v == 0: continue
                 self.tree.pruned_nodes[v] = 0
             return
-
+        branched = []
         for v in self.tree.V:
             # Assign class k to classification nodes
             if P_sol[v] > 0.5:
-                # print(f'{v} assigned class')
                 for k in self.classes:
                     if W_sol[v, k] > 0.5:
                         self.tree.class_nodes[v] = k
+                        # print(f'{v} assigned class {k}')
             # Assign no class or branching rule to pruned nodes
             elif P_sol[v] < 0.5 and B_sol[v] < 0.5:
-                # print(f'{v} pruned')
                 self.tree.pruned_nodes[v] = 0
             # Define (a_v, c_v) on branching nodes
             elif P_sol[v] < 0.5 and B_sol[v] > 0.5:
-                # print(f'{v} branched')
-                # Lv_I, Rv_I index sets of observations sent to left, right child vertex of branching vertex v
-                # svm_y maps Lv_I to -1, Rv_I to +1 for training hyperplane
-                Lv_I, Rv_I = [], []
-                svm = {i: 0 for i in self.datapoints}
-                for i in self.datapoints:
-                    if Q_sol[i, self.tree.LC[v]] > 0.5:
-                        Lv_I.append(i)
-                        svm[i] = -1
-                    elif Q_sol[i, self.tree.RC[v]] > 0.5:
-                        Rv_I.append(i)
-                        svm[i] = +1
-                # Find (a_v, c_v) for corresponding Lv_I, Rv_I
-                # If |Lv_I| = 0: (a_v, c_v) = (0, -1) sends all points to the right
-                if len(Lv_I) == 0:
-                    # print(f'all going right at {v}')
-                    self.tree.a_v[v] = {f: 0 for f in self.featureset}
-                    self.tree.c_v[v] = -1
-                # If |Rv_I| = 0: (a_v, c_v) = (0, 1) sends all points to the left
-                elif len(Rv_I) == 0:
-                    # print(f'all going left at {v}')
-                    self.tree.a_v[v] = {f: 0 for f in self.featureset}
-                    self.tree.c_v[v] = 1
-                # Find separating hyperplane according to Lv_I, Rv_I index sets
-                else:
-                    # print('BRANCHING!!')
-                    data_svm = self.data.loc[Lv_I + Rv_I, self.data.columns != self.target]
-                    data_svm['svm'] = pd.Series(svm)
-                    svm = UTILS.Linear_Separator()
-                    svm.SVM_fit(data_svm)
-                    self.tree.a_v[v], self.tree.c_v[v] = svm.a_v, svm.c_v
-                    if svm.hp_size != 0:
-                        self.svm_branches += 1
-                        self.HP_size += svm.hp_size
-                self.tree.branch_nodes[v] = (self.tree.a_v[v], self.tree.c_v[v])
+                branched.append(v)
+        for v in branched:
+            # Lv_I, Rv_I index sets of observations sent to left, right child vertex of branching vertex v
+            # svm_y maps Lv_I to -1, Rv_I to +1 for training hyperplane
+            Lv_I, Rv_I = [], []
+            svm = {i: 0 for i in self.datapoints}
+            for i in self.datapoints:
+                if Q_sol[i, self.tree.LC[v]] > 0.5:
+                    Lv_I.append(i)
+                    svm[i] = -1
+                elif Q_sol[i, self.tree.RC[v]] > 0.5:
+                    Rv_I.append(i)
+                    svm[i] = +1
+            # Find (a_v, c_v) for corresponding Lv_I, Rv_I
+            # If |Lv_I| = 0: (a_v, c_v) = (0, -1) sends all points to the right
+            if len(Lv_I) == 0:
+                # print(f'all going right at {v}')
+                self.tree.a_v[v] = {f: 0 for f in self.featureset}
+                self.tree.c_v[v] = -1
+            # If |Rv_I| = 0: (a_v, c_v) = (0, 1) sends all points to the left
+            elif len(Rv_I) == 0:
+                # print(f'all going left at {v}')
+                self.tree.a_v[v] = {f: 0 for f in self.featureset}
+                self.tree.c_v[v] = 1
+            # Find separating hyperplane according to Lv_I, Rv_I index sets
+            else:
+                # print('BRANCHING!!')
+                print('branching at', v)
+                data_svm = self.data.loc[Lv_I + Rv_I, self.data.columns != self.target]
+                data_svm['svm'] = pd.Series(svm)
+                svm = UTILS.Linear_Separator()
+                svm.SVM_fit(data_svm)
+                self.tree.a_v[v], self.tree.c_v[v] = svm.a_v, svm.c_v
+                if svm.hp_size != 0:
+                    self.svm_branches += 1
+                    self.HP_size += svm.hp_size
+            self.tree.branch_nodes[v] = (self.tree.a_v[v], self.tree.c_v[v])
         self.HP_time = time.perf_counter() - start
         # print(f'Hyperplanes found in {round(self.HP_time,4)}s. ({time.strftime("%I:%M %p", time.localtime())})\n')
 

@@ -1,5 +1,4 @@
 import time
-import numpy as np
 import pandas as pd
 from sklearn.base import BaseEstimator, ClassifierMixin
 from sklearn.utils.validation import check_X_y, check_array, check_is_fitted
@@ -7,6 +6,7 @@ from sklearn.utils.multiclass import unique_labels
 from gurobipy import *
 from .HardMarginLinearSVM import HardMarginLinearSVM
 from .utils import *
+
 
 class SOCTBenders(ClassifierMixin, BaseEstimator):
     """ S-OCT solved using Benders decomposition.
@@ -22,7 +22,7 @@ class SOCTBenders(ClassifierMixin, BaseEstimator):
     
     Attributes
     ----------
-    master_ : Gurobi Model
+    model_ : Gurobi Model
     branch_rules_
     classification_rules_
     """
@@ -67,59 +67,59 @@ class SOCTBenders(ClassifierMixin, BaseEstimator):
         all_nodes = branch_nodes + leaf_nodes
         
         #
-        # S-OCT Benders master
+        # S-OCT Benders model
         #
         
-        master = Model("S-OCT Benders")
-        self.master_ = master
+        model = Model("S-OCT Benders")
+        self.model_ = model
         if self.log_to_console is not None:
-            master.Params.LogToConsole = self.log_to_console
-        master.Params.LazyConstraints = 1
+            model.Params.LogToConsole = self.log_to_console
+        model.Params.LazyConstraints = 1
         if self.mip_gap is not None:
-            master.Params.MIPGap = self.mip_gap
+            model.Params.MIPGap = self.mip_gap
         if self.time_limit is not None:
-            master.Params.TimeLimit = self.time_limit
+            model.Params.TimeLimit = self.time_limit
         
         # Pack data into model
-        master._X_y = X, y
-        master._nodes = (branch_nodes, leaf_nodes)
-        master._callback_calls = 0
-        master._callback_time = 0
-        
+        model._X_y = X, y
+        model._nodes = (branch_nodes, leaf_nodes)
+        model._callback_calls = 0
+        model._callback_time = 0
+        model._callback_cuts = 0
         # Variables
-        c = master.addVars(classes, leaf_nodes, lb=0, ub=1)
-        d = master.addVars(branch_nodes, lb=0, ub=1)
+        c = model.addVars(classes, leaf_nodes, lb=0, ub=1)
+        d = model.addVars(branch_nodes, lb=0, ub=1)
         w_vtype = {}
         for i in range(N):
             for t in branch_nodes:
                 w_vtype[i,t] = GRB.CONTINUOUS
             for t in leaf_nodes:
                 w_vtype[i,t] = GRB.BINARY
-        w = master.addVars(range(N), all_nodes, lb=0, ub=1, vtype=w_vtype)
-        z = master.addVars(range(N), leaf_nodes, lb=0, ub=1)
-        master._vars = (c, d, w, z)
+        w = model.addVars(range(N), all_nodes, lb=0, ub=1, vtype=w_vtype)
+        z = model.addVars(range(N), leaf_nodes, lb=0, ub=1)
+        model._vars = (c, d, w, z)
         
         # Objective
-        #master.setObjective((N-z.sum())/N + self.ccp_alpha*d.sum(), GRB.MINIMIZE)
-        master.setObjective(-z.sum()/N + self.ccp_alpha*d.sum(), GRB.MINIMIZE)
+        #model.setObjective((N-z.sum())/N + self.ccp_alpha*d.sum(), GRB.MINIMIZE)
+        model.setObjective(z.sum() + self.ccp_alpha*d.sum(), GRB.MAXIMIZE)
         
         # Constraints
-        master.addConstrs((w[i,1] == 1 for i in range(N)))
-        master.addConstrs((w[i,t] == w[i,2*t] + w[i,2*t+1] for i in range(N) for t in branch_nodes))
-        master.addConstrs((d[t] >= w[i,2*t+1] for i in range(N) for t in branch_nodes))
-        master.addConstrs((c.sum('*',t) == 1 for t in leaf_nodes))
-        master.addConstrs((z[i,t] <= w[i,t] for i in range(N) for t in leaf_nodes))
-        master.addConstrs((z[i,t] <= c[y[i],t] for i in range(N) for t in leaf_nodes))
+        model.addConstrs((w[i,1] == 1 for i in range(N)))
+        model.addConstrs((w[i,t] == w[i,2*t] + w[i,2*t+1] for i in range(N) for t in branch_nodes))
+        model.addConstrs((d[t] >= w[i,2*t+1] for i in range(N) for t in branch_nodes))
+        model.addConstrs((c.sum('*',t) == 1 for t in leaf_nodes))
+        model.addConstrs((z[i,t] <= w[i,t] for i in range(N) for t in leaf_nodes))
+        model.addConstrs((z[i,t] <= c[y[i],t] for i in range(N) for t in leaf_nodes))
         
         # Load warm start
         if self.warm_start_tree is not None:
             self._warm_start()
         
         # Number of times each observation appears in an IIS
-        master._iis_counter = np.zeros(N)
+        model._iis_counter = np.zeros(N)
         
         # Solve model
-        master.optimize(SOCTBenders._callback)
+        model.optimize(SOCTBenders._callback)
         
         # Find splits for branch nodes and define classification rules at the leaf nodes
         self._construct_decision_tree()
@@ -129,7 +129,7 @@ class SOCTBenders(ClassifierMixin, BaseEstimator):
     def _warm_start(self):
         # Extract variables and data from model
         branch_rules, classification_rules = self.warm_start_tree
-        model = self.master_
+        model = self.model_
         (c, d, w, z) = model._vars
         (X, y) = model._X_y
         (N, p) = np.shape(X)
@@ -220,6 +220,7 @@ class SOCTBenders(ClassifierMixin, BaseEstimator):
                     cut_lhs.add(w[i,2*t+1])
                 cut_rhs = len(left_support) + len(right_support) - 1
                 model.cbLazy(cut_lhs <= cut_rhs)
+                model._callback_cuts += 1
             
             model._callback_calls += 1
             model._callback_time += time.time() - start_time
@@ -292,16 +293,16 @@ class SOCTBenders(ClassifierMixin, BaseEstimator):
     def _construct_decision_tree(self):
         """ After initial MIP training, define the learned decision tree. """
         # Extract variables and data from model
-        master = self.master_
-        (c, d, w, z) = master._vars
-        (X, y) = master._X_y
+        model = self.model_
+        (c, d, w, z) = model._vars
+        (X, y) = model._X_y
         (N, p) = np.shape(X)
         classes = unique_labels(y)
-        (branch_nodes, leaf_nodes) = master._nodes
+        (branch_nodes, leaf_nodes) = model._nodes
         # Extract solution values
         try:
-            c_vals = master.getAttr('X', c)
-            w_vals = master.getAttr('X', w)
+            c_vals = model.getAttr('X', c)
+            w_vals = model.getAttr('X', w)
         # If no incumbent was found, then return
         except GurobiError:
             self.branch_rules_ = None
@@ -311,6 +312,7 @@ class SOCTBenders(ClassifierMixin, BaseEstimator):
         # Create dicts with values for a and b parameters
         a_vals = {}
         b_vals = {}
+        self.hp_time = 0
         for t in branch_nodes:
             # Define index sets indicating which observations are sent to every node
             left_index_set = [] # Observations going to node 2t
@@ -329,10 +331,12 @@ class SOCTBenders(ClassifierMixin, BaseEstimator):
                 a_vals[t] = np.zeros(p)
                 b_vals[t] = -1
             else:
+                start = time.perf_counter()
                 X_svm = np.append(X[left_index_set,:], X[right_index_set,:], axis=0)
                 y_svm = [-1]*len(left_index_set) + [+1]*len(right_index_set)
                 svm = HardMarginLinearSVM()
                 svm.fit(X_svm, y_svm)
+                self.hp_time += time.perf_counter()-start
                 (a_vals[t], b_vals[t]) = (svm.w_, svm.b_)
         
         # Construct rules
@@ -355,7 +359,7 @@ class SOCTBenders(ClassifierMixin, BaseEstimator):
         -------
         y : pandas Series of predicted labels
         """
-        check_is_fitted(self,['master_','branch_rules_','classification_rules_'])
+        check_is_fitted(self,['model_','branch_rules_','classification_rules_'])
         index = None
         if isinstance(X, pd.DataFrame):
             index = X.index
@@ -365,3 +369,33 @@ class SOCTBenders(ClassifierMixin, BaseEstimator):
             y_pred.append(predict_with_rules(x, self.branch_rules_, self.classification_rules_))
         y_pred = pd.Series(y_pred, index=index)
         return y_pred
+
+    def solution_values(self, data_map):
+        model = self.model_
+        (c, d, w, z) = model._vars
+        (X, y) = model._X_y
+        (N, p) = np.shape(X)
+        classes = unique_labels(y)
+        (branch_nodes, leaf_nodes) = model._nodes
+        # Extract solution values
+        try:
+            c_vals = model.getAttr('X', c)
+            w_vals = model.getAttr('X', w)
+            z_vals = model.getAttr('X', z)
+        # If no incumbent was found, then return
+        except GurobiError:
+            self.branch_rules_ = None
+            self.classification_rules_ = {1: classes[0]}  # Predict an arbitrary class
+            return
+        a_vals, b_vals, classes, paths = {}, {}, {}, {data_map[i]: [1] for i in range(N)}
+        for t in branch_nodes:
+            (a_vals[t], b_vals[t]) = self.branch_rules_[t]
+            # Define index sets indicating which observations are sent to every node
+            for i in range(N):
+                if w_vals[i, 2 * t] > 0.5:
+                    paths[data_map[i]].append(2*t)
+                elif w_vals[i, 2 * t + 1] > 0.5:
+                    paths[data_map[i]].append(2*t+1)
+        for t in leaf_nodes:
+            classes[t] = self.classification_rules_[t]
+        return a_vals, b_vals, paths
