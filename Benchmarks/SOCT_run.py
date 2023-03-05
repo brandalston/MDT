@@ -6,7 +6,7 @@ import UTILS as OU
 from Benchmarks.SOCT.LinearClassifierHeuristic import LinearClassifierHeuristic
 from Benchmarks.SOCT.SOCTStumpHeuristic import SOCTStumpHeuristic
 from Benchmarks.SOCT.SOCTFull import SOCTFull
-from Benchmarks.SOCT.SOCTBenders2 import SOCTBenders
+from Benchmarks.SOCT.SOCTBenders import SOCTBenders
 
 # I'm so fkn sick n tired of the warnings -Kendrick Lamar Duckworth
 import warnings

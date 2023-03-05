@@ -239,7 +239,7 @@ class MBDT_ising:
                    model.cbGet(GRB.Callback.MIP_OBJBND)) < model.Params.FeasibilityTol:
                 model.terminate()
 
-        """# Add VIS Cuts at Branching Nodes of Feasible Solution
+        # Add VIS Cuts at Branching Nodes of Feasible Solution
         if where == GRB.Callback.MIPSOL:
             model._visnum += 1
             start = time.perf_counter()
@@ -265,10 +265,10 @@ class MBDT_ising:
                 # If VIS Found, add cut
                 (B_v_left, B_v_right) = VIS
                 model.cbLazy(quicksum(model._Q[i, model._tree.LC[v]] for i in B_v_left) +
-                             quicksum(model._Q[i, model._tree.LC[v]] for i in B_v_right) <=
+                             quicksum(model._Q[i, model._tree.RC[v]] for i in B_v_right) <=
                              len(B_v_left) + len(B_v_right) - 1)
                 model._viscuts += 1
-            model._vistime += time.perf_counter() - start"""
+            model._vistime += time.perf_counter() - start
 
         # Add Feasible Path for Datapoints Cuts at Fractional Point in Branch and Bound Tree
         if (where == GRB.Callback.MIPNODE) and (model.cbGet(GRB.Callback.MIPNODE_STATUS) == GRB.OPTIMAL):

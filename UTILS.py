@@ -256,8 +256,6 @@ class Linear_Separator():
         left_index_set = [i for i in data.index if data.at[i, 'svm'] == -1]
         right_index_set = [i for i in data.index if data.at[i, 'svm'] == +1]
         try:
-            # print('\n\nHM-SVM')
-            # print(data.index)
             m = Model("SVM")
             m.Params.LogToConsole = 0
             m.Params.NumericFocus = 3 # Prevents Gurobi from returning status code 12 (NUMERIC)
@@ -277,7 +275,6 @@ class Linear_Separator():
             self.c_v = -b # Must flip intercept because of how QP was setup
             return self
         except Exception:
-            print('\n\nGeneric')
             # If QP fails to solve, just return any separating hyperplane
             m = Model("separating hyperplane")
             m.Params.LogToConsole = 1
@@ -303,8 +300,8 @@ def model_results(model, tree):
                     print('Vertex ' + str(v) + ' class ' + str(k))
         elif model.P[v].x < 0.5 and model.B[v].x > 0.5:
             print('Vertex ' + str(v) + ' branching', tree.a_v[v], tree.c_v[v])
-        # elif model.P[v].x < 0.5 and model.B[v].x < 0.5:
-            # print('Vertex ' + str(v) + ' pruned')
+        elif model.P[v].x < 0.5 and model.B[v].x < 0.5:
+            print('Vertex ' + str(v) + ' pruned')
 
     # Print datapoint paths through tree
     """for i in sorted(model.data.index):

@@ -47,7 +47,7 @@ GOSDTg.main(
 
 """
 
-test_data = ['monk1']
+test_data = ['iris']
 heights = [2]
 time_limit = 600
 file = 'benchmark_testing.csv'
@@ -62,10 +62,10 @@ SOCT_run.main(
     "-r", rand_states, "-f", file, "-w", warm_start[0], "-l", log_file])
 
 ############ MBDT ###############
-models = ['CUT1-UF']
+models = ['CUT1']
 b_type = ['SVM', 'ISING']  # CHOOSE ONE
 extras = None
 warm_start = {'use': False, 'values': None}
 test_runs.main(
-   ["-d", test_data, "-h", heights, "-t", time_limit, "-m", models, "-b", b_type[0],
+   ["-d", test_data, "-h", heights, "-t", time_limit, "-m", models, "-b", b_type[1],
     "-r", rand_states, "-f", file, "-e", extras, "-w", warm_start, "-l", log_file])

@@ -160,8 +160,8 @@ class MBDT:
                                   for i in self.datapoints)
 
         # If v not branching then all datapoints sent to left child
-        # for v in self.tree.B:
-        #    self.model.addConstrs(self.B[v] >= self.Q[i, self.tree.RC[v]] for i in self.datapoints)
+        for v in self.tree.B:
+            self.model.addConstrs(self.Q[i, self.tree.RC[v]] <= self.B[v] for i in self.datapoints)
 
         # Each datapoint has at most one terminal vertex
         self.model.addConstrs(self.S.sum(i, '*') <= 1
@@ -493,7 +493,7 @@ class MBDT:
             # Find separating hyperplane according to Lv_I, Rv_I index sets
             else:
                 # print('BRANCHING!!')
-                print('branching at', v)
+                # print('branching at', v)
                 data_svm = self.data.loc[Lv_I + Rv_I, self.data.columns != self.target]
                 data_svm['svm'] = pd.Series(svm)
                 svm = UTILS.Linear_Separator()
