@@ -111,7 +111,7 @@ def main(argv):
                 model.fit(model_x_train, model_y_train)
                 model_time = time.perf_counter() - start
                 if model_time < time_limit:
-                    print(f'Optimal solution found in {round(model, 4)}s. '
+                    print(f'Optimal solution found in {round(model_time, 4)}s. '
                           f'(' + str(time.strftime("%I:%M %p", time.localtime())) + ')')
                 else:
                     print('Time limit reached. '+str(time.strftime("%I:%M %p", time.localtime())))
