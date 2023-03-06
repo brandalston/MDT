@@ -35,7 +35,6 @@ class MBDT_ising:
         self.classes = data[target].unique()
         self.featureset = [col for col in self.data.columns.values if col != target]
         self.datapoints = data.index
-        self.dataname = data.name
 
         """ Decision Variables """
         self.B = 0
@@ -110,10 +109,11 @@ class MBDT_ising:
         # Left-right branching variable
         self.Z = self.model.addVars(self.datapoints, self.tree.V, vtype=GRB.CONTINUOUS, name='Z')
         # Hyperplane variables
+        self.H = self.model.addVars(self.tree.V, self.featureset, vtype=GRB.CONTINUOUS, name='H')
         self.H_pos = self.model.addVars(self.tree.V, self.featureset, vtype=GRB.CONTINUOUS, lb=0, name='H_pos')
         self.H_neg = self.model.addVars(self.tree.V, self.featureset, vtype=GRB.CONTINUOUS, lb=0, name='H_neg')
         self.D = self.model.addVars(self.tree.V, vtype=GRB.CONTINUOUS, name='D')
-        self.E = self.model.addVars(self.datapoints, vtype=GRB.CONTINUOUS, lb=0, ub=1, name='E')
+        self.E = self.model.addVars(self.datapoints, self.tree.V, vtype=GRB.CONTINUOUS, lb=0, name='E')
 
         """ Model Objective and Constraints """
         # Objective: Maximize the number of correctly classified datapoints
@@ -134,15 +134,16 @@ class MBDT_ising:
         # B[v] = 0 for v in L, H[v,f] for v in L, for f in F
         for v in self.tree.L:
             self.B[v].ub = 0
-            for f in self.featureset:
-                self.H_pos[v, f].ub = 0
-                self.H_neg[v, f].ub = 0
 
         # Terminal vertex of correctly classified datapoint matches datapoint class
         # S[i,v] <= W[v,k=y^i] for v in V, for i in I
         for v in self.tree.V:
             self.model.addConstrs(self.S[i, v] <= self.W[v, self.data.at[i, self.target]]
                                   for i in self.datapoints)
+
+        # If v not branching then all datapoints sent to left child
+        for v in self.tree.B:
+            self.model.addConstrs(self.Q[i, self.tree.RC[v]] <= self.B[v] for i in self.datapoints)
 
         # Each datapoint has at most one terminal vertex
         self.model.addConstrs(self.S.sum(i, '*') <= 1 for i in self.datapoints)
@@ -188,17 +189,25 @@ class MBDT_ising:
                                   for i in self.datapoints)
             self.model.addConstrs(self.Q[i, self.tree.LC[v]] - self.Q[i, self.tree.RC[v]] == self.Z[i, v]
                                   for i in self.datapoints)
-            self.model.addConstrs(
+            """self.model.addConstrs(
                 (self.Q[i,self.tree.LC[v]]-self.Q[i,self.tree.RC[v]]) * (quicksum(
                     (self.H_pos[v, f] - self.H_neg[v, f])*self.data.at[i, f] for f in self.featureset) + self.D[v])
-                >= 1 - self.E[i]
-                for i in self.datapoints)
-            """self.model.addConstrs(
-                self.Z[i, v] * quicksum(
-                    (self.H_pos[v, f] - self.H_neg[v, f]) * self.data.at[i, f] for f in self.featureset)
-                >= 1 - self.E[i]
+                >= 1 - self.E[i, v]
                 for i in self.datapoints)"""
-            # self.model.addConstrs(self.H_pos[v, f]-self.H_neg[v, f] >= 0 for f in self.featureset)
+            self.model.addConstrs(
+                self.Z[i, v] * (quicksum(
+                    (self.H_pos[v, f] - self.H_neg[v, f]) * self.data.at[i, f] for f in self.featureset) + self.D[v])
+                >= 1 - self.E[i, v]
+                for i in self.datapoints)
+            self.model.addConstrs(self.H_pos[v, f]-self.H_neg[v, f] >= 0 for f in self.featureset)
+            # self.model.addConstrs(
+            #    self.Z[i, v] * (quicksum(self.H[v, f] * self.data[i, f] for f in self.featureset) + self.D[v])
+            #    >= 1 - self.E[i, v]
+            #    for i in self.datapoints)
+            # self.model.addConstrs(
+            #    self.H[v, f] == quicksum(self.E[i] * self.Z[i, v] * data.at[i, f] for i in data.index)
+            #    for f in feature_set))
+            #m.addConstr(quicksum(alpha[i] * data.at[i, 'svm'] for i in data.index) == 0)
         """ Pass to Model DV for Callback / Optimization Purposes """
         self.model._B = self.B
         self.model._W = self.W
@@ -260,7 +269,7 @@ class MBDT_ising:
                         Rv_I.add(i)
                 # Test for VIS of B_v(Q)
                 # print('Test for VIS at', v, model._visnum)
-                VIS = MBDT_ising.VIS(model._data, model._featureset, Lv_I, Rv_I, vis_weight=model._vis_weight)
+                VIS = MBDT_ising.VIS(model._data, Lv_I, Rv_I, vis_weight=model._vis_weight)
                 if VIS is None: continue
                 # If VIS Found, add cut
                 (B_v_left, B_v_right) = VIS
@@ -343,7 +352,7 @@ class MBDT_ising:
             model._septime += (time.perf_counter() - start)
 
     @staticmethod
-    def VIS(data, feature_set, Lv_I, Rv_I, vis_weight):
+    def VIS(data, Lv_I, Rv_I, vis_weight):
         """
         Find a minimal set of points that cannot be linearly separated by a split (a_v, c_v).
         Use the support of Farkas dual (with heuristic objective) of the feasible primal LP to identify VIS of primal
@@ -359,12 +368,13 @@ class MBDT_ising:
         Returns
         B_v_left, B_v_right : two lists of left and right datapoint indices in the VIS of B_v(Q)
         """
-
         if vis_weight is None:
             vis_weight = {i: 0 for i in data.index}
 
         if (len(Lv_I) == 0) or (len(Rv_I) == 0):
             return None
+
+        """
         # Remove any points in each index set whose feature set are equivalent
         common_points_L, common_points_R = set(), set()
         for x in Lv_I:
@@ -374,21 +384,21 @@ class MBDT_ising:
                     common_points_R.add(y)
         Lv_I -= common_points_L
         Rv_I -= common_points_R
-        data = data.drop(common_points_L | common_points_R)
+        data = data.drop(common_points_L | common_points_R)"""
 
         # VIS Dual Model
         VIS_model = Model("VIS Dual")
         VIS_model.Params.LogToConsole = 0
 
         # VIS Dual Variables
-        lambda_L = VIS_model.addVars(Lv_I, vtype=GRB.CONTINUOUS, lb=0, name='lambda_L')
-        lambda_R = VIS_model.addVars(Rv_I, vtype=GRB.CONTINUOUS, lb=0, name='lambda_R')
+        lambda_L = VIS_model.addVars(Lv_I, vtype=GRB.CONTINUOUS, name='lambda_L')
+        lambda_R = VIS_model.addVars(Rv_I, vtype=GRB.CONTINUOUS, name='lambda_R')
 
         # VIS Dual Constraints
         VIS_model.addConstrs(
-            quicksum(lambda_L[i] * data.at[i, j] for i in Lv_I) ==
-            quicksum(lambda_R[i] * data.at[i, j] for i in Rv_I)
-            for j in feature_set)
+            quicksum(lambda_L[i] * data.at[i, f] for i in Lv_I) ==
+            quicksum(lambda_R[i] * data.at[i, f] for i in Rv_I)
+            for f in data.columns.drop('target'))
         VIS_model.addConstr(lambda_L.sum() == 1)
         VIS_model.addConstr(lambda_R.sum() == 1)
 
@@ -406,17 +416,17 @@ class MBDT_ising:
         lambda_L_sol = VIS_model.getAttr('X', lambda_L)
         lambda_R_sol = VIS_model.getAttr('X', lambda_R)
 
-        B_v_left = []
-        B_v_right = []
+        VIS_left = []
+        VIS_right = []
         for i in Lv_I:
             if lambda_L_sol[i] > VIS_model.Params.FeasibilityTol:
-                B_v_left.append(i)
+                VIS_left.append(i)
                 vis_weight[i] += 1
         for i in Rv_I:
             if lambda_R_sol[i] > VIS_model.Params.FeasibilityTol:
-                B_v_right.append(i)
+                VIS_right.append(i)
                 vis_weight[i] += 1
-        return B_v_left, B_v_right
+        return VIS_left, VIS_right
 
     ##############################################
     # Assign Nodes of Tree from Model Solution
@@ -445,6 +455,8 @@ class MBDT_ising:
             P_sol = self.model.getAttr('X', self.P)
             H_pos_sol = self.model.getAttr('X', self.H_pos)
             H_neg_sol = self.model.getAttr('X', self.H_neg)
+            D_sol = self.model.getAttr('X', self.D)
+            H_sol = self.model.getAttr('X', self.H)
 
         # If no incumbent was found, then predict arbitrary class at root node
         except GurobiError:
@@ -469,9 +481,10 @@ class MBDT_ising:
             elif P_sol[v] < 0.5 and B_sol[v] > 0.5:
                 # print(f'{v} branched')
                 self.tree.a_v[v] = {f: H_pos_sol[v, f] - H_neg_sol[v, f] for f in self.featureset}
-                # self.tree.c_v[v] = D_sol[v]
-                # self.tree.branch_nodes[v] = (self.tree.a_v[v], self.tree.c_v[v])
-                self.tree.branch_nodes[v] = self.tree.a_v[v]
+                # self.tree.a_v[v] = {f: H_sol[v, f] for f in self.featureset}
+                self.tree.c_v[v] = D_sol[v]
+                self.tree.branch_nodes[v] = (self.tree.a_v[v], self.tree.c_v[v])
+                # self.tree.branch_nodes[v] = self.tree.a_v[v]
 
     ##############################################
     # Warm Start Model

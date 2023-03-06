@@ -31,7 +31,6 @@ class MBDT:
         # self.hp_info = hp_info
         self.b_type = 'VIS'
 
-        print('Model: ' + str(self.modeltype))
         # Feature, Class and Index Sets
         self.classes = data[target].unique()
         self.featureset = [col for col in self.data.columns.values if col != target]

@@ -89,12 +89,13 @@ def main(argv):
         data = UTILS.get_data(file.replace('.csv', ''), binarization=None)
         for h in heights:
             for i in rand_states:
-                print('\nDataset: '+str(file)+', H: '+str(h)+', '
-                      'Rand State: '+str(i)+'. Run Start: '+str(time.strftime("%I:%M %p", time.localtime())))
                 train_set, test_set = train_test_split(data, train_size=0.5, random_state=i)
                 cal_set, test_set = train_test_split(test_set, train_size=0.5, random_state=i)
                 model_set = pd.concat([train_set, cal_set])
                 for modeltype in modeltypes:
+                    print('\n'+str(modeltype)+'-' + str(b_type) +
+                          ', Dataset: ' + str(file) + ', H: ' + str(h) + ', ''Rand State: ' + str(i) +
+                          '. Run Start: ' + str(time.strftime("%I:%M %p", time.localtime())))
                     if log_files: log = log_path + '_' + str(file) + '_H:' + str(h) + '_M:' + str(
                         modeltype) + '_T:' + str(time_limit) + '_Seed:' + str(i) + '_E:' + str(
                         model_extras)

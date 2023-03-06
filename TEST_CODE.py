@@ -1,4 +1,4 @@
-import test_runs
+import MBDT_runs
 
 """
 numerical_datasets = ['iris', 'banknote', 'blood', 'climate', 'wine-white', 'wine-red'

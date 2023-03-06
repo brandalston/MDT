@@ -103,8 +103,8 @@ class SOCTBenders(ClassifierMixin, BaseEstimator):
         
         # Objective
         #model.setObjective((N-z.sum())/N + self.ccp_alpha*d.sum(), GRB.MINIMIZE)
-        model.setObjective(-z.sum()/N + self.ccp_alpha*d.sum(), GRB.MINIMIZE)
-        
+        #model.setObjective(-z.sum()/N + self.ccp_alpha*d.sum(), GRB.MINIMIZE)
+        model.setObjective(z.sum(), GRB.MAXIMIZE)
         # Constraints
         model.addConstrs((w[i,1] == 1 for i in range(N)))
         model.addConstrs((w[i,t] == w[i,2*t] + w[i,2*t+1] for i in range(N) for t in branch_nodes))
