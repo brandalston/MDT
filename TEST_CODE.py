@@ -1,10 +1,9 @@
 import MBDT_runs
-from Benchmarks import FB_OCT, DL8_5, OCT_run, SOCT_run, GOSDTg
 
 numerical = ['iris', 'banknote', 'blood', 'climate', 'wine-white', 'wine-red'
-                      'glass', 'image_segmentation', 'ionosphere', 'parkinsons', 'iris']
+             'glass', 'image_segmentation', 'ionosphere', 'parkinsons', 'iris']
 categorical = ['balance_scale', 'car', 'kr_vs_kp', 'house-votes-84', 'hayes_roth', 'breast_cancer',
-                        'monk1', 'monk2', 'monk3', 'soybean_small', 'spect', 'tic_tac_toe', 'fico_binary']
+                'monk1', 'monk2', 'monk3', 'soybean_small', 'spect', 'tic_tac_toe', 'fico_binary']
 heights = [2, 3, 4, 5]
 time_limit = 600
 rand_states = [138, 15, 89, 42, 0]
@@ -19,24 +18,3 @@ warm_start = {'use': False, 'values': None}
 MBDT_runs.main(
    ["-d", categorical+numerical, "-h", heights, "-t", time_limit, "-m", models, "-b", b_type[0],
     "-r", rand_states, "-f", file, "-e", extras, "-w", warm_start, "-l", log_file])
-
-############ SOCT ###############
-models = ['SOCT-Benders', 'SOCT-Full']
-warm_start = [None,'STUMP', 'SVM']  # CHOOSE ONE
-SOCT_run.main(
-   ["-d", categorical+numerical, "-h", heights, "-t", time_limit, "-m", models,
-    "-r", rand_states, "-f", file, "-w", warm_start[0], "-l", log_file])
-
-############ OCT ###############
-models = ['OCT-Univariate', 'OCT-Multivariate']
-OCT_run.main(
-   ["-d", categorical+numerical, "-h", heights, "-t", time_limit, "-m", models,
-    "-r", rand_states, "-f", file, "-l", log_file])
-
-############ DL8.5 ###############
-DL8_5.main(
-   ["-d", categorical+numerical, "-h", heights, "-t", time_limit, "-r", rand_states, "-f", file])
-
-############ GOSDT+g ###############
-GOSDTg.main(
-   ["-d", categorical+numerical, "-h", heights, "-t", time_limit, "-r", rand_states, "-f", file])
