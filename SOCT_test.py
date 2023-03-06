@@ -14,7 +14,7 @@ log_file = False
 
 ############ SOCT ###############
 models = ['SOCT-Benders']
-warm_start = [None,'STUMP', 'SVM']  # CHOOSE ONE
+warm_start = [None, 'STUMP', 'SVM']  # CHOOSE ONE
 SOCT_run.main(
    ["-d", categorical+numerical, "-h", heights, "-t", time_limit, "-m", models,
     "-r", rand_states, "-f", file, "-w", warm_start[0], "-l", log_file])

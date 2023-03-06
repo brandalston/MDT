@@ -15,5 +15,5 @@ log_file = False
 ############ OCT ###############
 models = ['OCT-Multivariate']
 OCT_run.main(
-   ["-d", ['iris'], "-h", heights, "-t", time_limit, "-m", models,
+   ["-d", categorical+numerical, "-h", heights, "-t", time_limit, "-m", models,
     "-r", rand_states, "-f", file, "-l", log_file])
