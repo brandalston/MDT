@@ -17,7 +17,7 @@ def get_data(dataset, binarization=None):
         'car': load_car_evaluation,
         'kr_vs_kp': load_chess,
         'climate': load_climate_model_crashes,
-        'house_votes_84': load_congressional_voting_records,
+        'house_votes_84': load_house_votes_84,
         'fico_binary': load_fico_binary,
         'glass': load_glass_identification,
         'hayes_roth': load_hayes_roth,

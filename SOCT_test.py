@@ -1,10 +1,11 @@
 import MBDT_runs
 from Benchmarks import FB_OCT, DL8_5, OCT_run, SOCT_run, GOSDTg
 
+finished = ['balance_scale', 'car', 'kr_vs_kp', ]
 numerical = ['iris', 'banknote', 'blood', 'climate', 'wine-white', 'wine-red'
-             'glass', 'image_segmentation', 'ionosphere', 'parkinsons', 'iris']
+             'glass', 'image_segmentation', 'ionosphere', 'parkinsons']
 numerical = ['iris', 'climate', 'blood', 'ionosphere', 'glass', 'image', 'wine-white']
-categorical = ['balance_scale', 'car', 'kr_vs_kp', 'house-votes-84', 'hayes_roth', 'breast_cancer',
+categorical = ['house_votes_84', 'hayes_roth', 'breast_cancer',
                'monk1', 'monk2', 'monk3', 'soybean_small', 'spect', 'tic_tac_toe', 'fico_binary']
 heights = [2, 3, 4, 5]
 time_limit = 600
@@ -16,5 +17,5 @@ log_file = False
 models = ['SOCT-Benders']
 warm_start = [None, 'STUMP', 'SVM']  # CHOOSE ONE
 SOCT_run.main(
-   ["-d", categorical+numerical, "-h", heights, "-t", time_limit, "-m", models,
+   ["-d", numerical+categorical, "-h", heights, "-t", time_limit, "-m", models,
     "-r", rand_states, "-f", file, "-w", warm_start[0], "-l", log_file])

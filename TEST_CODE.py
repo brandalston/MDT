@@ -2,19 +2,19 @@ import MBDT_runs
 
 numerical = ['iris', 'banknote', 'blood', 'climate', 'wine-white', 'wine-red'
              'glass', 'image_segmentation', 'ionosphere', 'parkinsons', 'iris']
-categorical = ['balance_scale', 'car', 'kr_vs_kp', 'house-votes-84', 'hayes_roth', 'breast_cancer',
+categorical = ['balance_scale', 'car', 'kr_vs_kp', 'house_votes_84', 'hayes_roth', 'breast_cancer',
                'monk1', 'monk2', 'monk3', 'soybean_small', 'spect', 'tic_tac_toe', 'fico_binary']
 time_limit = 600
 # rand_states = [138, 15, 89, 42, 0]
 rand_states = [138]
 file = 'benchmark_testing.csv'
 log_file = False
-test_data=['iris']
+test_data=['house_votes_84']
 heights = [2]
 
 ############ MBDT ###############
-models = ['CUT1-FF-ROOT', 'CUT2','CUT1-UF','CUT2-UF']
-b_type = ['SVM', 'ISING']  # CHOOSE ONE
+models = ['CUT1-UF']
+b_type = ['ISING']  # CHOOSE ONE
 extras = None
 warm_start = {'use': False, 'values': None}
 MBDT_runs.main(

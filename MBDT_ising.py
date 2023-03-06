@@ -35,6 +35,7 @@ class MBDT_ising:
         self.classes = data[target].unique()
         self.featureset = [col for col in self.data.columns.values if col != target]
         self.datapoints = data.index
+        self.epsilon = .005
 
         """ Decision Variables """
         self.B = 0
@@ -110,6 +111,7 @@ class MBDT_ising:
         self.Z = self.model.addVars(self.datapoints, self.tree.V, vtype=GRB.CONTINUOUS, name='Z')
         # Hyperplane variables
         self.H = self.model.addVars(self.tree.V, self.featureset, vtype=GRB.CONTINUOUS, name='H')
+        self.H_abs = self.model.addVars(self.tree.V, self.featureset, vtype=GRB.CONTINUOUS, name='H_abs')
         self.H_pos = self.model.addVars(self.tree.V, self.featureset, vtype=GRB.CONTINUOUS, lb=0, name='H_pos')
         self.H_neg = self.model.addVars(self.tree.V, self.featureset, vtype=GRB.CONTINUOUS, lb=0, name='H_neg')
         self.D = self.model.addVars(self.tree.V, vtype=GRB.CONTINUOUS, name='D')
@@ -184,30 +186,44 @@ class MBDT_ising:
                                               self.Q[i, c] for c in self.tree.path[v][1:])
 
         # Left-right branching using soft-margin SVM
-        for v in self.tree.B:
-            self.model.addConstrs(self.Q[i, self.tree.RC[v]] + self.Q[i, self.tree.LC[v]] == 1
-                                  for i in self.datapoints)
-            self.model.addConstrs(self.Q[i, self.tree.LC[v]] - self.Q[i, self.tree.RC[v]] == self.Z[i, v]
-                                  for i in self.datapoints)
+        # for v in self.tree.B:
+            # self.model.addConstrs(self.Q[i, self.tree.RC[v]] + self.Q[i, self.tree.LC[v]] == 1
+            #                      for i in self.datapoints)
+            #self.model.addConstrs(self.Q[i, self.tree.LC[v]] - self.Q[i, self.tree.RC[v]] == self.Z[i, v]
+            #                      for i in self.datapoints)
             """self.model.addConstrs(
                 (self.Q[i,self.tree.LC[v]]-self.Q[i,self.tree.RC[v]]) * (quicksum(
                     (self.H_pos[v, f] - self.H_neg[v, f])*self.data.at[i, f] for f in self.featureset) + self.D[v])
                 >= 1 - self.E[i, v]
                 for i in self.datapoints)"""
-            self.model.addConstrs(
+            """self.model.addConstrs(
                 self.Z[i, v] * (quicksum(
                     (self.H_pos[v, f] - self.H_neg[v, f]) * self.data.at[i, f] for f in self.featureset) + self.D[v])
                 >= 1 - self.E[i, v]
                 for i in self.datapoints)
-            self.model.addConstrs(self.H_pos[v, f]-self.H_neg[v, f] >= 0 for f in self.featureset)
-            # self.model.addConstrs(
-            #    self.Z[i, v] * (quicksum(self.H[v, f] * self.data[i, f] for f in self.featureset) + self.D[v])
-            #    >= 1 - self.E[i, v]
-            #    for i in self.datapoints)
-            # self.model.addConstrs(
-            #    self.H[v, f] == quicksum(self.E[i] * self.Z[i, v] * data.at[i, f] for i in data.index)
-            #    for f in feature_set))
-            #m.addConstr(quicksum(alpha[i] * data.at[i, 'svm'] for i in data.index) == 0)
+            self.model.addConstrs(self.H_pos[v, f]-self.H_neg[v, f] >= 0 for f in self.featureset)"""
+            # self.model.addConstr(self.H_pos.sum(v, '*') <= 1)
+            # self.model.addConstr(self.H_neg.sum(v, '*') <= 1)
+            """self.model.addConstrs(
+                 self.Z[i, v] * (quicksum(self.H[v, f] * self.data[i, f] for f in self.featureset) + self.D[v])
+                 >= 1 - self.E[i, v]
+                 for i in self.datapoints)
+            self.model.addConstrs(
+                 self.H[v, f] == quicksum(self.E[i] * self.Z[i, v] * self.data.at[i, f] for i in self.data.index)
+                 for f in self.featureset)"""
+            # m.addConstr(quicksum(alpha[i] * data.at[i, 'svm'] for i in data.index) == 0)
+
+        self.model.addConstrs((quicksum(self.H[int(t / 2), j] * self.data.at[i, j] for j in self.featureset) <= self.D[int(t / 2)] + (
+                    max(self.data.at[i, j] for j in self.featureset) + 1) * (1 - self.Q[i, t])
+                               for i in self.datapoints for t in self.tree.V if t % 2 == 1))
+        self.model.addConstrs(
+            (quicksum(self.H[int(t / 2), j] * self.data.at[i, j] for j in self.featureset) >=
+             self.D[int(t / 2)] + self.epsilon - (max(self.data.at[i, j] for j in self.featureset) + 1 + self.epsilon) * (1 - self.Q[i, t])
+             for i in self.datapoints for t in self.tree.V if (t != 1) and (t % 2 == 0)))
+        self.model.addConstrs((self.H.sum(t, '*') <= 1 for t in self.tree.B))
+        self.model.addConstrs((self.H_abs[t, j] >= self.H[t, j] for t in self.tree.B for j in self.featureset))
+        self.model.addConstrs((self.H_abs[t, j] >= -self.H[t, j] for t in self.tree.B for j in self.featureset))
+
         """ Pass to Model DV for Callback / Optimization Purposes """
         self.model._B = self.B
         self.model._W = self.W
@@ -249,6 +265,7 @@ class MBDT_ising:
                 model.terminate()
 
         # Add VIS Cuts at Branching Nodes of Feasible Solution
+        """
         if where == GRB.Callback.MIPSOL:
             model._visnum += 1
             start = time.perf_counter()
@@ -278,7 +295,7 @@ class MBDT_ising:
                              len(B_v_left) + len(B_v_right) - 1)
                 model._viscuts += 1
             model._vistime += time.perf_counter() - start
-
+        """
         # Add Feasible Path for Datapoints Cuts at Fractional Point in Branch and Bound Tree
         if (where == GRB.Callback.MIPNODE) and (model.cbGet(GRB.Callback.MIPNODE_STATUS) == GRB.OPTIMAL):
             if ('UF' in model._cut_type) or ('GRB' in model._cut_type): return
@@ -457,6 +474,7 @@ class MBDT_ising:
             H_neg_sol = self.model.getAttr('X', self.H_neg)
             D_sol = self.model.getAttr('X', self.D)
             H_sol = self.model.getAttr('X', self.H)
+            H_abs_sol = self.model.getAttr('X', self.H_abs)
 
         # If no incumbent was found, then predict arbitrary class at root node
         except GurobiError:
@@ -480,8 +498,8 @@ class MBDT_ising:
             # Define (a_v, c_v) on branching nodes
             elif P_sol[v] < 0.5 and B_sol[v] > 0.5:
                 # print(f'{v} branched')
-                self.tree.a_v[v] = {f: H_pos_sol[v, f] - H_neg_sol[v, f] for f in self.featureset}
-                # self.tree.a_v[v] = {f: H_sol[v, f] for f in self.featureset}
+                # self.tree.a_v[v] = {f: H_pos_sol[v, f] - H_neg_sol[v, f] for f in self.featureset}
+                self.tree.a_v[v] = {f: H_sol[v, f] for f in self.featureset}
                 self.tree.c_v[v] = D_sol[v]
                 self.tree.branch_nodes[v] = (self.tree.a_v[v], self.tree.c_v[v])
                 # self.tree.branch_nodes[v] = self.tree.a_v[v]
