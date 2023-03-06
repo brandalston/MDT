@@ -12,7 +12,7 @@ file = 'paper_runs.csv'
 log_file = False
 
 ############ MBDT ###############
-models = ['CUT1', 'CUT2']
+models = ['CUT1-MV-ROOT', 'CUT2-MV-ROOT']
 b_type = ['SVM', 'ISING']  # CHOOSE ONE
 extras = None
 warm_start = {'use': False, 'values': None}

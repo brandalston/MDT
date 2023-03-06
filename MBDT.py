@@ -59,7 +59,7 @@ class MBDT:
             if 'FRAC' not in self.cut_type: self.cut_type = 'FRAC-'+self.cut_type
             if 'ROOT' in self.cut_type:
                 self.rootcuts = True
-            # print('User fractional separation cuts, type: ' + str(sep_dict[self.cut_type]) + ', root: ' + str(self.rootcuts))
+            # print('User fractional separation type: ' + str(self.cut_type).replace('-ROOT','') + ', root: ' + str(self.rootcuts))
         elif 'UF' in self.cut_type:
             pass
             # print('ALL integral connectivity constraints')
