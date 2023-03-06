@@ -121,8 +121,8 @@ def main(argv):
                         opt_model.model.write(log + '.lp')
                     opt_model.optimization()
                     if opt_model.model.RunTime < time_limit:
-                        print(f'Optimal solution found in {round(opt_model.model.RunTime,4)}s. '
-                              f'('+str(time.strftime("%I:%M %p", time.localtime()))+')')
+                        print(f'Optimal solution found in',round(opt_model.model.RunTime,4),'s. ('
+                              +str(time.strftime("%I:%M %p", time.localtime()))+')')
                     else:
                         print('Time limit reached. ('+str(time.strftime("%I:%M %p", time.localtime()))+')')
                     opt_model.assign_tree()
