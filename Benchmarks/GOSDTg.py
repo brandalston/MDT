@@ -109,7 +109,7 @@ def main(argv):
                 else:
                     print('Time limit reached. '+str(time.strftime("%I:%M %p", time.localtime())))
                 test_acc = model.score(X_test, Y_test)
-                train_acc = model.score(X_train, Y_train),
+                train_acc = model.score(X_train, Y_train)
                 with open(out_file, mode='a') as results:
                     results_writer = csv.writer(results, delimiter=',', quotechar='"')
                     results_writer.writerow(
