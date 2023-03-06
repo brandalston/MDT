@@ -87,6 +87,7 @@ class OCTH(ClassifierMixin, BaseEstimator):
             model.Params.MIPGap = self.mip_gap
         if self.time_limit is not None:
             model.Params.TimeLimit = self.time_limit
+        model.Params.Threads = 1
         
         # Pack data into model
         model._X_y = X, y
