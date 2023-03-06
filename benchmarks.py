@@ -46,7 +46,7 @@ GOSDTg.main(
    ["-d", test_data, "-h", heights, "-t", time_limit, "-r", rand_states, "-f", file])
 """
 
-test_data = ['iris']
+test_data = ['soybean_small']
 heights = [2]
 time_limit = 600
 file = 'benchmark_testing.csv'
@@ -54,7 +54,7 @@ log_file = False
 rand_states = [138]
 
 ############ SOCT ###############
-models = ['SOCT-Benders', 'SOCT-Full']
+models = ['SOCT-Benders']
 warm_start = [None, 'STUMP', 'SVM']  # CHOOSE ONE
 SOCT_run.main(
    ["-d", test_data, "-h", heights, "-t", time_limit, "-m", models,
@@ -70,7 +70,7 @@ MBDT_runs.main(
     "-r", rand_states, "-f", file, "-e", extras, "-w", warm_start, "-l", log_file])
 
 ############ OCT ###############
-models = ['OCT-Univariate', 'OCT-Multivariate']
+models = ['OCT-Multivariate']
 OCT_run.main(
    ["-d", test_data, "-h", heights, "-t", time_limit, "-m", models, "-r", rand_states, "-f", file, "-l", log_file])
 

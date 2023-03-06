@@ -64,7 +64,7 @@ def main(argv):
     categorical_datasets = ['balance_scale', 'car', 'kr_vs_kp', 'house-votes-84', 'hayes_roth', 'breast_cancer',
                             'monk1', 'monk2', 'monk3', 'soybean_small', 'spect', 'tic_tac_toe', 'fico_binary']
     for file in data_files:
-        data = OU.get_data(file.replace('.csv', ''))
+        data = OU.get_data(file.replace('.csv', ''), binarization='all-candidates')
         for h in heights:
             for i in rand_states:
                 # data split
