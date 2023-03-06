@@ -96,16 +96,9 @@ def main(argv):
                 pd.DataFrame(warm_labels, columns=["class_labels"]).to_csv(labelpath, header="class_labels", index=None)
                 # initialize GOSDT, train and predict
                 config = {
-                    "regularization": 1 / len(model_x_train),
-                    "depth_budget": h + 1,
-                    "warm_LB": False,
-                    "path_to_labels": labelpath,
-                    "time_limit": time_limit,
-                    "similar_support": False,
-                    "look_ahead": False,
-                    "worker limit": 1,
-                    "feature_transform": False
-                }
+                    "regularization": 1 / len(model_x_train), "depth_budget": h + 1, "warm_LB": False,
+                    "path_to_labels": labelpath, "time_limit": time_limit, "similar_support": False,
+                    "look_ahead": False, "worker limit": 1, "feature_transform": False}
                 start = time.perf_counter()
                 model = GOSDT(config)
                 model.fit(model_x_train, model_y_train)

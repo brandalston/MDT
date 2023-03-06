@@ -53,7 +53,7 @@ file = 'benchmark_testing.csv'
 log_file = False
 rand_states = [138]
 
-############ SOCT ###############
+"""############ SOCT ###############
 models = ['SOCT-Benders']
 warm_start = [None, 'STUMP', 'SVM']  # CHOOSE ONE
 SOCT_run.main(
@@ -77,7 +77,7 @@ OCT_run.main(
 ############ DL8.5 ###############
 DL8_5.main(
    ["-d", test_data, "-h", heights, "-t", time_limit, "-r", rand_states, "-f", file])
-
+"""
 ############ GOSDT+g ###############
 GOSDTg.main(
    ["-d", test_data, "-h", heights, "-t", time_limit, "-r", rand_states, "-f", file])
