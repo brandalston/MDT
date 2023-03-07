@@ -19,5 +19,5 @@ b_type = ['SVM', 'ISING']  # CHOOSE ONE
 extras = None
 warm_start = {'use': False, 'values': None}
 MBDT_runs.main(
-   ["-d", numerical+categorical, "-h", heights, "-t", time_limit, "-m", models, "-b", b_type[0],
+   ["-d", test_num+test_cat, "-h", heights, "-t", time_limit, "-m", models, "-b", b_type[0],
     "-r", rand_states, "-f", file, "-e", extras, "-w", warm_start, "-l", log_file])
