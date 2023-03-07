@@ -61,6 +61,7 @@ class MBDT_ising:
         if len(self.cut_type) == 0:
             self.cut_type = 'GRB'
         if any(ele in self.cut_type for ele in ['FF', 'ALL', 'MV']):
+            self.eps = 4
             if 'FRAC' not in self.cut_type: self.cut_type = 'FRAC-' + self.cut_type
             if 'ROOT' in self.cut_type:
                 self.rootcuts = True

@@ -1,12 +1,13 @@
 import MBDT_runs
 from Benchmarks import FB_OCT, DL8_5, OCT_run, SOCT_run, GOSDTg
 
-finished = ['balance_scale', 'car', 'kr_vs_kp', ]
 numerical = ['iris', 'banknote', 'blood', 'climate', 'wine-white', 'wine-red'
              'glass', 'image_segmentation', 'ionosphere', 'parkinsons']
-numerical = ['iris', 'climate', 'blood', 'ionosphere', 'glass', 'image', 'wine-white']
 categorical = ['house_votes_84', 'hayes_roth', 'breast_cancer',
                'monk1', 'monk2', 'monk3', 'soybean_small', 'spect', 'tic_tac_toe', 'fico_binary']
+
+test_num = ['wine_white', 'iris', 'banknote', 'glass', 'climate', 'image_segmentation', 'blood', 'ionosphere']
+test_cat = ['fico_binary', 'soybean_small', 'car', 'monk1', 'balance_scale', 'breast-cancer', 'monk2']
 heights = [2, 3, 4, 5]
 time_limit = 600
 rand_states = [138, 15, 89, 42, 0]
