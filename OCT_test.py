@@ -7,7 +7,6 @@ categorical = ['house_votes_84', 'hayes_roth', 'breast_cancer',
                'monk1', 'monk2', 'monk3', 'soybean_small', 'spect', 'tic_tac_toe', 'fico_binary']
 test_set = ['wine_white', 'iris', 'banknote', 'glass', 'climate', 'image', 'blood', 'ionosphere',
             'fico_binary', 'soybean_small', 'car', 'monk1', 'balance_scale', 'breast-cancer', 'monk2']
-finished = ['car', 'balance', 'kvk', 'iris', 'climate', 'blood', 'ionosphere']
 
 test_cat = ['fico_binary', 'soybean_small', 'monk1', 'breast-cancer', 'monk2']
 heights = [2, 3, 4, 5]
