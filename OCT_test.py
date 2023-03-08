@@ -9,7 +9,7 @@ test_set = ['wine_white', 'iris', 'banknote', 'glass', 'climate', 'image', 'bloo
             'fico_binary', 'soybean_small', 'car', 'monk1', 'balance_scale', 'breast-cancer', 'monk2']
 finished = ['car', 'balance', 'kvk', 'iris', 'climate', 'blood', 'ionosphere']
 
-test_num = ['wine_white', 'banknote', 'glass', 'image']
+test_num = ['glass', 'image']
 test_cat = ['fico_binary', 'soybean_small', 'monk1', 'breast-cancer', 'monk2']
 heights = [2, 3, 4, 5]
 time_limit = 600
