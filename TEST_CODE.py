@@ -12,10 +12,14 @@ test_cat = ['fico_binary', 'soybean_small', 'car', 'monk1', 'balance_scale', 'br
 time_limit = 600
 # rand_states = [138, 15, 89, 42, 0]
 rand_states = [138]
-file = 'paper_runs_2.csv'
+file = 'benchmark_testing.csv'
 log_file = False
 test_data = ['house_votes_84']
 heights = [2]
+
+for file2 in ['wine_white']:
+   data = UTILS.get_data(file2)
+   print(data.head(5))
 
 ############ MBDT ###############
 models = ['CUT1-UF','CUT1-FF-ROOT']
