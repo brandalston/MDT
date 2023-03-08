@@ -1,7 +1,7 @@
 import MBDT_runs
 from Benchmarks import FB_OCT, DL8_5, OCT_run, SOCT_run, GOSDTg
 
-numerical = ['iris', 'banknote', 'blood', 'climate', 'wine-white', 'wine-red'
+numerical = ['iris', 'banknote', 'blood', 'climate', 'wine-white', 'wine-red',
              'glass', 'image_segmentation', 'ionosphere', 'parkinsons']
 categorical = ['house_votes_84', 'hayes_roth', 'breast_cancer',
                'monk1', 'monk2', 'monk3', 'soybean_small', 'spect', 'tic_tac_toe', 'fico_binary']

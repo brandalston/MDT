@@ -9,7 +9,7 @@ from sklearn.utils.validation import check_is_fitted
 
 
 def get_data(dataset, binarization=None):
-    dataset2loadfcn = {
+    datasetloadfcn = {
         'balance_scale': load_balance_scale,
         'banknote': load_banknote_authentication,
         'blood': load_blood_transfusion,
@@ -21,7 +21,7 @@ def get_data(dataset, binarization=None):
         'fico_binary': load_fico_binary,
         'glass': load_glass_identification,
         'hayes_roth': load_hayes_roth,
-        'image_segmentation': load_image_segmentation,
+        'image': load_image_segmentation,
         'ionosphere': load_ionosphere,
         'iris': load_iris,
         'monk1': load_monk1,
@@ -35,13 +35,12 @@ def get_data(dataset, binarization=None):
         'wine_white': load_wine_white
     }
 
-    numerical_datasets = ['iris', 'banknote', 'blood', 'climate', 'wine_white', 'wine_red'
-                          'glass', 'image_segmentation', 'ionosphere', 'parkinsons']
+    numerical_datasets = ['iris', 'banknote', 'blood', 'climate', 'wine_white', 'wine_red',
+                          'glass', 'image', 'ionosphere', 'parkinsons']
     categorical_datasets = ['balance_scale', 'car', 'kr_vs_kp', 'house_votes_84', 'hayes_roth', 'breast_cancer',
                             'monk1', 'monk2', 'monk3', 'soybean_small', 'spect', 'tic_tac_toe', 'fico_binary']
     already_processed = ['fico_binary']
-
-    load_function = dataset2loadfcn[dataset]
+    load_function = datasetloadfcn[dataset]
     X, y = load_function()
     """ We assume the target column of dataset is labeled 'target'
         Change value at your discretion """
@@ -103,6 +102,9 @@ def preprocess(X, y=None, numerical_features=None, categorical_features=None, bi
     if categorical_features is None:
         categorical_features = []
 
+    print('preprocessing')
+    print(X)
+
     numerical_transformer = MinMaxScaler()
     if binarization == 'all-candidates':
         numerical_transformer = CandidateThresholdBinarizer()
@@ -110,6 +112,7 @@ def preprocess(X, y=None, numerical_features=None, categorical_features=None, bi
         numerical_transformer = KBinsDiscretizer(encode='onehot-dense')
     elif binarization is None:
         numerical_transformer = MinMaxScaler()
+    print(numerical_transformer)
     # categorical_transformer = OneHotEncoder(drop='if_binary', sparse=False, handle_unknown='ignore') # Should work in scikit-learn 1.0
     categorical_transformer = OneHotEncoder(sparse=False, handle_unknown='ignore')
     ct = ColumnTransformer([("num", numerical_transformer, numerical_features),

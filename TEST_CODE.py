@@ -17,10 +17,9 @@ log_file = False
 test_data = ['house_votes_84']
 heights = [2]
 
-for file2 in ['wine_white']:
-   data = UTILS.get_data(file2)
-   print(data.head(5))
-
+data = UTILS.get_data('glass')
+print(data.head(5))
+"""
 ############ MBDT ###############
 models = ['CUT1-UF','CUT1-FF-ROOT']
 b_type = ['SVM','ISING']  # CHOOSE ONE
@@ -33,3 +32,4 @@ MBDT_runs.main(
 MBDT_runs.main(
    ["-d", test_data, "-h", heights, "-t", time_limit, "-m", models, "-b", b_type[1],
     "-r", rand_states, "-f", file, "-e", extras, "-w", warm_start, "-l", log_file])
+"""
