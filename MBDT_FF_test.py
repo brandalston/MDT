@@ -21,6 +21,15 @@ models = ['CUT1-FF-ROOT', 'CUT2-FF-ROOT']
 b_type = ['SVM', 'ISING']  # CHOOSE ONE
 extras = None
 warm_start = {'use': False, 'values': None}
+
+test_num = ['banknote']
+heights = [5]
+MBDT_runs.main(
+   ["-d", test_num, "-h", heights, "-t", time_limit, "-m", models, "-b", b_type[0],
+    "-r", rand_states, "-f", file, "-e", extras, "-w", warm_start, "-l", log_file])
+
+heights = [2, 3, 4, 5]
+test_num = ['glass', 'climate', 'image', 'blood', 'ionosphere']
 MBDT_runs.main(
    ["-d", test_num+test_cat, "-h", heights, "-t", time_limit, "-m", models, "-b", b_type[0],
     "-r", rand_states, "-f", file, "-e", extras, "-w", warm_start, "-l", log_file])

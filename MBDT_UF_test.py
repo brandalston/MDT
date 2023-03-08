@@ -21,6 +21,8 @@ models = ['CUT1-UF', 'CUT2-UF']
 b_type = ['SVM', 'ISING']  # CHOOSE ONE
 extras = None
 warm_start = {'use': False, 'values': None}
+
+test_num = ['glass', 'climate', 'image', 'blood', 'ionosphere']
 MBDT_runs.main(
    ["-d", test_num+test_cat, "-h", heights, "-t", time_limit, "-m", models, "-b", b_type[0],
     "-r", rand_states, "-f", file, "-e", extras, "-w", warm_start, "-l", log_file])
