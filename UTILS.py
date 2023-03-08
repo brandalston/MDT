@@ -102,9 +102,6 @@ def preprocess(X, y=None, numerical_features=None, categorical_features=None, bi
     if categorical_features is None:
         categorical_features = []
 
-    print('preprocessing')
-    print(X)
-
     numerical_transformer = MinMaxScaler()
     if binarization == 'all-candidates':
         numerical_transformer = CandidateThresholdBinarizer()
@@ -112,7 +109,6 @@ def preprocess(X, y=None, numerical_features=None, categorical_features=None, bi
         numerical_transformer = KBinsDiscretizer(encode='onehot-dense')
     elif binarization is None:
         numerical_transformer = MinMaxScaler()
-    print(numerical_transformer)
     # categorical_transformer = OneHotEncoder(drop='if_binary', sparse=False, handle_unknown='ignore') # Should work in scikit-learn 1.0
     categorical_transformer = OneHotEncoder(sparse=False, handle_unknown='ignore')
     ct = ColumnTransformer([("num", numerical_transformer, numerical_features),
