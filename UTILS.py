@@ -21,7 +21,7 @@ def get_data(dataset, binarization=None):
         'fico_binary': load_fico_binary,
         'glass': load_glass_identification,
         'hayes_roth': load_hayes_roth,
-        'image_segmentation': load_image_segmentation,
+        'image': load_image_segmentation,
         'ionosphere': load_ionosphere,
         'iris': load_iris,
         'monk1': load_monk1,
@@ -36,7 +36,7 @@ def get_data(dataset, binarization=None):
     }
 
     numerical_datasets = ['iris', 'banknote', 'blood', 'climate', 'wine_white', 'wine_red'
-                          'glass', 'image_segmentation', 'ionosphere', 'parkinsons']
+                          'glass', 'image', 'ionosphere', 'parkinsons']
     categorical_datasets = ['balance_scale', 'car', 'kr_vs_kp', 'house_votes_84', 'hayes_roth', 'breast_cancer',
                             'monk1', 'monk2', 'monk3', 'soybean_small', 'spect', 'tic_tac_toe', 'fico_binary']
     already_processed = ['fico_binary']
