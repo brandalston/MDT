@@ -9,7 +9,7 @@ test_set = ['wine_white', 'iris', 'banknote', 'glass', 'climate', 'image_segment
             'fico_binary', 'soybean_small', 'car', 'monk1', 'balance_scale', 'breast-cancer', 'monk2']
 finished = ['car', 'balance', 'kvk']
 
-test_num = ['wine_white', 'iris', 'banknote', 'glass', 'climate', 'image', 'blood', 'ionosphere']
+test_num = ['wine_white', 'iris', 'banknote', 'glass', 'climate', 'image_segmentation', 'blood', 'ionosphere']
 test_cat = ['fico_binary', 'soybean_small', 'car', 'monk1', 'balance_scale', 'breast-cancer', 'monk2']
 heights = [2, 3, 4, 5]
 time_limit = 600
