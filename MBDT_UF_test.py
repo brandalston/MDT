@@ -13,7 +13,7 @@ test_cat = ['fico_binary', 'soybean_small', 'car', 'monk1', 'balance_scale', 'br
 heights = [2, 3, 4, 5]
 time_limit = 600
 rand_states = [138, 15, 89, 42, 0]
-file = 'paper_runs.csv'
+file = 'paper_runs_2.csv'
 log_file = False
 
 ############ MBDT ###############
