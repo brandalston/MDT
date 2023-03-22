@@ -9,7 +9,7 @@ import UTILS
 
 class MBDT:
 
-    def __init__(self, data, tree, modeltype, time_limit, target, warmstart, modelextras, log=None, hp_info=None):
+    def __init__(self, data, tree, modeltype, time_limit, target, warmstart, modelextras, log=None):
         """"
         Parameters
         data: training data
@@ -28,8 +28,7 @@ class MBDT:
         self.warmstart = warmstart
         self.modelextras = modelextras
         self.log = log
-        # self.hp_info = hp_info
-        self.b_type = 'VIS'
+        self.b_type = '2-Step'
 
         # Feature, Class and Index Sets
         self.classes = data[target].unique()
@@ -49,7 +48,6 @@ class MBDT:
         self.single_terminal = 0
 
         """ Separation Procedure """
-        sep_dict = {'FRAC-ALL': 'all', 'FRAC-FF': 'first found', 'FRAC-MV': 'most violating'}
         self.rootcuts = False
         self.eps = 0
         self.cut_type = self.modeltype[5:]
@@ -57,22 +55,6 @@ class MBDT:
             self.cut_type = 'GRB'
         if any(ele in self.cut_type for ele in ['FF', 'ALL', 'MV']):
             self.eps = 4
-            if 'FRAC' not in self.cut_type: self.cut_type = 'FRAC-'+self.cut_type
-            if 'ROOT' in self.cut_type:
-                self.rootcuts = True
-            # print('User fractional separation type: ' + str(self.cut_type).replace('-ROOT','') + ', root: ' + str(self.rootcuts))
-        elif 'UF' in self.cut_type:
-            pass
-            # print('ALL integral connectivity constraints')
-        elif 'GRB' in self.cut_type:
-            pass
-            # print('GRB lazy = 3 connectivity constraints')
-        elif 'FRAC' in self.cut_type and len(self.cut_type) == 4:
-            # print('Need fractional separation type!!')
-            pass
-        else:
-            # print('Need separation procedure!!')
-            return
 
         """ Model extras """
         self.regularization = 'None'
@@ -89,9 +71,9 @@ class MBDT:
         self.model.Params.Threads = 1  # use one thread for testing purposes
         self.model.Params.LazyConstraints = 1
         self.model.Params.PreCrush = 1
-        if self.log is not None:
-            self.model.Params.LogFile = self.log + '.txt'
-
+        # Save Gurobi log to file
+        if self.log:
+            self.model.Params.LogFile = self.log
         """ Model callback metrics """
         self.model._septime, self.model._sepnum, self.model._sepcuts, self.model._sepavg = 0, 0, 0, 0
         self.model._vistime, self.model._visnum, self.model._viscuts = 0, 0, 0
@@ -159,16 +141,17 @@ class MBDT:
             self.model.addConstrs(self.S[i, v] <= self.W[v, self.data.at[i, self.target]]
                                   for i in self.datapoints)
 
-        # If v not branching then all datapoints sent to left child
-        for v in self.tree.B:
-            self.model.addConstrs(self.Q[i, self.tree.RC[v]] <= self.B[v] for i in self.datapoints)
+        # If v not branching then all datapoints sent to right child
+        # for v in self.tree.B:
+            # self.model.addConstrs(self.Q[i, self.tree.RC[v]] <= self.B[v] for i in self.datapoints)
+            # self.model.addConstrs(self.Q[i, self.tree.LC[v]] <= self.B[v] for i in self.datapoints)
 
         # Each datapoint has at most one terminal vertex
         self.model.addConstrs(self.S.sum(i, '*') <= 1
                               for i in self.datapoints)
 
         # Lazy feasible path constraints (for fractional separation procedure)
-        if any(ele in self.cut_type for ele in ['GRB', 'FRAC']):
+        if any(ele in self.cut_type for ele in ['GRB', 'FF', 'ALL', 'MV']):
             # terminal vertex of datapoint must be in reachable path
             if 'CUT1' in self.modeltype:
                 self.cut_constraint = self.model.addConstrs(
@@ -255,7 +238,7 @@ class MBDT:
                         Rv_I.add(i)
                 # Test for VIS of B_v(Q)
                 # print(f'Test for VIS at {v}, VIS test count: {model._visnum}')
-                VIS = MBDT.VIS(model._data, Lv_I, Rv_I, vis_weight=model._vis_weight)
+                VIS = UTILS.VIS(model._data, Lv_I, Rv_I, vis_weight=model._vis_weight)
 
                 # If VIS Found, add cut
                 if VIS is None: continue
@@ -272,8 +255,7 @@ class MBDT:
             if ('UF' in model._cut_type) or ('GRB' in model._cut_type): return
             start = time.perf_counter()
             # Only add cuts at root-node of branch and bound tree
-            if model._rootcuts:
-                if model.cbGet(GRB.Callback.MIPNODE_NODCNT) != 0: return
+            if model.cbGet(GRB.Callback.MIPNODE_NODCNT) != 0: return
             model._sepnum += 1
             q_val = model.cbGetNodeRel(model._Q)
             s_val = model.cbGetNodeRel(model._S)
@@ -338,86 +320,6 @@ class MBDT:
                                 model._sepcuts += 1
                                 break
             model._septime += (time.perf_counter() - start)
-
-    ##############################################
-    # Find Valid Infeasible Subsystem (aka IIS) of Model
-    ##############################################
-    @staticmethod
-    def VIS(data, Lv_I, Rv_I, vis_weight):
-        """
-        Find a minimal set of points that cannot be linearly separated by a split (a_v, c_v).
-        Use the support of Farkas dual (with heuristic objective) of the feasible primal LP to identify VIS of primal
-        Primal is B_v(Q) : a_v*x^i + 1 <= c_v for 1 for i in L_v(I) := {i in I : q^i_l(v) = 1}
-                           a_v*x^i - 1 <= c_v for 1 for i in R_v(I) := {i in I : q^i_r(v) = 1}
-        Parameters
-        data : dataframe of shape (I, F)
-        Lv_I : list of I s.t. q^i_l(v) = 1
-        Rv_I : list of I s.t. q^i_r(v) = 1
-        vis_weight : ndarray of shape (N,), default=None
-            Objective coefficients of Farkas dual
-
-        Returns
-        B_v_left, B_v_right : two lists of left and right datapoint indices in the VIS of B_v(Q)
-        """
-        if vis_weight is None:
-            vis_weight = {i: 0 for i in data.index}
-
-        if (len(Lv_I) == 0) or (len(Rv_I) == 0):
-            return None
-
-        """
-        # Remove any points in each index set whose feature set are equivalent
-        common_points_L, common_points_R = set(), set()
-        for x in Lv_I:
-            for y in Rv_I:
-                if data.loc[x, feature_set].equals(data.loc[y, feature_set]):
-                    common_points_L.add(x)
-                    common_points_R.add(y)
-        Lv_I -= common_points_L
-        Rv_I -= common_points_R
-        data = data.drop(common_points_L | common_points_R)"""
-
-        # VIS Dual Model
-        VIS_model = Model("VIS Dual")
-        VIS_model.Params.LogToConsole = 0
-
-        # VIS Dual Variables
-        lambda_L = VIS_model.addVars(Lv_I, vtype=GRB.CONTINUOUS, name='lambda_L')
-        lambda_R = VIS_model.addVars(Rv_I, vtype=GRB.CONTINUOUS, name='lambda_R')
-
-        # VIS Dual Constraints
-        VIS_model.addConstrs(
-            quicksum(lambda_L[i] * data.at[i, f] for i in Lv_I) ==
-            quicksum(lambda_R[i] * data.at[i, f] for i in Rv_I)
-            for f in data.columns.drop('target'))
-        VIS_model.addConstr(lambda_L.sum() == 1)
-        VIS_model.addConstr(lambda_R.sum() == 1)
-
-        # VIS Dual Objective
-        VIS_model.setObjective(quicksum(vis_weight[i] * lambda_L[i] for i in Lv_I) +
-                               quicksum(vis_weight[i] * lambda_R[i] for i in Rv_I), GRB.MINIMIZE)
-
-        # Optimize
-        VIS_model.optimize()
-
-        # Infeasiblity implies B_v(Q) is valid for all I in L_v(I), R_v(I)
-        # i.e. each i is correctly sent to left, right child (linearly separable points)
-        if VIS_model.Status == GRB.INFEASIBLE:
-            return None
-        lambda_L_sol = VIS_model.getAttr('X', lambda_L)
-        lambda_R_sol = VIS_model.getAttr('X', lambda_R)
-
-        VIS_left = []
-        VIS_right = []
-        for i in Lv_I:
-            if lambda_L_sol[i] > VIS_model.Params.FeasibilityTol:
-                VIS_left.append(i)
-                vis_weight[i] += 1
-        for i in Rv_I:
-            if lambda_R_sol[i] > VIS_model.Params.FeasibilityTol:
-                VIS_right.append(i)
-                vis_weight[i] += 1
-        return VIS_left, VIS_right
 
     ##############################################
     # Assign Nodes of Tree from Model Solution

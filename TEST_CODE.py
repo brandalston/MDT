@@ -1,5 +1,7 @@
-import MBDT_runs
+import MBDT_runs, warm_start_runs
 import UTILS
+from Benchmarks import FB_OCT, DL8_5, OCT_run, SOCT_run
+
 
 numerical = ['iris', 'banknote', 'blood', 'climate', 'wine_white', 'wine_red',
              'glass', 'image_segmentation', 'ionosphere', 'parkinsons']
@@ -12,24 +14,38 @@ test_cat = ['fico_binary', 'soybean_small', 'car', 'monk1', 'balance_scale', 'br
 time_limit = 600
 # rand_states = [138, 15, 89, 42, 0]
 rand_states = [138]
-file = 'benchmark_testing.csv'
+file = 'test_dump.csv'
 log_file = False
-test_data = ['house_votes_84']
-heights = [2]
+test_data = ['iris']
+heights = [5]
 
-data = UTILS.get_data('glass')
-print(data.head(5))
-"""
-############ MBDT ###############
-models = ['CUT1-UF','CUT1-FF-ROOT']
-b_type = ['SVM','ISING']  # CHOOSE ONE
+############ SOCT ###############
+models = ['SOCT-Benders']
+warm_start = [None, 'STUMP', 'SVM']  # CHOOSE ONE
+SOCT_run.main(
+    ["-d", test_data, "-h", heights, "-t", time_limit, "-m", models,
+     "-r", rand_states, "-f", file, "-w", warm_start[0], "-l", log_file])
+
+
+############ MBDT 2-STEP ###############
+models = ['CUT1-UF']
+b_type = '2-Step'  # CHOOSE ONE
 extras = None
 warm_start = {'use': False, 'values': None}
 MBDT_runs.main(
-   ["-d", test_data, "-h", heights, "-t", time_limit, "-m", models, "-b", b_type[0],
+   ["-d", test_data, "-h", heights, "-t", time_limit, "-m", models, "-b", b_type,
     "-r", rand_states, "-f", file, "-e", extras, "-w", warm_start, "-l", log_file])
 
+
+"""############ MBDT ISING ###############
+models = ['CUT1-UF-split', 'CUT1-UF-abs']
+b_type = 'ISING'
 MBDT_runs.main(
-   ["-d", test_data, "-h", heights, "-t", time_limit, "-m", models, "-b", b_type[1],
+   ["-d", test_data, "-h", heights, "-t", time_limit, "-m", models, "-b", b_type,
     "-r", rand_states, "-f", file, "-e", extras, "-w", warm_start, "-l", log_file])
 """
+
+models = ['CUT1-UF-split', 'CUT1-UF-abs']
+warm_start_runs.main(
+   ["-d", test_data, "-h", heights, "-t", time_limit, "-m", models,
+    "-r", rand_states, "-f", file, "-e", None, "-l", log_file])

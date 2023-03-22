@@ -15,15 +15,13 @@ def main(argv):
     time_limit = None
     modeltypes = None
     rand_states = None
-    warmstart = None
     model_extras = None
     file_out = None
     log_files = None
-    b_type = None
     try:
-        opts, args = getopt.getopt(argv, "d:h:t:m:b:r:f:e:w:l:",
-                                   ["data_files=", "heights=", "time_limit=", "models=", "branch_type=",
-                                    "rand_states=", "results_file=", "model_extras=", "warm_start=", "log_files"])
+        opts, args = getopt.getopt(argv, "d:h:t:m:r:f:e:w:l:",
+                                   ["data_files=", "heights=", "time_limit=", "models=",
+                                    "rand_states=", "results_file=", "model_extras=", "log_files"])
     except getopt.GetoptError:
         sys.exit(2)
     for opt, arg in opts:
@@ -35,16 +33,12 @@ def main(argv):
             time_limit = int(arg)
         elif opt in ("-m", "--model"):
             modeltypes = arg
-        elif opt in ("-b", "--branch_type"):
-            b_type = arg
         elif opt in ("-r", "--rand_states"):
             rand_states = arg
         elif opt in ("-f", "--results_file"):
             file_out = arg
         elif opt in ("-e", "--model_extras"):
             model_extras = arg
-        elif opt in ("-w", "--warm_start"):
-            warmstart = arg
         elif opt in ("-l", "--log_files"):
             log_files = arg
 
@@ -65,7 +59,7 @@ def main(argv):
     output_path = os.getcwd() + '/results_files/'
     log_path = os.getcwd() + '/log_files/'
     if file_out is None:
-        output_name = str(data_files) + '_H:' + str(heights) + '_' + str(b_type) + '_' + str(modeltypes) + \
+        output_name = str(data_files) + '_H:' + str(heights) + '_' + str(modeltypes) + \
                       '_T:' + str(time_limit) + '_E:' + str(model_extras) + '.csv'
     else:
         output_name = file_out
@@ -93,7 +87,7 @@ def main(argv):
                 cal_set, test_set = train_test_split(test_set, train_size=0.5, random_state=i)
                 model_set = pd.concat([train_set, cal_set])
                 for modeltype in modeltypes:
-                    print('\n'+str(modeltype)+'-' + str(b_type) +
+                    print('\n'+str(modeltype)+'-' +
                           ', Dataset: ' + str(file) + ', H: ' + str(h) + ', ''Rand State: ' + str(i) +
                           '. Run Start: ' + str(time.strftime("%I:%M %p", time.localtime())))
                     if log_files: log = log_path + '_' + str(file) + '_H:' + str(h) + '_M:' + str(
@@ -101,21 +95,25 @@ def main(argv):
                         model_extras)
                     else: log = None
                     # Generate tree and necessary structure information
-                    tree = TREE(h=h)
+                    tree_ws = TREE(h=h)
                     # Model with 75% training set and time limit
-                    # Specify model datapoint branching type
-                    if b_type == 'ISING':
-                        mbdt = MBDT_ising(data=model_set, tree=tree, target=target, modeltype=modeltype,
-                                          time_limit=time_limit, warmstart=warmstart,
-                                          modelextras=model_extras, log=log)
-                    else:
-                        mbdt = MBDT(data=model_set, tree=tree, target=target, modeltype=modeltype,
-                                    time_limit=time_limit, warmstart=warmstart,
-                                    modelextras=model_extras, log=log)
+                    mbdt_ws = MBDT(data=model_set, tree=tree_ws, target=target, modeltype=modeltype,
+                                   time_limit=time_limit, warmstart=False,
+                                   modelextras=model_extras, log=log)
+                    mbdt_ws.formulation()
+                    mbdt_ws.model.update()
+                    mbdt_ws.optimization()
+                    mbdt_ws.assign_tree()
+                    train_acc, train_assignments = UTILS.data_predict(tree=tree_ws, data=model_set, target=mbdt_ws.target)
+                    warm_start_dict = {'class': tree_ws.class_nodes, 'pruned': tree_ws.pruned_nodes,
+                                       'branched': tree_ws.branch_nodes, 'results': train_assignments, 'use': True}
+                    tree = TREE(h=h)
+                    mbdt = MBDT_ising(data=model_set, tree=tree, target=target, modeltype=modeltype,
+                                      time_limit=time_limit, warmstart=warm_start_dict,
+                                      modelextras=model_extras, log=log)
                     # Add connectivity constraints according to model type and solve
                     mbdt.formulation()
-                    if warmstart['use']: mbdt.warm_start()
-                    if model_extras is not None: mbdt.extras()
+                    mbdt.warm_start()
                     mbdt.model.update()
                     # if log_files:
                     #    mbdt.model.write(log + '.lp')
@@ -135,7 +133,7 @@ def main(argv):
                         results_writer.writerow(
                             [file, tree.height, len(mbdt.datapoints),
                              test_acc / len(test_set), train_acc / len(mbdt.datapoints), mbdt.model.Runtime,
-                             mbdt.modeltype, False, 0, mbdt.time_limit, i,
+                             mbdt.modeltype, True, mbdt_ws.model.RunTime, mbdt.time_limit, i,
                              mbdt.model.MIPGap, mbdt.model.ObjVal, mbdt.model.ObjBound,
                              mbdt.model._visnum, mbdt.model._viscuts, mbdt.model._vistime,
                              mbdt.HP_time,

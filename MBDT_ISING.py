@@ -11,15 +11,15 @@ class MBDT_ising:
 
     def __init__(self, data, tree, modeltype, time_limit, target, warmstart, modelextras, log=None):
         """"
-                Parameters
-                data: training data
-                tree: input decision tree object of prespecified user height
-                modeltype: modeltype to use for connectivity and optimization
-                time_limit: gurobi time limit in seconds
-                target: target column of training data
-                warm_start: dictionary warm start values
-                model_extras: list of modeltype extras
-                """
+        Parameters
+        data: training data
+        tree: input decision tree object of prespecified user height
+        modeltype: modeltype to use for connectivity and optimization
+        time_limit: gurobi time limit in seconds
+        target: target column of training data
+        warm_start: dictionary warm start values
+        model_extras: list of modeltype extras
+        """
         self.data = data
         self.tree = tree
         self.modeltype = modeltype
@@ -30,12 +30,10 @@ class MBDT_ising:
         self.log = log
         self.b_type = 'ISING'
 
-        print(f'Model: {self.modeltype}_Ising')
         # Feature, Class and Index Sets
         self.classes = data[target].unique()
         self.featureset = [col for col in self.data.columns.values if col != target]
         self.datapoints = data.index
-        self.epsilon = .005
 
         """ Decision Variables """
         self.B = 0
@@ -46,8 +44,10 @@ class MBDT_ising:
         self.Z = 0
         self.H_pos = 0
         self.H_neg = 0
+        self.H = 0
+        self.H_abs = 0
         self.D = 0
-        self.E = 0
+        # self.E = 0
         # VIS Weights
         self.vis_weight = {i: 0 for i in self.datapoints}
         # CUT model separation constraints
@@ -62,9 +62,6 @@ class MBDT_ising:
             self.cut_type = 'GRB'
         if any(ele in self.cut_type for ele in ['FF', 'ALL', 'MV']):
             self.eps = 4
-            if 'FRAC' not in self.cut_type: self.cut_type = 'FRAC-' + self.cut_type
-            if 'ROOT' in self.cut_type:
-                self.rootcuts = True
 
         """ Model extras """
         self.regularization = 'None'
@@ -72,13 +69,13 @@ class MBDT_ising:
 
         """ Gurobi Optimization Parameters """
         self.model = Model(f'{self.modeltype}')
-        self.model.Params.LogToConsole = 1
         self.model.Params.TimeLimit = time_limit
         self.model.Params.Threads = 1  # use one thread for testing purposes
         self.model.Params.LazyConstraints = 1
         self.model.Params.PreCrush = 1
         if self.log is not None:
             self.model.Params.LogFile = self.log + '.txt'
+        self.model.Params.LogToConsole = 1
 
         """ Model callback metrics """
         self.model._septime, self.model._sepnum, self.model._sepcuts, self.model._sepavg = 0, 0, 0, 0
@@ -110,13 +107,10 @@ class MBDT_ising:
         self.Q = self.model.addVars(self.datapoints, self.tree.V, vtype=GRB.BINARY, name='Q')
         # Left-right branching variable
         self.Z = self.model.addVars(self.datapoints, self.tree.V, vtype=GRB.CONTINUOUS, name='Z')
-        # Hyperplane variables
-        self.H = self.model.addVars(self.tree.V, self.featureset, vtype=GRB.CONTINUOUS, name='H')
-        self.H_abs = self.model.addVars(self.tree.V, self.featureset, vtype=GRB.CONTINUOUS, name='H_abs')
-        self.H_pos = self.model.addVars(self.tree.V, self.featureset, vtype=GRB.CONTINUOUS, lb=0, name='H_pos')
-        self.H_neg = self.model.addVars(self.tree.V, self.featureset, vtype=GRB.CONTINUOUS, lb=0, name='H_neg')
-        self.D = self.model.addVars(self.tree.V, vtype=GRB.CONTINUOUS, name='D')
-        self.E = self.model.addVars(self.datapoints, self.tree.V, vtype=GRB.CONTINUOUS, lb=0, name='E')
+        # Hyperplane constant variable
+        self.D = self.model.addVars(self.tree.B, vtype=GRB.CONTINUOUS, lb=-1, ub=1, name='D')
+        # Datapoint branching error variable
+        self.E = self.model.addVars(self.datapoints, self.tree.B, vtype=GRB.CONTINUOUS, lb=0, ub=2, name='E')
 
         """ Model Objective and Constraints """
         # Objective: Maximize the number of correctly classified datapoints
@@ -126,7 +120,8 @@ class MBDT_ising:
 
         # Pruned vertices not assigned to class
         # P[v] = sum(W[v,k], k in K) for v in V
-        self.model.addConstrs(self.P[v] == self.W.sum(v, '*') for v in self.tree.V)
+        self.model.addConstrs(self.P[v] == self.W.sum(v, '*')
+                              for v in self.tree.V)
 
         # Vertices must be branched, assigned to class, or pruned
         # B[v] + sum(P[u], u in path[v]) = 1 for v in V
@@ -134,7 +129,7 @@ class MBDT_ising:
                               for v in self.tree.V)
 
         # Cannot branch on leaf vertex
-        # B[v] = 0 for v in L, H[v,f] for v in L, for f in F
+        # B[v] = 0 for v in L
         for v in self.tree.L:
             self.B[v].ub = 0
 
@@ -144,29 +139,31 @@ class MBDT_ising:
             self.model.addConstrs(self.S[i, v] <= self.W[v, self.data.at[i, self.target]]
                                   for i in self.datapoints)
 
-        # If v not branching then all datapoints sent to left child
-        for v in self.tree.B:
-            self.model.addConstrs(self.Q[i, self.tree.RC[v]] <= self.B[v] for i in self.datapoints)
+        # If v not branching then all datapoints sent to right child
+        # for v in self.tree.B:
+            # self.model.addConstrs(self.Q[i, self.tree.RC[v]] <= self.B[v] for i in self.datapoints)
+            # self.model.addConstrs(self.Q[i, self.tree.LC[v]] <= self.B[v] for i in self.datapoints)
 
         # Each datapoint has at most one terminal vertex
-        self.model.addConstrs(self.S.sum(i, '*') <= 1 for i in self.datapoints)
+        self.model.addConstrs(self.S.sum(i, '*') <= 1
+                              for i in self.datapoints)
 
         # Lazy feasible path constraints (for fractional separation procedure)
-        if self.cut_type in ['GRB', 'FRAC']:
+        if any(ele in self.cut_type for ele in ['GRB', 'FF', 'ALL', 'MV']):
             # terminal vertex of datapoint must be in reachable path
             if 'CUT1' in self.modeltype:
-                self.cut_constraint = self.model.addConstrs(self.S[i, v] <= self.Q[i, c]
-                                                            for i in self.datapoints
-                                                            for v in self.tree.V if v != 0
-                                                            for c in self.tree.path[v][1:])
+                self.cut_constraint = self.model.addConstrs(
+                    self.S[i, v] <= self.Q[i, c]
+                    for i in self.datapoints
+                    for v in self.tree.V if v != 0
+                    for c in self.tree.path[v][1:])
             # terminal vertex of datapoint must be in reachable path for vertex and all children
             elif 'CUT2' in self.modeltype:
-                self.cut_constraint = self.model.addConstrs(self.S[i, v] + quicksum(self.S[i, u]
-                                                                                    for u in self.tree.child[v])
-                                                            <= self.Q[i, c]
-                                                            for i in self.datapoints
-                                                            for v in self.tree.V if v != 0
-                                                            for c in self.tree.path[v][1:])
+                self.cut_constraint = self.model.addConstrs(
+                    self.S[i, v] + quicksum(self.S[i, u] for u in self.tree.child[v]) <= self.Q[i, c]
+                    for i in self.datapoints
+                    for v in self.tree.V if v != 0
+                    for c in self.tree.path[v][1:])
             for i in self.datapoints:
                 for v in self.tree.V:
                     if v == 0: continue
@@ -175,9 +172,9 @@ class MBDT_ising:
 
         # All feasible path constraints upfront
         elif 'UF' in self.cut_type:
-            for i in self.datapoints:
-                for v in self.tree.V:
-                    if v == 0: continue
+            for v in self.tree.V:
+                if v == 0: continue
+                for i in self.datapoints:
                     # terminal vertex of datapoint must be in reachable path
                     if 'CUT1' in self.modeltype:
                         self.model.addConstrs(self.S[i, v] <= self.Q[i, c] for c in self.tree.path[v][1:])
@@ -186,44 +183,49 @@ class MBDT_ising:
                         self.model.addConstrs(self.S[i, v] + quicksum(self.S[i, u] for u in self.tree.child[v]) <=
                                               self.Q[i, c] for c in self.tree.path[v][1:])
 
-        # Left-right branching using soft-margin SVM
-        # for v in self.tree.B:
-            # self.model.addConstrs(self.Q[i, self.tree.RC[v]] + self.Q[i, self.tree.LC[v]] == 1
-            #                      for i in self.datapoints)
-            #self.model.addConstrs(self.Q[i, self.tree.LC[v]] - self.Q[i, self.tree.RC[v]] == self.Z[i, v]
-            #                      for i in self.datapoints)
-            """self.model.addConstrs(
-                (self.Q[i,self.tree.LC[v]]-self.Q[i,self.tree.RC[v]]) * (quicksum(
-                    (self.H_pos[v, f] - self.H_neg[v, f])*self.data.at[i, f] for f in self.featureset) + self.D[v])
-                >= 1 - self.E[i, v]
-                for i in self.datapoints)"""
-            """self.model.addConstrs(
-                self.Z[i, v] * (quicksum(
-                    (self.H_pos[v, f] - self.H_neg[v, f]) * self.data.at[i, f] for f in self.featureset) + self.D[v])
-                >= 1 - self.E[i, v]
-                for i in self.datapoints)
-            self.model.addConstrs(self.H_pos[v, f]-self.H_neg[v, f] >= 0 for f in self.featureset)"""
-            # self.model.addConstr(self.H_pos.sum(v, '*') <= 1)
-            # self.model.addConstr(self.H_neg.sum(v, '*') <= 1)
-            """self.model.addConstrs(
-                 self.Z[i, v] * (quicksum(self.H[v, f] * self.data[i, f] for f in self.featureset) + self.D[v])
-                 >= 1 - self.E[i, v]
-                 for i in self.datapoints)
-            self.model.addConstrs(
-                 self.H[v, f] == quicksum(self.E[i] * self.Z[i, v] * self.data.at[i, f] for i in self.data.index)
-                 for f in self.featureset)"""
-            # m.addConstr(quicksum(alpha[i] * data.at[i, 'svm'] for i in data.index) == 0)
-
-        self.model.addConstrs((quicksum(self.H[int(t / 2), j] * self.data.at[i, j] for j in self.featureset) <= self.D[int(t / 2)] + (
-                    max(self.data.at[i, j] for j in self.featureset) + 1) * (1 - self.Q[i, t])
-                               for i in self.datapoints for t in self.tree.V if t % 2 == 1))
-        self.model.addConstrs(
-            (quicksum(self.H[int(t / 2), j] * self.data.at[i, j] for j in self.featureset) >=
-             self.D[int(t / 2)] + self.epsilon - (max(self.data.at[i, j] for j in self.featureset) + 1 + self.epsilon) * (1 - self.Q[i, t])
-             for i in self.datapoints for t in self.tree.V if (t != 1) and (t % 2 == 0)))
-        self.model.addConstrs((self.H.sum(t, '*') <= 1 for t in self.tree.B))
-        self.model.addConstrs((self.H_abs[t, j] >= self.H[t, j] for t in self.tree.B for j in self.featureset))
-        self.model.addConstrs((self.H_abs[t, j] >= -self.H[t, j] for t in self.tree.B for j in self.featureset))
+        # Left-right branching using hard-margin SVM
+        for v in self.tree.B:
+            self.model.addConstrs(self.Q[i, self.tree.LC[v]] + self.Q[i, self.tree.RC[v]] <= 1
+                                  for i in self.datapoints)
+            self.model.addConstrs(self.Z[i, v] == self.Q[i, self.tree.LC[v]] - self.Q[i, self.tree.RC[v]]
+                                  for i in self.datapoints)
+        # Split SVM
+        if 'split' in self.cut_type:
+            self.H_pos = self.model.addVars(self.tree.B, self.featureset, vtype=GRB.CONTINUOUS, lb=0, ub=1, name='H_pos')
+            self.H_neg = self.model.addVars(self.tree.B, self.featureset, vtype=GRB.CONTINUOUS, lb=0, ub=1, name='H_neg')
+            for v in self.tree.B:
+                self.model.addConstr(self.H_pos.sum(v, '*') <= 1)
+                self.model.addConstr(self.H_neg.sum(v, '*') <= 1)
+                self.model.addConstrs(self.H_pos[v, f] - self.H_neg[v, f] >= 0 for f in self.featureset)
+                self.model.addConstrs(
+                    quicksum((self.H_pos[v, f] - self.H_neg[v, f])*self.data.at[i, f] for f in self.featureset)
+                    - self.D[v] >= 1 + self.E[i, v] - self.Z[i, v]*max(self.data.at[i, f] for f in self.featureset)
+                    for i in self.datapoints)
+        # Abs SVM
+        elif 'abs' in self.cut_type:
+            self.H = self.model.addVars(self.tree.B, self.featureset, vtype=GRB.CONTINUOUS, lb=-1, ub=1, name='H')
+            self.H_abs = self.model.addVars(self.tree.B, self.featureset, vtype=GRB.CONTINUOUS, lb=0, ub=1, name='H_abs')
+            for v in self.tree.B:
+                self.model.addConstrs(self.H[v, f] <= self.H_abs[v, f] for f in self.featureset)
+                self.model.addConstrs(-self.H[v, f] <= self.H_abs[v, f] for f in self.featureset)
+                self.model.addConstr(self.H_abs.sum(v, '*') <= 1)
+                self.model.addConstrs(
+                    self.Z[i, v] * (
+                            quicksum(self.H[v, f] * self.data.at[i, f] for f in self.featureset)
+                            - self.D[v]) >= 1 + self.E[i, v]
+                    for i in self.datapoints)
+        elif 'trad' in self.cut_type:
+            self.H = self.model.addVars(self.tree.B, self.featureset, vtype=GRB.CONTINUOUS, lb=-1, ub=1, name='H')
+            self.H_abs = self.model.addVars(self.tree.B, self.featureset, vtype=GRB.CONTINUOUS, lb=0, ub=1, name='H_abs')
+            for v in self.tree.B:
+                self.model.addConstrs(self.H[v, f] <= self.H_abs[v, f] for f in self.featureset)
+                self.model.addConstrs(-self.H[v, f] <= self.H_abs[v, f] for f in self.featureset)
+                self.model.addConstr(self.H_abs.sum(v, '*') <= 1)
+                self.model.addConstrs(
+                    self.Z[i, v] * (
+                            quicksum(self.H[v, f] * self.data.at[i, f] for f in self.featureset)
+                            - self.D[v]) >= 1 + self.E[i, v]
+                    for i in self.datapoints)
 
         """ Pass to Model DV for Callback / Optimization Purposes """
         self.model._B = self.B
@@ -266,7 +268,7 @@ class MBDT_ising:
                 model.terminate()
 
         # Add VIS Cuts at Branching Nodes of Feasible Solution
-        """
+
         if where == GRB.Callback.MIPSOL:
             model._visnum += 1
             start = time.perf_counter()
@@ -287,7 +289,7 @@ class MBDT_ising:
                         Rv_I.add(i)
                 # Test for VIS of B_v(Q)
                 # print('Test for VIS at', v, model._visnum)
-                VIS = MBDT_ising.VIS(model._data, Lv_I, Rv_I, vis_weight=model._vis_weight)
+                VIS = UTILS.VIS(model._data, Lv_I, Rv_I, vis_weight=model._vis_weight)
                 if VIS is None: continue
                 # If VIS Found, add cut
                 (B_v_left, B_v_right) = VIS
@@ -296,14 +298,13 @@ class MBDT_ising:
                              len(B_v_left) + len(B_v_right) - 1)
                 model._viscuts += 1
             model._vistime += time.perf_counter() - start
-        """
+
         # Add Feasible Path for Datapoints Cuts at Fractional Point in Branch and Bound Tree
         if (where == GRB.Callback.MIPNODE) and (model.cbGet(GRB.Callback.MIPNODE_STATUS) == GRB.OPTIMAL):
             if ('UF' in model._cut_type) or ('GRB' in model._cut_type): return
             start = time.perf_counter()
             # Only add cuts at root-node of branch and bound tree
-            if model._rootcuts:
-                if model.cbGet(GRB.Callback.MIPNODE_NODCNT) != 0: return
+            if model.cbGet(GRB.Callback.MIPNODE_NODCNT) != 0: return
             model._sepnum += 1
             q_val = model.cbGetNodeRel(model._Q)
             s_val = model.cbGetNodeRel(model._S)
@@ -369,83 +370,6 @@ class MBDT_ising:
                                 break
             model._septime += (time.perf_counter() - start)
 
-    @staticmethod
-    def VIS(data, Lv_I, Rv_I, vis_weight):
-        """
-        Find a minimal set of points that cannot be linearly separated by a split (a_v, c_v).
-        Use the support of Farkas dual (with heuristic objective) of the feasible primal LP to identify VIS of primal
-        Primal is B_v(Q) : a_v*x^i + 1 <= c_v for 1 for i in L_v(I) := {i in I : q^i_l(v) = 1}
-                           a_v*x^i - 1 <= c_v for 1 for i in R_v(I) := {i in I : q^i_r(v) = 1}
-        Parameters
-        data : dataframe of shape (I, F)
-        Lv_I : list of I s.t. q^i_l(v) = 1
-        Rv_I : list of I s.t. q^i_r(v) = 1
-        vis_weight : ndarray of shape (N,), default=None
-            Objective coefficients of Farkas dual
-
-        Returns
-        B_v_left, B_v_right : two lists of left and right datapoint indices in the VIS of B_v(Q)
-        """
-        if vis_weight is None:
-            vis_weight = {i: 0 for i in data.index}
-
-        if (len(Lv_I) == 0) or (len(Rv_I) == 0):
-            return None
-
-        """
-        # Remove any points in each index set whose feature set are equivalent
-        common_points_L, common_points_R = set(), set()
-        for x in Lv_I:
-            for y in Rv_I:
-                if data.loc[x, feature_set].equals(data.loc[y, feature_set]):
-                    common_points_L.add(x)
-                    common_points_R.add(y)
-        Lv_I -= common_points_L
-        Rv_I -= common_points_R
-        data = data.drop(common_points_L | common_points_R)"""
-
-        # VIS Dual Model
-        VIS_model = Model("VIS Dual")
-        VIS_model.Params.LogToConsole = 0
-
-        # VIS Dual Variables
-        lambda_L = VIS_model.addVars(Lv_I, vtype=GRB.CONTINUOUS, name='lambda_L')
-        lambda_R = VIS_model.addVars(Rv_I, vtype=GRB.CONTINUOUS, name='lambda_R')
-
-        # VIS Dual Constraints
-        VIS_model.addConstrs(
-            quicksum(lambda_L[i] * data.at[i, f] for i in Lv_I) ==
-            quicksum(lambda_R[i] * data.at[i, f] for i in Rv_I)
-            for f in data.columns.drop('target'))
-        VIS_model.addConstr(lambda_L.sum() == 1)
-        VIS_model.addConstr(lambda_R.sum() == 1)
-
-        # VIS Dual Objective
-        VIS_model.setObjective(quicksum(vis_weight[i] * lambda_L[i] for i in Lv_I) +
-                               quicksum(vis_weight[i] * lambda_R[i] for i in Rv_I), GRB.MINIMIZE)
-
-        # Optimize
-        VIS_model.optimize()
-
-        # Infeasiblity implies B_v(Q) is valid for all I in L_v(I), R_v(I)
-        # i.e. each i is correctly sent to left, right child (linearly separable points)
-        if VIS_model.Status == GRB.INFEASIBLE:
-            return None
-        lambda_L_sol = VIS_model.getAttr('X', lambda_L)
-        lambda_R_sol = VIS_model.getAttr('X', lambda_R)
-
-        VIS_left = []
-        VIS_right = []
-        for i in Lv_I:
-            if lambda_L_sol[i] > VIS_model.Params.FeasibilityTol:
-                VIS_left.append(i)
-                vis_weight[i] += 1
-        for i in Rv_I:
-            if lambda_R_sol[i] > VIS_model.Params.FeasibilityTol:
-                VIS_right.append(i)
-                vis_weight[i] += 1
-        return VIS_left, VIS_right
-
     ##############################################
     # Assign Nodes of Tree from Model Solution
     ##############################################
@@ -471,11 +395,13 @@ class MBDT_ising:
             B_sol = self.model.getAttr('X', self.B)
             W_sol = self.model.getAttr('X', self.W)
             P_sol = self.model.getAttr('X', self.P)
-            H_pos_sol = self.model.getAttr('X', self.H_pos)
-            H_neg_sol = self.model.getAttr('X', self.H_neg)
             D_sol = self.model.getAttr('X', self.D)
-            H_sol = self.model.getAttr('X', self.H)
-            H_abs_sol = self.model.getAttr('X', self.H_abs)
+            if 'split' in self.cut_type:
+                H_pos_sol = self.model.getAttr('X', self.H_pos)
+                H_neg_sol = self.model.getAttr('X', self.H_neg)
+            elif 'abs' in self.cut_type:
+                H_sol = self.model.getAttr('X', self.H)
+                H_abs_sol = self.model.getAttr('X', self.H_abs)
 
         # If no incumbent was found, then predict arbitrary class at root node
         except GurobiError:
@@ -498,12 +424,13 @@ class MBDT_ising:
                 self.tree.pruned_nodes[v] = 0
             # Define (a_v, c_v) on branching nodes
             elif P_sol[v] < 0.5 and B_sol[v] > 0.5:
-                # print(f'{v} branched')
-                # self.tree.a_v[v] = {f: H_pos_sol[v, f] - H_neg_sol[v, f] for f in self.featureset}
-                self.tree.a_v[v] = {f: H_sol[v, f] for f in self.featureset}
                 self.tree.c_v[v] = D_sol[v]
+                # print(f'{v} branched')
+                if 'split' in self.cut_type:
+                    self.tree.a_v[v] = {f: H_pos_sol[v, f] - H_neg_sol[v, f] for f in self.featureset}
+                elif 'abs' in self.cut_type:
+                    self.tree.a_v[v] = {f: H_sol[v, f] for f in self.featureset}
                 self.tree.branch_nodes[v] = (self.tree.a_v[v], self.tree.c_v[v])
-                # self.tree.branch_nodes[v] = self.tree.a_v[v]
 
     ##############################################
     # Warm Start Model
@@ -515,57 +442,72 @@ class MBDT_ising:
         Find feasible path and terminal vertex for each datapoint through tree
         Update according decision variable values
         """
-        # Generate random tree assignments if none were given
         if not self.warmstart['use']:
             return self
-        if self.warmstart['values'] is None:
-            warm_start_values = UTILS.random_tree(self.tree, self.data, self.target)
-            print('Warm starting model with randomly generated tree')
-        else:
-            warm_start_values = self.warmstart['values']
-            print('Warm starting model with passed values')
-        # Check tree assignments are valid
-        if not UTILS.tree_check(warm_start_values['tree']):
-            print('Invalid Tree!!')
-
-        # Retrieve node assignments
-        class_nodes = nx.get_node_attributes(warm_start_values['tree'].DG_prime, 'class')
-        branching_nodes = nx.get_node_attributes(warm_start_values['tree'].DG_prime, 'branching')
-        pruned_nodes = nx.get_node_attributes(warm_start_values['tree'].DG_prime, 'pruned')
-
-        # Warm start node assignment decision variables (B, W, P)
-        for v in class_nodes:
-            for k in self.classes:
-                if warm_start_values['tree'].DG_prime.nodes[v]['class'] == k:
-                    self.W[v, k].Start = 1.0
-                else:
-                    self.W[v, k].Start = 0
-            self.P[v].Start = 1.0
-            self.B[v].Start = 0
-        for v in branching_nodes:
-            self.B[v].Start = 1.0
-            for k in self.classes:
-                self.W[v, k].Start = 0
-            self.P[v].Start = 0
-        for v in pruned_nodes:
-            self.P[v].Start = 0
-            self.B[v].Start = 0
-            for k in self.classes:
-                self.W[v, k].Start = 0
 
         # Warm start datapoint selected source-terminal nodes decision variables (S, Q)
         for i in self.datapoints:
-            for v in warm_start_values['tree'].V:
-                if v == warm_start_values['results'][i][1][-1] and 'correct' in warm_start_values['results'][i]:
+            path = self.warmstart['results'][i][1]
+            for v in self.tree.V:
+                if v == path[-1] and 'correct' in self.warmstart['results'][i]:
                     self.S[i, v].Start = 1.0
-                elif v == warm_start_values['results'][i][1][-1]:
+                elif v == self.warmstart['results'][i][1][-1]:
                     self.S[i, v].Start = 0.0
                 else:
                     self.S[i, v].Start = 0.0
-                if v in warm_start_values['results'][i][1]:
+                if v in path:
                     self.Q[i, v].Start = 1.0
                 else:
                     self.Q[i, v].Start = 0.0
+            for v in set(self.tree.V)-set(path):
+                    self.Z[i, v].Start = 0.0
+            for v in path[1:]:
+                if v == self.tree.LC[self.tree.direct_ancestor[v]]:
+                    self.Z[i, v].Start = 1.0
+                elif v == self.tree.RC[self.tree.direct_ancestor[v]]:
+                    self.Z[i, v].Start = -1.0
+
+
+
+
+
+        for v in self.warmstart['class'].keys():
+            for k in self.classes:
+                if self.warmstart['class'][v] == k:
+                    self.W[v, k].Start = 1.0
+                else:
+                    self.W[v, k].Start = 0.0
+            self.P[v].Start = 1.0
+            self.B[v].Start = 0.0
+
+        for v in self.warmstart['pruned'].keys():
+            self.P[v].Start = 0.0
+            self.B[v].Start = 0.0
+            for k in self.classes:
+                self.W[v, k].Start = 0.0
+
+        for v in self.warmstart['branched'].keys():
+            self.B[v].Start = 1.0
+            for k in self.classes:
+                self.W[v, k].Start = 0.0
+            self.P[v].Start = 0.0
+            (a_v, c_v) = self.warmstart['branched'][v]
+            self.D[v].Start = c_v
+            if 'split' in self.cut_type:
+                for f in self.featureset:
+                    if a_v[f] > 0:
+                        self.H_pos[v, f].Start = a_v[f]
+                        self.H_neg[v, f].Start = 0.0
+                    else:
+                        self.H_neg[v, f].Start = a_v[f]
+                        self.H_pos[v, f].Start = 0.0
+            elif 'abs' in self.cut_type:
+                for f in self.featureset:
+                    self.H[v, f].Start = a_v[f]
+                    if a_v[f] > 0:
+                        self.H_abs[v, f].Start = a_v[f]
+                    else:
+                        self.H_abs[v, f].Start = -a_v[f]
 
     ##############################################
     # Model Extras

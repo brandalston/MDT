@@ -288,6 +288,83 @@ class Linear_Separator():
             return self
 
 
+def VIS(data, Lv_I, Rv_I, vis_weight):
+        """
+        Find a minimal set of points that cannot be linearly separated by a split (a_v, c_v).
+        Use the support of Farkas dual (with heuristic objective) of the feasible primal LP to identify VIS of primal
+        Primal is B_v(Q) : a_v*x^i + 1 <= c_v for 1 for i in L_v(I) := {i in I : q^i_l(v) = 1}
+                           a_v*x^i - 1 <= c_v for 1 for i in R_v(I) := {i in I : q^i_r(v) = 1}
+        Parameters
+        data : dataframe of shape (I, F)
+        Lv_I : list of I s.t. q^i_l(v) = 1
+        Rv_I : list of I s.t. q^i_r(v) = 1
+        vis_weight : ndarray of shape (N,), default=None
+            Objective coefficients of Farkas dual
+
+        Returns
+        B_v_left, B_v_right : two lists of left and right datapoint indices in the VIS of B_v(Q)
+        """
+        if vis_weight is None:
+            vis_weight = {i: 0 for i in data.index}
+
+        if (len(Lv_I) == 0) or (len(Rv_I) == 0):
+            return None
+
+        """
+        # Remove any points in each index set whose feature set are equivalent
+        common_points_L, common_points_R = set(), set()
+        for x in Lv_I:
+            for y in Rv_I:
+                if data.loc[x, feature_set].equals(data.loc[y, feature_set]):
+                    common_points_L.add(x)
+                    common_points_R.add(y)
+        Lv_I -= common_points_L
+        Rv_I -= common_points_R
+        data = data.drop(common_points_L | common_points_R)"""
+
+        # VIS Dual Model
+        VIS_model = Model("VIS Dual")
+        VIS_model.Params.LogToConsole = 0
+
+        # VIS Dual Variables
+        lambda_L = VIS_model.addVars(Lv_I, vtype=GRB.CONTINUOUS, name='lambda_L')
+        lambda_R = VIS_model.addVars(Rv_I, vtype=GRB.CONTINUOUS, name='lambda_R')
+
+        # VIS Dual Constraints
+        VIS_model.addConstrs(
+            quicksum(lambda_L[i] * data.at[i, f] for i in Lv_I) ==
+            quicksum(lambda_R[i] * data.at[i, f] for i in Rv_I)
+            for f in data.columns.drop('target'))
+        VIS_model.addConstr(lambda_L.sum() == 1)
+        VIS_model.addConstr(lambda_R.sum() == 1)
+
+        # VIS Dual Objective
+        VIS_model.setObjective(quicksum(vis_weight[i] * lambda_L[i] for i in Lv_I) +
+                               quicksum(vis_weight[i] * lambda_R[i] for i in Rv_I), GRB.MINIMIZE)
+
+        # Optimize
+        VIS_model.optimize()
+
+        # Infeasiblity implies B_v(Q) is valid for all I in L_v(I), R_v(I)
+        # i.e. each i is correctly sent to left, right child (linearly separable points)
+        if VIS_model.Status == GRB.INFEASIBLE:
+            return None
+        lambda_L_sol = VIS_model.getAttr('X', lambda_L)
+        lambda_R_sol = VIS_model.getAttr('X', lambda_R)
+
+        VIS_left = []
+        VIS_right = []
+        for i in Lv_I:
+            if lambda_L_sol[i] > VIS_model.Params.FeasibilityTol:
+                VIS_left.append(i)
+                vis_weight[i] += 1
+        for i in Rv_I:
+            if lambda_R_sol[i] > VIS_model.Params.FeasibilityTol:
+                VIS_right.append(i)
+                vis_weight[i] += 1
+        return VIS_left, VIS_right
+
+
 def model_results(model, tree):
     # Print assigned branching, classification, and pruned nodes of tree
 
