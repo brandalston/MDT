@@ -104,19 +104,24 @@ def main(argv):
                     mbdt_ws.model.update()
                     mbdt_ws.optimization()
                     mbdt_ws.assign_tree()
+                    # UTILS.model_results(mbdt_ws, tree_ws)
+                    for v in [0,1,2]:
+                        print(v, mbdt_ws.Q[111, v].X)
+                        # print(v, 93, mbdt_ws.Q[41, v].X)
+
                     train_acc, train_assignments = UTILS.data_predict(tree=tree_ws, data=model_set, target=mbdt_ws.target)
                     warm_start_dict = {'class': tree_ws.class_nodes, 'pruned': tree_ws.pruned_nodes,
                                        'branched': tree_ws.branch_nodes, 'results': train_assignments, 'use': True}
                     tree = TREE(h=h)
                     mbdt = MBDT_ising(data=model_set, tree=tree, target=target, modeltype=modeltype,
-                                      time_limit=time_limit, warmstart=warm_start_dict,
+                                      time_limit=time_limit, warmstart=mbdt_ws,
                                       modelextras=model_extras, log=log)
                     # Add connectivity constraints according to model type and solve
                     mbdt.formulation()
                     mbdt.warm_start()
                     mbdt.model.update()
-                    # if log_files:
-                    #    mbdt.model.write(log + '.lp')
+                    if log_files:
+                        mbdt.model.write(log + '.lp')
                     mbdt.optimization()
                     if mbdt.model.RunTime < time_limit:
                         print(f'Optimal solution found in {round(mbdt.model.RunTime,4)}s. '

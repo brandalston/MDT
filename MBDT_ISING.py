@@ -73,8 +73,8 @@ class MBDT_ising:
         self.model.Params.Threads = 1  # use one thread for testing purposes
         self.model.Params.LazyConstraints = 1
         self.model.Params.PreCrush = 1
-        if self.log is not None:
-            self.model.Params.LogFile = self.log + '.txt'
+        self.model.params.NonConvex = 2
+        # self.model.Params.SolFiles = 'foo'
         self.model.Params.LogToConsole = 1
 
         """ Model callback metrics """
@@ -106,7 +106,7 @@ class MBDT_ising:
         # Datapoint selected vertices in root-terminal path
         self.Q = self.model.addVars(self.datapoints, self.tree.V, vtype=GRB.BINARY, name='Q')
         # Left-right branching variable
-        self.Z = self.model.addVars(self.datapoints, self.tree.V, vtype=GRB.CONTINUOUS, name='Z')
+        self.Z = self.model.addVars(self.datapoints, self.tree.B, name='Z')
         # Hyperplane constant variable
         self.D = self.model.addVars(self.tree.B, vtype=GRB.CONTINUOUS, lb=-1, ub=1, name='D')
         # Datapoint branching error variable
@@ -147,6 +147,9 @@ class MBDT_ising:
         # Each datapoint has at most one terminal vertex
         self.model.addConstrs(self.S.sum(i, '*') <= 1
                               for i in self.datapoints)
+
+        for i in self.datapoints:
+            self.Q[i, 0].lb = 1
 
         # Lazy feasible path constraints (for fractional separation procedure)
         if any(ele in self.cut_type for ele in ['GRB', 'FF', 'ALL', 'MV']):
@@ -198,8 +201,10 @@ class MBDT_ising:
                 self.model.addConstr(self.H_neg.sum(v, '*') <= 1)
                 self.model.addConstrs(self.H_pos[v, f] - self.H_neg[v, f] >= 0 for f in self.featureset)
                 self.model.addConstrs(
-                    quicksum((self.H_pos[v, f] - self.H_neg[v, f])*self.data.at[i, f] for f in self.featureset)
-                    - self.D[v] >= 1 + self.E[i, v] - self.Z[i, v]*max(self.data.at[i, f] for f in self.featureset)
+                    self.Z[i, v]*(
+                            quicksum((self.H_pos[v, f] - self.H_neg[v, f])*self.data.at[i, f] for f in self.featureset)
+                            - self.D[v])
+                    >= 1 # + self.E[i, v]
                     for i in self.datapoints)
         # Abs SVM
         elif 'abs' in self.cut_type:
@@ -224,7 +229,7 @@ class MBDT_ising:
                 self.model.addConstrs(
                     self.Z[i, v] * (
                             quicksum(self.H[v, f] * self.data.at[i, f] for f in self.featureset)
-                            - self.D[v]) >= 1 + self.E[i, v]
+                            - self.D[v]) >= 1
                     for i in self.datapoints)
 
         """ Pass to Model DV for Callback / Optimization Purposes """
@@ -436,6 +441,24 @@ class MBDT_ising:
     # Warm Start Model
     ##############################################
     def warm_start(self):
+        for v in self.tree.V:
+            self.B[v].Start = self.warmstart.B[v].X
+            self.B[v].Start = self.warmstart.P[v].X
+            for k in self.classes:
+                self.W[v, k].Start = self.warmstart.W[v, k].X
+            for f in self.featureset:
+                if 'split' in self.cut_type:
+                    if self.warmstart.tree.branch_nodes[v][0][f] > 0:
+                        self.H_pos[v, f].Start = self.warmstart['branched'][v][0][f]
+                        self.H_neg[v, f].Start = 0.0
+                    else:
+                        self.H_neg[v, f].Start = self.warmstart['branched'][v][0][f]
+                        self.H_pos[v, f].Start = 0.0
+            for i in self.datapoints:
+                self.Q[i, v].Start = self.warmstart.Q[i, v].X
+                self.S[i, v].Start = self.warmstart.S[i, v].X
+
+    def warm_start_2(self):
         """
         Warm start tree with random (a,c) and classes
         Generate random tree from UTILS.random_tree()
@@ -444,32 +467,24 @@ class MBDT_ising:
         """
         if not self.warmstart['use']:
             return self
-
         # Warm start datapoint selected source-terminal nodes decision variables (S, Q)
         for i in self.datapoints:
-            path = self.warmstart['results'][i][1]
             for v in self.tree.V:
-                if v == path[-1] and 'correct' in self.warmstart['results'][i]:
+                if v == self.warmstart['results'][i][1][-1] and 'correct' in self.warmstart['results'][i]:
                     self.S[i, v].Start = 1.0
-                elif v == self.warmstart['results'][i][1][-1]:
-                    self.S[i, v].Start = 0.0
                 else:
                     self.S[i, v].Start = 0.0
-                if v in path:
+                if v in self.warmstart['results'][i][1]:
                     self.Q[i, v].Start = 1.0
                 else:
                     self.Q[i, v].Start = 0.0
-            for v in set(self.tree.V)-set(path):
-                    self.Z[i, v].Start = 0.0
-            for v in path[1:]:
+            # for v in set(self.tree.V)-set(path):
+            #    self.Z[i, v].Start = 0.0
+            """for v in path[1:]:
                 if v == self.tree.LC[self.tree.direct_ancestor[v]]:
                     self.Z[i, v].Start = 1.0
                 elif v == self.tree.RC[self.tree.direct_ancestor[v]]:
-                    self.Z[i, v].Start = -1.0
-
-
-
-
+                    self.Z[i, v].Start = 1.0"""
 
         for v in self.warmstart['class'].keys():
             for k in self.classes:
@@ -491,7 +506,7 @@ class MBDT_ising:
             for k in self.classes:
                 self.W[v, k].Start = 0.0
             self.P[v].Start = 0.0
-            (a_v, c_v) = self.warmstart['branched'][v]
+            """(a_v, c_v) = self.warmstart['branched'][v]
             self.D[v].Start = c_v
             if 'split' in self.cut_type:
                 for f in self.featureset:
@@ -507,7 +522,7 @@ class MBDT_ising:
                     if a_v[f] > 0:
                         self.H_abs[v, f].Start = a_v[f]
                     else:
-                        self.H_abs[v, f].Start = -a_v[f]
+                        self.H_abs[v, f].Start = -a_v[f]"""
 
     ##############################################
     # Model Extras

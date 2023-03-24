@@ -327,20 +327,20 @@ def VIS(data, Lv_I, Rv_I, vis_weight):
         VIS_model.Params.LogToConsole = 0
 
         # VIS Dual Variables
-        lambda_L = VIS_model.addVars(Lv_I, vtype=GRB.CONTINUOUS, name='lambda_L')
-        lambda_R = VIS_model.addVars(Rv_I, vtype=GRB.CONTINUOUS, name='lambda_R')
+        lambda_L = VIS_model.addVars(Lv_I, name='lambda_L')
+        lambda_R = VIS_model.addVars(Rv_I, name='lambda_R')
 
         # VIS Dual Constraints
         VIS_model.addConstrs(
-            quicksum(lambda_L[i] * data.at[i, f] for i in Lv_I) ==
-            quicksum(lambda_R[i] * data.at[i, f] for i in Rv_I)
+            quicksum(lambda_L[i]*data.at[i, f] for i in Lv_I) == quicksum(lambda_R[i]*data.at[i, f] for i in Rv_I)
             for f in data.columns.drop('target'))
         VIS_model.addConstr(lambda_L.sum() == 1)
         VIS_model.addConstr(lambda_R.sum() == 1)
 
         # VIS Dual Objective
-        VIS_model.setObjective(quicksum(vis_weight[i] * lambda_L[i] for i in Lv_I) +
-                               quicksum(vis_weight[i] * lambda_R[i] for i in Rv_I), GRB.MINIMIZE)
+        VIS_model.setObjective(
+            quicksum(vis_weight[i]*lambda_L[i] for i in Lv_I) + quicksum(vis_weight[i]*lambda_R[i] for i in Rv_I),
+            GRB.MINIMIZE)
 
         # Optimize
         VIS_model.optimize()
@@ -366,32 +366,31 @@ def VIS(data, Lv_I, Rv_I, vis_weight):
 
 
 def model_results(model, tree):
-    # Print assigned branching, classification, and pruned nodes of tree
-
     # Print tree node assignments (branching hyperplane weights, class, pruned)
     for v in tree.V:
-        if model.P[v].x > 0.5:
+        if model.P[v].X > 0.5:
             for k in model.classes:
-                if model.W[v, k].x > 0.5:
+                if model.W[v, k].X > 0.5:
                     print('Vertex ' + str(v) + ' class ' + str(k))
-        elif model.P[v].x < 0.5 and model.B[v].x > 0.5:
+        elif model.P[v].X < 0.5 and model.B[v].X > 0.5:
             print('Vertex ' + str(v) + ' branching', tree.a_v[v], tree.c_v[v])
-        elif model.P[v].x < 0.5 and model.B[v].x < 0.5:
+        elif model.P[v].X < 0.5 and model.B[v].X < 0.5:
             print('Vertex ' + str(v) + ' pruned')
 
     # Print datapoint paths through tree
-    """for i in sorted(model.data.index):
+    for i in model.datapoints:
         path = [0]
         for v in tree.V:
-            if model.Q[i, v].x > 0.5:
+            if model.Q[i, v].X > 0.5:
                 path.append(v)
-                if model.S[i, v].x > 0.5:
-                    print('Datapoint ' + str(i) + ' correctly assigned class ' + str(model.data.at[i, model.target])
-                         + ' at ' + str(v) + '. Path: ', path)
-                for k in model.data[model.target].unique():
-                    if model.W[v, k].x > 0.5:
-                        print('datapoint ' + str(i) + ' incorrectly assigned class ' + str(k)
-                              + ' at ' + str(v) + '. Path: ', path)"""
+        if model.S[i, path[-1]].X > 0.5:
+            print('Datapoint ' + str(i) + ' correctly assigned class ' + str(model.data.at[i, model.target])
+                 + ' at ' + str(path[-1]) + '. Path: ', path)
+        else:
+            for k in model.classes:
+                if model.W[path[-1], k].X > 0.5:
+                    print('Datapoint ' + str(i) + ' incorrectly assigned class ' + str(k)
+                          + ' at ' + str(path[-1]) + '. Path: ', path)
 
 
 def tree_check(tree):

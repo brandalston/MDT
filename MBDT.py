@@ -142,13 +142,16 @@ class MBDT:
                                   for i in self.datapoints)
 
         # If v not branching then all datapoints sent to right child
-        # for v in self.tree.B:
-            # self.model.addConstrs(self.Q[i, self.tree.RC[v]] <= self.B[v] for i in self.datapoints)
+        for v in self.tree.B:
+            self.model.addConstrs(self.Q[i, self.tree.RC[v]] <= self.B[v] for i in self.datapoints)
             # self.model.addConstrs(self.Q[i, self.tree.LC[v]] <= self.B[v] for i in self.datapoints)
 
         # Each datapoint has at most one terminal vertex
         self.model.addConstrs(self.S.sum(i, '*') <= 1
                               for i in self.datapoints)
+
+        for i in self.datapoints:
+            self.Q[i, 0].lb = 1.0
 
         # Lazy feasible path constraints (for fractional separation procedure)
         if any(ele in self.cut_type for ele in ['GRB', 'FF', 'ALL', 'MV']):
@@ -218,7 +221,7 @@ class MBDT:
                 model.terminate()
 
         # Add VIS Cuts at Branching Nodes of Feasible Solution
-        if where == GRB.Callback.MIPSOL:
+        """if where == GRB.Callback.MIPSOL:
             model._visnum += 1
             start = time.perf_counter()
             B = model.cbGetSolution(model._B)
@@ -236,9 +239,12 @@ class MBDT:
                         Lv_I.add(i)
                     elif Q[i, model._tree.RC[v]] > 0.5:
                         Rv_I.add(i)
+                print(v, Lv_I)
+                print(v, Rv_I)
                 # Test for VIS of B_v(Q)
                 # print(f'Test for VIS at {v}, VIS test count: {model._visnum}')
                 VIS = UTILS.VIS(model._data, Lv_I, Rv_I, vis_weight=model._vis_weight)
+                print(VIS)
 
                 # If VIS Found, add cut
                 if VIS is None: continue
@@ -248,7 +254,7 @@ class MBDT:
                              quicksum(model._Q[i, model._tree.RC[v]] for i in VIS_right) <=
                              len(VIS_left) + len(VIS_right) - 1)
                 model._viscuts += 1
-            model._vistime += time.perf_counter() - start
+            model._vistime += time.perf_counter() - start"""
 
         # Add Feasible Path for Datapoints Cuts at Fractional Point in Branch and Bound Tree
         if (where == GRB.Callback.MIPNODE) and (model.cbGet(GRB.Callback.MIPNODE_STATUS) == GRB.OPTIMAL):

@@ -118,7 +118,7 @@ def main(argv):
                     if model_extras is not None: mbdt.extras()
                     mbdt.model.update()
                     # if log_files:
-                    #    mbdt.model.write(log + '.lp')
+                    #    model.model.write(log + '.lp')
                     mbdt.optimization()
                     if mbdt.model.RunTime < time_limit:
                         print(f'Optimal solution found in {round(mbdt.model.RunTime,4)}s. '
