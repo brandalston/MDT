@@ -130,8 +130,7 @@ class MBDT:
 
         # Cannot branch on leaf vertex
         # B[v] = 0 for v in L
-        for v in self.tree.L:
-            self.B[v].ub = 0
+        for v in self.tree.L: self.B[v].ub = 0
 
         # Terminal vertex of correctly classified datapoint matches datapoint class
         # S[i,v] <= W[v,k=y^i] for v in V, for i in I
