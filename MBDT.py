@@ -122,13 +122,11 @@ class MBDT:
 
         # Pruned vertices not assigned to class
         # P[v] = sum(W[v,k], k in K) for v in V
-        self.model.addConstrs(self.P[v] == self.W.sum(v, '*')
-                              for v in self.tree.V)
+        self.model.addConstrs(self.P[v] == self.W.sum(v, '*') for v in self.tree.V)
 
         # Vertices must be branched, assigned to class, or pruned
         # B[v] + sum(P[u], u in path[v]) = 1 for v in V
-        self.model.addConstrs(self.B[v] + quicksum(self.P[u] for u in self.tree.path[v]) == 1
-                              for v in self.tree.V)
+        self.model.addConstrs(self.B[v] + quicksum(self.P[u] for u in self.tree.path[v]) == 1 for v in self.tree.V)
 
         # Cannot branch on leaf vertex
         # B[v] = 0 for v in L
@@ -138,20 +136,15 @@ class MBDT:
         # Terminal vertex of correctly classified datapoint matches datapoint class
         # S[i,v] <= W[v,k=y^i] for v in V, for i in I
         for v in self.tree.V:
-            self.model.addConstrs(self.S[i, v] <= self.W[v, self.data.at[i, self.target]]
-                                  for i in self.datapoints)
+            self.model.addConstrs(self.S[i, v] <= self.W[v, self.data.at[i, self.target]] for i in self.datapoints)
 
         # If v not branching then all datapoints sent to right child
         for v in self.tree.B:
-            self.model.addConstrs(self.Q[i, self.tree.RC[v]] <= self.B[v] for i in self.datapoints)
-            # self.model.addConstrs(self.Q[i, self.tree.LC[v]] <= self.B[v] for i in self.datapoints)
+            self.model.addConstrs(self.Q[i, self.tree.LC[v]] <= self.B[v] for i in self.datapoints)
+            # self.model.addConstrs(self.Q[i, self.tree.RC[v]] <= self.B[v] for i in self.datapoints)
 
         # Each datapoint has at most one terminal vertex
-        self.model.addConstrs(self.S.sum(i, '*') <= 1
-                              for i in self.datapoints)
-
-        for i in self.datapoints:
-            self.Q[i, 0].lb = 1.0
+        self.model.addConstrs(self.S.sum(i, '*') <= 1 for i in self.datapoints)
 
         # Lazy feasible path constraints (for fractional separation procedure)
         if any(ele in self.cut_type for ele in ['GRB', 'FF', 'ALL', 'MV']):
@@ -221,7 +214,7 @@ class MBDT:
                 model.terminate()
 
         # Add VIS Cuts at Branching Nodes of Feasible Solution
-        """if where == GRB.Callback.MIPSOL:
+        if where == GRB.Callback.MIPSOL:
             model._visnum += 1
             start = time.perf_counter()
             B = model.cbGetSolution(model._B)
@@ -239,12 +232,9 @@ class MBDT:
                         Lv_I.add(i)
                     elif Q[i, model._tree.RC[v]] > 0.5:
                         Rv_I.add(i)
-                print(v, Lv_I)
-                print(v, Rv_I)
                 # Test for VIS of B_v(Q)
                 # print(f'Test for VIS at {v}, VIS test count: {model._visnum}')
                 VIS = UTILS.VIS(model._data, Lv_I, Rv_I, vis_weight=model._vis_weight)
-                print(VIS)
 
                 # If VIS Found, add cut
                 if VIS is None: continue
@@ -254,7 +244,7 @@ class MBDT:
                              quicksum(model._Q[i, model._tree.RC[v]] for i in VIS_right) <=
                              len(VIS_left) + len(VIS_right) - 1)
                 model._viscuts += 1
-            model._vistime += time.perf_counter() - start"""
+            model._vistime += time.perf_counter() - start
 
         # Add Feasible Path for Datapoints Cuts at Fractional Point in Branch and Bound Tree
         if (where == GRB.Callback.MIPNODE) and (model.cbGet(GRB.Callback.MIPNODE_STATUS) == GRB.OPTIMAL):
@@ -379,7 +369,7 @@ class MBDT:
             # Lv_I, Rv_I index sets of observations sent to left, right child vertex of branching vertex v
             # svm_y maps Lv_I to -1, Rv_I to +1 for training hyperplane
             Lv_I, Rv_I = [], []
-            svm = {i: 0 for i in self.datapoints}
+            svm = {}
             for i in self.datapoints:
                 if Q_sol[i, self.tree.LC[v]] > 0.5:
                     Lv_I.append(i)
