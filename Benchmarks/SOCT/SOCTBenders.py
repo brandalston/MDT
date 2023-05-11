@@ -26,13 +26,14 @@ class SOCTBenders(ClassifierMixin, BaseEstimator):
     branch_rules_
     classification_rules_
     """
-    def __init__(self, max_depth, ccp_alpha=0.0, warm_start_tree=None, mip_gap=None, time_limit=None, log_to_console=None):
+    def __init__(self, max_depth, ccp_alpha=0.0, warm_start_tree=None, mip_gap=None, time_limit=None, log_to_console=None, log=None):
         self.max_depth = max_depth
         self.ccp_alpha = ccp_alpha
         self.warm_start_tree = warm_start_tree
         self.mip_gap = mip_gap
         self.time_limit = time_limit
         self.log_to_console = log_to_console
+        self.log = log
     
     def fit(self, X, y):
         """ Trains a classification tree using the S-OCT model, solved using Benders decomposition.
@@ -80,6 +81,8 @@ class SOCTBenders(ClassifierMixin, BaseEstimator):
         if self.time_limit is not None:
             model.Params.TimeLimit = self.time_limit
         model.Params.Threads = 1
+        if self.log:
+            model.Params.LogFile = self.log
         
         # Pack data into model
         model._X_y = X, y

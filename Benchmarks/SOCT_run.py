@@ -110,7 +110,7 @@ def main(argv):
                                                 time_limit=time_limit/5, log_to_console=False)
                             elif method == "Benders":
                                 soct = SOCTBenders(max_depth=h, ccp_alpha=ccp_alpha, warm_start_tree=test_svm_warm_start,
-                                                   time_limit=time_limit/5, log_to_console=False)
+                                                   time_limit=time_limit/5, log_to_console=True)
                             soct.fit(X_valid, y_valid)
                             if soct.branch_rules_ is not None:
                                 valid_acc = soct.score(X_test, y_test)
@@ -126,13 +126,16 @@ def main(argv):
                         stump.fit(X_train, y_train)
                         warm_start = stump.branch_rules_, stump.classification_rules_
                         warm_start_time = time.perf_counter() - start_time
-
+                    if log_files:
+                        log = log_path + '_' + str(file) + '_H:' + str(h) + '_M:' + str(modeltype) + \
+                              '_T:' + str(time_limit) + '_W:' + str(warm_start)
+                    else: log = None
                     if method == "Full":
                         soct = SOCTFull(max_depth=h, ccp_alpha=best_ccp_alpha, warm_start_tree=warm_start,
-                                        time_limit=time_limit, log_to_console=False)
+                                        time_limit=time_limit, log_to_console=False, log=log)
                     elif method == "Benders":
                         soct = SOCTBenders(max_depth=h, ccp_alpha=best_ccp_alpha, warm_start_tree=warm_start,
-                                           time_limit=time_limit, log_to_console=False)
+                                           time_limit=time_limit, log_to_console=True, log=log)
                     soct.fit(X_train, y_train)
                     if soct.model_.RunTime < time_limit:
                         print(f'Optimal solution found in {round(soct.model_.RunTime,4)}s. '
@@ -151,7 +154,3 @@ def main(argv):
                              soct.model_.MIPGap, soct.model_.ObjBound, soct.model_.ObjVal,
                              soct.model_._callback_calls, soct.model_._callback_cuts, soct.model_._callback_time, soct.hp_time])
                         results.close()
-                    if log_files:
-                        log = log_path + '_' + str(file) + '_H:' + str(h) + '_M:' + str(modeltype) + \
-                              '_T:' + str(time_limit) + '_W:' + str(warm_start)
-                        soct.model_.write(log + '.lp')

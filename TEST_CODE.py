@@ -14,33 +14,47 @@ time_limit = 600
 rand_states = [138]
 file = 'test_dump.csv'
 log_file = True
-test_data = ['iris','monk1']
-heights = [2,3]
+test_data = ['soybean_small']
+heights = [2]
 
-############ SOCT ###############
+"""############ SOCT ###############
 models = ['SOCT-Benders']
 warm_start = [None, 'STUMP', 'SVM']  # CHOOSE ONE
 SOCT_run.main(
     ["-d", test_data, "-h", heights, "-t", time_limit, "-m", models,
-     "-r", rand_states, "-f", file, "-w", warm_start[0], "-l", log_file])
+     "-r", rand_states, "-f", file, "-w", warm_start[0], "-l", log_file])"""
 
 ############ MBDT 2-STEP ###############
 models = ['CUT1-UF']
-b_type = '2-Step'  # CHOOSE ONE
+b_type = 'two-step'  # CHOOSE ONE
 extras = None
 warm_start = {'use': False, 'values': None}
 MBDT_runs.main(
     ["-d", test_data, "-h", heights, "-t", time_limit, "-m", models, "-b", b_type,
      "-r", rand_states, "-f", file, "-e", extras, "-w", warm_start, "-l", log_file])
 
-"""############ MBDT ISING ###############
-models = ['CUT1-UF-split', 'CUT1-UF-abs']
-b_type = 'ISING'
+############ MBDT ISING ###############
+extras = None
+warm_start = {'use': False, 'values': None}
+models = ['CUT1-UF-split']
+b_type = 'ising'
 MBDT_runs.main(
    ["-d", test_data, "-h", heights, "-t", time_limit, "-m", models, "-b", b_type,
     "-r", rand_states, "-f", file, "-e", extras, "-w", warm_start, "-l", log_file])
 
+models = ['CUT1-UF-abs']
+b_type = 'ising'
+MBDT_runs.main(
+   ["-d", test_data, "-h", heights, "-t", time_limit, "-m", models, "-b", b_type,
+    "-r", rand_states, "-f", file, "-e", extras, "-w", warm_start, "-l", log_file])
 
+models = ['CUT1-UF-trad']
+b_type = 'ising'
+MBDT_runs.main(
+   ["-d", test_data, "-h", heights, "-t", time_limit, "-m", models, "-b", b_type,
+    "-r", rand_states, "-f", file, "-e", extras, "-w", warm_start, "-l", log_file])
+
+"""############ MBDT ISING w/ 2-STEP WARM START ###############
 models = ['CUT1-UF-split']
 warm_start_runs.main(
     ["-d", test_data, "-h", heights, "-t", time_limit, "-m", models,

@@ -1,0 +1,160 @@
+
+Gurobi 10.0.1 (mac64[arm]) logging started Thu May 11 10:52:56 2023
+
+Set parameter LogFile to value "/Users/brandonalston/Desktop/Code/MDT/log_files/_soybean_small_H:5_M:SOCT-Benders_T:600_W:None"
+Gurobi Optimizer version 10.0.1 build v10.0.1rc0 (mac64[arm])
+
+CPU model: Apple M1
+Thread count: 8 physical cores, 8 logical processors, using up to 1 threads
+
+Optimize a model with 4477 rows, 3484 columns and 10068 nonzeros
+Model fingerprint: 0xc9db73a8
+Variable types: 2364 continuous, 1120 integer (1120 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+Found heuristic solution: objective 9.0000000
+Presolve removed 1120 rows and 1120 columns
+Presolve time: 0.01s
+Presolved: 3357 rows, 2364 columns, 7968 nonzeros
+Variable types: 1279 continuous, 1085 integer (1085 binary)
+
+Root relaxation: objective 3.500000e+01, 2263 iterations, 0.01 seconds (0.02 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+H    0     0                      35.0000000 1120.00000  3100%     -    0s
+     0     0          -    0        35.00000   35.00000  0.00%     -    0s
+
+Explored 1 nodes (2802 simplex iterations) in 0.06 seconds (0.05 work units)
+Thread count was 1 (of 8 available processors)
+
+Solution count 2: 35 9 
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 3.500000000000e+01, best bound 3.500000000000e+01, gap 0.0000%
+
+User-callback calls 285, time in user-callback 0.03 sec
+
+Gurobi 10.0.1 (mac64[arm]) logging started Thu May 11 10:59:04 2023
+
+Set parameter LogFile to value "/Users/brandonalston/Desktop/Code/MDT/log_files/_soybean_small_H:5_M:SOCT-Benders_T:600_W:None"
+Gurobi Optimizer version 10.0.1 build v10.0.1rc0 (mac64[arm])
+
+CPU model: Apple M1
+Thread count: 8 physical cores, 8 logical processors, using up to 1 threads
+
+Optimize a model with 4477 rows, 3484 columns and 10068 nonzeros
+Model fingerprint: 0xc9db73a8
+Variable types: 2364 continuous, 1120 integer (1120 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+Found heuristic solution: objective 9.0000000
+Presolve removed 1120 rows and 1120 columns
+Presolve time: 0.01s
+Presolved: 3357 rows, 2364 columns, 7968 nonzeros
+Variable types: 1279 continuous, 1085 integer (1085 binary)
+
+Root relaxation: objective 3.500000e+01, 2263 iterations, 0.02 seconds (0.02 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+H    0     0                      35.0000000 1120.00000  3100%     -    0s
+     0     0          -    0        35.00000   35.00000  0.00%     -    0s
+
+Explored 1 nodes (2802 simplex iterations) in 0.06 seconds (0.05 work units)
+Thread count was 1 (of 8 available processors)
+
+Solution count 2: 35 9 
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 3.500000000000e+01, best bound 3.500000000000e+01, gap 0.0000%
+
+User-callback calls 285, time in user-callback 0.03 sec
+
+Gurobi 10.0.1 (mac64[arm]) logging started Thu May 11 10:59:16 2023
+
+Set parameter LogFile to value "/Users/brandonalston/Desktop/Code/MDT/log_files/_soybean_small_H:5_M:SOCT-Benders_T:600_W:None"
+Gurobi Optimizer version 10.0.1 build v10.0.1rc0 (mac64[arm])
+
+CPU model: Apple M1
+Thread count: 8 physical cores, 8 logical processors, using up to 1 threads
+
+Optimize a model with 4477 rows, 3484 columns and 10068 nonzeros
+Model fingerprint: 0xc9db73a8
+Variable types: 2364 continuous, 1120 integer (1120 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+Found heuristic solution: objective 9.0000000
+Presolve removed 1120 rows and 1120 columns
+Presolve time: 0.01s
+Presolved: 3357 rows, 2364 columns, 7968 nonzeros
+Variable types: 1279 continuous, 1085 integer (1085 binary)
+
+Root relaxation: objective 3.500000e+01, 2263 iterations, 0.01 seconds (0.02 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+H    0     0                      35.0000000 1120.00000  3100%     -    0s
+     0     0          -    0        35.00000   35.00000  0.00%     -    0s
+
+Explored 1 nodes (2802 simplex iterations) in 0.06 seconds (0.05 work units)
+Thread count was 1 (of 8 available processors)
+
+Solution count 2: 35 9 
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 3.500000000000e+01, best bound 3.500000000000e+01, gap 0.0000%
+
+User-callback calls 284, time in user-callback 0.03 sec
+
+Gurobi 10.0.1 (mac64[arm]) logging started Thu May 11 11:00:53 2023
+
+Set parameter LogFile to value "/Users/brandonalston/Desktop/Code/MDT/log_files/_soybean_small_H:5_M:SOCT-Benders_T:600_W:None"
+Gurobi Optimizer version 10.0.1 build v10.0.1rc0 (mac64[arm])
+
+CPU model: Apple M1
+Thread count: 8 physical cores, 8 logical processors, using up to 1 threads
+
+Optimize a model with 4477 rows, 3484 columns and 10068 nonzeros
+Model fingerprint: 0xc9db73a8
+Variable types: 2364 continuous, 1120 integer (1120 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+Found heuristic solution: objective 9.0000000
+Presolve removed 1120 rows and 1120 columns
+Presolve time: 0.01s
+Presolved: 3357 rows, 2364 columns, 7968 nonzeros
+Variable types: 1279 continuous, 1085 integer (1085 binary)
+
+Root relaxation: objective 3.500000e+01, 2263 iterations, 0.02 seconds (0.02 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+H    0     0                      35.0000000 1120.00000  3100%     -    0s
+     0     0          -    0        35.00000   35.00000  0.00%     -    0s
+
+Explored 1 nodes (2802 simplex iterations) in 0.06 seconds (0.05 work units)
+Thread count was 1 (of 8 available processors)
+
+Solution count 2: 35 9 
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 3.500000000000e+01, best bound 3.500000000000e+01, gap 0.0000%
+
+User-callback calls 284, time in user-callback 0.03 sec

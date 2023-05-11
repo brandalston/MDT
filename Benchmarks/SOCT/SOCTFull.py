@@ -27,7 +27,7 @@ class SOCTFull(ClassifierMixin, BaseEstimator):
     branch_rules_
     classification_rules_
     """
-    def __init__(self, max_depth, ccp_alpha=0.0, epsilon=0.005, warm_start_tree=None, mip_gap=None, time_limit=None, log_to_console=None):
+    def __init__(self, max_depth, ccp_alpha=0.0, epsilon=0.005, warm_start_tree=None, mip_gap=None, time_limit=None, log_to_console=None, log=None):
         self.max_depth = max_depth
         self.ccp_alpha = ccp_alpha
         self.epsilon = epsilon
@@ -35,6 +35,7 @@ class SOCTFull(ClassifierMixin, BaseEstimator):
         self.mip_gap = mip_gap
         self.time_limit = time_limit
         self.log_to_console = log_to_console
+        self.log = log
     
     def fit(self, X, y):
         """ Trains a classification tree using the S-OCT model, solved as a full MIP.
@@ -81,6 +82,8 @@ class SOCTFull(ClassifierMixin, BaseEstimator):
         if self.time_limit is not None:
             model.Params.TimeLimit = self.time_limit
         model.Params.Threads = 1
+        if self.log:
+            model.Params.LogFile = self.log
         
         # Pack data into model
         model._X_y = X, y
@@ -118,7 +121,7 @@ class SOCTFull(ClassifierMixin, BaseEstimator):
         model.addConstrs((a_abs.sum(t,'*') <= 1 for t in branch_nodes))
         model.addConstrs((a_abs[t,j] >= a[t,j] for t in branch_nodes for j in range(p)))
         model.addConstrs((a_abs[t,j] >= -a[t,j] for t in branch_nodes for j in range(p)))
-        model.addConstrs((quicksum(a[int(t/2),j]*X[i,j] for j in range(p)) <= b[int(t/2)] + (max(X[i,j] for j in range(p)) + 1)*(1 - w[i,t]) for i in range(N) for t in all_nodes if t % 2 == 0))
+        model.addConstrs(quicksum(a[int(t/2),j]*X[i,j] for j in range(p)) <= b[int(t/2)] + (max(X[i,j] for j in range(p)) + 1)*(1 - w[i,t]) for i in range(N) for t in all_nodes if t % 2 == 0)
         model.addConstrs((quicksum(a[int(t/2),j]*X[i,j] for j in range(p)) >= b[int(t/2)] + self.epsilon + (-max(X[i,j] for j in range(p)) - 1 - self.epsilon)*(1 - w[i,t]) for i in range(N) for t in all_nodes if (t != 1) and (t % 2 == 1)))
         
         # Load warm start

@@ -1,0 +1,156 @@
+
+Gurobi 10.0.1 (mac64[arm]) logging started Thu May 11 10:52:57 2023
+
+Set parameter LogFile to value "/Users/brandonalston/Desktop/Code/MDT/log_files/_soybean_small_H:5_M:CUT1-UF-two-step_T:600_Seed:138_E:None"
+Gurobi Optimizer version 10.0.1 build v10.0.1rc0 (mac64[arm])
+
+CPU model: Apple M1
+Thread count: 8 physical cores, 8 logical processors, using up to 1 threads
+
+Optimize a model with 12481 rows, 4788 columns and 27544 nonzeros
+Model fingerprint: 0x5a6a1d41
+Variable types: 63 continuous, 4725 integer (4725 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+Found heuristic solution: objective -0.0000000
+Presolve removed 6909 rows and 81 columns
+Presolve time: 0.03s
+Presolved: 5572 rows, 4707 columns, 20426 nonzeros
+Variable types: 0 continuous, 4707 integer (4707 binary)
+
+Root relaxation: objective 3.500000e+01, 1559 iterations, 0.03 seconds (0.04 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+*    0     0               0      35.0000000   35.00000  0.00%     -    0s
+
+Explored 1 nodes (2537 simplex iterations) in 0.09 seconds (0.11 work units)
+Thread count was 1 (of 8 available processors)
+
+Solution count 2: 35 -0 
+
+Solve interrupted
+Best objective 3.500000000000e+01, best bound 3.500000000000e+01, gap 0.0000%
+
+User-callback calls 195, time in user-callback 0.02 sec
+
+Gurobi 10.0.1 (mac64[arm]) logging started Thu May 11 10:59:04 2023
+
+Set parameter LogFile to value "/Users/brandonalston/Desktop/Code/MDT/log_files/_soybean_small_H:5_M:CUT1-UF-two-step_T:600_Seed:138_E:None"
+Gurobi Optimizer version 10.0.1 build v10.0.1rc0 (mac64[arm])
+
+CPU model: Apple M1
+Thread count: 8 physical cores, 8 logical processors, using up to 1 threads
+
+Optimize a model with 12481 rows, 4788 columns and 27544 nonzeros
+Model fingerprint: 0x5a6a1d41
+Variable types: 63 continuous, 4725 integer (4725 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+Found heuristic solution: objective -0.0000000
+Presolve removed 6909 rows and 81 columns
+Presolve time: 0.03s
+Presolved: 5572 rows, 4707 columns, 20426 nonzeros
+Variable types: 0 continuous, 4707 integer (4707 binary)
+
+Root relaxation: objective 3.500000e+01, 1559 iterations, 0.03 seconds (0.04 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+*    0     0               0      35.0000000   35.00000  0.00%     -    0s
+
+Explored 1 nodes (2537 simplex iterations) in 0.09 seconds (0.11 work units)
+Thread count was 1 (of 8 available processors)
+
+Solution count 2: 35 -0 
+
+Solve interrupted
+Best objective 3.500000000000e+01, best bound 3.500000000000e+01, gap 0.0000%
+
+User-callback calls 195, time in user-callback 0.02 sec
+
+Gurobi 10.0.1 (mac64[arm]) logging started Thu May 11 10:59:17 2023
+
+Set parameter LogFile to value "/Users/brandonalston/Desktop/Code/MDT/log_files/_soybean_small_H:5_M:CUT1-UF-two-step_T:600_Seed:138_E:None"
+Gurobi Optimizer version 10.0.1 build v10.0.1rc0 (mac64[arm])
+
+CPU model: Apple M1
+Thread count: 8 physical cores, 8 logical processors, using up to 1 threads
+
+Optimize a model with 12481 rows, 4788 columns and 27544 nonzeros
+Model fingerprint: 0x5a6a1d41
+Variable types: 63 continuous, 4725 integer (4725 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+Found heuristic solution: objective -0.0000000
+Presolve removed 6909 rows and 81 columns
+Presolve time: 0.03s
+Presolved: 5572 rows, 4707 columns, 20426 nonzeros
+Variable types: 0 continuous, 4707 integer (4707 binary)
+
+Root relaxation: objective 3.500000e+01, 1559 iterations, 0.03 seconds (0.04 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+*    0     0               0      35.0000000   35.00000  0.00%     -    0s
+
+Explored 1 nodes (2537 simplex iterations) in 0.09 seconds (0.11 work units)
+Thread count was 1 (of 8 available processors)
+
+Solution count 2: 35 -0 
+
+Solve interrupted
+Best objective 3.500000000000e+01, best bound 3.500000000000e+01, gap 0.0000%
+
+User-callback calls 195, time in user-callback 0.02 sec
+
+Gurobi 10.0.1 (mac64[arm]) logging started Thu May 11 11:00:53 2023
+
+Set parameter LogFile to value "/Users/brandonalston/Desktop/Code/MDT/log_files/_soybean_small_H:5_M:CUT1-UF-two-step_T:600_Seed:138_E:None"
+Gurobi Optimizer version 10.0.1 build v10.0.1rc0 (mac64[arm])
+
+CPU model: Apple M1
+Thread count: 8 physical cores, 8 logical processors, using up to 1 threads
+
+Optimize a model with 12481 rows, 4788 columns and 27544 nonzeros
+Model fingerprint: 0x5a6a1d41
+Variable types: 63 continuous, 4725 integer (4725 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+Found heuristic solution: objective -0.0000000
+Presolve removed 6909 rows and 81 columns
+Presolve time: 0.03s
+Presolved: 5572 rows, 4707 columns, 20426 nonzeros
+Variable types: 0 continuous, 4707 integer (4707 binary)
+
+Root relaxation: objective 3.500000e+01, 1559 iterations, 0.03 seconds (0.04 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+*    0     0               0      35.0000000   35.00000  0.00%     -    0s
+
+Explored 1 nodes (2537 simplex iterations) in 0.09 seconds (0.11 work units)
+Thread count was 1 (of 8 available processors)
+
+Solution count 2: 35 -0 
+
+Solve interrupted
+Best objective 3.500000000000e+01, best bound 3.500000000000e+01, gap 0.0000%
+
+User-callback calls 195, time in user-callback 0.02 sec
