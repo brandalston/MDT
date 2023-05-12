@@ -135,7 +135,7 @@ def main(argv):
                                         time_limit=time_limit, log_to_console=False, log=log)
                     elif method == "Benders":
                         soct = SOCTBenders(max_depth=h, ccp_alpha=best_ccp_alpha, warm_start_tree=warm_start,
-                                           time_limit=time_limit, log_to_console=True, log=log)
+                                           time_limit=time_limit, log_to_console=False, log=log)
                     soct.fit(X_train, y_train)
                     if soct.model_.RunTime < time_limit:
                         print(f'Optimal solution found in {round(soct.model_.RunTime,4)}s. '

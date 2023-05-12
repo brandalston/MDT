@@ -3,7 +3,7 @@ import os, time, getopt, sys, csv
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from MBDT import MBDT
-from MBDT_ISING import MBDT_ising
+from MBDT_ONE_STEP import MBDT_one_step
 from TREE import TREE
 import UTILS
 
@@ -104,10 +104,10 @@ def main(argv):
                     tree = TREE(h=h)
                     # Model with 75% training set and time limit
                     # Specify model datapoint branching type
-                    if b_type == 'ising':
-                        mbdt = MBDT_ising(data=model_set, tree=tree, target=target, modeltype=modeltype,
-                                          time_limit=time_limit, warmstart=warmstart,
-                                          modelextras=model_extras, log=log)
+                    if b_type == 'one-step':
+                        mbdt = MBDT_one_step(data=model_set, tree=tree, target=target, modeltype=modeltype,
+                                             time_limit=time_limit, warmstart=warmstart,
+                                             modelextras=model_extras, log=log)
                     else:
                         mbdt = MBDT(data=model_set, tree=tree, target=target, modeltype=modeltype,
                                     time_limit=time_limit, warmstart=warmstart,

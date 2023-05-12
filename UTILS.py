@@ -413,25 +413,24 @@ def data_predict(tree, data, target):
     if not tree_check(tree): print('Tree is invalid')
     # Results dictionary for datapoint assignments and path through tree
     acc = 0
-    results = {i: [None, []] for i in data.index}
+    results = {i: [[], None] for i in data.index}
 
     for i in data.index:
         v = 0
-        while results[i][0] is None:
-            results[i][1].append(v)
+        while results[i][1] is None:
+            results[i][0].append(v)
             if v in tree.branch_nodes:
                 a_v, c_v = tree.a_v[v], tree.c_v[v]
                 v = tree.LC[v] if sum(a_v[f] * data.at[i, f] for f in data.columns if f != 'target') <= c_v else tree.RC[v]
             elif v in tree.class_nodes:
-                results[i][0] = tree.class_nodes[v]
-                if results[i][0] == data.at[i, target]:
+                results[i][1] = tree.class_nodes[v]
+                if results[i][1] == data.at[i, target]:
                     acc += 1
                     results[i].append('correct')
                 else:
                     results[i].append('incorrect')
             else:
-                results[i][0] = 'ERROR'
-
+                results[i][1] = 'ERROR'
     return acc, results
 
 

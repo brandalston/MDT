@@ -66,7 +66,7 @@ class MBDT:
 
         """ Gurobi Optimization Parameters """
         self.model = Model(f'{self.modeltype}_SVM')
-        self.model.Params.LogToConsole = 1
+        self.model.Params.LogToConsole = 0
         self.model.Params.TimeLimit = time_limit
         self.model.Params.Threads = 1  # use one thread for testing purposes
         self.model.Params.LazyConstraints = 1

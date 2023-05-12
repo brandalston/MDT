@@ -7,7 +7,7 @@ from gurobipy import *
 import UTILS
 
 
-class MBDT_ising:
+class MBDT_one_step:
 
     def __init__(self, data, tree, modeltype, time_limit, target, warmstart, modelextras, log=None):
         """"
@@ -28,7 +28,7 @@ class MBDT_ising:
         self.warmstart = warmstart
         self.modelextras = modelextras
         self.log = log
-        self.b_type = 'ising'
+        self.b_type = 'one-step'
 
         # Feature, Class and Index Sets
         self.classes = data[target].unique()
@@ -72,7 +72,7 @@ class MBDT_ising:
         """ Gurobi Optimization Parameters """
         self.model = Model(f'{self.modeltype}')
         self.model.Params.TimeLimit = time_limit
-        # self.model.Params.Threads = 1  # use one thread for testing purposes
+        self.model.Params.Threads = 1  # use one thread for testing purposes
         self.model.Params.LazyConstraints = 1
         self.model.Params.PreCrush = 1
         self.model.params.NonConvex = 2
@@ -148,8 +148,8 @@ class MBDT_ising:
         self.model.addConstrs(self.S.sum(i, '*') <= 1
                               for i in self.datapoints)
 
-        for i in self.datapoints:
-            self.Q[i, 0].lb = 1
+        # for i in self.datapoints:
+            # self.Q[i, 0].lb = 1
 
         # Lazy feasible path constraints (for fractional separation procedure)
         if any(ele in self.cut_type for ele in ['GRB', 'FF', 'ALL', 'MV']):
@@ -202,7 +202,7 @@ class MBDT_ising:
                     (self.Q[i, self.tree.LC[v]] - self.Q[i, self.tree.RC[v]]) * (
                             quicksum(
                                 (self.H_pos[v, f] - self.H_neg[v, f]) * self.data.at[i, f] for f in self.featureset)
-                            + (self.D_pos[v] - self.D_neg[v]))
+                            + self.D_pos[v])
                     >= 1 - self.E[i, v]
                     for i in self.datapoints)
         # Abs SVM
@@ -215,7 +215,7 @@ class MBDT_ising:
             for v in self.tree.B:
                 self.model.addConstrs(self.H[v, f] <= self.H_abs[v, f] for f in self.featureset)
                 self.model.addConstrs(-self.H[v, f] <= self.H_abs[v, f] for f in self.featureset)
-                # self.model.addConstr(self.H_abs.sum(v, '*') <= 1)
+                self.model.addConstr(self.H_abs.sum(v, '*') <= 1)
                 self.model.addConstrs(
                     (self.Q[i, self.tree.LC[v]] - self.Q[i, self.tree.RC[v]]) * (
                             quicksum(self.H[v, f] * self.data.at[i, f] for f in self.featureset)
@@ -223,7 +223,7 @@ class MBDT_ising:
                     for i in self.datapoints)
         elif 'trad' in self.cut_type:
             # Hyperplane variables
-            self.D = self.model.addVars(self.tree.B, vtype=GRB.CONTINUOUS, lb=0, name='D')
+            self.D = self.model.addVars(self.tree.B, vtype=GRB.CONTINUOUS, name='D')
             self.H = self.model.addVars(self.tree.B, self.featureset, vtype=GRB.CONTINUOUS, name='H')
             for v in self.tree.B:
                 self.model.addConstrs(
@@ -246,7 +246,7 @@ class MBDT_ising:
     # Model Optimization / Callbacks
     ##############################################
     def optimization(self):
-        self.model.optimize(MBDT_ising.callbacks)
+        self.model.optimize(MBDT_one_step.callbacks)
         if self.model.status == GRB.OPTIMAL:
             print('Optimal solution found in ' + str(round(self.model.Runtime, 2)) + 's. (' + str(
                 time.strftime("%I:%M %p", time.localtime())) + ')\n')
@@ -274,7 +274,7 @@ class MBDT_ising:
 
         # Add VIS Cuts at Branching Nodes of Feasible Solution
 
-        """if where == GRB.Callback.MIPSOL:
+        if where == GRB.Callback.MIPSOL:
             model._visnum += 1
             start = time.perf_counter()
             B = model.cbGetSolution(model._B)
@@ -302,7 +302,7 @@ class MBDT_ising:
                              quicksum(model._Q[i, model._tree.RC[v]] for i in B_v_right) <=
                              len(B_v_left) + len(B_v_right) - 1)
                 model._viscuts += 1
-            model._vistime += time.perf_counter() - start"""
+            model._vistime += time.perf_counter() - start
 
         # Add Feasible Path for Datapoints Cuts at Fractional Point in Branch and Bound Tree
         if (where == GRB.Callback.MIPNODE) and (model.cbGet(GRB.Callback.MIPNODE_STATUS) == GRB.OPTIMAL):
@@ -445,88 +445,48 @@ class MBDT_ising:
     # Warm Start Model
     ##############################################
     def warm_start(self):
-        for v in self.tree.V:
-            self.B[v].Start = self.warmstart.B[v].X
-            self.B[v].Start = self.warmstart.P[v].X
-            for k in self.classes:
-                self.W[v, k].Start = self.warmstart.W[v, k].X
-            for f in self.featureset:
-                if 'split' in self.cut_type:
-                    if self.warmstart.tree.branch_nodes[v][0][f] > 0:
-                        self.H_pos[v, f].Start = self.warmstart['branched'][v][0][f]
-                        self.H_neg[v, f].Start = 0.0
-                    else:
-                        self.H_neg[v, f].Start = self.warmstart['branched'][v][0][f]
-                        self.H_pos[v, f].Start = 0.0
-            for i in self.datapoints:
-                self.Q[i, v].Start = self.warmstart.Q[i, v].X
-                self.S[i, v].Start = self.warmstart.S[i, v].X
-
-    def warm_start_2(self):
-        """
-        Warm start tree with random (a,c) and classes
-        Generate random tree from UTILS.random_tree()
-        Find feasible path and terminal vertex for each datapoint through tree
-        Update according decision variable values
-        """
         if not self.warmstart['use']:
             return self
         # Warm start datapoint selected source-terminal nodes decision variables (S, Q)
         for i in self.datapoints:
             for v in self.tree.V:
-                if v == self.warmstart['results'][i][1][-1] and 'correct' in self.warmstart['results'][i]:
+                if v == self.warmstart['results'][i][0][-1] and 'correct' in self.warmstart['results'][i]:
                     self.S[i, v].Start = 1.0
                 else:
                     self.S[i, v].Start = 0.0
-                if v in self.warmstart['results'][i][1]:
+                if v in self.warmstart['results'][i][0]:
                     self.Q[i, v].Start = 1.0
                 else:
                     self.Q[i, v].Start = 0.0
-            # for v in set(self.tree.V)-set(path):
-            #    self.Z[i, v].Start = 0.0
-            """for v in path[1:]:
-                if v == self.tree.LC[self.tree.direct_ancestor[v]]:
-                    self.Z[i, v].Start = 1.0
-                elif v == self.tree.RC[self.tree.direct_ancestor[v]]:
-                    self.Z[i, v].Start = 1.0"""
 
-        for v in self.warmstart['class'].keys():
-            for k in self.classes:
-                if self.warmstart['class'][v] == k:
-                    self.W[v, k].Start = 1.0
-                else:
-                    self.W[v, k].Start = 0.0
+        for v in self.warmstart['class']:
             self.P[v].Start = 1.0
             self.B[v].Start = 0.0
-
-        for v in self.warmstart['pruned'].keys():
+            for k in self.classes:
+                if self.warmstart['class'][v] == k:
+                    self.W[v, k].start = 1
+                else: self.W[v, k].start = 0
+        for v in self.warmstart['pruned']:
             self.P[v].Start = 0.0
             self.B[v].Start = 0.0
             for k in self.classes:
                 self.W[v, k].Start = 0.0
-
-        for v in self.warmstart['branched'].keys():
-            self.B[v].Start = 1.0
+        for v in self.warmstart['branched']:
             for k in self.classes:
                 self.W[v, k].Start = 0.0
             self.P[v].Start = 0.0
-            """(a_v, c_v) = self.warmstart['branched'][v]
-            self.D[v].Start = c_v
+            self.B[v].Start = 1.0
+            (a_v, c_v) = self.warmstart['branched'][v]
             if 'split' in self.cut_type:
+                self.D_pos[v].start = c_v
+                self.D_neg[v].start = 0
                 for f in self.featureset:
-                    if a_v[f] > 0:
-                        self.H_pos[v, f].Start = a_v[f]
-                        self.H_neg[v, f].Start = 0.0
-                    else:
-                        self.H_neg[v, f].Start = a_v[f]
-                        self.H_pos[v, f].Start = 0.0
-            elif 'abs' in self.cut_type:
+                    self.H_pos[v, f].start = a_v[f]
+                    self.H_neg[v, f].start = 0
+            elif 'trad' in self.cut_type:
+                self.D[v].start = c_v
                 for f in self.featureset:
-                    self.H[v, f].Start = a_v[f]
-                    if a_v[f] > 0:
-                        self.H_abs[v, f].Start = a_v[f]
-                    else:
-                        self.H_abs[v, f].Start = -a_v[f]"""
+                    self.H[v, f].start = a_v[f]
 
     ##############################################
     # Model Extras

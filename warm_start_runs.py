@@ -3,7 +3,7 @@ import os, time, getopt, sys, csv
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from MBDT import MBDT
-from MBDT_ISING import MBDT_ising
+from MBDT_ONE_STEP import MBDT_one_step
 from TREE import TREE
 import UTILS
 
@@ -87,7 +87,7 @@ def main(argv):
                 cal_set, test_set = train_test_split(test_set, train_size=0.5, random_state=i)
                 model_set = pd.concat([train_set, cal_set])
                 for modeltype in modeltypes:
-                    print('\n'+str(modeltype)+'-' +
+                    print('\n'+str(modeltype) +
                           ', Dataset: ' + str(file) + ', H: ' + str(h) + ', ''Rand State: ' + str(i) +
                           '. Run Start: ' + str(time.strftime("%I:%M %p", time.localtime())))
                     if log_files: log = log_path + '_' + str(file) + '_H:' + str(h) + '_M:' + str(
@@ -104,18 +104,14 @@ def main(argv):
                     mbdt_ws.model.update()
                     mbdt_ws.optimization()
                     mbdt_ws.assign_tree()
-                    # UTILS.model_results(mbdt_ws, tree_ws)
-                    for v in [0,1,2]:
-                        print(v, mbdt_ws.Q[111, v].X)
-                        # print(v, 93, mbdt_ws.Q[41, v].X)
 
-                    train_acc, train_assignments = UTILS.data_predict(tree=tree_ws, data=model_set, target=mbdt_ws.target)
+                    ws_acc, ws_assignments = UTILS.data_predict(tree=tree_ws, data=model_set, target=mbdt_ws.target)
                     warm_start_dict = {'class': tree_ws.class_nodes, 'pruned': tree_ws.pruned_nodes,
-                                       'branched': tree_ws.branch_nodes, 'results': train_assignments, 'use': True}
+                                       'branched': tree_ws.branch_nodes, 'results': ws_assignments, 'use': True}
                     tree = TREE(h=h)
-                    mbdt = MBDT_ising(data=model_set, tree=tree, target=target, modeltype=modeltype,
-                                      time_limit=time_limit, warmstart=mbdt_ws,
-                                      modelextras=model_extras, log=log)
+                    mbdt = MBDT_one_step(data=model_set, tree=tree, target=target, modeltype=modeltype,
+                                         time_limit=time_limit, warmstart=warm_start_dict,
+                                         modelextras=model_extras, log=log)
                     # Add connectivity constraints according to model type and solve
                     mbdt.formulation()
                     mbdt.warm_start()
