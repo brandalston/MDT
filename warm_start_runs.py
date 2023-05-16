@@ -69,27 +69,26 @@ def main(argv):
             writer = csv.writer(f)
             writer.writerow(summary_columns)
             f.close()
-    """ We assume the target column of dataset is labeled 'target'
+    """ We assume the target column of dataname is labeled 'target'
     Change value at your discretion """
     target = 'target'
-    numerical_datasets = ['iris', 'banknote', 'blood', 'climate', 'wine-white', 'wine-red'
-                          'glass', 'image_segmentation', 'ionosphere', 'parkinsons', 'iris']
-    categorical_datasets = ['balance_scale', 'car', 'kr_vs_kp', 'house-votes-84', 'hayes_roth', 'breast_cancer',
-                            'monk1', 'monk2', 'monk3', 'soybean_small', 'spect', 'tic_tac_toe', 'fico_binary']
+
     for file in data_files:
         # if file in numerical_datasets: binarization = 'all-candidates'
         # else: binarization = False
-        # pull dataset to train model with
-        data = UTILS.get_data(file.replace('.csv', ''), binarization=None)
+        # pull dataname to train model with
+        # training_data = UTILS.get_data(file.replace('.csv', ''), binarization=None)
+        data = UTILS.get_data(dataname=file.replace('.csv', ''), binarization=None)
         for h in heights:
             for i in rand_states:
                 train_set, test_set = train_test_split(data, train_size=0.5, random_state=i)
                 cal_set, test_set = train_test_split(test_set, train_size=0.5, random_state=i)
                 model_set = pd.concat([train_set, cal_set])
+                data.dataset = model_set
                 for modeltype in modeltypes:
                     print('\n'+str(modeltype) +
                           ', Dataset: ' + str(file) + ', H: ' + str(h) + ', ''Rand State: ' + str(i) +
-                          '. Run Start: ' + str(time.strftime("%I:%M %p", time.localtime())))
+                          ' w/ Warm Start. Run Start: ' + str(time.strftime("%I:%M %p", time.localtime())))
                     if log_files: log = log_path + '_' + str(file) + '_H:' + str(h) + '_M:' + str(
                         modeltype) + '_T:' + str(time_limit) + '_Seed:' + str(i) + '_E:' + str(
                         model_extras)
@@ -106,7 +105,8 @@ def main(argv):
                     mbdt_ws.assign_tree()
 
                     ws_acc, ws_assignments = UTILS.data_predict(tree=tree_ws, data=model_set, target=mbdt_ws.target)
-                    print(tree_ws.branch_nodes)
+                    # print(tree_ws.branch_nodes)
+                    # print(tree_ws.class_nodes)
 
                     """a_v_norm, c_v_norm, branch_norm = {}, {}, {}
                     for v in tree_ws.branch_nodes:
@@ -126,7 +126,7 @@ def main(argv):
                     tree = TREE(h=h)
                     mbdt = MBDT_one_step(data=model_set, tree=tree, target=target, modeltype=modeltype,
                                          time_limit=time_limit, warmstart=warm_start_dict,
-                                         modelextras=model_extras, log=log, log_to_console=1)
+                                         modelextras=model_extras, log=log, log_to_console=0)
                     # Add connectivity constraints according to model type and solve
                     mbdt.formulation()
                     mbdt.warm_start()
@@ -140,8 +140,6 @@ def main(argv):
                     else:
                         print('Time limit reached. ('+str(time.strftime("%I:%M %p", time.localtime()))+')')
                     mbdt.assign_tree()
-                    # Uncomment to print model results
-                    # UTILS.model_results(opt_model, tree)
                     print(tree.branch_nodes)
                     print(tree.class_nodes)
                     test_acc, test_assignments = UTILS.data_predict(tree=tree, data=test_set, target=mbdt.target)
