@@ -20,10 +20,11 @@ def main(argv):
     file_out = None
     log_files = None
     b_type = None
+    console_log = None
     try:
-        opts, args = getopt.getopt(argv, "d:h:t:m:b:r:f:e:w:l:",
-                                   ["data_files=", "heights=", "time_limit=", "models=", "branch_type=",
-                                    "rand_states=", "results_file=", "model_extras=", "warm_start=", "log_files"])
+        opts, args = getopt.getopt(argv, "d:h:t:m:b:r:f:e:w:l:c:",
+                                   ["data_files=", "heights=", "time_limit=", "models=", "branch_type=", "rand_states=",
+                                    "results_file=", "model_extras=", "warm_start=", "log_files=", "console_log="])
     except getopt.GetoptError:
         sys.exit(2)
     for opt, arg in opts:
@@ -47,6 +48,8 @@ def main(argv):
             warmstart = arg
         elif opt in ("-l", "--log_files"):
             log_files = arg
+        elif opt in ("-c", "--console_log"):
+            console_log = arg
 
     ''' Columns of the results file generated '''
     summary_columns = ['Data', 'H', '|I|', 'Out_Acc', 'In_Acc', 'Sol_Time',
@@ -107,11 +110,11 @@ def main(argv):
                     if b_type == 'one-step':
                         mbdt = MBDT_one_step(data=model_set, tree=tree, target=target, modeltype=modeltype,
                                              time_limit=time_limit, warmstart=warmstart,
-                                             modelextras=model_extras, log=log)
+                                             modelextras=model_extras, log=log, log_to_console=console_log)
                     else:
                         mbdt = MBDT(data=model_set, tree=tree, target=target, modeltype=modeltype,
                                     time_limit=time_limit, warmstart=warmstart,
-                                    modelextras=model_extras, log=log)
+                                    modelextras=model_extras, log=log, log_to_console=console_log)
                     # Add connectivity constraints according to model type and solve
                     mbdt.formulation()
                     if warmstart['use']: mbdt.warm_start()

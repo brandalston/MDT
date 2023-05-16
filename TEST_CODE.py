@@ -17,26 +17,26 @@ log_file = True
 test_data = ['iris']
 heights = [3]
 
-############ SOCT ###############
+"""############ SOCT ###############
 models = ['SOCT-Benders']
 # warm_start = [None, 'STUMP', 'SVM']  # CHOOSE ONE
 SOCT_run.main(
     ["-d", test_data, "-h", heights, "-t", time_limit, "-m", models,
-     "-r", rand_states, "-f", file, "-w", None, "-l", log_file])
+     "-r", rand_states, "-f", file, "-w", None, "-l", log_file])"""
 
 ############ MBDT 2-STEP ###############
 models = ['CUT1-UF']
 b_type = 'two-step'  # CHOOSE ONE
 MBDT_runs.main(
-    ["-d", test_data, "-h", heights, "-t", time_limit, "-m", models, "-b", b_type,
-     "-r", rand_states, "-f", file, "-e", None, "-w",  {'use': False, 'values': None}, "-l", log_file])
+    ["-d", test_data, "-h", heights, "-t", time_limit, "-m", models, "-b", b_type, "-c", 0,
+     "-r", rand_states, "-f", file, "-e", None, "-w", {'use': False, 'values': None}, "-l", log_file])
 
-############ MBDT ONE STEP ###############
+"""############ MBDT ONE STEP ###############
 models = ['CUT1-UF-split'] # , 'CUT1-UF-abs', 'CUT1-UF-trad']
 b_type = 'one-step'
 MBDT_runs.main(
-   ["-d", test_data, "-h", heights, "-t", time_limit, "-m", models, "-b", b_type,
-    "-r", rand_states, "-f", file, "-e", None, "-w",  {'use': False, 'values': None}, "-l", log_file])
+   ["-d", test_data, "-h", heights, "-t", time_limit, "-m", models, "-b", b_type, "-c", 0,
+    "-r", rand_states, "-f", file, "-e", None, "-w", {'use': False, 'values': None}, "-l", log_file])"""
 
 ############ MBDT ISING w/ 2-STEP WARM START ###############
 models = ['CUT1-UF-trad']

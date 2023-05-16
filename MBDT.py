@@ -9,7 +9,7 @@ import UTILS
 
 class MBDT:
 
-    def __init__(self, data, tree, modeltype, time_limit, target, warmstart, modelextras, log=None):
+    def __init__(self, data, tree, modeltype, time_limit, target, warmstart, modelextras, log=None, log_to_console=0):
         """"
         Parameters
         data: training data
@@ -28,6 +28,7 @@ class MBDT:
         self.warmstart = warmstart
         self.modelextras = modelextras
         self.log = log
+        self.log_to_console = log_to_console
         self.b_type = '2-Step'
 
         # Feature, Class and Index Sets
@@ -66,7 +67,7 @@ class MBDT:
 
         """ Gurobi Optimization Parameters """
         self.model = Model(f'{self.modeltype}_SVM')
-        self.model.Params.LogToConsole = 0
+        self.model.Params.LogToConsole = int(self.log_to_console)
         self.model.Params.TimeLimit = time_limit
         self.model.Params.Threads = 1  # use one thread for testing purposes
         self.model.Params.LazyConstraints = 1

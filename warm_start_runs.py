@@ -99,19 +99,34 @@ def main(argv):
                     # Model with 75% training set and time limit
                     mbdt_ws = MBDT(data=model_set, tree=tree_ws, target=target, modeltype=modeltype,
                                    time_limit=time_limit, warmstart=False,
-                                   modelextras=model_extras, log=log)
+                                   modelextras=model_extras, log=log, log_to_console=0)
                     mbdt_ws.formulation()
                     mbdt_ws.model.update()
                     mbdt_ws.optimization()
                     mbdt_ws.assign_tree()
 
                     ws_acc, ws_assignments = UTILS.data_predict(tree=tree_ws, data=model_set, target=mbdt_ws.target)
+                    print(tree_ws.branch_nodes)
+
+                    """a_v_norm, c_v_norm, branch_norm = {}, {}, {}
+                    for v in tree_ws.branch_nodes:
+                        factor = 1.0 / sum(tree_ws.branch_nodes[v][0].values(),tree_ws.branch_nodes[v][1])
+                        a_v_norm[v] = {k: v*factor for k, v in tree_ws.branch_nodes[v][0].items()}
+                        c_v_norm[v] = tree_ws.branch_nodes[v][1]*factor
+                        branch_norm[v] = (a_v_norm[v], c_v_norm[v])
+                    print(branch_norm)
+                    tree_ws_norm = TREE(h=h)
+                    tree_ws_norm.a_v = a_v_norm
+                    tree_ws_norm.c_v = c_v_norm
+                    tree_ws_norm.class_nodes = tree_ws.class_nodes"""
+
                     warm_start_dict = {'class': tree_ws.class_nodes, 'pruned': tree_ws.pruned_nodes,
                                        'branched': tree_ws.branch_nodes, 'results': ws_assignments, 'use': True}
+
                     tree = TREE(h=h)
                     mbdt = MBDT_one_step(data=model_set, tree=tree, target=target, modeltype=modeltype,
                                          time_limit=time_limit, warmstart=warm_start_dict,
-                                         modelextras=model_extras, log=log)
+                                         modelextras=model_extras, log=log, log_to_console=1)
                     # Add connectivity constraints according to model type and solve
                     mbdt.formulation()
                     mbdt.warm_start()
@@ -127,6 +142,8 @@ def main(argv):
                     mbdt.assign_tree()
                     # Uncomment to print model results
                     # UTILS.model_results(opt_model, tree)
+                    print(tree.branch_nodes)
+                    print(tree.class_nodes)
                     test_acc, test_assignments = UTILS.data_predict(tree=tree, data=test_set, target=mbdt.target)
                     train_acc, train_assignments = UTILS.data_predict(tree=tree, data=model_set, target=mbdt.target)
                     with open(out_file, mode='a') as results:
