@@ -67,12 +67,12 @@ class MBDT:
 
         """ Gurobi Optimization Parameters """
         self.model = Model(f'{self.modeltype}_SVM')
-        self.model.Params.LogToConsole = int(self.log_to_console)
         self.model.Params.TimeLimit = time_limit
         self.model.Params.Threads = 1  # use one thread for testing purposes
         self.model.Params.LazyConstraints = 1
         self.model.Params.PreCrush = 1
         # Save Gurobi log to file
+        self.model.Params.LogToConsole = int(self.log_to_console)
         if self.log:
             self.model.Params.LogFile = self.log
         """ Model callback metrics """
