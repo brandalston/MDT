@@ -78,16 +78,16 @@ def main(argv):
     categorical_datasets = ['balance_scale', 'car', 'kr_vs_kp', 'house-votes-84', 'hayes_roth', 'breast_cancer',
                             'monk1', 'monk2', 'monk3', 'soybean_small', 'spect', 'tic_tac_toe', 'fico_binary']
     for file in data_files:
-        data = OU.get_data(file.replace('.csv', ''), binarization=None)
+        data = OU.data(file.replace('.csv', ''), binarization=None)
+        data.get_data()
         for h in heights:
             for i in rand_states:
-                train_set, test_set = train_test_split(data, train_size=0.5, random_state=i)
+                train_set, test_set = train_test_split(data.dataset, train_size=0.5, random_state=i)
                 cal_set, test_set = train_test_split(test_set, train_size=0.5, random_state=i)
                 model_set = pd.concat([train_set, cal_set])
                 X_train, y_train = model_set.drop('target', axis=1), model_set['target']
                 X_test, y_test = test_set.drop('target', axis=1), test_set['target']
                 X_valid, y_valid = cal_set.drop('target', axis=1), cal_set['target']
-                data_map = {i: X_train.index[i] for i in range(len(X_train))}
                 for modeltype in modeltypes:
                     print('\n' + str(modeltype) + ', Warm Start: ' + str(warm_start)+ ', Dataset: ' + str(file) +
                           ', H: ' + str(h) + ', Rand State: ' + str(i) +

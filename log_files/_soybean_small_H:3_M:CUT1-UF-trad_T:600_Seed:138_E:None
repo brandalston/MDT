@@ -1,0 +1,824 @@
+
+Gurobi 10.0.1 (mac64[arm]) logging started Tue May 16 13:34:29 2023
+
+Set parameter LogFile to value "/Users/brandonalston/Desktop/Code/MDT/log_files/_soybean_small_H:3_M:CUT1-UF-trad_T:600_Seed:138_E:None"
+Gurobi Optimizer version 10.0.1 build v10.0.1rc0 (mac64[arm])
+
+CPU model: Apple M1
+Thread count: 8 physical cores, 8 logical processors, using up to 1 threads
+
+Optimize a model with 714 rows, 450 columns and 1663 nonzeros
+Model fingerprint: 0xab44da2d
+Variable types: 15 continuous, 435 integer (435 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+Found heuristic solution: objective -0.0000000
+Presolve removed 270 rows and 38 columns
+Presolve time: 0.00s
+Presolved: 444 rows, 412 columns, 1335 nonzeros
+Variable types: 0 continuous, 412 integer (412 binary)
+Found heuristic solution: objective 5.0000000
+
+Root relaxation: objective 1.200000e+01, 295 iterations, 0.00 seconds (0.00 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+H    0     0                      12.0000000  168.00000  1300%     -    0s
+     0     0          -    0        12.00000   12.00000  0.00%     -    0s
+
+Explored 1 nodes (405 simplex iterations) in 0.02 seconds (0.01 work units)
+Thread count was 1 (of 8 available processors)
+
+Solution count 3: 12 5 -0 
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 1.200000000000e+01, best bound 1.200000000000e+01, gap 0.0000%
+
+User-callback calls 205, time in user-callback 0.01 sec
+
+Gurobi 10.0.1 (mac64[arm]) logging started Tue May 16 13:34:29 2023
+
+Set parameter LogFile to value "/Users/brandonalston/Desktop/Code/MDT/log_files/_soybean_small_H:3_M:CUT1-UF-trad_T:600_Seed:138_E:None"
+Warning: Q constraint 0 doesn't have a name
+Gurobi Optimizer version 10.0.1 build v10.0.1rc0 (mac64[arm])
+
+CPU model: Apple M1
+Thread count: 8 physical cores, 8 logical processors, using up to 1 threads
+
+Optimize a model with 1780 rows, 2141 columns and 4094 nonzeros
+Model fingerprint: 0xe9aef330
+Model has 245 quadratic constraints
+Variable types: 1016 continuous, 1125 integer (1125 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  QMatrix range    [1e+00, 1e+00]
+  QLMatrix range   [1e+00, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+  QRHS range       [1e+00, 1e+00]
+
+User MIP start produced solution with objective 26 (0.00s)
+Loaded user MIP start with objective 26
+
+Presolve removed 225 rows and 23 columns
+Presolve time: 0.02s
+Presolved: 1555 rows, 2118 columns, 12996 nonzeros
+Variable types: 1001 continuous, 1117 integer (1117 binary)
+Found heuristic solution: objective 35.0000000
+
+Root relaxation: cutoff, 0 iterations, 0.00 seconds (0.00 work units)
+
+Explored 1 nodes (0 simplex iterations) in 0.02 seconds (0.04 work units)
+Thread count was 1 (of 8 available processors)
+
+Solution count 2: 35 26 
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 3.500000000000e+01, best bound 3.500000000000e+01, gap 0.0000%
+
+User-callback calls 208, time in user-callback 0.00 sec
+
+Gurobi 10.0.1 (mac64[arm]) logging started Tue May 16 13:35:34 2023
+
+Set parameter LogFile to value "/Users/brandonalston/Desktop/Code/MDT/log_files/_soybean_small_H:3_M:CUT1-UF-trad_T:600_Seed:138_E:None"
+Gurobi Optimizer version 10.0.1 build v10.0.1rc0 (mac64[arm])
+
+CPU model: Apple M1
+Thread count: 8 physical cores, 8 logical processors, using up to 1 threads
+
+Optimize a model with 1341 rows, 780 columns and 3060 nonzeros
+Model fingerprint: 0x5e9f40db
+Variable types: 15 continuous, 765 integer (765 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+Found heuristic solution: objective -0.0000000
+Presolve removed 475 rows and 23 columns
+Presolve time: 0.00s
+Presolved: 866 rows, 757 columns, 2542 nonzeros
+Variable types: 0 continuous, 757 integer (757 binary)
+
+Root relaxation: objective 2.300000e+01, 660 iterations, 0.01 seconds (0.01 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+H    0     0                      23.0000000  322.00000  1300%     -    0s
+     0     0          -    0        23.00000   23.00000  0.00%     -    0s
+
+Explored 1 nodes (932 simplex iterations) in 0.03 seconds (0.02 work units)
+Thread count was 1 (of 8 available processors)
+
+Solution count 2: 23 -0 
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 2.300000000000e+01, best bound 2.300000000000e+01, gap 0.0000%
+
+User-callback calls 160, time in user-callback 0.01 sec
+
+Gurobi 10.0.1 (mac64[arm]) logging started Tue May 16 13:35:34 2023
+
+Set parameter LogFile to value "/Users/brandonalston/Desktop/Code/MDT/log_files/_soybean_small_H:3_M:CUT1-UF-trad_T:600_Seed:138_E:None"
+Warning: Q constraint 0 doesn't have a name
+Gurobi Optimizer version 10.0.1 build v10.0.1rc0 (mac64[arm])
+
+CPU model: Apple M1
+Thread count: 8 physical cores, 8 logical processors, using up to 1 threads
+
+Optimize a model with 1780 rows, 2141 columns and 4094 nonzeros
+Model fingerprint: 0xd06e0fb5
+Model has 245 quadratic constraints
+Variable types: 1016 continuous, 1125 integer (1125 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  QMatrix range    [1e+00, 1e+00]
+  QLMatrix range   [1e+00, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+  QRHS range       [1e+00, 1e+00]
+
+User MIP start produced solution with objective 19 (0.00s)
+Loaded user MIP start with objective 19
+
+Presolve removed 225 rows and 23 columns
+Presolve time: 0.02s
+Presolved: 1555 rows, 2118 columns, 12996 nonzeros
+Variable types: 1001 continuous, 1117 integer (1117 binary)
+Found heuristic solution: objective 35.0000000
+
+Root relaxation: cutoff, 0 iterations, 0.00 seconds (0.00 work units)
+
+Explored 1 nodes (0 simplex iterations) in 0.02 seconds (0.04 work units)
+Thread count was 1 (of 8 available processors)
+
+Solution count 2: 35 19 
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 3.500000000000e+01, best bound 3.500000000000e+01, gap 0.0000%
+
+User-callback calls 207, time in user-callback 0.00 sec
+
+Gurobi 10.0.1 (mac64[arm]) logging started Tue May 16 13:35:53 2023
+
+Set parameter LogFile to value "/Users/brandonalston/Desktop/Code/MDT/log_files/_soybean_small_H:3_M:CUT1-UF-trad_T:600_Seed:138_E:None"
+Gurobi Optimizer version 10.0.1 build v10.0.1rc0 (mac64[arm])
+
+CPU model: Apple M1
+Thread count: 8 physical cores, 8 logical processors, using up to 1 threads
+
+Optimize a model with 2025 rows, 1140 columns and 4584 nonzeros
+Model fingerprint: 0x1efde699
+Variable types: 15 continuous, 1125 integer (1125 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+Found heuristic solution: objective -0.0000000
+Presolve removed 715 rows and 23 columns
+Presolve time: 0.01s
+Presolved: 1310 rows, 1117 columns, 3826 nonzeros
+Variable types: 0 continuous, 1117 integer (1117 binary)
+
+Root relaxation: objective 3.500000e+01, 1043 iterations, 0.02 seconds (0.02 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+*    0     0               0      35.0000000   35.00000  0.00%     -    0s
+
+Explored 1 nodes (1043 simplex iterations) in 0.04 seconds (0.04 work units)
+Thread count was 1 (of 8 available processors)
+
+Solution count 2: 35 -0 
+
+Solve interrupted
+Best objective 3.500000000000e+01, best bound 3.500000000000e+01, gap 0.0000%
+
+User-callback calls 165, time in user-callback 0.02 sec
+
+Gurobi 10.0.1 (mac64[arm]) logging started Tue May 16 13:35:53 2023
+
+Set parameter LogFile to value "/Users/brandonalston/Desktop/Code/MDT/log_files/_soybean_small_H:3_M:CUT1-UF-trad_T:600_Seed:138_E:None"
+Warning: Q constraint 0 doesn't have a name
+Gurobi Optimizer version 10.0.1 build v10.0.1rc0 (mac64[arm])
+
+CPU model: Apple M1
+Thread count: 8 physical cores, 8 logical processors, using up to 1 threads
+
+Optimize a model with 1780 rows, 2141 columns and 4094 nonzeros
+Model fingerprint: 0x63581ad2
+Model has 245 quadratic constraints
+Variable types: 1016 continuous, 1125 integer (1125 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  QMatrix range    [1e+00, 1e+00]
+  QLMatrix range   [1e+00, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+  QRHS range       [1e+00, 1e+00]
+
+User MIP start produced solution with objective 35 (0.00s)
+Loaded user MIP start with objective 35
+
+Presolve removed 225 rows and 23 columns
+Presolve time: 0.02s
+Presolved: 1555 rows, 2118 columns, 12996 nonzeros
+Variable types: 1001 continuous, 1117 integer (1117 binary)
+
+Root relaxation: cutoff, 0 iterations, 0.00 seconds (0.00 work units)
+
+Explored 1 nodes (0 simplex iterations) in 0.02 seconds (0.04 work units)
+Thread count was 1 (of 8 available processors)
+
+Solution count 1: 35 
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 3.500000000000e+01, best bound 3.500000000000e+01, gap 0.0000%
+
+User-callback calls 205, time in user-callback 0.00 sec
+
+Gurobi 10.0.1 (mac64[arm]) logging started Tue May 16 13:36:26 2023
+
+Set parameter LogFile to value "/Users/brandonalston/Desktop/Code/MDT/log_files/_soybean_small_H:3_M:CUT1-UF-trad_T:600_Seed:138_E:None"
+Gurobi Optimizer version 10.0.1 build v10.0.1rc0 (mac64[arm])
+
+CPU model: Apple M1
+Thread count: 8 physical cores, 8 logical processors, using up to 1 threads
+
+Optimize a model with 2025 rows, 1140 columns and 4584 nonzeros
+Model fingerprint: 0x1efde699
+Variable types: 15 continuous, 1125 integer (1125 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+Found heuristic solution: objective -0.0000000
+Presolve removed 715 rows and 23 columns
+Presolve time: 0.01s
+Presolved: 1310 rows, 1117 columns, 3826 nonzeros
+Variable types: 0 continuous, 1117 integer (1117 binary)
+
+Root relaxation: objective 3.500000e+01, 1043 iterations, 0.02 seconds (0.02 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+*    0     0               0      35.0000000   35.00000  0.00%     -    0s
+
+Explored 1 nodes (1043 simplex iterations) in 0.04 seconds (0.04 work units)
+Thread count was 1 (of 8 available processors)
+
+Solution count 2: 35 -0 
+
+Solve interrupted
+Best objective 3.500000000000e+01, best bound 3.500000000000e+01, gap 0.0000%
+
+User-callback calls 165, time in user-callback 0.02 sec
+
+Gurobi 10.0.1 (mac64[arm]) logging started Tue May 16 13:36:26 2023
+
+Set parameter LogFile to value "/Users/brandonalston/Desktop/Code/MDT/log_files/_soybean_small_H:3_M:CUT1-UF-trad_T:600_Seed:138_E:None"
+Warning: Q constraint 0 doesn't have a name
+Gurobi Optimizer version 10.0.1 build v10.0.1rc0 (mac64[arm])
+
+CPU model: Apple M1
+Thread count: 8 physical cores, 8 logical processors, using up to 1 threads
+
+Optimize a model with 1780 rows, 2141 columns and 4094 nonzeros
+Model fingerprint: 0x3d5a8c69
+Model has 245 quadratic constraints
+Variable types: 1016 continuous, 1125 integer (1125 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  QMatrix range    [1e+00, 1e+00]
+  QLMatrix range   [1e+00, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+  QRHS range       [1e+00, 1e+00]
+
+User MIP start produced solution with objective 35 (0.00s)
+Loaded user MIP start with objective 35
+
+Presolve removed 225 rows and 23 columns
+Presolve time: 0.02s
+Presolved: 1555 rows, 2118 columns, 12996 nonzeros
+Variable types: 1001 continuous, 1117 integer (1117 binary)
+
+Root relaxation: cutoff, 0 iterations, 0.00 seconds (0.00 work units)
+
+Explored 1 nodes (0 simplex iterations) in 0.02 seconds (0.04 work units)
+Thread count was 1 (of 8 available processors)
+
+Solution count 1: 35 
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 3.500000000000e+01, best bound 3.500000000000e+01, gap 0.0000%
+
+User-callback calls 205, time in user-callback 0.00 sec
+
+Gurobi 10.0.1 (mac64[arm]) logging started Tue May 16 13:36:40 2023
+
+Set parameter LogFile to value "/Users/brandonalston/Desktop/Code/MDT/log_files/_soybean_small_H:3_M:CUT1-UF-trad_T:600_Seed:138_E:None"
+Gurobi Optimizer version 10.0.1 build v10.0.1rc0 (mac64[arm])
+
+CPU model: Apple M1
+Thread count: 8 physical cores, 8 logical processors, using up to 1 threads
+
+Optimize a model with 2025 rows, 1140 columns and 4584 nonzeros
+Model fingerprint: 0x1efde699
+Variable types: 15 continuous, 1125 integer (1125 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+Found heuristic solution: objective -0.0000000
+Presolve removed 715 rows and 23 columns
+Presolve time: 0.01s
+Presolved: 1310 rows, 1117 columns, 3826 nonzeros
+Variable types: 0 continuous, 1117 integer (1117 binary)
+
+Root relaxation: objective 3.500000e+01, 1043 iterations, 0.02 seconds (0.02 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+*    0     0               0      35.0000000   35.00000  0.00%     -    0s
+
+Explored 1 nodes (1043 simplex iterations) in 0.04 seconds (0.04 work units)
+Thread count was 1 (of 8 available processors)
+
+Solution count 2: 35 -0 
+
+Solve interrupted
+Best objective 3.500000000000e+01, best bound 3.500000000000e+01, gap 0.0000%
+
+User-callback calls 165, time in user-callback 0.02 sec
+
+Gurobi 10.0.1 (mac64[arm]) logging started Tue May 16 13:36:40 2023
+
+Set parameter LogFile to value "/Users/brandonalston/Desktop/Code/MDT/log_files/_soybean_small_H:3_M:CUT1-UF-trad_T:600_Seed:138_E:None"
+Warning: Q constraint 0 doesn't have a name
+Gurobi Optimizer version 10.0.1 build v10.0.1rc0 (mac64[arm])
+
+CPU model: Apple M1
+Thread count: 8 physical cores, 8 logical processors, using up to 1 threads
+
+Optimize a model with 1780 rows, 2141 columns and 4094 nonzeros
+Model fingerprint: 0x3d5a8c69
+Model has 245 quadratic constraints
+Variable types: 1016 continuous, 1125 integer (1125 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  QMatrix range    [1e+00, 1e+00]
+  QLMatrix range   [1e+00, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+  QRHS range       [1e+00, 1e+00]
+
+User MIP start produced solution with objective 35 (0.00s)
+Loaded user MIP start with objective 35
+
+Presolve removed 225 rows and 23 columns
+Presolve time: 0.02s
+Presolved: 1555 rows, 2118 columns, 12996 nonzeros
+Variable types: 1001 continuous, 1117 integer (1117 binary)
+
+Root relaxation: cutoff, 0 iterations, 0.00 seconds (0.00 work units)
+
+Explored 1 nodes (0 simplex iterations) in 0.02 seconds (0.04 work units)
+Thread count was 1 (of 8 available processors)
+
+Solution count 1: 35 
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 3.500000000000e+01, best bound 3.500000000000e+01, gap 0.0000%
+
+User-callback calls 205, time in user-callback 0.00 sec
+
+Gurobi 10.0.1 (mac64[arm]) logging started Tue May 16 13:36:47 2023
+
+Set parameter LogFile to value "/Users/brandonalston/Desktop/Code/MDT/log_files/_soybean_small_H:3_M:CUT1-UF-trad_T:600_Seed:138_E:None"
+Gurobi Optimizer version 10.0.1 build v10.0.1rc0 (mac64[arm])
+
+CPU model: Apple M1
+Thread count: 8 physical cores, 8 logical processors, using up to 1 threads
+
+Optimize a model with 2025 rows, 1140 columns and 4584 nonzeros
+Model fingerprint: 0x1efde699
+Variable types: 15 continuous, 1125 integer (1125 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+Found heuristic solution: objective -0.0000000
+Presolve removed 715 rows and 23 columns
+Presolve time: 0.01s
+Presolved: 1310 rows, 1117 columns, 3826 nonzeros
+Variable types: 0 continuous, 1117 integer (1117 binary)
+
+Root relaxation: objective 3.500000e+01, 1043 iterations, 0.02 seconds (0.02 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+*    0     0               0      35.0000000   35.00000  0.00%     -    0s
+
+Explored 1 nodes (1043 simplex iterations) in 0.04 seconds (0.04 work units)
+Thread count was 1 (of 8 available processors)
+
+Solution count 2: 35 -0 
+
+Solve interrupted
+Best objective 3.500000000000e+01, best bound 3.500000000000e+01, gap 0.0000%
+
+User-callback calls 165, time in user-callback 0.02 sec
+
+Gurobi 10.0.1 (mac64[arm]) logging started Tue May 16 13:36:47 2023
+
+Set parameter LogFile to value "/Users/brandonalston/Desktop/Code/MDT/log_files/_soybean_small_H:3_M:CUT1-UF-trad_T:600_Seed:138_E:None"
+Warning: Q constraint 0 doesn't have a name
+Gurobi Optimizer version 10.0.1 build v10.0.1rc0 (mac64[arm])
+
+CPU model: Apple M1
+Thread count: 8 physical cores, 8 logical processors, using up to 1 threads
+
+Optimize a model with 1780 rows, 2141 columns and 4094 nonzeros
+Model fingerprint: 0x63581ad2
+Model has 245 quadratic constraints
+Variable types: 1016 continuous, 1125 integer (1125 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  QMatrix range    [1e+00, 1e+00]
+  QLMatrix range   [1e+00, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+  QRHS range       [1e+00, 1e+00]
+
+User MIP start produced solution with objective 35 (0.00s)
+Loaded user MIP start with objective 35
+
+Presolve removed 225 rows and 23 columns
+Presolve time: 0.02s
+Presolved: 1555 rows, 2118 columns, 12996 nonzeros
+Variable types: 1001 continuous, 1117 integer (1117 binary)
+
+Root relaxation: cutoff, 0 iterations, 0.00 seconds (0.00 work units)
+
+Explored 1 nodes (0 simplex iterations) in 0.02 seconds (0.04 work units)
+Thread count was 1 (of 8 available processors)
+
+Solution count 1: 35 
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 3.500000000000e+01, best bound 3.500000000000e+01, gap 0.0000%
+
+User-callback calls 206, time in user-callback 0.00 sec
+
+Gurobi 10.0.1 (mac64[arm]) logging started Tue May 16 13:36:59 2023
+
+Set parameter LogFile to value "/Users/brandonalston/Desktop/Code/MDT/log_files/_soybean_small_H:3_M:CUT1-UF-trad_T:600_Seed:138_E:None"
+Gurobi Optimizer version 10.0.1 build v10.0.1rc0 (mac64[arm])
+
+CPU model: Apple M1
+Thread count: 8 physical cores, 8 logical processors, using up to 1 threads
+
+Optimize a model with 2025 rows, 1140 columns and 4584 nonzeros
+Model fingerprint: 0x1efde699
+Variable types: 15 continuous, 1125 integer (1125 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+Found heuristic solution: objective -0.0000000
+Presolve removed 715 rows and 23 columns
+Presolve time: 0.01s
+Presolved: 1310 rows, 1117 columns, 3826 nonzeros
+Variable types: 0 continuous, 1117 integer (1117 binary)
+
+Root relaxation: objective 3.500000e+01, 1043 iterations, 0.02 seconds (0.02 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+*    0     0               0      35.0000000   35.00000  0.00%     -    0s
+
+Explored 1 nodes (1043 simplex iterations) in 0.04 seconds (0.04 work units)
+Thread count was 1 (of 8 available processors)
+
+Solution count 2: 35 -0 
+
+Solve interrupted
+Best objective 3.500000000000e+01, best bound 3.500000000000e+01, gap 0.0000%
+
+User-callback calls 165, time in user-callback 0.02 sec
+
+Gurobi 10.0.1 (mac64[arm]) logging started Tue May 16 13:36:59 2023
+
+Set parameter LogFile to value "/Users/brandonalston/Desktop/Code/MDT/log_files/_soybean_small_H:3_M:CUT1-UF-trad_T:600_Seed:138_E:None"
+Warning: Q constraint 0 doesn't have a name
+Gurobi Optimizer version 10.0.1 build v10.0.1rc0 (mac64[arm])
+
+CPU model: Apple M1
+Thread count: 8 physical cores, 8 logical processors, using up to 1 threads
+
+Optimize a model with 1780 rows, 2141 columns and 4094 nonzeros
+Model fingerprint: 0x92649f81
+Model has 245 quadratic constraints
+Variable types: 1016 continuous, 1125 integer (1125 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  QMatrix range    [1e+00, 1e+00]
+  QLMatrix range   [1e+00, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+  QRHS range       [1e+00, 1e+00]
+
+User MIP start produced solution with objective 35 (0.00s)
+Loaded user MIP start with objective 35
+
+Presolve removed 225 rows and 23 columns
+Presolve time: 0.02s
+Presolved: 1555 rows, 2118 columns, 12996 nonzeros
+Variable types: 1001 continuous, 1117 integer (1117 binary)
+
+Root relaxation: cutoff, 0 iterations, 0.00 seconds (0.00 work units)
+
+Explored 1 nodes (0 simplex iterations) in 0.02 seconds (0.04 work units)
+Thread count was 1 (of 8 available processors)
+
+Solution count 1: 35 
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 3.500000000000e+01, best bound 3.500000000000e+01, gap 0.0000%
+
+User-callback calls 205, time in user-callback 0.00 sec
+
+Gurobi 10.0.1 (mac64[arm]) logging started Tue May 16 13:37:30 2023
+
+Set parameter LogFile to value "/Users/brandonalston/Desktop/Code/MDT/log_files/_soybean_small_H:3_M:CUT1-UF-trad_T:600_Seed:138_E:None"
+Gurobi Optimizer version 10.0.1 build v10.0.1rc0 (mac64[arm])
+
+CPU model: Apple M1
+Thread count: 8 physical cores, 8 logical processors, using up to 1 threads
+
+Optimize a model with 2025 rows, 1140 columns and 4584 nonzeros
+Model fingerprint: 0x1efde699
+Variable types: 15 continuous, 1125 integer (1125 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+Found heuristic solution: objective -0.0000000
+Presolve removed 715 rows and 23 columns
+Presolve time: 0.01s
+Presolved: 1310 rows, 1117 columns, 3826 nonzeros
+Variable types: 0 continuous, 1117 integer (1117 binary)
+
+Root relaxation: objective 3.500000e+01, 1043 iterations, 0.02 seconds (0.02 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+*    0     0               0      35.0000000   35.00000  0.00%     -    0s
+
+Explored 1 nodes (1043 simplex iterations) in 0.04 seconds (0.04 work units)
+Thread count was 1 (of 8 available processors)
+
+Solution count 2: 35 -0 
+
+Solve interrupted
+Best objective 3.500000000000e+01, best bound 3.500000000000e+01, gap 0.0000%
+
+User-callback calls 165, time in user-callback 0.02 sec
+
+Gurobi 10.0.1 (mac64[arm]) logging started Tue May 16 13:37:30 2023
+
+Set parameter LogFile to value "/Users/brandonalston/Desktop/Code/MDT/log_files/_soybean_small_H:3_M:CUT1-UF-trad_T:600_Seed:138_E:None"
+Warning: Q constraint 0 doesn't have a name
+Gurobi Optimizer version 10.0.1 build v10.0.1rc0 (mac64[arm])
+
+CPU model: Apple M1
+Thread count: 8 physical cores, 8 logical processors, using up to 1 threads
+
+Optimize a model with 1780 rows, 2141 columns and 4094 nonzeros
+Model fingerprint: 0x9de98f5e
+Model has 245 quadratic constraints
+Variable types: 1016 continuous, 1125 integer (1125 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  QMatrix range    [1e+00, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+  QRHS range       [1e+00, 1e+00]
+
+User MIP start did not produce a new incumbent solution
+
+Presolve removed 715 rows and 268 columns
+Presolve time: 0.01s
+Presolved: 1065 rows, 1873 columns, 11421 nonzeros
+Variable types: 1001 continuous, 872 integer (872 binary)
+Found heuristic solution: objective 14.0000000
+
+Root relaxation: objective 3.500000e+01, 650 iterations, 0.01 seconds (0.01 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+*    0     0               0      35.0000000   35.00000  0.00%     -    0s
+
+Explored 1 nodes (650 simplex iterations) in 0.02 seconds (0.04 work units)
+Thread count was 1 (of 8 available processors)
+
+Solution count 2: 35 14 
+
+Solve interrupted
+Best objective 3.500000000000e+01, best bound 3.500000000000e+01, gap 0.0000%
+
+User-callback calls 226, time in user-callback 0.00 sec
+
+Gurobi 10.0.1 (mac64[arm]) logging started Tue May 16 13:37:39 2023
+
+Set parameter LogFile to value "/Users/brandonalston/Desktop/Code/MDT/log_files/_soybean_small_H:3_M:CUT1-UF-trad_T:600_Seed:138_E:None"
+Gurobi Optimizer version 10.0.1 build v10.0.1rc0 (mac64[arm])
+
+CPU model: Apple M1
+Thread count: 8 physical cores, 8 logical processors, using up to 1 threads
+
+Optimize a model with 2025 rows, 1140 columns and 4584 nonzeros
+Model fingerprint: 0x1efde699
+Variable types: 15 continuous, 1125 integer (1125 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+Found heuristic solution: objective -0.0000000
+Presolve removed 715 rows and 23 columns
+Presolve time: 0.01s
+Presolved: 1310 rows, 1117 columns, 3826 nonzeros
+Variable types: 0 continuous, 1117 integer (1117 binary)
+
+Root relaxation: objective 3.500000e+01, 1043 iterations, 0.02 seconds (0.02 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+*    0     0               0      35.0000000   35.00000  0.00%     -    0s
+
+Explored 1 nodes (1043 simplex iterations) in 0.04 seconds (0.04 work units)
+Thread count was 1 (of 8 available processors)
+
+Solution count 2: 35 -0 
+
+Solve interrupted
+Best objective 3.500000000000e+01, best bound 3.500000000000e+01, gap 0.0000%
+
+User-callback calls 165, time in user-callback 0.02 sec
+
+Gurobi 10.0.1 (mac64[arm]) logging started Tue May 16 13:37:39 2023
+
+Set parameter LogFile to value "/Users/brandonalston/Desktop/Code/MDT/log_files/_soybean_small_H:3_M:CUT1-UF-trad_T:600_Seed:138_E:None"
+Warning: Q constraint 0 doesn't have a name
+Gurobi Optimizer version 10.0.1 build v10.0.1rc0 (mac64[arm])
+
+CPU model: Apple M1
+Thread count: 8 physical cores, 8 logical processors, using up to 1 threads
+
+Optimize a model with 1780 rows, 2141 columns and 4094 nonzeros
+Model fingerprint: 0x6782cf72
+Model has 245 quadratic constraints
+Variable types: 1016 continuous, 1125 integer (1125 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  QMatrix range    [1e+00, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+  QRHS range       [1e+00, 1e+00]
+
+User MIP start did not produce a new incumbent solution
+
+Presolve removed 715 rows and 23 columns
+Presolve time: 0.02s
+Presolved: 19930 rows, 29558 columns, 66896 nonzeros
+Presolved model has 18130 SOS constraint(s)
+Variable types: 19131 continuous, 10427 integer (10182 binary)
+Found heuristic solution: objective 14.0000000
+
+Root relaxation: objective 3.500000e+01, 403 iterations, 0.00 seconds (0.00 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+*    0     0               0      35.0000000   35.00000  0.00%     -    0s
+
+Explored 1 nodes (403 simplex iterations) in 0.08 seconds (0.12 work units)
+Thread count was 1 (of 8 available processors)
+
+Solution count 2: 35 14 
+
+Solve interrupted
+Best objective 3.500000000000e+01, best bound 3.500000000000e+01, gap 0.0000%
+
+User-callback calls 274, time in user-callback 0.00 sec
+
+Gurobi 10.0.1 (mac64[arm]) logging started Tue May 16 13:37:50 2023
+
+Set parameter LogFile to value "/Users/brandonalston/Desktop/Code/MDT/log_files/_soybean_small_H:3_M:CUT1-UF-trad_T:600_Seed:138_E:None"
+Gurobi Optimizer version 10.0.1 build v10.0.1rc0 (mac64[arm])
+
+CPU model: Apple M1
+Thread count: 8 physical cores, 8 logical processors, using up to 1 threads
+
+Optimize a model with 2025 rows, 1140 columns and 4584 nonzeros
+Model fingerprint: 0x1efde699
+Variable types: 15 continuous, 1125 integer (1125 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+Found heuristic solution: objective -0.0000000
+Presolve removed 715 rows and 23 columns
+Presolve time: 0.01s
+Presolved: 1310 rows, 1117 columns, 3826 nonzeros
+Variable types: 0 continuous, 1117 integer (1117 binary)
+
+Root relaxation: objective 3.500000e+01, 1043 iterations, 0.02 seconds (0.02 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+*    0     0               0      35.0000000   35.00000  0.00%     -    0s
+
+Explored 1 nodes (1043 simplex iterations) in 0.04 seconds (0.04 work units)
+Thread count was 1 (of 8 available processors)
+
+Solution count 2: 35 -0 
+
+Solve interrupted
+Best objective 3.500000000000e+01, best bound 3.500000000000e+01, gap 0.0000%
+
+User-callback calls 165, time in user-callback 0.02 sec
+
+Gurobi 10.0.1 (mac64[arm]) logging started Tue May 16 13:37:50 2023
+
+Set parameter LogFile to value "/Users/brandonalston/Desktop/Code/MDT/log_files/_soybean_small_H:3_M:CUT1-UF-trad_T:600_Seed:138_E:None"
+Warning: Q constraint 0 doesn't have a name
+Gurobi Optimizer version 10.0.1 build v10.0.1rc0 (mac64[arm])
+
+CPU model: Apple M1
+Thread count: 8 physical cores, 8 logical processors, using up to 1 threads
+
+Optimize a model with 1780 rows, 2141 columns and 4094 nonzeros
+Model fingerprint: 0x63581ad2
+Model has 245 quadratic constraints
+Variable types: 1016 continuous, 1125 integer (1125 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  QMatrix range    [1e+00, 1e+00]
+  QLMatrix range   [1e+00, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+  QRHS range       [1e+00, 1e+00]
+
+User MIP start produced solution with objective 35 (0.00s)
+Loaded user MIP start with objective 35
+
+Presolve removed 225 rows and 23 columns
+Presolve time: 0.02s
+Presolved: 1555 rows, 2118 columns, 12996 nonzeros
+Variable types: 1001 continuous, 1117 integer (1117 binary)
+
+Root relaxation: cutoff, 0 iterations, 0.00 seconds (0.00 work units)
+
+Explored 1 nodes (0 simplex iterations) in 0.02 seconds (0.04 work units)
+Thread count was 1 (of 8 available processors)
+
+Solution count 1: 35 
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 3.500000000000e+01, best bound 3.500000000000e+01, gap 0.0000%
+
+User-callback calls 205, time in user-callback 0.00 sec

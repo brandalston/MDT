@@ -13,7 +13,7 @@ class BendersOCT:
     def __init__(self, data, label, tree, _lambda, time_limit, mode):
         '''
 
-        :param data: The training data
+        :param data: The training training_data
         :param label: Name of the column representing the class label
         :param tree: Tree object
         :param _lambda: The regularization parameter in the objective

@@ -48,7 +48,7 @@ class OCTH(ClassifierMixin, BaseEstimator):
         self
         """
         #
-        # Input validation, defining MIP model data
+        # Input validation, defining MIP model training_data
         #
         
         # Check that dimensions are consistent, convert X and y to ndarrays
@@ -89,7 +89,7 @@ class OCTH(ClassifierMixin, BaseEstimator):
             model.Params.TimeLimit = self.time_limit
         model.Params.Threads = 1
         
-        # Pack data into model
+        # Pack training_data into model
         model._X_y = X, y
         model._nodes = (branch_nodes, leaf_nodes)
         

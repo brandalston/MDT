@@ -72,7 +72,7 @@ def load_acute_inflammations(decision_number):
     """
    if decision_number not in [1, 2]:
       raise ValueError("problem_number must be 1 or 2")
-   df = pd.read_csv("Datasets/diagnosis.data",
+   df = pd.read_csv("Datasets/diagnosis.training_data",
                     names=["a1", "a2", "a3", "a4", "a5", "a6", "d1", "d2"], decimal=',',
                     encoding='utf-16', delim_whitespace=True)
    y = df["d{}".format(decision_number)]

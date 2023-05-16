@@ -50,7 +50,7 @@ class SOCTFull(ClassifierMixin, BaseEstimator):
         self
         """
         #
-        # Input validation, defining MIP model data
+        # Input validation, defining MIP model training_data
         #
         
         # Check that dimensions are consistent, convert X and y to ndarrays
@@ -85,7 +85,7 @@ class SOCTFull(ClassifierMixin, BaseEstimator):
         if self.log:
             model.Params.LogFile = self.log
         
-        # Pack data into model
+        # Pack training_data into model
         model._X_y = X, y
         model._nodes = (branch_nodes, leaf_nodes)
         
@@ -138,7 +138,7 @@ class SOCTFull(ClassifierMixin, BaseEstimator):
         return self
     
     def _warm_start(self):
-        # Extract variables and data from model
+        # Extract variables and training_data from model
         branch_rules, classification_rules = self.warm_start_tree
         model = self.model_
         (c, d, w, z, a, a_abs, b) = model._vars
@@ -203,7 +203,7 @@ class SOCTFull(ClassifierMixin, BaseEstimator):
     
     def _construct_decision_tree(self):
         """ After initial MIP training, define the learned decision tree. """
-        # Extract variables and data from model
+        # Extract variables and training_data from model
         model = self.model_
         (c, d, w, z, a, a_abs, b) = model._vars
         (X, y) = model._X_y

@@ -8,118 +8,126 @@ from sklearn.preprocessing import KBinsDiscretizer, MinMaxScaler, OneHotEncoder
 from sklearn.utils.validation import check_is_fitted
 
 
-def get_data(dataset, binarization=None):
-    datasetloadfcn = {
-        'balance_scale': load_balance_scale,
-        'banknote': load_banknote_authentication,
-        'blood': load_blood_transfusion,
-        'breast_cancer': load_breast_cancer,
-        'car': load_car_evaluation,
-        'kr_vs_kp': load_chess,
-        'climate': load_climate_model_crashes,
-        'house_votes_84': load_house_votes_84,
-        'fico_binary': load_fico_binary,
-        'glass': load_glass_identification,
-        'hayes_roth': load_hayes_roth,
-        'image': load_image_segmentation,
-        'ionosphere': load_ionosphere,
-        'iris': load_iris,
-        'monk1': load_monk1,
-        'monk2': load_monk2,
-        'monk3': load_monk3,
-        'parkinsons': load_parkinsons,
-        'soybean_small': load_soybean_small,
-        'spect': load_spect,
-        'tic_tac_toe': load_tictactoe_endgame,
-        'wine_red': load_wine_red,
-        'wine_white': load_wine_white
-    }
+class data:
+    def __init__(self, dataname, binarization=None):
+        self.dataset = None
+        self.dataname = dataname
+        self.binarization = binarization
+        numerical_datasets = ['iris', 'banknote', 'blood', 'climate', 'wine_white', 'wine_red',
+                              'glass', 'image', 'ionosphere', 'parkinsons']
+        categorical_datasets = ['balance_scale', 'car', 'kr_vs_kp', 'house_votes_84', 'hayes_roth', 'breast_cancer',
+                                'monk1', 'monk2', 'monk3', 'soybean_small', 'spect', 'tic_tac_toe', 'fico_binary']
+        already_processed = ['fico_binary']
+        if self.dataname in numerical_datasets:
+            self.datatype = 'numerical'
+        if self.dataname in categorical_datasets:
+            self.datatype = 'categorical'
 
-    numerical_datasets = ['iris', 'banknote', 'blood', 'climate', 'wine_white', 'wine_red',
-                          'glass', 'image', 'ionosphere', 'parkinsons']
-    categorical_datasets = ['balance_scale', 'car', 'kr_vs_kp', 'house_votes_84', 'hayes_roth', 'breast_cancer',
-                            'monk1', 'monk2', 'monk3', 'soybean_small', 'spect', 'tic_tac_toe', 'fico_binary']
-    already_processed = ['fico_binary']
-    load_function = datasetloadfcn[dataset]
-    X, y = load_function()
-    """ We assume the target column of dataset is labeled 'target'
-        Change value at your discretion """
-    codes, uniques = pd.factorize(y)
-    y = pd.Series(codes, name='target')
-    if dataset in categorical_datasets:
-        X_new, ct = preprocess(X, categorical_features=X.columns)
-        X_new = pd.DataFrame(X_new, columns=ct.get_feature_names_out(X.columns))
-        X_new.columns = X_new.columns.str.replace('cat__', '')
-    else:
-        X_new = X
-        if dataset in numerical_datasets:
-            if binarization is None:
-                X_new, ct = preprocess(X, numerical_features=X.columns)
-                X_new = pd.DataFrame(X_new, columns=X.columns)
-            else:
-                X_new, ct = preprocess(X, y=y, binarization=binarization, numerical_features=X.columns)
-                cols = []
-                for key in ct.transformers_[0][1].candidate_thresholds_:
-                    for item in ct.transformers_[0][1].candidate_thresholds_[key]:
-                        cols.append(f"{key}<={item}")
-                X_new = pd.DataFrame(X_new, columns=cols)
-    if dataset in categorical_datasets: X_new = X_new.astype(int)
-    data_new = pd.concat([X_new, y], axis=1)
-    return data_new
+    def get_data(self):
+        datasetloadfcn = {
+            'balance_scale': load_balance_scale,
+            'banknote': load_banknote_authentication,
+            'blood': load_blood_transfusion,
+            'breast_cancer': load_breast_cancer,
+            'car': load_car_evaluation,
+            'kr_vs_kp': load_chess,
+            'climate': load_climate_model_crashes,
+            'house_votes_84': load_house_votes_84,
+            'fico_binary': load_fico_binary,
+            'glass': load_glass_identification,
+            'hayes_roth': load_hayes_roth,
+            'image': load_image_segmentation,
+            'ionosphere': load_ionosphere,
+            'iris': load_iris,
+            'monk1': load_monk1,
+            'monk2': load_monk2,
+            'monk3': load_monk3,
+            'parkinsons': load_parkinsons,
+            'soybean_small': load_soybean_small,
+            'spect': load_spect,
+            'tic_tac_toe': load_tictactoe_endgame,
+            'wine_red': load_wine_red,
+            'wine_white': load_wine_white
+        }
 
+        load_function = datasetloadfcn[self.dataname]
+        X, y = load_function()
+        """ We assume the target column of dataset is labeled 'target'
+            Change value at your discretion """
+        codes, uniques = pd.factorize(y)
+        y = pd.Series(codes, name='target')
+        if self.datatype == 'categorical':
+            X_new, ct = data.preprocess(self, X, categorical_features=X.columns)
+            X_new = pd.DataFrame(X_new, columns=ct.get_feature_names_out(X.columns))
+            X_new.columns = X_new.columns.str.replace('cat__', '')
+            X_new = X_new.astype(int)
+        else:
+            X_new = X
+            if self.datatype == 'numerical':
+                if self.binarization is None:
+                    X_new, ct = data.preprocess(self, X, numerical_features=X.columns)
+                    X_new = pd.DataFrame(X_new, columns=X.columns)
+                else:
+                    X_new, ct = data.preprocess(self, X, y=y, numerical_features=X.columns)
+                    cols = []
+                    for key in ct.transformers_[0][1].candidate_thresholds_:
+                        for item in ct.transformers_[0][1].candidate_thresholds_[key]:
+                            cols.append(f"{key}<={item}")
+                    X_new = pd.DataFrame(X_new, columns=cols)
+        self.dataset = pd.concat([X_new, y], axis=1)
 
-def preprocess(X, y=None, numerical_features=None, categorical_features=None, binarization=None):
-    """ Preprocess a dataset.
+    def preprocess(self, X, y=None, numerical_features=None, categorical_features=None):
+        """ Preprocess a dataset.
 
-    Numerical features are scaled to the [0,1] interval by default, but can also
-    be binarized, either by considering all candidate thresholds for a
-    univariate split, or by binning. Categorical features are one-hot encoded.
+        Numerical features are scaled to the [0,1] interval by default, but can also
+        be binarized, either by considering all candidate thresholds for a
+        univariate split, or by binning. Categorical features are one-hot encoded.
 
-    Parameters
-    ----------
-    X
-    X_test
-    y_train : pandas Series of training labels, only needed for binarization
-        with candidate thresholds
-    numerical_features : list of numerical features
-    categorical_features : list of categorical features
-    binarization : {'all-candidates', 'binning'}, default=None
-        Binarization technique for numerical features.
-        all-candidates
-            Use all candidate thresholds.
-        binning
-            Perform binning using scikit-learn's KBinsDiscretizer.
-        None
-            No binarization is performed, features scaled to the [0,1] interval.
+        Parameters
+        ----------
+        X
+        X_test
+        y_train : pandas Series of training labels, only needed for binarization
+            with candidate thresholds
+        numerical_features : list of numerical features
+        categorical_features : list of categorical features
+        binarization : {'all-candidates', 'binning'}, default=None
+            Binarization technique for numerical features.
+            all-candidates
+                Use all candidate thresholds.
+            binning
+                Perform binning using scikit-learn's KBinsDiscretizer.
+            None
+                No binarization is performed, features scaled to the [0,1] interval.
 
-    Returns
-    -------
-    X_train_new : pandas DataFrame that is the result of binarizing X
-    """
+        Returns
+        -------
+        X_train_new : pandas DataFrame that is the result of binarizing X
+        """
 
-    if numerical_features is None:
-        numerical_features = []
-    if categorical_features is None:
-        categorical_features = []
+        if numerical_features is None:
+            numerical_features = []
+        if categorical_features is None:
+            categorical_features = []
 
-    numerical_transformer = MinMaxScaler()
-    if binarization == 'all-candidates':
-        numerical_transformer = CandidateThresholdBinarizer()
-    elif binarization == 'binning':
-        numerical_transformer = KBinsDiscretizer(encode='onehot-dense')
-    elif binarization is None:
         numerical_transformer = MinMaxScaler()
-    # categorical_transformer = OneHotEncoder(drop='if_binary', sparse=False, handle_unknown='ignore') # Should work in scikit-learn 1.0
-    categorical_transformer = OneHotEncoder(sparse=False, handle_unknown='ignore')
-    ct = ColumnTransformer([("num", numerical_transformer, numerical_features),
-                            ("cat", categorical_transformer, categorical_features)])
-    X_train_new = ct.fit_transform(X, y)
+        if self.binarization == 'all-candidates':
+            numerical_transformer = CandidateThresholdBinarizer()
+        elif self.binarization == 'binning':
+            numerical_transformer = KBinsDiscretizer(encode='onehot-dense')
+        elif self.binarization is None:
+            numerical_transformer = MinMaxScaler()
+        # categorical_transformer = OneHotEncoder(drop='if_binary', sparse=False, handle_unknown='ignore') # Should work in scikit-learn 1.0
+        categorical_transformer = OneHotEncoder(sparse=False, handle_unknown='ignore')
+        ct = ColumnTransformer([("num", numerical_transformer, numerical_features),
+                                ("cat", categorical_transformer, categorical_features)])
+        X_train_new = ct.fit_transform(X, y)
 
-    return X_train_new, ct
+        return X_train_new, ct
 
 
 class CandidateThresholdBinarizer(TransformerMixin, BaseEstimator):
-    """ Binarize continuous data using candidate thresholds.
+    """ Binarize continuous training_data using candidate thresholds.
 
     For each feature, sort observations by values of that feature, then find
     pairs of consecutive observations that have different class labels and
@@ -295,7 +303,7 @@ def VIS(data, Lv_I, Rv_I, vis_weight):
         Primal is B_v(Q) : a_v*x^i + 1 <= c_v for 1 for i in L_v(I) := {i in I : q^i_l(v) = 1}
                            a_v*x^i - 1 <= c_v for 1 for i in R_v(I) := {i in I : q^i_r(v) = 1}
         Parameters
-        data : dataframe of shape (I, F)
+        training_data : dataframe of shape (I, F)
         Lv_I : list of I s.t. q^i_l(v) = 1
         Rv_I : list of I s.t. q^i_r(v) = 1
         vis_weight : ndarray of shape (N,), default=None
@@ -315,12 +323,12 @@ def VIS(data, Lv_I, Rv_I, vis_weight):
         common_points_L, common_points_R = set(), set()
         for x in Lv_I:
             for y in Rv_I:
-                if data.loc[x, feature_set].equals(data.loc[y, feature_set]):
+                if training_data.loc[x, feature_set].equals(training_data.loc[y, feature_set]):
                     common_points_L.add(x)
                     common_points_R.add(y)
         Lv_I -= common_points_L
         Rv_I -= common_points_R
-        data = data.drop(common_points_L | common_points_R)"""
+        training_data = training_data.drop(common_points_L | common_points_R)"""
 
         # VIS Dual Model
         VIS_model = Model("VIS Dual")
@@ -384,7 +392,7 @@ def model_results(model, tree):
             if model.Q[i, v].X > 0.5:
                 path.append(v)
         if model.S[i, path[-1]].X > 0.5:
-            print('Datapoint ' + str(i) + ' correctly assigned class ' + str(model.data.at[i, model.target])
+            print('Datapoint ' + str(i) + ' correctly assigned class ' + str(model.training_data.at[i, model.target])
                  + ' at ' + str(path[-1]) + '. Path: ', path)
         else:
             for k in model.classes:

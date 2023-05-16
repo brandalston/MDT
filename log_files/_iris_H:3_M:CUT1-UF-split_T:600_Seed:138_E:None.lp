@@ -6271,15 +6271,7 @@ Subject To
    - 0.2916666666666667 Q[111,1] * H_neg[0,sepal-width]
    - 0.7288135593220338 Q[111,1] * H_neg[0,petal-length]
    - 0.75 Q[111,1] * H_neg[0,petal-width] + Q[111,1] * C4275
-   - Q[111,1] * C4282 - 0.5833333333333335 Q[111,2] * H_pos[0,sepal-length]
-   - 0.2916666666666667 Q[111,2] * H_pos[0,sepal-width]
-   - 0.7288135593220338 Q[111,2] * H_pos[0,petal-length]
-   - 0.75 Q[111,2] * H_pos[0,petal-width]
-   + 0.5833333333333335 Q[111,2] * H_neg[0,sepal-length]
-   + 0.2916666666666667 Q[111,2] * H_neg[0,sepal-width]
-   + 0.7288135593220338 Q[111,2] * H_neg[0,petal-length]
-   + 0.75 Q[111,2] * H_neg[0,petal-width] - Q[111,2] * C4275
-   + Q[111,2] * C4282 ] >= 1
+   - Q[111,1] * C4282 ] >= 1
  qc1: E[134,0] + [ 0.5 Q[134,1] * H_pos[0,sepal-length]
    + 0.25 Q[134,1] * H_pos[0,sepal-width]
    + 0.7796610169491525 Q[134,1] * H_pos[0,petal-length]
@@ -6288,15 +6280,7 @@ Subject To
    - 0.25 Q[134,1] * H_neg[0,sepal-width]
    - 0.7796610169491525 Q[134,1] * H_neg[0,petal-length]
    - 0.5416666666666667 Q[134,1] * H_neg[0,petal-width] + Q[134,1] * C4275
-   - Q[134,1] * C4282 - 0.5 Q[134,2] * H_pos[0,sepal-length]
-   - 0.25 Q[134,2] * H_pos[0,sepal-width]
-   - 0.7796610169491525 Q[134,2] * H_pos[0,petal-length]
-   - 0.5416666666666667 Q[134,2] * H_pos[0,petal-width]
-   + 0.5 Q[134,2] * H_neg[0,sepal-length]
-   + 0.25 Q[134,2] * H_neg[0,sepal-width]
-   + 0.7796610169491525 Q[134,2] * H_neg[0,petal-length]
-   + 0.5416666666666667 Q[134,2] * H_neg[0,petal-width] - Q[134,2] * C4275
-   + Q[134,2] * C4282 ] >= 1
+   - Q[134,1] * C4282 ] >= 1
  qc2: E[133,0] + [ 0.5555555555555556 Q[133,1] * H_pos[0,sepal-length]
    + 0.3333333333333333 Q[133,1] * H_pos[0,sepal-width]
    + 0.6949152542372881 Q[133,1] * H_pos[0,petal-length]
@@ -6305,15 +6289,7 @@ Subject To
    - 0.3333333333333333 Q[133,1] * H_neg[0,sepal-width]
    - 0.6949152542372881 Q[133,1] * H_neg[0,petal-length]
    - 0.5833333333333334 Q[133,1] * H_neg[0,petal-width] + Q[133,1] * C4275
-   - Q[133,1] * C4282 - 0.5555555555555556 Q[133,2] * H_pos[0,sepal-length]
-   - 0.3333333333333333 Q[133,2] * H_pos[0,sepal-width]
-   - 0.6949152542372881 Q[133,2] * H_pos[0,petal-length]
-   - 0.5833333333333334 Q[133,2] * H_pos[0,petal-width]
-   + 0.5555555555555556 Q[133,2] * H_neg[0,sepal-length]
-   + 0.3333333333333333 Q[133,2] * H_neg[0,sepal-width]
-   + 0.6949152542372881 Q[133,2] * H_neg[0,petal-length]
-   + 0.5833333333333334 Q[133,2] * H_neg[0,petal-width] - Q[133,2] * C4275
-   + Q[133,2] * C4282 ] >= 1
+   - Q[133,1] * C4282 ] >= 1
  qc3: E[93,0] + [ 0.1944444444444444 Q[93,1] * H_pos[0,sepal-length]
    + 0.125 Q[93,1] * H_pos[0,sepal-width]
    + 0.3898305084745762 Q[93,1] * H_pos[0,petal-length]
@@ -6322,15 +6298,7 @@ Subject To
    - 0.125 Q[93,1] * H_neg[0,sepal-width]
    - 0.3898305084745762 Q[93,1] * H_neg[0,petal-length]
    - 0.375 Q[93,1] * H_neg[0,petal-width] + Q[93,1] * C4275
-   - Q[93,1] * C4282 - 0.1944444444444444 Q[93,2] * H_pos[0,sepal-length]
-   - 0.125 Q[93,2] * H_pos[0,sepal-width]
-   - 0.3898305084745762 Q[93,2] * H_pos[0,petal-length]
-   - 0.375 Q[93,2] * H_pos[0,petal-width]
-   + 0.1944444444444444 Q[93,2] * H_neg[0,sepal-length]
-   + 0.125 Q[93,2] * H_neg[0,sepal-width]
-   + 0.3898305084745762 Q[93,2] * H_neg[0,petal-length]
-   + 0.375 Q[93,2] * H_neg[0,petal-width] - Q[93,2] * C4275
-   + Q[93,2] * C4282 ] >= 1
+   - Q[93,1] * C4282 ] >= 1
  qc4: E[51,0] + [ 0.5833333333333335 Q[51,1] * H_pos[0,sepal-length]
    + 0.5 Q[51,1] * H_pos[0,sepal-width]
    + 0.5932203389830508 Q[51,1] * H_pos[0,petal-length]
@@ -6339,15 +6307,7 @@ Subject To
    - 0.5 Q[51,1] * H_neg[0,sepal-width]
    - 0.5932203389830508 Q[51,1] * H_neg[0,petal-length]
    - 0.5833333333333334 Q[51,1] * H_neg[0,petal-width] + Q[51,1] * C4275
-   - Q[51,1] * C4282 - 0.5833333333333335 Q[51,2] * H_pos[0,sepal-length]
-   - 0.5 Q[51,2] * H_pos[0,sepal-width]
-   - 0.5932203389830508 Q[51,2] * H_pos[0,petal-length]
-   - 0.5833333333333334 Q[51,2] * H_pos[0,petal-width]
-   + 0.5833333333333335 Q[51,2] * H_neg[0,sepal-length]
-   + 0.5 Q[51,2] * H_neg[0,sepal-width]
-   + 0.5932203389830508 Q[51,2] * H_neg[0,petal-length]
-   + 0.5833333333333334 Q[51,2] * H_neg[0,petal-width] - Q[51,2] * C4275
-   + Q[51,2] * C4282 ] >= 1
+   - Q[51,1] * C4282 ] >= 1
  qc5: E[41,0] + [ 0.0555555555555556 Q[41,1] * H_pos[0,sepal-length]
    + 0.125 Q[41,1] * H_pos[0,sepal-width]
    + 0.0508474576271186 Q[41,1] * H_pos[0,petal-length]
@@ -6356,15 +6316,7 @@ Subject To
    - 0.125 Q[41,1] * H_neg[0,sepal-width]
    - 0.0508474576271186 Q[41,1] * H_neg[0,petal-length]
    - 0.0833333333333333 Q[41,1] * H_neg[0,petal-width] + Q[41,1] * C4275
-   - Q[41,1] * C4282 - 0.0555555555555556 Q[41,2] * H_pos[0,sepal-length]
-   - 0.125 Q[41,2] * H_pos[0,sepal-width]
-   - 0.0508474576271186 Q[41,2] * H_pos[0,petal-length]
-   - 0.0833333333333333 Q[41,2] * H_pos[0,petal-width]
-   + 0.0555555555555556 Q[41,2] * H_neg[0,sepal-length]
-   + 0.125 Q[41,2] * H_neg[0,sepal-width]
-   + 0.0508474576271186 Q[41,2] * H_neg[0,petal-length]
-   + 0.0833333333333333 Q[41,2] * H_neg[0,petal-width] - Q[41,2] * C4275
-   + Q[41,2] * C4282 ] >= 1
+   - Q[41,1] * C4282 ] >= 1
  qc6: E[90,0] + [ 0.3333333333333333 Q[90,1] * H_pos[0,sepal-length]
    + 0.25 Q[90,1] * H_pos[0,sepal-width]
    + 0.576271186440678 Q[90,1] * H_pos[0,petal-length]
@@ -6373,15 +6325,7 @@ Subject To
    - 0.25 Q[90,1] * H_neg[0,sepal-width]
    - 0.576271186440678 Q[90,1] * H_neg[0,petal-length]
    - 0.4583333333333333 Q[90,1] * H_neg[0,petal-width] + Q[90,1] * C4275
-   - Q[90,1] * C4282 - 0.3333333333333333 Q[90,2] * H_pos[0,sepal-length]
-   - 0.25 Q[90,2] * H_pos[0,sepal-width]
-   - 0.576271186440678 Q[90,2] * H_pos[0,petal-length]
-   - 0.4583333333333333 Q[90,2] * H_pos[0,petal-width]
-   + 0.3333333333333333 Q[90,2] * H_neg[0,sepal-length]
-   + 0.25 Q[90,2] * H_neg[0,sepal-width]
-   + 0.576271186440678 Q[90,2] * H_neg[0,petal-length]
-   + 0.4583333333333333 Q[90,2] * H_neg[0,petal-width] - Q[90,2] * C4275
-   + Q[90,2] * C4282 ] >= 1
+   - Q[90,1] * C4282 ] >= 1
  qc7: E[67,0] + [ 0.4166666666666665 Q[67,1] * H_pos[0,sepal-length]
    + 0.2916666666666667 Q[67,1] * H_pos[0,sepal-width]
    + 0.5254237288135593 Q[67,1] * H_pos[0,petal-length]
@@ -6390,15 +6334,7 @@ Subject To
    - 0.2916666666666667 Q[67,1] * H_neg[0,sepal-width]
    - 0.5254237288135593 Q[67,1] * H_neg[0,petal-length]
    - 0.375 Q[67,1] * H_neg[0,petal-width] + Q[67,1] * C4275
-   - Q[67,1] * C4282 - 0.4166666666666665 Q[67,2] * H_pos[0,sepal-length]
-   - 0.2916666666666667 Q[67,2] * H_pos[0,sepal-width]
-   - 0.5254237288135593 Q[67,2] * H_pos[0,petal-length]
-   - 0.375 Q[67,2] * H_pos[0,petal-width]
-   + 0.4166666666666665 Q[67,2] * H_neg[0,sepal-length]
-   + 0.2916666666666667 Q[67,2] * H_neg[0,sepal-width]
-   + 0.5254237288135593 Q[67,2] * H_neg[0,petal-length]
-   + 0.375 Q[67,2] * H_neg[0,petal-width] - Q[67,2] * C4275
-   + Q[67,2] * C4282 ] >= 1
+   - Q[67,1] * C4282 ] >= 1
  qc8: E[131,0] + [ Q[131,1] * H_pos[0,sepal-length]
    + 0.75 Q[131,1] * H_pos[0,sepal-width]
    + 0.9152542372881356 Q[131,1] * H_pos[0,petal-length]
@@ -6407,15 +6343,7 @@ Subject To
    - 0.75 Q[131,1] * H_neg[0,sepal-width]
    - 0.9152542372881356 Q[131,1] * H_neg[0,petal-length]
    - 0.7916666666666667 Q[131,1] * H_neg[0,petal-width] + Q[131,1] * C4275
-   - Q[131,1] * C4282 - Q[131,2] * H_pos[0,sepal-length]
-   - 0.75 Q[131,2] * H_pos[0,sepal-width]
-   - 0.9152542372881356 Q[131,2] * H_pos[0,petal-length]
-   - 0.7916666666666667 Q[131,2] * H_pos[0,petal-width]
-   + Q[131,2] * H_neg[0,sepal-length]
-   + 0.75 Q[131,2] * H_neg[0,sepal-width]
-   + 0.9152542372881356 Q[131,2] * H_neg[0,petal-length]
-   + 0.7916666666666667 Q[131,2] * H_neg[0,petal-width] - Q[131,2] * C4275
-   + Q[131,2] * C4282 ] >= 1
+   - Q[131,1] * C4282 ] >= 1
  qc9: E[121,0] + [ 0.3611111111111109 Q[121,1] * H_pos[0,sepal-length]
    + 0.3333333333333333 Q[121,1] * H_pos[0,sepal-width]
    + 0.6610169491525424 Q[121,1] * H_pos[0,petal-length]
@@ -6424,15 +6352,7 @@ Subject To
    - 0.3333333333333333 Q[121,1] * H_neg[0,sepal-width]
    - 0.6610169491525424 Q[121,1] * H_neg[0,petal-length]
    - 0.7916666666666667 Q[121,1] * H_neg[0,petal-width] + Q[121,1] * C4275
-   - Q[121,1] * C4282 - 0.3611111111111109 Q[121,2] * H_pos[0,sepal-length]
-   - 0.3333333333333333 Q[121,2] * H_pos[0,sepal-width]
-   - 0.6610169491525424 Q[121,2] * H_pos[0,petal-length]
-   - 0.7916666666666667 Q[121,2] * H_pos[0,petal-width]
-   + 0.3611111111111109 Q[121,2] * H_neg[0,sepal-length]
-   + 0.3333333333333333 Q[121,2] * H_neg[0,sepal-width]
-   + 0.6610169491525424 Q[121,2] * H_neg[0,petal-length]
-   + 0.7916666666666667 Q[121,2] * H_neg[0,petal-width] - Q[121,2] * C4275
-   + Q[121,2] * C4282 ] >= 1
+   - Q[121,1] * C4282 ] >= 1
  qc10: E[75,0] + [ 0.6388888888888888 Q[75,1] * H_pos[0,sepal-length]
    + 0.4166666666666667 Q[75,1] * H_pos[0,sepal-width]
    + 0.576271186440678 Q[75,1] * H_pos[0,petal-length]
@@ -6441,15 +6361,7 @@ Subject To
    - 0.4166666666666667 Q[75,1] * H_neg[0,sepal-width]
    - 0.576271186440678 Q[75,1] * H_neg[0,petal-length]
    - 0.5416666666666667 Q[75,1] * H_neg[0,petal-width] + Q[75,1] * C4275
-   - Q[75,1] * C4282 - 0.6388888888888888 Q[75,2] * H_pos[0,sepal-length]
-   - 0.4166666666666667 Q[75,2] * H_pos[0,sepal-width]
-   - 0.576271186440678 Q[75,2] * H_pos[0,petal-length]
-   - 0.5416666666666667 Q[75,2] * H_pos[0,petal-width]
-   + 0.6388888888888888 Q[75,2] * H_neg[0,sepal-length]
-   + 0.4166666666666667 Q[75,2] * H_neg[0,sepal-width]
-   + 0.576271186440678 Q[75,2] * H_neg[0,petal-length]
-   + 0.5416666666666667 Q[75,2] * H_neg[0,petal-width] - Q[75,2] * C4275
-   + Q[75,2] * C4282 ] >= 1
+   - Q[75,1] * C4282 ] >= 1
  qc11: E[44,0] + [ 0.2222222222222221 Q[44,1] * H_pos[0,sepal-length]
    + 0.75 Q[44,1] * H_pos[0,sepal-width]
    + 0.1525423728813559 Q[44,1] * H_pos[0,petal-length]
@@ -6458,15 +6370,7 @@ Subject To
    - 0.75 Q[44,1] * H_neg[0,sepal-width]
    - 0.1525423728813559 Q[44,1] * H_neg[0,petal-length]
    - 0.125 Q[44,1] * H_neg[0,petal-width] + Q[44,1] * C4275
-   - Q[44,1] * C4282 - 0.2222222222222221 Q[44,2] * H_pos[0,sepal-length]
-   - 0.75 Q[44,2] * H_pos[0,sepal-width]
-   - 0.1525423728813559 Q[44,2] * H_pos[0,petal-length]
-   - 0.125 Q[44,2] * H_pos[0,petal-width]
-   + 0.2222222222222221 Q[44,2] * H_neg[0,sepal-length]
-   + 0.75 Q[44,2] * H_neg[0,sepal-width]
-   + 0.1525423728813559 Q[44,2] * H_neg[0,petal-length]
-   + 0.125 Q[44,2] * H_neg[0,petal-width] - Q[44,2] * C4275
-   + Q[44,2] * C4282 ] >= 1
+   - Q[44,1] * C4282 ] >= 1
  qc12: E[40,0] + [ 0.1944444444444444 Q[40,1] * H_pos[0,sepal-length]
    + 0.625 Q[40,1] * H_pos[0,sepal-width]
    + 0.0508474576271186 Q[40,1] * H_pos[0,petal-length]
@@ -6475,15 +6379,7 @@ Subject To
    - 0.625 Q[40,1] * H_neg[0,sepal-width]
    - 0.0508474576271186 Q[40,1] * H_neg[0,petal-length]
    - 0.0833333333333333 Q[40,1] * H_neg[0,petal-width] + Q[40,1] * C4275
-   - Q[40,1] * C4282 - 0.1944444444444444 Q[40,2] * H_pos[0,sepal-length]
-   - 0.625 Q[40,2] * H_pos[0,sepal-width]
-   - 0.0508474576271186 Q[40,2] * H_pos[0,petal-length]
-   - 0.0833333333333333 Q[40,2] * H_pos[0,petal-width]
-   + 0.1944444444444444 Q[40,2] * H_neg[0,sepal-length]
-   + 0.625 Q[40,2] * H_neg[0,sepal-width]
-   + 0.0508474576271186 Q[40,2] * H_neg[0,petal-length]
-   + 0.0833333333333333 Q[40,2] * H_neg[0,petal-width] - Q[40,2] * C4275
-   + Q[40,2] * C4282 ] >= 1
+   - Q[40,1] * C4282 ] >= 1
  qc13: E[10,0] + [ 0.3055555555555556 Q[10,1] * H_pos[0,sepal-length]
    + 0.7083333333333333 Q[10,1] * H_pos[0,sepal-width]
    + 0.0847457627118644 Q[10,1] * H_pos[0,petal-length]
@@ -6492,15 +6388,7 @@ Subject To
    - 0.7083333333333333 Q[10,1] * H_neg[0,sepal-width]
    - 0.0847457627118644 Q[10,1] * H_neg[0,petal-length]
    - 0.0416666666666667 Q[10,1] * H_neg[0,petal-width] + Q[10,1] * C4275
-   - Q[10,1] * C4282 - 0.3055555555555556 Q[10,2] * H_pos[0,sepal-length]
-   - 0.7083333333333333 Q[10,2] * H_pos[0,sepal-width]
-   - 0.0847457627118644 Q[10,2] * H_pos[0,petal-length]
-   - 0.0416666666666667 Q[10,2] * H_pos[0,petal-width]
-   + 0.3055555555555556 Q[10,2] * H_neg[0,sepal-length]
-   + 0.7083333333333333 Q[10,2] * H_neg[0,sepal-width]
-   + 0.0847457627118644 Q[10,2] * H_neg[0,petal-length]
-   + 0.0416666666666667 Q[10,2] * H_neg[0,petal-width] - Q[10,2] * C4275
-   + Q[10,2] * C4282 ] >= 1
+   - Q[10,1] * C4282 ] >= 1
  qc14: E[47,0] + [ 0.0833333333333333 Q[47,1] * H_pos[0,sepal-length]
    + 0.5 Q[47,1] * H_pos[0,sepal-width]
    + 0.0677966101694915 Q[47,1] * H_pos[0,petal-length]
@@ -6509,15 +6397,7 @@ Subject To
    - 0.5 Q[47,1] * H_neg[0,sepal-width]
    - 0.0677966101694915 Q[47,1] * H_neg[0,petal-length]
    - 0.0416666666666667 Q[47,1] * H_neg[0,petal-width] + Q[47,1] * C4275
-   - Q[47,1] * C4282 - 0.0833333333333333 Q[47,2] * H_pos[0,sepal-length]
-   - 0.5 Q[47,2] * H_pos[0,sepal-width]
-   - 0.0677966101694915 Q[47,2] * H_pos[0,petal-length]
-   - 0.0416666666666667 Q[47,2] * H_pos[0,petal-width]
-   + 0.0833333333333333 Q[47,2] * H_neg[0,sepal-length]
-   + 0.5 Q[47,2] * H_neg[0,sepal-width]
-   + 0.0677966101694915 Q[47,2] * H_neg[0,petal-length]
-   + 0.0416666666666667 Q[47,2] * H_neg[0,petal-width] - Q[47,2] * C4275
-   + Q[47,2] * C4282 ] >= 1
+   - Q[47,1] * C4282 ] >= 1
  qc15: E[18,0] + [ 0.3888888888888888 Q[18,1] * H_pos[0,sepal-length]
    + 0.75 Q[18,1] * H_pos[0,sepal-width]
    + 0.1186440677966101 Q[18,1] * H_pos[0,petal-length]
@@ -6526,15 +6406,7 @@ Subject To
    - 0.75 Q[18,1] * H_neg[0,sepal-width]
    - 0.1186440677966101 Q[18,1] * H_neg[0,petal-length]
    - 0.0833333333333333 Q[18,1] * H_neg[0,petal-width] + Q[18,1] * C4275
-   - Q[18,1] * C4282 - 0.3888888888888888 Q[18,2] * H_pos[0,sepal-length]
-   - 0.75 Q[18,2] * H_pos[0,sepal-width]
-   - 0.1186440677966101 Q[18,2] * H_pos[0,petal-length]
-   - 0.0833333333333333 Q[18,2] * H_pos[0,petal-width]
-   + 0.3888888888888888 Q[18,2] * H_neg[0,sepal-length]
-   + 0.75 Q[18,2] * H_neg[0,sepal-width]
-   + 0.1186440677966101 Q[18,2] * H_neg[0,petal-length]
-   + 0.0833333333333333 Q[18,2] * H_neg[0,petal-width] - Q[18,2] * C4275
-   + Q[18,2] * C4282 ] >= 1
+   - Q[18,1] * C4282 ] >= 1
  qc16: E[137,0] + [ 0.5833333333333335 Q[137,1] * H_pos[0,sepal-length]
    + 0.4583333333333333 Q[137,1] * H_pos[0,sepal-width]
    + 0.7627118644067796 Q[137,1] * H_pos[0,petal-length]
@@ -6543,15 +6415,7 @@ Subject To
    - 0.4583333333333333 Q[137,1] * H_neg[0,sepal-width]
    - 0.7627118644067796 Q[137,1] * H_neg[0,petal-length]
    - 0.7083333333333334 Q[137,1] * H_neg[0,petal-width] + Q[137,1] * C4275
-   - Q[137,1] * C4282 - 0.5833333333333335 Q[137,2] * H_pos[0,sepal-length]
-   - 0.4583333333333333 Q[137,2] * H_pos[0,sepal-width]
-   - 0.7627118644067796 Q[137,2] * H_pos[0,petal-length]
-   - 0.7083333333333334 Q[137,2] * H_pos[0,petal-width]
-   + 0.5833333333333335 Q[137,2] * H_neg[0,sepal-length]
-   + 0.4583333333333333 Q[137,2] * H_neg[0,sepal-width]
-   + 0.7627118644067796 Q[137,2] * H_neg[0,petal-length]
-   + 0.7083333333333334 Q[137,2] * H_neg[0,petal-width] - Q[137,2] * C4275
-   + Q[137,2] * C4282 ] >= 1
+   - Q[137,1] * C4282 ] >= 1
  qc17: E[136,0] + [ 0.5555555555555556 Q[136,1] * H_pos[0,sepal-length]
    + 0.5833333333333333 Q[136,1] * H_pos[0,sepal-width]
    + 0.7796610169491525 Q[136,1] * H_pos[0,petal-length]
@@ -6560,15 +6424,7 @@ Subject To
    - 0.5833333333333333 Q[136,1] * H_neg[0,sepal-width]
    - 0.7796610169491525 Q[136,1] * H_neg[0,petal-length]
    - 0.9583333333333334 Q[136,1] * H_neg[0,petal-width] + Q[136,1] * C4275
-   - Q[136,1] * C4282 - 0.5555555555555556 Q[136,2] * H_pos[0,sepal-length]
-   - 0.5833333333333333 Q[136,2] * H_pos[0,sepal-width]
-   - 0.7796610169491525 Q[136,2] * H_pos[0,petal-length]
-   - 0.9583333333333334 Q[136,2] * H_pos[0,petal-width]
-   + 0.5555555555555556 Q[136,2] * H_neg[0,sepal-length]
-   + 0.5833333333333333 Q[136,2] * H_neg[0,sepal-width]
-   + 0.7796610169491525 Q[136,2] * H_neg[0,petal-length]
-   + 0.9583333333333334 Q[136,2] * H_neg[0,petal-width] - Q[136,2] * C4275
-   + Q[136,2] * C4282 ] >= 1
+   - Q[136,1] * C4282 ] >= 1
  qc18: E[56,0] + [ 0.5555555555555556 Q[56,1] * H_pos[0,sepal-length]
    + 0.5416666666666665 Q[56,1] * H_pos[0,sepal-width]
    + 0.6271186440677966 Q[56,1] * H_pos[0,petal-length]
@@ -6577,15 +6433,7 @@ Subject To
    - 0.5416666666666665 Q[56,1] * H_neg[0,sepal-width]
    - 0.6271186440677966 Q[56,1] * H_neg[0,petal-length]
    - 0.625 Q[56,1] * H_neg[0,petal-width] + Q[56,1] * C4275
-   - Q[56,1] * C4282 - 0.5555555555555556 Q[56,2] * H_pos[0,sepal-length]
-   - 0.5416666666666665 Q[56,2] * H_pos[0,sepal-width]
-   - 0.6271186440677966 Q[56,2] * H_pos[0,petal-length]
-   - 0.625 Q[56,2] * H_pos[0,petal-width]
-   + 0.5555555555555556 Q[56,2] * H_neg[0,sepal-length]
-   + 0.5416666666666665 Q[56,2] * H_neg[0,sepal-width]
-   + 0.6271186440677966 Q[56,2] * H_neg[0,petal-length]
-   + 0.625 Q[56,2] * H_neg[0,petal-width] - Q[56,2] * C4275
-   + Q[56,2] * C4282 ] >= 1
+   - Q[56,1] * C4282 ] >= 1
  qc19: E[119,0] + [ 0.4722222222222223 Q[119,1] * H_pos[0,sepal-length]
    + 0.0833333333333334 Q[119,1] * H_pos[0,sepal-width]
    + 0.6779661016949152 Q[119,1] * H_pos[0,petal-length]
@@ -6594,28 +6442,14 @@ Subject To
    - 0.0833333333333334 Q[119,1] * H_neg[0,sepal-width]
    - 0.6779661016949152 Q[119,1] * H_neg[0,petal-length]
    - 0.5833333333333334 Q[119,1] * H_neg[0,petal-width] + Q[119,1] * C4275
-   - Q[119,1] * C4282 - 0.4722222222222223 Q[119,2] * H_pos[0,sepal-length]
-   - 0.0833333333333334 Q[119,2] * H_pos[0,sepal-width]
-   - 0.6779661016949152 Q[119,2] * H_pos[0,petal-length]
-   - 0.5833333333333334 Q[119,2] * H_pos[0,petal-width]
-   + 0.4722222222222223 Q[119,2] * H_neg[0,sepal-length]
-   + 0.0833333333333334 Q[119,2] * H_neg[0,sepal-width]
-   + 0.6779661016949152 Q[119,2] * H_neg[0,petal-length]
-   + 0.5833333333333334 Q[119,2] * H_neg[0,petal-width] - Q[119,2] * C4275
-   + Q[119,2] * C4282 ] >= 1
+   - Q[119,1] * C4282 ] >= 1
  qc20: E[9,0] + [ 0.1666666666666667 Q[9,1] * H_pos[0,sepal-length]
    + 0.4583333333333333 Q[9,1] * H_pos[0,sepal-width]
    + 0.0847457627118644 Q[9,1] * H_pos[0,petal-length]
    - 0.1666666666666667 Q[9,1] * H_neg[0,sepal-length]
    - 0.4583333333333333 Q[9,1] * H_neg[0,sepal-width]
    - 0.0847457627118644 Q[9,1] * H_neg[0,petal-length] + Q[9,1] * C4275
-   - Q[9,1] * C4282 - 0.1666666666666667 Q[9,2] * H_pos[0,sepal-length]
-   - 0.4583333333333333 Q[9,2] * H_pos[0,sepal-width]
-   - 0.0847457627118644 Q[9,2] * H_pos[0,petal-length]
-   + 0.1666666666666667 Q[9,2] * H_neg[0,sepal-length]
-   + 0.4583333333333333 Q[9,2] * H_neg[0,sepal-width]
-   + 0.0847457627118644 Q[9,2] * H_neg[0,petal-length] - Q[9,2] * C4275
-   + Q[9,2] * C4282 ] >= 1
+   - Q[9,1] * C4282 ] >= 1
  qc21: E[141,0] + [ 0.7222222222222223 Q[141,1] * H_pos[0,sepal-length]
    + 0.4583333333333333 Q[141,1] * H_pos[0,sepal-width]
    + 0.6949152542372881 Q[141,1] * H_pos[0,petal-length]
@@ -6624,15 +6458,7 @@ Subject To
    - 0.4583333333333333 Q[141,1] * H_neg[0,sepal-width]
    - 0.6949152542372881 Q[141,1] * H_neg[0,petal-length]
    - 0.9166666666666666 Q[141,1] * H_neg[0,petal-width] + Q[141,1] * C4275
-   - Q[141,1] * C4282 - 0.7222222222222223 Q[141,2] * H_pos[0,sepal-length]
-   - 0.4583333333333333 Q[141,2] * H_pos[0,sepal-width]
-   - 0.6949152542372881 Q[141,2] * H_pos[0,petal-length]
-   - 0.9166666666666666 Q[141,2] * H_pos[0,petal-width]
-   + 0.7222222222222223 Q[141,2] * H_neg[0,sepal-length]
-   + 0.4583333333333333 Q[141,2] * H_neg[0,sepal-width]
-   + 0.6949152542372881 Q[141,2] * H_neg[0,petal-length]
-   + 0.9166666666666666 Q[141,2] * H_neg[0,petal-width] - Q[141,2] * C4275
-   + Q[141,2] * C4282 ] >= 1
+   - Q[141,1] * C4282 ] >= 1
  qc22: E[6,0] + [ 0.0833333333333333 Q[6,1] * H_pos[0,sepal-length]
    + 0.5833333333333333 Q[6,1] * H_pos[0,sepal-width]
    + 0.0677966101694915 Q[6,1] * H_pos[0,petal-length]
@@ -6641,15 +6467,7 @@ Subject To
    - 0.5833333333333333 Q[6,1] * H_neg[0,sepal-width]
    - 0.0677966101694915 Q[6,1] * H_neg[0,petal-length]
    - 0.0833333333333333 Q[6,1] * H_neg[0,petal-width] + Q[6,1] * C4275
-   - Q[6,1] * C4282 - 0.0833333333333333 Q[6,2] * H_pos[0,sepal-length]
-   - 0.5833333333333333 Q[6,2] * H_pos[0,sepal-width]
-   - 0.0677966101694915 Q[6,2] * H_pos[0,petal-length]
-   - 0.0833333333333333 Q[6,2] * H_pos[0,petal-width]
-   + 0.0833333333333333 Q[6,2] * H_neg[0,sepal-length]
-   + 0.5833333333333333 Q[6,2] * H_neg[0,sepal-width]
-   + 0.0677966101694915 Q[6,2] * H_neg[0,petal-length]
-   + 0.0833333333333333 Q[6,2] * H_neg[0,petal-width] - Q[6,2] * C4275
-   + Q[6,2] * C4282 ] >= 1
+   - Q[6,1] * C4282 ] >= 1
  qc23: E[114,0] + [ 0.4166666666666665 Q[114,1] * H_pos[0,sepal-length]
    + 0.3333333333333333 Q[114,1] * H_pos[0,sepal-width]
    + 0.6949152542372881 Q[114,1] * H_pos[0,petal-length]
@@ -6658,15 +6476,7 @@ Subject To
    - 0.3333333333333333 Q[114,1] * H_neg[0,sepal-width]
    - 0.6949152542372881 Q[114,1] * H_neg[0,petal-length]
    - 0.9583333333333334 Q[114,1] * H_neg[0,petal-width] + Q[114,1] * C4275
-   - Q[114,1] * C4282 - 0.4166666666666665 Q[114,2] * H_pos[0,sepal-length]
-   - 0.3333333333333333 Q[114,2] * H_pos[0,sepal-width]
-   - 0.6949152542372881 Q[114,2] * H_pos[0,petal-length]
-   - 0.9583333333333334 Q[114,2] * H_pos[0,petal-width]
-   + 0.4166666666666665 Q[114,2] * H_neg[0,sepal-length]
-   + 0.3333333333333333 Q[114,2] * H_neg[0,sepal-width]
-   + 0.6949152542372881 Q[114,2] * H_neg[0,petal-length]
-   + 0.9583333333333334 Q[114,2] * H_neg[0,petal-width] - Q[114,2] * C4275
-   + Q[114,2] * C4282 ] >= 1
+   - Q[114,1] * C4282 ] >= 1
  qc24: E[147,0] + [ 0.6111111111111112 Q[147,1] * H_pos[0,sepal-length]
    + 0.4166666666666667 Q[147,1] * H_pos[0,sepal-width]
    + 0.711864406779661 Q[147,1] * H_pos[0,petal-length]
@@ -6675,15 +6485,7 @@ Subject To
    - 0.4166666666666667 Q[147,1] * H_neg[0,sepal-width]
    - 0.711864406779661 Q[147,1] * H_neg[0,petal-length]
    - 0.7916666666666667 Q[147,1] * H_neg[0,petal-width] + Q[147,1] * C4275
-   - Q[147,1] * C4282 - 0.6111111111111112 Q[147,2] * H_pos[0,sepal-length]
-   - 0.4166666666666667 Q[147,2] * H_pos[0,sepal-width]
-   - 0.711864406779661 Q[147,2] * H_pos[0,petal-length]
-   - 0.7916666666666667 Q[147,2] * H_pos[0,petal-width]
-   + 0.6111111111111112 Q[147,2] * H_neg[0,sepal-length]
-   + 0.4166666666666667 Q[147,2] * H_neg[0,sepal-width]
-   + 0.711864406779661 Q[147,2] * H_neg[0,petal-length]
-   + 0.7916666666666667 Q[147,2] * H_neg[0,petal-width] - Q[147,2] * C4275
-   + Q[147,2] * C4282 ] >= 1
+   - Q[147,1] * C4282 ] >= 1
  qc25: E[55,0] + [ 0.3888888888888888 Q[55,1] * H_pos[0,sepal-length]
    + 0.3333333333333333 Q[55,1] * H_pos[0,sepal-width]
    + 0.5932203389830508 Q[55,1] * H_pos[0,petal-length]
@@ -6692,14 +6494,6 @@ Subject To
    - 0.3333333333333333 Q[55,1] * H_neg[0,sepal-width]
    - 0.5932203389830508 Q[55,1] * H_neg[0,petal-length]
    - 0.5 Q[55,1] * H_neg[0,petal-width] + Q[55,1] * C4275 - Q[55,1] * C4282
-   - 0.3888888888888888 Q[55,2] * H_pos[0,sepal-length]
-   - 0.3333333333333333 Q[55,2] * H_pos[0,sepal-width]
-   - 0.5932203389830508 Q[55,2] * H_pos[0,petal-length]
-   - 0.5 Q[55,2] * H_pos[0,petal-width]
-   + 0.3888888888888888 Q[55,2] * H_neg[0,sepal-length]
-   + 0.3333333333333333 Q[55,2] * H_neg[0,sepal-width]
-   + 0.5932203389830508 Q[55,2] * H_neg[0,petal-length]
-   + 0.5 Q[55,2] * H_neg[0,petal-width] - Q[55,2] * C4275 + Q[55,2] * C4282
    ] >= 1
  qc26: E[112,0] + [ 0.6944444444444444 Q[112,1] * H_pos[0,sepal-length]
    + 0.4166666666666667 Q[112,1] * H_pos[0,sepal-width]
@@ -6709,15 +6503,7 @@ Subject To
    - 0.4166666666666667 Q[112,1] * H_neg[0,sepal-width]
    - 0.7627118644067796 Q[112,1] * H_neg[0,petal-length]
    - 0.8333333333333335 Q[112,1] * H_neg[0,petal-width] + Q[112,1] * C4275
-   - Q[112,1] * C4282 - 0.6944444444444444 Q[112,2] * H_pos[0,sepal-length]
-   - 0.4166666666666667 Q[112,2] * H_pos[0,sepal-width]
-   - 0.7627118644067796 Q[112,2] * H_pos[0,petal-length]
-   - 0.8333333333333335 Q[112,2] * H_pos[0,petal-width]
-   + 0.6944444444444444 Q[112,2] * H_neg[0,sepal-length]
-   + 0.4166666666666667 Q[112,2] * H_neg[0,sepal-width]
-   + 0.7627118644067796 Q[112,2] * H_neg[0,petal-length]
-   + 0.8333333333333335 Q[112,2] * H_neg[0,petal-width] - Q[112,2] * C4275
-   + Q[112,2] * C4282 ] >= 1
+   - Q[112,1] * C4282 ] >= 1
  qc27: E[96,0] + [ 0.3888888888888888 Q[96,1] * H_pos[0,sepal-length]
    + 0.375 Q[96,1] * H_pos[0,sepal-width]
    + 0.5423728813559322 Q[96,1] * H_pos[0,petal-length]
@@ -6726,14 +6512,6 @@ Subject To
    - 0.375 Q[96,1] * H_neg[0,sepal-width]
    - 0.5423728813559322 Q[96,1] * H_neg[0,petal-length]
    - 0.5 Q[96,1] * H_neg[0,petal-width] + Q[96,1] * C4275 - Q[96,1] * C4282
-   - 0.3888888888888888 Q[96,2] * H_pos[0,sepal-length]
-   - 0.375 Q[96,2] * H_pos[0,sepal-width]
-   - 0.5423728813559322 Q[96,2] * H_pos[0,petal-length]
-   - 0.5 Q[96,2] * H_pos[0,petal-width]
-   + 0.3888888888888888 Q[96,2] * H_neg[0,sepal-length]
-   + 0.375 Q[96,2] * H_neg[0,sepal-width]
-   + 0.5423728813559322 Q[96,2] * H_neg[0,petal-length]
-   + 0.5 Q[96,2] * H_neg[0,petal-width] - Q[96,2] * C4275 + Q[96,2] * C4282
    ] >= 1
  qc28: E[52,0] + [ 0.7222222222222223 Q[52,1] * H_pos[0,sepal-length]
    + 0.4583333333333333 Q[52,1] * H_pos[0,sepal-width]
@@ -6743,15 +6521,7 @@ Subject To
    - 0.4583333333333333 Q[52,1] * H_neg[0,sepal-width]
    - 0.6610169491525424 Q[52,1] * H_neg[0,petal-length]
    - 0.5833333333333334 Q[52,1] * H_neg[0,petal-width] + Q[52,1] * C4275
-   - Q[52,1] * C4282 - 0.7222222222222223 Q[52,2] * H_pos[0,sepal-length]
-   - 0.4583333333333333 Q[52,2] * H_pos[0,sepal-width]
-   - 0.6610169491525424 Q[52,2] * H_pos[0,petal-length]
-   - 0.5833333333333334 Q[52,2] * H_pos[0,petal-width]
-   + 0.7222222222222223 Q[52,2] * H_neg[0,sepal-length]
-   + 0.4583333333333333 Q[52,2] * H_neg[0,sepal-width]
-   + 0.6610169491525424 Q[52,2] * H_neg[0,petal-length]
-   + 0.5833333333333334 Q[52,2] * H_neg[0,petal-width] - Q[52,2] * C4275
-   + Q[52,2] * C4282 ] >= 1
+   - Q[52,1] * C4282 ] >= 1
  qc29: E[50,0] + [ 0.75 Q[50,1] * H_pos[0,sepal-length]
    + 0.5 Q[50,1] * H_pos[0,sepal-width]
    + 0.6271186440677966 Q[50,1] * H_pos[0,petal-length]
@@ -6760,15 +6530,7 @@ Subject To
    - 0.5 Q[50,1] * H_neg[0,sepal-width]
    - 0.6271186440677966 Q[50,1] * H_neg[0,petal-length]
    - 0.5416666666666667 Q[50,1] * H_neg[0,petal-width] + Q[50,1] * C4275
-   - Q[50,1] * C4282 - 0.75 Q[50,2] * H_pos[0,sepal-length]
-   - 0.5 Q[50,2] * H_pos[0,sepal-width]
-   - 0.6271186440677966 Q[50,2] * H_pos[0,petal-length]
-   - 0.5416666666666667 Q[50,2] * H_pos[0,petal-width]
-   + 0.75 Q[50,2] * H_neg[0,sepal-length]
-   + 0.5 Q[50,2] * H_neg[0,sepal-width]
-   + 0.6271186440677966 Q[50,2] * H_neg[0,petal-length]
-   + 0.5416666666666667 Q[50,2] * H_neg[0,petal-width] - Q[50,2] * C4275
-   + Q[50,2] * C4282 ] >= 1
+   - Q[50,1] * C4282 ] >= 1
  qc30: E[69,0] + [ 0.3611111111111109 Q[69,1] * H_pos[0,sepal-length]
    + 0.2083333333333333 Q[69,1] * H_pos[0,sepal-width]
    + 0.4915254237288135 Q[69,1] * H_pos[0,petal-length]
@@ -6777,15 +6539,7 @@ Subject To
    - 0.2083333333333333 Q[69,1] * H_neg[0,sepal-width]
    - 0.4915254237288135 Q[69,1] * H_neg[0,petal-length]
    - 0.4166666666666667 Q[69,1] * H_neg[0,petal-width] + Q[69,1] * C4275
-   - Q[69,1] * C4282 - 0.3611111111111109 Q[69,2] * H_pos[0,sepal-length]
-   - 0.2083333333333333 Q[69,2] * H_pos[0,sepal-width]
-   - 0.4915254237288135 Q[69,2] * H_pos[0,petal-length]
-   - 0.4166666666666667 Q[69,2] * H_pos[0,petal-width]
-   + 0.3611111111111109 Q[69,2] * H_neg[0,sepal-length]
-   + 0.2083333333333333 Q[69,2] * H_neg[0,sepal-width]
-   + 0.4915254237288135 Q[69,2] * H_neg[0,petal-length]
-   + 0.4166666666666667 Q[69,2] * H_neg[0,petal-width] - Q[69,2] * C4275
-   + Q[69,2] * C4282 ] >= 1
+   - Q[69,1] * C4282 ] >= 1
  qc31: E[71,0] + [ 0.5 Q[71,1] * H_pos[0,sepal-length]
    + 0.3333333333333333 Q[71,1] * H_pos[0,sepal-width]
    + 0.5084745762711864 Q[71,1] * H_pos[0,petal-length]
@@ -6794,14 +6548,6 @@ Subject To
    - 0.3333333333333333 Q[71,1] * H_neg[0,sepal-width]
    - 0.5084745762711864 Q[71,1] * H_neg[0,petal-length]
    - 0.5 Q[71,1] * H_neg[0,petal-width] + Q[71,1] * C4275 - Q[71,1] * C4282
-   - 0.5 Q[71,2] * H_pos[0,sepal-length]
-   - 0.3333333333333333 Q[71,2] * H_pos[0,sepal-width]
-   - 0.5084745762711864 Q[71,2] * H_pos[0,petal-length]
-   - 0.5 Q[71,2] * H_pos[0,petal-width]
-   + 0.5 Q[71,2] * H_neg[0,sepal-length]
-   + 0.3333333333333333 Q[71,2] * H_neg[0,sepal-width]
-   + 0.5084745762711864 Q[71,2] * H_neg[0,petal-length]
-   + 0.5 Q[71,2] * H_neg[0,petal-width] - Q[71,2] * C4275 + Q[71,2] * C4282
    ] >= 1
  qc32: E[92,0] + [ 0.4166666666666665 Q[92,1] * H_pos[0,sepal-length]
    + 0.25 Q[92,1] * H_pos[0,sepal-width]
@@ -6811,15 +6557,7 @@ Subject To
    - 0.25 Q[92,1] * H_neg[0,sepal-width]
    - 0.5084745762711864 Q[92,1] * H_neg[0,petal-length]
    - 0.4583333333333333 Q[92,1] * H_neg[0,petal-width] + Q[92,1] * C4275
-   - Q[92,1] * C4282 - 0.4166666666666665 Q[92,2] * H_pos[0,sepal-length]
-   - 0.25 Q[92,2] * H_pos[0,sepal-width]
-   - 0.5084745762711864 Q[92,2] * H_pos[0,petal-length]
-   - 0.4583333333333333 Q[92,2] * H_pos[0,petal-width]
-   + 0.4166666666666665 Q[92,2] * H_neg[0,sepal-length]
-   + 0.25 Q[92,2] * H_neg[0,sepal-width]
-   + 0.5084745762711864 Q[92,2] * H_neg[0,petal-length]
-   + 0.4583333333333333 Q[92,2] * H_neg[0,petal-width] - Q[92,2] * C4275
-   + Q[92,2] * C4282 ] >= 1
+   - Q[92,1] * C4282 ] >= 1
  qc33: E[61,0] + [ 0.4444444444444446 Q[61,1] * H_pos[0,sepal-length]
    + 0.4166666666666667 Q[61,1] * H_pos[0,sepal-width]
    + 0.5423728813559322 Q[61,1] * H_pos[0,petal-length]
@@ -6828,15 +6566,7 @@ Subject To
    - 0.4166666666666667 Q[61,1] * H_neg[0,sepal-width]
    - 0.5423728813559322 Q[61,1] * H_neg[0,petal-length]
    - 0.5833333333333334 Q[61,1] * H_neg[0,petal-width] + Q[61,1] * C4275
-   - Q[61,1] * C4282 - 0.4444444444444446 Q[61,2] * H_pos[0,sepal-length]
-   - 0.4166666666666667 Q[61,2] * H_pos[0,sepal-width]
-   - 0.5423728813559322 Q[61,2] * H_pos[0,petal-length]
-   - 0.5833333333333334 Q[61,2] * H_pos[0,petal-width]
-   + 0.4444444444444446 Q[61,2] * H_neg[0,sepal-length]
-   + 0.4166666666666667 Q[61,2] * H_neg[0,sepal-width]
-   + 0.5423728813559322 Q[61,2] * H_neg[0,petal-length]
-   + 0.5833333333333334 Q[61,2] * H_neg[0,petal-width] - Q[61,2] * C4275
-   + Q[61,2] * C4282 ] >= 1
+   - Q[61,1] * C4282 ] >= 1
  qc34: E[33,0] + [ 0.3333333333333333 Q[33,1] * H_pos[0,sepal-length]
    + 0.9166666666666667 Q[33,1] * H_pos[0,sepal-width]
    + 0.0677966101694915 Q[33,1] * H_pos[0,petal-length]
@@ -6845,15 +6575,7 @@ Subject To
    - 0.9166666666666667 Q[33,1] * H_neg[0,sepal-width]
    - 0.0677966101694915 Q[33,1] * H_neg[0,petal-length]
    - 0.0416666666666667 Q[33,1] * H_neg[0,petal-width] + Q[33,1] * C4275
-   - Q[33,1] * C4282 - 0.3333333333333333 Q[33,2] * H_pos[0,sepal-length]
-   - 0.9166666666666667 Q[33,2] * H_pos[0,sepal-width]
-   - 0.0677966101694915 Q[33,2] * H_pos[0,petal-length]
-   - 0.0416666666666667 Q[33,2] * H_pos[0,petal-width]
-   + 0.3333333333333333 Q[33,2] * H_neg[0,sepal-length]
-   + 0.9166666666666667 Q[33,2] * H_neg[0,sepal-width]
-   + 0.0677966101694915 Q[33,2] * H_neg[0,petal-length]
-   + 0.0416666666666667 Q[33,2] * H_neg[0,petal-width] - Q[33,2] * C4275
-   + Q[33,2] * C4282 ] >= 1
+   - Q[33,1] * C4282 ] >= 1
  qc35: E[15,0] + [ 0.3888888888888888 Q[15,1] * H_pos[0,sepal-length]
    + Q[15,1] * H_pos[0,sepal-width]
    + 0.0847457627118644 Q[15,1] * H_pos[0,petal-length]
@@ -6862,15 +6584,7 @@ Subject To
    - Q[15,1] * H_neg[0,sepal-width]
    - 0.0847457627118644 Q[15,1] * H_neg[0,petal-length]
    - 0.125 Q[15,1] * H_neg[0,petal-width] + Q[15,1] * C4275
-   - Q[15,1] * C4282 - 0.3888888888888888 Q[15,2] * H_pos[0,sepal-length]
-   - Q[15,2] * H_pos[0,sepal-width]
-   - 0.0847457627118644 Q[15,2] * H_pos[0,petal-length]
-   - 0.125 Q[15,2] * H_pos[0,petal-width]
-   + 0.3888888888888888 Q[15,2] * H_neg[0,sepal-length]
-   + Q[15,2] * H_neg[0,sepal-width]
-   + 0.0847457627118644 Q[15,2] * H_neg[0,petal-length]
-   + 0.125 Q[15,2] * H_neg[0,petal-width] - Q[15,2] * C4275
-   + Q[15,2] * C4282 ] >= 1
+   - Q[15,1] * C4282 ] >= 1
  qc36: E[5,0] + [ 0.3055555555555556 Q[5,1] * H_pos[0,sepal-length]
    + 0.7916666666666665 Q[5,1] * H_pos[0,sepal-width]
    + 0.1186440677966101 Q[5,1] * H_pos[0,petal-length]
@@ -6879,14 +6593,6 @@ Subject To
    - 0.7916666666666665 Q[5,1] * H_neg[0,sepal-width]
    - 0.1186440677966101 Q[5,1] * H_neg[0,petal-length]
    - 0.125 Q[5,1] * H_neg[0,petal-width] + Q[5,1] * C4275 - Q[5,1] * C4282
-   - 0.3055555555555556 Q[5,2] * H_pos[0,sepal-length]
-   - 0.7916666666666665 Q[5,2] * H_pos[0,sepal-width]
-   - 0.1186440677966101 Q[5,2] * H_pos[0,petal-length]
-   - 0.125 Q[5,2] * H_pos[0,petal-width]
-   + 0.3055555555555556 Q[5,2] * H_neg[0,sepal-length]
-   + 0.7916666666666665 Q[5,2] * H_neg[0,sepal-width]
-   + 0.1186440677966101 Q[5,2] * H_neg[0,petal-length]
-   + 0.125 Q[5,2] * H_neg[0,petal-width] - Q[5,2] * C4275 + Q[5,2] * C4282
    ] >= 1
  qc37: E[126,0] + [ 0.5277777777777779 Q[126,1] * H_pos[0,sepal-length]
    + 0.3333333333333333 Q[126,1] * H_pos[0,sepal-width]
@@ -6896,15 +6602,7 @@ Subject To
    - 0.3333333333333333 Q[126,1] * H_neg[0,sepal-width]
    - 0.6440677966101694 Q[126,1] * H_neg[0,petal-length]
    - 0.7083333333333334 Q[126,1] * H_neg[0,petal-width] + Q[126,1] * C4275
-   - Q[126,1] * C4282 - 0.5277777777777779 Q[126,2] * H_pos[0,sepal-length]
-   - 0.3333333333333333 Q[126,2] * H_pos[0,sepal-width]
-   - 0.6440677966101694 Q[126,2] * H_pos[0,petal-length]
-   - 0.7083333333333334 Q[126,2] * H_pos[0,petal-width]
-   + 0.5277777777777779 Q[126,2] * H_neg[0,sepal-length]
-   + 0.3333333333333333 Q[126,2] * H_neg[0,sepal-width]
-   + 0.6440677966101694 Q[126,2] * H_neg[0,petal-length]
-   + 0.7083333333333334 Q[126,2] * H_neg[0,petal-width] - Q[126,2] * C4275
-   + Q[126,2] * C4282 ] >= 1
+   - Q[126,1] * C4282 ] >= 1
  qc38: E[143,0] + [ 0.6944444444444444 Q[143,1] * H_pos[0,sepal-length]
    + 0.5 Q[143,1] * H_pos[0,sepal-width]
    + 0.8305084745762712 Q[143,1] * H_pos[0,petal-length]
@@ -6913,15 +6611,7 @@ Subject To
    - 0.5 Q[143,1] * H_neg[0,sepal-width]
    - 0.8305084745762712 Q[143,1] * H_neg[0,petal-length]
    - 0.9166666666666666 Q[143,1] * H_neg[0,petal-width] + Q[143,1] * C4275
-   - Q[143,1] * C4282 - 0.6944444444444444 Q[143,2] * H_pos[0,sepal-length]
-   - 0.5 Q[143,2] * H_pos[0,sepal-width]
-   - 0.8305084745762712 Q[143,2] * H_pos[0,petal-length]
-   - 0.9166666666666666 Q[143,2] * H_pos[0,petal-width]
-   + 0.6944444444444444 Q[143,2] * H_neg[0,sepal-length]
-   + 0.5 Q[143,2] * H_neg[0,sepal-width]
-   + 0.8305084745762712 Q[143,2] * H_neg[0,petal-length]
-   + 0.9166666666666666 Q[143,2] * H_neg[0,petal-width] - Q[143,2] * C4275
-   + Q[143,2] * C4282 ] >= 1
+   - Q[143,1] * C4282 ] >= 1
  qc39: E[80,0] + [ 0.3333333333333333 Q[80,1] * H_pos[0,sepal-length]
    + 0.1666666666666666 Q[80,1] * H_pos[0,sepal-width]
    + 0.4745762711864406 Q[80,1] * H_pos[0,petal-length]
@@ -6930,15 +6620,7 @@ Subject To
    - 0.1666666666666666 Q[80,1] * H_neg[0,sepal-width]
    - 0.4745762711864406 Q[80,1] * H_neg[0,petal-length]
    - 0.4166666666666667 Q[80,1] * H_neg[0,petal-width] + Q[80,1] * C4275
-   - Q[80,1] * C4282 - 0.3333333333333333 Q[80,2] * H_pos[0,sepal-length]
-   - 0.1666666666666666 Q[80,2] * H_pos[0,sepal-width]
-   - 0.4745762711864406 Q[80,2] * H_pos[0,petal-length]
-   - 0.4166666666666667 Q[80,2] * H_pos[0,petal-width]
-   + 0.3333333333333333 Q[80,2] * H_neg[0,sepal-length]
-   + 0.1666666666666666 Q[80,2] * H_neg[0,sepal-width]
-   + 0.4745762711864406 Q[80,2] * H_neg[0,petal-length]
-   + 0.4166666666666667 Q[80,2] * H_neg[0,petal-width] - Q[80,2] * C4275
-   + Q[80,2] * C4282 ] >= 1
+   - Q[80,1] * C4282 ] >= 1
  qc40: E[73,0] + [ 0.5 Q[73,1] * H_pos[0,sepal-length]
    + 0.3333333333333333 Q[73,1] * H_pos[0,sepal-width]
    + 0.6271186440677966 Q[73,1] * H_pos[0,petal-length]
@@ -6947,15 +6629,7 @@ Subject To
    - 0.3333333333333333 Q[73,1] * H_neg[0,sepal-width]
    - 0.6271186440677966 Q[73,1] * H_neg[0,petal-length]
    - 0.4583333333333333 Q[73,1] * H_neg[0,petal-width] + Q[73,1] * C4275
-   - Q[73,1] * C4282 - 0.5 Q[73,2] * H_pos[0,sepal-length]
-   - 0.3333333333333333 Q[73,2] * H_pos[0,sepal-width]
-   - 0.6271186440677966 Q[73,2] * H_pos[0,petal-length]
-   - 0.4583333333333333 Q[73,2] * H_pos[0,petal-width]
-   + 0.5 Q[73,2] * H_neg[0,sepal-length]
-   + 0.3333333333333333 Q[73,2] * H_neg[0,sepal-width]
-   + 0.6271186440677966 Q[73,2] * H_neg[0,petal-length]
-   + 0.4583333333333333 Q[73,2] * H_neg[0,petal-width] - Q[73,2] * C4275
-   + Q[73,2] * C4282 ] >= 1
+   - Q[73,1] * C4282 ] >= 1
  qc41: E[54,0] + [ 0.6111111111111112 Q[54,1] * H_pos[0,sepal-length]
    + 0.3333333333333333 Q[54,1] * H_pos[0,sepal-width]
    + 0.6101694915254237 Q[54,1] * H_pos[0,petal-length]
@@ -6964,15 +6638,7 @@ Subject To
    - 0.3333333333333333 Q[54,1] * H_neg[0,sepal-width]
    - 0.6101694915254237 Q[54,1] * H_neg[0,petal-length]
    - 0.5833333333333334 Q[54,1] * H_neg[0,petal-width] + Q[54,1] * C4275
-   - Q[54,1] * C4282 - 0.6111111111111112 Q[54,2] * H_pos[0,sepal-length]
-   - 0.3333333333333333 Q[54,2] * H_pos[0,sepal-width]
-   - 0.6101694915254237 Q[54,2] * H_pos[0,petal-length]
-   - 0.5833333333333334 Q[54,2] * H_pos[0,petal-width]
-   + 0.6111111111111112 Q[54,2] * H_neg[0,sepal-length]
-   + 0.3333333333333333 Q[54,2] * H_neg[0,sepal-width]
-   + 0.6101694915254237 Q[54,2] * H_neg[0,petal-length]
-   + 0.5833333333333334 Q[54,2] * H_neg[0,petal-width] - Q[54,2] * C4275
-   + Q[54,2] * C4282 ] >= 1
+   - Q[54,1] * C4282 ] >= 1
  qc42: E[1,0] + [ 0.1666666666666667 Q[1,1] * H_pos[0,sepal-length]
    + 0.4166666666666667 Q[1,1] * H_pos[0,sepal-width]
    + 0.0677966101694915 Q[1,1] * H_pos[0,petal-length]
@@ -6981,15 +6647,7 @@ Subject To
    - 0.4166666666666667 Q[1,1] * H_neg[0,sepal-width]
    - 0.0677966101694915 Q[1,1] * H_neg[0,petal-length]
    - 0.0416666666666667 Q[1,1] * H_neg[0,petal-width] + Q[1,1] * C4275
-   - Q[1,1] * C4282 - 0.1666666666666667 Q[1,2] * H_pos[0,sepal-length]
-   - 0.4166666666666667 Q[1,2] * H_pos[0,sepal-width]
-   - 0.0677966101694915 Q[1,2] * H_pos[0,petal-length]
-   - 0.0416666666666667 Q[1,2] * H_pos[0,petal-width]
-   + 0.1666666666666667 Q[1,2] * H_neg[0,sepal-length]
-   + 0.4166666666666667 Q[1,2] * H_neg[0,sepal-width]
-   + 0.0677966101694915 Q[1,2] * H_neg[0,petal-length]
-   + 0.0416666666666667 Q[1,2] * H_neg[0,petal-width] - Q[1,2] * C4275
-   + Q[1,2] * C4282 ] >= 1
+   - Q[1,1] * C4282 ] >= 1
  qc43: E[129,0] + [ 0.8055555555555556 Q[129,1] * H_pos[0,sepal-length]
    + 0.4166666666666667 Q[129,1] * H_pos[0,sepal-width]
    + 0.8135593220338982 Q[129,1] * H_pos[0,petal-length]
@@ -6998,15 +6656,7 @@ Subject To
    - 0.4166666666666667 Q[129,1] * H_neg[0,sepal-width]
    - 0.8135593220338982 Q[129,1] * H_neg[0,petal-length]
    - 0.625 Q[129,1] * H_neg[0,petal-width] + Q[129,1] * C4275
-   - Q[129,1] * C4282 - 0.8055555555555556 Q[129,2] * H_pos[0,sepal-length]
-   - 0.4166666666666667 Q[129,2] * H_pos[0,sepal-width]
-   - 0.8135593220338982 Q[129,2] * H_pos[0,petal-length]
-   - 0.625 Q[129,2] * H_pos[0,petal-width]
-   + 0.8055555555555556 Q[129,2] * H_neg[0,sepal-length]
-   + 0.4166666666666667 Q[129,2] * H_neg[0,sepal-width]
-   + 0.8135593220338982 Q[129,2] * H_neg[0,petal-length]
-   + 0.625 Q[129,2] * H_neg[0,petal-width] - Q[129,2] * C4275
-   + Q[129,2] * C4282 ] >= 1
+   - Q[129,1] * C4282 ] >= 1
  qc44: E[99,0] + [ 0.3888888888888888 Q[99,1] * H_pos[0,sepal-length]
    + 0.3333333333333333 Q[99,1] * H_pos[0,sepal-width]
    + 0.5254237288135593 Q[99,1] * H_pos[0,petal-length]
@@ -7015,14 +6665,6 @@ Subject To
    - 0.3333333333333333 Q[99,1] * H_neg[0,sepal-width]
    - 0.5254237288135593 Q[99,1] * H_neg[0,petal-length]
    - 0.5 Q[99,1] * H_neg[0,petal-width] + Q[99,1] * C4275 - Q[99,1] * C4282
-   - 0.3888888888888888 Q[99,2] * H_pos[0,sepal-length]
-   - 0.3333333333333333 Q[99,2] * H_pos[0,sepal-width]
-   - 0.5254237288135593 Q[99,2] * H_pos[0,petal-length]
-   - 0.5 Q[99,2] * H_pos[0,petal-width]
-   + 0.3888888888888888 Q[99,2] * H_neg[0,sepal-length]
-   + 0.3333333333333333 Q[99,2] * H_neg[0,sepal-width]
-   + 0.5254237288135593 Q[99,2] * H_neg[0,petal-length]
-   + 0.5 Q[99,2] * H_neg[0,petal-width] - Q[99,2] * C4275 + Q[99,2] * C4282
    ] >= 1
  qc45: E[105,0] + [ 0.9166666666666665 Q[105,1] * H_pos[0,sepal-length]
    + 0.4166666666666667 Q[105,1] * H_pos[0,sepal-width]
@@ -7032,15 +6674,7 @@ Subject To
    - 0.4166666666666667 Q[105,1] * H_neg[0,sepal-width]
    - 0.9491525423728813 Q[105,1] * H_neg[0,petal-length]
    - 0.8333333333333335 Q[105,1] * H_neg[0,petal-width] + Q[105,1] * C4275
-   - Q[105,1] * C4282 - 0.9166666666666665 Q[105,2] * H_pos[0,sepal-length]
-   - 0.4166666666666667 Q[105,2] * H_pos[0,sepal-width]
-   - 0.9491525423728813 Q[105,2] * H_pos[0,petal-length]
-   - 0.8333333333333335 Q[105,2] * H_pos[0,petal-width]
-   + 0.9166666666666665 Q[105,2] * H_neg[0,sepal-length]
-   + 0.4166666666666667 Q[105,2] * H_neg[0,sepal-width]
-   + 0.9491525423728813 Q[105,2] * H_neg[0,petal-length]
-   + 0.8333333333333335 Q[105,2] * H_neg[0,petal-width] - Q[105,2] * C4275
-   + Q[105,2] * C4282 ] >= 1
+   - Q[105,1] * C4282 ] >= 1
  qc46: E[144,0] + [ 0.6666666666666667 Q[144,1] * H_pos[0,sepal-length]
    + 0.5416666666666665 Q[144,1] * H_pos[0,sepal-width]
    + 0.7966101694915254 Q[144,1] * H_pos[0,petal-length]
@@ -7049,14 +6683,6 @@ Subject To
    - 0.5416666666666665 Q[144,1] * H_neg[0,sepal-width]
    - 0.7966101694915254 Q[144,1] * H_neg[0,petal-length]
    - Q[144,1] * H_neg[0,petal-width] + Q[144,1] * C4275 - Q[144,1] * C4282
-   - 0.6666666666666667 Q[144,2] * H_pos[0,sepal-length]
-   - 0.5416666666666665 Q[144,2] * H_pos[0,sepal-width]
-   - 0.7966101694915254 Q[144,2] * H_pos[0,petal-length]
-   - Q[144,2] * H_pos[0,petal-width]
-   + 0.6666666666666667 Q[144,2] * H_neg[0,sepal-length]
-   + 0.5416666666666665 Q[144,2] * H_neg[0,sepal-width]
-   + 0.7966101694915254 Q[144,2] * H_neg[0,petal-length]
-   + Q[144,2] * H_neg[0,petal-width] - Q[144,2] * C4275 + Q[144,2] * C4282
    ] >= 1
  qc47: E[7,0] + [ 0.1944444444444444 Q[7,1] * H_pos[0,sepal-length]
    + 0.5833333333333333 Q[7,1] * H_pos[0,sepal-width]
@@ -7066,15 +6692,7 @@ Subject To
    - 0.5833333333333333 Q[7,1] * H_neg[0,sepal-width]
    - 0.0847457627118644 Q[7,1] * H_neg[0,petal-length]
    - 0.0416666666666667 Q[7,1] * H_neg[0,petal-width] + Q[7,1] * C4275
-   - Q[7,1] * C4282 - 0.1944444444444444 Q[7,2] * H_pos[0,sepal-length]
-   - 0.5833333333333333 Q[7,2] * H_pos[0,sepal-width]
-   - 0.0847457627118644 Q[7,2] * H_pos[0,petal-length]
-   - 0.0416666666666667 Q[7,2] * H_pos[0,petal-width]
-   + 0.1944444444444444 Q[7,2] * H_neg[0,sepal-length]
-   + 0.5833333333333333 Q[7,2] * H_neg[0,sepal-width]
-   + 0.0847457627118644 Q[7,2] * H_neg[0,petal-length]
-   + 0.0416666666666667 Q[7,2] * H_neg[0,petal-width] - Q[7,2] * C4275
-   + Q[7,2] * C4282 ] >= 1
+   - Q[7,1] * C4282 ] >= 1
  qc48: E[107,0] + [ 0.833333333333333 Q[107,1] * H_pos[0,sepal-length]
    + 0.375 Q[107,1] * H_pos[0,sepal-width]
    + 0.8983050847457625 Q[107,1] * H_pos[0,petal-length]
@@ -7083,15 +6701,7 @@ Subject To
    - 0.375 Q[107,1] * H_neg[0,sepal-width]
    - 0.8983050847457625 Q[107,1] * H_neg[0,petal-length]
    - 0.7083333333333334 Q[107,1] * H_neg[0,petal-width] + Q[107,1] * C4275
-   - Q[107,1] * C4282 - 0.833333333333333 Q[107,2] * H_pos[0,sepal-length]
-   - 0.375 Q[107,2] * H_pos[0,sepal-width]
-   - 0.8983050847457625 Q[107,2] * H_pos[0,petal-length]
-   - 0.7083333333333334 Q[107,2] * H_pos[0,petal-width]
-   + 0.833333333333333 Q[107,2] * H_neg[0,sepal-length]
-   + 0.375 Q[107,2] * H_neg[0,sepal-width]
-   + 0.8983050847457625 Q[107,2] * H_neg[0,petal-length]
-   + 0.7083333333333334 Q[107,2] * H_neg[0,petal-width] - Q[107,2] * C4275
-   + Q[107,2] * C4282 ] >= 1
+   - Q[107,1] * C4282 ] >= 1
  qc49: E[123,0] + [ 0.5555555555555556 Q[123,1] * H_pos[0,sepal-length]
    + 0.2916666666666667 Q[123,1] * H_pos[0,sepal-width]
    + 0.6610169491525424 Q[123,1] * H_pos[0,petal-length]
@@ -7100,15 +6710,7 @@ Subject To
    - 0.2916666666666667 Q[123,1] * H_neg[0,sepal-width]
    - 0.6610169491525424 Q[123,1] * H_neg[0,petal-length]
    - 0.7083333333333334 Q[123,1] * H_neg[0,petal-width] + Q[123,1] * C4275
-   - Q[123,1] * C4282 - 0.5555555555555556 Q[123,2] * H_pos[0,sepal-length]
-   - 0.2916666666666667 Q[123,2] * H_pos[0,sepal-width]
-   - 0.6610169491525424 Q[123,2] * H_pos[0,petal-length]
-   - 0.7083333333333334 Q[123,2] * H_pos[0,petal-width]
-   + 0.5555555555555556 Q[123,2] * H_neg[0,sepal-length]
-   + 0.2916666666666667 Q[123,2] * H_neg[0,sepal-width]
-   + 0.6610169491525424 Q[123,2] * H_neg[0,petal-length]
-   + 0.7083333333333334 Q[123,2] * H_neg[0,petal-width] - Q[123,2] * C4275
-   + Q[123,2] * C4282 ] >= 1
+   - Q[123,1] * C4282 ] >= 1
  qc50: E[118,0] + [ 0.9444444444444442 Q[118,1] * H_pos[0,sepal-length]
    + 0.25 Q[118,1] * H_pos[0,sepal-width]
    + Q[118,1] * H_pos[0,petal-length]
@@ -7117,15 +6719,7 @@ Subject To
    - 0.25 Q[118,1] * H_neg[0,sepal-width]
    - Q[118,1] * H_neg[0,petal-length]
    - 0.9166666666666666 Q[118,1] * H_neg[0,petal-width] + Q[118,1] * C4275
-   - Q[118,1] * C4282 - 0.9444444444444442 Q[118,2] * H_pos[0,sepal-length]
-   - 0.25 Q[118,2] * H_pos[0,sepal-width]
-   - Q[118,2] * H_pos[0,petal-length]
-   - 0.9166666666666666 Q[118,2] * H_pos[0,petal-width]
-   + 0.9444444444444442 Q[118,2] * H_neg[0,sepal-length]
-   + 0.25 Q[118,2] * H_neg[0,sepal-width]
-   + Q[118,2] * H_neg[0,petal-length]
-   + 0.9166666666666666 Q[118,2] * H_neg[0,petal-width] - Q[118,2] * C4275
-   + Q[118,2] * C4282 ] >= 1
+   - Q[118,1] * C4282 ] >= 1
  qc51: E[66,0] + [ 0.3611111111111109 Q[66,1] * H_pos[0,sepal-length]
    + 0.4166666666666667 Q[66,1] * H_pos[0,sepal-width]
    + 0.5932203389830508 Q[66,1] * H_pos[0,petal-length]
@@ -7134,15 +6728,7 @@ Subject To
    - 0.4166666666666667 Q[66,1] * H_neg[0,sepal-width]
    - 0.5932203389830508 Q[66,1] * H_neg[0,petal-length]
    - 0.5833333333333334 Q[66,1] * H_neg[0,petal-width] + Q[66,1] * C4275
-   - Q[66,1] * C4282 - 0.3611111111111109 Q[66,2] * H_pos[0,sepal-length]
-   - 0.4166666666666667 Q[66,2] * H_pos[0,sepal-width]
-   - 0.5932203389830508 Q[66,2] * H_pos[0,petal-length]
-   - 0.5833333333333334 Q[66,2] * H_pos[0,petal-width]
-   + 0.3611111111111109 Q[66,2] * H_neg[0,sepal-length]
-   + 0.4166666666666667 Q[66,2] * H_neg[0,sepal-width]
-   + 0.5932203389830508 Q[66,2] * H_neg[0,petal-length]
-   + 0.5833333333333334 Q[66,2] * H_neg[0,petal-width] - Q[66,2] * C4275
-   + Q[66,2] * C4282 ] >= 1
+   - Q[66,1] * C4282 ] >= 1
  qc52: E[124,0] + [ 0.6666666666666667 Q[124,1] * H_pos[0,sepal-length]
    + 0.5416666666666665 Q[124,1] * H_pos[0,sepal-width]
    + 0.7966101694915254 Q[124,1] * H_pos[0,petal-length]
@@ -7151,15 +6737,7 @@ Subject To
    - 0.5416666666666665 Q[124,1] * H_neg[0,sepal-width]
    - 0.7966101694915254 Q[124,1] * H_neg[0,petal-length]
    - 0.8333333333333335 Q[124,1] * H_neg[0,petal-width] + Q[124,1] * C4275
-   - Q[124,1] * C4282 - 0.6666666666666667 Q[124,2] * H_pos[0,sepal-length]
-   - 0.5416666666666665 Q[124,2] * H_pos[0,sepal-width]
-   - 0.7966101694915254 Q[124,2] * H_pos[0,petal-length]
-   - 0.8333333333333335 Q[124,2] * H_pos[0,petal-width]
-   + 0.6666666666666667 Q[124,2] * H_neg[0,sepal-length]
-   + 0.5416666666666665 Q[124,2] * H_neg[0,sepal-width]
-   + 0.7966101694915254 Q[124,2] * H_neg[0,petal-length]
-   + 0.8333333333333335 Q[124,2] * H_neg[0,petal-width] - Q[124,2] * C4275
-   + Q[124,2] * C4282 ] >= 1
+   - Q[124,1] * C4282 ] >= 1
  qc53: E[142,0] + [ 0.4166666666666665 Q[142,1] * H_pos[0,sepal-length]
    + 0.2916666666666667 Q[142,1] * H_pos[0,sepal-width]
    + 0.6949152542372881 Q[142,1] * H_pos[0,petal-length]
@@ -7168,15 +6746,7 @@ Subject To
    - 0.2916666666666667 Q[142,1] * H_neg[0,sepal-width]
    - 0.6949152542372881 Q[142,1] * H_neg[0,petal-length]
    - 0.75 Q[142,1] * H_neg[0,petal-width] + Q[142,1] * C4275
-   - Q[142,1] * C4282 - 0.4166666666666665 Q[142,2] * H_pos[0,sepal-length]
-   - 0.2916666666666667 Q[142,2] * H_pos[0,sepal-width]
-   - 0.6949152542372881 Q[142,2] * H_pos[0,petal-length]
-   - 0.75 Q[142,2] * H_pos[0,petal-width]
-   + 0.4166666666666665 Q[142,2] * H_neg[0,sepal-length]
-   + 0.2916666666666667 Q[142,2] * H_neg[0,sepal-width]
-   + 0.6949152542372881 Q[142,2] * H_neg[0,petal-length]
-   + 0.75 Q[142,2] * H_neg[0,petal-width] - Q[142,2] * C4275
-   + Q[142,2] * C4282 ] >= 1
+   - Q[142,1] * C4282 ] >= 1
  qc54: E[101,0] + [ 0.4166666666666665 Q[101,1] * H_pos[0,sepal-length]
    + 0.2916666666666667 Q[101,1] * H_pos[0,sepal-width]
    + 0.6949152542372881 Q[101,1] * H_pos[0,petal-length]
@@ -7185,15 +6755,7 @@ Subject To
    - 0.2916666666666667 Q[101,1] * H_neg[0,sepal-width]
    - 0.6949152542372881 Q[101,1] * H_neg[0,petal-length]
    - 0.75 Q[101,1] * H_neg[0,petal-width] + Q[101,1] * C4275
-   - Q[101,1] * C4282 - 0.4166666666666665 Q[101,2] * H_pos[0,sepal-length]
-   - 0.2916666666666667 Q[101,2] * H_pos[0,sepal-width]
-   - 0.6949152542372881 Q[101,2] * H_pos[0,petal-length]
-   - 0.75 Q[101,2] * H_pos[0,petal-width]
-   + 0.4166666666666665 Q[101,2] * H_neg[0,sepal-length]
-   + 0.2916666666666667 Q[101,2] * H_neg[0,sepal-width]
-   + 0.6949152542372881 Q[101,2] * H_neg[0,petal-length]
-   + 0.75 Q[101,2] * H_neg[0,petal-width] - Q[101,2] * C4275
-   + Q[101,2] * C4282 ] >= 1
+   - Q[101,1] * C4282 ] >= 1
  qc55: E[63,0] + [ 0.5 Q[63,1] * H_pos[0,sepal-length]
    + 0.375 Q[63,1] * H_pos[0,sepal-width]
    + 0.6271186440677966 Q[63,1] * H_pos[0,petal-length]
@@ -7202,15 +6764,7 @@ Subject To
    - 0.375 Q[63,1] * H_neg[0,sepal-width]
    - 0.6271186440677966 Q[63,1] * H_neg[0,petal-length]
    - 0.5416666666666667 Q[63,1] * H_neg[0,petal-width] + Q[63,1] * C4275
-   - Q[63,1] * C4282 - 0.5 Q[63,2] * H_pos[0,sepal-length]
-   - 0.375 Q[63,2] * H_pos[0,sepal-width]
-   - 0.6271186440677966 Q[63,2] * H_pos[0,petal-length]
-   - 0.5416666666666667 Q[63,2] * H_pos[0,petal-width]
-   + 0.5 Q[63,2] * H_neg[0,sepal-length]
-   + 0.375 Q[63,2] * H_neg[0,sepal-width]
-   + 0.6271186440677966 Q[63,2] * H_neg[0,petal-length]
-   + 0.5416666666666667 Q[63,2] * H_neg[0,petal-width] - Q[63,2] * C4275
-   + Q[63,2] * C4282 ] >= 1
+   - Q[63,1] * C4282 ] >= 1
  qc56: E[77,0] + [ 0.6666666666666667 Q[77,1] * H_pos[0,sepal-length]
    + 0.4166666666666667 Q[77,1] * H_pos[0,sepal-width]
    + 0.6779661016949152 Q[77,1] * H_pos[0,petal-length]
@@ -7219,15 +6773,7 @@ Subject To
    - 0.4166666666666667 Q[77,1] * H_neg[0,sepal-width]
    - 0.6779661016949152 Q[77,1] * H_neg[0,petal-length]
    - 0.6666666666666667 Q[77,1] * H_neg[0,petal-width] + Q[77,1] * C4275
-   - Q[77,1] * C4282 - 0.6666666666666667 Q[77,2] * H_pos[0,sepal-length]
-   - 0.4166666666666667 Q[77,2] * H_pos[0,sepal-width]
-   - 0.6779661016949152 Q[77,2] * H_pos[0,petal-length]
-   - 0.6666666666666667 Q[77,2] * H_pos[0,petal-width]
-   + 0.6666666666666667 Q[77,2] * H_neg[0,sepal-length]
-   + 0.4166666666666667 Q[77,2] * H_neg[0,sepal-width]
-   + 0.6779661016949152 Q[77,2] * H_neg[0,petal-length]
-   + 0.6666666666666667 Q[77,2] * H_neg[0,petal-width] - Q[77,2] * C4275
-   + Q[77,2] * C4282 ] >= 1
+   - Q[77,1] * C4282 ] >= 1
  qc57: E[35,0] + [ 0.1944444444444444 Q[35,1] * H_pos[0,sepal-length]
    + 0.5 Q[35,1] * H_pos[0,sepal-width]
    + 0.0338983050847458 Q[35,1] * H_pos[0,petal-length]
@@ -7236,28 +6782,14 @@ Subject To
    - 0.5 Q[35,1] * H_neg[0,sepal-width]
    - 0.0338983050847458 Q[35,1] * H_neg[0,petal-length]
    - 0.0416666666666667 Q[35,1] * H_neg[0,petal-width] + Q[35,1] * C4275
-   - Q[35,1] * C4282 - 0.1944444444444444 Q[35,2] * H_pos[0,sepal-length]
-   - 0.5 Q[35,2] * H_pos[0,sepal-width]
-   - 0.0338983050847458 Q[35,2] * H_pos[0,petal-length]
-   - 0.0416666666666667 Q[35,2] * H_pos[0,petal-width]
-   + 0.1944444444444444 Q[35,2] * H_neg[0,sepal-length]
-   + 0.5 Q[35,2] * H_neg[0,sepal-width]
-   + 0.0338983050847458 Q[35,2] * H_neg[0,petal-length]
-   + 0.0416666666666667 Q[35,2] * H_neg[0,petal-width] - Q[35,2] * C4275
-   + Q[35,2] * C4282 ] >= 1
+   - Q[35,1] * C4282 ] >= 1
  qc58: E[22,0] + [ 0.0833333333333333 Q[22,1] * H_pos[0,sepal-length]
    + 0.6666666666666667 Q[22,1] * H_pos[0,sepal-width]
    + 0.0416666666666667 Q[22,1] * H_pos[0,petal-width]
    - 0.0833333333333333 Q[22,1] * H_neg[0,sepal-length]
    - 0.6666666666666667 Q[22,1] * H_neg[0,sepal-width]
    - 0.0416666666666667 Q[22,1] * H_neg[0,petal-width] + Q[22,1] * C4275
-   - Q[22,1] * C4282 - 0.0833333333333333 Q[22,2] * H_pos[0,sepal-length]
-   - 0.6666666666666667 Q[22,2] * H_pos[0,sepal-width]
-   - 0.0416666666666667 Q[22,2] * H_pos[0,petal-width]
-   + 0.0833333333333333 Q[22,2] * H_neg[0,sepal-length]
-   + 0.6666666666666667 Q[22,2] * H_neg[0,sepal-width]
-   + 0.0416666666666667 Q[22,2] * H_neg[0,petal-width] - Q[22,2] * C4275
-   + Q[22,2] * C4282 ] >= 1
+   - Q[22,1] * C4282 ] >= 1
  qc59: E[127,0] + [ 0.5 Q[127,1] * H_pos[0,sepal-length]
    + 0.4166666666666667 Q[127,1] * H_pos[0,sepal-width]
    + 0.6610169491525424 Q[127,1] * H_pos[0,petal-length]
@@ -7266,15 +6798,7 @@ Subject To
    - 0.4166666666666667 Q[127,1] * H_neg[0,sepal-width]
    - 0.6610169491525424 Q[127,1] * H_neg[0,petal-length]
    - 0.7083333333333334 Q[127,1] * H_neg[0,petal-width] + Q[127,1] * C4275
-   - Q[127,1] * C4282 - 0.5 Q[127,2] * H_pos[0,sepal-length]
-   - 0.4166666666666667 Q[127,2] * H_pos[0,sepal-width]
-   - 0.6610169491525424 Q[127,2] * H_pos[0,petal-length]
-   - 0.7083333333333334 Q[127,2] * H_pos[0,petal-width]
-   + 0.5 Q[127,2] * H_neg[0,sepal-length]
-   + 0.4166666666666667 Q[127,2] * H_neg[0,sepal-width]
-   + 0.6610169491525424 Q[127,2] * H_neg[0,petal-length]
-   + 0.7083333333333334 Q[127,2] * H_neg[0,petal-width] - Q[127,2] * C4275
-   + Q[127,2] * C4282 ] >= 1
+   - Q[127,1] * C4282 ] >= 1
  qc60: E[102,0] + [ 0.7777777777777777 Q[102,1] * H_pos[0,sepal-length]
    + 0.4166666666666667 Q[102,1] * H_pos[0,sepal-width]
    + 0.8305084745762712 Q[102,1] * H_pos[0,petal-length]
@@ -7283,15 +6807,7 @@ Subject To
    - 0.4166666666666667 Q[102,1] * H_neg[0,sepal-width]
    - 0.8305084745762712 Q[102,1] * H_neg[0,petal-length]
    - 0.8333333333333335 Q[102,1] * H_neg[0,petal-width] + Q[102,1] * C4275
-   - Q[102,1] * C4282 - 0.7777777777777777 Q[102,2] * H_pos[0,sepal-length]
-   - 0.4166666666666667 Q[102,2] * H_pos[0,sepal-width]
-   - 0.8305084745762712 Q[102,2] * H_pos[0,petal-length]
-   - 0.8333333333333335 Q[102,2] * H_pos[0,petal-width]
-   + 0.7777777777777777 Q[102,2] * H_neg[0,sepal-length]
-   + 0.4166666666666667 Q[102,2] * H_neg[0,sepal-width]
-   + 0.8305084745762712 Q[102,2] * H_neg[0,petal-length]
-   + 0.8333333333333335 Q[102,2] * H_neg[0,petal-width] - Q[102,2] * C4275
-   + Q[102,2] * C4282 ] >= 1
+   - Q[102,1] * C4282 ] >= 1
  qc61: E[148,0] + [ 0.5277777777777779 Q[148,1] * H_pos[0,sepal-length]
    + 0.5833333333333333 Q[148,1] * H_pos[0,sepal-width]
    + 0.7457627118644068 Q[148,1] * H_pos[0,petal-length]
@@ -7300,15 +6816,7 @@ Subject To
    - 0.5833333333333333 Q[148,1] * H_neg[0,sepal-width]
    - 0.7457627118644068 Q[148,1] * H_neg[0,petal-length]
    - 0.9166666666666666 Q[148,1] * H_neg[0,petal-width] + Q[148,1] * C4275
-   - Q[148,1] * C4282 - 0.5277777777777779 Q[148,2] * H_pos[0,sepal-length]
-   - 0.5833333333333333 Q[148,2] * H_pos[0,sepal-width]
-   - 0.7457627118644068 Q[148,2] * H_pos[0,petal-length]
-   - 0.9166666666666666 Q[148,2] * H_pos[0,petal-width]
-   + 0.5277777777777779 Q[148,2] * H_neg[0,sepal-length]
-   + 0.5833333333333333 Q[148,2] * H_neg[0,sepal-width]
-   + 0.7457627118644068 Q[148,2] * H_neg[0,petal-length]
-   + 0.9166666666666666 Q[148,2] * H_neg[0,petal-width] - Q[148,2] * C4275
-   + Q[148,2] * C4282 ] >= 1
+   - Q[148,1] * C4282 ] >= 1
  qc62: E[64,0] + [ 0.3611111111111109 Q[64,1] * H_pos[0,sepal-length]
    + 0.375 Q[64,1] * H_pos[0,sepal-width]
    + 0.440677966101695 Q[64,1] * H_pos[0,petal-length]
@@ -7317,14 +6825,6 @@ Subject To
    - 0.375 Q[64,1] * H_neg[0,sepal-width]
    - 0.440677966101695 Q[64,1] * H_neg[0,petal-length]
    - 0.5 Q[64,1] * H_neg[0,petal-width] + Q[64,1] * C4275 - Q[64,1] * C4282
-   - 0.3611111111111109 Q[64,2] * H_pos[0,sepal-length]
-   - 0.375 Q[64,2] * H_pos[0,sepal-width]
-   - 0.440677966101695 Q[64,2] * H_pos[0,petal-length]
-   - 0.5 Q[64,2] * H_pos[0,petal-width]
-   + 0.3611111111111109 Q[64,2] * H_neg[0,sepal-length]
-   + 0.375 Q[64,2] * H_neg[0,sepal-width]
-   + 0.440677966101695 Q[64,2] * H_neg[0,petal-length]
-   + 0.5 Q[64,2] * H_neg[0,petal-width] - Q[64,2] * C4275 + Q[64,2] * C4282
    ] >= 1
  qc63: E[68,0] + [ 0.5277777777777779 Q[68,1] * H_pos[0,sepal-length]
    + 0.0833333333333334 Q[68,1] * H_pos[0,sepal-width]
@@ -7334,15 +6834,7 @@ Subject To
    - 0.0833333333333334 Q[68,1] * H_neg[0,sepal-width]
    - 0.5932203389830508 Q[68,1] * H_neg[0,petal-length]
    - 0.5833333333333334 Q[68,1] * H_neg[0,petal-width] + Q[68,1] * C4275
-   - Q[68,1] * C4282 - 0.5277777777777779 Q[68,2] * H_pos[0,sepal-length]
-   - 0.0833333333333334 Q[68,2] * H_pos[0,sepal-width]
-   - 0.5932203389830508 Q[68,2] * H_pos[0,petal-length]
-   - 0.5833333333333334 Q[68,2] * H_pos[0,petal-width]
-   + 0.5277777777777779 Q[68,2] * H_neg[0,sepal-length]
-   + 0.0833333333333334 Q[68,2] * H_neg[0,sepal-width]
-   + 0.5932203389830508 Q[68,2] * H_neg[0,petal-length]
-   + 0.5833333333333334 Q[68,2] * H_neg[0,petal-width] - Q[68,2] * C4275
-   + Q[68,2] * C4282 ] >= 1
+   - Q[68,1] * C4282 ] >= 1
  qc64: E[27,0] + [ 0.25 Q[27,1] * H_pos[0,sepal-length]
    + 0.625 Q[27,1] * H_pos[0,sepal-width]
    + 0.0847457627118644 Q[27,1] * H_pos[0,petal-length]
@@ -7351,15 +6843,7 @@ Subject To
    - 0.625 Q[27,1] * H_neg[0,sepal-width]
    - 0.0847457627118644 Q[27,1] * H_neg[0,petal-length]
    - 0.0416666666666667 Q[27,1] * H_neg[0,petal-width] + Q[27,1] * C4275
-   - Q[27,1] * C4282 - 0.25 Q[27,2] * H_pos[0,sepal-length]
-   - 0.625 Q[27,2] * H_pos[0,sepal-width]
-   - 0.0847457627118644 Q[27,2] * H_pos[0,petal-length]
-   - 0.0416666666666667 Q[27,2] * H_pos[0,petal-width]
-   + 0.25 Q[27,2] * H_neg[0,sepal-length]
-   + 0.625 Q[27,2] * H_neg[0,sepal-width]
-   + 0.0847457627118644 Q[27,2] * H_neg[0,petal-length]
-   + 0.0416666666666667 Q[27,2] * H_neg[0,petal-width] - Q[27,2] * C4275
-   + Q[27,2] * C4282 ] >= 1
+   - Q[27,1] * C4282 ] >= 1
  qc65: E[149,0] + [ 0.4444444444444446 Q[149,1] * H_pos[0,sepal-length]
    + 0.4166666666666667 Q[149,1] * H_pos[0,sepal-width]
    + 0.6949152542372881 Q[149,1] * H_pos[0,petal-length]
@@ -7368,15 +6852,7 @@ Subject To
    - 0.4166666666666667 Q[149,1] * H_neg[0,sepal-width]
    - 0.6949152542372881 Q[149,1] * H_neg[0,petal-length]
    - 0.7083333333333334 Q[149,1] * H_neg[0,petal-width] + Q[149,1] * C4275
-   - Q[149,1] * C4282 - 0.4444444444444446 Q[149,2] * H_pos[0,sepal-length]
-   - 0.4166666666666667 Q[149,2] * H_pos[0,sepal-width]
-   - 0.6949152542372881 Q[149,2] * H_pos[0,petal-length]
-   - 0.7083333333333334 Q[149,2] * H_pos[0,petal-width]
-   + 0.4444444444444446 Q[149,2] * H_neg[0,sepal-length]
-   + 0.4166666666666667 Q[149,2] * H_neg[0,sepal-width]
-   + 0.6949152542372881 Q[149,2] * H_neg[0,petal-length]
-   + 0.7083333333333334 Q[149,2] * H_neg[0,petal-width] - Q[149,2] * C4275
-   + Q[149,2] * C4282 ] >= 1
+   - Q[149,1] * C4282 ] >= 1
  qc66: E[39,0] + [ 0.2222222222222221 Q[39,1] * H_pos[0,sepal-length]
    + 0.5833333333333333 Q[39,1] * H_pos[0,sepal-width]
    + 0.0847457627118644 Q[39,1] * H_pos[0,petal-length]
@@ -7385,15 +6861,7 @@ Subject To
    - 0.5833333333333333 Q[39,1] * H_neg[0,sepal-width]
    - 0.0847457627118644 Q[39,1] * H_neg[0,petal-length]
    - 0.0416666666666667 Q[39,1] * H_neg[0,petal-width] + Q[39,1] * C4275
-   - Q[39,1] * C4282 - 0.2222222222222221 Q[39,2] * H_pos[0,sepal-length]
-   - 0.5833333333333333 Q[39,2] * H_pos[0,sepal-width]
-   - 0.0847457627118644 Q[39,2] * H_pos[0,petal-length]
-   - 0.0416666666666667 Q[39,2] * H_pos[0,petal-width]
-   + 0.2222222222222221 Q[39,2] * H_neg[0,sepal-length]
-   + 0.5833333333333333 Q[39,2] * H_neg[0,sepal-width]
-   + 0.0847457627118644 Q[39,2] * H_neg[0,petal-length]
-   + 0.0416666666666667 Q[39,2] * H_neg[0,petal-width] - Q[39,2] * C4275
-   + Q[39,2] * C4282 ] >= 1
+   - Q[39,1] * C4282 ] >= 1
  qc67: E[25,0] + [ 0.1944444444444444 Q[25,1] * H_pos[0,sepal-length]
    + 0.4166666666666667 Q[25,1] * H_pos[0,sepal-width]
    + 0.1016949152542373 Q[25,1] * H_pos[0,petal-length]
@@ -7402,15 +6870,7 @@ Subject To
    - 0.4166666666666667 Q[25,1] * H_neg[0,sepal-width]
    - 0.1016949152542373 Q[25,1] * H_neg[0,petal-length]
    - 0.0416666666666667 Q[25,1] * H_neg[0,petal-width] + Q[25,1] * C4275
-   - Q[25,1] * C4282 - 0.1944444444444444 Q[25,2] * H_pos[0,sepal-length]
-   - 0.4166666666666667 Q[25,2] * H_pos[0,sepal-width]
-   - 0.1016949152542373 Q[25,2] * H_pos[0,petal-length]
-   - 0.0416666666666667 Q[25,2] * H_pos[0,petal-width]
-   + 0.1944444444444444 Q[25,2] * H_neg[0,sepal-length]
-   + 0.4166666666666667 Q[25,2] * H_neg[0,sepal-width]
-   + 0.1016949152542373 Q[25,2] * H_neg[0,petal-length]
-   + 0.0416666666666667 Q[25,2] * H_neg[0,petal-width] - Q[25,2] * C4275
-   + Q[25,2] * C4282 ] >= 1
+   - Q[25,1] * C4282 ] >= 1
  qc68: E[62,0] + [ 0.4722222222222223 Q[62,1] * H_pos[0,sepal-length]
    + 0.0833333333333334 Q[62,1] * H_pos[0,sepal-width]
    + 0.5084745762711864 Q[62,1] * H_pos[0,petal-length]
@@ -7419,28 +6879,14 @@ Subject To
    - 0.0833333333333334 Q[62,1] * H_neg[0,sepal-width]
    - 0.5084745762711864 Q[62,1] * H_neg[0,petal-length]
    - 0.375 Q[62,1] * H_neg[0,petal-width] + Q[62,1] * C4275
-   - Q[62,1] * C4282 - 0.4722222222222223 Q[62,2] * H_pos[0,sepal-length]
-   - 0.0833333333333334 Q[62,2] * H_pos[0,sepal-width]
-   - 0.5084745762711864 Q[62,2] * H_pos[0,petal-length]
-   - 0.375 Q[62,2] * H_pos[0,petal-width]
-   + 0.4722222222222223 Q[62,2] * H_neg[0,sepal-length]
-   + 0.0833333333333334 Q[62,2] * H_neg[0,sepal-width]
-   + 0.5084745762711864 Q[62,2] * H_neg[0,petal-length]
-   + 0.375 Q[62,2] * H_neg[0,petal-width] - Q[62,2] * C4275
-   + Q[62,2] * C4282 ] >= 1
+   - Q[62,1] * C4282 ] >= 1
  qc69: E[32,0] + [ 0.25 Q[32,1] * H_pos[0,sepal-length]
    + 0.875 Q[32,1] * H_pos[0,sepal-width]
    + 0.0847457627118644 Q[32,1] * H_pos[0,petal-length]
    - 0.25 Q[32,1] * H_neg[0,sepal-length]
    - 0.875 Q[32,1] * H_neg[0,sepal-width]
    - 0.0847457627118644 Q[32,1] * H_neg[0,petal-length] + Q[32,1] * C4275
-   - Q[32,1] * C4282 - 0.25 Q[32,2] * H_pos[0,sepal-length]
-   - 0.875 Q[32,2] * H_pos[0,sepal-width]
-   - 0.0847457627118644 Q[32,2] * H_pos[0,petal-length]
-   + 0.25 Q[32,2] * H_neg[0,sepal-length]
-   + 0.875 Q[32,2] * H_neg[0,sepal-width]
-   + 0.0847457627118644 Q[32,2] * H_neg[0,petal-length] - Q[32,2] * C4275
-   + Q[32,2] * C4282 ] >= 1
+   - Q[32,1] * C4282 ] >= 1
  qc70: E[72,0] + [ 0.5555555555555556 Q[72,1] * H_pos[0,sepal-length]
    + 0.2083333333333333 Q[72,1] * H_pos[0,sepal-width]
    + 0.6610169491525424 Q[72,1] * H_pos[0,petal-length]
@@ -7449,15 +6895,7 @@ Subject To
    - 0.2083333333333333 Q[72,1] * H_neg[0,sepal-width]
    - 0.6610169491525424 Q[72,1] * H_neg[0,petal-length]
    - 0.5833333333333334 Q[72,1] * H_neg[0,petal-width] + Q[72,1] * C4275
-   - Q[72,1] * C4282 - 0.5555555555555556 Q[72,2] * H_pos[0,sepal-length]
-   - 0.2083333333333333 Q[72,2] * H_pos[0,sepal-width]
-   - 0.6610169491525424 Q[72,2] * H_pos[0,petal-length]
-   - 0.5833333333333334 Q[72,2] * H_pos[0,petal-width]
-   + 0.5555555555555556 Q[72,2] * H_neg[0,sepal-length]
-   + 0.2083333333333333 Q[72,2] * H_neg[0,sepal-width]
-   + 0.6610169491525424 Q[72,2] * H_neg[0,petal-length]
-   + 0.5833333333333334 Q[72,2] * H_neg[0,petal-width] - Q[72,2] * C4275
-   + Q[72,2] * C4282 ] >= 1
+   - Q[72,1] * C4282 ] >= 1
  qc71: E[26,0] + [ 0.1944444444444444 Q[26,1] * H_pos[0,sepal-length]
    + 0.5833333333333333 Q[26,1] * H_pos[0,sepal-width]
    + 0.1016949152542373 Q[26,1] * H_pos[0,petal-length]
@@ -7466,15 +6904,7 @@ Subject To
    - 0.5833333333333333 Q[26,1] * H_neg[0,sepal-width]
    - 0.1016949152542373 Q[26,1] * H_neg[0,petal-length]
    - 0.125 Q[26,1] * H_neg[0,petal-width] + Q[26,1] * C4275
-   - Q[26,1] * C4282 - 0.1944444444444444 Q[26,2] * H_pos[0,sepal-length]
-   - 0.5833333333333333 Q[26,2] * H_pos[0,sepal-width]
-   - 0.1016949152542373 Q[26,2] * H_pos[0,petal-length]
-   - 0.125 Q[26,2] * H_pos[0,petal-width]
-   + 0.1944444444444444 Q[26,2] * H_neg[0,sepal-length]
-   + 0.5833333333333333 Q[26,2] * H_neg[0,sepal-width]
-   + 0.1016949152542373 Q[26,2] * H_neg[0,petal-length]
-   + 0.125 Q[26,2] * H_neg[0,petal-width] - Q[26,2] * C4275
-   + Q[26,2] * C4282 ] >= 1
+   - Q[26,1] * C4282 ] >= 1
  qc72: E[116,0] + [ 0.6111111111111112 Q[116,1] * H_pos[0,sepal-length]
    + 0.4166666666666667 Q[116,1] * H_pos[0,sepal-width]
    + 0.7627118644067796 Q[116,1] * H_pos[0,petal-length]
@@ -7483,28 +6913,14 @@ Subject To
    - 0.4166666666666667 Q[116,1] * H_neg[0,sepal-width]
    - 0.7627118644067796 Q[116,1] * H_neg[0,petal-length]
    - 0.7083333333333334 Q[116,1] * H_neg[0,petal-width] + Q[116,1] * C4275
-   - Q[116,1] * C4282 - 0.6111111111111112 Q[116,2] * H_pos[0,sepal-length]
-   - 0.4166666666666667 Q[116,2] * H_pos[0,sepal-width]
-   - 0.7627118644067796 Q[116,2] * H_pos[0,petal-length]
-   - 0.7083333333333334 Q[116,2] * H_pos[0,petal-width]
-   + 0.6111111111111112 Q[116,2] * H_neg[0,sepal-length]
-   + 0.4166666666666667 Q[116,2] * H_neg[0,sepal-width]
-   + 0.7627118644067796 Q[116,2] * H_neg[0,petal-length]
-   + 0.7083333333333334 Q[116,2] * H_neg[0,petal-width] - Q[116,2] * C4275
-   + Q[116,2] * C4282 ] >= 1
+   - Q[116,1] * C4282 ] >= 1
  qc73: E[34,0] + [ 0.1666666666666667 Q[34,1] * H_pos[0,sepal-length]
    + 0.4583333333333333 Q[34,1] * H_pos[0,sepal-width]
    + 0.0847457627118644 Q[34,1] * H_pos[0,petal-length]
    - 0.1666666666666667 Q[34,1] * H_neg[0,sepal-length]
    - 0.4583333333333333 Q[34,1] * H_neg[0,sepal-width]
    - 0.0847457627118644 Q[34,1] * H_neg[0,petal-length] + Q[34,1] * C4275
-   - Q[34,1] * C4282 - 0.1666666666666667 Q[34,2] * H_pos[0,sepal-length]
-   - 0.4583333333333333 Q[34,2] * H_pos[0,sepal-width]
-   - 0.0847457627118644 Q[34,2] * H_pos[0,petal-length]
-   + 0.1666666666666667 Q[34,2] * H_neg[0,sepal-length]
-   + 0.4583333333333333 Q[34,2] * H_neg[0,sepal-width]
-   + 0.0847457627118644 Q[34,2] * H_neg[0,petal-length] - Q[34,2] * C4275
-   + Q[34,2] * C4282 ] >= 1
+   - Q[34,1] * C4282 ] >= 1
  qc74: E[117,0] + [ 0.9444444444444442 Q[117,1] * H_pos[0,sepal-length]
    + 0.75 Q[117,1] * H_pos[0,sepal-width]
    + 0.9661016949152543 Q[117,1] * H_pos[0,petal-length]
@@ -7513,15 +6929,7 @@ Subject To
    - 0.75 Q[117,1] * H_neg[0,sepal-width]
    - 0.9661016949152543 Q[117,1] * H_neg[0,petal-length]
    - 0.875 Q[117,1] * H_neg[0,petal-width] + Q[117,1] * C4275
-   - Q[117,1] * C4282 - 0.9444444444444442 Q[117,2] * H_pos[0,sepal-length]
-   - 0.75 Q[117,2] * H_pos[0,sepal-width]
-   - 0.9661016949152543 Q[117,2] * H_pos[0,petal-length]
-   - 0.875 Q[117,2] * H_pos[0,petal-width]
-   + 0.9444444444444442 Q[117,2] * H_neg[0,sepal-length]
-   + 0.75 Q[117,2] * H_neg[0,sepal-width]
-   + 0.9661016949152543 Q[117,2] * H_neg[0,petal-length]
-   + 0.875 Q[117,2] * H_neg[0,petal-width] - Q[117,2] * C4275
-   + Q[117,2] * C4282 ] >= 1
+   - Q[117,1] * C4282 ] >= 1
  qc75: E[30,0] + [ 0.1388888888888888 Q[30,1] * H_pos[0,sepal-length]
    + 0.4583333333333333 Q[30,1] * H_pos[0,sepal-width]
    + 0.1016949152542373 Q[30,1] * H_pos[0,petal-length]
@@ -7530,15 +6938,7 @@ Subject To
    - 0.4583333333333333 Q[30,1] * H_neg[0,sepal-width]
    - 0.1016949152542373 Q[30,1] * H_neg[0,petal-length]
    - 0.0416666666666667 Q[30,1] * H_neg[0,petal-width] + Q[30,1] * C4275
-   - Q[30,1] * C4282 - 0.1388888888888888 Q[30,2] * H_pos[0,sepal-length]
-   - 0.4583333333333333 Q[30,2] * H_pos[0,sepal-width]
-   - 0.1016949152542373 Q[30,2] * H_pos[0,petal-length]
-   - 0.0416666666666667 Q[30,2] * H_pos[0,petal-width]
-   + 0.1388888888888888 Q[30,2] * H_neg[0,sepal-length]
-   + 0.4583333333333333 Q[30,2] * H_neg[0,sepal-width]
-   + 0.1016949152542373 Q[30,2] * H_neg[0,petal-length]
-   + 0.0416666666666667 Q[30,2] * H_neg[0,petal-width] - Q[30,2] * C4275
-   + Q[30,2] * C4282 ] >= 1
+   - Q[30,1] * C4282 ] >= 1
  qc76: E[0,0] + [ 0.2222222222222221 Q[0,1] * H_pos[0,sepal-length]
    + 0.625 Q[0,1] * H_pos[0,sepal-width]
    + 0.0677966101694915 Q[0,1] * H_pos[0,petal-length]
@@ -7547,15 +6947,7 @@ Subject To
    - 0.625 Q[0,1] * H_neg[0,sepal-width]
    - 0.0677966101694915 Q[0,1] * H_neg[0,petal-length]
    - 0.0416666666666667 Q[0,1] * H_neg[0,petal-width] + Q[0,1] * C4275
-   - Q[0,1] * C4282 - 0.2222222222222221 Q[0,2] * H_pos[0,sepal-length]
-   - 0.625 Q[0,2] * H_pos[0,sepal-width]
-   - 0.0677966101694915 Q[0,2] * H_pos[0,petal-length]
-   - 0.0416666666666667 Q[0,2] * H_pos[0,petal-width]
-   + 0.2222222222222221 Q[0,2] * H_neg[0,sepal-length]
-   + 0.625 Q[0,2] * H_neg[0,sepal-width]
-   + 0.0677966101694915 Q[0,2] * H_neg[0,petal-length]
-   + 0.0416666666666667 Q[0,2] * H_neg[0,petal-width] - Q[0,2] * C4275
-   + Q[0,2] * C4282 ] >= 1
+   - Q[0,1] * C4282 ] >= 1
  qc77: E[82,0] + [ 0.4166666666666665 Q[82,1] * H_pos[0,sepal-length]
    + 0.2916666666666667 Q[82,1] * H_pos[0,sepal-width]
    + 0.4915254237288135 Q[82,1] * H_pos[0,petal-length]
@@ -7564,15 +6956,7 @@ Subject To
    - 0.2916666666666667 Q[82,1] * H_neg[0,sepal-width]
    - 0.4915254237288135 Q[82,1] * H_neg[0,petal-length]
    - 0.4583333333333333 Q[82,1] * H_neg[0,petal-width] + Q[82,1] * C4275
-   - Q[82,1] * C4282 - 0.4166666666666665 Q[82,2] * H_pos[0,sepal-length]
-   - 0.2916666666666667 Q[82,2] * H_pos[0,sepal-width]
-   - 0.4915254237288135 Q[82,2] * H_pos[0,petal-length]
-   - 0.4583333333333333 Q[82,2] * H_pos[0,petal-width]
-   + 0.4166666666666665 Q[82,2] * H_neg[0,sepal-length]
-   + 0.2916666666666667 Q[82,2] * H_neg[0,sepal-width]
-   + 0.4915254237288135 Q[82,2] * H_neg[0,petal-length]
-   + 0.4583333333333333 Q[82,2] * H_neg[0,petal-width] - Q[82,2] * C4275
-   + Q[82,2] * C4282 ] >= 1
+   - Q[82,1] * C4282 ] >= 1
  qc78: E[14,0] + [ 0.4166666666666665 Q[14,1] * H_pos[0,sepal-length]
    + 0.8333333333333333 Q[14,1] * H_pos[0,sepal-width]
    + 0.0338983050847458 Q[14,1] * H_pos[0,petal-length]
@@ -7581,15 +6965,7 @@ Subject To
    - 0.8333333333333333 Q[14,1] * H_neg[0,sepal-width]
    - 0.0338983050847458 Q[14,1] * H_neg[0,petal-length]
    - 0.0416666666666667 Q[14,1] * H_neg[0,petal-width] + Q[14,1] * C4275
-   - Q[14,1] * C4282 - 0.4166666666666665 Q[14,2] * H_pos[0,sepal-length]
-   - 0.8333333333333333 Q[14,2] * H_pos[0,sepal-width]
-   - 0.0338983050847458 Q[14,2] * H_pos[0,petal-length]
-   - 0.0416666666666667 Q[14,2] * H_pos[0,petal-width]
-   + 0.4166666666666665 Q[14,2] * H_neg[0,sepal-length]
-   + 0.8333333333333333 Q[14,2] * H_neg[0,sepal-width]
-   + 0.0338983050847458 Q[14,2] * H_neg[0,petal-length]
-   + 0.0416666666666667 Q[14,2] * H_neg[0,petal-width] - Q[14,2] * C4275
-   + Q[14,2] * C4282 ] >= 1
+   - Q[14,1] * C4282 ] >= 1
  qc79: E[125,0] + [ 0.8055555555555556 Q[125,1] * H_pos[0,sepal-length]
    + 0.5 Q[125,1] * H_pos[0,sepal-width]
    + 0.847457627118644 Q[125,1] * H_pos[0,petal-length]
@@ -7598,15 +6974,7 @@ Subject To
    - 0.5 Q[125,1] * H_neg[0,sepal-width]
    - 0.847457627118644 Q[125,1] * H_neg[0,petal-length]
    - 0.7083333333333334 Q[125,1] * H_neg[0,petal-width] + Q[125,1] * C4275
-   - Q[125,1] * C4282 - 0.8055555555555556 Q[125,2] * H_pos[0,sepal-length]
-   - 0.5 Q[125,2] * H_pos[0,sepal-width]
-   - 0.847457627118644 Q[125,2] * H_pos[0,petal-length]
-   - 0.7083333333333334 Q[125,2] * H_pos[0,petal-width]
-   + 0.8055555555555556 Q[125,2] * H_neg[0,sepal-length]
-   + 0.5 Q[125,2] * H_neg[0,sepal-width]
-   + 0.847457627118644 Q[125,2] * H_neg[0,petal-length]
-   + 0.7083333333333334 Q[125,2] * H_neg[0,petal-width] - Q[125,2] * C4275
-   + Q[125,2] * C4282 ] >= 1
+   - Q[125,1] * C4282 ] >= 1
  qc80: E[120,0] + [ 0.7222222222222223 Q[120,1] * H_pos[0,sepal-length]
    + 0.5 Q[120,1] * H_pos[0,sepal-width]
    + 0.7966101694915254 Q[120,1] * H_pos[0,petal-length]
@@ -7615,15 +6983,7 @@ Subject To
    - 0.5 Q[120,1] * H_neg[0,sepal-width]
    - 0.7966101694915254 Q[120,1] * H_neg[0,petal-length]
    - 0.9166666666666666 Q[120,1] * H_neg[0,petal-width] + Q[120,1] * C4275
-   - Q[120,1] * C4282 - 0.7222222222222223 Q[120,2] * H_pos[0,sepal-length]
-   - 0.5 Q[120,2] * H_pos[0,sepal-width]
-   - 0.7966101694915254 Q[120,2] * H_pos[0,petal-length]
-   - 0.9166666666666666 Q[120,2] * H_pos[0,petal-width]
-   + 0.7222222222222223 Q[120,2] * H_neg[0,sepal-length]
-   + 0.5 Q[120,2] * H_neg[0,sepal-width]
-   + 0.7966101694915254 Q[120,2] * H_neg[0,petal-length]
-   + 0.9166666666666666 Q[120,2] * H_neg[0,petal-width] - Q[120,2] * C4275
-   + Q[120,2] * C4282 ] >= 1
+   - Q[120,1] * C4282 ] >= 1
  qc81: E[97,0] + [ 0.5277777777777779 Q[97,1] * H_pos[0,sepal-length]
    + 0.375 Q[97,1] * H_pos[0,sepal-width]
    + 0.559322033898305 Q[97,1] * H_pos[0,petal-length]
@@ -7632,14 +6992,6 @@ Subject To
    - 0.375 Q[97,1] * H_neg[0,sepal-width]
    - 0.559322033898305 Q[97,1] * H_neg[0,petal-length]
    - 0.5 Q[97,1] * H_neg[0,petal-width] + Q[97,1] * C4275 - Q[97,1] * C4282
-   - 0.5277777777777779 Q[97,2] * H_pos[0,sepal-length]
-   - 0.375 Q[97,2] * H_pos[0,sepal-width]
-   - 0.559322033898305 Q[97,2] * H_pos[0,petal-length]
-   - 0.5 Q[97,2] * H_pos[0,petal-width]
-   + 0.5277777777777779 Q[97,2] * H_neg[0,sepal-length]
-   + 0.375 Q[97,2] * H_neg[0,sepal-width]
-   + 0.559322033898305 Q[97,2] * H_neg[0,petal-length]
-   + 0.5 Q[97,2] * H_neg[0,petal-width] - Q[97,2] * C4275 + Q[97,2] * C4282
    ] >= 1
  qc82: E[53,0] + [ 0.3333333333333333 Q[53,1] * H_pos[0,sepal-length]
    + 0.125 Q[53,1] * H_pos[0,sepal-width]
@@ -7649,14 +7001,6 @@ Subject To
    - 0.125 Q[53,1] * H_neg[0,sepal-width]
    - 0.5084745762711864 Q[53,1] * H_neg[0,petal-length]
    - 0.5 Q[53,1] * H_neg[0,petal-width] + Q[53,1] * C4275 - Q[53,1] * C4282
-   - 0.3333333333333333 Q[53,2] * H_pos[0,sepal-length]
-   - 0.125 Q[53,2] * H_pos[0,sepal-width]
-   - 0.5084745762711864 Q[53,2] * H_pos[0,petal-length]
-   - 0.5 Q[53,2] * H_pos[0,petal-width]
-   + 0.3333333333333333 Q[53,2] * H_neg[0,sepal-length]
-   + 0.125 Q[53,2] * H_neg[0,sepal-width]
-   + 0.5084745762711864 Q[53,2] * H_neg[0,petal-length]
-   + 0.5 Q[53,2] * H_neg[0,petal-width] - Q[53,2] * C4275 + Q[53,2] * C4282
    ] >= 1
  qc83: E[103,0] + [ 0.5555555555555556 Q[103,1] * H_pos[0,sepal-length]
    + 0.375 Q[103,1] * H_pos[0,sepal-width]
@@ -7666,15 +7010,7 @@ Subject To
    - 0.375 Q[103,1] * H_neg[0,sepal-width]
    - 0.7796610169491525 Q[103,1] * H_neg[0,petal-length]
    - 0.7083333333333334 Q[103,1] * H_neg[0,petal-width] + Q[103,1] * C4275
-   - Q[103,1] * C4282 - 0.5555555555555556 Q[103,2] * H_pos[0,sepal-length]
-   - 0.375 Q[103,2] * H_pos[0,sepal-width]
-   - 0.7796610169491525 Q[103,2] * H_pos[0,petal-length]
-   - 0.7083333333333334 Q[103,2] * H_pos[0,petal-width]
-   + 0.5555555555555556 Q[103,2] * H_neg[0,sepal-length]
-   + 0.375 Q[103,2] * H_neg[0,sepal-width]
-   + 0.7796610169491525 Q[103,2] * H_neg[0,petal-length]
-   + 0.7083333333333334 Q[103,2] * H_neg[0,petal-width] - Q[103,2] * C4275
-   + Q[103,2] * C4282 ] >= 1
+   - Q[103,1] * C4282 ] >= 1
  qc84: E[84,0] + [ 0.3055555555555556 Q[84,1] * H_pos[0,sepal-length]
    + 0.4166666666666667 Q[84,1] * H_pos[0,sepal-width]
    + 0.5932203389830508 Q[84,1] * H_pos[0,petal-length]
@@ -7683,24 +7019,12 @@ Subject To
    - 0.4166666666666667 Q[84,1] * H_neg[0,sepal-width]
    - 0.5932203389830508 Q[84,1] * H_neg[0,petal-length]
    - 0.5833333333333334 Q[84,1] * H_neg[0,petal-width] + Q[84,1] * C4275
-   - Q[84,1] * C4282 - 0.3055555555555556 Q[84,2] * H_pos[0,sepal-length]
-   - 0.4166666666666667 Q[84,2] * H_pos[0,sepal-width]
-   - 0.5932203389830508 Q[84,2] * H_pos[0,petal-length]
-   - 0.5833333333333334 Q[84,2] * H_pos[0,petal-width]
-   + 0.3055555555555556 Q[84,2] * H_neg[0,sepal-length]
-   + 0.4166666666666667 Q[84,2] * H_neg[0,sepal-width]
-   + 0.5932203389830508 Q[84,2] * H_neg[0,petal-length]
-   + 0.5833333333333334 Q[84,2] * H_neg[0,petal-width] - Q[84,2] * C4275
-   + Q[84,2] * C4282 ] >= 1
+   - Q[84,1] * C4282 ] >= 1
  qc85: E[13,0] + [ 0.4166666666666667 Q[13,1] * H_pos[0,sepal-width]
    + 0.0169491525423729 Q[13,1] * H_pos[0,petal-length]
    - 0.4166666666666667 Q[13,1] * H_neg[0,sepal-width]
    - 0.0169491525423729 Q[13,1] * H_neg[0,petal-length] + Q[13,1] * C4275
-   - Q[13,1] * C4282 - 0.4166666666666667 Q[13,2] * H_pos[0,sepal-width]
-   - 0.0169491525423729 Q[13,2] * H_pos[0,petal-length]
-   + 0.4166666666666667 Q[13,2] * H_neg[0,sepal-width]
-   + 0.0169491525423729 Q[13,2] * H_neg[0,petal-length] - Q[13,2] * C4275
-   + Q[13,2] * C4282 ] >= 1
+   - Q[13,1] * C4282 ] >= 1
  qc86: E[130,0] + [ 0.8611111111111112 Q[130,1] * H_pos[0,sepal-length]
    + 0.3333333333333333 Q[130,1] * H_pos[0,sepal-width]
    + 0.8644067796610169 Q[130,1] * H_pos[0,petal-length]
@@ -7709,15 +7033,7 @@ Subject To
    - 0.3333333333333333 Q[130,1] * H_neg[0,sepal-width]
    - 0.8644067796610169 Q[130,1] * H_neg[0,petal-length]
    - 0.75 Q[130,1] * H_neg[0,petal-width] + Q[130,1] * C4275
-   - Q[130,1] * C4282 - 0.8611111111111112 Q[130,2] * H_pos[0,sepal-length]
-   - 0.3333333333333333 Q[130,2] * H_pos[0,sepal-width]
-   - 0.8644067796610169 Q[130,2] * H_pos[0,petal-length]
-   - 0.75 Q[130,2] * H_pos[0,petal-width]
-   + 0.8611111111111112 Q[130,2] * H_neg[0,sepal-length]
-   + 0.3333333333333333 Q[130,2] * H_neg[0,sepal-width]
-   + 0.8644067796610169 Q[130,2] * H_neg[0,petal-length]
-   + 0.75 Q[130,2] * H_neg[0,petal-width] - Q[130,2] * C4275
-   + Q[130,2] * C4282 ] >= 1
+   - Q[130,1] * C4282 ] >= 1
  qc87: E[23,0] + [ 0.2222222222222221 Q[23,1] * H_pos[0,sepal-length]
    + 0.5416666666666665 Q[23,1] * H_pos[0,sepal-width]
    + 0.1186440677966101 Q[23,1] * H_pos[0,petal-length]
@@ -7726,15 +7042,7 @@ Subject To
    - 0.5416666666666665 Q[23,1] * H_neg[0,sepal-width]
    - 0.1186440677966101 Q[23,1] * H_neg[0,petal-length]
    - 0.1666666666666667 Q[23,1] * H_neg[0,petal-width] + Q[23,1] * C4275
-   - Q[23,1] * C4282 - 0.2222222222222221 Q[23,2] * H_pos[0,sepal-length]
-   - 0.5416666666666665 Q[23,2] * H_pos[0,sepal-width]
-   - 0.1186440677966101 Q[23,2] * H_pos[0,petal-length]
-   - 0.1666666666666667 Q[23,2] * H_pos[0,petal-width]
-   + 0.2222222222222221 Q[23,2] * H_neg[0,sepal-length]
-   + 0.5416666666666665 Q[23,2] * H_neg[0,sepal-width]
-   + 0.1186440677966101 Q[23,2] * H_neg[0,petal-length]
-   + 0.1666666666666667 Q[23,2] * H_neg[0,petal-width] - Q[23,2] * C4275
-   + Q[23,2] * C4282 ] >= 1
+   - Q[23,1] * C4282 ] >= 1
  qc88: E[49,0] + [ 0.1944444444444444 Q[49,1] * H_pos[0,sepal-length]
    + 0.5416666666666665 Q[49,1] * H_pos[0,sepal-width]
    + 0.0677966101694915 Q[49,1] * H_pos[0,petal-length]
@@ -7743,15 +7051,7 @@ Subject To
    - 0.5416666666666665 Q[49,1] * H_neg[0,sepal-width]
    - 0.0677966101694915 Q[49,1] * H_neg[0,petal-length]
    - 0.0416666666666667 Q[49,1] * H_neg[0,petal-width] + Q[49,1] * C4275
-   - Q[49,1] * C4282 - 0.1944444444444444 Q[49,2] * H_pos[0,sepal-length]
-   - 0.5416666666666665 Q[49,2] * H_pos[0,sepal-width]
-   - 0.0677966101694915 Q[49,2] * H_pos[0,petal-length]
-   - 0.0416666666666667 Q[49,2] * H_pos[0,petal-width]
-   + 0.1944444444444444 Q[49,2] * H_neg[0,sepal-length]
-   + 0.5416666666666665 Q[49,2] * H_neg[0,sepal-width]
-   + 0.0677966101694915 Q[49,2] * H_neg[0,petal-length]
-   + 0.0416666666666667 Q[49,2] * H_neg[0,petal-width] - Q[49,2] * C4275
-   + Q[49,2] * C4282 ] >= 1
+   - Q[49,1] * C4282 ] >= 1
  qc89: E[24,0] + [ 0.1388888888888888 Q[24,1] * H_pos[0,sepal-length]
    + 0.5833333333333333 Q[24,1] * H_pos[0,sepal-width]
    + 0.1525423728813559 Q[24,1] * H_pos[0,petal-length]
@@ -7760,15 +7060,7 @@ Subject To
    - 0.5833333333333333 Q[24,1] * H_neg[0,sepal-width]
    - 0.1525423728813559 Q[24,1] * H_neg[0,petal-length]
    - 0.0416666666666667 Q[24,1] * H_neg[0,petal-width] + Q[24,1] * C4275
-   - Q[24,1] * C4282 - 0.1388888888888888 Q[24,2] * H_pos[0,sepal-length]
-   - 0.5833333333333333 Q[24,2] * H_pos[0,sepal-width]
-   - 0.1525423728813559 Q[24,2] * H_pos[0,petal-length]
-   - 0.0416666666666667 Q[24,2] * H_pos[0,petal-width]
-   + 0.1388888888888888 Q[24,2] * H_neg[0,sepal-length]
-   + 0.5833333333333333 Q[24,2] * H_neg[0,sepal-width]
-   + 0.1525423728813559 Q[24,2] * H_neg[0,petal-length]
-   + 0.0416666666666667 Q[24,2] * H_neg[0,petal-width] - Q[24,2] * C4275
-   + Q[24,2] * C4282 ] >= 1
+   - Q[24,1] * C4282 ] >= 1
  qc90: E[78,0] + [ 0.4722222222222223 Q[78,1] * H_pos[0,sepal-length]
    + 0.375 Q[78,1] * H_pos[0,sepal-width]
    + 0.5932203389830508 Q[78,1] * H_pos[0,petal-length]
@@ -7777,15 +7069,7 @@ Subject To
    - 0.375 Q[78,1] * H_neg[0,sepal-width]
    - 0.5932203389830508 Q[78,1] * H_neg[0,petal-length]
    - 0.5833333333333334 Q[78,1] * H_neg[0,petal-width] + Q[78,1] * C4275
-   - Q[78,1] * C4282 - 0.4722222222222223 Q[78,2] * H_pos[0,sepal-length]
-   - 0.375 Q[78,2] * H_pos[0,sepal-width]
-   - 0.5932203389830508 Q[78,2] * H_pos[0,petal-length]
-   - 0.5833333333333334 Q[78,2] * H_pos[0,petal-width]
-   + 0.4722222222222223 Q[78,2] * H_neg[0,sepal-length]
-   + 0.375 Q[78,2] * H_neg[0,sepal-width]
-   + 0.5932203389830508 Q[78,2] * H_neg[0,petal-length]
-   + 0.5833333333333334 Q[78,2] * H_neg[0,petal-width] - Q[78,2] * C4275
-   + Q[78,2] * C4282 ] >= 1
+   - Q[78,1] * C4282 ] >= 1
  qc91: E[45,0] + [ 0.1388888888888888 Q[45,1] * H_pos[0,sepal-length]
    + 0.4166666666666667 Q[45,1] * H_pos[0,sepal-width]
    + 0.0677966101694915 Q[45,1] * H_pos[0,petal-length]
@@ -7794,15 +7078,7 @@ Subject To
    - 0.4166666666666667 Q[45,1] * H_neg[0,sepal-width]
    - 0.0677966101694915 Q[45,1] * H_neg[0,petal-length]
    - 0.0833333333333333 Q[45,1] * H_neg[0,petal-width] + Q[45,1] * C4275
-   - Q[45,1] * C4282 - 0.1388888888888888 Q[45,2] * H_pos[0,sepal-length]
-   - 0.4166666666666667 Q[45,2] * H_pos[0,sepal-width]
-   - 0.0677966101694915 Q[45,2] * H_pos[0,petal-length]
-   - 0.0833333333333333 Q[45,2] * H_pos[0,petal-width]
-   + 0.1388888888888888 Q[45,2] * H_neg[0,sepal-length]
-   + 0.4166666666666667 Q[45,2] * H_neg[0,sepal-width]
-   + 0.0677966101694915 Q[45,2] * H_neg[0,petal-length]
-   + 0.0833333333333333 Q[45,2] * H_neg[0,petal-width] - Q[45,2] * C4275
-   + Q[45,2] * C4282 ] >= 1
+   - Q[45,1] * C4282 ] >= 1
  qc92: E[104,0] + [ 0.6111111111111112 Q[104,1] * H_pos[0,sepal-length]
    + 0.4166666666666667 Q[104,1] * H_pos[0,sepal-width]
    + 0.8135593220338982 Q[104,1] * H_pos[0,petal-length]
@@ -7811,15 +7087,7 @@ Subject To
    - 0.4166666666666667 Q[104,1] * H_neg[0,sepal-width]
    - 0.8135593220338982 Q[104,1] * H_neg[0,petal-length]
    - 0.875 Q[104,1] * H_neg[0,petal-width] + Q[104,1] * C4275
-   - Q[104,1] * C4282 - 0.6111111111111112 Q[104,2] * H_pos[0,sepal-length]
-   - 0.4166666666666667 Q[104,2] * H_pos[0,sepal-width]
-   - 0.8135593220338982 Q[104,2] * H_pos[0,petal-length]
-   - 0.875 Q[104,2] * H_pos[0,petal-width]
-   + 0.6111111111111112 Q[104,2] * H_neg[0,sepal-length]
-   + 0.4166666666666667 Q[104,2] * H_neg[0,sepal-width]
-   + 0.8135593220338982 Q[104,2] * H_neg[0,petal-length]
-   + 0.875 Q[104,2] * H_neg[0,petal-width] - Q[104,2] * C4275
-   + Q[104,2] * C4282 ] >= 1
+   - Q[104,1] * C4282 ] >= 1
  qc93: E[58,0] + [ 0.6388888888888888 Q[58,1] * H_pos[0,sepal-length]
    + 0.375 Q[58,1] * H_pos[0,sepal-width]
    + 0.6101694915254237 Q[58,1] * H_pos[0,petal-length]
@@ -7828,14 +7096,6 @@ Subject To
    - 0.375 Q[58,1] * H_neg[0,sepal-width]
    - 0.6101694915254237 Q[58,1] * H_neg[0,petal-length]
    - 0.5 Q[58,1] * H_neg[0,petal-width] + Q[58,1] * C4275 - Q[58,1] * C4282
-   - 0.6388888888888888 Q[58,2] * H_pos[0,sepal-length]
-   - 0.375 Q[58,2] * H_pos[0,sepal-width]
-   - 0.6101694915254237 Q[58,2] * H_pos[0,petal-length]
-   - 0.5 Q[58,2] * H_pos[0,petal-width]
-   + 0.6388888888888888 Q[58,2] * H_neg[0,sepal-length]
-   + 0.375 Q[58,2] * H_neg[0,sepal-width]
-   + 0.6101694915254237 Q[58,2] * H_neg[0,petal-length]
-   + 0.5 Q[58,2] * H_neg[0,petal-width] - Q[58,2] * C4275 + Q[58,2] * C4282
    ] >= 1
  qc94: E[113,0] + [ 0.3888888888888888 Q[113,1] * H_pos[0,sepal-length]
    + 0.2083333333333333 Q[113,1] * H_pos[0,sepal-width]
@@ -7845,15 +7105,7 @@ Subject To
    - 0.2083333333333333 Q[113,1] * H_neg[0,sepal-width]
    - 0.6779661016949152 Q[113,1] * H_neg[0,petal-length]
    - 0.7916666666666667 Q[113,1] * H_neg[0,petal-width] + Q[113,1] * C4275
-   - Q[113,1] * C4282 - 0.3888888888888888 Q[113,2] * H_pos[0,sepal-length]
-   - 0.2083333333333333 Q[113,2] * H_pos[0,sepal-width]
-   - 0.6779661016949152 Q[113,2] * H_pos[0,petal-length]
-   - 0.7916666666666667 Q[113,2] * H_pos[0,petal-width]
-   + 0.3888888888888888 Q[113,2] * H_neg[0,sepal-length]
-   + 0.2083333333333333 Q[113,2] * H_neg[0,sepal-width]
-   + 0.6779661016949152 Q[113,2] * H_neg[0,petal-length]
-   + 0.7916666666666667 Q[113,2] * H_neg[0,petal-width] - Q[113,2] * C4275
-   + Q[113,2] * C4282 ] >= 1
+   - Q[113,1] * C4282 ] >= 1
  qc95: E[3,0] + [ 0.0833333333333333 Q[3,1] * H_pos[0,sepal-length]
    + 0.4583333333333333 Q[3,1] * H_pos[0,sepal-width]
    + 0.0847457627118644 Q[3,1] * H_pos[0,petal-length]
@@ -7862,15 +7114,7 @@ Subject To
    - 0.4583333333333333 Q[3,1] * H_neg[0,sepal-width]
    - 0.0847457627118644 Q[3,1] * H_neg[0,petal-length]
    - 0.0416666666666667 Q[3,1] * H_neg[0,petal-width] + Q[3,1] * C4275
-   - Q[3,1] * C4282 - 0.0833333333333333 Q[3,2] * H_pos[0,sepal-length]
-   - 0.4583333333333333 Q[3,2] * H_pos[0,sepal-width]
-   - 0.0847457627118644 Q[3,2] * H_pos[0,petal-length]
-   - 0.0416666666666667 Q[3,2] * H_pos[0,petal-width]
-   + 0.0833333333333333 Q[3,2] * H_neg[0,sepal-length]
-   + 0.4583333333333333 Q[3,2] * H_neg[0,sepal-width]
-   + 0.0847457627118644 Q[3,2] * H_neg[0,petal-length]
-   + 0.0416666666666667 Q[3,2] * H_neg[0,petal-width] - Q[3,2] * C4275
-   + Q[3,2] * C4282 ] >= 1
+   - Q[3,1] * C4282 ] >= 1
  qc96: E[146,0] + [ 0.5555555555555556 Q[146,1] * H_pos[0,sepal-length]
    + 0.2083333333333333 Q[146,1] * H_pos[0,sepal-width]
    + 0.6779661016949152 Q[146,1] * H_pos[0,petal-length]
@@ -7879,15 +7123,7 @@ Subject To
    - 0.2083333333333333 Q[146,1] * H_neg[0,sepal-width]
    - 0.6779661016949152 Q[146,1] * H_neg[0,petal-length]
    - 0.75 Q[146,1] * H_neg[0,petal-width] + Q[146,1] * C4275
-   - Q[146,1] * C4282 - 0.5555555555555556 Q[146,2] * H_pos[0,sepal-length]
-   - 0.2083333333333333 Q[146,2] * H_pos[0,sepal-width]
-   - 0.6779661016949152 Q[146,2] * H_pos[0,petal-length]
-   - 0.75 Q[146,2] * H_pos[0,petal-width]
-   + 0.5555555555555556 Q[146,2] * H_neg[0,sepal-length]
-   + 0.2083333333333333 Q[146,2] * H_neg[0,sepal-width]
-   + 0.6779661016949152 Q[146,2] * H_neg[0,petal-length]
-   + 0.75 Q[146,2] * H_neg[0,petal-width] - Q[146,2] * C4275
-   + Q[146,2] * C4282 ] >= 1
+   - Q[146,1] * C4282 ] >= 1
  qc97: E[88,0] + [ 0.3611111111111109 Q[88,1] * H_pos[0,sepal-length]
    + 0.4166666666666667 Q[88,1] * H_pos[0,sepal-width]
    + 0.5254237288135593 Q[88,1] * H_pos[0,petal-length]
@@ -7896,14 +7132,6 @@ Subject To
    - 0.4166666666666667 Q[88,1] * H_neg[0,sepal-width]
    - 0.5254237288135593 Q[88,1] * H_neg[0,petal-length]
    - 0.5 Q[88,1] * H_neg[0,petal-width] + Q[88,1] * C4275 - Q[88,1] * C4282
-   - 0.3611111111111109 Q[88,2] * H_pos[0,sepal-length]
-   - 0.4166666666666667 Q[88,2] * H_pos[0,sepal-width]
-   - 0.5254237288135593 Q[88,2] * H_pos[0,petal-length]
-   - 0.5 Q[88,2] * H_pos[0,petal-width]
-   + 0.3611111111111109 Q[88,2] * H_neg[0,sepal-length]
-   + 0.4166666666666667 Q[88,2] * H_neg[0,sepal-width]
-   + 0.5254237288135593 Q[88,2] * H_neg[0,petal-length]
-   + 0.5 Q[88,2] * H_neg[0,petal-width] - Q[88,2] * C4275 + Q[88,2] * C4282
    ] >= 1
  qc98: E[138,0] + [ 0.4722222222222223 Q[138,1] * H_pos[0,sepal-length]
    + 0.4166666666666667 Q[138,1] * H_pos[0,sepal-width]
@@ -7913,15 +7141,7 @@ Subject To
    - 0.4166666666666667 Q[138,1] * H_neg[0,sepal-width]
    - 0.6440677966101694 Q[138,1] * H_neg[0,petal-length]
    - 0.7083333333333334 Q[138,1] * H_neg[0,petal-width] + Q[138,1] * C4275
-   - Q[138,1] * C4282 - 0.4722222222222223 Q[138,2] * H_pos[0,sepal-length]
-   - 0.4166666666666667 Q[138,2] * H_pos[0,sepal-width]
-   - 0.6440677966101694 Q[138,2] * H_pos[0,petal-length]
-   - 0.7083333333333334 Q[138,2] * H_pos[0,petal-width]
-   + 0.4722222222222223 Q[138,2] * H_neg[0,sepal-length]
-   + 0.4166666666666667 Q[138,2] * H_neg[0,sepal-width]
-   + 0.6440677966101694 Q[138,2] * H_neg[0,petal-length]
-   + 0.7083333333333334 Q[138,2] * H_neg[0,petal-width] - Q[138,2] * C4275
-   + Q[138,2] * C4282 ] >= 1
+   - Q[138,1] * C4282 ] >= 1
  qc99: E[128,0] + [ 0.5833333333333335 Q[128,1] * H_pos[0,sepal-length]
    + 0.3333333333333333 Q[128,1] * H_pos[0,sepal-width]
    + 0.7796610169491525 Q[128,1] * H_pos[0,petal-length]
@@ -7930,15 +7150,7 @@ Subject To
    - 0.3333333333333333 Q[128,1] * H_neg[0,sepal-width]
    - 0.7796610169491525 Q[128,1] * H_neg[0,petal-length]
    - 0.8333333333333335 Q[128,1] * H_neg[0,petal-width] + Q[128,1] * C4275
-   - Q[128,1] * C4282 - 0.5833333333333335 Q[128,2] * H_pos[0,sepal-length]
-   - 0.3333333333333333 Q[128,2] * H_pos[0,sepal-width]
-   - 0.7796610169491525 Q[128,2] * H_pos[0,petal-length]
-   - 0.8333333333333335 Q[128,2] * H_pos[0,petal-width]
-   + 0.5833333333333335 Q[128,2] * H_neg[0,sepal-length]
-   + 0.3333333333333333 Q[128,2] * H_neg[0,sepal-width]
-   + 0.7796610169491525 Q[128,2] * H_neg[0,petal-length]
-   + 0.8333333333333335 Q[128,2] * H_neg[0,petal-width] - Q[128,2] * C4275
-   + Q[128,2] * C4282 ] >= 1
+   - Q[128,1] * C4282 ] >= 1
  qc100: E[76,0] + [ 0.6944444444444444 Q[76,1] * H_pos[0,sepal-length]
    + 0.3333333333333333 Q[76,1] * H_pos[0,sepal-width]
    + 0.6440677966101694 Q[76,1] * H_pos[0,petal-length]
@@ -7947,15 +7159,7 @@ Subject To
    - 0.3333333333333333 Q[76,1] * H_neg[0,sepal-width]
    - 0.6440677966101694 Q[76,1] * H_neg[0,petal-length]
    - 0.5416666666666667 Q[76,1] * H_neg[0,petal-width] + Q[76,1] * C4275
-   - Q[76,1] * C4282 - 0.6944444444444444 Q[76,2] * H_pos[0,sepal-length]
-   - 0.3333333333333333 Q[76,2] * H_pos[0,sepal-width]
-   - 0.6440677966101694 Q[76,2] * H_pos[0,petal-length]
-   - 0.5416666666666667 Q[76,2] * H_pos[0,petal-width]
-   + 0.6944444444444444 Q[76,2] * H_neg[0,sepal-length]
-   + 0.3333333333333333 Q[76,2] * H_neg[0,sepal-width]
-   + 0.6440677966101694 Q[76,2] * H_neg[0,petal-length]
-   + 0.5416666666666667 Q[76,2] * H_neg[0,petal-width] - Q[76,2] * C4275
-   + Q[76,2] * C4282 ] >= 1
+   - Q[76,1] * C4282 ] >= 1
  qc101: E[70,0] + [ 0.4444444444444446 Q[70,1] * H_pos[0,sepal-length]
    + 0.5 Q[70,1] * H_pos[0,sepal-width]
    + 0.6440677966101694 Q[70,1] * H_pos[0,petal-length]
@@ -7964,15 +7168,7 @@ Subject To
    - 0.5 Q[70,1] * H_neg[0,sepal-width]
    - 0.6440677966101694 Q[70,1] * H_neg[0,petal-length]
    - 0.7083333333333334 Q[70,1] * H_neg[0,petal-width] + Q[70,1] * C4275
-   - Q[70,1] * C4282 - 0.4444444444444446 Q[70,2] * H_pos[0,sepal-length]
-   - 0.5 Q[70,2] * H_pos[0,sepal-width]
-   - 0.6440677966101694 Q[70,2] * H_pos[0,petal-length]
-   - 0.7083333333333334 Q[70,2] * H_pos[0,petal-width]
-   + 0.4444444444444446 Q[70,2] * H_neg[0,sepal-length]
-   + 0.5 Q[70,2] * H_neg[0,sepal-width]
-   + 0.6440677966101694 Q[70,2] * H_neg[0,petal-length]
-   + 0.7083333333333334 Q[70,2] * H_neg[0,petal-width] - Q[70,2] * C4275
-   + Q[70,2] * C4282 ] >= 1
+   - Q[70,1] * C4282 ] >= 1
  qc102: E[145,0] + [ 0.6666666666666667 Q[145,1] * H_pos[0,sepal-length]
    + 0.4166666666666667 Q[145,1] * H_pos[0,sepal-width]
    + 0.711864406779661 Q[145,1] * H_pos[0,petal-length]
@@ -7981,15 +7177,7 @@ Subject To
    - 0.4166666666666667 Q[145,1] * H_neg[0,sepal-width]
    - 0.711864406779661 Q[145,1] * H_neg[0,petal-length]
    - 0.9166666666666666 Q[145,1] * H_neg[0,petal-width] + Q[145,1] * C4275
-   - Q[145,1] * C4282 - 0.6666666666666667 Q[145,2] * H_pos[0,sepal-length]
-   - 0.4166666666666667 Q[145,2] * H_pos[0,sepal-width]
-   - 0.711864406779661 Q[145,2] * H_pos[0,petal-length]
-   - 0.9166666666666666 Q[145,2] * H_pos[0,petal-width]
-   + 0.6666666666666667 Q[145,2] * H_neg[0,sepal-length]
-   + 0.4166666666666667 Q[145,2] * H_neg[0,sepal-width]
-   + 0.711864406779661 Q[145,2] * H_neg[0,petal-length]
-   + 0.9166666666666666 Q[145,2] * H_neg[0,petal-width] - Q[145,2] * C4275
-   + Q[145,2] * C4282 ] >= 1
+   - Q[145,1] * C4282 ] >= 1
  qc103: E[91,0] + [ 0.5 Q[91,1] * H_pos[0,sepal-length]
    + 0.4166666666666667 Q[91,1] * H_pos[0,sepal-width]
    + 0.6101694915254237 Q[91,1] * H_pos[0,petal-length]
@@ -7998,15 +7186,7 @@ Subject To
    - 0.4166666666666667 Q[91,1] * H_neg[0,sepal-width]
    - 0.6101694915254237 Q[91,1] * H_neg[0,petal-length]
    - 0.5416666666666667 Q[91,1] * H_neg[0,petal-width] + Q[91,1] * C4275
-   - Q[91,1] * C4282 - 0.5 Q[91,2] * H_pos[0,sepal-length]
-   - 0.4166666666666667 Q[91,2] * H_pos[0,sepal-width]
-   - 0.6101694915254237 Q[91,2] * H_pos[0,petal-length]
-   - 0.5416666666666667 Q[91,2] * H_pos[0,petal-width]
-   + 0.5 Q[91,2] * H_neg[0,sepal-length]
-   + 0.4166666666666667 Q[91,2] * H_neg[0,sepal-width]
-   + 0.6101694915254237 Q[91,2] * H_neg[0,petal-length]
-   + 0.5416666666666667 Q[91,2] * H_neg[0,petal-width] - Q[91,2] * C4275
-   + Q[91,2] * C4282 ] >= 1
+   - Q[91,1] * C4282 ] >= 1
  qc104: E[19,0] + [ 0.2222222222222221 Q[19,1] * H_pos[0,sepal-length]
    + 0.75 Q[19,1] * H_pos[0,sepal-width]
    + 0.0847457627118644 Q[19,1] * H_pos[0,petal-length]
@@ -8015,15 +7195,7 @@ Subject To
    - 0.75 Q[19,1] * H_neg[0,sepal-width]
    - 0.0847457627118644 Q[19,1] * H_neg[0,petal-length]
    - 0.0833333333333333 Q[19,1] * H_neg[0,petal-width] + Q[19,1] * C4275
-   - Q[19,1] * C4282 - 0.2222222222222221 Q[19,2] * H_pos[0,sepal-length]
-   - 0.75 Q[19,2] * H_pos[0,sepal-width]
-   - 0.0847457627118644 Q[19,2] * H_pos[0,petal-length]
-   - 0.0833333333333333 Q[19,2] * H_pos[0,petal-width]
-   + 0.2222222222222221 Q[19,2] * H_neg[0,sepal-length]
-   + 0.75 Q[19,2] * H_neg[0,sepal-width]
-   + 0.0847457627118644 Q[19,2] * H_neg[0,petal-length]
-   + 0.0833333333333333 Q[19,2] * H_neg[0,petal-width] - Q[19,2] * C4275
-   + Q[19,2] * C4282 ] >= 1
+   - Q[19,1] * C4282 ] >= 1
  qc105: E[115,0] + [ 0.5833333333333335 Q[115,1] * H_pos[0,sepal-length]
    + 0.5 Q[115,1] * H_pos[0,sepal-width]
    + 0.7288135593220338 Q[115,1] * H_pos[0,petal-length]
@@ -8032,15 +7204,7 @@ Subject To
    - 0.5 Q[115,1] * H_neg[0,sepal-width]
    - 0.7288135593220338 Q[115,1] * H_neg[0,petal-length]
    - 0.9166666666666666 Q[115,1] * H_neg[0,petal-width] + Q[115,1] * C4275
-   - Q[115,1] * C4282 - 0.5833333333333335 Q[115,2] * H_pos[0,sepal-length]
-   - 0.5 Q[115,2] * H_pos[0,sepal-width]
-   - 0.7288135593220338 Q[115,2] * H_pos[0,petal-length]
-   - 0.9166666666666666 Q[115,2] * H_pos[0,petal-width]
-   + 0.5833333333333335 Q[115,2] * H_neg[0,sepal-length]
-   + 0.5 Q[115,2] * H_neg[0,sepal-width]
-   + 0.7288135593220338 Q[115,2] * H_neg[0,petal-length]
-   + 0.9166666666666666 Q[115,2] * H_neg[0,petal-width] - Q[115,2] * C4275
-   + Q[115,2] * C4282 ] >= 1
+   - Q[115,1] * C4282 ] >= 1
  qc106: E[28,0] + [ 0.25 Q[28,1] * H_pos[0,sepal-length]
    + 0.5833333333333333 Q[28,1] * H_pos[0,sepal-width]
    + 0.0677966101694915 Q[28,1] * H_pos[0,petal-length]
@@ -8049,28 +7213,14 @@ Subject To
    - 0.5833333333333333 Q[28,1] * H_neg[0,sepal-width]
    - 0.0677966101694915 Q[28,1] * H_neg[0,petal-length]
    - 0.0416666666666667 Q[28,1] * H_neg[0,petal-width] + Q[28,1] * C4275
-   - Q[28,1] * C4282 - 0.25 Q[28,2] * H_pos[0,sepal-length]
-   - 0.5833333333333333 Q[28,2] * H_pos[0,sepal-width]
-   - 0.0677966101694915 Q[28,2] * H_pos[0,petal-length]
-   - 0.0416666666666667 Q[28,2] * H_pos[0,petal-width]
-   + 0.25 Q[28,2] * H_neg[0,sepal-length]
-   + 0.5833333333333333 Q[28,2] * H_neg[0,sepal-width]
-   + 0.0677966101694915 Q[28,2] * H_neg[0,petal-length]
-   + 0.0416666666666667 Q[28,2] * H_neg[0,petal-width] - Q[28,2] * C4275
-   + Q[28,2] * C4282 ] >= 1
+   - Q[28,1] * C4282 ] >= 1
  qc107: E[37,0] + [ 0.1666666666666667 Q[37,1] * H_pos[0,sepal-length]
    + 0.4583333333333333 Q[37,1] * H_pos[0,sepal-width]
    + 0.0847457627118644 Q[37,1] * H_pos[0,petal-length]
    - 0.1666666666666667 Q[37,1] * H_neg[0,sepal-length]
    - 0.4583333333333333 Q[37,1] * H_neg[0,sepal-width]
    - 0.0847457627118644 Q[37,1] * H_neg[0,petal-length] + Q[37,1] * C4275
-   - Q[37,1] * C4282 - 0.1666666666666667 Q[37,2] * H_pos[0,sepal-length]
-   - 0.4583333333333333 Q[37,2] * H_pos[0,sepal-width]
-   - 0.0847457627118644 Q[37,2] * H_pos[0,petal-length]
-   + 0.1666666666666667 Q[37,2] * H_neg[0,sepal-length]
-   + 0.4583333333333333 Q[37,2] * H_neg[0,sepal-width]
-   + 0.0847457627118644 Q[37,2] * H_neg[0,petal-length] - Q[37,2] * C4275
-   + Q[37,2] * C4282 ] >= 1
+   - Q[37,1] * C4282 ] >= 1
  qc108: E[29,0] + [ 0.1111111111111112 Q[29,1] * H_pos[0,sepal-length]
    + 0.5 Q[29,1] * H_pos[0,sepal-width]
    + 0.1016949152542373 Q[29,1] * H_pos[0,petal-length]
@@ -8079,15 +7229,7 @@ Subject To
    - 0.5 Q[29,1] * H_neg[0,sepal-width]
    - 0.1016949152542373 Q[29,1] * H_neg[0,petal-length]
    - 0.0416666666666667 Q[29,1] * H_neg[0,petal-width] + Q[29,1] * C4275
-   - Q[29,1] * C4282 - 0.1111111111111112 Q[29,2] * H_pos[0,sepal-length]
-   - 0.5 Q[29,2] * H_pos[0,sepal-width]
-   - 0.1016949152542373 Q[29,2] * H_pos[0,petal-length]
-   - 0.0416666666666667 Q[29,2] * H_pos[0,petal-width]
-   + 0.1111111111111112 Q[29,2] * H_neg[0,sepal-length]
-   + 0.5 Q[29,2] * H_neg[0,sepal-width]
-   + 0.1016949152542373 Q[29,2] * H_neg[0,petal-length]
-   + 0.0416666666666667 Q[29,2] * H_neg[0,petal-width] - Q[29,2] * C4275
-   + Q[29,2] * C4282 ] >= 1
+   - Q[29,1] * C4282 ] >= 1
  qc109: E[122,0] + [ 0.9444444444444442 Q[122,1] * H_pos[0,sepal-length]
    + 0.3333333333333333 Q[122,1] * H_pos[0,sepal-width]
    + 0.9661016949152543 Q[122,1] * H_pos[0,petal-length]
@@ -8096,15 +7238,7 @@ Subject To
    - 0.3333333333333333 Q[122,1] * H_neg[0,sepal-width]
    - 0.9661016949152543 Q[122,1] * H_neg[0,petal-length]
    - 0.7916666666666667 Q[122,1] * H_neg[0,petal-width] + Q[122,1] * C4275
-   - Q[122,1] * C4282 - 0.9444444444444442 Q[122,2] * H_pos[0,sepal-length]
-   - 0.3333333333333333 Q[122,2] * H_pos[0,sepal-width]
-   - 0.9661016949152543 Q[122,2] * H_pos[0,petal-length]
-   - 0.7916666666666667 Q[122,2] * H_pos[0,petal-width]
-   + 0.9444444444444442 Q[122,2] * H_neg[0,sepal-length]
-   + 0.3333333333333333 Q[122,2] * H_neg[0,sepal-width]
-   + 0.9661016949152543 Q[122,2] * H_neg[0,petal-length]
-   + 0.7916666666666667 Q[122,2] * H_neg[0,petal-width] - Q[122,2] * C4275
-   + Q[122,2] * C4282 ] >= 1
+   - Q[122,1] * C4282 ] >= 1
  qc110: E[74,0] + [ 0.5833333333333335 Q[74,1] * H_pos[0,sepal-length]
    + 0.375 Q[74,1] * H_pos[0,sepal-width]
    + 0.559322033898305 Q[74,1] * H_pos[0,petal-length]
@@ -8113,14 +7247,6 @@ Subject To
    - 0.375 Q[74,1] * H_neg[0,sepal-width]
    - 0.559322033898305 Q[74,1] * H_neg[0,petal-length]
    - 0.5 Q[74,1] * H_neg[0,petal-width] + Q[74,1] * C4275 - Q[74,1] * C4282
-   - 0.5833333333333335 Q[74,2] * H_pos[0,sepal-length]
-   - 0.375 Q[74,2] * H_pos[0,sepal-width]
-   - 0.559322033898305 Q[74,2] * H_pos[0,petal-length]
-   - 0.5 Q[74,2] * H_pos[0,petal-width]
-   + 0.5833333333333335 Q[74,2] * H_neg[0,sepal-length]
-   + 0.375 Q[74,2] * H_neg[0,sepal-width]
-   + 0.559322033898305 Q[74,2] * H_neg[0,petal-length]
-   + 0.5 Q[74,2] * H_neg[0,petal-width] - Q[74,2] * C4275 + Q[74,2] * C4282
    ] >= 1
  qc111: E[46,0] + [ 0.2222222222222221 Q[46,1] * H_pos[0,sepal-length]
    + 0.75 Q[46,1] * H_pos[0,sepal-width]
@@ -8130,15 +7256,7 @@ Subject To
    - 0.75 Q[46,1] * H_neg[0,sepal-width]
    - 0.1016949152542373 Q[46,1] * H_neg[0,petal-length]
    - 0.0416666666666667 Q[46,1] * H_neg[0,petal-width] + Q[46,1] * C4275
-   - Q[46,1] * C4282 - 0.2222222222222221 Q[46,2] * H_pos[0,sepal-length]
-   - 0.75 Q[46,2] * H_pos[0,sepal-width]
-   - 0.1016949152542373 Q[46,2] * H_pos[0,petal-length]
-   - 0.0416666666666667 Q[46,2] * H_pos[0,petal-width]
-   + 0.2222222222222221 Q[46,2] * H_neg[0,sepal-length]
-   + 0.75 Q[46,2] * H_neg[0,sepal-width]
-   + 0.1016949152542373 Q[46,2] * H_neg[0,petal-length]
-   + 0.0416666666666667 Q[46,2] * H_neg[0,petal-width] - Q[46,2] * C4275
-   + Q[46,2] * C4282 ] >= 1
+   - Q[46,1] * C4282 ] >= 1
  qc112: E[111,1] + [ 0.5833333333333335 Q[111,3] * H_pos[1,sepal-length]
    + 0.2916666666666667 Q[111,3] * H_pos[1,sepal-width]
    + 0.7288135593220338 Q[111,3] * H_pos[1,petal-length]
@@ -8147,15 +7265,7 @@ Subject To
    - 0.2916666666666667 Q[111,3] * H_neg[1,sepal-width]
    - 0.7288135593220338 Q[111,3] * H_neg[1,petal-length]
    - 0.75 Q[111,3] * H_neg[1,petal-width] + Q[111,3] * C4276
-   - Q[111,3] * C4283 - 0.5833333333333335 Q[111,4] * H_pos[1,sepal-length]
-   - 0.2916666666666667 Q[111,4] * H_pos[1,sepal-width]
-   - 0.7288135593220338 Q[111,4] * H_pos[1,petal-length]
-   - 0.75 Q[111,4] * H_pos[1,petal-width]
-   + 0.5833333333333335 Q[111,4] * H_neg[1,sepal-length]
-   + 0.2916666666666667 Q[111,4] * H_neg[1,sepal-width]
-   + 0.7288135593220338 Q[111,4] * H_neg[1,petal-length]
-   + 0.75 Q[111,4] * H_neg[1,petal-width] - Q[111,4] * C4276
-   + Q[111,4] * C4283 ] >= 1
+   - Q[111,3] * C4283 ] >= 1
  qc113: E[134,1] + [ 0.5 Q[134,3] * H_pos[1,sepal-length]
    + 0.25 Q[134,3] * H_pos[1,sepal-width]
    + 0.7796610169491525 Q[134,3] * H_pos[1,petal-length]
@@ -8164,15 +7274,7 @@ Subject To
    - 0.25 Q[134,3] * H_neg[1,sepal-width]
    - 0.7796610169491525 Q[134,3] * H_neg[1,petal-length]
    - 0.5416666666666667 Q[134,3] * H_neg[1,petal-width] + Q[134,3] * C4276
-   - Q[134,3] * C4283 - 0.5 Q[134,4] * H_pos[1,sepal-length]
-   - 0.25 Q[134,4] * H_pos[1,sepal-width]
-   - 0.7796610169491525 Q[134,4] * H_pos[1,petal-length]
-   - 0.5416666666666667 Q[134,4] * H_pos[1,petal-width]
-   + 0.5 Q[134,4] * H_neg[1,sepal-length]
-   + 0.25 Q[134,4] * H_neg[1,sepal-width]
-   + 0.7796610169491525 Q[134,4] * H_neg[1,petal-length]
-   + 0.5416666666666667 Q[134,4] * H_neg[1,petal-width] - Q[134,4] * C4276
-   + Q[134,4] * C4283 ] >= 1
+   - Q[134,3] * C4283 ] >= 1
  qc114: E[133,1] + [ 0.5555555555555556 Q[133,3] * H_pos[1,sepal-length]
    + 0.3333333333333333 Q[133,3] * H_pos[1,sepal-width]
    + 0.6949152542372881 Q[133,3] * H_pos[1,petal-length]
@@ -8181,15 +7283,7 @@ Subject To
    - 0.3333333333333333 Q[133,3] * H_neg[1,sepal-width]
    - 0.6949152542372881 Q[133,3] * H_neg[1,petal-length]
    - 0.5833333333333334 Q[133,3] * H_neg[1,petal-width] + Q[133,3] * C4276
-   - Q[133,3] * C4283 - 0.5555555555555556 Q[133,4] * H_pos[1,sepal-length]
-   - 0.3333333333333333 Q[133,4] * H_pos[1,sepal-width]
-   - 0.6949152542372881 Q[133,4] * H_pos[1,petal-length]
-   - 0.5833333333333334 Q[133,4] * H_pos[1,petal-width]
-   + 0.5555555555555556 Q[133,4] * H_neg[1,sepal-length]
-   + 0.3333333333333333 Q[133,4] * H_neg[1,sepal-width]
-   + 0.6949152542372881 Q[133,4] * H_neg[1,petal-length]
-   + 0.5833333333333334 Q[133,4] * H_neg[1,petal-width] - Q[133,4] * C4276
-   + Q[133,4] * C4283 ] >= 1
+   - Q[133,3] * C4283 ] >= 1
  qc115: E[93,1] + [ 0.1944444444444444 Q[93,3] * H_pos[1,sepal-length]
    + 0.125 Q[93,3] * H_pos[1,sepal-width]
    + 0.3898305084745762 Q[93,3] * H_pos[1,petal-length]
@@ -8198,15 +7292,7 @@ Subject To
    - 0.125 Q[93,3] * H_neg[1,sepal-width]
    - 0.3898305084745762 Q[93,3] * H_neg[1,petal-length]
    - 0.375 Q[93,3] * H_neg[1,petal-width] + Q[93,3] * C4276
-   - Q[93,3] * C4283 - 0.1944444444444444 Q[93,4] * H_pos[1,sepal-length]
-   - 0.125 Q[93,4] * H_pos[1,sepal-width]
-   - 0.3898305084745762 Q[93,4] * H_pos[1,petal-length]
-   - 0.375 Q[93,4] * H_pos[1,petal-width]
-   + 0.1944444444444444 Q[93,4] * H_neg[1,sepal-length]
-   + 0.125 Q[93,4] * H_neg[1,sepal-width]
-   + 0.3898305084745762 Q[93,4] * H_neg[1,petal-length]
-   + 0.375 Q[93,4] * H_neg[1,petal-width] - Q[93,4] * C4276
-   + Q[93,4] * C4283 ] >= 1
+   - Q[93,3] * C4283 ] >= 1
  qc116: E[51,1] + [ 0.5833333333333335 Q[51,3] * H_pos[1,sepal-length]
    + 0.5 Q[51,3] * H_pos[1,sepal-width]
    + 0.5932203389830508 Q[51,3] * H_pos[1,petal-length]
@@ -8215,15 +7301,7 @@ Subject To
    - 0.5 Q[51,3] * H_neg[1,sepal-width]
    - 0.5932203389830508 Q[51,3] * H_neg[1,petal-length]
    - 0.5833333333333334 Q[51,3] * H_neg[1,petal-width] + Q[51,3] * C4276
-   - Q[51,3] * C4283 - 0.5833333333333335 Q[51,4] * H_pos[1,sepal-length]
-   - 0.5 Q[51,4] * H_pos[1,sepal-width]
-   - 0.5932203389830508 Q[51,4] * H_pos[1,petal-length]
-   - 0.5833333333333334 Q[51,4] * H_pos[1,petal-width]
-   + 0.5833333333333335 Q[51,4] * H_neg[1,sepal-length]
-   + 0.5 Q[51,4] * H_neg[1,sepal-width]
-   + 0.5932203389830508 Q[51,4] * H_neg[1,petal-length]
-   + 0.5833333333333334 Q[51,4] * H_neg[1,petal-width] - Q[51,4] * C4276
-   + Q[51,4] * C4283 ] >= 1
+   - Q[51,3] * C4283 ] >= 1
  qc117: E[41,1] + [ 0.0555555555555556 Q[41,3] * H_pos[1,sepal-length]
    + 0.125 Q[41,3] * H_pos[1,sepal-width]
    + 0.0508474576271186 Q[41,3] * H_pos[1,petal-length]
@@ -8232,15 +7310,7 @@ Subject To
    - 0.125 Q[41,3] * H_neg[1,sepal-width]
    - 0.0508474576271186 Q[41,3] * H_neg[1,petal-length]
    - 0.0833333333333333 Q[41,3] * H_neg[1,petal-width] + Q[41,3] * C4276
-   - Q[41,3] * C4283 - 0.0555555555555556 Q[41,4] * H_pos[1,sepal-length]
-   - 0.125 Q[41,4] * H_pos[1,sepal-width]
-   - 0.0508474576271186 Q[41,4] * H_pos[1,petal-length]
-   - 0.0833333333333333 Q[41,4] * H_pos[1,petal-width]
-   + 0.0555555555555556 Q[41,4] * H_neg[1,sepal-length]
-   + 0.125 Q[41,4] * H_neg[1,sepal-width]
-   + 0.0508474576271186 Q[41,4] * H_neg[1,petal-length]
-   + 0.0833333333333333 Q[41,4] * H_neg[1,petal-width] - Q[41,4] * C4276
-   + Q[41,4] * C4283 ] >= 1
+   - Q[41,3] * C4283 ] >= 1
  qc118: E[90,1] + [ 0.3333333333333333 Q[90,3] * H_pos[1,sepal-length]
    + 0.25 Q[90,3] * H_pos[1,sepal-width]
    + 0.576271186440678 Q[90,3] * H_pos[1,petal-length]
@@ -8249,15 +7319,7 @@ Subject To
    - 0.25 Q[90,3] * H_neg[1,sepal-width]
    - 0.576271186440678 Q[90,3] * H_neg[1,petal-length]
    - 0.4583333333333333 Q[90,3] * H_neg[1,petal-width] + Q[90,3] * C4276
-   - Q[90,3] * C4283 - 0.3333333333333333 Q[90,4] * H_pos[1,sepal-length]
-   - 0.25 Q[90,4] * H_pos[1,sepal-width]
-   - 0.576271186440678 Q[90,4] * H_pos[1,petal-length]
-   - 0.4583333333333333 Q[90,4] * H_pos[1,petal-width]
-   + 0.3333333333333333 Q[90,4] * H_neg[1,sepal-length]
-   + 0.25 Q[90,4] * H_neg[1,sepal-width]
-   + 0.576271186440678 Q[90,4] * H_neg[1,petal-length]
-   + 0.4583333333333333 Q[90,4] * H_neg[1,petal-width] - Q[90,4] * C4276
-   + Q[90,4] * C4283 ] >= 1
+   - Q[90,3] * C4283 ] >= 1
  qc119: E[67,1] + [ 0.4166666666666665 Q[67,3] * H_pos[1,sepal-length]
    + 0.2916666666666667 Q[67,3] * H_pos[1,sepal-width]
    + 0.5254237288135593 Q[67,3] * H_pos[1,petal-length]
@@ -8266,15 +7328,7 @@ Subject To
    - 0.2916666666666667 Q[67,3] * H_neg[1,sepal-width]
    - 0.5254237288135593 Q[67,3] * H_neg[1,petal-length]
    - 0.375 Q[67,3] * H_neg[1,petal-width] + Q[67,3] * C4276
-   - Q[67,3] * C4283 - 0.4166666666666665 Q[67,4] * H_pos[1,sepal-length]
-   - 0.2916666666666667 Q[67,4] * H_pos[1,sepal-width]
-   - 0.5254237288135593 Q[67,4] * H_pos[1,petal-length]
-   - 0.375 Q[67,4] * H_pos[1,petal-width]
-   + 0.4166666666666665 Q[67,4] * H_neg[1,sepal-length]
-   + 0.2916666666666667 Q[67,4] * H_neg[1,sepal-width]
-   + 0.5254237288135593 Q[67,4] * H_neg[1,petal-length]
-   + 0.375 Q[67,4] * H_neg[1,petal-width] - Q[67,4] * C4276
-   + Q[67,4] * C4283 ] >= 1
+   - Q[67,3] * C4283 ] >= 1
  qc120: E[131,1] + [ Q[131,3] * H_pos[1,sepal-length]
    + 0.75 Q[131,3] * H_pos[1,sepal-width]
    + 0.9152542372881356 Q[131,3] * H_pos[1,petal-length]
@@ -8283,15 +7337,7 @@ Subject To
    - 0.75 Q[131,3] * H_neg[1,sepal-width]
    - 0.9152542372881356 Q[131,3] * H_neg[1,petal-length]
    - 0.7916666666666667 Q[131,3] * H_neg[1,petal-width] + Q[131,3] * C4276
-   - Q[131,3] * C4283 - Q[131,4] * H_pos[1,sepal-length]
-   - 0.75 Q[131,4] * H_pos[1,sepal-width]
-   - 0.9152542372881356 Q[131,4] * H_pos[1,petal-length]
-   - 0.7916666666666667 Q[131,4] * H_pos[1,petal-width]
-   + Q[131,4] * H_neg[1,sepal-length]
-   + 0.75 Q[131,4] * H_neg[1,sepal-width]
-   + 0.9152542372881356 Q[131,4] * H_neg[1,petal-length]
-   + 0.7916666666666667 Q[131,4] * H_neg[1,petal-width] - Q[131,4] * C4276
-   + Q[131,4] * C4283 ] >= 1
+   - Q[131,3] * C4283 ] >= 1
  qc121: E[121,1] + [ 0.3611111111111109 Q[121,3] * H_pos[1,sepal-length]
    + 0.3333333333333333 Q[121,3] * H_pos[1,sepal-width]
    + 0.6610169491525424 Q[121,3] * H_pos[1,petal-length]
@@ -8300,15 +7346,7 @@ Subject To
    - 0.3333333333333333 Q[121,3] * H_neg[1,sepal-width]
    - 0.6610169491525424 Q[121,3] * H_neg[1,petal-length]
    - 0.7916666666666667 Q[121,3] * H_neg[1,petal-width] + Q[121,3] * C4276
-   - Q[121,3] * C4283 - 0.3611111111111109 Q[121,4] * H_pos[1,sepal-length]
-   - 0.3333333333333333 Q[121,4] * H_pos[1,sepal-width]
-   - 0.6610169491525424 Q[121,4] * H_pos[1,petal-length]
-   - 0.7916666666666667 Q[121,4] * H_pos[1,petal-width]
-   + 0.3611111111111109 Q[121,4] * H_neg[1,sepal-length]
-   + 0.3333333333333333 Q[121,4] * H_neg[1,sepal-width]
-   + 0.6610169491525424 Q[121,4] * H_neg[1,petal-length]
-   + 0.7916666666666667 Q[121,4] * H_neg[1,petal-width] - Q[121,4] * C4276
-   + Q[121,4] * C4283 ] >= 1
+   - Q[121,3] * C4283 ] >= 1
  qc122: E[75,1] + [ 0.6388888888888888 Q[75,3] * H_pos[1,sepal-length]
    + 0.4166666666666667 Q[75,3] * H_pos[1,sepal-width]
    + 0.576271186440678 Q[75,3] * H_pos[1,petal-length]
@@ -8317,15 +7355,7 @@ Subject To
    - 0.4166666666666667 Q[75,3] * H_neg[1,sepal-width]
    - 0.576271186440678 Q[75,3] * H_neg[1,petal-length]
    - 0.5416666666666667 Q[75,3] * H_neg[1,petal-width] + Q[75,3] * C4276
-   - Q[75,3] * C4283 - 0.6388888888888888 Q[75,4] * H_pos[1,sepal-length]
-   - 0.4166666666666667 Q[75,4] * H_pos[1,sepal-width]
-   - 0.576271186440678 Q[75,4] * H_pos[1,petal-length]
-   - 0.5416666666666667 Q[75,4] * H_pos[1,petal-width]
-   + 0.6388888888888888 Q[75,4] * H_neg[1,sepal-length]
-   + 0.4166666666666667 Q[75,4] * H_neg[1,sepal-width]
-   + 0.576271186440678 Q[75,4] * H_neg[1,petal-length]
-   + 0.5416666666666667 Q[75,4] * H_neg[1,petal-width] - Q[75,4] * C4276
-   + Q[75,4] * C4283 ] >= 1
+   - Q[75,3] * C4283 ] >= 1
  qc123: E[44,1] + [ 0.2222222222222221 Q[44,3] * H_pos[1,sepal-length]
    + 0.75 Q[44,3] * H_pos[1,sepal-width]
    + 0.1525423728813559 Q[44,3] * H_pos[1,petal-length]
@@ -8334,15 +7364,7 @@ Subject To
    - 0.75 Q[44,3] * H_neg[1,sepal-width]
    - 0.1525423728813559 Q[44,3] * H_neg[1,petal-length]
    - 0.125 Q[44,3] * H_neg[1,petal-width] + Q[44,3] * C4276
-   - Q[44,3] * C4283 - 0.2222222222222221 Q[44,4] * H_pos[1,sepal-length]
-   - 0.75 Q[44,4] * H_pos[1,sepal-width]
-   - 0.1525423728813559 Q[44,4] * H_pos[1,petal-length]
-   - 0.125 Q[44,4] * H_pos[1,petal-width]
-   + 0.2222222222222221 Q[44,4] * H_neg[1,sepal-length]
-   + 0.75 Q[44,4] * H_neg[1,sepal-width]
-   + 0.1525423728813559 Q[44,4] * H_neg[1,petal-length]
-   + 0.125 Q[44,4] * H_neg[1,petal-width] - Q[44,4] * C4276
-   + Q[44,4] * C4283 ] >= 1
+   - Q[44,3] * C4283 ] >= 1
  qc124: E[40,1] + [ 0.1944444444444444 Q[40,3] * H_pos[1,sepal-length]
    + 0.625 Q[40,3] * H_pos[1,sepal-width]
    + 0.0508474576271186 Q[40,3] * H_pos[1,petal-length]
@@ -8351,15 +7373,7 @@ Subject To
    - 0.625 Q[40,3] * H_neg[1,sepal-width]
    - 0.0508474576271186 Q[40,3] * H_neg[1,petal-length]
    - 0.0833333333333333 Q[40,3] * H_neg[1,petal-width] + Q[40,3] * C4276
-   - Q[40,3] * C4283 - 0.1944444444444444 Q[40,4] * H_pos[1,sepal-length]
-   - 0.625 Q[40,4] * H_pos[1,sepal-width]
-   - 0.0508474576271186 Q[40,4] * H_pos[1,petal-length]
-   - 0.0833333333333333 Q[40,4] * H_pos[1,petal-width]
-   + 0.1944444444444444 Q[40,4] * H_neg[1,sepal-length]
-   + 0.625 Q[40,4] * H_neg[1,sepal-width]
-   + 0.0508474576271186 Q[40,4] * H_neg[1,petal-length]
-   + 0.0833333333333333 Q[40,4] * H_neg[1,petal-width] - Q[40,4] * C4276
-   + Q[40,4] * C4283 ] >= 1
+   - Q[40,3] * C4283 ] >= 1
  qc125: E[10,1] + [ 0.3055555555555556 Q[10,3] * H_pos[1,sepal-length]
    + 0.7083333333333333 Q[10,3] * H_pos[1,sepal-width]
    + 0.0847457627118644 Q[10,3] * H_pos[1,petal-length]
@@ -8368,15 +7382,7 @@ Subject To
    - 0.7083333333333333 Q[10,3] * H_neg[1,sepal-width]
    - 0.0847457627118644 Q[10,3] * H_neg[1,petal-length]
    - 0.0416666666666667 Q[10,3] * H_neg[1,petal-width] + Q[10,3] * C4276
-   - Q[10,3] * C4283 - 0.3055555555555556 Q[10,4] * H_pos[1,sepal-length]
-   - 0.7083333333333333 Q[10,4] * H_pos[1,sepal-width]
-   - 0.0847457627118644 Q[10,4] * H_pos[1,petal-length]
-   - 0.0416666666666667 Q[10,4] * H_pos[1,petal-width]
-   + 0.3055555555555556 Q[10,4] * H_neg[1,sepal-length]
-   + 0.7083333333333333 Q[10,4] * H_neg[1,sepal-width]
-   + 0.0847457627118644 Q[10,4] * H_neg[1,petal-length]
-   + 0.0416666666666667 Q[10,4] * H_neg[1,petal-width] - Q[10,4] * C4276
-   + Q[10,4] * C4283 ] >= 1
+   - Q[10,3] * C4283 ] >= 1
  qc126: E[47,1] + [ 0.0833333333333333 Q[47,3] * H_pos[1,sepal-length]
    + 0.5 Q[47,3] * H_pos[1,sepal-width]
    + 0.0677966101694915 Q[47,3] * H_pos[1,petal-length]
@@ -8385,15 +7391,7 @@ Subject To
    - 0.5 Q[47,3] * H_neg[1,sepal-width]
    - 0.0677966101694915 Q[47,3] * H_neg[1,petal-length]
    - 0.0416666666666667 Q[47,3] * H_neg[1,petal-width] + Q[47,3] * C4276
-   - Q[47,3] * C4283 - 0.0833333333333333 Q[47,4] * H_pos[1,sepal-length]
-   - 0.5 Q[47,4] * H_pos[1,sepal-width]
-   - 0.0677966101694915 Q[47,4] * H_pos[1,petal-length]
-   - 0.0416666666666667 Q[47,4] * H_pos[1,petal-width]
-   + 0.0833333333333333 Q[47,4] * H_neg[1,sepal-length]
-   + 0.5 Q[47,4] * H_neg[1,sepal-width]
-   + 0.0677966101694915 Q[47,4] * H_neg[1,petal-length]
-   + 0.0416666666666667 Q[47,4] * H_neg[1,petal-width] - Q[47,4] * C4276
-   + Q[47,4] * C4283 ] >= 1
+   - Q[47,3] * C4283 ] >= 1
  qc127: E[18,1] + [ 0.3888888888888888 Q[18,3] * H_pos[1,sepal-length]
    + 0.75 Q[18,3] * H_pos[1,sepal-width]
    + 0.1186440677966101 Q[18,3] * H_pos[1,petal-length]
@@ -8402,15 +7400,7 @@ Subject To
    - 0.75 Q[18,3] * H_neg[1,sepal-width]
    - 0.1186440677966101 Q[18,3] * H_neg[1,petal-length]
    - 0.0833333333333333 Q[18,3] * H_neg[1,petal-width] + Q[18,3] * C4276
-   - Q[18,3] * C4283 - 0.3888888888888888 Q[18,4] * H_pos[1,sepal-length]
-   - 0.75 Q[18,4] * H_pos[1,sepal-width]
-   - 0.1186440677966101 Q[18,4] * H_pos[1,petal-length]
-   - 0.0833333333333333 Q[18,4] * H_pos[1,petal-width]
-   + 0.3888888888888888 Q[18,4] * H_neg[1,sepal-length]
-   + 0.75 Q[18,4] * H_neg[1,sepal-width]
-   + 0.1186440677966101 Q[18,4] * H_neg[1,petal-length]
-   + 0.0833333333333333 Q[18,4] * H_neg[1,petal-width] - Q[18,4] * C4276
-   + Q[18,4] * C4283 ] >= 1
+   - Q[18,3] * C4283 ] >= 1
  qc128: E[137,1] + [ 0.5833333333333335 Q[137,3] * H_pos[1,sepal-length]
    + 0.4583333333333333 Q[137,3] * H_pos[1,sepal-width]
    + 0.7627118644067796 Q[137,3] * H_pos[1,petal-length]
@@ -8419,15 +7409,7 @@ Subject To
    - 0.4583333333333333 Q[137,3] * H_neg[1,sepal-width]
    - 0.7627118644067796 Q[137,3] * H_neg[1,petal-length]
    - 0.7083333333333334 Q[137,3] * H_neg[1,petal-width] + Q[137,3] * C4276
-   - Q[137,3] * C4283 - 0.5833333333333335 Q[137,4] * H_pos[1,sepal-length]
-   - 0.4583333333333333 Q[137,4] * H_pos[1,sepal-width]
-   - 0.7627118644067796 Q[137,4] * H_pos[1,petal-length]
-   - 0.7083333333333334 Q[137,4] * H_pos[1,petal-width]
-   + 0.5833333333333335 Q[137,4] * H_neg[1,sepal-length]
-   + 0.4583333333333333 Q[137,4] * H_neg[1,sepal-width]
-   + 0.7627118644067796 Q[137,4] * H_neg[1,petal-length]
-   + 0.7083333333333334 Q[137,4] * H_neg[1,petal-width] - Q[137,4] * C4276
-   + Q[137,4] * C4283 ] >= 1
+   - Q[137,3] * C4283 ] >= 1
  qc129: E[136,1] + [ 0.5555555555555556 Q[136,3] * H_pos[1,sepal-length]
    + 0.5833333333333333 Q[136,3] * H_pos[1,sepal-width]
    + 0.7796610169491525 Q[136,3] * H_pos[1,petal-length]
@@ -8436,15 +7418,7 @@ Subject To
    - 0.5833333333333333 Q[136,3] * H_neg[1,sepal-width]
    - 0.7796610169491525 Q[136,3] * H_neg[1,petal-length]
    - 0.9583333333333334 Q[136,3] * H_neg[1,petal-width] + Q[136,3] * C4276
-   - Q[136,3] * C4283 - 0.5555555555555556 Q[136,4] * H_pos[1,sepal-length]
-   - 0.5833333333333333 Q[136,4] * H_pos[1,sepal-width]
-   - 0.7796610169491525 Q[136,4] * H_pos[1,petal-length]
-   - 0.9583333333333334 Q[136,4] * H_pos[1,petal-width]
-   + 0.5555555555555556 Q[136,4] * H_neg[1,sepal-length]
-   + 0.5833333333333333 Q[136,4] * H_neg[1,sepal-width]
-   + 0.7796610169491525 Q[136,4] * H_neg[1,petal-length]
-   + 0.9583333333333334 Q[136,4] * H_neg[1,petal-width] - Q[136,4] * C4276
-   + Q[136,4] * C4283 ] >= 1
+   - Q[136,3] * C4283 ] >= 1
  qc130: E[56,1] + [ 0.5555555555555556 Q[56,3] * H_pos[1,sepal-length]
    + 0.5416666666666665 Q[56,3] * H_pos[1,sepal-width]
    + 0.6271186440677966 Q[56,3] * H_pos[1,petal-length]
@@ -8453,15 +7427,7 @@ Subject To
    - 0.5416666666666665 Q[56,3] * H_neg[1,sepal-width]
    - 0.6271186440677966 Q[56,3] * H_neg[1,petal-length]
    - 0.625 Q[56,3] * H_neg[1,petal-width] + Q[56,3] * C4276
-   - Q[56,3] * C4283 - 0.5555555555555556 Q[56,4] * H_pos[1,sepal-length]
-   - 0.5416666666666665 Q[56,4] * H_pos[1,sepal-width]
-   - 0.6271186440677966 Q[56,4] * H_pos[1,petal-length]
-   - 0.625 Q[56,4] * H_pos[1,petal-width]
-   + 0.5555555555555556 Q[56,4] * H_neg[1,sepal-length]
-   + 0.5416666666666665 Q[56,4] * H_neg[1,sepal-width]
-   + 0.6271186440677966 Q[56,4] * H_neg[1,petal-length]
-   + 0.625 Q[56,4] * H_neg[1,petal-width] - Q[56,4] * C4276
-   + Q[56,4] * C4283 ] >= 1
+   - Q[56,3] * C4283 ] >= 1
  qc131: E[119,1] + [ 0.4722222222222223 Q[119,3] * H_pos[1,sepal-length]
    + 0.0833333333333334 Q[119,3] * H_pos[1,sepal-width]
    + 0.6779661016949152 Q[119,3] * H_pos[1,petal-length]
@@ -8470,28 +7436,14 @@ Subject To
    - 0.0833333333333334 Q[119,3] * H_neg[1,sepal-width]
    - 0.6779661016949152 Q[119,3] * H_neg[1,petal-length]
    - 0.5833333333333334 Q[119,3] * H_neg[1,petal-width] + Q[119,3] * C4276
-   - Q[119,3] * C4283 - 0.4722222222222223 Q[119,4] * H_pos[1,sepal-length]
-   - 0.0833333333333334 Q[119,4] * H_pos[1,sepal-width]
-   - 0.6779661016949152 Q[119,4] * H_pos[1,petal-length]
-   - 0.5833333333333334 Q[119,4] * H_pos[1,petal-width]
-   + 0.4722222222222223 Q[119,4] * H_neg[1,sepal-length]
-   + 0.0833333333333334 Q[119,4] * H_neg[1,sepal-width]
-   + 0.6779661016949152 Q[119,4] * H_neg[1,petal-length]
-   + 0.5833333333333334 Q[119,4] * H_neg[1,petal-width] - Q[119,4] * C4276
-   + Q[119,4] * C4283 ] >= 1
+   - Q[119,3] * C4283 ] >= 1
  qc132: E[9,1] + [ 0.1666666666666667 Q[9,3] * H_pos[1,sepal-length]
    + 0.4583333333333333 Q[9,3] * H_pos[1,sepal-width]
    + 0.0847457627118644 Q[9,3] * H_pos[1,petal-length]
    - 0.1666666666666667 Q[9,3] * H_neg[1,sepal-length]
    - 0.4583333333333333 Q[9,3] * H_neg[1,sepal-width]
    - 0.0847457627118644 Q[9,3] * H_neg[1,petal-length] + Q[9,3] * C4276
-   - Q[9,3] * C4283 - 0.1666666666666667 Q[9,4] * H_pos[1,sepal-length]
-   - 0.4583333333333333 Q[9,4] * H_pos[1,sepal-width]
-   - 0.0847457627118644 Q[9,4] * H_pos[1,petal-length]
-   + 0.1666666666666667 Q[9,4] * H_neg[1,sepal-length]
-   + 0.4583333333333333 Q[9,4] * H_neg[1,sepal-width]
-   + 0.0847457627118644 Q[9,4] * H_neg[1,petal-length] - Q[9,4] * C4276
-   + Q[9,4] * C4283 ] >= 1
+   - Q[9,3] * C4283 ] >= 1
  qc133: E[141,1] + [ 0.7222222222222223 Q[141,3] * H_pos[1,sepal-length]
    + 0.4583333333333333 Q[141,3] * H_pos[1,sepal-width]
    + 0.6949152542372881 Q[141,3] * H_pos[1,petal-length]
@@ -8500,15 +7452,7 @@ Subject To
    - 0.4583333333333333 Q[141,3] * H_neg[1,sepal-width]
    - 0.6949152542372881 Q[141,3] * H_neg[1,petal-length]
    - 0.9166666666666666 Q[141,3] * H_neg[1,petal-width] + Q[141,3] * C4276
-   - Q[141,3] * C4283 - 0.7222222222222223 Q[141,4] * H_pos[1,sepal-length]
-   - 0.4583333333333333 Q[141,4] * H_pos[1,sepal-width]
-   - 0.6949152542372881 Q[141,4] * H_pos[1,petal-length]
-   - 0.9166666666666666 Q[141,4] * H_pos[1,petal-width]
-   + 0.7222222222222223 Q[141,4] * H_neg[1,sepal-length]
-   + 0.4583333333333333 Q[141,4] * H_neg[1,sepal-width]
-   + 0.6949152542372881 Q[141,4] * H_neg[1,petal-length]
-   + 0.9166666666666666 Q[141,4] * H_neg[1,petal-width] - Q[141,4] * C4276
-   + Q[141,4] * C4283 ] >= 1
+   - Q[141,3] * C4283 ] >= 1
  qc134: E[6,1] + [ 0.0833333333333333 Q[6,3] * H_pos[1,sepal-length]
    + 0.5833333333333333 Q[6,3] * H_pos[1,sepal-width]
    + 0.0677966101694915 Q[6,3] * H_pos[1,petal-length]
@@ -8517,15 +7461,7 @@ Subject To
    - 0.5833333333333333 Q[6,3] * H_neg[1,sepal-width]
    - 0.0677966101694915 Q[6,3] * H_neg[1,petal-length]
    - 0.0833333333333333 Q[6,3] * H_neg[1,petal-width] + Q[6,3] * C4276
-   - Q[6,3] * C4283 - 0.0833333333333333 Q[6,4] * H_pos[1,sepal-length]
-   - 0.5833333333333333 Q[6,4] * H_pos[1,sepal-width]
-   - 0.0677966101694915 Q[6,4] * H_pos[1,petal-length]
-   - 0.0833333333333333 Q[6,4] * H_pos[1,petal-width]
-   + 0.0833333333333333 Q[6,4] * H_neg[1,sepal-length]
-   + 0.5833333333333333 Q[6,4] * H_neg[1,sepal-width]
-   + 0.0677966101694915 Q[6,4] * H_neg[1,petal-length]
-   + 0.0833333333333333 Q[6,4] * H_neg[1,petal-width] - Q[6,4] * C4276
-   + Q[6,4] * C4283 ] >= 1
+   - Q[6,3] * C4283 ] >= 1
  qc135: E[114,1] + [ 0.4166666666666665 Q[114,3] * H_pos[1,sepal-length]
    + 0.3333333333333333 Q[114,3] * H_pos[1,sepal-width]
    + 0.6949152542372881 Q[114,3] * H_pos[1,petal-length]
@@ -8534,15 +7470,7 @@ Subject To
    - 0.3333333333333333 Q[114,3] * H_neg[1,sepal-width]
    - 0.6949152542372881 Q[114,3] * H_neg[1,petal-length]
    - 0.9583333333333334 Q[114,3] * H_neg[1,petal-width] + Q[114,3] * C4276
-   - Q[114,3] * C4283 - 0.4166666666666665 Q[114,4] * H_pos[1,sepal-length]
-   - 0.3333333333333333 Q[114,4] * H_pos[1,sepal-width]
-   - 0.6949152542372881 Q[114,4] * H_pos[1,petal-length]
-   - 0.9583333333333334 Q[114,4] * H_pos[1,petal-width]
-   + 0.4166666666666665 Q[114,4] * H_neg[1,sepal-length]
-   + 0.3333333333333333 Q[114,4] * H_neg[1,sepal-width]
-   + 0.6949152542372881 Q[114,4] * H_neg[1,petal-length]
-   + 0.9583333333333334 Q[114,4] * H_neg[1,petal-width] - Q[114,4] * C4276
-   + Q[114,4] * C4283 ] >= 1
+   - Q[114,3] * C4283 ] >= 1
  qc136: E[147,1] + [ 0.6111111111111112 Q[147,3] * H_pos[1,sepal-length]
    + 0.4166666666666667 Q[147,3] * H_pos[1,sepal-width]
    + 0.711864406779661 Q[147,3] * H_pos[1,petal-length]
@@ -8551,15 +7479,7 @@ Subject To
    - 0.4166666666666667 Q[147,3] * H_neg[1,sepal-width]
    - 0.711864406779661 Q[147,3] * H_neg[1,petal-length]
    - 0.7916666666666667 Q[147,3] * H_neg[1,petal-width] + Q[147,3] * C4276
-   - Q[147,3] * C4283 - 0.6111111111111112 Q[147,4] * H_pos[1,sepal-length]
-   - 0.4166666666666667 Q[147,4] * H_pos[1,sepal-width]
-   - 0.711864406779661 Q[147,4] * H_pos[1,petal-length]
-   - 0.7916666666666667 Q[147,4] * H_pos[1,petal-width]
-   + 0.6111111111111112 Q[147,4] * H_neg[1,sepal-length]
-   + 0.4166666666666667 Q[147,4] * H_neg[1,sepal-width]
-   + 0.711864406779661 Q[147,4] * H_neg[1,petal-length]
-   + 0.7916666666666667 Q[147,4] * H_neg[1,petal-width] - Q[147,4] * C4276
-   + Q[147,4] * C4283 ] >= 1
+   - Q[147,3] * C4283 ] >= 1
  qc137: E[55,1] + [ 0.3888888888888888 Q[55,3] * H_pos[1,sepal-length]
    + 0.3333333333333333 Q[55,3] * H_pos[1,sepal-width]
    + 0.5932203389830508 Q[55,3] * H_pos[1,petal-length]
@@ -8568,14 +7488,6 @@ Subject To
    - 0.3333333333333333 Q[55,3] * H_neg[1,sepal-width]
    - 0.5932203389830508 Q[55,3] * H_neg[1,petal-length]
    - 0.5 Q[55,3] * H_neg[1,petal-width] + Q[55,3] * C4276 - Q[55,3] * C4283
-   - 0.3888888888888888 Q[55,4] * H_pos[1,sepal-length]
-   - 0.3333333333333333 Q[55,4] * H_pos[1,sepal-width]
-   - 0.5932203389830508 Q[55,4] * H_pos[1,petal-length]
-   - 0.5 Q[55,4] * H_pos[1,petal-width]
-   + 0.3888888888888888 Q[55,4] * H_neg[1,sepal-length]
-   + 0.3333333333333333 Q[55,4] * H_neg[1,sepal-width]
-   + 0.5932203389830508 Q[55,4] * H_neg[1,petal-length]
-   + 0.5 Q[55,4] * H_neg[1,petal-width] - Q[55,4] * C4276 + Q[55,4] * C4283
    ] >= 1
  qc138: E[112,1] + [ 0.6944444444444444 Q[112,3] * H_pos[1,sepal-length]
    + 0.4166666666666667 Q[112,3] * H_pos[1,sepal-width]
@@ -8585,15 +7497,7 @@ Subject To
    - 0.4166666666666667 Q[112,3] * H_neg[1,sepal-width]
    - 0.7627118644067796 Q[112,3] * H_neg[1,petal-length]
    - 0.8333333333333335 Q[112,3] * H_neg[1,petal-width] + Q[112,3] * C4276
-   - Q[112,3] * C4283 - 0.6944444444444444 Q[112,4] * H_pos[1,sepal-length]
-   - 0.4166666666666667 Q[112,4] * H_pos[1,sepal-width]
-   - 0.7627118644067796 Q[112,4] * H_pos[1,petal-length]
-   - 0.8333333333333335 Q[112,4] * H_pos[1,petal-width]
-   + 0.6944444444444444 Q[112,4] * H_neg[1,sepal-length]
-   + 0.4166666666666667 Q[112,4] * H_neg[1,sepal-width]
-   + 0.7627118644067796 Q[112,4] * H_neg[1,petal-length]
-   + 0.8333333333333335 Q[112,4] * H_neg[1,petal-width] - Q[112,4] * C4276
-   + Q[112,4] * C4283 ] >= 1
+   - Q[112,3] * C4283 ] >= 1
  qc139: E[96,1] + [ 0.3888888888888888 Q[96,3] * H_pos[1,sepal-length]
    + 0.375 Q[96,3] * H_pos[1,sepal-width]
    + 0.5423728813559322 Q[96,3] * H_pos[1,petal-length]
@@ -8602,14 +7506,6 @@ Subject To
    - 0.375 Q[96,3] * H_neg[1,sepal-width]
    - 0.5423728813559322 Q[96,3] * H_neg[1,petal-length]
    - 0.5 Q[96,3] * H_neg[1,petal-width] + Q[96,3] * C4276 - Q[96,3] * C4283
-   - 0.3888888888888888 Q[96,4] * H_pos[1,sepal-length]
-   - 0.375 Q[96,4] * H_pos[1,sepal-width]
-   - 0.5423728813559322 Q[96,4] * H_pos[1,petal-length]
-   - 0.5 Q[96,4] * H_pos[1,petal-width]
-   + 0.3888888888888888 Q[96,4] * H_neg[1,sepal-length]
-   + 0.375 Q[96,4] * H_neg[1,sepal-width]
-   + 0.5423728813559322 Q[96,4] * H_neg[1,petal-length]
-   + 0.5 Q[96,4] * H_neg[1,petal-width] - Q[96,4] * C4276 + Q[96,4] * C4283
    ] >= 1
  qc140: E[52,1] + [ 0.7222222222222223 Q[52,3] * H_pos[1,sepal-length]
    + 0.4583333333333333 Q[52,3] * H_pos[1,sepal-width]
@@ -8619,15 +7515,7 @@ Subject To
    - 0.4583333333333333 Q[52,3] * H_neg[1,sepal-width]
    - 0.6610169491525424 Q[52,3] * H_neg[1,petal-length]
    - 0.5833333333333334 Q[52,3] * H_neg[1,petal-width] + Q[52,3] * C4276
-   - Q[52,3] * C4283 - 0.7222222222222223 Q[52,4] * H_pos[1,sepal-length]
-   - 0.4583333333333333 Q[52,4] * H_pos[1,sepal-width]
-   - 0.6610169491525424 Q[52,4] * H_pos[1,petal-length]
-   - 0.5833333333333334 Q[52,4] * H_pos[1,petal-width]
-   + 0.7222222222222223 Q[52,4] * H_neg[1,sepal-length]
-   + 0.4583333333333333 Q[52,4] * H_neg[1,sepal-width]
-   + 0.6610169491525424 Q[52,4] * H_neg[1,petal-length]
-   + 0.5833333333333334 Q[52,4] * H_neg[1,petal-width] - Q[52,4] * C4276
-   + Q[52,4] * C4283 ] >= 1
+   - Q[52,3] * C4283 ] >= 1
  qc141: E[50,1] + [ 0.75 Q[50,3] * H_pos[1,sepal-length]
    + 0.5 Q[50,3] * H_pos[1,sepal-width]
    + 0.6271186440677966 Q[50,3] * H_pos[1,petal-length]
@@ -8636,15 +7524,7 @@ Subject To
    - 0.5 Q[50,3] * H_neg[1,sepal-width]
    - 0.6271186440677966 Q[50,3] * H_neg[1,petal-length]
    - 0.5416666666666667 Q[50,3] * H_neg[1,petal-width] + Q[50,3] * C4276
-   - Q[50,3] * C4283 - 0.75 Q[50,4] * H_pos[1,sepal-length]
-   - 0.5 Q[50,4] * H_pos[1,sepal-width]
-   - 0.6271186440677966 Q[50,4] * H_pos[1,petal-length]
-   - 0.5416666666666667 Q[50,4] * H_pos[1,petal-width]
-   + 0.75 Q[50,4] * H_neg[1,sepal-length]
-   + 0.5 Q[50,4] * H_neg[1,sepal-width]
-   + 0.6271186440677966 Q[50,4] * H_neg[1,petal-length]
-   + 0.5416666666666667 Q[50,4] * H_neg[1,petal-width] - Q[50,4] * C4276
-   + Q[50,4] * C4283 ] >= 1
+   - Q[50,3] * C4283 ] >= 1
  qc142: E[69,1] + [ 0.3611111111111109 Q[69,3] * H_pos[1,sepal-length]
    + 0.2083333333333333 Q[69,3] * H_pos[1,sepal-width]
    + 0.4915254237288135 Q[69,3] * H_pos[1,petal-length]
@@ -8653,15 +7533,7 @@ Subject To
    - 0.2083333333333333 Q[69,3] * H_neg[1,sepal-width]
    - 0.4915254237288135 Q[69,3] * H_neg[1,petal-length]
    - 0.4166666666666667 Q[69,3] * H_neg[1,petal-width] + Q[69,3] * C4276
-   - Q[69,3] * C4283 - 0.3611111111111109 Q[69,4] * H_pos[1,sepal-length]
-   - 0.2083333333333333 Q[69,4] * H_pos[1,sepal-width]
-   - 0.4915254237288135 Q[69,4] * H_pos[1,petal-length]
-   - 0.4166666666666667 Q[69,4] * H_pos[1,petal-width]
-   + 0.3611111111111109 Q[69,4] * H_neg[1,sepal-length]
-   + 0.2083333333333333 Q[69,4] * H_neg[1,sepal-width]
-   + 0.4915254237288135 Q[69,4] * H_neg[1,petal-length]
-   + 0.4166666666666667 Q[69,4] * H_neg[1,petal-width] - Q[69,4] * C4276
-   + Q[69,4] * C4283 ] >= 1
+   - Q[69,3] * C4283 ] >= 1
  qc143: E[71,1] + [ 0.5 Q[71,3] * H_pos[1,sepal-length]
    + 0.3333333333333333 Q[71,3] * H_pos[1,sepal-width]
    + 0.5084745762711864 Q[71,3] * H_pos[1,petal-length]
@@ -8670,14 +7542,6 @@ Subject To
    - 0.3333333333333333 Q[71,3] * H_neg[1,sepal-width]
    - 0.5084745762711864 Q[71,3] * H_neg[1,petal-length]
    - 0.5 Q[71,3] * H_neg[1,petal-width] + Q[71,3] * C4276 - Q[71,3] * C4283
-   - 0.5 Q[71,4] * H_pos[1,sepal-length]
-   - 0.3333333333333333 Q[71,4] * H_pos[1,sepal-width]
-   - 0.5084745762711864 Q[71,4] * H_pos[1,petal-length]
-   - 0.5 Q[71,4] * H_pos[1,petal-width]
-   + 0.5 Q[71,4] * H_neg[1,sepal-length]
-   + 0.3333333333333333 Q[71,4] * H_neg[1,sepal-width]
-   + 0.5084745762711864 Q[71,4] * H_neg[1,petal-length]
-   + 0.5 Q[71,4] * H_neg[1,petal-width] - Q[71,4] * C4276 + Q[71,4] * C4283
    ] >= 1
  qc144: E[92,1] + [ 0.4166666666666665 Q[92,3] * H_pos[1,sepal-length]
    + 0.25 Q[92,3] * H_pos[1,sepal-width]
@@ -8687,15 +7551,7 @@ Subject To
    - 0.25 Q[92,3] * H_neg[1,sepal-width]
    - 0.5084745762711864 Q[92,3] * H_neg[1,petal-length]
    - 0.4583333333333333 Q[92,3] * H_neg[1,petal-width] + Q[92,3] * C4276
-   - Q[92,3] * C4283 - 0.4166666666666665 Q[92,4] * H_pos[1,sepal-length]
-   - 0.25 Q[92,4] * H_pos[1,sepal-width]
-   - 0.5084745762711864 Q[92,4] * H_pos[1,petal-length]
-   - 0.4583333333333333 Q[92,4] * H_pos[1,petal-width]
-   + 0.4166666666666665 Q[92,4] * H_neg[1,sepal-length]
-   + 0.25 Q[92,4] * H_neg[1,sepal-width]
-   + 0.5084745762711864 Q[92,4] * H_neg[1,petal-length]
-   + 0.4583333333333333 Q[92,4] * H_neg[1,petal-width] - Q[92,4] * C4276
-   + Q[92,4] * C4283 ] >= 1
+   - Q[92,3] * C4283 ] >= 1
  qc145: E[61,1] + [ 0.4444444444444446 Q[61,3] * H_pos[1,sepal-length]
    + 0.4166666666666667 Q[61,3] * H_pos[1,sepal-width]
    + 0.5423728813559322 Q[61,3] * H_pos[1,petal-length]
@@ -8704,15 +7560,7 @@ Subject To
    - 0.4166666666666667 Q[61,3] * H_neg[1,sepal-width]
    - 0.5423728813559322 Q[61,3] * H_neg[1,petal-length]
    - 0.5833333333333334 Q[61,3] * H_neg[1,petal-width] + Q[61,3] * C4276
-   - Q[61,3] * C4283 - 0.4444444444444446 Q[61,4] * H_pos[1,sepal-length]
-   - 0.4166666666666667 Q[61,4] * H_pos[1,sepal-width]
-   - 0.5423728813559322 Q[61,4] * H_pos[1,petal-length]
-   - 0.5833333333333334 Q[61,4] * H_pos[1,petal-width]
-   + 0.4444444444444446 Q[61,4] * H_neg[1,sepal-length]
-   + 0.4166666666666667 Q[61,4] * H_neg[1,sepal-width]
-   + 0.5423728813559322 Q[61,4] * H_neg[1,petal-length]
-   + 0.5833333333333334 Q[61,4] * H_neg[1,petal-width] - Q[61,4] * C4276
-   + Q[61,4] * C4283 ] >= 1
+   - Q[61,3] * C4283 ] >= 1
  qc146: E[33,1] + [ 0.3333333333333333 Q[33,3] * H_pos[1,sepal-length]
    + 0.9166666666666667 Q[33,3] * H_pos[1,sepal-width]
    + 0.0677966101694915 Q[33,3] * H_pos[1,petal-length]
@@ -8721,15 +7569,7 @@ Subject To
    - 0.9166666666666667 Q[33,3] * H_neg[1,sepal-width]
    - 0.0677966101694915 Q[33,3] * H_neg[1,petal-length]
    - 0.0416666666666667 Q[33,3] * H_neg[1,petal-width] + Q[33,3] * C4276
-   - Q[33,3] * C4283 - 0.3333333333333333 Q[33,4] * H_pos[1,sepal-length]
-   - 0.9166666666666667 Q[33,4] * H_pos[1,sepal-width]
-   - 0.0677966101694915 Q[33,4] * H_pos[1,petal-length]
-   - 0.0416666666666667 Q[33,4] * H_pos[1,petal-width]
-   + 0.3333333333333333 Q[33,4] * H_neg[1,sepal-length]
-   + 0.9166666666666667 Q[33,4] * H_neg[1,sepal-width]
-   + 0.0677966101694915 Q[33,4] * H_neg[1,petal-length]
-   + 0.0416666666666667 Q[33,4] * H_neg[1,petal-width] - Q[33,4] * C4276
-   + Q[33,4] * C4283 ] >= 1
+   - Q[33,3] * C4283 ] >= 1
  qc147: E[15,1] + [ 0.3888888888888888 Q[15,3] * H_pos[1,sepal-length]
    + Q[15,3] * H_pos[1,sepal-width]
    + 0.0847457627118644 Q[15,3] * H_pos[1,petal-length]
@@ -8738,15 +7578,7 @@ Subject To
    - Q[15,3] * H_neg[1,sepal-width]
    - 0.0847457627118644 Q[15,3] * H_neg[1,petal-length]
    - 0.125 Q[15,3] * H_neg[1,petal-width] + Q[15,3] * C4276
-   - Q[15,3] * C4283 - 0.3888888888888888 Q[15,4] * H_pos[1,sepal-length]
-   - Q[15,4] * H_pos[1,sepal-width]
-   - 0.0847457627118644 Q[15,4] * H_pos[1,petal-length]
-   - 0.125 Q[15,4] * H_pos[1,petal-width]
-   + 0.3888888888888888 Q[15,4] * H_neg[1,sepal-length]
-   + Q[15,4] * H_neg[1,sepal-width]
-   + 0.0847457627118644 Q[15,4] * H_neg[1,petal-length]
-   + 0.125 Q[15,4] * H_neg[1,petal-width] - Q[15,4] * C4276
-   + Q[15,4] * C4283 ] >= 1
+   - Q[15,3] * C4283 ] >= 1
  qc148: E[5,1] + [ 0.3055555555555556 Q[5,3] * H_pos[1,sepal-length]
    + 0.7916666666666665 Q[5,3] * H_pos[1,sepal-width]
    + 0.1186440677966101 Q[5,3] * H_pos[1,petal-length]
@@ -8755,14 +7587,6 @@ Subject To
    - 0.7916666666666665 Q[5,3] * H_neg[1,sepal-width]
    - 0.1186440677966101 Q[5,3] * H_neg[1,petal-length]
    - 0.125 Q[5,3] * H_neg[1,petal-width] + Q[5,3] * C4276 - Q[5,3] * C4283
-   - 0.3055555555555556 Q[5,4] * H_pos[1,sepal-length]
-   - 0.7916666666666665 Q[5,4] * H_pos[1,sepal-width]
-   - 0.1186440677966101 Q[5,4] * H_pos[1,petal-length]
-   - 0.125 Q[5,4] * H_pos[1,petal-width]
-   + 0.3055555555555556 Q[5,4] * H_neg[1,sepal-length]
-   + 0.7916666666666665 Q[5,4] * H_neg[1,sepal-width]
-   + 0.1186440677966101 Q[5,4] * H_neg[1,petal-length]
-   + 0.125 Q[5,4] * H_neg[1,petal-width] - Q[5,4] * C4276 + Q[5,4] * C4283
    ] >= 1
  qc149: E[126,1] + [ 0.5277777777777779 Q[126,3] * H_pos[1,sepal-length]
    + 0.3333333333333333 Q[126,3] * H_pos[1,sepal-width]
@@ -8772,15 +7596,7 @@ Subject To
    - 0.3333333333333333 Q[126,3] * H_neg[1,sepal-width]
    - 0.6440677966101694 Q[126,3] * H_neg[1,petal-length]
    - 0.7083333333333334 Q[126,3] * H_neg[1,petal-width] + Q[126,3] * C4276
-   - Q[126,3] * C4283 - 0.5277777777777779 Q[126,4] * H_pos[1,sepal-length]
-   - 0.3333333333333333 Q[126,4] * H_pos[1,sepal-width]
-   - 0.6440677966101694 Q[126,4] * H_pos[1,petal-length]
-   - 0.7083333333333334 Q[126,4] * H_pos[1,petal-width]
-   + 0.5277777777777779 Q[126,4] * H_neg[1,sepal-length]
-   + 0.3333333333333333 Q[126,4] * H_neg[1,sepal-width]
-   + 0.6440677966101694 Q[126,4] * H_neg[1,petal-length]
-   + 0.7083333333333334 Q[126,4] * H_neg[1,petal-width] - Q[126,4] * C4276
-   + Q[126,4] * C4283 ] >= 1
+   - Q[126,3] * C4283 ] >= 1
  qc150: E[143,1] + [ 0.6944444444444444 Q[143,3] * H_pos[1,sepal-length]
    + 0.5 Q[143,3] * H_pos[1,sepal-width]
    + 0.8305084745762712 Q[143,3] * H_pos[1,petal-length]
@@ -8789,15 +7605,7 @@ Subject To
    - 0.5 Q[143,3] * H_neg[1,sepal-width]
    - 0.8305084745762712 Q[143,3] * H_neg[1,petal-length]
    - 0.9166666666666666 Q[143,3] * H_neg[1,petal-width] + Q[143,3] * C4276
-   - Q[143,3] * C4283 - 0.6944444444444444 Q[143,4] * H_pos[1,sepal-length]
-   - 0.5 Q[143,4] * H_pos[1,sepal-width]
-   - 0.8305084745762712 Q[143,4] * H_pos[1,petal-length]
-   - 0.9166666666666666 Q[143,4] * H_pos[1,petal-width]
-   + 0.6944444444444444 Q[143,4] * H_neg[1,sepal-length]
-   + 0.5 Q[143,4] * H_neg[1,sepal-width]
-   + 0.8305084745762712 Q[143,4] * H_neg[1,petal-length]
-   + 0.9166666666666666 Q[143,4] * H_neg[1,petal-width] - Q[143,4] * C4276
-   + Q[143,4] * C4283 ] >= 1
+   - Q[143,3] * C4283 ] >= 1
  qc151: E[80,1] + [ 0.3333333333333333 Q[80,3] * H_pos[1,sepal-length]
    + 0.1666666666666666 Q[80,3] * H_pos[1,sepal-width]
    + 0.4745762711864406 Q[80,3] * H_pos[1,petal-length]
@@ -8806,15 +7614,7 @@ Subject To
    - 0.1666666666666666 Q[80,3] * H_neg[1,sepal-width]
    - 0.4745762711864406 Q[80,3] * H_neg[1,petal-length]
    - 0.4166666666666667 Q[80,3] * H_neg[1,petal-width] + Q[80,3] * C4276
-   - Q[80,3] * C4283 - 0.3333333333333333 Q[80,4] * H_pos[1,sepal-length]
-   - 0.1666666666666666 Q[80,4] * H_pos[1,sepal-width]
-   - 0.4745762711864406 Q[80,4] * H_pos[1,petal-length]
-   - 0.4166666666666667 Q[80,4] * H_pos[1,petal-width]
-   + 0.3333333333333333 Q[80,4] * H_neg[1,sepal-length]
-   + 0.1666666666666666 Q[80,4] * H_neg[1,sepal-width]
-   + 0.4745762711864406 Q[80,4] * H_neg[1,petal-length]
-   + 0.4166666666666667 Q[80,4] * H_neg[1,petal-width] - Q[80,4] * C4276
-   + Q[80,4] * C4283 ] >= 1
+   - Q[80,3] * C4283 ] >= 1
  qc152: E[73,1] + [ 0.5 Q[73,3] * H_pos[1,sepal-length]
    + 0.3333333333333333 Q[73,3] * H_pos[1,sepal-width]
    + 0.6271186440677966 Q[73,3] * H_pos[1,petal-length]
@@ -8823,15 +7623,7 @@ Subject To
    - 0.3333333333333333 Q[73,3] * H_neg[1,sepal-width]
    - 0.6271186440677966 Q[73,3] * H_neg[1,petal-length]
    - 0.4583333333333333 Q[73,3] * H_neg[1,petal-width] + Q[73,3] * C4276
-   - Q[73,3] * C4283 - 0.5 Q[73,4] * H_pos[1,sepal-length]
-   - 0.3333333333333333 Q[73,4] * H_pos[1,sepal-width]
-   - 0.6271186440677966 Q[73,4] * H_pos[1,petal-length]
-   - 0.4583333333333333 Q[73,4] * H_pos[1,petal-width]
-   + 0.5 Q[73,4] * H_neg[1,sepal-length]
-   + 0.3333333333333333 Q[73,4] * H_neg[1,sepal-width]
-   + 0.6271186440677966 Q[73,4] * H_neg[1,petal-length]
-   + 0.4583333333333333 Q[73,4] * H_neg[1,petal-width] - Q[73,4] * C4276
-   + Q[73,4] * C4283 ] >= 1
+   - Q[73,3] * C4283 ] >= 1
  qc153: E[54,1] + [ 0.6111111111111112 Q[54,3] * H_pos[1,sepal-length]
    + 0.3333333333333333 Q[54,3] * H_pos[1,sepal-width]
    + 0.6101694915254237 Q[54,3] * H_pos[1,petal-length]
@@ -8840,15 +7632,7 @@ Subject To
    - 0.3333333333333333 Q[54,3] * H_neg[1,sepal-width]
    - 0.6101694915254237 Q[54,3] * H_neg[1,petal-length]
    - 0.5833333333333334 Q[54,3] * H_neg[1,petal-width] + Q[54,3] * C4276
-   - Q[54,3] * C4283 - 0.6111111111111112 Q[54,4] * H_pos[1,sepal-length]
-   - 0.3333333333333333 Q[54,4] * H_pos[1,sepal-width]
-   - 0.6101694915254237 Q[54,4] * H_pos[1,petal-length]
-   - 0.5833333333333334 Q[54,4] * H_pos[1,petal-width]
-   + 0.6111111111111112 Q[54,4] * H_neg[1,sepal-length]
-   + 0.3333333333333333 Q[54,4] * H_neg[1,sepal-width]
-   + 0.6101694915254237 Q[54,4] * H_neg[1,petal-length]
-   + 0.5833333333333334 Q[54,4] * H_neg[1,petal-width] - Q[54,4] * C4276
-   + Q[54,4] * C4283 ] >= 1
+   - Q[54,3] * C4283 ] >= 1
  qc154: E[1,1] + [ 0.1666666666666667 Q[1,3] * H_pos[1,sepal-length]
    + 0.4166666666666667 Q[1,3] * H_pos[1,sepal-width]
    + 0.0677966101694915 Q[1,3] * H_pos[1,petal-length]
@@ -8857,15 +7641,7 @@ Subject To
    - 0.4166666666666667 Q[1,3] * H_neg[1,sepal-width]
    - 0.0677966101694915 Q[1,3] * H_neg[1,petal-length]
    - 0.0416666666666667 Q[1,3] * H_neg[1,petal-width] + Q[1,3] * C4276
-   - Q[1,3] * C4283 - 0.1666666666666667 Q[1,4] * H_pos[1,sepal-length]
-   - 0.4166666666666667 Q[1,4] * H_pos[1,sepal-width]
-   - 0.0677966101694915 Q[1,4] * H_pos[1,petal-length]
-   - 0.0416666666666667 Q[1,4] * H_pos[1,petal-width]
-   + 0.1666666666666667 Q[1,4] * H_neg[1,sepal-length]
-   + 0.4166666666666667 Q[1,4] * H_neg[1,sepal-width]
-   + 0.0677966101694915 Q[1,4] * H_neg[1,petal-length]
-   + 0.0416666666666667 Q[1,4] * H_neg[1,petal-width] - Q[1,4] * C4276
-   + Q[1,4] * C4283 ] >= 1
+   - Q[1,3] * C4283 ] >= 1
  qc155: E[129,1] + [ 0.8055555555555556 Q[129,3] * H_pos[1,sepal-length]
    + 0.4166666666666667 Q[129,3] * H_pos[1,sepal-width]
    + 0.8135593220338982 Q[129,3] * H_pos[1,petal-length]
@@ -8874,15 +7650,7 @@ Subject To
    - 0.4166666666666667 Q[129,3] * H_neg[1,sepal-width]
    - 0.8135593220338982 Q[129,3] * H_neg[1,petal-length]
    - 0.625 Q[129,3] * H_neg[1,petal-width] + Q[129,3] * C4276
-   - Q[129,3] * C4283 - 0.8055555555555556 Q[129,4] * H_pos[1,sepal-length]
-   - 0.4166666666666667 Q[129,4] * H_pos[1,sepal-width]
-   - 0.8135593220338982 Q[129,4] * H_pos[1,petal-length]
-   - 0.625 Q[129,4] * H_pos[1,petal-width]
-   + 0.8055555555555556 Q[129,4] * H_neg[1,sepal-length]
-   + 0.4166666666666667 Q[129,4] * H_neg[1,sepal-width]
-   + 0.8135593220338982 Q[129,4] * H_neg[1,petal-length]
-   + 0.625 Q[129,4] * H_neg[1,petal-width] - Q[129,4] * C4276
-   + Q[129,4] * C4283 ] >= 1
+   - Q[129,3] * C4283 ] >= 1
  qc156: E[99,1] + [ 0.3888888888888888 Q[99,3] * H_pos[1,sepal-length]
    + 0.3333333333333333 Q[99,3] * H_pos[1,sepal-width]
    + 0.5254237288135593 Q[99,3] * H_pos[1,petal-length]
@@ -8891,14 +7659,6 @@ Subject To
    - 0.3333333333333333 Q[99,3] * H_neg[1,sepal-width]
    - 0.5254237288135593 Q[99,3] * H_neg[1,petal-length]
    - 0.5 Q[99,3] * H_neg[1,petal-width] + Q[99,3] * C4276 - Q[99,3] * C4283
-   - 0.3888888888888888 Q[99,4] * H_pos[1,sepal-length]
-   - 0.3333333333333333 Q[99,4] * H_pos[1,sepal-width]
-   - 0.5254237288135593 Q[99,4] * H_pos[1,petal-length]
-   - 0.5 Q[99,4] * H_pos[1,petal-width]
-   + 0.3888888888888888 Q[99,4] * H_neg[1,sepal-length]
-   + 0.3333333333333333 Q[99,4] * H_neg[1,sepal-width]
-   + 0.5254237288135593 Q[99,4] * H_neg[1,petal-length]
-   + 0.5 Q[99,4] * H_neg[1,petal-width] - Q[99,4] * C4276 + Q[99,4] * C4283
    ] >= 1
  qc157: E[105,1] + [ 0.9166666666666665 Q[105,3] * H_pos[1,sepal-length]
    + 0.4166666666666667 Q[105,3] * H_pos[1,sepal-width]
@@ -8908,15 +7668,7 @@ Subject To
    - 0.4166666666666667 Q[105,3] * H_neg[1,sepal-width]
    - 0.9491525423728813 Q[105,3] * H_neg[1,petal-length]
    - 0.8333333333333335 Q[105,3] * H_neg[1,petal-width] + Q[105,3] * C4276
-   - Q[105,3] * C4283 - 0.9166666666666665 Q[105,4] * H_pos[1,sepal-length]
-   - 0.4166666666666667 Q[105,4] * H_pos[1,sepal-width]
-   - 0.9491525423728813 Q[105,4] * H_pos[1,petal-length]
-   - 0.8333333333333335 Q[105,4] * H_pos[1,petal-width]
-   + 0.9166666666666665 Q[105,4] * H_neg[1,sepal-length]
-   + 0.4166666666666667 Q[105,4] * H_neg[1,sepal-width]
-   + 0.9491525423728813 Q[105,4] * H_neg[1,petal-length]
-   + 0.8333333333333335 Q[105,4] * H_neg[1,petal-width] - Q[105,4] * C4276
-   + Q[105,4] * C4283 ] >= 1
+   - Q[105,3] * C4283 ] >= 1
  qc158: E[144,1] + [ 0.6666666666666667 Q[144,3] * H_pos[1,sepal-length]
    + 0.5416666666666665 Q[144,3] * H_pos[1,sepal-width]
    + 0.7966101694915254 Q[144,3] * H_pos[1,petal-length]
@@ -8925,14 +7677,6 @@ Subject To
    - 0.5416666666666665 Q[144,3] * H_neg[1,sepal-width]
    - 0.7966101694915254 Q[144,3] * H_neg[1,petal-length]
    - Q[144,3] * H_neg[1,petal-width] + Q[144,3] * C4276 - Q[144,3] * C4283
-   - 0.6666666666666667 Q[144,4] * H_pos[1,sepal-length]
-   - 0.5416666666666665 Q[144,4] * H_pos[1,sepal-width]
-   - 0.7966101694915254 Q[144,4] * H_pos[1,petal-length]
-   - Q[144,4] * H_pos[1,petal-width]
-   + 0.6666666666666667 Q[144,4] * H_neg[1,sepal-length]
-   + 0.5416666666666665 Q[144,4] * H_neg[1,sepal-width]
-   + 0.7966101694915254 Q[144,4] * H_neg[1,petal-length]
-   + Q[144,4] * H_neg[1,petal-width] - Q[144,4] * C4276 + Q[144,4] * C4283
    ] >= 1
  qc159: E[7,1] + [ 0.1944444444444444 Q[7,3] * H_pos[1,sepal-length]
    + 0.5833333333333333 Q[7,3] * H_pos[1,sepal-width]
@@ -8942,15 +7686,7 @@ Subject To
    - 0.5833333333333333 Q[7,3] * H_neg[1,sepal-width]
    - 0.0847457627118644 Q[7,3] * H_neg[1,petal-length]
    - 0.0416666666666667 Q[7,3] * H_neg[1,petal-width] + Q[7,3] * C4276
-   - Q[7,3] * C4283 - 0.1944444444444444 Q[7,4] * H_pos[1,sepal-length]
-   - 0.5833333333333333 Q[7,4] * H_pos[1,sepal-width]
-   - 0.0847457627118644 Q[7,4] * H_pos[1,petal-length]
-   - 0.0416666666666667 Q[7,4] * H_pos[1,petal-width]
-   + 0.1944444444444444 Q[7,4] * H_neg[1,sepal-length]
-   + 0.5833333333333333 Q[7,4] * H_neg[1,sepal-width]
-   + 0.0847457627118644 Q[7,4] * H_neg[1,petal-length]
-   + 0.0416666666666667 Q[7,4] * H_neg[1,petal-width] - Q[7,4] * C4276
-   + Q[7,4] * C4283 ] >= 1
+   - Q[7,3] * C4283 ] >= 1
  qc160: E[107,1] + [ 0.833333333333333 Q[107,3] * H_pos[1,sepal-length]
    + 0.375 Q[107,3] * H_pos[1,sepal-width]
    + 0.8983050847457625 Q[107,3] * H_pos[1,petal-length]
@@ -8959,15 +7695,7 @@ Subject To
    - 0.375 Q[107,3] * H_neg[1,sepal-width]
    - 0.8983050847457625 Q[107,3] * H_neg[1,petal-length]
    - 0.7083333333333334 Q[107,3] * H_neg[1,petal-width] + Q[107,3] * C4276
-   - Q[107,3] * C4283 - 0.833333333333333 Q[107,4] * H_pos[1,sepal-length]
-   - 0.375 Q[107,4] * H_pos[1,sepal-width]
-   - 0.8983050847457625 Q[107,4] * H_pos[1,petal-length]
-   - 0.7083333333333334 Q[107,4] * H_pos[1,petal-width]
-   + 0.833333333333333 Q[107,4] * H_neg[1,sepal-length]
-   + 0.375 Q[107,4] * H_neg[1,sepal-width]
-   + 0.8983050847457625 Q[107,4] * H_neg[1,petal-length]
-   + 0.7083333333333334 Q[107,4] * H_neg[1,petal-width] - Q[107,4] * C4276
-   + Q[107,4] * C4283 ] >= 1
+   - Q[107,3] * C4283 ] >= 1
  qc161: E[123,1] + [ 0.5555555555555556 Q[123,3] * H_pos[1,sepal-length]
    + 0.2916666666666667 Q[123,3] * H_pos[1,sepal-width]
    + 0.6610169491525424 Q[123,3] * H_pos[1,petal-length]
@@ -8976,15 +7704,7 @@ Subject To
    - 0.2916666666666667 Q[123,3] * H_neg[1,sepal-width]
    - 0.6610169491525424 Q[123,3] * H_neg[1,petal-length]
    - 0.7083333333333334 Q[123,3] * H_neg[1,petal-width] + Q[123,3] * C4276
-   - Q[123,3] * C4283 - 0.5555555555555556 Q[123,4] * H_pos[1,sepal-length]
-   - 0.2916666666666667 Q[123,4] * H_pos[1,sepal-width]
-   - 0.6610169491525424 Q[123,4] * H_pos[1,petal-length]
-   - 0.7083333333333334 Q[123,4] * H_pos[1,petal-width]
-   + 0.5555555555555556 Q[123,4] * H_neg[1,sepal-length]
-   + 0.2916666666666667 Q[123,4] * H_neg[1,sepal-width]
-   + 0.6610169491525424 Q[123,4] * H_neg[1,petal-length]
-   + 0.7083333333333334 Q[123,4] * H_neg[1,petal-width] - Q[123,4] * C4276
-   + Q[123,4] * C4283 ] >= 1
+   - Q[123,3] * C4283 ] >= 1
  qc162: E[118,1] + [ 0.9444444444444442 Q[118,3] * H_pos[1,sepal-length]
    + 0.25 Q[118,3] * H_pos[1,sepal-width]
    + Q[118,3] * H_pos[1,petal-length]
@@ -8993,15 +7713,7 @@ Subject To
    - 0.25 Q[118,3] * H_neg[1,sepal-width]
    - Q[118,3] * H_neg[1,petal-length]
    - 0.9166666666666666 Q[118,3] * H_neg[1,petal-width] + Q[118,3] * C4276
-   - Q[118,3] * C4283 - 0.9444444444444442 Q[118,4] * H_pos[1,sepal-length]
-   - 0.25 Q[118,4] * H_pos[1,sepal-width]
-   - Q[118,4] * H_pos[1,petal-length]
-   - 0.9166666666666666 Q[118,4] * H_pos[1,petal-width]
-   + 0.9444444444444442 Q[118,4] * H_neg[1,sepal-length]
-   + 0.25 Q[118,4] * H_neg[1,sepal-width]
-   + Q[118,4] * H_neg[1,petal-length]
-   + 0.9166666666666666 Q[118,4] * H_neg[1,petal-width] - Q[118,4] * C4276
-   + Q[118,4] * C4283 ] >= 1
+   - Q[118,3] * C4283 ] >= 1
  qc163: E[66,1] + [ 0.3611111111111109 Q[66,3] * H_pos[1,sepal-length]
    + 0.4166666666666667 Q[66,3] * H_pos[1,sepal-width]
    + 0.5932203389830508 Q[66,3] * H_pos[1,petal-length]
@@ -9010,15 +7722,7 @@ Subject To
    - 0.4166666666666667 Q[66,3] * H_neg[1,sepal-width]
    - 0.5932203389830508 Q[66,3] * H_neg[1,petal-length]
    - 0.5833333333333334 Q[66,3] * H_neg[1,petal-width] + Q[66,3] * C4276
-   - Q[66,3] * C4283 - 0.3611111111111109 Q[66,4] * H_pos[1,sepal-length]
-   - 0.4166666666666667 Q[66,4] * H_pos[1,sepal-width]
-   - 0.5932203389830508 Q[66,4] * H_pos[1,petal-length]
-   - 0.5833333333333334 Q[66,4] * H_pos[1,petal-width]
-   + 0.3611111111111109 Q[66,4] * H_neg[1,sepal-length]
-   + 0.4166666666666667 Q[66,4] * H_neg[1,sepal-width]
-   + 0.5932203389830508 Q[66,4] * H_neg[1,petal-length]
-   + 0.5833333333333334 Q[66,4] * H_neg[1,petal-width] - Q[66,4] * C4276
-   + Q[66,4] * C4283 ] >= 1
+   - Q[66,3] * C4283 ] >= 1
  qc164: E[124,1] + [ 0.6666666666666667 Q[124,3] * H_pos[1,sepal-length]
    + 0.5416666666666665 Q[124,3] * H_pos[1,sepal-width]
    + 0.7966101694915254 Q[124,3] * H_pos[1,petal-length]
@@ -9027,15 +7731,7 @@ Subject To
    - 0.5416666666666665 Q[124,3] * H_neg[1,sepal-width]
    - 0.7966101694915254 Q[124,3] * H_neg[1,petal-length]
    - 0.8333333333333335 Q[124,3] * H_neg[1,petal-width] + Q[124,3] * C4276
-   - Q[124,3] * C4283 - 0.6666666666666667 Q[124,4] * H_pos[1,sepal-length]
-   - 0.5416666666666665 Q[124,4] * H_pos[1,sepal-width]
-   - 0.7966101694915254 Q[124,4] * H_pos[1,petal-length]
-   - 0.8333333333333335 Q[124,4] * H_pos[1,petal-width]
-   + 0.6666666666666667 Q[124,4] * H_neg[1,sepal-length]
-   + 0.5416666666666665 Q[124,4] * H_neg[1,sepal-width]
-   + 0.7966101694915254 Q[124,4] * H_neg[1,petal-length]
-   + 0.8333333333333335 Q[124,4] * H_neg[1,petal-width] - Q[124,4] * C4276
-   + Q[124,4] * C4283 ] >= 1
+   - Q[124,3] * C4283 ] >= 1
  qc165: E[142,1] + [ 0.4166666666666665 Q[142,3] * H_pos[1,sepal-length]
    + 0.2916666666666667 Q[142,3] * H_pos[1,sepal-width]
    + 0.6949152542372881 Q[142,3] * H_pos[1,petal-length]
@@ -9044,15 +7740,7 @@ Subject To
    - 0.2916666666666667 Q[142,3] * H_neg[1,sepal-width]
    - 0.6949152542372881 Q[142,3] * H_neg[1,petal-length]
    - 0.75 Q[142,3] * H_neg[1,petal-width] + Q[142,3] * C4276
-   - Q[142,3] * C4283 - 0.4166666666666665 Q[142,4] * H_pos[1,sepal-length]
-   - 0.2916666666666667 Q[142,4] * H_pos[1,sepal-width]
-   - 0.6949152542372881 Q[142,4] * H_pos[1,petal-length]
-   - 0.75 Q[142,4] * H_pos[1,petal-width]
-   + 0.4166666666666665 Q[142,4] * H_neg[1,sepal-length]
-   + 0.2916666666666667 Q[142,4] * H_neg[1,sepal-width]
-   + 0.6949152542372881 Q[142,4] * H_neg[1,petal-length]
-   + 0.75 Q[142,4] * H_neg[1,petal-width] - Q[142,4] * C4276
-   + Q[142,4] * C4283 ] >= 1
+   - Q[142,3] * C4283 ] >= 1
  qc166: E[101,1] + [ 0.4166666666666665 Q[101,3] * H_pos[1,sepal-length]
    + 0.2916666666666667 Q[101,3] * H_pos[1,sepal-width]
    + 0.6949152542372881 Q[101,3] * H_pos[1,petal-length]
@@ -9061,15 +7749,7 @@ Subject To
    - 0.2916666666666667 Q[101,3] * H_neg[1,sepal-width]
    - 0.6949152542372881 Q[101,3] * H_neg[1,petal-length]
    - 0.75 Q[101,3] * H_neg[1,petal-width] + Q[101,3] * C4276
-   - Q[101,3] * C4283 - 0.4166666666666665 Q[101,4] * H_pos[1,sepal-length]
-   - 0.2916666666666667 Q[101,4] * H_pos[1,sepal-width]
-   - 0.6949152542372881 Q[101,4] * H_pos[1,petal-length]
-   - 0.75 Q[101,4] * H_pos[1,petal-width]
-   + 0.4166666666666665 Q[101,4] * H_neg[1,sepal-length]
-   + 0.2916666666666667 Q[101,4] * H_neg[1,sepal-width]
-   + 0.6949152542372881 Q[101,4] * H_neg[1,petal-length]
-   + 0.75 Q[101,4] * H_neg[1,petal-width] - Q[101,4] * C4276
-   + Q[101,4] * C4283 ] >= 1
+   - Q[101,3] * C4283 ] >= 1
  qc167: E[63,1] + [ 0.5 Q[63,3] * H_pos[1,sepal-length]
    + 0.375 Q[63,3] * H_pos[1,sepal-width]
    + 0.6271186440677966 Q[63,3] * H_pos[1,petal-length]
@@ -9078,15 +7758,7 @@ Subject To
    - 0.375 Q[63,3] * H_neg[1,sepal-width]
    - 0.6271186440677966 Q[63,3] * H_neg[1,petal-length]
    - 0.5416666666666667 Q[63,3] * H_neg[1,petal-width] + Q[63,3] * C4276
-   - Q[63,3] * C4283 - 0.5 Q[63,4] * H_pos[1,sepal-length]
-   - 0.375 Q[63,4] * H_pos[1,sepal-width]
-   - 0.6271186440677966 Q[63,4] * H_pos[1,petal-length]
-   - 0.5416666666666667 Q[63,4] * H_pos[1,petal-width]
-   + 0.5 Q[63,4] * H_neg[1,sepal-length]
-   + 0.375 Q[63,4] * H_neg[1,sepal-width]
-   + 0.6271186440677966 Q[63,4] * H_neg[1,petal-length]
-   + 0.5416666666666667 Q[63,4] * H_neg[1,petal-width] - Q[63,4] * C4276
-   + Q[63,4] * C4283 ] >= 1
+   - Q[63,3] * C4283 ] >= 1
  qc168: E[77,1] + [ 0.6666666666666667 Q[77,3] * H_pos[1,sepal-length]
    + 0.4166666666666667 Q[77,3] * H_pos[1,sepal-width]
    + 0.6779661016949152 Q[77,3] * H_pos[1,petal-length]
@@ -9095,15 +7767,7 @@ Subject To
    - 0.4166666666666667 Q[77,3] * H_neg[1,sepal-width]
    - 0.6779661016949152 Q[77,3] * H_neg[1,petal-length]
    - 0.6666666666666667 Q[77,3] * H_neg[1,petal-width] + Q[77,3] * C4276
-   - Q[77,3] * C4283 - 0.6666666666666667 Q[77,4] * H_pos[1,sepal-length]
-   - 0.4166666666666667 Q[77,4] * H_pos[1,sepal-width]
-   - 0.6779661016949152 Q[77,4] * H_pos[1,petal-length]
-   - 0.6666666666666667 Q[77,4] * H_pos[1,petal-width]
-   + 0.6666666666666667 Q[77,4] * H_neg[1,sepal-length]
-   + 0.4166666666666667 Q[77,4] * H_neg[1,sepal-width]
-   + 0.6779661016949152 Q[77,4] * H_neg[1,petal-length]
-   + 0.6666666666666667 Q[77,4] * H_neg[1,petal-width] - Q[77,4] * C4276
-   + Q[77,4] * C4283 ] >= 1
+   - Q[77,3] * C4283 ] >= 1
  qc169: E[35,1] + [ 0.1944444444444444 Q[35,3] * H_pos[1,sepal-length]
    + 0.5 Q[35,3] * H_pos[1,sepal-width]
    + 0.0338983050847458 Q[35,3] * H_pos[1,petal-length]
@@ -9112,28 +7776,14 @@ Subject To
    - 0.5 Q[35,3] * H_neg[1,sepal-width]
    - 0.0338983050847458 Q[35,3] * H_neg[1,petal-length]
    - 0.0416666666666667 Q[35,3] * H_neg[1,petal-width] + Q[35,3] * C4276
-   - Q[35,3] * C4283 - 0.1944444444444444 Q[35,4] * H_pos[1,sepal-length]
-   - 0.5 Q[35,4] * H_pos[1,sepal-width]
-   - 0.0338983050847458 Q[35,4] * H_pos[1,petal-length]
-   - 0.0416666666666667 Q[35,4] * H_pos[1,petal-width]
-   + 0.1944444444444444 Q[35,4] * H_neg[1,sepal-length]
-   + 0.5 Q[35,4] * H_neg[1,sepal-width]
-   + 0.0338983050847458 Q[35,4] * H_neg[1,petal-length]
-   + 0.0416666666666667 Q[35,4] * H_neg[1,petal-width] - Q[35,4] * C4276
-   + Q[35,4] * C4283 ] >= 1
+   - Q[35,3] * C4283 ] >= 1
  qc170: E[22,1] + [ 0.0833333333333333 Q[22,3] * H_pos[1,sepal-length]
    + 0.6666666666666667 Q[22,3] * H_pos[1,sepal-width]
    + 0.0416666666666667 Q[22,3] * H_pos[1,petal-width]
    - 0.0833333333333333 Q[22,3] * H_neg[1,sepal-length]
    - 0.6666666666666667 Q[22,3] * H_neg[1,sepal-width]
    - 0.0416666666666667 Q[22,3] * H_neg[1,petal-width] + Q[22,3] * C4276
-   - Q[22,3] * C4283 - 0.0833333333333333 Q[22,4] * H_pos[1,sepal-length]
-   - 0.6666666666666667 Q[22,4] * H_pos[1,sepal-width]
-   - 0.0416666666666667 Q[22,4] * H_pos[1,petal-width]
-   + 0.0833333333333333 Q[22,4] * H_neg[1,sepal-length]
-   + 0.6666666666666667 Q[22,4] * H_neg[1,sepal-width]
-   + 0.0416666666666667 Q[22,4] * H_neg[1,petal-width] - Q[22,4] * C4276
-   + Q[22,4] * C4283 ] >= 1
+   - Q[22,3] * C4283 ] >= 1
  qc171: E[127,1] + [ 0.5 Q[127,3] * H_pos[1,sepal-length]
    + 0.4166666666666667 Q[127,3] * H_pos[1,sepal-width]
    + 0.6610169491525424 Q[127,3] * H_pos[1,petal-length]
@@ -9142,15 +7792,7 @@ Subject To
    - 0.4166666666666667 Q[127,3] * H_neg[1,sepal-width]
    - 0.6610169491525424 Q[127,3] * H_neg[1,petal-length]
    - 0.7083333333333334 Q[127,3] * H_neg[1,petal-width] + Q[127,3] * C4276
-   - Q[127,3] * C4283 - 0.5 Q[127,4] * H_pos[1,sepal-length]
-   - 0.4166666666666667 Q[127,4] * H_pos[1,sepal-width]
-   - 0.6610169491525424 Q[127,4] * H_pos[1,petal-length]
-   - 0.7083333333333334 Q[127,4] * H_pos[1,petal-width]
-   + 0.5 Q[127,4] * H_neg[1,sepal-length]
-   + 0.4166666666666667 Q[127,4] * H_neg[1,sepal-width]
-   + 0.6610169491525424 Q[127,4] * H_neg[1,petal-length]
-   + 0.7083333333333334 Q[127,4] * H_neg[1,petal-width] - Q[127,4] * C4276
-   + Q[127,4] * C4283 ] >= 1
+   - Q[127,3] * C4283 ] >= 1
  qc172: E[102,1] + [ 0.7777777777777777 Q[102,3] * H_pos[1,sepal-length]
    + 0.4166666666666667 Q[102,3] * H_pos[1,sepal-width]
    + 0.8305084745762712 Q[102,3] * H_pos[1,petal-length]
@@ -9159,15 +7801,7 @@ Subject To
    - 0.4166666666666667 Q[102,3] * H_neg[1,sepal-width]
    - 0.8305084745762712 Q[102,3] * H_neg[1,petal-length]
    - 0.8333333333333335 Q[102,3] * H_neg[1,petal-width] + Q[102,3] * C4276
-   - Q[102,3] * C4283 - 0.7777777777777777 Q[102,4] * H_pos[1,sepal-length]
-   - 0.4166666666666667 Q[102,4] * H_pos[1,sepal-width]
-   - 0.8305084745762712 Q[102,4] * H_pos[1,petal-length]
-   - 0.8333333333333335 Q[102,4] * H_pos[1,petal-width]
-   + 0.7777777777777777 Q[102,4] * H_neg[1,sepal-length]
-   + 0.4166666666666667 Q[102,4] * H_neg[1,sepal-width]
-   + 0.8305084745762712 Q[102,4] * H_neg[1,petal-length]
-   + 0.8333333333333335 Q[102,4] * H_neg[1,petal-width] - Q[102,4] * C4276
-   + Q[102,4] * C4283 ] >= 1
+   - Q[102,3] * C4283 ] >= 1
  qc173: E[148,1] + [ 0.5277777777777779 Q[148,3] * H_pos[1,sepal-length]
    + 0.5833333333333333 Q[148,3] * H_pos[1,sepal-width]
    + 0.7457627118644068 Q[148,3] * H_pos[1,petal-length]
@@ -9176,15 +7810,7 @@ Subject To
    - 0.5833333333333333 Q[148,3] * H_neg[1,sepal-width]
    - 0.7457627118644068 Q[148,3] * H_neg[1,petal-length]
    - 0.9166666666666666 Q[148,3] * H_neg[1,petal-width] + Q[148,3] * C4276
-   - Q[148,3] * C4283 - 0.5277777777777779 Q[148,4] * H_pos[1,sepal-length]
-   - 0.5833333333333333 Q[148,4] * H_pos[1,sepal-width]
-   - 0.7457627118644068 Q[148,4] * H_pos[1,petal-length]
-   - 0.9166666666666666 Q[148,4] * H_pos[1,petal-width]
-   + 0.5277777777777779 Q[148,4] * H_neg[1,sepal-length]
-   + 0.5833333333333333 Q[148,4] * H_neg[1,sepal-width]
-   + 0.7457627118644068 Q[148,4] * H_neg[1,petal-length]
-   + 0.9166666666666666 Q[148,4] * H_neg[1,petal-width] - Q[148,4] * C4276
-   + Q[148,4] * C4283 ] >= 1
+   - Q[148,3] * C4283 ] >= 1
  qc174: E[64,1] + [ 0.3611111111111109 Q[64,3] * H_pos[1,sepal-length]
    + 0.375 Q[64,3] * H_pos[1,sepal-width]
    + 0.440677966101695 Q[64,3] * H_pos[1,petal-length]
@@ -9193,14 +7819,6 @@ Subject To
    - 0.375 Q[64,3] * H_neg[1,sepal-width]
    - 0.440677966101695 Q[64,3] * H_neg[1,petal-length]
    - 0.5 Q[64,3] * H_neg[1,petal-width] + Q[64,3] * C4276 - Q[64,3] * C4283
-   - 0.3611111111111109 Q[64,4] * H_pos[1,sepal-length]
-   - 0.375 Q[64,4] * H_pos[1,sepal-width]
-   - 0.440677966101695 Q[64,4] * H_pos[1,petal-length]
-   - 0.5 Q[64,4] * H_pos[1,petal-width]
-   + 0.3611111111111109 Q[64,4] * H_neg[1,sepal-length]
-   + 0.375 Q[64,4] * H_neg[1,sepal-width]
-   + 0.440677966101695 Q[64,4] * H_neg[1,petal-length]
-   + 0.5 Q[64,4] * H_neg[1,petal-width] - Q[64,4] * C4276 + Q[64,4] * C4283
    ] >= 1
  qc175: E[68,1] + [ 0.5277777777777779 Q[68,3] * H_pos[1,sepal-length]
    + 0.0833333333333334 Q[68,3] * H_pos[1,sepal-width]
@@ -9210,15 +7828,7 @@ Subject To
    - 0.0833333333333334 Q[68,3] * H_neg[1,sepal-width]
    - 0.5932203389830508 Q[68,3] * H_neg[1,petal-length]
    - 0.5833333333333334 Q[68,3] * H_neg[1,petal-width] + Q[68,3] * C4276
-   - Q[68,3] * C4283 - 0.5277777777777779 Q[68,4] * H_pos[1,sepal-length]
-   - 0.0833333333333334 Q[68,4] * H_pos[1,sepal-width]
-   - 0.5932203389830508 Q[68,4] * H_pos[1,petal-length]
-   - 0.5833333333333334 Q[68,4] * H_pos[1,petal-width]
-   + 0.5277777777777779 Q[68,4] * H_neg[1,sepal-length]
-   + 0.0833333333333334 Q[68,4] * H_neg[1,sepal-width]
-   + 0.5932203389830508 Q[68,4] * H_neg[1,petal-length]
-   + 0.5833333333333334 Q[68,4] * H_neg[1,petal-width] - Q[68,4] * C4276
-   + Q[68,4] * C4283 ] >= 1
+   - Q[68,3] * C4283 ] >= 1
  qc176: E[27,1] + [ 0.25 Q[27,3] * H_pos[1,sepal-length]
    + 0.625 Q[27,3] * H_pos[1,sepal-width]
    + 0.0847457627118644 Q[27,3] * H_pos[1,petal-length]
@@ -9227,15 +7837,7 @@ Subject To
    - 0.625 Q[27,3] * H_neg[1,sepal-width]
    - 0.0847457627118644 Q[27,3] * H_neg[1,petal-length]
    - 0.0416666666666667 Q[27,3] * H_neg[1,petal-width] + Q[27,3] * C4276
-   - Q[27,3] * C4283 - 0.25 Q[27,4] * H_pos[1,sepal-length]
-   - 0.625 Q[27,4] * H_pos[1,sepal-width]
-   - 0.0847457627118644 Q[27,4] * H_pos[1,petal-length]
-   - 0.0416666666666667 Q[27,4] * H_pos[1,petal-width]
-   + 0.25 Q[27,4] * H_neg[1,sepal-length]
-   + 0.625 Q[27,4] * H_neg[1,sepal-width]
-   + 0.0847457627118644 Q[27,4] * H_neg[1,petal-length]
-   + 0.0416666666666667 Q[27,4] * H_neg[1,petal-width] - Q[27,4] * C4276
-   + Q[27,4] * C4283 ] >= 1
+   - Q[27,3] * C4283 ] >= 1
  qc177: E[149,1] + [ 0.4444444444444446 Q[149,3] * H_pos[1,sepal-length]
    + 0.4166666666666667 Q[149,3] * H_pos[1,sepal-width]
    + 0.6949152542372881 Q[149,3] * H_pos[1,petal-length]
@@ -9244,15 +7846,7 @@ Subject To
    - 0.4166666666666667 Q[149,3] * H_neg[1,sepal-width]
    - 0.6949152542372881 Q[149,3] * H_neg[1,petal-length]
    - 0.7083333333333334 Q[149,3] * H_neg[1,petal-width] + Q[149,3] * C4276
-   - Q[149,3] * C4283 - 0.4444444444444446 Q[149,4] * H_pos[1,sepal-length]
-   - 0.4166666666666667 Q[149,4] * H_pos[1,sepal-width]
-   - 0.6949152542372881 Q[149,4] * H_pos[1,petal-length]
-   - 0.7083333333333334 Q[149,4] * H_pos[1,petal-width]
-   + 0.4444444444444446 Q[149,4] * H_neg[1,sepal-length]
-   + 0.4166666666666667 Q[149,4] * H_neg[1,sepal-width]
-   + 0.6949152542372881 Q[149,4] * H_neg[1,petal-length]
-   + 0.7083333333333334 Q[149,4] * H_neg[1,petal-width] - Q[149,4] * C4276
-   + Q[149,4] * C4283 ] >= 1
+   - Q[149,3] * C4283 ] >= 1
  qc178: E[39,1] + [ 0.2222222222222221 Q[39,3] * H_pos[1,sepal-length]
    + 0.5833333333333333 Q[39,3] * H_pos[1,sepal-width]
    + 0.0847457627118644 Q[39,3] * H_pos[1,petal-length]
@@ -9261,15 +7855,7 @@ Subject To
    - 0.5833333333333333 Q[39,3] * H_neg[1,sepal-width]
    - 0.0847457627118644 Q[39,3] * H_neg[1,petal-length]
    - 0.0416666666666667 Q[39,3] * H_neg[1,petal-width] + Q[39,3] * C4276
-   - Q[39,3] * C4283 - 0.2222222222222221 Q[39,4] * H_pos[1,sepal-length]
-   - 0.5833333333333333 Q[39,4] * H_pos[1,sepal-width]
-   - 0.0847457627118644 Q[39,4] * H_pos[1,petal-length]
-   - 0.0416666666666667 Q[39,4] * H_pos[1,petal-width]
-   + 0.2222222222222221 Q[39,4] * H_neg[1,sepal-length]
-   + 0.5833333333333333 Q[39,4] * H_neg[1,sepal-width]
-   + 0.0847457627118644 Q[39,4] * H_neg[1,petal-length]
-   + 0.0416666666666667 Q[39,4] * H_neg[1,petal-width] - Q[39,4] * C4276
-   + Q[39,4] * C4283 ] >= 1
+   - Q[39,3] * C4283 ] >= 1
  qc179: E[25,1] + [ 0.1944444444444444 Q[25,3] * H_pos[1,sepal-length]
    + 0.4166666666666667 Q[25,3] * H_pos[1,sepal-width]
    + 0.1016949152542373 Q[25,3] * H_pos[1,petal-length]
@@ -9278,15 +7864,7 @@ Subject To
    - 0.4166666666666667 Q[25,3] * H_neg[1,sepal-width]
    - 0.1016949152542373 Q[25,3] * H_neg[1,petal-length]
    - 0.0416666666666667 Q[25,3] * H_neg[1,petal-width] + Q[25,3] * C4276
-   - Q[25,3] * C4283 - 0.1944444444444444 Q[25,4] * H_pos[1,sepal-length]
-   - 0.4166666666666667 Q[25,4] * H_pos[1,sepal-width]
-   - 0.1016949152542373 Q[25,4] * H_pos[1,petal-length]
-   - 0.0416666666666667 Q[25,4] * H_pos[1,petal-width]
-   + 0.1944444444444444 Q[25,4] * H_neg[1,sepal-length]
-   + 0.4166666666666667 Q[25,4] * H_neg[1,sepal-width]
-   + 0.1016949152542373 Q[25,4] * H_neg[1,petal-length]
-   + 0.0416666666666667 Q[25,4] * H_neg[1,petal-width] - Q[25,4] * C4276
-   + Q[25,4] * C4283 ] >= 1
+   - Q[25,3] * C4283 ] >= 1
  qc180: E[62,1] + [ 0.4722222222222223 Q[62,3] * H_pos[1,sepal-length]
    + 0.0833333333333334 Q[62,3] * H_pos[1,sepal-width]
    + 0.5084745762711864 Q[62,3] * H_pos[1,petal-length]
@@ -9295,28 +7873,14 @@ Subject To
    - 0.0833333333333334 Q[62,3] * H_neg[1,sepal-width]
    - 0.5084745762711864 Q[62,3] * H_neg[1,petal-length]
    - 0.375 Q[62,3] * H_neg[1,petal-width] + Q[62,3] * C4276
-   - Q[62,3] * C4283 - 0.4722222222222223 Q[62,4] * H_pos[1,sepal-length]
-   - 0.0833333333333334 Q[62,4] * H_pos[1,sepal-width]
-   - 0.5084745762711864 Q[62,4] * H_pos[1,petal-length]
-   - 0.375 Q[62,4] * H_pos[1,petal-width]
-   + 0.4722222222222223 Q[62,4] * H_neg[1,sepal-length]
-   + 0.0833333333333334 Q[62,4] * H_neg[1,sepal-width]
-   + 0.5084745762711864 Q[62,4] * H_neg[1,petal-length]
-   + 0.375 Q[62,4] * H_neg[1,petal-width] - Q[62,4] * C4276
-   + Q[62,4] * C4283 ] >= 1
+   - Q[62,3] * C4283 ] >= 1
  qc181: E[32,1] + [ 0.25 Q[32,3] * H_pos[1,sepal-length]
    + 0.875 Q[32,3] * H_pos[1,sepal-width]
    + 0.0847457627118644 Q[32,3] * H_pos[1,petal-length]
    - 0.25 Q[32,3] * H_neg[1,sepal-length]
    - 0.875 Q[32,3] * H_neg[1,sepal-width]
    - 0.0847457627118644 Q[32,3] * H_neg[1,petal-length] + Q[32,3] * C4276
-   - Q[32,3] * C4283 - 0.25 Q[32,4] * H_pos[1,sepal-length]
-   - 0.875 Q[32,4] * H_pos[1,sepal-width]
-   - 0.0847457627118644 Q[32,4] * H_pos[1,petal-length]
-   + 0.25 Q[32,4] * H_neg[1,sepal-length]
-   + 0.875 Q[32,4] * H_neg[1,sepal-width]
-   + 0.0847457627118644 Q[32,4] * H_neg[1,petal-length] - Q[32,4] * C4276
-   + Q[32,4] * C4283 ] >= 1
+   - Q[32,3] * C4283 ] >= 1
  qc182: E[72,1] + [ 0.5555555555555556 Q[72,3] * H_pos[1,sepal-length]
    + 0.2083333333333333 Q[72,3] * H_pos[1,sepal-width]
    + 0.6610169491525424 Q[72,3] * H_pos[1,petal-length]
@@ -9325,15 +7889,7 @@ Subject To
    - 0.2083333333333333 Q[72,3] * H_neg[1,sepal-width]
    - 0.6610169491525424 Q[72,3] * H_neg[1,petal-length]
    - 0.5833333333333334 Q[72,3] * H_neg[1,petal-width] + Q[72,3] * C4276
-   - Q[72,3] * C4283 - 0.5555555555555556 Q[72,4] * H_pos[1,sepal-length]
-   - 0.2083333333333333 Q[72,4] * H_pos[1,sepal-width]
-   - 0.6610169491525424 Q[72,4] * H_pos[1,petal-length]
-   - 0.5833333333333334 Q[72,4] * H_pos[1,petal-width]
-   + 0.5555555555555556 Q[72,4] * H_neg[1,sepal-length]
-   + 0.2083333333333333 Q[72,4] * H_neg[1,sepal-width]
-   + 0.6610169491525424 Q[72,4] * H_neg[1,petal-length]
-   + 0.5833333333333334 Q[72,4] * H_neg[1,petal-width] - Q[72,4] * C4276
-   + Q[72,4] * C4283 ] >= 1
+   - Q[72,3] * C4283 ] >= 1
  qc183: E[26,1] + [ 0.1944444444444444 Q[26,3] * H_pos[1,sepal-length]
    + 0.5833333333333333 Q[26,3] * H_pos[1,sepal-width]
    + 0.1016949152542373 Q[26,3] * H_pos[1,petal-length]
@@ -9342,15 +7898,7 @@ Subject To
    - 0.5833333333333333 Q[26,3] * H_neg[1,sepal-width]
    - 0.1016949152542373 Q[26,3] * H_neg[1,petal-length]
    - 0.125 Q[26,3] * H_neg[1,petal-width] + Q[26,3] * C4276
-   - Q[26,3] * C4283 - 0.1944444444444444 Q[26,4] * H_pos[1,sepal-length]
-   - 0.5833333333333333 Q[26,4] * H_pos[1,sepal-width]
-   - 0.1016949152542373 Q[26,4] * H_pos[1,petal-length]
-   - 0.125 Q[26,4] * H_pos[1,petal-width]
-   + 0.1944444444444444 Q[26,4] * H_neg[1,sepal-length]
-   + 0.5833333333333333 Q[26,4] * H_neg[1,sepal-width]
-   + 0.1016949152542373 Q[26,4] * H_neg[1,petal-length]
-   + 0.125 Q[26,4] * H_neg[1,petal-width] - Q[26,4] * C4276
-   + Q[26,4] * C4283 ] >= 1
+   - Q[26,3] * C4283 ] >= 1
  qc184: E[116,1] + [ 0.6111111111111112 Q[116,3] * H_pos[1,sepal-length]
    + 0.4166666666666667 Q[116,3] * H_pos[1,sepal-width]
    + 0.7627118644067796 Q[116,3] * H_pos[1,petal-length]
@@ -9359,28 +7907,14 @@ Subject To
    - 0.4166666666666667 Q[116,3] * H_neg[1,sepal-width]
    - 0.7627118644067796 Q[116,3] * H_neg[1,petal-length]
    - 0.7083333333333334 Q[116,3] * H_neg[1,petal-width] + Q[116,3] * C4276
-   - Q[116,3] * C4283 - 0.6111111111111112 Q[116,4] * H_pos[1,sepal-length]
-   - 0.4166666666666667 Q[116,4] * H_pos[1,sepal-width]
-   - 0.7627118644067796 Q[116,4] * H_pos[1,petal-length]
-   - 0.7083333333333334 Q[116,4] * H_pos[1,petal-width]
-   + 0.6111111111111112 Q[116,4] * H_neg[1,sepal-length]
-   + 0.4166666666666667 Q[116,4] * H_neg[1,sepal-width]
-   + 0.7627118644067796 Q[116,4] * H_neg[1,petal-length]
-   + 0.7083333333333334 Q[116,4] * H_neg[1,petal-width] - Q[116,4] * C4276
-   + Q[116,4] * C4283 ] >= 1
+   - Q[116,3] * C4283 ] >= 1
  qc185: E[34,1] + [ 0.1666666666666667 Q[34,3] * H_pos[1,sepal-length]
    + 0.4583333333333333 Q[34,3] * H_pos[1,sepal-width]
    + 0.0847457627118644 Q[34,3] * H_pos[1,petal-length]
    - 0.1666666666666667 Q[34,3] * H_neg[1,sepal-length]
    - 0.4583333333333333 Q[34,3] * H_neg[1,sepal-width]
    - 0.0847457627118644 Q[34,3] * H_neg[1,petal-length] + Q[34,3] * C4276
-   - Q[34,3] * C4283 - 0.1666666666666667 Q[34,4] * H_pos[1,sepal-length]
-   - 0.4583333333333333 Q[34,4] * H_pos[1,sepal-width]
-   - 0.0847457627118644 Q[34,4] * H_pos[1,petal-length]
-   + 0.1666666666666667 Q[34,4] * H_neg[1,sepal-length]
-   + 0.4583333333333333 Q[34,4] * H_neg[1,sepal-width]
-   + 0.0847457627118644 Q[34,4] * H_neg[1,petal-length] - Q[34,4] * C4276
-   + Q[34,4] * C4283 ] >= 1
+   - Q[34,3] * C4283 ] >= 1
  qc186: E[117,1] + [ 0.9444444444444442 Q[117,3] * H_pos[1,sepal-length]
    + 0.75 Q[117,3] * H_pos[1,sepal-width]
    + 0.9661016949152543 Q[117,3] * H_pos[1,petal-length]
@@ -9389,15 +7923,7 @@ Subject To
    - 0.75 Q[117,3] * H_neg[1,sepal-width]
    - 0.9661016949152543 Q[117,3] * H_neg[1,petal-length]
    - 0.875 Q[117,3] * H_neg[1,petal-width] + Q[117,3] * C4276
-   - Q[117,3] * C4283 - 0.9444444444444442 Q[117,4] * H_pos[1,sepal-length]
-   - 0.75 Q[117,4] * H_pos[1,sepal-width]
-   - 0.9661016949152543 Q[117,4] * H_pos[1,petal-length]
-   - 0.875 Q[117,4] * H_pos[1,petal-width]
-   + 0.9444444444444442 Q[117,4] * H_neg[1,sepal-length]
-   + 0.75 Q[117,4] * H_neg[1,sepal-width]
-   + 0.9661016949152543 Q[117,4] * H_neg[1,petal-length]
-   + 0.875 Q[117,4] * H_neg[1,petal-width] - Q[117,4] * C4276
-   + Q[117,4] * C4283 ] >= 1
+   - Q[117,3] * C4283 ] >= 1
  qc187: E[30,1] + [ 0.1388888888888888 Q[30,3] * H_pos[1,sepal-length]
    + 0.4583333333333333 Q[30,3] * H_pos[1,sepal-width]
    + 0.1016949152542373 Q[30,3] * H_pos[1,petal-length]
@@ -9406,15 +7932,7 @@ Subject To
    - 0.4583333333333333 Q[30,3] * H_neg[1,sepal-width]
    - 0.1016949152542373 Q[30,3] * H_neg[1,petal-length]
    - 0.0416666666666667 Q[30,3] * H_neg[1,petal-width] + Q[30,3] * C4276
-   - Q[30,3] * C4283 - 0.1388888888888888 Q[30,4] * H_pos[1,sepal-length]
-   - 0.4583333333333333 Q[30,4] * H_pos[1,sepal-width]
-   - 0.1016949152542373 Q[30,4] * H_pos[1,petal-length]
-   - 0.0416666666666667 Q[30,4] * H_pos[1,petal-width]
-   + 0.1388888888888888 Q[30,4] * H_neg[1,sepal-length]
-   + 0.4583333333333333 Q[30,4] * H_neg[1,sepal-width]
-   + 0.1016949152542373 Q[30,4] * H_neg[1,petal-length]
-   + 0.0416666666666667 Q[30,4] * H_neg[1,petal-width] - Q[30,4] * C4276
-   + Q[30,4] * C4283 ] >= 1
+   - Q[30,3] * C4283 ] >= 1
  qc188: E[0,1] + [ 0.2222222222222221 Q[0,3] * H_pos[1,sepal-length]
    + 0.625 Q[0,3] * H_pos[1,sepal-width]
    + 0.0677966101694915 Q[0,3] * H_pos[1,petal-length]
@@ -9423,15 +7941,7 @@ Subject To
    - 0.625 Q[0,3] * H_neg[1,sepal-width]
    - 0.0677966101694915 Q[0,3] * H_neg[1,petal-length]
    - 0.0416666666666667 Q[0,3] * H_neg[1,petal-width] + Q[0,3] * C4276
-   - Q[0,3] * C4283 - 0.2222222222222221 Q[0,4] * H_pos[1,sepal-length]
-   - 0.625 Q[0,4] * H_pos[1,sepal-width]
-   - 0.0677966101694915 Q[0,4] * H_pos[1,petal-length]
-   - 0.0416666666666667 Q[0,4] * H_pos[1,petal-width]
-   + 0.2222222222222221 Q[0,4] * H_neg[1,sepal-length]
-   + 0.625 Q[0,4] * H_neg[1,sepal-width]
-   + 0.0677966101694915 Q[0,4] * H_neg[1,petal-length]
-   + 0.0416666666666667 Q[0,4] * H_neg[1,petal-width] - Q[0,4] * C4276
-   + Q[0,4] * C4283 ] >= 1
+   - Q[0,3] * C4283 ] >= 1
  qc189: E[82,1] + [ 0.4166666666666665 Q[82,3] * H_pos[1,sepal-length]
    + 0.2916666666666667 Q[82,3] * H_pos[1,sepal-width]
    + 0.4915254237288135 Q[82,3] * H_pos[1,petal-length]
@@ -9440,15 +7950,7 @@ Subject To
    - 0.2916666666666667 Q[82,3] * H_neg[1,sepal-width]
    - 0.4915254237288135 Q[82,3] * H_neg[1,petal-length]
    - 0.4583333333333333 Q[82,3] * H_neg[1,petal-width] + Q[82,3] * C4276
-   - Q[82,3] * C4283 - 0.4166666666666665 Q[82,4] * H_pos[1,sepal-length]
-   - 0.2916666666666667 Q[82,4] * H_pos[1,sepal-width]
-   - 0.4915254237288135 Q[82,4] * H_pos[1,petal-length]
-   - 0.4583333333333333 Q[82,4] * H_pos[1,petal-width]
-   + 0.4166666666666665 Q[82,4] * H_neg[1,sepal-length]
-   + 0.2916666666666667 Q[82,4] * H_neg[1,sepal-width]
-   + 0.4915254237288135 Q[82,4] * H_neg[1,petal-length]
-   + 0.4583333333333333 Q[82,4] * H_neg[1,petal-width] - Q[82,4] * C4276
-   + Q[82,4] * C4283 ] >= 1
+   - Q[82,3] * C4283 ] >= 1
  qc190: E[14,1] + [ 0.4166666666666665 Q[14,3] * H_pos[1,sepal-length]
    + 0.8333333333333333 Q[14,3] * H_pos[1,sepal-width]
    + 0.0338983050847458 Q[14,3] * H_pos[1,petal-length]
@@ -9457,15 +7959,7 @@ Subject To
    - 0.8333333333333333 Q[14,3] * H_neg[1,sepal-width]
    - 0.0338983050847458 Q[14,3] * H_neg[1,petal-length]
    - 0.0416666666666667 Q[14,3] * H_neg[1,petal-width] + Q[14,3] * C4276
-   - Q[14,3] * C4283 - 0.4166666666666665 Q[14,4] * H_pos[1,sepal-length]
-   - 0.8333333333333333 Q[14,4] * H_pos[1,sepal-width]
-   - 0.0338983050847458 Q[14,4] * H_pos[1,petal-length]
-   - 0.0416666666666667 Q[14,4] * H_pos[1,petal-width]
-   + 0.4166666666666665 Q[14,4] * H_neg[1,sepal-length]
-   + 0.8333333333333333 Q[14,4] * H_neg[1,sepal-width]
-   + 0.0338983050847458 Q[14,4] * H_neg[1,petal-length]
-   + 0.0416666666666667 Q[14,4] * H_neg[1,petal-width] - Q[14,4] * C4276
-   + Q[14,4] * C4283 ] >= 1
+   - Q[14,3] * C4283 ] >= 1
  qc191: E[125,1] + [ 0.8055555555555556 Q[125,3] * H_pos[1,sepal-length]
    + 0.5 Q[125,3] * H_pos[1,sepal-width]
    + 0.847457627118644 Q[125,3] * H_pos[1,petal-length]
@@ -9474,15 +7968,7 @@ Subject To
    - 0.5 Q[125,3] * H_neg[1,sepal-width]
    - 0.847457627118644 Q[125,3] * H_neg[1,petal-length]
    - 0.7083333333333334 Q[125,3] * H_neg[1,petal-width] + Q[125,3] * C4276
-   - Q[125,3] * C4283 - 0.8055555555555556 Q[125,4] * H_pos[1,sepal-length]
-   - 0.5 Q[125,4] * H_pos[1,sepal-width]
-   - 0.847457627118644 Q[125,4] * H_pos[1,petal-length]
-   - 0.7083333333333334 Q[125,4] * H_pos[1,petal-width]
-   + 0.8055555555555556 Q[125,4] * H_neg[1,sepal-length]
-   + 0.5 Q[125,4] * H_neg[1,sepal-width]
-   + 0.847457627118644 Q[125,4] * H_neg[1,petal-length]
-   + 0.7083333333333334 Q[125,4] * H_neg[1,petal-width] - Q[125,4] * C4276
-   + Q[125,4] * C4283 ] >= 1
+   - Q[125,3] * C4283 ] >= 1
  qc192: E[120,1] + [ 0.7222222222222223 Q[120,3] * H_pos[1,sepal-length]
    + 0.5 Q[120,3] * H_pos[1,sepal-width]
    + 0.7966101694915254 Q[120,3] * H_pos[1,petal-length]
@@ -9491,15 +7977,7 @@ Subject To
    - 0.5 Q[120,3] * H_neg[1,sepal-width]
    - 0.7966101694915254 Q[120,3] * H_neg[1,petal-length]
    - 0.9166666666666666 Q[120,3] * H_neg[1,petal-width] + Q[120,3] * C4276
-   - Q[120,3] * C4283 - 0.7222222222222223 Q[120,4] * H_pos[1,sepal-length]
-   - 0.5 Q[120,4] * H_pos[1,sepal-width]
-   - 0.7966101694915254 Q[120,4] * H_pos[1,petal-length]
-   - 0.9166666666666666 Q[120,4] * H_pos[1,petal-width]
-   + 0.7222222222222223 Q[120,4] * H_neg[1,sepal-length]
-   + 0.5 Q[120,4] * H_neg[1,sepal-width]
-   + 0.7966101694915254 Q[120,4] * H_neg[1,petal-length]
-   + 0.9166666666666666 Q[120,4] * H_neg[1,petal-width] - Q[120,4] * C4276
-   + Q[120,4] * C4283 ] >= 1
+   - Q[120,3] * C4283 ] >= 1
  qc193: E[97,1] + [ 0.5277777777777779 Q[97,3] * H_pos[1,sepal-length]
    + 0.375 Q[97,3] * H_pos[1,sepal-width]
    + 0.559322033898305 Q[97,3] * H_pos[1,petal-length]
@@ -9508,14 +7986,6 @@ Subject To
    - 0.375 Q[97,3] * H_neg[1,sepal-width]
    - 0.559322033898305 Q[97,3] * H_neg[1,petal-length]
    - 0.5 Q[97,3] * H_neg[1,petal-width] + Q[97,3] * C4276 - Q[97,3] * C4283
-   - 0.5277777777777779 Q[97,4] * H_pos[1,sepal-length]
-   - 0.375 Q[97,4] * H_pos[1,sepal-width]
-   - 0.559322033898305 Q[97,4] * H_pos[1,petal-length]
-   - 0.5 Q[97,4] * H_pos[1,petal-width]
-   + 0.5277777777777779 Q[97,4] * H_neg[1,sepal-length]
-   + 0.375 Q[97,4] * H_neg[1,sepal-width]
-   + 0.559322033898305 Q[97,4] * H_neg[1,petal-length]
-   + 0.5 Q[97,4] * H_neg[1,petal-width] - Q[97,4] * C4276 + Q[97,4] * C4283
    ] >= 1
  qc194: E[53,1] + [ 0.3333333333333333 Q[53,3] * H_pos[1,sepal-length]
    + 0.125 Q[53,3] * H_pos[1,sepal-width]
@@ -9525,14 +7995,6 @@ Subject To
    - 0.125 Q[53,3] * H_neg[1,sepal-width]
    - 0.5084745762711864 Q[53,3] * H_neg[1,petal-length]
    - 0.5 Q[53,3] * H_neg[1,petal-width] + Q[53,3] * C4276 - Q[53,3] * C4283
-   - 0.3333333333333333 Q[53,4] * H_pos[1,sepal-length]
-   - 0.125 Q[53,4] * H_pos[1,sepal-width]
-   - 0.5084745762711864 Q[53,4] * H_pos[1,petal-length]
-   - 0.5 Q[53,4] * H_pos[1,petal-width]
-   + 0.3333333333333333 Q[53,4] * H_neg[1,sepal-length]
-   + 0.125 Q[53,4] * H_neg[1,sepal-width]
-   + 0.5084745762711864 Q[53,4] * H_neg[1,petal-length]
-   + 0.5 Q[53,4] * H_neg[1,petal-width] - Q[53,4] * C4276 + Q[53,4] * C4283
    ] >= 1
  qc195: E[103,1] + [ 0.5555555555555556 Q[103,3] * H_pos[1,sepal-length]
    + 0.375 Q[103,3] * H_pos[1,sepal-width]
@@ -9542,15 +8004,7 @@ Subject To
    - 0.375 Q[103,3] * H_neg[1,sepal-width]
    - 0.7796610169491525 Q[103,3] * H_neg[1,petal-length]
    - 0.7083333333333334 Q[103,3] * H_neg[1,petal-width] + Q[103,3] * C4276
-   - Q[103,3] * C4283 - 0.5555555555555556 Q[103,4] * H_pos[1,sepal-length]
-   - 0.375 Q[103,4] * H_pos[1,sepal-width]
-   - 0.7796610169491525 Q[103,4] * H_pos[1,petal-length]
-   - 0.7083333333333334 Q[103,4] * H_pos[1,petal-width]
-   + 0.5555555555555556 Q[103,4] * H_neg[1,sepal-length]
-   + 0.375 Q[103,4] * H_neg[1,sepal-width]
-   + 0.7796610169491525 Q[103,4] * H_neg[1,petal-length]
-   + 0.7083333333333334 Q[103,4] * H_neg[1,petal-width] - Q[103,4] * C4276
-   + Q[103,4] * C4283 ] >= 1
+   - Q[103,3] * C4283 ] >= 1
  qc196: E[84,1] + [ 0.3055555555555556 Q[84,3] * H_pos[1,sepal-length]
    + 0.4166666666666667 Q[84,3] * H_pos[1,sepal-width]
    + 0.5932203389830508 Q[84,3] * H_pos[1,petal-length]
@@ -9559,24 +8013,12 @@ Subject To
    - 0.4166666666666667 Q[84,3] * H_neg[1,sepal-width]
    - 0.5932203389830508 Q[84,3] * H_neg[1,petal-length]
    - 0.5833333333333334 Q[84,3] * H_neg[1,petal-width] + Q[84,3] * C4276
-   - Q[84,3] * C4283 - 0.3055555555555556 Q[84,4] * H_pos[1,sepal-length]
-   - 0.4166666666666667 Q[84,4] * H_pos[1,sepal-width]
-   - 0.5932203389830508 Q[84,4] * H_pos[1,petal-length]
-   - 0.5833333333333334 Q[84,4] * H_pos[1,petal-width]
-   + 0.3055555555555556 Q[84,4] * H_neg[1,sepal-length]
-   + 0.4166666666666667 Q[84,4] * H_neg[1,sepal-width]
-   + 0.5932203389830508 Q[84,4] * H_neg[1,petal-length]
-   + 0.5833333333333334 Q[84,4] * H_neg[1,petal-width] - Q[84,4] * C4276
-   + Q[84,4] * C4283 ] >= 1
+   - Q[84,3] * C4283 ] >= 1
  qc197: E[13,1] + [ 0.4166666666666667 Q[13,3] * H_pos[1,sepal-width]
    + 0.0169491525423729 Q[13,3] * H_pos[1,petal-length]
    - 0.4166666666666667 Q[13,3] * H_neg[1,sepal-width]
    - 0.0169491525423729 Q[13,3] * H_neg[1,petal-length] + Q[13,3] * C4276
-   - Q[13,3] * C4283 - 0.4166666666666667 Q[13,4] * H_pos[1,sepal-width]
-   - 0.0169491525423729 Q[13,4] * H_pos[1,petal-length]
-   + 0.4166666666666667 Q[13,4] * H_neg[1,sepal-width]
-   + 0.0169491525423729 Q[13,4] * H_neg[1,petal-length] - Q[13,4] * C4276
-   + Q[13,4] * C4283 ] >= 1
+   - Q[13,3] * C4283 ] >= 1
  qc198: E[130,1] + [ 0.8611111111111112 Q[130,3] * H_pos[1,sepal-length]
    + 0.3333333333333333 Q[130,3] * H_pos[1,sepal-width]
    + 0.8644067796610169 Q[130,3] * H_pos[1,petal-length]
@@ -9585,15 +8027,7 @@ Subject To
    - 0.3333333333333333 Q[130,3] * H_neg[1,sepal-width]
    - 0.8644067796610169 Q[130,3] * H_neg[1,petal-length]
    - 0.75 Q[130,3] * H_neg[1,petal-width] + Q[130,3] * C4276
-   - Q[130,3] * C4283 - 0.8611111111111112 Q[130,4] * H_pos[1,sepal-length]
-   - 0.3333333333333333 Q[130,4] * H_pos[1,sepal-width]
-   - 0.8644067796610169 Q[130,4] * H_pos[1,petal-length]
-   - 0.75 Q[130,4] * H_pos[1,petal-width]
-   + 0.8611111111111112 Q[130,4] * H_neg[1,sepal-length]
-   + 0.3333333333333333 Q[130,4] * H_neg[1,sepal-width]
-   + 0.8644067796610169 Q[130,4] * H_neg[1,petal-length]
-   + 0.75 Q[130,4] * H_neg[1,petal-width] - Q[130,4] * C4276
-   + Q[130,4] * C4283 ] >= 1
+   - Q[130,3] * C4283 ] >= 1
  qc199: E[23,1] + [ 0.2222222222222221 Q[23,3] * H_pos[1,sepal-length]
    + 0.5416666666666665 Q[23,3] * H_pos[1,sepal-width]
    + 0.1186440677966101 Q[23,3] * H_pos[1,petal-length]
@@ -9602,15 +8036,7 @@ Subject To
    - 0.5416666666666665 Q[23,3] * H_neg[1,sepal-width]
    - 0.1186440677966101 Q[23,3] * H_neg[1,petal-length]
    - 0.1666666666666667 Q[23,3] * H_neg[1,petal-width] + Q[23,3] * C4276
-   - Q[23,3] * C4283 - 0.2222222222222221 Q[23,4] * H_pos[1,sepal-length]
-   - 0.5416666666666665 Q[23,4] * H_pos[1,sepal-width]
-   - 0.1186440677966101 Q[23,4] * H_pos[1,petal-length]
-   - 0.1666666666666667 Q[23,4] * H_pos[1,petal-width]
-   + 0.2222222222222221 Q[23,4] * H_neg[1,sepal-length]
-   + 0.5416666666666665 Q[23,4] * H_neg[1,sepal-width]
-   + 0.1186440677966101 Q[23,4] * H_neg[1,petal-length]
-   + 0.1666666666666667 Q[23,4] * H_neg[1,petal-width] - Q[23,4] * C4276
-   + Q[23,4] * C4283 ] >= 1
+   - Q[23,3] * C4283 ] >= 1
  qc200: E[49,1] + [ 0.1944444444444444 Q[49,3] * H_pos[1,sepal-length]
    + 0.5416666666666665 Q[49,3] * H_pos[1,sepal-width]
    + 0.0677966101694915 Q[49,3] * H_pos[1,petal-length]
@@ -9619,15 +8045,7 @@ Subject To
    - 0.5416666666666665 Q[49,3] * H_neg[1,sepal-width]
    - 0.0677966101694915 Q[49,3] * H_neg[1,petal-length]
    - 0.0416666666666667 Q[49,3] * H_neg[1,petal-width] + Q[49,3] * C4276
-   - Q[49,3] * C4283 - 0.1944444444444444 Q[49,4] * H_pos[1,sepal-length]
-   - 0.5416666666666665 Q[49,4] * H_pos[1,sepal-width]
-   - 0.0677966101694915 Q[49,4] * H_pos[1,petal-length]
-   - 0.0416666666666667 Q[49,4] * H_pos[1,petal-width]
-   + 0.1944444444444444 Q[49,4] * H_neg[1,sepal-length]
-   + 0.5416666666666665 Q[49,4] * H_neg[1,sepal-width]
-   + 0.0677966101694915 Q[49,4] * H_neg[1,petal-length]
-   + 0.0416666666666667 Q[49,4] * H_neg[1,petal-width] - Q[49,4] * C4276
-   + Q[49,4] * C4283 ] >= 1
+   - Q[49,3] * C4283 ] >= 1
  qc201: E[24,1] + [ 0.1388888888888888 Q[24,3] * H_pos[1,sepal-length]
    + 0.5833333333333333 Q[24,3] * H_pos[1,sepal-width]
    + 0.1525423728813559 Q[24,3] * H_pos[1,petal-length]
@@ -9636,15 +8054,7 @@ Subject To
    - 0.5833333333333333 Q[24,3] * H_neg[1,sepal-width]
    - 0.1525423728813559 Q[24,3] * H_neg[1,petal-length]
    - 0.0416666666666667 Q[24,3] * H_neg[1,petal-width] + Q[24,3] * C4276
-   - Q[24,3] * C4283 - 0.1388888888888888 Q[24,4] * H_pos[1,sepal-length]
-   - 0.5833333333333333 Q[24,4] * H_pos[1,sepal-width]
-   - 0.1525423728813559 Q[24,4] * H_pos[1,petal-length]
-   - 0.0416666666666667 Q[24,4] * H_pos[1,petal-width]
-   + 0.1388888888888888 Q[24,4] * H_neg[1,sepal-length]
-   + 0.5833333333333333 Q[24,4] * H_neg[1,sepal-width]
-   + 0.1525423728813559 Q[24,4] * H_neg[1,petal-length]
-   + 0.0416666666666667 Q[24,4] * H_neg[1,petal-width] - Q[24,4] * C4276
-   + Q[24,4] * C4283 ] >= 1
+   - Q[24,3] * C4283 ] >= 1
  qc202: E[78,1] + [ 0.4722222222222223 Q[78,3] * H_pos[1,sepal-length]
    + 0.375 Q[78,3] * H_pos[1,sepal-width]
    + 0.5932203389830508 Q[78,3] * H_pos[1,petal-length]
@@ -9653,15 +8063,7 @@ Subject To
    - 0.375 Q[78,3] * H_neg[1,sepal-width]
    - 0.5932203389830508 Q[78,3] * H_neg[1,petal-length]
    - 0.5833333333333334 Q[78,3] * H_neg[1,petal-width] + Q[78,3] * C4276
-   - Q[78,3] * C4283 - 0.4722222222222223 Q[78,4] * H_pos[1,sepal-length]
-   - 0.375 Q[78,4] * H_pos[1,sepal-width]
-   - 0.5932203389830508 Q[78,4] * H_pos[1,petal-length]
-   - 0.5833333333333334 Q[78,4] * H_pos[1,petal-width]
-   + 0.4722222222222223 Q[78,4] * H_neg[1,sepal-length]
-   + 0.375 Q[78,4] * H_neg[1,sepal-width]
-   + 0.5932203389830508 Q[78,4] * H_neg[1,petal-length]
-   + 0.5833333333333334 Q[78,4] * H_neg[1,petal-width] - Q[78,4] * C4276
-   + Q[78,4] * C4283 ] >= 1
+   - Q[78,3] * C4283 ] >= 1
  qc203: E[45,1] + [ 0.1388888888888888 Q[45,3] * H_pos[1,sepal-length]
    + 0.4166666666666667 Q[45,3] * H_pos[1,sepal-width]
    + 0.0677966101694915 Q[45,3] * H_pos[1,petal-length]
@@ -9670,15 +8072,7 @@ Subject To
    - 0.4166666666666667 Q[45,3] * H_neg[1,sepal-width]
    - 0.0677966101694915 Q[45,3] * H_neg[1,petal-length]
    - 0.0833333333333333 Q[45,3] * H_neg[1,petal-width] + Q[45,3] * C4276
-   - Q[45,3] * C4283 - 0.1388888888888888 Q[45,4] * H_pos[1,sepal-length]
-   - 0.4166666666666667 Q[45,4] * H_pos[1,sepal-width]
-   - 0.0677966101694915 Q[45,4] * H_pos[1,petal-length]
-   - 0.0833333333333333 Q[45,4] * H_pos[1,petal-width]
-   + 0.1388888888888888 Q[45,4] * H_neg[1,sepal-length]
-   + 0.4166666666666667 Q[45,4] * H_neg[1,sepal-width]
-   + 0.0677966101694915 Q[45,4] * H_neg[1,petal-length]
-   + 0.0833333333333333 Q[45,4] * H_neg[1,petal-width] - Q[45,4] * C4276
-   + Q[45,4] * C4283 ] >= 1
+   - Q[45,3] * C4283 ] >= 1
  qc204: E[104,1] + [ 0.6111111111111112 Q[104,3] * H_pos[1,sepal-length]
    + 0.4166666666666667 Q[104,3] * H_pos[1,sepal-width]
    + 0.8135593220338982 Q[104,3] * H_pos[1,petal-length]
@@ -9687,15 +8081,7 @@ Subject To
    - 0.4166666666666667 Q[104,3] * H_neg[1,sepal-width]
    - 0.8135593220338982 Q[104,3] * H_neg[1,petal-length]
    - 0.875 Q[104,3] * H_neg[1,petal-width] + Q[104,3] * C4276
-   - Q[104,3] * C4283 - 0.6111111111111112 Q[104,4] * H_pos[1,sepal-length]
-   - 0.4166666666666667 Q[104,4] * H_pos[1,sepal-width]
-   - 0.8135593220338982 Q[104,4] * H_pos[1,petal-length]
-   - 0.875 Q[104,4] * H_pos[1,petal-width]
-   + 0.6111111111111112 Q[104,4] * H_neg[1,sepal-length]
-   + 0.4166666666666667 Q[104,4] * H_neg[1,sepal-width]
-   + 0.8135593220338982 Q[104,4] * H_neg[1,petal-length]
-   + 0.875 Q[104,4] * H_neg[1,petal-width] - Q[104,4] * C4276
-   + Q[104,4] * C4283 ] >= 1
+   - Q[104,3] * C4283 ] >= 1
  qc205: E[58,1] + [ 0.6388888888888888 Q[58,3] * H_pos[1,sepal-length]
    + 0.375 Q[58,3] * H_pos[1,sepal-width]
    + 0.6101694915254237 Q[58,3] * H_pos[1,petal-length]
@@ -9704,14 +8090,6 @@ Subject To
    - 0.375 Q[58,3] * H_neg[1,sepal-width]
    - 0.6101694915254237 Q[58,3] * H_neg[1,petal-length]
    - 0.5 Q[58,3] * H_neg[1,petal-width] + Q[58,3] * C4276 - Q[58,3] * C4283
-   - 0.6388888888888888 Q[58,4] * H_pos[1,sepal-length]
-   - 0.375 Q[58,4] * H_pos[1,sepal-width]
-   - 0.6101694915254237 Q[58,4] * H_pos[1,petal-length]
-   - 0.5 Q[58,4] * H_pos[1,petal-width]
-   + 0.6388888888888888 Q[58,4] * H_neg[1,sepal-length]
-   + 0.375 Q[58,4] * H_neg[1,sepal-width]
-   + 0.6101694915254237 Q[58,4] * H_neg[1,petal-length]
-   + 0.5 Q[58,4] * H_neg[1,petal-width] - Q[58,4] * C4276 + Q[58,4] * C4283
    ] >= 1
  qc206: E[113,1] + [ 0.3888888888888888 Q[113,3] * H_pos[1,sepal-length]
    + 0.2083333333333333 Q[113,3] * H_pos[1,sepal-width]
@@ -9721,15 +8099,7 @@ Subject To
    - 0.2083333333333333 Q[113,3] * H_neg[1,sepal-width]
    - 0.6779661016949152 Q[113,3] * H_neg[1,petal-length]
    - 0.7916666666666667 Q[113,3] * H_neg[1,petal-width] + Q[113,3] * C4276
-   - Q[113,3] * C4283 - 0.3888888888888888 Q[113,4] * H_pos[1,sepal-length]
-   - 0.2083333333333333 Q[113,4] * H_pos[1,sepal-width]
-   - 0.6779661016949152 Q[113,4] * H_pos[1,petal-length]
-   - 0.7916666666666667 Q[113,4] * H_pos[1,petal-width]
-   + 0.3888888888888888 Q[113,4] * H_neg[1,sepal-length]
-   + 0.2083333333333333 Q[113,4] * H_neg[1,sepal-width]
-   + 0.6779661016949152 Q[113,4] * H_neg[1,petal-length]
-   + 0.7916666666666667 Q[113,4] * H_neg[1,petal-width] - Q[113,4] * C4276
-   + Q[113,4] * C4283 ] >= 1
+   - Q[113,3] * C4283 ] >= 1
  qc207: E[3,1] + [ 0.0833333333333333 Q[3,3] * H_pos[1,sepal-length]
    + 0.4583333333333333 Q[3,3] * H_pos[1,sepal-width]
    + 0.0847457627118644 Q[3,3] * H_pos[1,petal-length]
@@ -9738,15 +8108,7 @@ Subject To
    - 0.4583333333333333 Q[3,3] * H_neg[1,sepal-width]
    - 0.0847457627118644 Q[3,3] * H_neg[1,petal-length]
    - 0.0416666666666667 Q[3,3] * H_neg[1,petal-width] + Q[3,3] * C4276
-   - Q[3,3] * C4283 - 0.0833333333333333 Q[3,4] * H_pos[1,sepal-length]
-   - 0.4583333333333333 Q[3,4] * H_pos[1,sepal-width]
-   - 0.0847457627118644 Q[3,4] * H_pos[1,petal-length]
-   - 0.0416666666666667 Q[3,4] * H_pos[1,petal-width]
-   + 0.0833333333333333 Q[3,4] * H_neg[1,sepal-length]
-   + 0.4583333333333333 Q[3,4] * H_neg[1,sepal-width]
-   + 0.0847457627118644 Q[3,4] * H_neg[1,petal-length]
-   + 0.0416666666666667 Q[3,4] * H_neg[1,petal-width] - Q[3,4] * C4276
-   + Q[3,4] * C4283 ] >= 1
+   - Q[3,3] * C4283 ] >= 1
  qc208: E[146,1] + [ 0.5555555555555556 Q[146,3] * H_pos[1,sepal-length]
    + 0.2083333333333333 Q[146,3] * H_pos[1,sepal-width]
    + 0.6779661016949152 Q[146,3] * H_pos[1,petal-length]
@@ -9755,15 +8117,7 @@ Subject To
    - 0.2083333333333333 Q[146,3] * H_neg[1,sepal-width]
    - 0.6779661016949152 Q[146,3] * H_neg[1,petal-length]
    - 0.75 Q[146,3] * H_neg[1,petal-width] + Q[146,3] * C4276
-   - Q[146,3] * C4283 - 0.5555555555555556 Q[146,4] * H_pos[1,sepal-length]
-   - 0.2083333333333333 Q[146,4] * H_pos[1,sepal-width]
-   - 0.6779661016949152 Q[146,4] * H_pos[1,petal-length]
-   - 0.75 Q[146,4] * H_pos[1,petal-width]
-   + 0.5555555555555556 Q[146,4] * H_neg[1,sepal-length]
-   + 0.2083333333333333 Q[146,4] * H_neg[1,sepal-width]
-   + 0.6779661016949152 Q[146,4] * H_neg[1,petal-length]
-   + 0.75 Q[146,4] * H_neg[1,petal-width] - Q[146,4] * C4276
-   + Q[146,4] * C4283 ] >= 1
+   - Q[146,3] * C4283 ] >= 1
  qc209: E[88,1] + [ 0.3611111111111109 Q[88,3] * H_pos[1,sepal-length]
    + 0.4166666666666667 Q[88,3] * H_pos[1,sepal-width]
    + 0.5254237288135593 Q[88,3] * H_pos[1,petal-length]
@@ -9772,14 +8126,6 @@ Subject To
    - 0.4166666666666667 Q[88,3] * H_neg[1,sepal-width]
    - 0.5254237288135593 Q[88,3] * H_neg[1,petal-length]
    - 0.5 Q[88,3] * H_neg[1,petal-width] + Q[88,3] * C4276 - Q[88,3] * C4283
-   - 0.3611111111111109 Q[88,4] * H_pos[1,sepal-length]
-   - 0.4166666666666667 Q[88,4] * H_pos[1,sepal-width]
-   - 0.5254237288135593 Q[88,4] * H_pos[1,petal-length]
-   - 0.5 Q[88,4] * H_pos[1,petal-width]
-   + 0.3611111111111109 Q[88,4] * H_neg[1,sepal-length]
-   + 0.4166666666666667 Q[88,4] * H_neg[1,sepal-width]
-   + 0.5254237288135593 Q[88,4] * H_neg[1,petal-length]
-   + 0.5 Q[88,4] * H_neg[1,petal-width] - Q[88,4] * C4276 + Q[88,4] * C4283
    ] >= 1
  qc210: E[138,1] + [ 0.4722222222222223 Q[138,3] * H_pos[1,sepal-length]
    + 0.4166666666666667 Q[138,3] * H_pos[1,sepal-width]
@@ -9789,15 +8135,7 @@ Subject To
    - 0.4166666666666667 Q[138,3] * H_neg[1,sepal-width]
    - 0.6440677966101694 Q[138,3] * H_neg[1,petal-length]
    - 0.7083333333333334 Q[138,3] * H_neg[1,petal-width] + Q[138,3] * C4276
-   - Q[138,3] * C4283 - 0.4722222222222223 Q[138,4] * H_pos[1,sepal-length]
-   - 0.4166666666666667 Q[138,4] * H_pos[1,sepal-width]
-   - 0.6440677966101694 Q[138,4] * H_pos[1,petal-length]
-   - 0.7083333333333334 Q[138,4] * H_pos[1,petal-width]
-   + 0.4722222222222223 Q[138,4] * H_neg[1,sepal-length]
-   + 0.4166666666666667 Q[138,4] * H_neg[1,sepal-width]
-   + 0.6440677966101694 Q[138,4] * H_neg[1,petal-length]
-   + 0.7083333333333334 Q[138,4] * H_neg[1,petal-width] - Q[138,4] * C4276
-   + Q[138,4] * C4283 ] >= 1
+   - Q[138,3] * C4283 ] >= 1
  qc211: E[128,1] + [ 0.5833333333333335 Q[128,3] * H_pos[1,sepal-length]
    + 0.3333333333333333 Q[128,3] * H_pos[1,sepal-width]
    + 0.7796610169491525 Q[128,3] * H_pos[1,petal-length]
@@ -9806,15 +8144,7 @@ Subject To
    - 0.3333333333333333 Q[128,3] * H_neg[1,sepal-width]
    - 0.7796610169491525 Q[128,3] * H_neg[1,petal-length]
    - 0.8333333333333335 Q[128,3] * H_neg[1,petal-width] + Q[128,3] * C4276
-   - Q[128,3] * C4283 - 0.5833333333333335 Q[128,4] * H_pos[1,sepal-length]
-   - 0.3333333333333333 Q[128,4] * H_pos[1,sepal-width]
-   - 0.7796610169491525 Q[128,4] * H_pos[1,petal-length]
-   - 0.8333333333333335 Q[128,4] * H_pos[1,petal-width]
-   + 0.5833333333333335 Q[128,4] * H_neg[1,sepal-length]
-   + 0.3333333333333333 Q[128,4] * H_neg[1,sepal-width]
-   + 0.7796610169491525 Q[128,4] * H_neg[1,petal-length]
-   + 0.8333333333333335 Q[128,4] * H_neg[1,petal-width] - Q[128,4] * C4276
-   + Q[128,4] * C4283 ] >= 1
+   - Q[128,3] * C4283 ] >= 1
  qc212: E[76,1] + [ 0.6944444444444444 Q[76,3] * H_pos[1,sepal-length]
    + 0.3333333333333333 Q[76,3] * H_pos[1,sepal-width]
    + 0.6440677966101694 Q[76,3] * H_pos[1,petal-length]
@@ -9823,15 +8153,7 @@ Subject To
    - 0.3333333333333333 Q[76,3] * H_neg[1,sepal-width]
    - 0.6440677966101694 Q[76,3] * H_neg[1,petal-length]
    - 0.5416666666666667 Q[76,3] * H_neg[1,petal-width] + Q[76,3] * C4276
-   - Q[76,3] * C4283 - 0.6944444444444444 Q[76,4] * H_pos[1,sepal-length]
-   - 0.3333333333333333 Q[76,4] * H_pos[1,sepal-width]
-   - 0.6440677966101694 Q[76,4] * H_pos[1,petal-length]
-   - 0.5416666666666667 Q[76,4] * H_pos[1,petal-width]
-   + 0.6944444444444444 Q[76,4] * H_neg[1,sepal-length]
-   + 0.3333333333333333 Q[76,4] * H_neg[1,sepal-width]
-   + 0.6440677966101694 Q[76,4] * H_neg[1,petal-length]
-   + 0.5416666666666667 Q[76,4] * H_neg[1,petal-width] - Q[76,4] * C4276
-   + Q[76,4] * C4283 ] >= 1
+   - Q[76,3] * C4283 ] >= 1
  qc213: E[70,1] + [ 0.4444444444444446 Q[70,3] * H_pos[1,sepal-length]
    + 0.5 Q[70,3] * H_pos[1,sepal-width]
    + 0.6440677966101694 Q[70,3] * H_pos[1,petal-length]
@@ -9840,15 +8162,7 @@ Subject To
    - 0.5 Q[70,3] * H_neg[1,sepal-width]
    - 0.6440677966101694 Q[70,3] * H_neg[1,petal-length]
    - 0.7083333333333334 Q[70,3] * H_neg[1,petal-width] + Q[70,3] * C4276
-   - Q[70,3] * C4283 - 0.4444444444444446 Q[70,4] * H_pos[1,sepal-length]
-   - 0.5 Q[70,4] * H_pos[1,sepal-width]
-   - 0.6440677966101694 Q[70,4] * H_pos[1,petal-length]
-   - 0.7083333333333334 Q[70,4] * H_pos[1,petal-width]
-   + 0.4444444444444446 Q[70,4] * H_neg[1,sepal-length]
-   + 0.5 Q[70,4] * H_neg[1,sepal-width]
-   + 0.6440677966101694 Q[70,4] * H_neg[1,petal-length]
-   + 0.7083333333333334 Q[70,4] * H_neg[1,petal-width] - Q[70,4] * C4276
-   + Q[70,4] * C4283 ] >= 1
+   - Q[70,3] * C4283 ] >= 1
  qc214: E[145,1] + [ 0.6666666666666667 Q[145,3] * H_pos[1,sepal-length]
    + 0.4166666666666667 Q[145,3] * H_pos[1,sepal-width]
    + 0.711864406779661 Q[145,3] * H_pos[1,petal-length]
@@ -9857,15 +8171,7 @@ Subject To
    - 0.4166666666666667 Q[145,3] * H_neg[1,sepal-width]
    - 0.711864406779661 Q[145,3] * H_neg[1,petal-length]
    - 0.9166666666666666 Q[145,3] * H_neg[1,petal-width] + Q[145,3] * C4276
-   - Q[145,3] * C4283 - 0.6666666666666667 Q[145,4] * H_pos[1,sepal-length]
-   - 0.4166666666666667 Q[145,4] * H_pos[1,sepal-width]
-   - 0.711864406779661 Q[145,4] * H_pos[1,petal-length]
-   - 0.9166666666666666 Q[145,4] * H_pos[1,petal-width]
-   + 0.6666666666666667 Q[145,4] * H_neg[1,sepal-length]
-   + 0.4166666666666667 Q[145,4] * H_neg[1,sepal-width]
-   + 0.711864406779661 Q[145,4] * H_neg[1,petal-length]
-   + 0.9166666666666666 Q[145,4] * H_neg[1,petal-width] - Q[145,4] * C4276
-   + Q[145,4] * C4283 ] >= 1
+   - Q[145,3] * C4283 ] >= 1
  qc215: E[91,1] + [ 0.5 Q[91,3] * H_pos[1,sepal-length]
    + 0.4166666666666667 Q[91,3] * H_pos[1,sepal-width]
    + 0.6101694915254237 Q[91,3] * H_pos[1,petal-length]
@@ -9874,15 +8180,7 @@ Subject To
    - 0.4166666666666667 Q[91,3] * H_neg[1,sepal-width]
    - 0.6101694915254237 Q[91,3] * H_neg[1,petal-length]
    - 0.5416666666666667 Q[91,3] * H_neg[1,petal-width] + Q[91,3] * C4276
-   - Q[91,3] * C4283 - 0.5 Q[91,4] * H_pos[1,sepal-length]
-   - 0.4166666666666667 Q[91,4] * H_pos[1,sepal-width]
-   - 0.6101694915254237 Q[91,4] * H_pos[1,petal-length]
-   - 0.5416666666666667 Q[91,4] * H_pos[1,petal-width]
-   + 0.5 Q[91,4] * H_neg[1,sepal-length]
-   + 0.4166666666666667 Q[91,4] * H_neg[1,sepal-width]
-   + 0.6101694915254237 Q[91,4] * H_neg[1,petal-length]
-   + 0.5416666666666667 Q[91,4] * H_neg[1,petal-width] - Q[91,4] * C4276
-   + Q[91,4] * C4283 ] >= 1
+   - Q[91,3] * C4283 ] >= 1
  qc216: E[19,1] + [ 0.2222222222222221 Q[19,3] * H_pos[1,sepal-length]
    + 0.75 Q[19,3] * H_pos[1,sepal-width]
    + 0.0847457627118644 Q[19,3] * H_pos[1,petal-length]
@@ -9891,15 +8189,7 @@ Subject To
    - 0.75 Q[19,3] * H_neg[1,sepal-width]
    - 0.0847457627118644 Q[19,3] * H_neg[1,petal-length]
    - 0.0833333333333333 Q[19,3] * H_neg[1,petal-width] + Q[19,3] * C4276
-   - Q[19,3] * C4283 - 0.2222222222222221 Q[19,4] * H_pos[1,sepal-length]
-   - 0.75 Q[19,4] * H_pos[1,sepal-width]
-   - 0.0847457627118644 Q[19,4] * H_pos[1,petal-length]
-   - 0.0833333333333333 Q[19,4] * H_pos[1,petal-width]
-   + 0.2222222222222221 Q[19,4] * H_neg[1,sepal-length]
-   + 0.75 Q[19,4] * H_neg[1,sepal-width]
-   + 0.0847457627118644 Q[19,4] * H_neg[1,petal-length]
-   + 0.0833333333333333 Q[19,4] * H_neg[1,petal-width] - Q[19,4] * C4276
-   + Q[19,4] * C4283 ] >= 1
+   - Q[19,3] * C4283 ] >= 1
  qc217: E[115,1] + [ 0.5833333333333335 Q[115,3] * H_pos[1,sepal-length]
    + 0.5 Q[115,3] * H_pos[1,sepal-width]
    + 0.7288135593220338 Q[115,3] * H_pos[1,petal-length]
@@ -9908,15 +8198,7 @@ Subject To
    - 0.5 Q[115,3] * H_neg[1,sepal-width]
    - 0.7288135593220338 Q[115,3] * H_neg[1,petal-length]
    - 0.9166666666666666 Q[115,3] * H_neg[1,petal-width] + Q[115,3] * C4276
-   - Q[115,3] * C4283 - 0.5833333333333335 Q[115,4] * H_pos[1,sepal-length]
-   - 0.5 Q[115,4] * H_pos[1,sepal-width]
-   - 0.7288135593220338 Q[115,4] * H_pos[1,petal-length]
-   - 0.9166666666666666 Q[115,4] * H_pos[1,petal-width]
-   + 0.5833333333333335 Q[115,4] * H_neg[1,sepal-length]
-   + 0.5 Q[115,4] * H_neg[1,sepal-width]
-   + 0.7288135593220338 Q[115,4] * H_neg[1,petal-length]
-   + 0.9166666666666666 Q[115,4] * H_neg[1,petal-width] - Q[115,4] * C4276
-   + Q[115,4] * C4283 ] >= 1
+   - Q[115,3] * C4283 ] >= 1
  qc218: E[28,1] + [ 0.25 Q[28,3] * H_pos[1,sepal-length]
    + 0.5833333333333333 Q[28,3] * H_pos[1,sepal-width]
    + 0.0677966101694915 Q[28,3] * H_pos[1,petal-length]
@@ -9925,28 +8207,14 @@ Subject To
    - 0.5833333333333333 Q[28,3] * H_neg[1,sepal-width]
    - 0.0677966101694915 Q[28,3] * H_neg[1,petal-length]
    - 0.0416666666666667 Q[28,3] * H_neg[1,petal-width] + Q[28,3] * C4276
-   - Q[28,3] * C4283 - 0.25 Q[28,4] * H_pos[1,sepal-length]
-   - 0.5833333333333333 Q[28,4] * H_pos[1,sepal-width]
-   - 0.0677966101694915 Q[28,4] * H_pos[1,petal-length]
-   - 0.0416666666666667 Q[28,4] * H_pos[1,petal-width]
-   + 0.25 Q[28,4] * H_neg[1,sepal-length]
-   + 0.5833333333333333 Q[28,4] * H_neg[1,sepal-width]
-   + 0.0677966101694915 Q[28,4] * H_neg[1,petal-length]
-   + 0.0416666666666667 Q[28,4] * H_neg[1,petal-width] - Q[28,4] * C4276
-   + Q[28,4] * C4283 ] >= 1
+   - Q[28,3] * C4283 ] >= 1
  qc219: E[37,1] + [ 0.1666666666666667 Q[37,3] * H_pos[1,sepal-length]
    + 0.4583333333333333 Q[37,3] * H_pos[1,sepal-width]
    + 0.0847457627118644 Q[37,3] * H_pos[1,petal-length]
    - 0.1666666666666667 Q[37,3] * H_neg[1,sepal-length]
    - 0.4583333333333333 Q[37,3] * H_neg[1,sepal-width]
    - 0.0847457627118644 Q[37,3] * H_neg[1,petal-length] + Q[37,3] * C4276
-   - Q[37,3] * C4283 - 0.1666666666666667 Q[37,4] * H_pos[1,sepal-length]
-   - 0.4583333333333333 Q[37,4] * H_pos[1,sepal-width]
-   - 0.0847457627118644 Q[37,4] * H_pos[1,petal-length]
-   + 0.1666666666666667 Q[37,4] * H_neg[1,sepal-length]
-   + 0.4583333333333333 Q[37,4] * H_neg[1,sepal-width]
-   + 0.0847457627118644 Q[37,4] * H_neg[1,petal-length] - Q[37,4] * C4276
-   + Q[37,4] * C4283 ] >= 1
+   - Q[37,3] * C4283 ] >= 1
  qc220: E[29,1] + [ 0.1111111111111112 Q[29,3] * H_pos[1,sepal-length]
    + 0.5 Q[29,3] * H_pos[1,sepal-width]
    + 0.1016949152542373 Q[29,3] * H_pos[1,petal-length]
@@ -9955,15 +8223,7 @@ Subject To
    - 0.5 Q[29,3] * H_neg[1,sepal-width]
    - 0.1016949152542373 Q[29,3] * H_neg[1,petal-length]
    - 0.0416666666666667 Q[29,3] * H_neg[1,petal-width] + Q[29,3] * C4276
-   - Q[29,3] * C4283 - 0.1111111111111112 Q[29,4] * H_pos[1,sepal-length]
-   - 0.5 Q[29,4] * H_pos[1,sepal-width]
-   - 0.1016949152542373 Q[29,4] * H_pos[1,petal-length]
-   - 0.0416666666666667 Q[29,4] * H_pos[1,petal-width]
-   + 0.1111111111111112 Q[29,4] * H_neg[1,sepal-length]
-   + 0.5 Q[29,4] * H_neg[1,sepal-width]
-   + 0.1016949152542373 Q[29,4] * H_neg[1,petal-length]
-   + 0.0416666666666667 Q[29,4] * H_neg[1,petal-width] - Q[29,4] * C4276
-   + Q[29,4] * C4283 ] >= 1
+   - Q[29,3] * C4283 ] >= 1
  qc221: E[122,1] + [ 0.9444444444444442 Q[122,3] * H_pos[1,sepal-length]
    + 0.3333333333333333 Q[122,3] * H_pos[1,sepal-width]
    + 0.9661016949152543 Q[122,3] * H_pos[1,petal-length]
@@ -9972,15 +8232,7 @@ Subject To
    - 0.3333333333333333 Q[122,3] * H_neg[1,sepal-width]
    - 0.9661016949152543 Q[122,3] * H_neg[1,petal-length]
    - 0.7916666666666667 Q[122,3] * H_neg[1,petal-width] + Q[122,3] * C4276
-   - Q[122,3] * C4283 - 0.9444444444444442 Q[122,4] * H_pos[1,sepal-length]
-   - 0.3333333333333333 Q[122,4] * H_pos[1,sepal-width]
-   - 0.9661016949152543 Q[122,4] * H_pos[1,petal-length]
-   - 0.7916666666666667 Q[122,4] * H_pos[1,petal-width]
-   + 0.9444444444444442 Q[122,4] * H_neg[1,sepal-length]
-   + 0.3333333333333333 Q[122,4] * H_neg[1,sepal-width]
-   + 0.9661016949152543 Q[122,4] * H_neg[1,petal-length]
-   + 0.7916666666666667 Q[122,4] * H_neg[1,petal-width] - Q[122,4] * C4276
-   + Q[122,4] * C4283 ] >= 1
+   - Q[122,3] * C4283 ] >= 1
  qc222: E[74,1] + [ 0.5833333333333335 Q[74,3] * H_pos[1,sepal-length]
    + 0.375 Q[74,3] * H_pos[1,sepal-width]
    + 0.559322033898305 Q[74,3] * H_pos[1,petal-length]
@@ -9989,14 +8241,6 @@ Subject To
    - 0.375 Q[74,3] * H_neg[1,sepal-width]
    - 0.559322033898305 Q[74,3] * H_neg[1,petal-length]
    - 0.5 Q[74,3] * H_neg[1,petal-width] + Q[74,3] * C4276 - Q[74,3] * C4283
-   - 0.5833333333333335 Q[74,4] * H_pos[1,sepal-length]
-   - 0.375 Q[74,4] * H_pos[1,sepal-width]
-   - 0.559322033898305 Q[74,4] * H_pos[1,petal-length]
-   - 0.5 Q[74,4] * H_pos[1,petal-width]
-   + 0.5833333333333335 Q[74,4] * H_neg[1,sepal-length]
-   + 0.375 Q[74,4] * H_neg[1,sepal-width]
-   + 0.559322033898305 Q[74,4] * H_neg[1,petal-length]
-   + 0.5 Q[74,4] * H_neg[1,petal-width] - Q[74,4] * C4276 + Q[74,4] * C4283
    ] >= 1
  qc223: E[46,1] + [ 0.2222222222222221 Q[46,3] * H_pos[1,sepal-length]
    + 0.75 Q[46,3] * H_pos[1,sepal-width]
@@ -10006,15 +8250,7 @@ Subject To
    - 0.75 Q[46,3] * H_neg[1,sepal-width]
    - 0.1016949152542373 Q[46,3] * H_neg[1,petal-length]
    - 0.0416666666666667 Q[46,3] * H_neg[1,petal-width] + Q[46,3] * C4276
-   - Q[46,3] * C4283 - 0.2222222222222221 Q[46,4] * H_pos[1,sepal-length]
-   - 0.75 Q[46,4] * H_pos[1,sepal-width]
-   - 0.1016949152542373 Q[46,4] * H_pos[1,petal-length]
-   - 0.0416666666666667 Q[46,4] * H_pos[1,petal-width]
-   + 0.2222222222222221 Q[46,4] * H_neg[1,sepal-length]
-   + 0.75 Q[46,4] * H_neg[1,sepal-width]
-   + 0.1016949152542373 Q[46,4] * H_neg[1,petal-length]
-   + 0.0416666666666667 Q[46,4] * H_neg[1,petal-width] - Q[46,4] * C4276
-   + Q[46,4] * C4283 ] >= 1
+   - Q[46,3] * C4283 ] >= 1
  qc224: E[111,2] + [ 0.5833333333333335 Q[111,5] * H_pos[2,sepal-length]
    + 0.2916666666666667 Q[111,5] * H_pos[2,sepal-width]
    + 0.7288135593220338 Q[111,5] * H_pos[2,petal-length]
@@ -10023,15 +8259,7 @@ Subject To
    - 0.2916666666666667 Q[111,5] * H_neg[2,sepal-width]
    - 0.7288135593220338 Q[111,5] * H_neg[2,petal-length]
    - 0.75 Q[111,5] * H_neg[2,petal-width] + Q[111,5] * C4277
-   - Q[111,5] * C4284 - 0.5833333333333335 Q[111,6] * H_pos[2,sepal-length]
-   - 0.2916666666666667 Q[111,6] * H_pos[2,sepal-width]
-   - 0.7288135593220338 Q[111,6] * H_pos[2,petal-length]
-   - 0.75 Q[111,6] * H_pos[2,petal-width]
-   + 0.5833333333333335 Q[111,6] * H_neg[2,sepal-length]
-   + 0.2916666666666667 Q[111,6] * H_neg[2,sepal-width]
-   + 0.7288135593220338 Q[111,6] * H_neg[2,petal-length]
-   + 0.75 Q[111,6] * H_neg[2,petal-width] - Q[111,6] * C4277
-   + Q[111,6] * C4284 ] >= 1
+   - Q[111,5] * C4284 ] >= 1
  qc225: E[134,2] + [ 0.5 Q[134,5] * H_pos[2,sepal-length]
    + 0.25 Q[134,5] * H_pos[2,sepal-width]
    + 0.7796610169491525 Q[134,5] * H_pos[2,petal-length]
@@ -10040,15 +8268,7 @@ Subject To
    - 0.25 Q[134,5] * H_neg[2,sepal-width]
    - 0.7796610169491525 Q[134,5] * H_neg[2,petal-length]
    - 0.5416666666666667 Q[134,5] * H_neg[2,petal-width] + Q[134,5] * C4277
-   - Q[134,5] * C4284 - 0.5 Q[134,6] * H_pos[2,sepal-length]
-   - 0.25 Q[134,6] * H_pos[2,sepal-width]
-   - 0.7796610169491525 Q[134,6] * H_pos[2,petal-length]
-   - 0.5416666666666667 Q[134,6] * H_pos[2,petal-width]
-   + 0.5 Q[134,6] * H_neg[2,sepal-length]
-   + 0.25 Q[134,6] * H_neg[2,sepal-width]
-   + 0.7796610169491525 Q[134,6] * H_neg[2,petal-length]
-   + 0.5416666666666667 Q[134,6] * H_neg[2,petal-width] - Q[134,6] * C4277
-   + Q[134,6] * C4284 ] >= 1
+   - Q[134,5] * C4284 ] >= 1
  qc226: E[133,2] + [ 0.5555555555555556 Q[133,5] * H_pos[2,sepal-length]
    + 0.3333333333333333 Q[133,5] * H_pos[2,sepal-width]
    + 0.6949152542372881 Q[133,5] * H_pos[2,petal-length]
@@ -10057,15 +8277,7 @@ Subject To
    - 0.3333333333333333 Q[133,5] * H_neg[2,sepal-width]
    - 0.6949152542372881 Q[133,5] * H_neg[2,petal-length]
    - 0.5833333333333334 Q[133,5] * H_neg[2,petal-width] + Q[133,5] * C4277
-   - Q[133,5] * C4284 - 0.5555555555555556 Q[133,6] * H_pos[2,sepal-length]
-   - 0.3333333333333333 Q[133,6] * H_pos[2,sepal-width]
-   - 0.6949152542372881 Q[133,6] * H_pos[2,petal-length]
-   - 0.5833333333333334 Q[133,6] * H_pos[2,petal-width]
-   + 0.5555555555555556 Q[133,6] * H_neg[2,sepal-length]
-   + 0.3333333333333333 Q[133,6] * H_neg[2,sepal-width]
-   + 0.6949152542372881 Q[133,6] * H_neg[2,petal-length]
-   + 0.5833333333333334 Q[133,6] * H_neg[2,petal-width] - Q[133,6] * C4277
-   + Q[133,6] * C4284 ] >= 1
+   - Q[133,5] * C4284 ] >= 1
  qc227: E[93,2] + [ 0.1944444444444444 Q[93,5] * H_pos[2,sepal-length]
    + 0.125 Q[93,5] * H_pos[2,sepal-width]
    + 0.3898305084745762 Q[93,5] * H_pos[2,petal-length]
@@ -10074,15 +8286,7 @@ Subject To
    - 0.125 Q[93,5] * H_neg[2,sepal-width]
    - 0.3898305084745762 Q[93,5] * H_neg[2,petal-length]
    - 0.375 Q[93,5] * H_neg[2,petal-width] + Q[93,5] * C4277
-   - Q[93,5] * C4284 - 0.1944444444444444 Q[93,6] * H_pos[2,sepal-length]
-   - 0.125 Q[93,6] * H_pos[2,sepal-width]
-   - 0.3898305084745762 Q[93,6] * H_pos[2,petal-length]
-   - 0.375 Q[93,6] * H_pos[2,petal-width]
-   + 0.1944444444444444 Q[93,6] * H_neg[2,sepal-length]
-   + 0.125 Q[93,6] * H_neg[2,sepal-width]
-   + 0.3898305084745762 Q[93,6] * H_neg[2,petal-length]
-   + 0.375 Q[93,6] * H_neg[2,petal-width] - Q[93,6] * C4277
-   + Q[93,6] * C4284 ] >= 1
+   - Q[93,5] * C4284 ] >= 1
  qc228: E[51,2] + [ 0.5833333333333335 Q[51,5] * H_pos[2,sepal-length]
    + 0.5 Q[51,5] * H_pos[2,sepal-width]
    + 0.5932203389830508 Q[51,5] * H_pos[2,petal-length]
@@ -10091,15 +8295,7 @@ Subject To
    - 0.5 Q[51,5] * H_neg[2,sepal-width]
    - 0.5932203389830508 Q[51,5] * H_neg[2,petal-length]
    - 0.5833333333333334 Q[51,5] * H_neg[2,petal-width] + Q[51,5] * C4277
-   - Q[51,5] * C4284 - 0.5833333333333335 Q[51,6] * H_pos[2,sepal-length]
-   - 0.5 Q[51,6] * H_pos[2,sepal-width]
-   - 0.5932203389830508 Q[51,6] * H_pos[2,petal-length]
-   - 0.5833333333333334 Q[51,6] * H_pos[2,petal-width]
-   + 0.5833333333333335 Q[51,6] * H_neg[2,sepal-length]
-   + 0.5 Q[51,6] * H_neg[2,sepal-width]
-   + 0.5932203389830508 Q[51,6] * H_neg[2,petal-length]
-   + 0.5833333333333334 Q[51,6] * H_neg[2,petal-width] - Q[51,6] * C4277
-   + Q[51,6] * C4284 ] >= 1
+   - Q[51,5] * C4284 ] >= 1
  qc229: E[41,2] + [ 0.0555555555555556 Q[41,5] * H_pos[2,sepal-length]
    + 0.125 Q[41,5] * H_pos[2,sepal-width]
    + 0.0508474576271186 Q[41,5] * H_pos[2,petal-length]
@@ -10108,15 +8304,7 @@ Subject To
    - 0.125 Q[41,5] * H_neg[2,sepal-width]
    - 0.0508474576271186 Q[41,5] * H_neg[2,petal-length]
    - 0.0833333333333333 Q[41,5] * H_neg[2,petal-width] + Q[41,5] * C4277
-   - Q[41,5] * C4284 - 0.0555555555555556 Q[41,6] * H_pos[2,sepal-length]
-   - 0.125 Q[41,6] * H_pos[2,sepal-width]
-   - 0.0508474576271186 Q[41,6] * H_pos[2,petal-length]
-   - 0.0833333333333333 Q[41,6] * H_pos[2,petal-width]
-   + 0.0555555555555556 Q[41,6] * H_neg[2,sepal-length]
-   + 0.125 Q[41,6] * H_neg[2,sepal-width]
-   + 0.0508474576271186 Q[41,6] * H_neg[2,petal-length]
-   + 0.0833333333333333 Q[41,6] * H_neg[2,petal-width] - Q[41,6] * C4277
-   + Q[41,6] * C4284 ] >= 1
+   - Q[41,5] * C4284 ] >= 1
  qc230: E[90,2] + [ 0.3333333333333333 Q[90,5] * H_pos[2,sepal-length]
    + 0.25 Q[90,5] * H_pos[2,sepal-width]
    + 0.576271186440678 Q[90,5] * H_pos[2,petal-length]
@@ -10125,15 +8313,7 @@ Subject To
    - 0.25 Q[90,5] * H_neg[2,sepal-width]
    - 0.576271186440678 Q[90,5] * H_neg[2,petal-length]
    - 0.4583333333333333 Q[90,5] * H_neg[2,petal-width] + Q[90,5] * C4277
-   - Q[90,5] * C4284 - 0.3333333333333333 Q[90,6] * H_pos[2,sepal-length]
-   - 0.25 Q[90,6] * H_pos[2,sepal-width]
-   - 0.576271186440678 Q[90,6] * H_pos[2,petal-length]
-   - 0.4583333333333333 Q[90,6] * H_pos[2,petal-width]
-   + 0.3333333333333333 Q[90,6] * H_neg[2,sepal-length]
-   + 0.25 Q[90,6] * H_neg[2,sepal-width]
-   + 0.576271186440678 Q[90,6] * H_neg[2,petal-length]
-   + 0.4583333333333333 Q[90,6] * H_neg[2,petal-width] - Q[90,6] * C4277
-   + Q[90,6] * C4284 ] >= 1
+   - Q[90,5] * C4284 ] >= 1
  qc231: E[67,2] + [ 0.4166666666666665 Q[67,5] * H_pos[2,sepal-length]
    + 0.2916666666666667 Q[67,5] * H_pos[2,sepal-width]
    + 0.5254237288135593 Q[67,5] * H_pos[2,petal-length]
@@ -10142,15 +8322,7 @@ Subject To
    - 0.2916666666666667 Q[67,5] * H_neg[2,sepal-width]
    - 0.5254237288135593 Q[67,5] * H_neg[2,petal-length]
    - 0.375 Q[67,5] * H_neg[2,petal-width] + Q[67,5] * C4277
-   - Q[67,5] * C4284 - 0.4166666666666665 Q[67,6] * H_pos[2,sepal-length]
-   - 0.2916666666666667 Q[67,6] * H_pos[2,sepal-width]
-   - 0.5254237288135593 Q[67,6] * H_pos[2,petal-length]
-   - 0.375 Q[67,6] * H_pos[2,petal-width]
-   + 0.4166666666666665 Q[67,6] * H_neg[2,sepal-length]
-   + 0.2916666666666667 Q[67,6] * H_neg[2,sepal-width]
-   + 0.5254237288135593 Q[67,6] * H_neg[2,petal-length]
-   + 0.375 Q[67,6] * H_neg[2,petal-width] - Q[67,6] * C4277
-   + Q[67,6] * C4284 ] >= 1
+   - Q[67,5] * C4284 ] >= 1
  qc232: E[131,2] + [ Q[131,5] * H_pos[2,sepal-length]
    + 0.75 Q[131,5] * H_pos[2,sepal-width]
    + 0.9152542372881356 Q[131,5] * H_pos[2,petal-length]
@@ -10159,15 +8331,7 @@ Subject To
    - 0.75 Q[131,5] * H_neg[2,sepal-width]
    - 0.9152542372881356 Q[131,5] * H_neg[2,petal-length]
    - 0.7916666666666667 Q[131,5] * H_neg[2,petal-width] + Q[131,5] * C4277
-   - Q[131,5] * C4284 - Q[131,6] * H_pos[2,sepal-length]
-   - 0.75 Q[131,6] * H_pos[2,sepal-width]
-   - 0.9152542372881356 Q[131,6] * H_pos[2,petal-length]
-   - 0.7916666666666667 Q[131,6] * H_pos[2,petal-width]
-   + Q[131,6] * H_neg[2,sepal-length]
-   + 0.75 Q[131,6] * H_neg[2,sepal-width]
-   + 0.9152542372881356 Q[131,6] * H_neg[2,petal-length]
-   + 0.7916666666666667 Q[131,6] * H_neg[2,petal-width] - Q[131,6] * C4277
-   + Q[131,6] * C4284 ] >= 1
+   - Q[131,5] * C4284 ] >= 1
  qc233: E[121,2] + [ 0.3611111111111109 Q[121,5] * H_pos[2,sepal-length]
    + 0.3333333333333333 Q[121,5] * H_pos[2,sepal-width]
    + 0.6610169491525424 Q[121,5] * H_pos[2,petal-length]
@@ -10176,15 +8340,7 @@ Subject To
    - 0.3333333333333333 Q[121,5] * H_neg[2,sepal-width]
    - 0.6610169491525424 Q[121,5] * H_neg[2,petal-length]
    - 0.7916666666666667 Q[121,5] * H_neg[2,petal-width] + Q[121,5] * C4277
-   - Q[121,5] * C4284 - 0.3611111111111109 Q[121,6] * H_pos[2,sepal-length]
-   - 0.3333333333333333 Q[121,6] * H_pos[2,sepal-width]
-   - 0.6610169491525424 Q[121,6] * H_pos[2,petal-length]
-   - 0.7916666666666667 Q[121,6] * H_pos[2,petal-width]
-   + 0.3611111111111109 Q[121,6] * H_neg[2,sepal-length]
-   + 0.3333333333333333 Q[121,6] * H_neg[2,sepal-width]
-   + 0.6610169491525424 Q[121,6] * H_neg[2,petal-length]
-   + 0.7916666666666667 Q[121,6] * H_neg[2,petal-width] - Q[121,6] * C4277
-   + Q[121,6] * C4284 ] >= 1
+   - Q[121,5] * C4284 ] >= 1
  qc234: E[75,2] + [ 0.6388888888888888 Q[75,5] * H_pos[2,sepal-length]
    + 0.4166666666666667 Q[75,5] * H_pos[2,sepal-width]
    + 0.576271186440678 Q[75,5] * H_pos[2,petal-length]
@@ -10193,15 +8349,7 @@ Subject To
    - 0.4166666666666667 Q[75,5] * H_neg[2,sepal-width]
    - 0.576271186440678 Q[75,5] * H_neg[2,petal-length]
    - 0.5416666666666667 Q[75,5] * H_neg[2,petal-width] + Q[75,5] * C4277
-   - Q[75,5] * C4284 - 0.6388888888888888 Q[75,6] * H_pos[2,sepal-length]
-   - 0.4166666666666667 Q[75,6] * H_pos[2,sepal-width]
-   - 0.576271186440678 Q[75,6] * H_pos[2,petal-length]
-   - 0.5416666666666667 Q[75,6] * H_pos[2,petal-width]
-   + 0.6388888888888888 Q[75,6] * H_neg[2,sepal-length]
-   + 0.4166666666666667 Q[75,6] * H_neg[2,sepal-width]
-   + 0.576271186440678 Q[75,6] * H_neg[2,petal-length]
-   + 0.5416666666666667 Q[75,6] * H_neg[2,petal-width] - Q[75,6] * C4277
-   + Q[75,6] * C4284 ] >= 1
+   - Q[75,5] * C4284 ] >= 1
  qc235: E[44,2] + [ 0.2222222222222221 Q[44,5] * H_pos[2,sepal-length]
    + 0.75 Q[44,5] * H_pos[2,sepal-width]
    + 0.1525423728813559 Q[44,5] * H_pos[2,petal-length]
@@ -10210,15 +8358,7 @@ Subject To
    - 0.75 Q[44,5] * H_neg[2,sepal-width]
    - 0.1525423728813559 Q[44,5] * H_neg[2,petal-length]
    - 0.125 Q[44,5] * H_neg[2,petal-width] + Q[44,5] * C4277
-   - Q[44,5] * C4284 - 0.2222222222222221 Q[44,6] * H_pos[2,sepal-length]
-   - 0.75 Q[44,6] * H_pos[2,sepal-width]
-   - 0.1525423728813559 Q[44,6] * H_pos[2,petal-length]
-   - 0.125 Q[44,6] * H_pos[2,petal-width]
-   + 0.2222222222222221 Q[44,6] * H_neg[2,sepal-length]
-   + 0.75 Q[44,6] * H_neg[2,sepal-width]
-   + 0.1525423728813559 Q[44,6] * H_neg[2,petal-length]
-   + 0.125 Q[44,6] * H_neg[2,petal-width] - Q[44,6] * C4277
-   + Q[44,6] * C4284 ] >= 1
+   - Q[44,5] * C4284 ] >= 1
  qc236: E[40,2] + [ 0.1944444444444444 Q[40,5] * H_pos[2,sepal-length]
    + 0.625 Q[40,5] * H_pos[2,sepal-width]
    + 0.0508474576271186 Q[40,5] * H_pos[2,petal-length]
@@ -10227,15 +8367,7 @@ Subject To
    - 0.625 Q[40,5] * H_neg[2,sepal-width]
    - 0.0508474576271186 Q[40,5] * H_neg[2,petal-length]
    - 0.0833333333333333 Q[40,5] * H_neg[2,petal-width] + Q[40,5] * C4277
-   - Q[40,5] * C4284 - 0.1944444444444444 Q[40,6] * H_pos[2,sepal-length]
-   - 0.625 Q[40,6] * H_pos[2,sepal-width]
-   - 0.0508474576271186 Q[40,6] * H_pos[2,petal-length]
-   - 0.0833333333333333 Q[40,6] * H_pos[2,petal-width]
-   + 0.1944444444444444 Q[40,6] * H_neg[2,sepal-length]
-   + 0.625 Q[40,6] * H_neg[2,sepal-width]
-   + 0.0508474576271186 Q[40,6] * H_neg[2,petal-length]
-   + 0.0833333333333333 Q[40,6] * H_neg[2,petal-width] - Q[40,6] * C4277
-   + Q[40,6] * C4284 ] >= 1
+   - Q[40,5] * C4284 ] >= 1
  qc237: E[10,2] + [ 0.3055555555555556 Q[10,5] * H_pos[2,sepal-length]
    + 0.7083333333333333 Q[10,5] * H_pos[2,sepal-width]
    + 0.0847457627118644 Q[10,5] * H_pos[2,petal-length]
@@ -10244,15 +8376,7 @@ Subject To
    - 0.7083333333333333 Q[10,5] * H_neg[2,sepal-width]
    - 0.0847457627118644 Q[10,5] * H_neg[2,petal-length]
    - 0.0416666666666667 Q[10,5] * H_neg[2,petal-width] + Q[10,5] * C4277
-   - Q[10,5] * C4284 - 0.3055555555555556 Q[10,6] * H_pos[2,sepal-length]
-   - 0.7083333333333333 Q[10,6] * H_pos[2,sepal-width]
-   - 0.0847457627118644 Q[10,6] * H_pos[2,petal-length]
-   - 0.0416666666666667 Q[10,6] * H_pos[2,petal-width]
-   + 0.3055555555555556 Q[10,6] * H_neg[2,sepal-length]
-   + 0.7083333333333333 Q[10,6] * H_neg[2,sepal-width]
-   + 0.0847457627118644 Q[10,6] * H_neg[2,petal-length]
-   + 0.0416666666666667 Q[10,6] * H_neg[2,petal-width] - Q[10,6] * C4277
-   + Q[10,6] * C4284 ] >= 1
+   - Q[10,5] * C4284 ] >= 1
  qc238: E[47,2] + [ 0.0833333333333333 Q[47,5] * H_pos[2,sepal-length]
    + 0.5 Q[47,5] * H_pos[2,sepal-width]
    + 0.0677966101694915 Q[47,5] * H_pos[2,petal-length]
@@ -10261,15 +8385,7 @@ Subject To
    - 0.5 Q[47,5] * H_neg[2,sepal-width]
    - 0.0677966101694915 Q[47,5] * H_neg[2,petal-length]
    - 0.0416666666666667 Q[47,5] * H_neg[2,petal-width] + Q[47,5] * C4277
-   - Q[47,5] * C4284 - 0.0833333333333333 Q[47,6] * H_pos[2,sepal-length]
-   - 0.5 Q[47,6] * H_pos[2,sepal-width]
-   - 0.0677966101694915 Q[47,6] * H_pos[2,petal-length]
-   - 0.0416666666666667 Q[47,6] * H_pos[2,petal-width]
-   + 0.0833333333333333 Q[47,6] * H_neg[2,sepal-length]
-   + 0.5 Q[47,6] * H_neg[2,sepal-width]
-   + 0.0677966101694915 Q[47,6] * H_neg[2,petal-length]
-   + 0.0416666666666667 Q[47,6] * H_neg[2,petal-width] - Q[47,6] * C4277
-   + Q[47,6] * C4284 ] >= 1
+   - Q[47,5] * C4284 ] >= 1
  qc239: E[18,2] + [ 0.3888888888888888 Q[18,5] * H_pos[2,sepal-length]
    + 0.75 Q[18,5] * H_pos[2,sepal-width]
    + 0.1186440677966101 Q[18,5] * H_pos[2,petal-length]
@@ -10278,15 +8394,7 @@ Subject To
    - 0.75 Q[18,5] * H_neg[2,sepal-width]
    - 0.1186440677966101 Q[18,5] * H_neg[2,petal-length]
    - 0.0833333333333333 Q[18,5] * H_neg[2,petal-width] + Q[18,5] * C4277
-   - Q[18,5] * C4284 - 0.3888888888888888 Q[18,6] * H_pos[2,sepal-length]
-   - 0.75 Q[18,6] * H_pos[2,sepal-width]
-   - 0.1186440677966101 Q[18,6] * H_pos[2,petal-length]
-   - 0.0833333333333333 Q[18,6] * H_pos[2,petal-width]
-   + 0.3888888888888888 Q[18,6] * H_neg[2,sepal-length]
-   + 0.75 Q[18,6] * H_neg[2,sepal-width]
-   + 0.1186440677966101 Q[18,6] * H_neg[2,petal-length]
-   + 0.0833333333333333 Q[18,6] * H_neg[2,petal-width] - Q[18,6] * C4277
-   + Q[18,6] * C4284 ] >= 1
+   - Q[18,5] * C4284 ] >= 1
  qc240: E[137,2] + [ 0.5833333333333335 Q[137,5] * H_pos[2,sepal-length]
    + 0.4583333333333333 Q[137,5] * H_pos[2,sepal-width]
    + 0.7627118644067796 Q[137,5] * H_pos[2,petal-length]
@@ -10295,15 +8403,7 @@ Subject To
    - 0.4583333333333333 Q[137,5] * H_neg[2,sepal-width]
    - 0.7627118644067796 Q[137,5] * H_neg[2,petal-length]
    - 0.7083333333333334 Q[137,5] * H_neg[2,petal-width] + Q[137,5] * C4277
-   - Q[137,5] * C4284 - 0.5833333333333335 Q[137,6] * H_pos[2,sepal-length]
-   - 0.4583333333333333 Q[137,6] * H_pos[2,sepal-width]
-   - 0.7627118644067796 Q[137,6] * H_pos[2,petal-length]
-   - 0.7083333333333334 Q[137,6] * H_pos[2,petal-width]
-   + 0.5833333333333335 Q[137,6] * H_neg[2,sepal-length]
-   + 0.4583333333333333 Q[137,6] * H_neg[2,sepal-width]
-   + 0.7627118644067796 Q[137,6] * H_neg[2,petal-length]
-   + 0.7083333333333334 Q[137,6] * H_neg[2,petal-width] - Q[137,6] * C4277
-   + Q[137,6] * C4284 ] >= 1
+   - Q[137,5] * C4284 ] >= 1
  qc241: E[136,2] + [ 0.5555555555555556 Q[136,5] * H_pos[2,sepal-length]
    + 0.5833333333333333 Q[136,5] * H_pos[2,sepal-width]
    + 0.7796610169491525 Q[136,5] * H_pos[2,petal-length]
@@ -10312,15 +8412,7 @@ Subject To
    - 0.5833333333333333 Q[136,5] * H_neg[2,sepal-width]
    - 0.7796610169491525 Q[136,5] * H_neg[2,petal-length]
    - 0.9583333333333334 Q[136,5] * H_neg[2,petal-width] + Q[136,5] * C4277
-   - Q[136,5] * C4284 - 0.5555555555555556 Q[136,6] * H_pos[2,sepal-length]
-   - 0.5833333333333333 Q[136,6] * H_pos[2,sepal-width]
-   - 0.7796610169491525 Q[136,6] * H_pos[2,petal-length]
-   - 0.9583333333333334 Q[136,6] * H_pos[2,petal-width]
-   + 0.5555555555555556 Q[136,6] * H_neg[2,sepal-length]
-   + 0.5833333333333333 Q[136,6] * H_neg[2,sepal-width]
-   + 0.7796610169491525 Q[136,6] * H_neg[2,petal-length]
-   + 0.9583333333333334 Q[136,6] * H_neg[2,petal-width] - Q[136,6] * C4277
-   + Q[136,6] * C4284 ] >= 1
+   - Q[136,5] * C4284 ] >= 1
  qc242: E[56,2] + [ 0.5555555555555556 Q[56,5] * H_pos[2,sepal-length]
    + 0.5416666666666665 Q[56,5] * H_pos[2,sepal-width]
    + 0.6271186440677966 Q[56,5] * H_pos[2,petal-length]
@@ -10329,15 +8421,7 @@ Subject To
    - 0.5416666666666665 Q[56,5] * H_neg[2,sepal-width]
    - 0.6271186440677966 Q[56,5] * H_neg[2,petal-length]
    - 0.625 Q[56,5] * H_neg[2,petal-width] + Q[56,5] * C4277
-   - Q[56,5] * C4284 - 0.5555555555555556 Q[56,6] * H_pos[2,sepal-length]
-   - 0.5416666666666665 Q[56,6] * H_pos[2,sepal-width]
-   - 0.6271186440677966 Q[56,6] * H_pos[2,petal-length]
-   - 0.625 Q[56,6] * H_pos[2,petal-width]
-   + 0.5555555555555556 Q[56,6] * H_neg[2,sepal-length]
-   + 0.5416666666666665 Q[56,6] * H_neg[2,sepal-width]
-   + 0.6271186440677966 Q[56,6] * H_neg[2,petal-length]
-   + 0.625 Q[56,6] * H_neg[2,petal-width] - Q[56,6] * C4277
-   + Q[56,6] * C4284 ] >= 1
+   - Q[56,5] * C4284 ] >= 1
  qc243: E[119,2] + [ 0.4722222222222223 Q[119,5] * H_pos[2,sepal-length]
    + 0.0833333333333334 Q[119,5] * H_pos[2,sepal-width]
    + 0.6779661016949152 Q[119,5] * H_pos[2,petal-length]
@@ -10346,28 +8430,14 @@ Subject To
    - 0.0833333333333334 Q[119,5] * H_neg[2,sepal-width]
    - 0.6779661016949152 Q[119,5] * H_neg[2,petal-length]
    - 0.5833333333333334 Q[119,5] * H_neg[2,petal-width] + Q[119,5] * C4277
-   - Q[119,5] * C4284 - 0.4722222222222223 Q[119,6] * H_pos[2,sepal-length]
-   - 0.0833333333333334 Q[119,6] * H_pos[2,sepal-width]
-   - 0.6779661016949152 Q[119,6] * H_pos[2,petal-length]
-   - 0.5833333333333334 Q[119,6] * H_pos[2,petal-width]
-   + 0.4722222222222223 Q[119,6] * H_neg[2,sepal-length]
-   + 0.0833333333333334 Q[119,6] * H_neg[2,sepal-width]
-   + 0.6779661016949152 Q[119,6] * H_neg[2,petal-length]
-   + 0.5833333333333334 Q[119,6] * H_neg[2,petal-width] - Q[119,6] * C4277
-   + Q[119,6] * C4284 ] >= 1
+   - Q[119,5] * C4284 ] >= 1
  qc244: E[9,2] + [ 0.1666666666666667 Q[9,5] * H_pos[2,sepal-length]
    + 0.4583333333333333 Q[9,5] * H_pos[2,sepal-width]
    + 0.0847457627118644 Q[9,5] * H_pos[2,petal-length]
    - 0.1666666666666667 Q[9,5] * H_neg[2,sepal-length]
    - 0.4583333333333333 Q[9,5] * H_neg[2,sepal-width]
    - 0.0847457627118644 Q[9,5] * H_neg[2,petal-length] + Q[9,5] * C4277
-   - Q[9,5] * C4284 - 0.1666666666666667 Q[9,6] * H_pos[2,sepal-length]
-   - 0.4583333333333333 Q[9,6] * H_pos[2,sepal-width]
-   - 0.0847457627118644 Q[9,6] * H_pos[2,petal-length]
-   + 0.1666666666666667 Q[9,6] * H_neg[2,sepal-length]
-   + 0.4583333333333333 Q[9,6] * H_neg[2,sepal-width]
-   + 0.0847457627118644 Q[9,6] * H_neg[2,petal-length] - Q[9,6] * C4277
-   + Q[9,6] * C4284 ] >= 1
+   - Q[9,5] * C4284 ] >= 1
  qc245: E[141,2] + [ 0.7222222222222223 Q[141,5] * H_pos[2,sepal-length]
    + 0.4583333333333333 Q[141,5] * H_pos[2,sepal-width]
    + 0.6949152542372881 Q[141,5] * H_pos[2,petal-length]
@@ -10376,15 +8446,7 @@ Subject To
    - 0.4583333333333333 Q[141,5] * H_neg[2,sepal-width]
    - 0.6949152542372881 Q[141,5] * H_neg[2,petal-length]
    - 0.9166666666666666 Q[141,5] * H_neg[2,petal-width] + Q[141,5] * C4277
-   - Q[141,5] * C4284 - 0.7222222222222223 Q[141,6] * H_pos[2,sepal-length]
-   - 0.4583333333333333 Q[141,6] * H_pos[2,sepal-width]
-   - 0.6949152542372881 Q[141,6] * H_pos[2,petal-length]
-   - 0.9166666666666666 Q[141,6] * H_pos[2,petal-width]
-   + 0.7222222222222223 Q[141,6] * H_neg[2,sepal-length]
-   + 0.4583333333333333 Q[141,6] * H_neg[2,sepal-width]
-   + 0.6949152542372881 Q[141,6] * H_neg[2,petal-length]
-   + 0.9166666666666666 Q[141,6] * H_neg[2,petal-width] - Q[141,6] * C4277
-   + Q[141,6] * C4284 ] >= 1
+   - Q[141,5] * C4284 ] >= 1
  qc246: E[6,2] + [ 0.0833333333333333 Q[6,5] * H_pos[2,sepal-length]
    + 0.5833333333333333 Q[6,5] * H_pos[2,sepal-width]
    + 0.0677966101694915 Q[6,5] * H_pos[2,petal-length]
@@ -10393,15 +8455,7 @@ Subject To
    - 0.5833333333333333 Q[6,5] * H_neg[2,sepal-width]
    - 0.0677966101694915 Q[6,5] * H_neg[2,petal-length]
    - 0.0833333333333333 Q[6,5] * H_neg[2,petal-width] + Q[6,5] * C4277
-   - Q[6,5] * C4284 - 0.0833333333333333 Q[6,6] * H_pos[2,sepal-length]
-   - 0.5833333333333333 Q[6,6] * H_pos[2,sepal-width]
-   - 0.0677966101694915 Q[6,6] * H_pos[2,petal-length]
-   - 0.0833333333333333 Q[6,6] * H_pos[2,petal-width]
-   + 0.0833333333333333 Q[6,6] * H_neg[2,sepal-length]
-   + 0.5833333333333333 Q[6,6] * H_neg[2,sepal-width]
-   + 0.0677966101694915 Q[6,6] * H_neg[2,petal-length]
-   + 0.0833333333333333 Q[6,6] * H_neg[2,petal-width] - Q[6,6] * C4277
-   + Q[6,6] * C4284 ] >= 1
+   - Q[6,5] * C4284 ] >= 1
  qc247: E[114,2] + [ 0.4166666666666665 Q[114,5] * H_pos[2,sepal-length]
    + 0.3333333333333333 Q[114,5] * H_pos[2,sepal-width]
    + 0.6949152542372881 Q[114,5] * H_pos[2,petal-length]
@@ -10410,15 +8464,7 @@ Subject To
    - 0.3333333333333333 Q[114,5] * H_neg[2,sepal-width]
    - 0.6949152542372881 Q[114,5] * H_neg[2,petal-length]
    - 0.9583333333333334 Q[114,5] * H_neg[2,petal-width] + Q[114,5] * C4277
-   - Q[114,5] * C4284 - 0.4166666666666665 Q[114,6] * H_pos[2,sepal-length]
-   - 0.3333333333333333 Q[114,6] * H_pos[2,sepal-width]
-   - 0.6949152542372881 Q[114,6] * H_pos[2,petal-length]
-   - 0.9583333333333334 Q[114,6] * H_pos[2,petal-width]
-   + 0.4166666666666665 Q[114,6] * H_neg[2,sepal-length]
-   + 0.3333333333333333 Q[114,6] * H_neg[2,sepal-width]
-   + 0.6949152542372881 Q[114,6] * H_neg[2,petal-length]
-   + 0.9583333333333334 Q[114,6] * H_neg[2,petal-width] - Q[114,6] * C4277
-   + Q[114,6] * C4284 ] >= 1
+   - Q[114,5] * C4284 ] >= 1
  qc248: E[147,2] + [ 0.6111111111111112 Q[147,5] * H_pos[2,sepal-length]
    + 0.4166666666666667 Q[147,5] * H_pos[2,sepal-width]
    + 0.711864406779661 Q[147,5] * H_pos[2,petal-length]
@@ -10427,15 +8473,7 @@ Subject To
    - 0.4166666666666667 Q[147,5] * H_neg[2,sepal-width]
    - 0.711864406779661 Q[147,5] * H_neg[2,petal-length]
    - 0.7916666666666667 Q[147,5] * H_neg[2,petal-width] + Q[147,5] * C4277
-   - Q[147,5] * C4284 - 0.6111111111111112 Q[147,6] * H_pos[2,sepal-length]
-   - 0.4166666666666667 Q[147,6] * H_pos[2,sepal-width]
-   - 0.711864406779661 Q[147,6] * H_pos[2,petal-length]
-   - 0.7916666666666667 Q[147,6] * H_pos[2,petal-width]
-   + 0.6111111111111112 Q[147,6] * H_neg[2,sepal-length]
-   + 0.4166666666666667 Q[147,6] * H_neg[2,sepal-width]
-   + 0.711864406779661 Q[147,6] * H_neg[2,petal-length]
-   + 0.7916666666666667 Q[147,6] * H_neg[2,petal-width] - Q[147,6] * C4277
-   + Q[147,6] * C4284 ] >= 1
+   - Q[147,5] * C4284 ] >= 1
  qc249: E[55,2] + [ 0.3888888888888888 Q[55,5] * H_pos[2,sepal-length]
    + 0.3333333333333333 Q[55,5] * H_pos[2,sepal-width]
    + 0.5932203389830508 Q[55,5] * H_pos[2,petal-length]
@@ -10444,14 +8482,6 @@ Subject To
    - 0.3333333333333333 Q[55,5] * H_neg[2,sepal-width]
    - 0.5932203389830508 Q[55,5] * H_neg[2,petal-length]
    - 0.5 Q[55,5] * H_neg[2,petal-width] + Q[55,5] * C4277 - Q[55,5] * C4284
-   - 0.3888888888888888 Q[55,6] * H_pos[2,sepal-length]
-   - 0.3333333333333333 Q[55,6] * H_pos[2,sepal-width]
-   - 0.5932203389830508 Q[55,6] * H_pos[2,petal-length]
-   - 0.5 Q[55,6] * H_pos[2,petal-width]
-   + 0.3888888888888888 Q[55,6] * H_neg[2,sepal-length]
-   + 0.3333333333333333 Q[55,6] * H_neg[2,sepal-width]
-   + 0.5932203389830508 Q[55,6] * H_neg[2,petal-length]
-   + 0.5 Q[55,6] * H_neg[2,petal-width] - Q[55,6] * C4277 + Q[55,6] * C4284
    ] >= 1
  qc250: E[112,2] + [ 0.6944444444444444 Q[112,5] * H_pos[2,sepal-length]
    + 0.4166666666666667 Q[112,5] * H_pos[2,sepal-width]
@@ -10461,15 +8491,7 @@ Subject To
    - 0.4166666666666667 Q[112,5] * H_neg[2,sepal-width]
    - 0.7627118644067796 Q[112,5] * H_neg[2,petal-length]
    - 0.8333333333333335 Q[112,5] * H_neg[2,petal-width] + Q[112,5] * C4277
-   - Q[112,5] * C4284 - 0.6944444444444444 Q[112,6] * H_pos[2,sepal-length]
-   - 0.4166666666666667 Q[112,6] * H_pos[2,sepal-width]
-   - 0.7627118644067796 Q[112,6] * H_pos[2,petal-length]
-   - 0.8333333333333335 Q[112,6] * H_pos[2,petal-width]
-   + 0.6944444444444444 Q[112,6] * H_neg[2,sepal-length]
-   + 0.4166666666666667 Q[112,6] * H_neg[2,sepal-width]
-   + 0.7627118644067796 Q[112,6] * H_neg[2,petal-length]
-   + 0.8333333333333335 Q[112,6] * H_neg[2,petal-width] - Q[112,6] * C4277
-   + Q[112,6] * C4284 ] >= 1
+   - Q[112,5] * C4284 ] >= 1
  qc251: E[96,2] + [ 0.3888888888888888 Q[96,5] * H_pos[2,sepal-length]
    + 0.375 Q[96,5] * H_pos[2,sepal-width]
    + 0.5423728813559322 Q[96,5] * H_pos[2,petal-length]
@@ -10478,14 +8500,6 @@ Subject To
    - 0.375 Q[96,5] * H_neg[2,sepal-width]
    - 0.5423728813559322 Q[96,5] * H_neg[2,petal-length]
    - 0.5 Q[96,5] * H_neg[2,petal-width] + Q[96,5] * C4277 - Q[96,5] * C4284
-   - 0.3888888888888888 Q[96,6] * H_pos[2,sepal-length]
-   - 0.375 Q[96,6] * H_pos[2,sepal-width]
-   - 0.5423728813559322 Q[96,6] * H_pos[2,petal-length]
-   - 0.5 Q[96,6] * H_pos[2,petal-width]
-   + 0.3888888888888888 Q[96,6] * H_neg[2,sepal-length]
-   + 0.375 Q[96,6] * H_neg[2,sepal-width]
-   + 0.5423728813559322 Q[96,6] * H_neg[2,petal-length]
-   + 0.5 Q[96,6] * H_neg[2,petal-width] - Q[96,6] * C4277 + Q[96,6] * C4284
    ] >= 1
  qc252: E[52,2] + [ 0.7222222222222223 Q[52,5] * H_pos[2,sepal-length]
    + 0.4583333333333333 Q[52,5] * H_pos[2,sepal-width]
@@ -10495,15 +8509,7 @@ Subject To
    - 0.4583333333333333 Q[52,5] * H_neg[2,sepal-width]
    - 0.6610169491525424 Q[52,5] * H_neg[2,petal-length]
    - 0.5833333333333334 Q[52,5] * H_neg[2,petal-width] + Q[52,5] * C4277
-   - Q[52,5] * C4284 - 0.7222222222222223 Q[52,6] * H_pos[2,sepal-length]
-   - 0.4583333333333333 Q[52,6] * H_pos[2,sepal-width]
-   - 0.6610169491525424 Q[52,6] * H_pos[2,petal-length]
-   - 0.5833333333333334 Q[52,6] * H_pos[2,petal-width]
-   + 0.7222222222222223 Q[52,6] * H_neg[2,sepal-length]
-   + 0.4583333333333333 Q[52,6] * H_neg[2,sepal-width]
-   + 0.6610169491525424 Q[52,6] * H_neg[2,petal-length]
-   + 0.5833333333333334 Q[52,6] * H_neg[2,petal-width] - Q[52,6] * C4277
-   + Q[52,6] * C4284 ] >= 1
+   - Q[52,5] * C4284 ] >= 1
  qc253: E[50,2] + [ 0.75 Q[50,5] * H_pos[2,sepal-length]
    + 0.5 Q[50,5] * H_pos[2,sepal-width]
    + 0.6271186440677966 Q[50,5] * H_pos[2,petal-length]
@@ -10512,15 +8518,7 @@ Subject To
    - 0.5 Q[50,5] * H_neg[2,sepal-width]
    - 0.6271186440677966 Q[50,5] * H_neg[2,petal-length]
    - 0.5416666666666667 Q[50,5] * H_neg[2,petal-width] + Q[50,5] * C4277
-   - Q[50,5] * C4284 - 0.75 Q[50,6] * H_pos[2,sepal-length]
-   - 0.5 Q[50,6] * H_pos[2,sepal-width]
-   - 0.6271186440677966 Q[50,6] * H_pos[2,petal-length]
-   - 0.5416666666666667 Q[50,6] * H_pos[2,petal-width]
-   + 0.75 Q[50,6] * H_neg[2,sepal-length]
-   + 0.5 Q[50,6] * H_neg[2,sepal-width]
-   + 0.6271186440677966 Q[50,6] * H_neg[2,petal-length]
-   + 0.5416666666666667 Q[50,6] * H_neg[2,petal-width] - Q[50,6] * C4277
-   + Q[50,6] * C4284 ] >= 1
+   - Q[50,5] * C4284 ] >= 1
  qc254: E[69,2] + [ 0.3611111111111109 Q[69,5] * H_pos[2,sepal-length]
    + 0.2083333333333333 Q[69,5] * H_pos[2,sepal-width]
    + 0.4915254237288135 Q[69,5] * H_pos[2,petal-length]
@@ -10529,15 +8527,7 @@ Subject To
    - 0.2083333333333333 Q[69,5] * H_neg[2,sepal-width]
    - 0.4915254237288135 Q[69,5] * H_neg[2,petal-length]
    - 0.4166666666666667 Q[69,5] * H_neg[2,petal-width] + Q[69,5] * C4277
-   - Q[69,5] * C4284 - 0.3611111111111109 Q[69,6] * H_pos[2,sepal-length]
-   - 0.2083333333333333 Q[69,6] * H_pos[2,sepal-width]
-   - 0.4915254237288135 Q[69,6] * H_pos[2,petal-length]
-   - 0.4166666666666667 Q[69,6] * H_pos[2,petal-width]
-   + 0.3611111111111109 Q[69,6] * H_neg[2,sepal-length]
-   + 0.2083333333333333 Q[69,6] * H_neg[2,sepal-width]
-   + 0.4915254237288135 Q[69,6] * H_neg[2,petal-length]
-   + 0.4166666666666667 Q[69,6] * H_neg[2,petal-width] - Q[69,6] * C4277
-   + Q[69,6] * C4284 ] >= 1
+   - Q[69,5] * C4284 ] >= 1
  qc255: E[71,2] + [ 0.5 Q[71,5] * H_pos[2,sepal-length]
    + 0.3333333333333333 Q[71,5] * H_pos[2,sepal-width]
    + 0.5084745762711864 Q[71,5] * H_pos[2,petal-length]
@@ -10546,14 +8536,6 @@ Subject To
    - 0.3333333333333333 Q[71,5] * H_neg[2,sepal-width]
    - 0.5084745762711864 Q[71,5] * H_neg[2,petal-length]
    - 0.5 Q[71,5] * H_neg[2,petal-width] + Q[71,5] * C4277 - Q[71,5] * C4284
-   - 0.5 Q[71,6] * H_pos[2,sepal-length]
-   - 0.3333333333333333 Q[71,6] * H_pos[2,sepal-width]
-   - 0.5084745762711864 Q[71,6] * H_pos[2,petal-length]
-   - 0.5 Q[71,6] * H_pos[2,petal-width]
-   + 0.5 Q[71,6] * H_neg[2,sepal-length]
-   + 0.3333333333333333 Q[71,6] * H_neg[2,sepal-width]
-   + 0.5084745762711864 Q[71,6] * H_neg[2,petal-length]
-   + 0.5 Q[71,6] * H_neg[2,petal-width] - Q[71,6] * C4277 + Q[71,6] * C4284
    ] >= 1
  qc256: E[92,2] + [ 0.4166666666666665 Q[92,5] * H_pos[2,sepal-length]
    + 0.25 Q[92,5] * H_pos[2,sepal-width]
@@ -10563,15 +8545,7 @@ Subject To
    - 0.25 Q[92,5] * H_neg[2,sepal-width]
    - 0.5084745762711864 Q[92,5] * H_neg[2,petal-length]
    - 0.4583333333333333 Q[92,5] * H_neg[2,petal-width] + Q[92,5] * C4277
-   - Q[92,5] * C4284 - 0.4166666666666665 Q[92,6] * H_pos[2,sepal-length]
-   - 0.25 Q[92,6] * H_pos[2,sepal-width]
-   - 0.5084745762711864 Q[92,6] * H_pos[2,petal-length]
-   - 0.4583333333333333 Q[92,6] * H_pos[2,petal-width]
-   + 0.4166666666666665 Q[92,6] * H_neg[2,sepal-length]
-   + 0.25 Q[92,6] * H_neg[2,sepal-width]
-   + 0.5084745762711864 Q[92,6] * H_neg[2,petal-length]
-   + 0.4583333333333333 Q[92,6] * H_neg[2,petal-width] - Q[92,6] * C4277
-   + Q[92,6] * C4284 ] >= 1
+   - Q[92,5] * C4284 ] >= 1
  qc257: E[61,2] + [ 0.4444444444444446 Q[61,5] * H_pos[2,sepal-length]
    + 0.4166666666666667 Q[61,5] * H_pos[2,sepal-width]
    + 0.5423728813559322 Q[61,5] * H_pos[2,petal-length]
@@ -10580,15 +8554,7 @@ Subject To
    - 0.4166666666666667 Q[61,5] * H_neg[2,sepal-width]
    - 0.5423728813559322 Q[61,5] * H_neg[2,petal-length]
    - 0.5833333333333334 Q[61,5] * H_neg[2,petal-width] + Q[61,5] * C4277
-   - Q[61,5] * C4284 - 0.4444444444444446 Q[61,6] * H_pos[2,sepal-length]
-   - 0.4166666666666667 Q[61,6] * H_pos[2,sepal-width]
-   - 0.5423728813559322 Q[61,6] * H_pos[2,petal-length]
-   - 0.5833333333333334 Q[61,6] * H_pos[2,petal-width]
-   + 0.4444444444444446 Q[61,6] * H_neg[2,sepal-length]
-   + 0.4166666666666667 Q[61,6] * H_neg[2,sepal-width]
-   + 0.5423728813559322 Q[61,6] * H_neg[2,petal-length]
-   + 0.5833333333333334 Q[61,6] * H_neg[2,petal-width] - Q[61,6] * C4277
-   + Q[61,6] * C4284 ] >= 1
+   - Q[61,5] * C4284 ] >= 1
  qc258: E[33,2] + [ 0.3333333333333333 Q[33,5] * H_pos[2,sepal-length]
    + 0.9166666666666667 Q[33,5] * H_pos[2,sepal-width]
    + 0.0677966101694915 Q[33,5] * H_pos[2,petal-length]
@@ -10597,15 +8563,7 @@ Subject To
    - 0.9166666666666667 Q[33,5] * H_neg[2,sepal-width]
    - 0.0677966101694915 Q[33,5] * H_neg[2,petal-length]
    - 0.0416666666666667 Q[33,5] * H_neg[2,petal-width] + Q[33,5] * C4277
-   - Q[33,5] * C4284 - 0.3333333333333333 Q[33,6] * H_pos[2,sepal-length]
-   - 0.9166666666666667 Q[33,6] * H_pos[2,sepal-width]
-   - 0.0677966101694915 Q[33,6] * H_pos[2,petal-length]
-   - 0.0416666666666667 Q[33,6] * H_pos[2,petal-width]
-   + 0.3333333333333333 Q[33,6] * H_neg[2,sepal-length]
-   + 0.9166666666666667 Q[33,6] * H_neg[2,sepal-width]
-   + 0.0677966101694915 Q[33,6] * H_neg[2,petal-length]
-   + 0.0416666666666667 Q[33,6] * H_neg[2,petal-width] - Q[33,6] * C4277
-   + Q[33,6] * C4284 ] >= 1
+   - Q[33,5] * C4284 ] >= 1
  qc259: E[15,2] + [ 0.3888888888888888 Q[15,5] * H_pos[2,sepal-length]
    + Q[15,5] * H_pos[2,sepal-width]
    + 0.0847457627118644 Q[15,5] * H_pos[2,petal-length]
@@ -10614,15 +8572,7 @@ Subject To
    - Q[15,5] * H_neg[2,sepal-width]
    - 0.0847457627118644 Q[15,5] * H_neg[2,petal-length]
    - 0.125 Q[15,5] * H_neg[2,petal-width] + Q[15,5] * C4277
-   - Q[15,5] * C4284 - 0.3888888888888888 Q[15,6] * H_pos[2,sepal-length]
-   - Q[15,6] * H_pos[2,sepal-width]
-   - 0.0847457627118644 Q[15,6] * H_pos[2,petal-length]
-   - 0.125 Q[15,6] * H_pos[2,petal-width]
-   + 0.3888888888888888 Q[15,6] * H_neg[2,sepal-length]
-   + Q[15,6] * H_neg[2,sepal-width]
-   + 0.0847457627118644 Q[15,6] * H_neg[2,petal-length]
-   + 0.125 Q[15,6] * H_neg[2,petal-width] - Q[15,6] * C4277
-   + Q[15,6] * C4284 ] >= 1
+   - Q[15,5] * C4284 ] >= 1
  qc260: E[5,2] + [ 0.3055555555555556 Q[5,5] * H_pos[2,sepal-length]
    + 0.7916666666666665 Q[5,5] * H_pos[2,sepal-width]
    + 0.1186440677966101 Q[5,5] * H_pos[2,petal-length]
@@ -10631,14 +8581,6 @@ Subject To
    - 0.7916666666666665 Q[5,5] * H_neg[2,sepal-width]
    - 0.1186440677966101 Q[5,5] * H_neg[2,petal-length]
    - 0.125 Q[5,5] * H_neg[2,petal-width] + Q[5,5] * C4277 - Q[5,5] * C4284
-   - 0.3055555555555556 Q[5,6] * H_pos[2,sepal-length]
-   - 0.7916666666666665 Q[5,6] * H_pos[2,sepal-width]
-   - 0.1186440677966101 Q[5,6] * H_pos[2,petal-length]
-   - 0.125 Q[5,6] * H_pos[2,petal-width]
-   + 0.3055555555555556 Q[5,6] * H_neg[2,sepal-length]
-   + 0.7916666666666665 Q[5,6] * H_neg[2,sepal-width]
-   + 0.1186440677966101 Q[5,6] * H_neg[2,petal-length]
-   + 0.125 Q[5,6] * H_neg[2,petal-width] - Q[5,6] * C4277 + Q[5,6] * C4284
    ] >= 1
  qc261: E[126,2] + [ 0.5277777777777779 Q[126,5] * H_pos[2,sepal-length]
    + 0.3333333333333333 Q[126,5] * H_pos[2,sepal-width]
@@ -10648,15 +8590,7 @@ Subject To
    - 0.3333333333333333 Q[126,5] * H_neg[2,sepal-width]
    - 0.6440677966101694 Q[126,5] * H_neg[2,petal-length]
    - 0.7083333333333334 Q[126,5] * H_neg[2,petal-width] + Q[126,5] * C4277
-   - Q[126,5] * C4284 - 0.5277777777777779 Q[126,6] * H_pos[2,sepal-length]
-   - 0.3333333333333333 Q[126,6] * H_pos[2,sepal-width]
-   - 0.6440677966101694 Q[126,6] * H_pos[2,petal-length]
-   - 0.7083333333333334 Q[126,6] * H_pos[2,petal-width]
-   + 0.5277777777777779 Q[126,6] * H_neg[2,sepal-length]
-   + 0.3333333333333333 Q[126,6] * H_neg[2,sepal-width]
-   + 0.6440677966101694 Q[126,6] * H_neg[2,petal-length]
-   + 0.7083333333333334 Q[126,6] * H_neg[2,petal-width] - Q[126,6] * C4277
-   + Q[126,6] * C4284 ] >= 1
+   - Q[126,5] * C4284 ] >= 1
  qc262: E[143,2] + [ 0.6944444444444444 Q[143,5] * H_pos[2,sepal-length]
    + 0.5 Q[143,5] * H_pos[2,sepal-width]
    + 0.8305084745762712 Q[143,5] * H_pos[2,petal-length]
@@ -10665,15 +8599,7 @@ Subject To
    - 0.5 Q[143,5] * H_neg[2,sepal-width]
    - 0.8305084745762712 Q[143,5] * H_neg[2,petal-length]
    - 0.9166666666666666 Q[143,5] * H_neg[2,petal-width] + Q[143,5] * C4277
-   - Q[143,5] * C4284 - 0.6944444444444444 Q[143,6] * H_pos[2,sepal-length]
-   - 0.5 Q[143,6] * H_pos[2,sepal-width]
-   - 0.8305084745762712 Q[143,6] * H_pos[2,petal-length]
-   - 0.9166666666666666 Q[143,6] * H_pos[2,petal-width]
-   + 0.6944444444444444 Q[143,6] * H_neg[2,sepal-length]
-   + 0.5 Q[143,6] * H_neg[2,sepal-width]
-   + 0.8305084745762712 Q[143,6] * H_neg[2,petal-length]
-   + 0.9166666666666666 Q[143,6] * H_neg[2,petal-width] - Q[143,6] * C4277
-   + Q[143,6] * C4284 ] >= 1
+   - Q[143,5] * C4284 ] >= 1
  qc263: E[80,2] + [ 0.3333333333333333 Q[80,5] * H_pos[2,sepal-length]
    + 0.1666666666666666 Q[80,5] * H_pos[2,sepal-width]
    + 0.4745762711864406 Q[80,5] * H_pos[2,petal-length]
@@ -10682,15 +8608,7 @@ Subject To
    - 0.1666666666666666 Q[80,5] * H_neg[2,sepal-width]
    - 0.4745762711864406 Q[80,5] * H_neg[2,petal-length]
    - 0.4166666666666667 Q[80,5] * H_neg[2,petal-width] + Q[80,5] * C4277
-   - Q[80,5] * C4284 - 0.3333333333333333 Q[80,6] * H_pos[2,sepal-length]
-   - 0.1666666666666666 Q[80,6] * H_pos[2,sepal-width]
-   - 0.4745762711864406 Q[80,6] * H_pos[2,petal-length]
-   - 0.4166666666666667 Q[80,6] * H_pos[2,petal-width]
-   + 0.3333333333333333 Q[80,6] * H_neg[2,sepal-length]
-   + 0.1666666666666666 Q[80,6] * H_neg[2,sepal-width]
-   + 0.4745762711864406 Q[80,6] * H_neg[2,petal-length]
-   + 0.4166666666666667 Q[80,6] * H_neg[2,petal-width] - Q[80,6] * C4277
-   + Q[80,6] * C4284 ] >= 1
+   - Q[80,5] * C4284 ] >= 1
  qc264: E[73,2] + [ 0.5 Q[73,5] * H_pos[2,sepal-length]
    + 0.3333333333333333 Q[73,5] * H_pos[2,sepal-width]
    + 0.6271186440677966 Q[73,5] * H_pos[2,petal-length]
@@ -10699,15 +8617,7 @@ Subject To
    - 0.3333333333333333 Q[73,5] * H_neg[2,sepal-width]
    - 0.6271186440677966 Q[73,5] * H_neg[2,petal-length]
    - 0.4583333333333333 Q[73,5] * H_neg[2,petal-width] + Q[73,5] * C4277
-   - Q[73,5] * C4284 - 0.5 Q[73,6] * H_pos[2,sepal-length]
-   - 0.3333333333333333 Q[73,6] * H_pos[2,sepal-width]
-   - 0.6271186440677966 Q[73,6] * H_pos[2,petal-length]
-   - 0.4583333333333333 Q[73,6] * H_pos[2,petal-width]
-   + 0.5 Q[73,6] * H_neg[2,sepal-length]
-   + 0.3333333333333333 Q[73,6] * H_neg[2,sepal-width]
-   + 0.6271186440677966 Q[73,6] * H_neg[2,petal-length]
-   + 0.4583333333333333 Q[73,6] * H_neg[2,petal-width] - Q[73,6] * C4277
-   + Q[73,6] * C4284 ] >= 1
+   - Q[73,5] * C4284 ] >= 1
  qc265: E[54,2] + [ 0.6111111111111112 Q[54,5] * H_pos[2,sepal-length]
    + 0.3333333333333333 Q[54,5] * H_pos[2,sepal-width]
    + 0.6101694915254237 Q[54,5] * H_pos[2,petal-length]
@@ -10716,15 +8626,7 @@ Subject To
    - 0.3333333333333333 Q[54,5] * H_neg[2,sepal-width]
    - 0.6101694915254237 Q[54,5] * H_neg[2,petal-length]
    - 0.5833333333333334 Q[54,5] * H_neg[2,petal-width] + Q[54,5] * C4277
-   - Q[54,5] * C4284 - 0.6111111111111112 Q[54,6] * H_pos[2,sepal-length]
-   - 0.3333333333333333 Q[54,6] * H_pos[2,sepal-width]
-   - 0.6101694915254237 Q[54,6] * H_pos[2,petal-length]
-   - 0.5833333333333334 Q[54,6] * H_pos[2,petal-width]
-   + 0.6111111111111112 Q[54,6] * H_neg[2,sepal-length]
-   + 0.3333333333333333 Q[54,6] * H_neg[2,sepal-width]
-   + 0.6101694915254237 Q[54,6] * H_neg[2,petal-length]
-   + 0.5833333333333334 Q[54,6] * H_neg[2,petal-width] - Q[54,6] * C4277
-   + Q[54,6] * C4284 ] >= 1
+   - Q[54,5] * C4284 ] >= 1
  qc266: E[1,2] + [ 0.1666666666666667 Q[1,5] * H_pos[2,sepal-length]
    + 0.4166666666666667 Q[1,5] * H_pos[2,sepal-width]
    + 0.0677966101694915 Q[1,5] * H_pos[2,petal-length]
@@ -10733,15 +8635,7 @@ Subject To
    - 0.4166666666666667 Q[1,5] * H_neg[2,sepal-width]
    - 0.0677966101694915 Q[1,5] * H_neg[2,petal-length]
    - 0.0416666666666667 Q[1,5] * H_neg[2,petal-width] + Q[1,5] * C4277
-   - Q[1,5] * C4284 - 0.1666666666666667 Q[1,6] * H_pos[2,sepal-length]
-   - 0.4166666666666667 Q[1,6] * H_pos[2,sepal-width]
-   - 0.0677966101694915 Q[1,6] * H_pos[2,petal-length]
-   - 0.0416666666666667 Q[1,6] * H_pos[2,petal-width]
-   + 0.1666666666666667 Q[1,6] * H_neg[2,sepal-length]
-   + 0.4166666666666667 Q[1,6] * H_neg[2,sepal-width]
-   + 0.0677966101694915 Q[1,6] * H_neg[2,petal-length]
-   + 0.0416666666666667 Q[1,6] * H_neg[2,petal-width] - Q[1,6] * C4277
-   + Q[1,6] * C4284 ] >= 1
+   - Q[1,5] * C4284 ] >= 1
  qc267: E[129,2] + [ 0.8055555555555556 Q[129,5] * H_pos[2,sepal-length]
    + 0.4166666666666667 Q[129,5] * H_pos[2,sepal-width]
    + 0.8135593220338982 Q[129,5] * H_pos[2,petal-length]
@@ -10750,15 +8644,7 @@ Subject To
    - 0.4166666666666667 Q[129,5] * H_neg[2,sepal-width]
    - 0.8135593220338982 Q[129,5] * H_neg[2,petal-length]
    - 0.625 Q[129,5] * H_neg[2,petal-width] + Q[129,5] * C4277
-   - Q[129,5] * C4284 - 0.8055555555555556 Q[129,6] * H_pos[2,sepal-length]
-   - 0.4166666666666667 Q[129,6] * H_pos[2,sepal-width]
-   - 0.8135593220338982 Q[129,6] * H_pos[2,petal-length]
-   - 0.625 Q[129,6] * H_pos[2,petal-width]
-   + 0.8055555555555556 Q[129,6] * H_neg[2,sepal-length]
-   + 0.4166666666666667 Q[129,6] * H_neg[2,sepal-width]
-   + 0.8135593220338982 Q[129,6] * H_neg[2,petal-length]
-   + 0.625 Q[129,6] * H_neg[2,petal-width] - Q[129,6] * C4277
-   + Q[129,6] * C4284 ] >= 1
+   - Q[129,5] * C4284 ] >= 1
  qc268: E[99,2] + [ 0.3888888888888888 Q[99,5] * H_pos[2,sepal-length]
    + 0.3333333333333333 Q[99,5] * H_pos[2,sepal-width]
    + 0.5254237288135593 Q[99,5] * H_pos[2,petal-length]
@@ -10767,14 +8653,6 @@ Subject To
    - 0.3333333333333333 Q[99,5] * H_neg[2,sepal-width]
    - 0.5254237288135593 Q[99,5] * H_neg[2,petal-length]
    - 0.5 Q[99,5] * H_neg[2,petal-width] + Q[99,5] * C4277 - Q[99,5] * C4284
-   - 0.3888888888888888 Q[99,6] * H_pos[2,sepal-length]
-   - 0.3333333333333333 Q[99,6] * H_pos[2,sepal-width]
-   - 0.5254237288135593 Q[99,6] * H_pos[2,petal-length]
-   - 0.5 Q[99,6] * H_pos[2,petal-width]
-   + 0.3888888888888888 Q[99,6] * H_neg[2,sepal-length]
-   + 0.3333333333333333 Q[99,6] * H_neg[2,sepal-width]
-   + 0.5254237288135593 Q[99,6] * H_neg[2,petal-length]
-   + 0.5 Q[99,6] * H_neg[2,petal-width] - Q[99,6] * C4277 + Q[99,6] * C4284
    ] >= 1
  qc269: E[105,2] + [ 0.9166666666666665 Q[105,5] * H_pos[2,sepal-length]
    + 0.4166666666666667 Q[105,5] * H_pos[2,sepal-width]
@@ -10784,15 +8662,7 @@ Subject To
    - 0.4166666666666667 Q[105,5] * H_neg[2,sepal-width]
    - 0.9491525423728813 Q[105,5] * H_neg[2,petal-length]
    - 0.8333333333333335 Q[105,5] * H_neg[2,petal-width] + Q[105,5] * C4277
-   - Q[105,5] * C4284 - 0.9166666666666665 Q[105,6] * H_pos[2,sepal-length]
-   - 0.4166666666666667 Q[105,6] * H_pos[2,sepal-width]
-   - 0.9491525423728813 Q[105,6] * H_pos[2,petal-length]
-   - 0.8333333333333335 Q[105,6] * H_pos[2,petal-width]
-   + 0.9166666666666665 Q[105,6] * H_neg[2,sepal-length]
-   + 0.4166666666666667 Q[105,6] * H_neg[2,sepal-width]
-   + 0.9491525423728813 Q[105,6] * H_neg[2,petal-length]
-   + 0.8333333333333335 Q[105,6] * H_neg[2,petal-width] - Q[105,6] * C4277
-   + Q[105,6] * C4284 ] >= 1
+   - Q[105,5] * C4284 ] >= 1
  qc270: E[144,2] + [ 0.6666666666666667 Q[144,5] * H_pos[2,sepal-length]
    + 0.5416666666666665 Q[144,5] * H_pos[2,sepal-width]
    + 0.7966101694915254 Q[144,5] * H_pos[2,petal-length]
@@ -10801,14 +8671,6 @@ Subject To
    - 0.5416666666666665 Q[144,5] * H_neg[2,sepal-width]
    - 0.7966101694915254 Q[144,5] * H_neg[2,petal-length]
    - Q[144,5] * H_neg[2,petal-width] + Q[144,5] * C4277 - Q[144,5] * C4284
-   - 0.6666666666666667 Q[144,6] * H_pos[2,sepal-length]
-   - 0.5416666666666665 Q[144,6] * H_pos[2,sepal-width]
-   - 0.7966101694915254 Q[144,6] * H_pos[2,petal-length]
-   - Q[144,6] * H_pos[2,petal-width]
-   + 0.6666666666666667 Q[144,6] * H_neg[2,sepal-length]
-   + 0.5416666666666665 Q[144,6] * H_neg[2,sepal-width]
-   + 0.7966101694915254 Q[144,6] * H_neg[2,petal-length]
-   + Q[144,6] * H_neg[2,petal-width] - Q[144,6] * C4277 + Q[144,6] * C4284
    ] >= 1
  qc271: E[7,2] + [ 0.1944444444444444 Q[7,5] * H_pos[2,sepal-length]
    + 0.5833333333333333 Q[7,5] * H_pos[2,sepal-width]
@@ -10818,15 +8680,7 @@ Subject To
    - 0.5833333333333333 Q[7,5] * H_neg[2,sepal-width]
    - 0.0847457627118644 Q[7,5] * H_neg[2,petal-length]
    - 0.0416666666666667 Q[7,5] * H_neg[2,petal-width] + Q[7,5] * C4277
-   - Q[7,5] * C4284 - 0.1944444444444444 Q[7,6] * H_pos[2,sepal-length]
-   - 0.5833333333333333 Q[7,6] * H_pos[2,sepal-width]
-   - 0.0847457627118644 Q[7,6] * H_pos[2,petal-length]
-   - 0.0416666666666667 Q[7,6] * H_pos[2,petal-width]
-   + 0.1944444444444444 Q[7,6] * H_neg[2,sepal-length]
-   + 0.5833333333333333 Q[7,6] * H_neg[2,sepal-width]
-   + 0.0847457627118644 Q[7,6] * H_neg[2,petal-length]
-   + 0.0416666666666667 Q[7,6] * H_neg[2,petal-width] - Q[7,6] * C4277
-   + Q[7,6] * C4284 ] >= 1
+   - Q[7,5] * C4284 ] >= 1
  qc272: E[107,2] + [ 0.833333333333333 Q[107,5] * H_pos[2,sepal-length]
    + 0.375 Q[107,5] * H_pos[2,sepal-width]
    + 0.8983050847457625 Q[107,5] * H_pos[2,petal-length]
@@ -10835,15 +8689,7 @@ Subject To
    - 0.375 Q[107,5] * H_neg[2,sepal-width]
    - 0.8983050847457625 Q[107,5] * H_neg[2,petal-length]
    - 0.7083333333333334 Q[107,5] * H_neg[2,petal-width] + Q[107,5] * C4277
-   - Q[107,5] * C4284 - 0.833333333333333 Q[107,6] * H_pos[2,sepal-length]
-   - 0.375 Q[107,6] * H_pos[2,sepal-width]
-   - 0.8983050847457625 Q[107,6] * H_pos[2,petal-length]
-   - 0.7083333333333334 Q[107,6] * H_pos[2,petal-width]
-   + 0.833333333333333 Q[107,6] * H_neg[2,sepal-length]
-   + 0.375 Q[107,6] * H_neg[2,sepal-width]
-   + 0.8983050847457625 Q[107,6] * H_neg[2,petal-length]
-   + 0.7083333333333334 Q[107,6] * H_neg[2,petal-width] - Q[107,6] * C4277
-   + Q[107,6] * C4284 ] >= 1
+   - Q[107,5] * C4284 ] >= 1
  qc273: E[123,2] + [ 0.5555555555555556 Q[123,5] * H_pos[2,sepal-length]
    + 0.2916666666666667 Q[123,5] * H_pos[2,sepal-width]
    + 0.6610169491525424 Q[123,5] * H_pos[2,petal-length]
@@ -10852,15 +8698,7 @@ Subject To
    - 0.2916666666666667 Q[123,5] * H_neg[2,sepal-width]
    - 0.6610169491525424 Q[123,5] * H_neg[2,petal-length]
    - 0.7083333333333334 Q[123,5] * H_neg[2,petal-width] + Q[123,5] * C4277
-   - Q[123,5] * C4284 - 0.5555555555555556 Q[123,6] * H_pos[2,sepal-length]
-   - 0.2916666666666667 Q[123,6] * H_pos[2,sepal-width]
-   - 0.6610169491525424 Q[123,6] * H_pos[2,petal-length]
-   - 0.7083333333333334 Q[123,6] * H_pos[2,petal-width]
-   + 0.5555555555555556 Q[123,6] * H_neg[2,sepal-length]
-   + 0.2916666666666667 Q[123,6] * H_neg[2,sepal-width]
-   + 0.6610169491525424 Q[123,6] * H_neg[2,petal-length]
-   + 0.7083333333333334 Q[123,6] * H_neg[2,petal-width] - Q[123,6] * C4277
-   + Q[123,6] * C4284 ] >= 1
+   - Q[123,5] * C4284 ] >= 1
  qc274: E[118,2] + [ 0.9444444444444442 Q[118,5] * H_pos[2,sepal-length]
    + 0.25 Q[118,5] * H_pos[2,sepal-width]
    + Q[118,5] * H_pos[2,petal-length]
@@ -10869,15 +8707,7 @@ Subject To
    - 0.25 Q[118,5] * H_neg[2,sepal-width]
    - Q[118,5] * H_neg[2,petal-length]
    - 0.9166666666666666 Q[118,5] * H_neg[2,petal-width] + Q[118,5] * C4277
-   - Q[118,5] * C4284 - 0.9444444444444442 Q[118,6] * H_pos[2,sepal-length]
-   - 0.25 Q[118,6] * H_pos[2,sepal-width]
-   - Q[118,6] * H_pos[2,petal-length]
-   - 0.9166666666666666 Q[118,6] * H_pos[2,petal-width]
-   + 0.9444444444444442 Q[118,6] * H_neg[2,sepal-length]
-   + 0.25 Q[118,6] * H_neg[2,sepal-width]
-   + Q[118,6] * H_neg[2,petal-length]
-   + 0.9166666666666666 Q[118,6] * H_neg[2,petal-width] - Q[118,6] * C4277
-   + Q[118,6] * C4284 ] >= 1
+   - Q[118,5] * C4284 ] >= 1
  qc275: E[66,2] + [ 0.3611111111111109 Q[66,5] * H_pos[2,sepal-length]
    + 0.4166666666666667 Q[66,5] * H_pos[2,sepal-width]
    + 0.5932203389830508 Q[66,5] * H_pos[2,petal-length]
@@ -10886,15 +8716,7 @@ Subject To
    - 0.4166666666666667 Q[66,5] * H_neg[2,sepal-width]
    - 0.5932203389830508 Q[66,5] * H_neg[2,petal-length]
    - 0.5833333333333334 Q[66,5] * H_neg[2,petal-width] + Q[66,5] * C4277
-   - Q[66,5] * C4284 - 0.3611111111111109 Q[66,6] * H_pos[2,sepal-length]
-   - 0.4166666666666667 Q[66,6] * H_pos[2,sepal-width]
-   - 0.5932203389830508 Q[66,6] * H_pos[2,petal-length]
-   - 0.5833333333333334 Q[66,6] * H_pos[2,petal-width]
-   + 0.3611111111111109 Q[66,6] * H_neg[2,sepal-length]
-   + 0.4166666666666667 Q[66,6] * H_neg[2,sepal-width]
-   + 0.5932203389830508 Q[66,6] * H_neg[2,petal-length]
-   + 0.5833333333333334 Q[66,6] * H_neg[2,petal-width] - Q[66,6] * C4277
-   + Q[66,6] * C4284 ] >= 1
+   - Q[66,5] * C4284 ] >= 1
  qc276: E[124,2] + [ 0.6666666666666667 Q[124,5] * H_pos[2,sepal-length]
    + 0.5416666666666665 Q[124,5] * H_pos[2,sepal-width]
    + 0.7966101694915254 Q[124,5] * H_pos[2,petal-length]
@@ -10903,15 +8725,7 @@ Subject To
    - 0.5416666666666665 Q[124,5] * H_neg[2,sepal-width]
    - 0.7966101694915254 Q[124,5] * H_neg[2,petal-length]
    - 0.8333333333333335 Q[124,5] * H_neg[2,petal-width] + Q[124,5] * C4277
-   - Q[124,5] * C4284 - 0.6666666666666667 Q[124,6] * H_pos[2,sepal-length]
-   - 0.5416666666666665 Q[124,6] * H_pos[2,sepal-width]
-   - 0.7966101694915254 Q[124,6] * H_pos[2,petal-length]
-   - 0.8333333333333335 Q[124,6] * H_pos[2,petal-width]
-   + 0.6666666666666667 Q[124,6] * H_neg[2,sepal-length]
-   + 0.5416666666666665 Q[124,6] * H_neg[2,sepal-width]
-   + 0.7966101694915254 Q[124,6] * H_neg[2,petal-length]
-   + 0.8333333333333335 Q[124,6] * H_neg[2,petal-width] - Q[124,6] * C4277
-   + Q[124,6] * C4284 ] >= 1
+   - Q[124,5] * C4284 ] >= 1
  qc277: E[142,2] + [ 0.4166666666666665 Q[142,5] * H_pos[2,sepal-length]
    + 0.2916666666666667 Q[142,5] * H_pos[2,sepal-width]
    + 0.6949152542372881 Q[142,5] * H_pos[2,petal-length]
@@ -10920,15 +8734,7 @@ Subject To
    - 0.2916666666666667 Q[142,5] * H_neg[2,sepal-width]
    - 0.6949152542372881 Q[142,5] * H_neg[2,petal-length]
    - 0.75 Q[142,5] * H_neg[2,petal-width] + Q[142,5] * C4277
-   - Q[142,5] * C4284 - 0.4166666666666665 Q[142,6] * H_pos[2,sepal-length]
-   - 0.2916666666666667 Q[142,6] * H_pos[2,sepal-width]
-   - 0.6949152542372881 Q[142,6] * H_pos[2,petal-length]
-   - 0.75 Q[142,6] * H_pos[2,petal-width]
-   + 0.4166666666666665 Q[142,6] * H_neg[2,sepal-length]
-   + 0.2916666666666667 Q[142,6] * H_neg[2,sepal-width]
-   + 0.6949152542372881 Q[142,6] * H_neg[2,petal-length]
-   + 0.75 Q[142,6] * H_neg[2,petal-width] - Q[142,6] * C4277
-   + Q[142,6] * C4284 ] >= 1
+   - Q[142,5] * C4284 ] >= 1
  qc278: E[101,2] + [ 0.4166666666666665 Q[101,5] * H_pos[2,sepal-length]
    + 0.2916666666666667 Q[101,5] * H_pos[2,sepal-width]
    + 0.6949152542372881 Q[101,5] * H_pos[2,petal-length]
@@ -10937,15 +8743,7 @@ Subject To
    - 0.2916666666666667 Q[101,5] * H_neg[2,sepal-width]
    - 0.6949152542372881 Q[101,5] * H_neg[2,petal-length]
    - 0.75 Q[101,5] * H_neg[2,petal-width] + Q[101,5] * C4277
-   - Q[101,5] * C4284 - 0.4166666666666665 Q[101,6] * H_pos[2,sepal-length]
-   - 0.2916666666666667 Q[101,6] * H_pos[2,sepal-width]
-   - 0.6949152542372881 Q[101,6] * H_pos[2,petal-length]
-   - 0.75 Q[101,6] * H_pos[2,petal-width]
-   + 0.4166666666666665 Q[101,6] * H_neg[2,sepal-length]
-   + 0.2916666666666667 Q[101,6] * H_neg[2,sepal-width]
-   + 0.6949152542372881 Q[101,6] * H_neg[2,petal-length]
-   + 0.75 Q[101,6] * H_neg[2,petal-width] - Q[101,6] * C4277
-   + Q[101,6] * C4284 ] >= 1
+   - Q[101,5] * C4284 ] >= 1
  qc279: E[63,2] + [ 0.5 Q[63,5] * H_pos[2,sepal-length]
    + 0.375 Q[63,5] * H_pos[2,sepal-width]
    + 0.6271186440677966 Q[63,5] * H_pos[2,petal-length]
@@ -10954,15 +8752,7 @@ Subject To
    - 0.375 Q[63,5] * H_neg[2,sepal-width]
    - 0.6271186440677966 Q[63,5] * H_neg[2,petal-length]
    - 0.5416666666666667 Q[63,5] * H_neg[2,petal-width] + Q[63,5] * C4277
-   - Q[63,5] * C4284 - 0.5 Q[63,6] * H_pos[2,sepal-length]
-   - 0.375 Q[63,6] * H_pos[2,sepal-width]
-   - 0.6271186440677966 Q[63,6] * H_pos[2,petal-length]
-   - 0.5416666666666667 Q[63,6] * H_pos[2,petal-width]
-   + 0.5 Q[63,6] * H_neg[2,sepal-length]
-   + 0.375 Q[63,6] * H_neg[2,sepal-width]
-   + 0.6271186440677966 Q[63,6] * H_neg[2,petal-length]
-   + 0.5416666666666667 Q[63,6] * H_neg[2,petal-width] - Q[63,6] * C4277
-   + Q[63,6] * C4284 ] >= 1
+   - Q[63,5] * C4284 ] >= 1
  qc280: E[77,2] + [ 0.6666666666666667 Q[77,5] * H_pos[2,sepal-length]
    + 0.4166666666666667 Q[77,5] * H_pos[2,sepal-width]
    + 0.6779661016949152 Q[77,5] * H_pos[2,petal-length]
@@ -10971,15 +8761,7 @@ Subject To
    - 0.4166666666666667 Q[77,5] * H_neg[2,sepal-width]
    - 0.6779661016949152 Q[77,5] * H_neg[2,petal-length]
    - 0.6666666666666667 Q[77,5] * H_neg[2,petal-width] + Q[77,5] * C4277
-   - Q[77,5] * C4284 - 0.6666666666666667 Q[77,6] * H_pos[2,sepal-length]
-   - 0.4166666666666667 Q[77,6] * H_pos[2,sepal-width]
-   - 0.6779661016949152 Q[77,6] * H_pos[2,petal-length]
-   - 0.6666666666666667 Q[77,6] * H_pos[2,petal-width]
-   + 0.6666666666666667 Q[77,6] * H_neg[2,sepal-length]
-   + 0.4166666666666667 Q[77,6] * H_neg[2,sepal-width]
-   + 0.6779661016949152 Q[77,6] * H_neg[2,petal-length]
-   + 0.6666666666666667 Q[77,6] * H_neg[2,petal-width] - Q[77,6] * C4277
-   + Q[77,6] * C4284 ] >= 1
+   - Q[77,5] * C4284 ] >= 1
  qc281: E[35,2] + [ 0.1944444444444444 Q[35,5] * H_pos[2,sepal-length]
    + 0.5 Q[35,5] * H_pos[2,sepal-width]
    + 0.0338983050847458 Q[35,5] * H_pos[2,petal-length]
@@ -10988,28 +8770,14 @@ Subject To
    - 0.5 Q[35,5] * H_neg[2,sepal-width]
    - 0.0338983050847458 Q[35,5] * H_neg[2,petal-length]
    - 0.0416666666666667 Q[35,5] * H_neg[2,petal-width] + Q[35,5] * C4277
-   - Q[35,5] * C4284 - 0.1944444444444444 Q[35,6] * H_pos[2,sepal-length]
-   - 0.5 Q[35,6] * H_pos[2,sepal-width]
-   - 0.0338983050847458 Q[35,6] * H_pos[2,petal-length]
-   - 0.0416666666666667 Q[35,6] * H_pos[2,petal-width]
-   + 0.1944444444444444 Q[35,6] * H_neg[2,sepal-length]
-   + 0.5 Q[35,6] * H_neg[2,sepal-width]
-   + 0.0338983050847458 Q[35,6] * H_neg[2,petal-length]
-   + 0.0416666666666667 Q[35,6] * H_neg[2,petal-width] - Q[35,6] * C4277
-   + Q[35,6] * C4284 ] >= 1
+   - Q[35,5] * C4284 ] >= 1
  qc282: E[22,2] + [ 0.0833333333333333 Q[22,5] * H_pos[2,sepal-length]
    + 0.6666666666666667 Q[22,5] * H_pos[2,sepal-width]
    + 0.0416666666666667 Q[22,5] * H_pos[2,petal-width]
    - 0.0833333333333333 Q[22,5] * H_neg[2,sepal-length]
    - 0.6666666666666667 Q[22,5] * H_neg[2,sepal-width]
    - 0.0416666666666667 Q[22,5] * H_neg[2,petal-width] + Q[22,5] * C4277
-   - Q[22,5] * C4284 - 0.0833333333333333 Q[22,6] * H_pos[2,sepal-length]
-   - 0.6666666666666667 Q[22,6] * H_pos[2,sepal-width]
-   - 0.0416666666666667 Q[22,6] * H_pos[2,petal-width]
-   + 0.0833333333333333 Q[22,6] * H_neg[2,sepal-length]
-   + 0.6666666666666667 Q[22,6] * H_neg[2,sepal-width]
-   + 0.0416666666666667 Q[22,6] * H_neg[2,petal-width] - Q[22,6] * C4277
-   + Q[22,6] * C4284 ] >= 1
+   - Q[22,5] * C4284 ] >= 1
  qc283: E[127,2] + [ 0.5 Q[127,5] * H_pos[2,sepal-length]
    + 0.4166666666666667 Q[127,5] * H_pos[2,sepal-width]
    + 0.6610169491525424 Q[127,5] * H_pos[2,petal-length]
@@ -11018,15 +8786,7 @@ Subject To
    - 0.4166666666666667 Q[127,5] * H_neg[2,sepal-width]
    - 0.6610169491525424 Q[127,5] * H_neg[2,petal-length]
    - 0.7083333333333334 Q[127,5] * H_neg[2,petal-width] + Q[127,5] * C4277
-   - Q[127,5] * C4284 - 0.5 Q[127,6] * H_pos[2,sepal-length]
-   - 0.4166666666666667 Q[127,6] * H_pos[2,sepal-width]
-   - 0.6610169491525424 Q[127,6] * H_pos[2,petal-length]
-   - 0.7083333333333334 Q[127,6] * H_pos[2,petal-width]
-   + 0.5 Q[127,6] * H_neg[2,sepal-length]
-   + 0.4166666666666667 Q[127,6] * H_neg[2,sepal-width]
-   + 0.6610169491525424 Q[127,6] * H_neg[2,petal-length]
-   + 0.7083333333333334 Q[127,6] * H_neg[2,petal-width] - Q[127,6] * C4277
-   + Q[127,6] * C4284 ] >= 1
+   - Q[127,5] * C4284 ] >= 1
  qc284: E[102,2] + [ 0.7777777777777777 Q[102,5] * H_pos[2,sepal-length]
    + 0.4166666666666667 Q[102,5] * H_pos[2,sepal-width]
    + 0.8305084745762712 Q[102,5] * H_pos[2,petal-length]
@@ -11035,15 +8795,7 @@ Subject To
    - 0.4166666666666667 Q[102,5] * H_neg[2,sepal-width]
    - 0.8305084745762712 Q[102,5] * H_neg[2,petal-length]
    - 0.8333333333333335 Q[102,5] * H_neg[2,petal-width] + Q[102,5] * C4277
-   - Q[102,5] * C4284 - 0.7777777777777777 Q[102,6] * H_pos[2,sepal-length]
-   - 0.4166666666666667 Q[102,6] * H_pos[2,sepal-width]
-   - 0.8305084745762712 Q[102,6] * H_pos[2,petal-length]
-   - 0.8333333333333335 Q[102,6] * H_pos[2,petal-width]
-   + 0.7777777777777777 Q[102,6] * H_neg[2,sepal-length]
-   + 0.4166666666666667 Q[102,6] * H_neg[2,sepal-width]
-   + 0.8305084745762712 Q[102,6] * H_neg[2,petal-length]
-   + 0.8333333333333335 Q[102,6] * H_neg[2,petal-width] - Q[102,6] * C4277
-   + Q[102,6] * C4284 ] >= 1
+   - Q[102,5] * C4284 ] >= 1
  qc285: E[148,2] + [ 0.5277777777777779 Q[148,5] * H_pos[2,sepal-length]
    + 0.5833333333333333 Q[148,5] * H_pos[2,sepal-width]
    + 0.7457627118644068 Q[148,5] * H_pos[2,petal-length]
@@ -11052,15 +8804,7 @@ Subject To
    - 0.5833333333333333 Q[148,5] * H_neg[2,sepal-width]
    - 0.7457627118644068 Q[148,5] * H_neg[2,petal-length]
    - 0.9166666666666666 Q[148,5] * H_neg[2,petal-width] + Q[148,5] * C4277
-   - Q[148,5] * C4284 - 0.5277777777777779 Q[148,6] * H_pos[2,sepal-length]
-   - 0.5833333333333333 Q[148,6] * H_pos[2,sepal-width]
-   - 0.7457627118644068 Q[148,6] * H_pos[2,petal-length]
-   - 0.9166666666666666 Q[148,6] * H_pos[2,petal-width]
-   + 0.5277777777777779 Q[148,6] * H_neg[2,sepal-length]
-   + 0.5833333333333333 Q[148,6] * H_neg[2,sepal-width]
-   + 0.7457627118644068 Q[148,6] * H_neg[2,petal-length]
-   + 0.9166666666666666 Q[148,6] * H_neg[2,petal-width] - Q[148,6] * C4277
-   + Q[148,6] * C4284 ] >= 1
+   - Q[148,5] * C4284 ] >= 1
  qc286: E[64,2] + [ 0.3611111111111109 Q[64,5] * H_pos[2,sepal-length]
    + 0.375 Q[64,5] * H_pos[2,sepal-width]
    + 0.440677966101695 Q[64,5] * H_pos[2,petal-length]
@@ -11069,14 +8813,6 @@ Subject To
    - 0.375 Q[64,5] * H_neg[2,sepal-width]
    - 0.440677966101695 Q[64,5] * H_neg[2,petal-length]
    - 0.5 Q[64,5] * H_neg[2,petal-width] + Q[64,5] * C4277 - Q[64,5] * C4284
-   - 0.3611111111111109 Q[64,6] * H_pos[2,sepal-length]
-   - 0.375 Q[64,6] * H_pos[2,sepal-width]
-   - 0.440677966101695 Q[64,6] * H_pos[2,petal-length]
-   - 0.5 Q[64,6] * H_pos[2,petal-width]
-   + 0.3611111111111109 Q[64,6] * H_neg[2,sepal-length]
-   + 0.375 Q[64,6] * H_neg[2,sepal-width]
-   + 0.440677966101695 Q[64,6] * H_neg[2,petal-length]
-   + 0.5 Q[64,6] * H_neg[2,petal-width] - Q[64,6] * C4277 + Q[64,6] * C4284
    ] >= 1
  qc287: E[68,2] + [ 0.5277777777777779 Q[68,5] * H_pos[2,sepal-length]
    + 0.0833333333333334 Q[68,5] * H_pos[2,sepal-width]
@@ -11086,15 +8822,7 @@ Subject To
    - 0.0833333333333334 Q[68,5] * H_neg[2,sepal-width]
    - 0.5932203389830508 Q[68,5] * H_neg[2,petal-length]
    - 0.5833333333333334 Q[68,5] * H_neg[2,petal-width] + Q[68,5] * C4277
-   - Q[68,5] * C4284 - 0.5277777777777779 Q[68,6] * H_pos[2,sepal-length]
-   - 0.0833333333333334 Q[68,6] * H_pos[2,sepal-width]
-   - 0.5932203389830508 Q[68,6] * H_pos[2,petal-length]
-   - 0.5833333333333334 Q[68,6] * H_pos[2,petal-width]
-   + 0.5277777777777779 Q[68,6] * H_neg[2,sepal-length]
-   + 0.0833333333333334 Q[68,6] * H_neg[2,sepal-width]
-   + 0.5932203389830508 Q[68,6] * H_neg[2,petal-length]
-   + 0.5833333333333334 Q[68,6] * H_neg[2,petal-width] - Q[68,6] * C4277
-   + Q[68,6] * C4284 ] >= 1
+   - Q[68,5] * C4284 ] >= 1
  qc288: E[27,2] + [ 0.25 Q[27,5] * H_pos[2,sepal-length]
    + 0.625 Q[27,5] * H_pos[2,sepal-width]
    + 0.0847457627118644 Q[27,5] * H_pos[2,petal-length]
@@ -11103,15 +8831,7 @@ Subject To
    - 0.625 Q[27,5] * H_neg[2,sepal-width]
    - 0.0847457627118644 Q[27,5] * H_neg[2,petal-length]
    - 0.0416666666666667 Q[27,5] * H_neg[2,petal-width] + Q[27,5] * C4277
-   - Q[27,5] * C4284 - 0.25 Q[27,6] * H_pos[2,sepal-length]
-   - 0.625 Q[27,6] * H_pos[2,sepal-width]
-   - 0.0847457627118644 Q[27,6] * H_pos[2,petal-length]
-   - 0.0416666666666667 Q[27,6] * H_pos[2,petal-width]
-   + 0.25 Q[27,6] * H_neg[2,sepal-length]
-   + 0.625 Q[27,6] * H_neg[2,sepal-width]
-   + 0.0847457627118644 Q[27,6] * H_neg[2,petal-length]
-   + 0.0416666666666667 Q[27,6] * H_neg[2,petal-width] - Q[27,6] * C4277
-   + Q[27,6] * C4284 ] >= 1
+   - Q[27,5] * C4284 ] >= 1
  qc289: E[149,2] + [ 0.4444444444444446 Q[149,5] * H_pos[2,sepal-length]
    + 0.4166666666666667 Q[149,5] * H_pos[2,sepal-width]
    + 0.6949152542372881 Q[149,5] * H_pos[2,petal-length]
@@ -11120,15 +8840,7 @@ Subject To
    - 0.4166666666666667 Q[149,5] * H_neg[2,sepal-width]
    - 0.6949152542372881 Q[149,5] * H_neg[2,petal-length]
    - 0.7083333333333334 Q[149,5] * H_neg[2,petal-width] + Q[149,5] * C4277
-   - Q[149,5] * C4284 - 0.4444444444444446 Q[149,6] * H_pos[2,sepal-length]
-   - 0.4166666666666667 Q[149,6] * H_pos[2,sepal-width]
-   - 0.6949152542372881 Q[149,6] * H_pos[2,petal-length]
-   - 0.7083333333333334 Q[149,6] * H_pos[2,petal-width]
-   + 0.4444444444444446 Q[149,6] * H_neg[2,sepal-length]
-   + 0.4166666666666667 Q[149,6] * H_neg[2,sepal-width]
-   + 0.6949152542372881 Q[149,6] * H_neg[2,petal-length]
-   + 0.7083333333333334 Q[149,6] * H_neg[2,petal-width] - Q[149,6] * C4277
-   + Q[149,6] * C4284 ] >= 1
+   - Q[149,5] * C4284 ] >= 1
  qc290: E[39,2] + [ 0.2222222222222221 Q[39,5] * H_pos[2,sepal-length]
    + 0.5833333333333333 Q[39,5] * H_pos[2,sepal-width]
    + 0.0847457627118644 Q[39,5] * H_pos[2,petal-length]
@@ -11137,15 +8849,7 @@ Subject To
    - 0.5833333333333333 Q[39,5] * H_neg[2,sepal-width]
    - 0.0847457627118644 Q[39,5] * H_neg[2,petal-length]
    - 0.0416666666666667 Q[39,5] * H_neg[2,petal-width] + Q[39,5] * C4277
-   - Q[39,5] * C4284 - 0.2222222222222221 Q[39,6] * H_pos[2,sepal-length]
-   - 0.5833333333333333 Q[39,6] * H_pos[2,sepal-width]
-   - 0.0847457627118644 Q[39,6] * H_pos[2,petal-length]
-   - 0.0416666666666667 Q[39,6] * H_pos[2,petal-width]
-   + 0.2222222222222221 Q[39,6] * H_neg[2,sepal-length]
-   + 0.5833333333333333 Q[39,6] * H_neg[2,sepal-width]
-   + 0.0847457627118644 Q[39,6] * H_neg[2,petal-length]
-   + 0.0416666666666667 Q[39,6] * H_neg[2,petal-width] - Q[39,6] * C4277
-   + Q[39,6] * C4284 ] >= 1
+   - Q[39,5] * C4284 ] >= 1
  qc291: E[25,2] + [ 0.1944444444444444 Q[25,5] * H_pos[2,sepal-length]
    + 0.4166666666666667 Q[25,5] * H_pos[2,sepal-width]
    + 0.1016949152542373 Q[25,5] * H_pos[2,petal-length]
@@ -11154,15 +8858,7 @@ Subject To
    - 0.4166666666666667 Q[25,5] * H_neg[2,sepal-width]
    - 0.1016949152542373 Q[25,5] * H_neg[2,petal-length]
    - 0.0416666666666667 Q[25,5] * H_neg[2,petal-width] + Q[25,5] * C4277
-   - Q[25,5] * C4284 - 0.1944444444444444 Q[25,6] * H_pos[2,sepal-length]
-   - 0.4166666666666667 Q[25,6] * H_pos[2,sepal-width]
-   - 0.1016949152542373 Q[25,6] * H_pos[2,petal-length]
-   - 0.0416666666666667 Q[25,6] * H_pos[2,petal-width]
-   + 0.1944444444444444 Q[25,6] * H_neg[2,sepal-length]
-   + 0.4166666666666667 Q[25,6] * H_neg[2,sepal-width]
-   + 0.1016949152542373 Q[25,6] * H_neg[2,petal-length]
-   + 0.0416666666666667 Q[25,6] * H_neg[2,petal-width] - Q[25,6] * C4277
-   + Q[25,6] * C4284 ] >= 1
+   - Q[25,5] * C4284 ] >= 1
  qc292: E[62,2] + [ 0.4722222222222223 Q[62,5] * H_pos[2,sepal-length]
    + 0.0833333333333334 Q[62,5] * H_pos[2,sepal-width]
    + 0.5084745762711864 Q[62,5] * H_pos[2,petal-length]
@@ -11171,28 +8867,14 @@ Subject To
    - 0.0833333333333334 Q[62,5] * H_neg[2,sepal-width]
    - 0.5084745762711864 Q[62,5] * H_neg[2,petal-length]
    - 0.375 Q[62,5] * H_neg[2,petal-width] + Q[62,5] * C4277
-   - Q[62,5] * C4284 - 0.4722222222222223 Q[62,6] * H_pos[2,sepal-length]
-   - 0.0833333333333334 Q[62,6] * H_pos[2,sepal-width]
-   - 0.5084745762711864 Q[62,6] * H_pos[2,petal-length]
-   - 0.375 Q[62,6] * H_pos[2,petal-width]
-   + 0.4722222222222223 Q[62,6] * H_neg[2,sepal-length]
-   + 0.0833333333333334 Q[62,6] * H_neg[2,sepal-width]
-   + 0.5084745762711864 Q[62,6] * H_neg[2,petal-length]
-   + 0.375 Q[62,6] * H_neg[2,petal-width] - Q[62,6] * C4277
-   + Q[62,6] * C4284 ] >= 1
+   - Q[62,5] * C4284 ] >= 1
  qc293: E[32,2] + [ 0.25 Q[32,5] * H_pos[2,sepal-length]
    + 0.875 Q[32,5] * H_pos[2,sepal-width]
    + 0.0847457627118644 Q[32,5] * H_pos[2,petal-length]
    - 0.25 Q[32,5] * H_neg[2,sepal-length]
    - 0.875 Q[32,5] * H_neg[2,sepal-width]
    - 0.0847457627118644 Q[32,5] * H_neg[2,petal-length] + Q[32,5] * C4277
-   - Q[32,5] * C4284 - 0.25 Q[32,6] * H_pos[2,sepal-length]
-   - 0.875 Q[32,6] * H_pos[2,sepal-width]
-   - 0.0847457627118644 Q[32,6] * H_pos[2,petal-length]
-   + 0.25 Q[32,6] * H_neg[2,sepal-length]
-   + 0.875 Q[32,6] * H_neg[2,sepal-width]
-   + 0.0847457627118644 Q[32,6] * H_neg[2,petal-length] - Q[32,6] * C4277
-   + Q[32,6] * C4284 ] >= 1
+   - Q[32,5] * C4284 ] >= 1
  qc294: E[72,2] + [ 0.5555555555555556 Q[72,5] * H_pos[2,sepal-length]
    + 0.2083333333333333 Q[72,5] * H_pos[2,sepal-width]
    + 0.6610169491525424 Q[72,5] * H_pos[2,petal-length]
@@ -11201,15 +8883,7 @@ Subject To
    - 0.2083333333333333 Q[72,5] * H_neg[2,sepal-width]
    - 0.6610169491525424 Q[72,5] * H_neg[2,petal-length]
    - 0.5833333333333334 Q[72,5] * H_neg[2,petal-width] + Q[72,5] * C4277
-   - Q[72,5] * C4284 - 0.5555555555555556 Q[72,6] * H_pos[2,sepal-length]
-   - 0.2083333333333333 Q[72,6] * H_pos[2,sepal-width]
-   - 0.6610169491525424 Q[72,6] * H_pos[2,petal-length]
-   - 0.5833333333333334 Q[72,6] * H_pos[2,petal-width]
-   + 0.5555555555555556 Q[72,6] * H_neg[2,sepal-length]
-   + 0.2083333333333333 Q[72,6] * H_neg[2,sepal-width]
-   + 0.6610169491525424 Q[72,6] * H_neg[2,petal-length]
-   + 0.5833333333333334 Q[72,6] * H_neg[2,petal-width] - Q[72,6] * C4277
-   + Q[72,6] * C4284 ] >= 1
+   - Q[72,5] * C4284 ] >= 1
  qc295: E[26,2] + [ 0.1944444444444444 Q[26,5] * H_pos[2,sepal-length]
    + 0.5833333333333333 Q[26,5] * H_pos[2,sepal-width]
    + 0.1016949152542373 Q[26,5] * H_pos[2,petal-length]
@@ -11218,15 +8892,7 @@ Subject To
    - 0.5833333333333333 Q[26,5] * H_neg[2,sepal-width]
    - 0.1016949152542373 Q[26,5] * H_neg[2,petal-length]
    - 0.125 Q[26,5] * H_neg[2,petal-width] + Q[26,5] * C4277
-   - Q[26,5] * C4284 - 0.1944444444444444 Q[26,6] * H_pos[2,sepal-length]
-   - 0.5833333333333333 Q[26,6] * H_pos[2,sepal-width]
-   - 0.1016949152542373 Q[26,6] * H_pos[2,petal-length]
-   - 0.125 Q[26,6] * H_pos[2,petal-width]
-   + 0.1944444444444444 Q[26,6] * H_neg[2,sepal-length]
-   + 0.5833333333333333 Q[26,6] * H_neg[2,sepal-width]
-   + 0.1016949152542373 Q[26,6] * H_neg[2,petal-length]
-   + 0.125 Q[26,6] * H_neg[2,petal-width] - Q[26,6] * C4277
-   + Q[26,6] * C4284 ] >= 1
+   - Q[26,5] * C4284 ] >= 1
  qc296: E[116,2] + [ 0.6111111111111112 Q[116,5] * H_pos[2,sepal-length]
    + 0.4166666666666667 Q[116,5] * H_pos[2,sepal-width]
    + 0.7627118644067796 Q[116,5] * H_pos[2,petal-length]
@@ -11235,28 +8901,14 @@ Subject To
    - 0.4166666666666667 Q[116,5] * H_neg[2,sepal-width]
    - 0.7627118644067796 Q[116,5] * H_neg[2,petal-length]
    - 0.7083333333333334 Q[116,5] * H_neg[2,petal-width] + Q[116,5] * C4277
-   - Q[116,5] * C4284 - 0.6111111111111112 Q[116,6] * H_pos[2,sepal-length]
-   - 0.4166666666666667 Q[116,6] * H_pos[2,sepal-width]
-   - 0.7627118644067796 Q[116,6] * H_pos[2,petal-length]
-   - 0.7083333333333334 Q[116,6] * H_pos[2,petal-width]
-   + 0.6111111111111112 Q[116,6] * H_neg[2,sepal-length]
-   + 0.4166666666666667 Q[116,6] * H_neg[2,sepal-width]
-   + 0.7627118644067796 Q[116,6] * H_neg[2,petal-length]
-   + 0.7083333333333334 Q[116,6] * H_neg[2,petal-width] - Q[116,6] * C4277
-   + Q[116,6] * C4284 ] >= 1
+   - Q[116,5] * C4284 ] >= 1
  qc297: E[34,2] + [ 0.1666666666666667 Q[34,5] * H_pos[2,sepal-length]
    + 0.4583333333333333 Q[34,5] * H_pos[2,sepal-width]
    + 0.0847457627118644 Q[34,5] * H_pos[2,petal-length]
    - 0.1666666666666667 Q[34,5] * H_neg[2,sepal-length]
    - 0.4583333333333333 Q[34,5] * H_neg[2,sepal-width]
    - 0.0847457627118644 Q[34,5] * H_neg[2,petal-length] + Q[34,5] * C4277
-   - Q[34,5] * C4284 - 0.1666666666666667 Q[34,6] * H_pos[2,sepal-length]
-   - 0.4583333333333333 Q[34,6] * H_pos[2,sepal-width]
-   - 0.0847457627118644 Q[34,6] * H_pos[2,petal-length]
-   + 0.1666666666666667 Q[34,6] * H_neg[2,sepal-length]
-   + 0.4583333333333333 Q[34,6] * H_neg[2,sepal-width]
-   + 0.0847457627118644 Q[34,6] * H_neg[2,petal-length] - Q[34,6] * C4277
-   + Q[34,6] * C4284 ] >= 1
+   - Q[34,5] * C4284 ] >= 1
  qc298: E[117,2] + [ 0.9444444444444442 Q[117,5] * H_pos[2,sepal-length]
    + 0.75 Q[117,5] * H_pos[2,sepal-width]
    + 0.9661016949152543 Q[117,5] * H_pos[2,petal-length]
@@ -11265,15 +8917,7 @@ Subject To
    - 0.75 Q[117,5] * H_neg[2,sepal-width]
    - 0.9661016949152543 Q[117,5] * H_neg[2,petal-length]
    - 0.875 Q[117,5] * H_neg[2,petal-width] + Q[117,5] * C4277
-   - Q[117,5] * C4284 - 0.9444444444444442 Q[117,6] * H_pos[2,sepal-length]
-   - 0.75 Q[117,6] * H_pos[2,sepal-width]
-   - 0.9661016949152543 Q[117,6] * H_pos[2,petal-length]
-   - 0.875 Q[117,6] * H_pos[2,petal-width]
-   + 0.9444444444444442 Q[117,6] * H_neg[2,sepal-length]
-   + 0.75 Q[117,6] * H_neg[2,sepal-width]
-   + 0.9661016949152543 Q[117,6] * H_neg[2,petal-length]
-   + 0.875 Q[117,6] * H_neg[2,petal-width] - Q[117,6] * C4277
-   + Q[117,6] * C4284 ] >= 1
+   - Q[117,5] * C4284 ] >= 1
  qc299: E[30,2] + [ 0.1388888888888888 Q[30,5] * H_pos[2,sepal-length]
    + 0.4583333333333333 Q[30,5] * H_pos[2,sepal-width]
    + 0.1016949152542373 Q[30,5] * H_pos[2,petal-length]
@@ -11282,15 +8926,7 @@ Subject To
    - 0.4583333333333333 Q[30,5] * H_neg[2,sepal-width]
    - 0.1016949152542373 Q[30,5] * H_neg[2,petal-length]
    - 0.0416666666666667 Q[30,5] * H_neg[2,petal-width] + Q[30,5] * C4277
-   - Q[30,5] * C4284 - 0.1388888888888888 Q[30,6] * H_pos[2,sepal-length]
-   - 0.4583333333333333 Q[30,6] * H_pos[2,sepal-width]
-   - 0.1016949152542373 Q[30,6] * H_pos[2,petal-length]
-   - 0.0416666666666667 Q[30,6] * H_pos[2,petal-width]
-   + 0.1388888888888888 Q[30,6] * H_neg[2,sepal-length]
-   + 0.4583333333333333 Q[30,6] * H_neg[2,sepal-width]
-   + 0.1016949152542373 Q[30,6] * H_neg[2,petal-length]
-   + 0.0416666666666667 Q[30,6] * H_neg[2,petal-width] - Q[30,6] * C4277
-   + Q[30,6] * C4284 ] >= 1
+   - Q[30,5] * C4284 ] >= 1
  qc300: E[0,2] + [ 0.2222222222222221 Q[0,5] * H_pos[2,sepal-length]
    + 0.625 Q[0,5] * H_pos[2,sepal-width]
    + 0.0677966101694915 Q[0,5] * H_pos[2,petal-length]
@@ -11299,15 +8935,7 @@ Subject To
    - 0.625 Q[0,5] * H_neg[2,sepal-width]
    - 0.0677966101694915 Q[0,5] * H_neg[2,petal-length]
    - 0.0416666666666667 Q[0,5] * H_neg[2,petal-width] + Q[0,5] * C4277
-   - Q[0,5] * C4284 - 0.2222222222222221 Q[0,6] * H_pos[2,sepal-length]
-   - 0.625 Q[0,6] * H_pos[2,sepal-width]
-   - 0.0677966101694915 Q[0,6] * H_pos[2,petal-length]
-   - 0.0416666666666667 Q[0,6] * H_pos[2,petal-width]
-   + 0.2222222222222221 Q[0,6] * H_neg[2,sepal-length]
-   + 0.625 Q[0,6] * H_neg[2,sepal-width]
-   + 0.0677966101694915 Q[0,6] * H_neg[2,petal-length]
-   + 0.0416666666666667 Q[0,6] * H_neg[2,petal-width] - Q[0,6] * C4277
-   + Q[0,6] * C4284 ] >= 1
+   - Q[0,5] * C4284 ] >= 1
  qc301: E[82,2] + [ 0.4166666666666665 Q[82,5] * H_pos[2,sepal-length]
    + 0.2916666666666667 Q[82,5] * H_pos[2,sepal-width]
    + 0.4915254237288135 Q[82,5] * H_pos[2,petal-length]
@@ -11316,15 +8944,7 @@ Subject To
    - 0.2916666666666667 Q[82,5] * H_neg[2,sepal-width]
    - 0.4915254237288135 Q[82,5] * H_neg[2,petal-length]
    - 0.4583333333333333 Q[82,5] * H_neg[2,petal-width] + Q[82,5] * C4277
-   - Q[82,5] * C4284 - 0.4166666666666665 Q[82,6] * H_pos[2,sepal-length]
-   - 0.2916666666666667 Q[82,6] * H_pos[2,sepal-width]
-   - 0.4915254237288135 Q[82,6] * H_pos[2,petal-length]
-   - 0.4583333333333333 Q[82,6] * H_pos[2,petal-width]
-   + 0.4166666666666665 Q[82,6] * H_neg[2,sepal-length]
-   + 0.2916666666666667 Q[82,6] * H_neg[2,sepal-width]
-   + 0.4915254237288135 Q[82,6] * H_neg[2,petal-length]
-   + 0.4583333333333333 Q[82,6] * H_neg[2,petal-width] - Q[82,6] * C4277
-   + Q[82,6] * C4284 ] >= 1
+   - Q[82,5] * C4284 ] >= 1
  qc302: E[14,2] + [ 0.4166666666666665 Q[14,5] * H_pos[2,sepal-length]
    + 0.8333333333333333 Q[14,5] * H_pos[2,sepal-width]
    + 0.0338983050847458 Q[14,5] * H_pos[2,petal-length]
@@ -11333,15 +8953,7 @@ Subject To
    - 0.8333333333333333 Q[14,5] * H_neg[2,sepal-width]
    - 0.0338983050847458 Q[14,5] * H_neg[2,petal-length]
    - 0.0416666666666667 Q[14,5] * H_neg[2,petal-width] + Q[14,5] * C4277
-   - Q[14,5] * C4284 - 0.4166666666666665 Q[14,6] * H_pos[2,sepal-length]
-   - 0.8333333333333333 Q[14,6] * H_pos[2,sepal-width]
-   - 0.0338983050847458 Q[14,6] * H_pos[2,petal-length]
-   - 0.0416666666666667 Q[14,6] * H_pos[2,petal-width]
-   + 0.4166666666666665 Q[14,6] * H_neg[2,sepal-length]
-   + 0.8333333333333333 Q[14,6] * H_neg[2,sepal-width]
-   + 0.0338983050847458 Q[14,6] * H_neg[2,petal-length]
-   + 0.0416666666666667 Q[14,6] * H_neg[2,petal-width] - Q[14,6] * C4277
-   + Q[14,6] * C4284 ] >= 1
+   - Q[14,5] * C4284 ] >= 1
  qc303: E[125,2] + [ 0.8055555555555556 Q[125,5] * H_pos[2,sepal-length]
    + 0.5 Q[125,5] * H_pos[2,sepal-width]
    + 0.847457627118644 Q[125,5] * H_pos[2,petal-length]
@@ -11350,15 +8962,7 @@ Subject To
    - 0.5 Q[125,5] * H_neg[2,sepal-width]
    - 0.847457627118644 Q[125,5] * H_neg[2,petal-length]
    - 0.7083333333333334 Q[125,5] * H_neg[2,petal-width] + Q[125,5] * C4277
-   - Q[125,5] * C4284 - 0.8055555555555556 Q[125,6] * H_pos[2,sepal-length]
-   - 0.5 Q[125,6] * H_pos[2,sepal-width]
-   - 0.847457627118644 Q[125,6] * H_pos[2,petal-length]
-   - 0.7083333333333334 Q[125,6] * H_pos[2,petal-width]
-   + 0.8055555555555556 Q[125,6] * H_neg[2,sepal-length]
-   + 0.5 Q[125,6] * H_neg[2,sepal-width]
-   + 0.847457627118644 Q[125,6] * H_neg[2,petal-length]
-   + 0.7083333333333334 Q[125,6] * H_neg[2,petal-width] - Q[125,6] * C4277
-   + Q[125,6] * C4284 ] >= 1
+   - Q[125,5] * C4284 ] >= 1
  qc304: E[120,2] + [ 0.7222222222222223 Q[120,5] * H_pos[2,sepal-length]
    + 0.5 Q[120,5] * H_pos[2,sepal-width]
    + 0.7966101694915254 Q[120,5] * H_pos[2,petal-length]
@@ -11367,15 +8971,7 @@ Subject To
    - 0.5 Q[120,5] * H_neg[2,sepal-width]
    - 0.7966101694915254 Q[120,5] * H_neg[2,petal-length]
    - 0.9166666666666666 Q[120,5] * H_neg[2,petal-width] + Q[120,5] * C4277
-   - Q[120,5] * C4284 - 0.7222222222222223 Q[120,6] * H_pos[2,sepal-length]
-   - 0.5 Q[120,6] * H_pos[2,sepal-width]
-   - 0.7966101694915254 Q[120,6] * H_pos[2,petal-length]
-   - 0.9166666666666666 Q[120,6] * H_pos[2,petal-width]
-   + 0.7222222222222223 Q[120,6] * H_neg[2,sepal-length]
-   + 0.5 Q[120,6] * H_neg[2,sepal-width]
-   + 0.7966101694915254 Q[120,6] * H_neg[2,petal-length]
-   + 0.9166666666666666 Q[120,6] * H_neg[2,petal-width] - Q[120,6] * C4277
-   + Q[120,6] * C4284 ] >= 1
+   - Q[120,5] * C4284 ] >= 1
  qc305: E[97,2] + [ 0.5277777777777779 Q[97,5] * H_pos[2,sepal-length]
    + 0.375 Q[97,5] * H_pos[2,sepal-width]
    + 0.559322033898305 Q[97,5] * H_pos[2,petal-length]
@@ -11384,14 +8980,6 @@ Subject To
    - 0.375 Q[97,5] * H_neg[2,sepal-width]
    - 0.559322033898305 Q[97,5] * H_neg[2,petal-length]
    - 0.5 Q[97,5] * H_neg[2,petal-width] + Q[97,5] * C4277 - Q[97,5] * C4284
-   - 0.5277777777777779 Q[97,6] * H_pos[2,sepal-length]
-   - 0.375 Q[97,6] * H_pos[2,sepal-width]
-   - 0.559322033898305 Q[97,6] * H_pos[2,petal-length]
-   - 0.5 Q[97,6] * H_pos[2,petal-width]
-   + 0.5277777777777779 Q[97,6] * H_neg[2,sepal-length]
-   + 0.375 Q[97,6] * H_neg[2,sepal-width]
-   + 0.559322033898305 Q[97,6] * H_neg[2,petal-length]
-   + 0.5 Q[97,6] * H_neg[2,petal-width] - Q[97,6] * C4277 + Q[97,6] * C4284
    ] >= 1
  qc306: E[53,2] + [ 0.3333333333333333 Q[53,5] * H_pos[2,sepal-length]
    + 0.125 Q[53,5] * H_pos[2,sepal-width]
@@ -11401,14 +8989,6 @@ Subject To
    - 0.125 Q[53,5] * H_neg[2,sepal-width]
    - 0.5084745762711864 Q[53,5] * H_neg[2,petal-length]
    - 0.5 Q[53,5] * H_neg[2,petal-width] + Q[53,5] * C4277 - Q[53,5] * C4284
-   - 0.3333333333333333 Q[53,6] * H_pos[2,sepal-length]
-   - 0.125 Q[53,6] * H_pos[2,sepal-width]
-   - 0.5084745762711864 Q[53,6] * H_pos[2,petal-length]
-   - 0.5 Q[53,6] * H_pos[2,petal-width]
-   + 0.3333333333333333 Q[53,6] * H_neg[2,sepal-length]
-   + 0.125 Q[53,6] * H_neg[2,sepal-width]
-   + 0.5084745762711864 Q[53,6] * H_neg[2,petal-length]
-   + 0.5 Q[53,6] * H_neg[2,petal-width] - Q[53,6] * C4277 + Q[53,6] * C4284
    ] >= 1
  qc307: E[103,2] + [ 0.5555555555555556 Q[103,5] * H_pos[2,sepal-length]
    + 0.375 Q[103,5] * H_pos[2,sepal-width]
@@ -11418,15 +8998,7 @@ Subject To
    - 0.375 Q[103,5] * H_neg[2,sepal-width]
    - 0.7796610169491525 Q[103,5] * H_neg[2,petal-length]
    - 0.7083333333333334 Q[103,5] * H_neg[2,petal-width] + Q[103,5] * C4277
-   - Q[103,5] * C4284 - 0.5555555555555556 Q[103,6] * H_pos[2,sepal-length]
-   - 0.375 Q[103,6] * H_pos[2,sepal-width]
-   - 0.7796610169491525 Q[103,6] * H_pos[2,petal-length]
-   - 0.7083333333333334 Q[103,6] * H_pos[2,petal-width]
-   + 0.5555555555555556 Q[103,6] * H_neg[2,sepal-length]
-   + 0.375 Q[103,6] * H_neg[2,sepal-width]
-   + 0.7796610169491525 Q[103,6] * H_neg[2,petal-length]
-   + 0.7083333333333334 Q[103,6] * H_neg[2,petal-width] - Q[103,6] * C4277
-   + Q[103,6] * C4284 ] >= 1
+   - Q[103,5] * C4284 ] >= 1
  qc308: E[84,2] + [ 0.3055555555555556 Q[84,5] * H_pos[2,sepal-length]
    + 0.4166666666666667 Q[84,5] * H_pos[2,sepal-width]
    + 0.5932203389830508 Q[84,5] * H_pos[2,petal-length]
@@ -11435,24 +9007,12 @@ Subject To
    - 0.4166666666666667 Q[84,5] * H_neg[2,sepal-width]
    - 0.5932203389830508 Q[84,5] * H_neg[2,petal-length]
    - 0.5833333333333334 Q[84,5] * H_neg[2,petal-width] + Q[84,5] * C4277
-   - Q[84,5] * C4284 - 0.3055555555555556 Q[84,6] * H_pos[2,sepal-length]
-   - 0.4166666666666667 Q[84,6] * H_pos[2,sepal-width]
-   - 0.5932203389830508 Q[84,6] * H_pos[2,petal-length]
-   - 0.5833333333333334 Q[84,6] * H_pos[2,petal-width]
-   + 0.3055555555555556 Q[84,6] * H_neg[2,sepal-length]
-   + 0.4166666666666667 Q[84,6] * H_neg[2,sepal-width]
-   + 0.5932203389830508 Q[84,6] * H_neg[2,petal-length]
-   + 0.5833333333333334 Q[84,6] * H_neg[2,petal-width] - Q[84,6] * C4277
-   + Q[84,6] * C4284 ] >= 1
+   - Q[84,5] * C4284 ] >= 1
  qc309: E[13,2] + [ 0.4166666666666667 Q[13,5] * H_pos[2,sepal-width]
    + 0.0169491525423729 Q[13,5] * H_pos[2,petal-length]
    - 0.4166666666666667 Q[13,5] * H_neg[2,sepal-width]
    - 0.0169491525423729 Q[13,5] * H_neg[2,petal-length] + Q[13,5] * C4277
-   - Q[13,5] * C4284 - 0.4166666666666667 Q[13,6] * H_pos[2,sepal-width]
-   - 0.0169491525423729 Q[13,6] * H_pos[2,petal-length]
-   + 0.4166666666666667 Q[13,6] * H_neg[2,sepal-width]
-   + 0.0169491525423729 Q[13,6] * H_neg[2,petal-length] - Q[13,6] * C4277
-   + Q[13,6] * C4284 ] >= 1
+   - Q[13,5] * C4284 ] >= 1
  qc310: E[130,2] + [ 0.8611111111111112 Q[130,5] * H_pos[2,sepal-length]
    + 0.3333333333333333 Q[130,5] * H_pos[2,sepal-width]
    + 0.8644067796610169 Q[130,5] * H_pos[2,petal-length]
@@ -11461,15 +9021,7 @@ Subject To
    - 0.3333333333333333 Q[130,5] * H_neg[2,sepal-width]
    - 0.8644067796610169 Q[130,5] * H_neg[2,petal-length]
    - 0.75 Q[130,5] * H_neg[2,petal-width] + Q[130,5] * C4277
-   - Q[130,5] * C4284 - 0.8611111111111112 Q[130,6] * H_pos[2,sepal-length]
-   - 0.3333333333333333 Q[130,6] * H_pos[2,sepal-width]
-   - 0.8644067796610169 Q[130,6] * H_pos[2,petal-length]
-   - 0.75 Q[130,6] * H_pos[2,petal-width]
-   + 0.8611111111111112 Q[130,6] * H_neg[2,sepal-length]
-   + 0.3333333333333333 Q[130,6] * H_neg[2,sepal-width]
-   + 0.8644067796610169 Q[130,6] * H_neg[2,petal-length]
-   + 0.75 Q[130,6] * H_neg[2,petal-width] - Q[130,6] * C4277
-   + Q[130,6] * C4284 ] >= 1
+   - Q[130,5] * C4284 ] >= 1
  qc311: E[23,2] + [ 0.2222222222222221 Q[23,5] * H_pos[2,sepal-length]
    + 0.5416666666666665 Q[23,5] * H_pos[2,sepal-width]
    + 0.1186440677966101 Q[23,5] * H_pos[2,petal-length]
@@ -11478,15 +9030,7 @@ Subject To
    - 0.5416666666666665 Q[23,5] * H_neg[2,sepal-width]
    - 0.1186440677966101 Q[23,5] * H_neg[2,petal-length]
    - 0.1666666666666667 Q[23,5] * H_neg[2,petal-width] + Q[23,5] * C4277
-   - Q[23,5] * C4284 - 0.2222222222222221 Q[23,6] * H_pos[2,sepal-length]
-   - 0.5416666666666665 Q[23,6] * H_pos[2,sepal-width]
-   - 0.1186440677966101 Q[23,6] * H_pos[2,petal-length]
-   - 0.1666666666666667 Q[23,6] * H_pos[2,petal-width]
-   + 0.2222222222222221 Q[23,6] * H_neg[2,sepal-length]
-   + 0.5416666666666665 Q[23,6] * H_neg[2,sepal-width]
-   + 0.1186440677966101 Q[23,6] * H_neg[2,petal-length]
-   + 0.1666666666666667 Q[23,6] * H_neg[2,petal-width] - Q[23,6] * C4277
-   + Q[23,6] * C4284 ] >= 1
+   - Q[23,5] * C4284 ] >= 1
  qc312: E[49,2] + [ 0.1944444444444444 Q[49,5] * H_pos[2,sepal-length]
    + 0.5416666666666665 Q[49,5] * H_pos[2,sepal-width]
    + 0.0677966101694915 Q[49,5] * H_pos[2,petal-length]
@@ -11495,15 +9039,7 @@ Subject To
    - 0.5416666666666665 Q[49,5] * H_neg[2,sepal-width]
    - 0.0677966101694915 Q[49,5] * H_neg[2,petal-length]
    - 0.0416666666666667 Q[49,5] * H_neg[2,petal-width] + Q[49,5] * C4277
-   - Q[49,5] * C4284 - 0.1944444444444444 Q[49,6] * H_pos[2,sepal-length]
-   - 0.5416666666666665 Q[49,6] * H_pos[2,sepal-width]
-   - 0.0677966101694915 Q[49,6] * H_pos[2,petal-length]
-   - 0.0416666666666667 Q[49,6] * H_pos[2,petal-width]
-   + 0.1944444444444444 Q[49,6] * H_neg[2,sepal-length]
-   + 0.5416666666666665 Q[49,6] * H_neg[2,sepal-width]
-   + 0.0677966101694915 Q[49,6] * H_neg[2,petal-length]
-   + 0.0416666666666667 Q[49,6] * H_neg[2,petal-width] - Q[49,6] * C4277
-   + Q[49,6] * C4284 ] >= 1
+   - Q[49,5] * C4284 ] >= 1
  qc313: E[24,2] + [ 0.1388888888888888 Q[24,5] * H_pos[2,sepal-length]
    + 0.5833333333333333 Q[24,5] * H_pos[2,sepal-width]
    + 0.1525423728813559 Q[24,5] * H_pos[2,petal-length]
@@ -11512,15 +9048,7 @@ Subject To
    - 0.5833333333333333 Q[24,5] * H_neg[2,sepal-width]
    - 0.1525423728813559 Q[24,5] * H_neg[2,petal-length]
    - 0.0416666666666667 Q[24,5] * H_neg[2,petal-width] + Q[24,5] * C4277
-   - Q[24,5] * C4284 - 0.1388888888888888 Q[24,6] * H_pos[2,sepal-length]
-   - 0.5833333333333333 Q[24,6] * H_pos[2,sepal-width]
-   - 0.1525423728813559 Q[24,6] * H_pos[2,petal-length]
-   - 0.0416666666666667 Q[24,6] * H_pos[2,petal-width]
-   + 0.1388888888888888 Q[24,6] * H_neg[2,sepal-length]
-   + 0.5833333333333333 Q[24,6] * H_neg[2,sepal-width]
-   + 0.1525423728813559 Q[24,6] * H_neg[2,petal-length]
-   + 0.0416666666666667 Q[24,6] * H_neg[2,petal-width] - Q[24,6] * C4277
-   + Q[24,6] * C4284 ] >= 1
+   - Q[24,5] * C4284 ] >= 1
  qc314: E[78,2] + [ 0.4722222222222223 Q[78,5] * H_pos[2,sepal-length]
    + 0.375 Q[78,5] * H_pos[2,sepal-width]
    + 0.5932203389830508 Q[78,5] * H_pos[2,petal-length]
@@ -11529,15 +9057,7 @@ Subject To
    - 0.375 Q[78,5] * H_neg[2,sepal-width]
    - 0.5932203389830508 Q[78,5] * H_neg[2,petal-length]
    - 0.5833333333333334 Q[78,5] * H_neg[2,petal-width] + Q[78,5] * C4277
-   - Q[78,5] * C4284 - 0.4722222222222223 Q[78,6] * H_pos[2,sepal-length]
-   - 0.375 Q[78,6] * H_pos[2,sepal-width]
-   - 0.5932203389830508 Q[78,6] * H_pos[2,petal-length]
-   - 0.5833333333333334 Q[78,6] * H_pos[2,petal-width]
-   + 0.4722222222222223 Q[78,6] * H_neg[2,sepal-length]
-   + 0.375 Q[78,6] * H_neg[2,sepal-width]
-   + 0.5932203389830508 Q[78,6] * H_neg[2,petal-length]
-   + 0.5833333333333334 Q[78,6] * H_neg[2,petal-width] - Q[78,6] * C4277
-   + Q[78,6] * C4284 ] >= 1
+   - Q[78,5] * C4284 ] >= 1
  qc315: E[45,2] + [ 0.1388888888888888 Q[45,5] * H_pos[2,sepal-length]
    + 0.4166666666666667 Q[45,5] * H_pos[2,sepal-width]
    + 0.0677966101694915 Q[45,5] * H_pos[2,petal-length]
@@ -11546,15 +9066,7 @@ Subject To
    - 0.4166666666666667 Q[45,5] * H_neg[2,sepal-width]
    - 0.0677966101694915 Q[45,5] * H_neg[2,petal-length]
    - 0.0833333333333333 Q[45,5] * H_neg[2,petal-width] + Q[45,5] * C4277
-   - Q[45,5] * C4284 - 0.1388888888888888 Q[45,6] * H_pos[2,sepal-length]
-   - 0.4166666666666667 Q[45,6] * H_pos[2,sepal-width]
-   - 0.0677966101694915 Q[45,6] * H_pos[2,petal-length]
-   - 0.0833333333333333 Q[45,6] * H_pos[2,petal-width]
-   + 0.1388888888888888 Q[45,6] * H_neg[2,sepal-length]
-   + 0.4166666666666667 Q[45,6] * H_neg[2,sepal-width]
-   + 0.0677966101694915 Q[45,6] * H_neg[2,petal-length]
-   + 0.0833333333333333 Q[45,6] * H_neg[2,petal-width] - Q[45,6] * C4277
-   + Q[45,6] * C4284 ] >= 1
+   - Q[45,5] * C4284 ] >= 1
  qc316: E[104,2] + [ 0.6111111111111112 Q[104,5] * H_pos[2,sepal-length]
    + 0.4166666666666667 Q[104,5] * H_pos[2,sepal-width]
    + 0.8135593220338982 Q[104,5] * H_pos[2,petal-length]
@@ -11563,15 +9075,7 @@ Subject To
    - 0.4166666666666667 Q[104,5] * H_neg[2,sepal-width]
    - 0.8135593220338982 Q[104,5] * H_neg[2,petal-length]
    - 0.875 Q[104,5] * H_neg[2,petal-width] + Q[104,5] * C4277
-   - Q[104,5] * C4284 - 0.6111111111111112 Q[104,6] * H_pos[2,sepal-length]
-   - 0.4166666666666667 Q[104,6] * H_pos[2,sepal-width]
-   - 0.8135593220338982 Q[104,6] * H_pos[2,petal-length]
-   - 0.875 Q[104,6] * H_pos[2,petal-width]
-   + 0.6111111111111112 Q[104,6] * H_neg[2,sepal-length]
-   + 0.4166666666666667 Q[104,6] * H_neg[2,sepal-width]
-   + 0.8135593220338982 Q[104,6] * H_neg[2,petal-length]
-   + 0.875 Q[104,6] * H_neg[2,petal-width] - Q[104,6] * C4277
-   + Q[104,6] * C4284 ] >= 1
+   - Q[104,5] * C4284 ] >= 1
  qc317: E[58,2] + [ 0.6388888888888888 Q[58,5] * H_pos[2,sepal-length]
    + 0.375 Q[58,5] * H_pos[2,sepal-width]
    + 0.6101694915254237 Q[58,5] * H_pos[2,petal-length]
@@ -11580,14 +9084,6 @@ Subject To
    - 0.375 Q[58,5] * H_neg[2,sepal-width]
    - 0.6101694915254237 Q[58,5] * H_neg[2,petal-length]
    - 0.5 Q[58,5] * H_neg[2,petal-width] + Q[58,5] * C4277 - Q[58,5] * C4284
-   - 0.6388888888888888 Q[58,6] * H_pos[2,sepal-length]
-   - 0.375 Q[58,6] * H_pos[2,sepal-width]
-   - 0.6101694915254237 Q[58,6] * H_pos[2,petal-length]
-   - 0.5 Q[58,6] * H_pos[2,petal-width]
-   + 0.6388888888888888 Q[58,6] * H_neg[2,sepal-length]
-   + 0.375 Q[58,6] * H_neg[2,sepal-width]
-   + 0.6101694915254237 Q[58,6] * H_neg[2,petal-length]
-   + 0.5 Q[58,6] * H_neg[2,petal-width] - Q[58,6] * C4277 + Q[58,6] * C4284
    ] >= 1
  qc318: E[113,2] + [ 0.3888888888888888 Q[113,5] * H_pos[2,sepal-length]
    + 0.2083333333333333 Q[113,5] * H_pos[2,sepal-width]
@@ -11597,15 +9093,7 @@ Subject To
    - 0.2083333333333333 Q[113,5] * H_neg[2,sepal-width]
    - 0.6779661016949152 Q[113,5] * H_neg[2,petal-length]
    - 0.7916666666666667 Q[113,5] * H_neg[2,petal-width] + Q[113,5] * C4277
-   - Q[113,5] * C4284 - 0.3888888888888888 Q[113,6] * H_pos[2,sepal-length]
-   - 0.2083333333333333 Q[113,6] * H_pos[2,sepal-width]
-   - 0.6779661016949152 Q[113,6] * H_pos[2,petal-length]
-   - 0.7916666666666667 Q[113,6] * H_pos[2,petal-width]
-   + 0.3888888888888888 Q[113,6] * H_neg[2,sepal-length]
-   + 0.2083333333333333 Q[113,6] * H_neg[2,sepal-width]
-   + 0.6779661016949152 Q[113,6] * H_neg[2,petal-length]
-   + 0.7916666666666667 Q[113,6] * H_neg[2,petal-width] - Q[113,6] * C4277
-   + Q[113,6] * C4284 ] >= 1
+   - Q[113,5] * C4284 ] >= 1
  qc319: E[3,2] + [ 0.0833333333333333 Q[3,5] * H_pos[2,sepal-length]
    + 0.4583333333333333 Q[3,5] * H_pos[2,sepal-width]
    + 0.0847457627118644 Q[3,5] * H_pos[2,petal-length]
@@ -11614,15 +9102,7 @@ Subject To
    - 0.4583333333333333 Q[3,5] * H_neg[2,sepal-width]
    - 0.0847457627118644 Q[3,5] * H_neg[2,petal-length]
    - 0.0416666666666667 Q[3,5] * H_neg[2,petal-width] + Q[3,5] * C4277
-   - Q[3,5] * C4284 - 0.0833333333333333 Q[3,6] * H_pos[2,sepal-length]
-   - 0.4583333333333333 Q[3,6] * H_pos[2,sepal-width]
-   - 0.0847457627118644 Q[3,6] * H_pos[2,petal-length]
-   - 0.0416666666666667 Q[3,6] * H_pos[2,petal-width]
-   + 0.0833333333333333 Q[3,6] * H_neg[2,sepal-length]
-   + 0.4583333333333333 Q[3,6] * H_neg[2,sepal-width]
-   + 0.0847457627118644 Q[3,6] * H_neg[2,petal-length]
-   + 0.0416666666666667 Q[3,6] * H_neg[2,petal-width] - Q[3,6] * C4277
-   + Q[3,6] * C4284 ] >= 1
+   - Q[3,5] * C4284 ] >= 1
  qc320: E[146,2] + [ 0.5555555555555556 Q[146,5] * H_pos[2,sepal-length]
    + 0.2083333333333333 Q[146,5] * H_pos[2,sepal-width]
    + 0.6779661016949152 Q[146,5] * H_pos[2,petal-length]
@@ -11631,15 +9111,7 @@ Subject To
    - 0.2083333333333333 Q[146,5] * H_neg[2,sepal-width]
    - 0.6779661016949152 Q[146,5] * H_neg[2,petal-length]
    - 0.75 Q[146,5] * H_neg[2,petal-width] + Q[146,5] * C4277
-   - Q[146,5] * C4284 - 0.5555555555555556 Q[146,6] * H_pos[2,sepal-length]
-   - 0.2083333333333333 Q[146,6] * H_pos[2,sepal-width]
-   - 0.6779661016949152 Q[146,6] * H_pos[2,petal-length]
-   - 0.75 Q[146,6] * H_pos[2,petal-width]
-   + 0.5555555555555556 Q[146,6] * H_neg[2,sepal-length]
-   + 0.2083333333333333 Q[146,6] * H_neg[2,sepal-width]
-   + 0.6779661016949152 Q[146,6] * H_neg[2,petal-length]
-   + 0.75 Q[146,6] * H_neg[2,petal-width] - Q[146,6] * C4277
-   + Q[146,6] * C4284 ] >= 1
+   - Q[146,5] * C4284 ] >= 1
  qc321: E[88,2] + [ 0.3611111111111109 Q[88,5] * H_pos[2,sepal-length]
    + 0.4166666666666667 Q[88,5] * H_pos[2,sepal-width]
    + 0.5254237288135593 Q[88,5] * H_pos[2,petal-length]
@@ -11648,14 +9120,6 @@ Subject To
    - 0.4166666666666667 Q[88,5] * H_neg[2,sepal-width]
    - 0.5254237288135593 Q[88,5] * H_neg[2,petal-length]
    - 0.5 Q[88,5] * H_neg[2,petal-width] + Q[88,5] * C4277 - Q[88,5] * C4284
-   - 0.3611111111111109 Q[88,6] * H_pos[2,sepal-length]
-   - 0.4166666666666667 Q[88,6] * H_pos[2,sepal-width]
-   - 0.5254237288135593 Q[88,6] * H_pos[2,petal-length]
-   - 0.5 Q[88,6] * H_pos[2,petal-width]
-   + 0.3611111111111109 Q[88,6] * H_neg[2,sepal-length]
-   + 0.4166666666666667 Q[88,6] * H_neg[2,sepal-width]
-   + 0.5254237288135593 Q[88,6] * H_neg[2,petal-length]
-   + 0.5 Q[88,6] * H_neg[2,petal-width] - Q[88,6] * C4277 + Q[88,6] * C4284
    ] >= 1
  qc322: E[138,2] + [ 0.4722222222222223 Q[138,5] * H_pos[2,sepal-length]
    + 0.4166666666666667 Q[138,5] * H_pos[2,sepal-width]
@@ -11665,15 +9129,7 @@ Subject To
    - 0.4166666666666667 Q[138,5] * H_neg[2,sepal-width]
    - 0.6440677966101694 Q[138,5] * H_neg[2,petal-length]
    - 0.7083333333333334 Q[138,5] * H_neg[2,petal-width] + Q[138,5] * C4277
-   - Q[138,5] * C4284 - 0.4722222222222223 Q[138,6] * H_pos[2,sepal-length]
-   - 0.4166666666666667 Q[138,6] * H_pos[2,sepal-width]
-   - 0.6440677966101694 Q[138,6] * H_pos[2,petal-length]
-   - 0.7083333333333334 Q[138,6] * H_pos[2,petal-width]
-   + 0.4722222222222223 Q[138,6] * H_neg[2,sepal-length]
-   + 0.4166666666666667 Q[138,6] * H_neg[2,sepal-width]
-   + 0.6440677966101694 Q[138,6] * H_neg[2,petal-length]
-   + 0.7083333333333334 Q[138,6] * H_neg[2,petal-width] - Q[138,6] * C4277
-   + Q[138,6] * C4284 ] >= 1
+   - Q[138,5] * C4284 ] >= 1
  qc323: E[128,2] + [ 0.5833333333333335 Q[128,5] * H_pos[2,sepal-length]
    + 0.3333333333333333 Q[128,5] * H_pos[2,sepal-width]
    + 0.7796610169491525 Q[128,5] * H_pos[2,petal-length]
@@ -11682,15 +9138,7 @@ Subject To
    - 0.3333333333333333 Q[128,5] * H_neg[2,sepal-width]
    - 0.7796610169491525 Q[128,5] * H_neg[2,petal-length]
    - 0.8333333333333335 Q[128,5] * H_neg[2,petal-width] + Q[128,5] * C4277
-   - Q[128,5] * C4284 - 0.5833333333333335 Q[128,6] * H_pos[2,sepal-length]
-   - 0.3333333333333333 Q[128,6] * H_pos[2,sepal-width]
-   - 0.7796610169491525 Q[128,6] * H_pos[2,petal-length]
-   - 0.8333333333333335 Q[128,6] * H_pos[2,petal-width]
-   + 0.5833333333333335 Q[128,6] * H_neg[2,sepal-length]
-   + 0.3333333333333333 Q[128,6] * H_neg[2,sepal-width]
-   + 0.7796610169491525 Q[128,6] * H_neg[2,petal-length]
-   + 0.8333333333333335 Q[128,6] * H_neg[2,petal-width] - Q[128,6] * C4277
-   + Q[128,6] * C4284 ] >= 1
+   - Q[128,5] * C4284 ] >= 1
  qc324: E[76,2] + [ 0.6944444444444444 Q[76,5] * H_pos[2,sepal-length]
    + 0.3333333333333333 Q[76,5] * H_pos[2,sepal-width]
    + 0.6440677966101694 Q[76,5] * H_pos[2,petal-length]
@@ -11699,15 +9147,7 @@ Subject To
    - 0.3333333333333333 Q[76,5] * H_neg[2,sepal-width]
    - 0.6440677966101694 Q[76,5] * H_neg[2,petal-length]
    - 0.5416666666666667 Q[76,5] * H_neg[2,petal-width] + Q[76,5] * C4277
-   - Q[76,5] * C4284 - 0.6944444444444444 Q[76,6] * H_pos[2,sepal-length]
-   - 0.3333333333333333 Q[76,6] * H_pos[2,sepal-width]
-   - 0.6440677966101694 Q[76,6] * H_pos[2,petal-length]
-   - 0.5416666666666667 Q[76,6] * H_pos[2,petal-width]
-   + 0.6944444444444444 Q[76,6] * H_neg[2,sepal-length]
-   + 0.3333333333333333 Q[76,6] * H_neg[2,sepal-width]
-   + 0.6440677966101694 Q[76,6] * H_neg[2,petal-length]
-   + 0.5416666666666667 Q[76,6] * H_neg[2,petal-width] - Q[76,6] * C4277
-   + Q[76,6] * C4284 ] >= 1
+   - Q[76,5] * C4284 ] >= 1
  qc325: E[70,2] + [ 0.4444444444444446 Q[70,5] * H_pos[2,sepal-length]
    + 0.5 Q[70,5] * H_pos[2,sepal-width]
    + 0.6440677966101694 Q[70,5] * H_pos[2,petal-length]
@@ -11716,15 +9156,7 @@ Subject To
    - 0.5 Q[70,5] * H_neg[2,sepal-width]
    - 0.6440677966101694 Q[70,5] * H_neg[2,petal-length]
    - 0.7083333333333334 Q[70,5] * H_neg[2,petal-width] + Q[70,5] * C4277
-   - Q[70,5] * C4284 - 0.4444444444444446 Q[70,6] * H_pos[2,sepal-length]
-   - 0.5 Q[70,6] * H_pos[2,sepal-width]
-   - 0.6440677966101694 Q[70,6] * H_pos[2,petal-length]
-   - 0.7083333333333334 Q[70,6] * H_pos[2,petal-width]
-   + 0.4444444444444446 Q[70,6] * H_neg[2,sepal-length]
-   + 0.5 Q[70,6] * H_neg[2,sepal-width]
-   + 0.6440677966101694 Q[70,6] * H_neg[2,petal-length]
-   + 0.7083333333333334 Q[70,6] * H_neg[2,petal-width] - Q[70,6] * C4277
-   + Q[70,6] * C4284 ] >= 1
+   - Q[70,5] * C4284 ] >= 1
  qc326: E[145,2] + [ 0.6666666666666667 Q[145,5] * H_pos[2,sepal-length]
    + 0.4166666666666667 Q[145,5] * H_pos[2,sepal-width]
    + 0.711864406779661 Q[145,5] * H_pos[2,petal-length]
@@ -11733,15 +9165,7 @@ Subject To
    - 0.4166666666666667 Q[145,5] * H_neg[2,sepal-width]
    - 0.711864406779661 Q[145,5] * H_neg[2,petal-length]
    - 0.9166666666666666 Q[145,5] * H_neg[2,petal-width] + Q[145,5] * C4277
-   - Q[145,5] * C4284 - 0.6666666666666667 Q[145,6] * H_pos[2,sepal-length]
-   - 0.4166666666666667 Q[145,6] * H_pos[2,sepal-width]
-   - 0.711864406779661 Q[145,6] * H_pos[2,petal-length]
-   - 0.9166666666666666 Q[145,6] * H_pos[2,petal-width]
-   + 0.6666666666666667 Q[145,6] * H_neg[2,sepal-length]
-   + 0.4166666666666667 Q[145,6] * H_neg[2,sepal-width]
-   + 0.711864406779661 Q[145,6] * H_neg[2,petal-length]
-   + 0.9166666666666666 Q[145,6] * H_neg[2,petal-width] - Q[145,6] * C4277
-   + Q[145,6] * C4284 ] >= 1
+   - Q[145,5] * C4284 ] >= 1
  qc327: E[91,2] + [ 0.5 Q[91,5] * H_pos[2,sepal-length]
    + 0.4166666666666667 Q[91,5] * H_pos[2,sepal-width]
    + 0.6101694915254237 Q[91,5] * H_pos[2,petal-length]
@@ -11750,15 +9174,7 @@ Subject To
    - 0.4166666666666667 Q[91,5] * H_neg[2,sepal-width]
    - 0.6101694915254237 Q[91,5] * H_neg[2,petal-length]
    - 0.5416666666666667 Q[91,5] * H_neg[2,petal-width] + Q[91,5] * C4277
-   - Q[91,5] * C4284 - 0.5 Q[91,6] * H_pos[2,sepal-length]
-   - 0.4166666666666667 Q[91,6] * H_pos[2,sepal-width]
-   - 0.6101694915254237 Q[91,6] * H_pos[2,petal-length]
-   - 0.5416666666666667 Q[91,6] * H_pos[2,petal-width]
-   + 0.5 Q[91,6] * H_neg[2,sepal-length]
-   + 0.4166666666666667 Q[91,6] * H_neg[2,sepal-width]
-   + 0.6101694915254237 Q[91,6] * H_neg[2,petal-length]
-   + 0.5416666666666667 Q[91,6] * H_neg[2,petal-width] - Q[91,6] * C4277
-   + Q[91,6] * C4284 ] >= 1
+   - Q[91,5] * C4284 ] >= 1
  qc328: E[19,2] + [ 0.2222222222222221 Q[19,5] * H_pos[2,sepal-length]
    + 0.75 Q[19,5] * H_pos[2,sepal-width]
    + 0.0847457627118644 Q[19,5] * H_pos[2,petal-length]
@@ -11767,15 +9183,7 @@ Subject To
    - 0.75 Q[19,5] * H_neg[2,sepal-width]
    - 0.0847457627118644 Q[19,5] * H_neg[2,petal-length]
    - 0.0833333333333333 Q[19,5] * H_neg[2,petal-width] + Q[19,5] * C4277
-   - Q[19,5] * C4284 - 0.2222222222222221 Q[19,6] * H_pos[2,sepal-length]
-   - 0.75 Q[19,6] * H_pos[2,sepal-width]
-   - 0.0847457627118644 Q[19,6] * H_pos[2,petal-length]
-   - 0.0833333333333333 Q[19,6] * H_pos[2,petal-width]
-   + 0.2222222222222221 Q[19,6] * H_neg[2,sepal-length]
-   + 0.75 Q[19,6] * H_neg[2,sepal-width]
-   + 0.0847457627118644 Q[19,6] * H_neg[2,petal-length]
-   + 0.0833333333333333 Q[19,6] * H_neg[2,petal-width] - Q[19,6] * C4277
-   + Q[19,6] * C4284 ] >= 1
+   - Q[19,5] * C4284 ] >= 1
  qc329: E[115,2] + [ 0.5833333333333335 Q[115,5] * H_pos[2,sepal-length]
    + 0.5 Q[115,5] * H_pos[2,sepal-width]
    + 0.7288135593220338 Q[115,5] * H_pos[2,petal-length]
@@ -11784,15 +9192,7 @@ Subject To
    - 0.5 Q[115,5] * H_neg[2,sepal-width]
    - 0.7288135593220338 Q[115,5] * H_neg[2,petal-length]
    - 0.9166666666666666 Q[115,5] * H_neg[2,petal-width] + Q[115,5] * C4277
-   - Q[115,5] * C4284 - 0.5833333333333335 Q[115,6] * H_pos[2,sepal-length]
-   - 0.5 Q[115,6] * H_pos[2,sepal-width]
-   - 0.7288135593220338 Q[115,6] * H_pos[2,petal-length]
-   - 0.9166666666666666 Q[115,6] * H_pos[2,petal-width]
-   + 0.5833333333333335 Q[115,6] * H_neg[2,sepal-length]
-   + 0.5 Q[115,6] * H_neg[2,sepal-width]
-   + 0.7288135593220338 Q[115,6] * H_neg[2,petal-length]
-   + 0.9166666666666666 Q[115,6] * H_neg[2,petal-width] - Q[115,6] * C4277
-   + Q[115,6] * C4284 ] >= 1
+   - Q[115,5] * C4284 ] >= 1
  qc330: E[28,2] + [ 0.25 Q[28,5] * H_pos[2,sepal-length]
    + 0.5833333333333333 Q[28,5] * H_pos[2,sepal-width]
    + 0.0677966101694915 Q[28,5] * H_pos[2,petal-length]
@@ -11801,28 +9201,14 @@ Subject To
    - 0.5833333333333333 Q[28,5] * H_neg[2,sepal-width]
    - 0.0677966101694915 Q[28,5] * H_neg[2,petal-length]
    - 0.0416666666666667 Q[28,5] * H_neg[2,petal-width] + Q[28,5] * C4277
-   - Q[28,5] * C4284 - 0.25 Q[28,6] * H_pos[2,sepal-length]
-   - 0.5833333333333333 Q[28,6] * H_pos[2,sepal-width]
-   - 0.0677966101694915 Q[28,6] * H_pos[2,petal-length]
-   - 0.0416666666666667 Q[28,6] * H_pos[2,petal-width]
-   + 0.25 Q[28,6] * H_neg[2,sepal-length]
-   + 0.5833333333333333 Q[28,6] * H_neg[2,sepal-width]
-   + 0.0677966101694915 Q[28,6] * H_neg[2,petal-length]
-   + 0.0416666666666667 Q[28,6] * H_neg[2,petal-width] - Q[28,6] * C4277
-   + Q[28,6] * C4284 ] >= 1
+   - Q[28,5] * C4284 ] >= 1
  qc331: E[37,2] + [ 0.1666666666666667 Q[37,5] * H_pos[2,sepal-length]
    + 0.4583333333333333 Q[37,5] * H_pos[2,sepal-width]
    + 0.0847457627118644 Q[37,5] * H_pos[2,petal-length]
    - 0.1666666666666667 Q[37,5] * H_neg[2,sepal-length]
    - 0.4583333333333333 Q[37,5] * H_neg[2,sepal-width]
    - 0.0847457627118644 Q[37,5] * H_neg[2,petal-length] + Q[37,5] * C4277
-   - Q[37,5] * C4284 - 0.1666666666666667 Q[37,6] * H_pos[2,sepal-length]
-   - 0.4583333333333333 Q[37,6] * H_pos[2,sepal-width]
-   - 0.0847457627118644 Q[37,6] * H_pos[2,petal-length]
-   + 0.1666666666666667 Q[37,6] * H_neg[2,sepal-length]
-   + 0.4583333333333333 Q[37,6] * H_neg[2,sepal-width]
-   + 0.0847457627118644 Q[37,6] * H_neg[2,petal-length] - Q[37,6] * C4277
-   + Q[37,6] * C4284 ] >= 1
+   - Q[37,5] * C4284 ] >= 1
  qc332: E[29,2] + [ 0.1111111111111112 Q[29,5] * H_pos[2,sepal-length]
    + 0.5 Q[29,5] * H_pos[2,sepal-width]
    + 0.1016949152542373 Q[29,5] * H_pos[2,petal-length]
@@ -11831,15 +9217,7 @@ Subject To
    - 0.5 Q[29,5] * H_neg[2,sepal-width]
    - 0.1016949152542373 Q[29,5] * H_neg[2,petal-length]
    - 0.0416666666666667 Q[29,5] * H_neg[2,petal-width] + Q[29,5] * C4277
-   - Q[29,5] * C4284 - 0.1111111111111112 Q[29,6] * H_pos[2,sepal-length]
-   - 0.5 Q[29,6] * H_pos[2,sepal-width]
-   - 0.1016949152542373 Q[29,6] * H_pos[2,petal-length]
-   - 0.0416666666666667 Q[29,6] * H_pos[2,petal-width]
-   + 0.1111111111111112 Q[29,6] * H_neg[2,sepal-length]
-   + 0.5 Q[29,6] * H_neg[2,sepal-width]
-   + 0.1016949152542373 Q[29,6] * H_neg[2,petal-length]
-   + 0.0416666666666667 Q[29,6] * H_neg[2,petal-width] - Q[29,6] * C4277
-   + Q[29,6] * C4284 ] >= 1
+   - Q[29,5] * C4284 ] >= 1
  qc333: E[122,2] + [ 0.9444444444444442 Q[122,5] * H_pos[2,sepal-length]
    + 0.3333333333333333 Q[122,5] * H_pos[2,sepal-width]
    + 0.9661016949152543 Q[122,5] * H_pos[2,petal-length]
@@ -11848,15 +9226,7 @@ Subject To
    - 0.3333333333333333 Q[122,5] * H_neg[2,sepal-width]
    - 0.9661016949152543 Q[122,5] * H_neg[2,petal-length]
    - 0.7916666666666667 Q[122,5] * H_neg[2,petal-width] + Q[122,5] * C4277
-   - Q[122,5] * C4284 - 0.9444444444444442 Q[122,6] * H_pos[2,sepal-length]
-   - 0.3333333333333333 Q[122,6] * H_pos[2,sepal-width]
-   - 0.9661016949152543 Q[122,6] * H_pos[2,petal-length]
-   - 0.7916666666666667 Q[122,6] * H_pos[2,petal-width]
-   + 0.9444444444444442 Q[122,6] * H_neg[2,sepal-length]
-   + 0.3333333333333333 Q[122,6] * H_neg[2,sepal-width]
-   + 0.9661016949152543 Q[122,6] * H_neg[2,petal-length]
-   + 0.7916666666666667 Q[122,6] * H_neg[2,petal-width] - Q[122,6] * C4277
-   + Q[122,6] * C4284 ] >= 1
+   - Q[122,5] * C4284 ] >= 1
  qc334: E[74,2] + [ 0.5833333333333335 Q[74,5] * H_pos[2,sepal-length]
    + 0.375 Q[74,5] * H_pos[2,sepal-width]
    + 0.559322033898305 Q[74,5] * H_pos[2,petal-length]
@@ -11865,14 +9235,6 @@ Subject To
    - 0.375 Q[74,5] * H_neg[2,sepal-width]
    - 0.559322033898305 Q[74,5] * H_neg[2,petal-length]
    - 0.5 Q[74,5] * H_neg[2,petal-width] + Q[74,5] * C4277 - Q[74,5] * C4284
-   - 0.5833333333333335 Q[74,6] * H_pos[2,sepal-length]
-   - 0.375 Q[74,6] * H_pos[2,sepal-width]
-   - 0.559322033898305 Q[74,6] * H_pos[2,petal-length]
-   - 0.5 Q[74,6] * H_pos[2,petal-width]
-   + 0.5833333333333335 Q[74,6] * H_neg[2,sepal-length]
-   + 0.375 Q[74,6] * H_neg[2,sepal-width]
-   + 0.559322033898305 Q[74,6] * H_neg[2,petal-length]
-   + 0.5 Q[74,6] * H_neg[2,petal-width] - Q[74,6] * C4277 + Q[74,6] * C4284
    ] >= 1
  qc335: E[46,2] + [ 0.2222222222222221 Q[46,5] * H_pos[2,sepal-length]
    + 0.75 Q[46,5] * H_pos[2,sepal-width]
@@ -11882,15 +9244,7 @@ Subject To
    - 0.75 Q[46,5] * H_neg[2,sepal-width]
    - 0.1016949152542373 Q[46,5] * H_neg[2,petal-length]
    - 0.0416666666666667 Q[46,5] * H_neg[2,petal-width] + Q[46,5] * C4277
-   - Q[46,5] * C4284 - 0.2222222222222221 Q[46,6] * H_pos[2,sepal-length]
-   - 0.75 Q[46,6] * H_pos[2,sepal-width]
-   - 0.1016949152542373 Q[46,6] * H_pos[2,petal-length]
-   - 0.0416666666666667 Q[46,6] * H_pos[2,petal-width]
-   + 0.2222222222222221 Q[46,6] * H_neg[2,sepal-length]
-   + 0.75 Q[46,6] * H_neg[2,sepal-width]
-   + 0.1016949152542373 Q[46,6] * H_neg[2,petal-length]
-   + 0.0416666666666667 Q[46,6] * H_neg[2,petal-width] - Q[46,6] * C4277
-   + Q[46,6] * C4284 ] >= 1
+   - Q[46,5] * C4284 ] >= 1
  qc336: E[111,3] + [ 0.5833333333333335 Q[111,7] * H_pos[3,sepal-length]
    + 0.2916666666666667 Q[111,7] * H_pos[3,sepal-width]
    + 0.7288135593220338 Q[111,7] * H_pos[3,petal-length]
@@ -11899,15 +9253,7 @@ Subject To
    - 0.2916666666666667 Q[111,7] * H_neg[3,sepal-width]
    - 0.7288135593220338 Q[111,7] * H_neg[3,petal-length]
    - 0.75 Q[111,7] * H_neg[3,petal-width] + Q[111,7] * C4278
-   - Q[111,7] * C4285 - 0.5833333333333335 Q[111,8] * H_pos[3,sepal-length]
-   - 0.2916666666666667 Q[111,8] * H_pos[3,sepal-width]
-   - 0.7288135593220338 Q[111,8] * H_pos[3,petal-length]
-   - 0.75 Q[111,8] * H_pos[3,petal-width]
-   + 0.5833333333333335 Q[111,8] * H_neg[3,sepal-length]
-   + 0.2916666666666667 Q[111,8] * H_neg[3,sepal-width]
-   + 0.7288135593220338 Q[111,8] * H_neg[3,petal-length]
-   + 0.75 Q[111,8] * H_neg[3,petal-width] - Q[111,8] * C4278
-   + Q[111,8] * C4285 ] >= 1
+   - Q[111,7] * C4285 ] >= 1
  qc337: E[134,3] + [ 0.5 Q[134,7] * H_pos[3,sepal-length]
    + 0.25 Q[134,7] * H_pos[3,sepal-width]
    + 0.7796610169491525 Q[134,7] * H_pos[3,petal-length]
@@ -11916,15 +9262,7 @@ Subject To
    - 0.25 Q[134,7] * H_neg[3,sepal-width]
    - 0.7796610169491525 Q[134,7] * H_neg[3,petal-length]
    - 0.5416666666666667 Q[134,7] * H_neg[3,petal-width] + Q[134,7] * C4278
-   - Q[134,7] * C4285 - 0.5 Q[134,8] * H_pos[3,sepal-length]
-   - 0.25 Q[134,8] * H_pos[3,sepal-width]
-   - 0.7796610169491525 Q[134,8] * H_pos[3,petal-length]
-   - 0.5416666666666667 Q[134,8] * H_pos[3,petal-width]
-   + 0.5 Q[134,8] * H_neg[3,sepal-length]
-   + 0.25 Q[134,8] * H_neg[3,sepal-width]
-   + 0.7796610169491525 Q[134,8] * H_neg[3,petal-length]
-   + 0.5416666666666667 Q[134,8] * H_neg[3,petal-width] - Q[134,8] * C4278
-   + Q[134,8] * C4285 ] >= 1
+   - Q[134,7] * C4285 ] >= 1
  qc338: E[133,3] + [ 0.5555555555555556 Q[133,7] * H_pos[3,sepal-length]
    + 0.3333333333333333 Q[133,7] * H_pos[3,sepal-width]
    + 0.6949152542372881 Q[133,7] * H_pos[3,petal-length]
@@ -11933,15 +9271,7 @@ Subject To
    - 0.3333333333333333 Q[133,7] * H_neg[3,sepal-width]
    - 0.6949152542372881 Q[133,7] * H_neg[3,petal-length]
    - 0.5833333333333334 Q[133,7] * H_neg[3,petal-width] + Q[133,7] * C4278
-   - Q[133,7] * C4285 - 0.5555555555555556 Q[133,8] * H_pos[3,sepal-length]
-   - 0.3333333333333333 Q[133,8] * H_pos[3,sepal-width]
-   - 0.6949152542372881 Q[133,8] * H_pos[3,petal-length]
-   - 0.5833333333333334 Q[133,8] * H_pos[3,petal-width]
-   + 0.5555555555555556 Q[133,8] * H_neg[3,sepal-length]
-   + 0.3333333333333333 Q[133,8] * H_neg[3,sepal-width]
-   + 0.6949152542372881 Q[133,8] * H_neg[3,petal-length]
-   + 0.5833333333333334 Q[133,8] * H_neg[3,petal-width] - Q[133,8] * C4278
-   + Q[133,8] * C4285 ] >= 1
+   - Q[133,7] * C4285 ] >= 1
  qc339: E[93,3] + [ 0.1944444444444444 Q[93,7] * H_pos[3,sepal-length]
    + 0.125 Q[93,7] * H_pos[3,sepal-width]
    + 0.3898305084745762 Q[93,7] * H_pos[3,petal-length]
@@ -11950,15 +9280,7 @@ Subject To
    - 0.125 Q[93,7] * H_neg[3,sepal-width]
    - 0.3898305084745762 Q[93,7] * H_neg[3,petal-length]
    - 0.375 Q[93,7] * H_neg[3,petal-width] + Q[93,7] * C4278
-   - Q[93,7] * C4285 - 0.1944444444444444 Q[93,8] * H_pos[3,sepal-length]
-   - 0.125 Q[93,8] * H_pos[3,sepal-width]
-   - 0.3898305084745762 Q[93,8] * H_pos[3,petal-length]
-   - 0.375 Q[93,8] * H_pos[3,petal-width]
-   + 0.1944444444444444 Q[93,8] * H_neg[3,sepal-length]
-   + 0.125 Q[93,8] * H_neg[3,sepal-width]
-   + 0.3898305084745762 Q[93,8] * H_neg[3,petal-length]
-   + 0.375 Q[93,8] * H_neg[3,petal-width] - Q[93,8] * C4278
-   + Q[93,8] * C4285 ] >= 1
+   - Q[93,7] * C4285 ] >= 1
  qc340: E[51,3] + [ 0.5833333333333335 Q[51,7] * H_pos[3,sepal-length]
    + 0.5 Q[51,7] * H_pos[3,sepal-width]
    + 0.5932203389830508 Q[51,7] * H_pos[3,petal-length]
@@ -11967,15 +9289,7 @@ Subject To
    - 0.5 Q[51,7] * H_neg[3,sepal-width]
    - 0.5932203389830508 Q[51,7] * H_neg[3,petal-length]
    - 0.5833333333333334 Q[51,7] * H_neg[3,petal-width] + Q[51,7] * C4278
-   - Q[51,7] * C4285 - 0.5833333333333335 Q[51,8] * H_pos[3,sepal-length]
-   - 0.5 Q[51,8] * H_pos[3,sepal-width]
-   - 0.5932203389830508 Q[51,8] * H_pos[3,petal-length]
-   - 0.5833333333333334 Q[51,8] * H_pos[3,petal-width]
-   + 0.5833333333333335 Q[51,8] * H_neg[3,sepal-length]
-   + 0.5 Q[51,8] * H_neg[3,sepal-width]
-   + 0.5932203389830508 Q[51,8] * H_neg[3,petal-length]
-   + 0.5833333333333334 Q[51,8] * H_neg[3,petal-width] - Q[51,8] * C4278
-   + Q[51,8] * C4285 ] >= 1
+   - Q[51,7] * C4285 ] >= 1
  qc341: E[41,3] + [ 0.0555555555555556 Q[41,7] * H_pos[3,sepal-length]
    + 0.125 Q[41,7] * H_pos[3,sepal-width]
    + 0.0508474576271186 Q[41,7] * H_pos[3,petal-length]
@@ -11984,15 +9298,7 @@ Subject To
    - 0.125 Q[41,7] * H_neg[3,sepal-width]
    - 0.0508474576271186 Q[41,7] * H_neg[3,petal-length]
    - 0.0833333333333333 Q[41,7] * H_neg[3,petal-width] + Q[41,7] * C4278
-   - Q[41,7] * C4285 - 0.0555555555555556 Q[41,8] * H_pos[3,sepal-length]
-   - 0.125 Q[41,8] * H_pos[3,sepal-width]
-   - 0.0508474576271186 Q[41,8] * H_pos[3,petal-length]
-   - 0.0833333333333333 Q[41,8] * H_pos[3,petal-width]
-   + 0.0555555555555556 Q[41,8] * H_neg[3,sepal-length]
-   + 0.125 Q[41,8] * H_neg[3,sepal-width]
-   + 0.0508474576271186 Q[41,8] * H_neg[3,petal-length]
-   + 0.0833333333333333 Q[41,8] * H_neg[3,petal-width] - Q[41,8] * C4278
-   + Q[41,8] * C4285 ] >= 1
+   - Q[41,7] * C4285 ] >= 1
  qc342: E[90,3] + [ 0.3333333333333333 Q[90,7] * H_pos[3,sepal-length]
    + 0.25 Q[90,7] * H_pos[3,sepal-width]
    + 0.576271186440678 Q[90,7] * H_pos[3,petal-length]
@@ -12001,15 +9307,7 @@ Subject To
    - 0.25 Q[90,7] * H_neg[3,sepal-width]
    - 0.576271186440678 Q[90,7] * H_neg[3,petal-length]
    - 0.4583333333333333 Q[90,7] * H_neg[3,petal-width] + Q[90,7] * C4278
-   - Q[90,7] * C4285 - 0.3333333333333333 Q[90,8] * H_pos[3,sepal-length]
-   - 0.25 Q[90,8] * H_pos[3,sepal-width]
-   - 0.576271186440678 Q[90,8] * H_pos[3,petal-length]
-   - 0.4583333333333333 Q[90,8] * H_pos[3,petal-width]
-   + 0.3333333333333333 Q[90,8] * H_neg[3,sepal-length]
-   + 0.25 Q[90,8] * H_neg[3,sepal-width]
-   + 0.576271186440678 Q[90,8] * H_neg[3,petal-length]
-   + 0.4583333333333333 Q[90,8] * H_neg[3,petal-width] - Q[90,8] * C4278
-   + Q[90,8] * C4285 ] >= 1
+   - Q[90,7] * C4285 ] >= 1
  qc343: E[67,3] + [ 0.4166666666666665 Q[67,7] * H_pos[3,sepal-length]
    + 0.2916666666666667 Q[67,7] * H_pos[3,sepal-width]
    + 0.5254237288135593 Q[67,7] * H_pos[3,petal-length]
@@ -12018,15 +9316,7 @@ Subject To
    - 0.2916666666666667 Q[67,7] * H_neg[3,sepal-width]
    - 0.5254237288135593 Q[67,7] * H_neg[3,petal-length]
    - 0.375 Q[67,7] * H_neg[3,petal-width] + Q[67,7] * C4278
-   - Q[67,7] * C4285 - 0.4166666666666665 Q[67,8] * H_pos[3,sepal-length]
-   - 0.2916666666666667 Q[67,8] * H_pos[3,sepal-width]
-   - 0.5254237288135593 Q[67,8] * H_pos[3,petal-length]
-   - 0.375 Q[67,8] * H_pos[3,petal-width]
-   + 0.4166666666666665 Q[67,8] * H_neg[3,sepal-length]
-   + 0.2916666666666667 Q[67,8] * H_neg[3,sepal-width]
-   + 0.5254237288135593 Q[67,8] * H_neg[3,petal-length]
-   + 0.375 Q[67,8] * H_neg[3,petal-width] - Q[67,8] * C4278
-   + Q[67,8] * C4285 ] >= 1
+   - Q[67,7] * C4285 ] >= 1
  qc344: E[131,3] + [ Q[131,7] * H_pos[3,sepal-length]
    + 0.75 Q[131,7] * H_pos[3,sepal-width]
    + 0.9152542372881356 Q[131,7] * H_pos[3,petal-length]
@@ -12035,15 +9325,7 @@ Subject To
    - 0.75 Q[131,7] * H_neg[3,sepal-width]
    - 0.9152542372881356 Q[131,7] * H_neg[3,petal-length]
    - 0.7916666666666667 Q[131,7] * H_neg[3,petal-width] + Q[131,7] * C4278
-   - Q[131,7] * C4285 - Q[131,8] * H_pos[3,sepal-length]
-   - 0.75 Q[131,8] * H_pos[3,sepal-width]
-   - 0.9152542372881356 Q[131,8] * H_pos[3,petal-length]
-   - 0.7916666666666667 Q[131,8] * H_pos[3,petal-width]
-   + Q[131,8] * H_neg[3,sepal-length]
-   + 0.75 Q[131,8] * H_neg[3,sepal-width]
-   + 0.9152542372881356 Q[131,8] * H_neg[3,petal-length]
-   + 0.7916666666666667 Q[131,8] * H_neg[3,petal-width] - Q[131,8] * C4278
-   + Q[131,8] * C4285 ] >= 1
+   - Q[131,7] * C4285 ] >= 1
  qc345: E[121,3] + [ 0.3611111111111109 Q[121,7] * H_pos[3,sepal-length]
    + 0.3333333333333333 Q[121,7] * H_pos[3,sepal-width]
    + 0.6610169491525424 Q[121,7] * H_pos[3,petal-length]
@@ -12052,15 +9334,7 @@ Subject To
    - 0.3333333333333333 Q[121,7] * H_neg[3,sepal-width]
    - 0.6610169491525424 Q[121,7] * H_neg[3,petal-length]
    - 0.7916666666666667 Q[121,7] * H_neg[3,petal-width] + Q[121,7] * C4278
-   - Q[121,7] * C4285 - 0.3611111111111109 Q[121,8] * H_pos[3,sepal-length]
-   - 0.3333333333333333 Q[121,8] * H_pos[3,sepal-width]
-   - 0.6610169491525424 Q[121,8] * H_pos[3,petal-length]
-   - 0.7916666666666667 Q[121,8] * H_pos[3,petal-width]
-   + 0.3611111111111109 Q[121,8] * H_neg[3,sepal-length]
-   + 0.3333333333333333 Q[121,8] * H_neg[3,sepal-width]
-   + 0.6610169491525424 Q[121,8] * H_neg[3,petal-length]
-   + 0.7916666666666667 Q[121,8] * H_neg[3,petal-width] - Q[121,8] * C4278
-   + Q[121,8] * C4285 ] >= 1
+   - Q[121,7] * C4285 ] >= 1
  qc346: E[75,3] + [ 0.6388888888888888 Q[75,7] * H_pos[3,sepal-length]
    + 0.4166666666666667 Q[75,7] * H_pos[3,sepal-width]
    + 0.576271186440678 Q[75,7] * H_pos[3,petal-length]
@@ -12069,15 +9343,7 @@ Subject To
    - 0.4166666666666667 Q[75,7] * H_neg[3,sepal-width]
    - 0.576271186440678 Q[75,7] * H_neg[3,petal-length]
    - 0.5416666666666667 Q[75,7] * H_neg[3,petal-width] + Q[75,7] * C4278
-   - Q[75,7] * C4285 - 0.6388888888888888 Q[75,8] * H_pos[3,sepal-length]
-   - 0.4166666666666667 Q[75,8] * H_pos[3,sepal-width]
-   - 0.576271186440678 Q[75,8] * H_pos[3,petal-length]
-   - 0.5416666666666667 Q[75,8] * H_pos[3,petal-width]
-   + 0.6388888888888888 Q[75,8] * H_neg[3,sepal-length]
-   + 0.4166666666666667 Q[75,8] * H_neg[3,sepal-width]
-   + 0.576271186440678 Q[75,8] * H_neg[3,petal-length]
-   + 0.5416666666666667 Q[75,8] * H_neg[3,petal-width] - Q[75,8] * C4278
-   + Q[75,8] * C4285 ] >= 1
+   - Q[75,7] * C4285 ] >= 1
  qc347: E[44,3] + [ 0.2222222222222221 Q[44,7] * H_pos[3,sepal-length]
    + 0.75 Q[44,7] * H_pos[3,sepal-width]
    + 0.1525423728813559 Q[44,7] * H_pos[3,petal-length]
@@ -12086,15 +9352,7 @@ Subject To
    - 0.75 Q[44,7] * H_neg[3,sepal-width]
    - 0.1525423728813559 Q[44,7] * H_neg[3,petal-length]
    - 0.125 Q[44,7] * H_neg[3,petal-width] + Q[44,7] * C4278
-   - Q[44,7] * C4285 - 0.2222222222222221 Q[44,8] * H_pos[3,sepal-length]
-   - 0.75 Q[44,8] * H_pos[3,sepal-width]
-   - 0.1525423728813559 Q[44,8] * H_pos[3,petal-length]
-   - 0.125 Q[44,8] * H_pos[3,petal-width]
-   + 0.2222222222222221 Q[44,8] * H_neg[3,sepal-length]
-   + 0.75 Q[44,8] * H_neg[3,sepal-width]
-   + 0.1525423728813559 Q[44,8] * H_neg[3,petal-length]
-   + 0.125 Q[44,8] * H_neg[3,petal-width] - Q[44,8] * C4278
-   + Q[44,8] * C4285 ] >= 1
+   - Q[44,7] * C4285 ] >= 1
  qc348: E[40,3] + [ 0.1944444444444444 Q[40,7] * H_pos[3,sepal-length]
    + 0.625 Q[40,7] * H_pos[3,sepal-width]
    + 0.0508474576271186 Q[40,7] * H_pos[3,petal-length]
@@ -12103,15 +9361,7 @@ Subject To
    - 0.625 Q[40,7] * H_neg[3,sepal-width]
    - 0.0508474576271186 Q[40,7] * H_neg[3,petal-length]
    - 0.0833333333333333 Q[40,7] * H_neg[3,petal-width] + Q[40,7] * C4278
-   - Q[40,7] * C4285 - 0.1944444444444444 Q[40,8] * H_pos[3,sepal-length]
-   - 0.625 Q[40,8] * H_pos[3,sepal-width]
-   - 0.0508474576271186 Q[40,8] * H_pos[3,petal-length]
-   - 0.0833333333333333 Q[40,8] * H_pos[3,petal-width]
-   + 0.1944444444444444 Q[40,8] * H_neg[3,sepal-length]
-   + 0.625 Q[40,8] * H_neg[3,sepal-width]
-   + 0.0508474576271186 Q[40,8] * H_neg[3,petal-length]
-   + 0.0833333333333333 Q[40,8] * H_neg[3,petal-width] - Q[40,8] * C4278
-   + Q[40,8] * C4285 ] >= 1
+   - Q[40,7] * C4285 ] >= 1
  qc349: E[10,3] + [ 0.3055555555555556 Q[10,7] * H_pos[3,sepal-length]
    + 0.7083333333333333 Q[10,7] * H_pos[3,sepal-width]
    + 0.0847457627118644 Q[10,7] * H_pos[3,petal-length]
@@ -12120,15 +9370,7 @@ Subject To
    - 0.7083333333333333 Q[10,7] * H_neg[3,sepal-width]
    - 0.0847457627118644 Q[10,7] * H_neg[3,petal-length]
    - 0.0416666666666667 Q[10,7] * H_neg[3,petal-width] + Q[10,7] * C4278
-   - Q[10,7] * C4285 - 0.3055555555555556 Q[10,8] * H_pos[3,sepal-length]
-   - 0.7083333333333333 Q[10,8] * H_pos[3,sepal-width]
-   - 0.0847457627118644 Q[10,8] * H_pos[3,petal-length]
-   - 0.0416666666666667 Q[10,8] * H_pos[3,petal-width]
-   + 0.3055555555555556 Q[10,8] * H_neg[3,sepal-length]
-   + 0.7083333333333333 Q[10,8] * H_neg[3,sepal-width]
-   + 0.0847457627118644 Q[10,8] * H_neg[3,petal-length]
-   + 0.0416666666666667 Q[10,8] * H_neg[3,petal-width] - Q[10,8] * C4278
-   + Q[10,8] * C4285 ] >= 1
+   - Q[10,7] * C4285 ] >= 1
  qc350: E[47,3] + [ 0.0833333333333333 Q[47,7] * H_pos[3,sepal-length]
    + 0.5 Q[47,7] * H_pos[3,sepal-width]
    + 0.0677966101694915 Q[47,7] * H_pos[3,petal-length]
@@ -12137,15 +9379,7 @@ Subject To
    - 0.5 Q[47,7] * H_neg[3,sepal-width]
    - 0.0677966101694915 Q[47,7] * H_neg[3,petal-length]
    - 0.0416666666666667 Q[47,7] * H_neg[3,petal-width] + Q[47,7] * C4278
-   - Q[47,7] * C4285 - 0.0833333333333333 Q[47,8] * H_pos[3,sepal-length]
-   - 0.5 Q[47,8] * H_pos[3,sepal-width]
-   - 0.0677966101694915 Q[47,8] * H_pos[3,petal-length]
-   - 0.0416666666666667 Q[47,8] * H_pos[3,petal-width]
-   + 0.0833333333333333 Q[47,8] * H_neg[3,sepal-length]
-   + 0.5 Q[47,8] * H_neg[3,sepal-width]
-   + 0.0677966101694915 Q[47,8] * H_neg[3,petal-length]
-   + 0.0416666666666667 Q[47,8] * H_neg[3,petal-width] - Q[47,8] * C4278
-   + Q[47,8] * C4285 ] >= 1
+   - Q[47,7] * C4285 ] >= 1
  qc351: E[18,3] + [ 0.3888888888888888 Q[18,7] * H_pos[3,sepal-length]
    + 0.75 Q[18,7] * H_pos[3,sepal-width]
    + 0.1186440677966101 Q[18,7] * H_pos[3,petal-length]
@@ -12154,15 +9388,7 @@ Subject To
    - 0.75 Q[18,7] * H_neg[3,sepal-width]
    - 0.1186440677966101 Q[18,7] * H_neg[3,petal-length]
    - 0.0833333333333333 Q[18,7] * H_neg[3,petal-width] + Q[18,7] * C4278
-   - Q[18,7] * C4285 - 0.3888888888888888 Q[18,8] * H_pos[3,sepal-length]
-   - 0.75 Q[18,8] * H_pos[3,sepal-width]
-   - 0.1186440677966101 Q[18,8] * H_pos[3,petal-length]
-   - 0.0833333333333333 Q[18,8] * H_pos[3,petal-width]
-   + 0.3888888888888888 Q[18,8] * H_neg[3,sepal-length]
-   + 0.75 Q[18,8] * H_neg[3,sepal-width]
-   + 0.1186440677966101 Q[18,8] * H_neg[3,petal-length]
-   + 0.0833333333333333 Q[18,8] * H_neg[3,petal-width] - Q[18,8] * C4278
-   + Q[18,8] * C4285 ] >= 1
+   - Q[18,7] * C4285 ] >= 1
  qc352: E[137,3] + [ 0.5833333333333335 Q[137,7] * H_pos[3,sepal-length]
    + 0.4583333333333333 Q[137,7] * H_pos[3,sepal-width]
    + 0.7627118644067796 Q[137,7] * H_pos[3,petal-length]
@@ -12171,15 +9397,7 @@ Subject To
    - 0.4583333333333333 Q[137,7] * H_neg[3,sepal-width]
    - 0.7627118644067796 Q[137,7] * H_neg[3,petal-length]
    - 0.7083333333333334 Q[137,7] * H_neg[3,petal-width] + Q[137,7] * C4278
-   - Q[137,7] * C4285 - 0.5833333333333335 Q[137,8] * H_pos[3,sepal-length]
-   - 0.4583333333333333 Q[137,8] * H_pos[3,sepal-width]
-   - 0.7627118644067796 Q[137,8] * H_pos[3,petal-length]
-   - 0.7083333333333334 Q[137,8] * H_pos[3,petal-width]
-   + 0.5833333333333335 Q[137,8] * H_neg[3,sepal-length]
-   + 0.4583333333333333 Q[137,8] * H_neg[3,sepal-width]
-   + 0.7627118644067796 Q[137,8] * H_neg[3,petal-length]
-   + 0.7083333333333334 Q[137,8] * H_neg[3,petal-width] - Q[137,8] * C4278
-   + Q[137,8] * C4285 ] >= 1
+   - Q[137,7] * C4285 ] >= 1
  qc353: E[136,3] + [ 0.5555555555555556 Q[136,7] * H_pos[3,sepal-length]
    + 0.5833333333333333 Q[136,7] * H_pos[3,sepal-width]
    + 0.7796610169491525 Q[136,7] * H_pos[3,petal-length]
@@ -12188,15 +9406,7 @@ Subject To
    - 0.5833333333333333 Q[136,7] * H_neg[3,sepal-width]
    - 0.7796610169491525 Q[136,7] * H_neg[3,petal-length]
    - 0.9583333333333334 Q[136,7] * H_neg[3,petal-width] + Q[136,7] * C4278
-   - Q[136,7] * C4285 - 0.5555555555555556 Q[136,8] * H_pos[3,sepal-length]
-   - 0.5833333333333333 Q[136,8] * H_pos[3,sepal-width]
-   - 0.7796610169491525 Q[136,8] * H_pos[3,petal-length]
-   - 0.9583333333333334 Q[136,8] * H_pos[3,petal-width]
-   + 0.5555555555555556 Q[136,8] * H_neg[3,sepal-length]
-   + 0.5833333333333333 Q[136,8] * H_neg[3,sepal-width]
-   + 0.7796610169491525 Q[136,8] * H_neg[3,petal-length]
-   + 0.9583333333333334 Q[136,8] * H_neg[3,petal-width] - Q[136,8] * C4278
-   + Q[136,8] * C4285 ] >= 1
+   - Q[136,7] * C4285 ] >= 1
  qc354: E[56,3] + [ 0.5555555555555556 Q[56,7] * H_pos[3,sepal-length]
    + 0.5416666666666665 Q[56,7] * H_pos[3,sepal-width]
    + 0.6271186440677966 Q[56,7] * H_pos[3,petal-length]
@@ -12205,15 +9415,7 @@ Subject To
    - 0.5416666666666665 Q[56,7] * H_neg[3,sepal-width]
    - 0.6271186440677966 Q[56,7] * H_neg[3,petal-length]
    - 0.625 Q[56,7] * H_neg[3,petal-width] + Q[56,7] * C4278
-   - Q[56,7] * C4285 - 0.5555555555555556 Q[56,8] * H_pos[3,sepal-length]
-   - 0.5416666666666665 Q[56,8] * H_pos[3,sepal-width]
-   - 0.6271186440677966 Q[56,8] * H_pos[3,petal-length]
-   - 0.625 Q[56,8] * H_pos[3,petal-width]
-   + 0.5555555555555556 Q[56,8] * H_neg[3,sepal-length]
-   + 0.5416666666666665 Q[56,8] * H_neg[3,sepal-width]
-   + 0.6271186440677966 Q[56,8] * H_neg[3,petal-length]
-   + 0.625 Q[56,8] * H_neg[3,petal-width] - Q[56,8] * C4278
-   + Q[56,8] * C4285 ] >= 1
+   - Q[56,7] * C4285 ] >= 1
  qc355: E[119,3] + [ 0.4722222222222223 Q[119,7] * H_pos[3,sepal-length]
    + 0.0833333333333334 Q[119,7] * H_pos[3,sepal-width]
    + 0.6779661016949152 Q[119,7] * H_pos[3,petal-length]
@@ -12222,28 +9424,14 @@ Subject To
    - 0.0833333333333334 Q[119,7] * H_neg[3,sepal-width]
    - 0.6779661016949152 Q[119,7] * H_neg[3,petal-length]
    - 0.5833333333333334 Q[119,7] * H_neg[3,petal-width] + Q[119,7] * C4278
-   - Q[119,7] * C4285 - 0.4722222222222223 Q[119,8] * H_pos[3,sepal-length]
-   - 0.0833333333333334 Q[119,8] * H_pos[3,sepal-width]
-   - 0.6779661016949152 Q[119,8] * H_pos[3,petal-length]
-   - 0.5833333333333334 Q[119,8] * H_pos[3,petal-width]
-   + 0.4722222222222223 Q[119,8] * H_neg[3,sepal-length]
-   + 0.0833333333333334 Q[119,8] * H_neg[3,sepal-width]
-   + 0.6779661016949152 Q[119,8] * H_neg[3,petal-length]
-   + 0.5833333333333334 Q[119,8] * H_neg[3,petal-width] - Q[119,8] * C4278
-   + Q[119,8] * C4285 ] >= 1
+   - Q[119,7] * C4285 ] >= 1
  qc356: E[9,3] + [ 0.1666666666666667 Q[9,7] * H_pos[3,sepal-length]
    + 0.4583333333333333 Q[9,7] * H_pos[3,sepal-width]
    + 0.0847457627118644 Q[9,7] * H_pos[3,petal-length]
    - 0.1666666666666667 Q[9,7] * H_neg[3,sepal-length]
    - 0.4583333333333333 Q[9,7] * H_neg[3,sepal-width]
    - 0.0847457627118644 Q[9,7] * H_neg[3,petal-length] + Q[9,7] * C4278
-   - Q[9,7] * C4285 - 0.1666666666666667 Q[9,8] * H_pos[3,sepal-length]
-   - 0.4583333333333333 Q[9,8] * H_pos[3,sepal-width]
-   - 0.0847457627118644 Q[9,8] * H_pos[3,petal-length]
-   + 0.1666666666666667 Q[9,8] * H_neg[3,sepal-length]
-   + 0.4583333333333333 Q[9,8] * H_neg[3,sepal-width]
-   + 0.0847457627118644 Q[9,8] * H_neg[3,petal-length] - Q[9,8] * C4278
-   + Q[9,8] * C4285 ] >= 1
+   - Q[9,7] * C4285 ] >= 1
  qc357: E[141,3] + [ 0.7222222222222223 Q[141,7] * H_pos[3,sepal-length]
    + 0.4583333333333333 Q[141,7] * H_pos[3,sepal-width]
    + 0.6949152542372881 Q[141,7] * H_pos[3,petal-length]
@@ -12252,15 +9440,7 @@ Subject To
    - 0.4583333333333333 Q[141,7] * H_neg[3,sepal-width]
    - 0.6949152542372881 Q[141,7] * H_neg[3,petal-length]
    - 0.9166666666666666 Q[141,7] * H_neg[3,petal-width] + Q[141,7] * C4278
-   - Q[141,7] * C4285 - 0.7222222222222223 Q[141,8] * H_pos[3,sepal-length]
-   - 0.4583333333333333 Q[141,8] * H_pos[3,sepal-width]
-   - 0.6949152542372881 Q[141,8] * H_pos[3,petal-length]
-   - 0.9166666666666666 Q[141,8] * H_pos[3,petal-width]
-   + 0.7222222222222223 Q[141,8] * H_neg[3,sepal-length]
-   + 0.4583333333333333 Q[141,8] * H_neg[3,sepal-width]
-   + 0.6949152542372881 Q[141,8] * H_neg[3,petal-length]
-   + 0.9166666666666666 Q[141,8] * H_neg[3,petal-width] - Q[141,8] * C4278
-   + Q[141,8] * C4285 ] >= 1
+   - Q[141,7] * C4285 ] >= 1
  qc358: E[6,3] + [ 0.0833333333333333 Q[6,7] * H_pos[3,sepal-length]
    + 0.5833333333333333 Q[6,7] * H_pos[3,sepal-width]
    + 0.0677966101694915 Q[6,7] * H_pos[3,petal-length]
@@ -12269,15 +9449,7 @@ Subject To
    - 0.5833333333333333 Q[6,7] * H_neg[3,sepal-width]
    - 0.0677966101694915 Q[6,7] * H_neg[3,petal-length]
    - 0.0833333333333333 Q[6,7] * H_neg[3,petal-width] + Q[6,7] * C4278
-   - Q[6,7] * C4285 - 0.0833333333333333 Q[6,8] * H_pos[3,sepal-length]
-   - 0.5833333333333333 Q[6,8] * H_pos[3,sepal-width]
-   - 0.0677966101694915 Q[6,8] * H_pos[3,petal-length]
-   - 0.0833333333333333 Q[6,8] * H_pos[3,petal-width]
-   + 0.0833333333333333 Q[6,8] * H_neg[3,sepal-length]
-   + 0.5833333333333333 Q[6,8] * H_neg[3,sepal-width]
-   + 0.0677966101694915 Q[6,8] * H_neg[3,petal-length]
-   + 0.0833333333333333 Q[6,8] * H_neg[3,petal-width] - Q[6,8] * C4278
-   + Q[6,8] * C4285 ] >= 1
+   - Q[6,7] * C4285 ] >= 1
  qc359: E[114,3] + [ 0.4166666666666665 Q[114,7] * H_pos[3,sepal-length]
    + 0.3333333333333333 Q[114,7] * H_pos[3,sepal-width]
    + 0.6949152542372881 Q[114,7] * H_pos[3,petal-length]
@@ -12286,15 +9458,7 @@ Subject To
    - 0.3333333333333333 Q[114,7] * H_neg[3,sepal-width]
    - 0.6949152542372881 Q[114,7] * H_neg[3,petal-length]
    - 0.9583333333333334 Q[114,7] * H_neg[3,petal-width] + Q[114,7] * C4278
-   - Q[114,7] * C4285 - 0.4166666666666665 Q[114,8] * H_pos[3,sepal-length]
-   - 0.3333333333333333 Q[114,8] * H_pos[3,sepal-width]
-   - 0.6949152542372881 Q[114,8] * H_pos[3,petal-length]
-   - 0.9583333333333334 Q[114,8] * H_pos[3,petal-width]
-   + 0.4166666666666665 Q[114,8] * H_neg[3,sepal-length]
-   + 0.3333333333333333 Q[114,8] * H_neg[3,sepal-width]
-   + 0.6949152542372881 Q[114,8] * H_neg[3,petal-length]
-   + 0.9583333333333334 Q[114,8] * H_neg[3,petal-width] - Q[114,8] * C4278
-   + Q[114,8] * C4285 ] >= 1
+   - Q[114,7] * C4285 ] >= 1
  qc360: E[147,3] + [ 0.6111111111111112 Q[147,7] * H_pos[3,sepal-length]
    + 0.4166666666666667 Q[147,7] * H_pos[3,sepal-width]
    + 0.711864406779661 Q[147,7] * H_pos[3,petal-length]
@@ -12303,15 +9467,7 @@ Subject To
    - 0.4166666666666667 Q[147,7] * H_neg[3,sepal-width]
    - 0.711864406779661 Q[147,7] * H_neg[3,petal-length]
    - 0.7916666666666667 Q[147,7] * H_neg[3,petal-width] + Q[147,7] * C4278
-   - Q[147,7] * C4285 - 0.6111111111111112 Q[147,8] * H_pos[3,sepal-length]
-   - 0.4166666666666667 Q[147,8] * H_pos[3,sepal-width]
-   - 0.711864406779661 Q[147,8] * H_pos[3,petal-length]
-   - 0.7916666666666667 Q[147,8] * H_pos[3,petal-width]
-   + 0.6111111111111112 Q[147,8] * H_neg[3,sepal-length]
-   + 0.4166666666666667 Q[147,8] * H_neg[3,sepal-width]
-   + 0.711864406779661 Q[147,8] * H_neg[3,petal-length]
-   + 0.7916666666666667 Q[147,8] * H_neg[3,petal-width] - Q[147,8] * C4278
-   + Q[147,8] * C4285 ] >= 1
+   - Q[147,7] * C4285 ] >= 1
  qc361: E[55,3] + [ 0.3888888888888888 Q[55,7] * H_pos[3,sepal-length]
    + 0.3333333333333333 Q[55,7] * H_pos[3,sepal-width]
    + 0.5932203389830508 Q[55,7] * H_pos[3,petal-length]
@@ -12320,14 +9476,6 @@ Subject To
    - 0.3333333333333333 Q[55,7] * H_neg[3,sepal-width]
    - 0.5932203389830508 Q[55,7] * H_neg[3,petal-length]
    - 0.5 Q[55,7] * H_neg[3,petal-width] + Q[55,7] * C4278 - Q[55,7] * C4285
-   - 0.3888888888888888 Q[55,8] * H_pos[3,sepal-length]
-   - 0.3333333333333333 Q[55,8] * H_pos[3,sepal-width]
-   - 0.5932203389830508 Q[55,8] * H_pos[3,petal-length]
-   - 0.5 Q[55,8] * H_pos[3,petal-width]
-   + 0.3888888888888888 Q[55,8] * H_neg[3,sepal-length]
-   + 0.3333333333333333 Q[55,8] * H_neg[3,sepal-width]
-   + 0.5932203389830508 Q[55,8] * H_neg[3,petal-length]
-   + 0.5 Q[55,8] * H_neg[3,petal-width] - Q[55,8] * C4278 + Q[55,8] * C4285
    ] >= 1
  qc362: E[112,3] + [ 0.6944444444444444 Q[112,7] * H_pos[3,sepal-length]
    + 0.4166666666666667 Q[112,7] * H_pos[3,sepal-width]
@@ -12337,15 +9485,7 @@ Subject To
    - 0.4166666666666667 Q[112,7] * H_neg[3,sepal-width]
    - 0.7627118644067796 Q[112,7] * H_neg[3,petal-length]
    - 0.8333333333333335 Q[112,7] * H_neg[3,petal-width] + Q[112,7] * C4278
-   - Q[112,7] * C4285 - 0.6944444444444444 Q[112,8] * H_pos[3,sepal-length]
-   - 0.4166666666666667 Q[112,8] * H_pos[3,sepal-width]
-   - 0.7627118644067796 Q[112,8] * H_pos[3,petal-length]
-   - 0.8333333333333335 Q[112,8] * H_pos[3,petal-width]
-   + 0.6944444444444444 Q[112,8] * H_neg[3,sepal-length]
-   + 0.4166666666666667 Q[112,8] * H_neg[3,sepal-width]
-   + 0.7627118644067796 Q[112,8] * H_neg[3,petal-length]
-   + 0.8333333333333335 Q[112,8] * H_neg[3,petal-width] - Q[112,8] * C4278
-   + Q[112,8] * C4285 ] >= 1
+   - Q[112,7] * C4285 ] >= 1
  qc363: E[96,3] + [ 0.3888888888888888 Q[96,7] * H_pos[3,sepal-length]
    + 0.375 Q[96,7] * H_pos[3,sepal-width]
    + 0.5423728813559322 Q[96,7] * H_pos[3,petal-length]
@@ -12354,14 +9494,6 @@ Subject To
    - 0.375 Q[96,7] * H_neg[3,sepal-width]
    - 0.5423728813559322 Q[96,7] * H_neg[3,petal-length]
    - 0.5 Q[96,7] * H_neg[3,petal-width] + Q[96,7] * C4278 - Q[96,7] * C4285
-   - 0.3888888888888888 Q[96,8] * H_pos[3,sepal-length]
-   - 0.375 Q[96,8] * H_pos[3,sepal-width]
-   - 0.5423728813559322 Q[96,8] * H_pos[3,petal-length]
-   - 0.5 Q[96,8] * H_pos[3,petal-width]
-   + 0.3888888888888888 Q[96,8] * H_neg[3,sepal-length]
-   + 0.375 Q[96,8] * H_neg[3,sepal-width]
-   + 0.5423728813559322 Q[96,8] * H_neg[3,petal-length]
-   + 0.5 Q[96,8] * H_neg[3,petal-width] - Q[96,8] * C4278 + Q[96,8] * C4285
    ] >= 1
  qc364: E[52,3] + [ 0.7222222222222223 Q[52,7] * H_pos[3,sepal-length]
    + 0.4583333333333333 Q[52,7] * H_pos[3,sepal-width]
@@ -12371,15 +9503,7 @@ Subject To
    - 0.4583333333333333 Q[52,7] * H_neg[3,sepal-width]
    - 0.6610169491525424 Q[52,7] * H_neg[3,petal-length]
    - 0.5833333333333334 Q[52,7] * H_neg[3,petal-width] + Q[52,7] * C4278
-   - Q[52,7] * C4285 - 0.7222222222222223 Q[52,8] * H_pos[3,sepal-length]
-   - 0.4583333333333333 Q[52,8] * H_pos[3,sepal-width]
-   - 0.6610169491525424 Q[52,8] * H_pos[3,petal-length]
-   - 0.5833333333333334 Q[52,8] * H_pos[3,petal-width]
-   + 0.7222222222222223 Q[52,8] * H_neg[3,sepal-length]
-   + 0.4583333333333333 Q[52,8] * H_neg[3,sepal-width]
-   + 0.6610169491525424 Q[52,8] * H_neg[3,petal-length]
-   + 0.5833333333333334 Q[52,8] * H_neg[3,petal-width] - Q[52,8] * C4278
-   + Q[52,8] * C4285 ] >= 1
+   - Q[52,7] * C4285 ] >= 1
  qc365: E[50,3] + [ 0.75 Q[50,7] * H_pos[3,sepal-length]
    + 0.5 Q[50,7] * H_pos[3,sepal-width]
    + 0.6271186440677966 Q[50,7] * H_pos[3,petal-length]
@@ -12388,15 +9512,7 @@ Subject To
    - 0.5 Q[50,7] * H_neg[3,sepal-width]
    - 0.6271186440677966 Q[50,7] * H_neg[3,petal-length]
    - 0.5416666666666667 Q[50,7] * H_neg[3,petal-width] + Q[50,7] * C4278
-   - Q[50,7] * C4285 - 0.75 Q[50,8] * H_pos[3,sepal-length]
-   - 0.5 Q[50,8] * H_pos[3,sepal-width]
-   - 0.6271186440677966 Q[50,8] * H_pos[3,petal-length]
-   - 0.5416666666666667 Q[50,8] * H_pos[3,petal-width]
-   + 0.75 Q[50,8] * H_neg[3,sepal-length]
-   + 0.5 Q[50,8] * H_neg[3,sepal-width]
-   + 0.6271186440677966 Q[50,8] * H_neg[3,petal-length]
-   + 0.5416666666666667 Q[50,8] * H_neg[3,petal-width] - Q[50,8] * C4278
-   + Q[50,8] * C4285 ] >= 1
+   - Q[50,7] * C4285 ] >= 1
  qc366: E[69,3] + [ 0.3611111111111109 Q[69,7] * H_pos[3,sepal-length]
    + 0.2083333333333333 Q[69,7] * H_pos[3,sepal-width]
    + 0.4915254237288135 Q[69,7] * H_pos[3,petal-length]
@@ -12405,15 +9521,7 @@ Subject To
    - 0.2083333333333333 Q[69,7] * H_neg[3,sepal-width]
    - 0.4915254237288135 Q[69,7] * H_neg[3,petal-length]
    - 0.4166666666666667 Q[69,7] * H_neg[3,petal-width] + Q[69,7] * C4278
-   - Q[69,7] * C4285 - 0.3611111111111109 Q[69,8] * H_pos[3,sepal-length]
-   - 0.2083333333333333 Q[69,8] * H_pos[3,sepal-width]
-   - 0.4915254237288135 Q[69,8] * H_pos[3,petal-length]
-   - 0.4166666666666667 Q[69,8] * H_pos[3,petal-width]
-   + 0.3611111111111109 Q[69,8] * H_neg[3,sepal-length]
-   + 0.2083333333333333 Q[69,8] * H_neg[3,sepal-width]
-   + 0.4915254237288135 Q[69,8] * H_neg[3,petal-length]
-   + 0.4166666666666667 Q[69,8] * H_neg[3,petal-width] - Q[69,8] * C4278
-   + Q[69,8] * C4285 ] >= 1
+   - Q[69,7] * C4285 ] >= 1
  qc367: E[71,3] + [ 0.5 Q[71,7] * H_pos[3,sepal-length]
    + 0.3333333333333333 Q[71,7] * H_pos[3,sepal-width]
    + 0.5084745762711864 Q[71,7] * H_pos[3,petal-length]
@@ -12422,14 +9530,6 @@ Subject To
    - 0.3333333333333333 Q[71,7] * H_neg[3,sepal-width]
    - 0.5084745762711864 Q[71,7] * H_neg[3,petal-length]
    - 0.5 Q[71,7] * H_neg[3,petal-width] + Q[71,7] * C4278 - Q[71,7] * C4285
-   - 0.5 Q[71,8] * H_pos[3,sepal-length]
-   - 0.3333333333333333 Q[71,8] * H_pos[3,sepal-width]
-   - 0.5084745762711864 Q[71,8] * H_pos[3,petal-length]
-   - 0.5 Q[71,8] * H_pos[3,petal-width]
-   + 0.5 Q[71,8] * H_neg[3,sepal-length]
-   + 0.3333333333333333 Q[71,8] * H_neg[3,sepal-width]
-   + 0.5084745762711864 Q[71,8] * H_neg[3,petal-length]
-   + 0.5 Q[71,8] * H_neg[3,petal-width] - Q[71,8] * C4278 + Q[71,8] * C4285
    ] >= 1
  qc368: E[92,3] + [ 0.4166666666666665 Q[92,7] * H_pos[3,sepal-length]
    + 0.25 Q[92,7] * H_pos[3,sepal-width]
@@ -12439,15 +9539,7 @@ Subject To
    - 0.25 Q[92,7] * H_neg[3,sepal-width]
    - 0.5084745762711864 Q[92,7] * H_neg[3,petal-length]
    - 0.4583333333333333 Q[92,7] * H_neg[3,petal-width] + Q[92,7] * C4278
-   - Q[92,7] * C4285 - 0.4166666666666665 Q[92,8] * H_pos[3,sepal-length]
-   - 0.25 Q[92,8] * H_pos[3,sepal-width]
-   - 0.5084745762711864 Q[92,8] * H_pos[3,petal-length]
-   - 0.4583333333333333 Q[92,8] * H_pos[3,petal-width]
-   + 0.4166666666666665 Q[92,8] * H_neg[3,sepal-length]
-   + 0.25 Q[92,8] * H_neg[3,sepal-width]
-   + 0.5084745762711864 Q[92,8] * H_neg[3,petal-length]
-   + 0.4583333333333333 Q[92,8] * H_neg[3,petal-width] - Q[92,8] * C4278
-   + Q[92,8] * C4285 ] >= 1
+   - Q[92,7] * C4285 ] >= 1
  qc369: E[61,3] + [ 0.4444444444444446 Q[61,7] * H_pos[3,sepal-length]
    + 0.4166666666666667 Q[61,7] * H_pos[3,sepal-width]
    + 0.5423728813559322 Q[61,7] * H_pos[3,petal-length]
@@ -12456,15 +9548,7 @@ Subject To
    - 0.4166666666666667 Q[61,7] * H_neg[3,sepal-width]
    - 0.5423728813559322 Q[61,7] * H_neg[3,petal-length]
    - 0.5833333333333334 Q[61,7] * H_neg[3,petal-width] + Q[61,7] * C4278
-   - Q[61,7] * C4285 - 0.4444444444444446 Q[61,8] * H_pos[3,sepal-length]
-   - 0.4166666666666667 Q[61,8] * H_pos[3,sepal-width]
-   - 0.5423728813559322 Q[61,8] * H_pos[3,petal-length]
-   - 0.5833333333333334 Q[61,8] * H_pos[3,petal-width]
-   + 0.4444444444444446 Q[61,8] * H_neg[3,sepal-length]
-   + 0.4166666666666667 Q[61,8] * H_neg[3,sepal-width]
-   + 0.5423728813559322 Q[61,8] * H_neg[3,petal-length]
-   + 0.5833333333333334 Q[61,8] * H_neg[3,petal-width] - Q[61,8] * C4278
-   + Q[61,8] * C4285 ] >= 1
+   - Q[61,7] * C4285 ] >= 1
  qc370: E[33,3] + [ 0.3333333333333333 Q[33,7] * H_pos[3,sepal-length]
    + 0.9166666666666667 Q[33,7] * H_pos[3,sepal-width]
    + 0.0677966101694915 Q[33,7] * H_pos[3,petal-length]
@@ -12473,15 +9557,7 @@ Subject To
    - 0.9166666666666667 Q[33,7] * H_neg[3,sepal-width]
    - 0.0677966101694915 Q[33,7] * H_neg[3,petal-length]
    - 0.0416666666666667 Q[33,7] * H_neg[3,petal-width] + Q[33,7] * C4278
-   - Q[33,7] * C4285 - 0.3333333333333333 Q[33,8] * H_pos[3,sepal-length]
-   - 0.9166666666666667 Q[33,8] * H_pos[3,sepal-width]
-   - 0.0677966101694915 Q[33,8] * H_pos[3,petal-length]
-   - 0.0416666666666667 Q[33,8] * H_pos[3,petal-width]
-   + 0.3333333333333333 Q[33,8] * H_neg[3,sepal-length]
-   + 0.9166666666666667 Q[33,8] * H_neg[3,sepal-width]
-   + 0.0677966101694915 Q[33,8] * H_neg[3,petal-length]
-   + 0.0416666666666667 Q[33,8] * H_neg[3,petal-width] - Q[33,8] * C4278
-   + Q[33,8] * C4285 ] >= 1
+   - Q[33,7] * C4285 ] >= 1
  qc371: E[15,3] + [ 0.3888888888888888 Q[15,7] * H_pos[3,sepal-length]
    + Q[15,7] * H_pos[3,sepal-width]
    + 0.0847457627118644 Q[15,7] * H_pos[3,petal-length]
@@ -12490,15 +9566,7 @@ Subject To
    - Q[15,7] * H_neg[3,sepal-width]
    - 0.0847457627118644 Q[15,7] * H_neg[3,petal-length]
    - 0.125 Q[15,7] * H_neg[3,petal-width] + Q[15,7] * C4278
-   - Q[15,7] * C4285 - 0.3888888888888888 Q[15,8] * H_pos[3,sepal-length]
-   - Q[15,8] * H_pos[3,sepal-width]
-   - 0.0847457627118644 Q[15,8] * H_pos[3,petal-length]
-   - 0.125 Q[15,8] * H_pos[3,petal-width]
-   + 0.3888888888888888 Q[15,8] * H_neg[3,sepal-length]
-   + Q[15,8] * H_neg[3,sepal-width]
-   + 0.0847457627118644 Q[15,8] * H_neg[3,petal-length]
-   + 0.125 Q[15,8] * H_neg[3,petal-width] - Q[15,8] * C4278
-   + Q[15,8] * C4285 ] >= 1
+   - Q[15,7] * C4285 ] >= 1
  qc372: E[5,3] + [ 0.3055555555555556 Q[5,7] * H_pos[3,sepal-length]
    + 0.7916666666666665 Q[5,7] * H_pos[3,sepal-width]
    + 0.1186440677966101 Q[5,7] * H_pos[3,petal-length]
@@ -12507,14 +9575,6 @@ Subject To
    - 0.7916666666666665 Q[5,7] * H_neg[3,sepal-width]
    - 0.1186440677966101 Q[5,7] * H_neg[3,petal-length]
    - 0.125 Q[5,7] * H_neg[3,petal-width] + Q[5,7] * C4278 - Q[5,7] * C4285
-   - 0.3055555555555556 Q[5,8] * H_pos[3,sepal-length]
-   - 0.7916666666666665 Q[5,8] * H_pos[3,sepal-width]
-   - 0.1186440677966101 Q[5,8] * H_pos[3,petal-length]
-   - 0.125 Q[5,8] * H_pos[3,petal-width]
-   + 0.3055555555555556 Q[5,8] * H_neg[3,sepal-length]
-   + 0.7916666666666665 Q[5,8] * H_neg[3,sepal-width]
-   + 0.1186440677966101 Q[5,8] * H_neg[3,petal-length]
-   + 0.125 Q[5,8] * H_neg[3,petal-width] - Q[5,8] * C4278 + Q[5,8] * C4285
    ] >= 1
  qc373: E[126,3] + [ 0.5277777777777779 Q[126,7] * H_pos[3,sepal-length]
    + 0.3333333333333333 Q[126,7] * H_pos[3,sepal-width]
@@ -12524,15 +9584,7 @@ Subject To
    - 0.3333333333333333 Q[126,7] * H_neg[3,sepal-width]
    - 0.6440677966101694 Q[126,7] * H_neg[3,petal-length]
    - 0.7083333333333334 Q[126,7] * H_neg[3,petal-width] + Q[126,7] * C4278
-   - Q[126,7] * C4285 - 0.5277777777777779 Q[126,8] * H_pos[3,sepal-length]
-   - 0.3333333333333333 Q[126,8] * H_pos[3,sepal-width]
-   - 0.6440677966101694 Q[126,8] * H_pos[3,petal-length]
-   - 0.7083333333333334 Q[126,8] * H_pos[3,petal-width]
-   + 0.5277777777777779 Q[126,8] * H_neg[3,sepal-length]
-   + 0.3333333333333333 Q[126,8] * H_neg[3,sepal-width]
-   + 0.6440677966101694 Q[126,8] * H_neg[3,petal-length]
-   + 0.7083333333333334 Q[126,8] * H_neg[3,petal-width] - Q[126,8] * C4278
-   + Q[126,8] * C4285 ] >= 1
+   - Q[126,7] * C4285 ] >= 1
  qc374: E[143,3] + [ 0.6944444444444444 Q[143,7] * H_pos[3,sepal-length]
    + 0.5 Q[143,7] * H_pos[3,sepal-width]
    + 0.8305084745762712 Q[143,7] * H_pos[3,petal-length]
@@ -12541,15 +9593,7 @@ Subject To
    - 0.5 Q[143,7] * H_neg[3,sepal-width]
    - 0.8305084745762712 Q[143,7] * H_neg[3,petal-length]
    - 0.9166666666666666 Q[143,7] * H_neg[3,petal-width] + Q[143,7] * C4278
-   - Q[143,7] * C4285 - 0.6944444444444444 Q[143,8] * H_pos[3,sepal-length]
-   - 0.5 Q[143,8] * H_pos[3,sepal-width]
-   - 0.8305084745762712 Q[143,8] * H_pos[3,petal-length]
-   - 0.9166666666666666 Q[143,8] * H_pos[3,petal-width]
-   + 0.6944444444444444 Q[143,8] * H_neg[3,sepal-length]
-   + 0.5 Q[143,8] * H_neg[3,sepal-width]
-   + 0.8305084745762712 Q[143,8] * H_neg[3,petal-length]
-   + 0.9166666666666666 Q[143,8] * H_neg[3,petal-width] - Q[143,8] * C4278
-   + Q[143,8] * C4285 ] >= 1
+   - Q[143,7] * C4285 ] >= 1
  qc375: E[80,3] + [ 0.3333333333333333 Q[80,7] * H_pos[3,sepal-length]
    + 0.1666666666666666 Q[80,7] * H_pos[3,sepal-width]
    + 0.4745762711864406 Q[80,7] * H_pos[3,petal-length]
@@ -12558,15 +9602,7 @@ Subject To
    - 0.1666666666666666 Q[80,7] * H_neg[3,sepal-width]
    - 0.4745762711864406 Q[80,7] * H_neg[3,petal-length]
    - 0.4166666666666667 Q[80,7] * H_neg[3,petal-width] + Q[80,7] * C4278
-   - Q[80,7] * C4285 - 0.3333333333333333 Q[80,8] * H_pos[3,sepal-length]
-   - 0.1666666666666666 Q[80,8] * H_pos[3,sepal-width]
-   - 0.4745762711864406 Q[80,8] * H_pos[3,petal-length]
-   - 0.4166666666666667 Q[80,8] * H_pos[3,petal-width]
-   + 0.3333333333333333 Q[80,8] * H_neg[3,sepal-length]
-   + 0.1666666666666666 Q[80,8] * H_neg[3,sepal-width]
-   + 0.4745762711864406 Q[80,8] * H_neg[3,petal-length]
-   + 0.4166666666666667 Q[80,8] * H_neg[3,petal-width] - Q[80,8] * C4278
-   + Q[80,8] * C4285 ] >= 1
+   - Q[80,7] * C4285 ] >= 1
  qc376: E[73,3] + [ 0.5 Q[73,7] * H_pos[3,sepal-length]
    + 0.3333333333333333 Q[73,7] * H_pos[3,sepal-width]
    + 0.6271186440677966 Q[73,7] * H_pos[3,petal-length]
@@ -12575,15 +9611,7 @@ Subject To
    - 0.3333333333333333 Q[73,7] * H_neg[3,sepal-width]
    - 0.6271186440677966 Q[73,7] * H_neg[3,petal-length]
    - 0.4583333333333333 Q[73,7] * H_neg[3,petal-width] + Q[73,7] * C4278
-   - Q[73,7] * C4285 - 0.5 Q[73,8] * H_pos[3,sepal-length]
-   - 0.3333333333333333 Q[73,8] * H_pos[3,sepal-width]
-   - 0.6271186440677966 Q[73,8] * H_pos[3,petal-length]
-   - 0.4583333333333333 Q[73,8] * H_pos[3,petal-width]
-   + 0.5 Q[73,8] * H_neg[3,sepal-length]
-   + 0.3333333333333333 Q[73,8] * H_neg[3,sepal-width]
-   + 0.6271186440677966 Q[73,8] * H_neg[3,petal-length]
-   + 0.4583333333333333 Q[73,8] * H_neg[3,petal-width] - Q[73,8] * C4278
-   + Q[73,8] * C4285 ] >= 1
+   - Q[73,7] * C4285 ] >= 1
  qc377: E[54,3] + [ 0.6111111111111112 Q[54,7] * H_pos[3,sepal-length]
    + 0.3333333333333333 Q[54,7] * H_pos[3,sepal-width]
    + 0.6101694915254237 Q[54,7] * H_pos[3,petal-length]
@@ -12592,15 +9620,7 @@ Subject To
    - 0.3333333333333333 Q[54,7] * H_neg[3,sepal-width]
    - 0.6101694915254237 Q[54,7] * H_neg[3,petal-length]
    - 0.5833333333333334 Q[54,7] * H_neg[3,petal-width] + Q[54,7] * C4278
-   - Q[54,7] * C4285 - 0.6111111111111112 Q[54,8] * H_pos[3,sepal-length]
-   - 0.3333333333333333 Q[54,8] * H_pos[3,sepal-width]
-   - 0.6101694915254237 Q[54,8] * H_pos[3,petal-length]
-   - 0.5833333333333334 Q[54,8] * H_pos[3,petal-width]
-   + 0.6111111111111112 Q[54,8] * H_neg[3,sepal-length]
-   + 0.3333333333333333 Q[54,8] * H_neg[3,sepal-width]
-   + 0.6101694915254237 Q[54,8] * H_neg[3,petal-length]
-   + 0.5833333333333334 Q[54,8] * H_neg[3,petal-width] - Q[54,8] * C4278
-   + Q[54,8] * C4285 ] >= 1
+   - Q[54,7] * C4285 ] >= 1
  qc378: E[1,3] + [ 0.1666666666666667 Q[1,7] * H_pos[3,sepal-length]
    + 0.4166666666666667 Q[1,7] * H_pos[3,sepal-width]
    + 0.0677966101694915 Q[1,7] * H_pos[3,petal-length]
@@ -12609,15 +9629,7 @@ Subject To
    - 0.4166666666666667 Q[1,7] * H_neg[3,sepal-width]
    - 0.0677966101694915 Q[1,7] * H_neg[3,petal-length]
    - 0.0416666666666667 Q[1,7] * H_neg[3,petal-width] + Q[1,7] * C4278
-   - Q[1,7] * C4285 - 0.1666666666666667 Q[1,8] * H_pos[3,sepal-length]
-   - 0.4166666666666667 Q[1,8] * H_pos[3,sepal-width]
-   - 0.0677966101694915 Q[1,8] * H_pos[3,petal-length]
-   - 0.0416666666666667 Q[1,8] * H_pos[3,petal-width]
-   + 0.1666666666666667 Q[1,8] * H_neg[3,sepal-length]
-   + 0.4166666666666667 Q[1,8] * H_neg[3,sepal-width]
-   + 0.0677966101694915 Q[1,8] * H_neg[3,petal-length]
-   + 0.0416666666666667 Q[1,8] * H_neg[3,petal-width] - Q[1,8] * C4278
-   + Q[1,8] * C4285 ] >= 1
+   - Q[1,7] * C4285 ] >= 1
  qc379: E[129,3] + [ 0.8055555555555556 Q[129,7] * H_pos[3,sepal-length]
    + 0.4166666666666667 Q[129,7] * H_pos[3,sepal-width]
    + 0.8135593220338982 Q[129,7] * H_pos[3,petal-length]
@@ -12626,15 +9638,7 @@ Subject To
    - 0.4166666666666667 Q[129,7] * H_neg[3,sepal-width]
    - 0.8135593220338982 Q[129,7] * H_neg[3,petal-length]
    - 0.625 Q[129,7] * H_neg[3,petal-width] + Q[129,7] * C4278
-   - Q[129,7] * C4285 - 0.8055555555555556 Q[129,8] * H_pos[3,sepal-length]
-   - 0.4166666666666667 Q[129,8] * H_pos[3,sepal-width]
-   - 0.8135593220338982 Q[129,8] * H_pos[3,petal-length]
-   - 0.625 Q[129,8] * H_pos[3,petal-width]
-   + 0.8055555555555556 Q[129,8] * H_neg[3,sepal-length]
-   + 0.4166666666666667 Q[129,8] * H_neg[3,sepal-width]
-   + 0.8135593220338982 Q[129,8] * H_neg[3,petal-length]
-   + 0.625 Q[129,8] * H_neg[3,petal-width] - Q[129,8] * C4278
-   + Q[129,8] * C4285 ] >= 1
+   - Q[129,7] * C4285 ] >= 1
  qc380: E[99,3] + [ 0.3888888888888888 Q[99,7] * H_pos[3,sepal-length]
    + 0.3333333333333333 Q[99,7] * H_pos[3,sepal-width]
    + 0.5254237288135593 Q[99,7] * H_pos[3,petal-length]
@@ -12643,14 +9647,6 @@ Subject To
    - 0.3333333333333333 Q[99,7] * H_neg[3,sepal-width]
    - 0.5254237288135593 Q[99,7] * H_neg[3,petal-length]
    - 0.5 Q[99,7] * H_neg[3,petal-width] + Q[99,7] * C4278 - Q[99,7] * C4285
-   - 0.3888888888888888 Q[99,8] * H_pos[3,sepal-length]
-   - 0.3333333333333333 Q[99,8] * H_pos[3,sepal-width]
-   - 0.5254237288135593 Q[99,8] * H_pos[3,petal-length]
-   - 0.5 Q[99,8] * H_pos[3,petal-width]
-   + 0.3888888888888888 Q[99,8] * H_neg[3,sepal-length]
-   + 0.3333333333333333 Q[99,8] * H_neg[3,sepal-width]
-   + 0.5254237288135593 Q[99,8] * H_neg[3,petal-length]
-   + 0.5 Q[99,8] * H_neg[3,petal-width] - Q[99,8] * C4278 + Q[99,8] * C4285
    ] >= 1
  qc381: E[105,3] + [ 0.9166666666666665 Q[105,7] * H_pos[3,sepal-length]
    + 0.4166666666666667 Q[105,7] * H_pos[3,sepal-width]
@@ -12660,15 +9656,7 @@ Subject To
    - 0.4166666666666667 Q[105,7] * H_neg[3,sepal-width]
    - 0.9491525423728813 Q[105,7] * H_neg[3,petal-length]
    - 0.8333333333333335 Q[105,7] * H_neg[3,petal-width] + Q[105,7] * C4278
-   - Q[105,7] * C4285 - 0.9166666666666665 Q[105,8] * H_pos[3,sepal-length]
-   - 0.4166666666666667 Q[105,8] * H_pos[3,sepal-width]
-   - 0.9491525423728813 Q[105,8] * H_pos[3,petal-length]
-   - 0.8333333333333335 Q[105,8] * H_pos[3,petal-width]
-   + 0.9166666666666665 Q[105,8] * H_neg[3,sepal-length]
-   + 0.4166666666666667 Q[105,8] * H_neg[3,sepal-width]
-   + 0.9491525423728813 Q[105,8] * H_neg[3,petal-length]
-   + 0.8333333333333335 Q[105,8] * H_neg[3,petal-width] - Q[105,8] * C4278
-   + Q[105,8] * C4285 ] >= 1
+   - Q[105,7] * C4285 ] >= 1
  qc382: E[144,3] + [ 0.6666666666666667 Q[144,7] * H_pos[3,sepal-length]
    + 0.5416666666666665 Q[144,7] * H_pos[3,sepal-width]
    + 0.7966101694915254 Q[144,7] * H_pos[3,petal-length]
@@ -12677,14 +9665,6 @@ Subject To
    - 0.5416666666666665 Q[144,7] * H_neg[3,sepal-width]
    - 0.7966101694915254 Q[144,7] * H_neg[3,petal-length]
    - Q[144,7] * H_neg[3,petal-width] + Q[144,7] * C4278 - Q[144,7] * C4285
-   - 0.6666666666666667 Q[144,8] * H_pos[3,sepal-length]
-   - 0.5416666666666665 Q[144,8] * H_pos[3,sepal-width]
-   - 0.7966101694915254 Q[144,8] * H_pos[3,petal-length]
-   - Q[144,8] * H_pos[3,petal-width]
-   + 0.6666666666666667 Q[144,8] * H_neg[3,sepal-length]
-   + 0.5416666666666665 Q[144,8] * H_neg[3,sepal-width]
-   + 0.7966101694915254 Q[144,8] * H_neg[3,petal-length]
-   + Q[144,8] * H_neg[3,petal-width] - Q[144,8] * C4278 + Q[144,8] * C4285
    ] >= 1
  qc383: E[7,3] + [ 0.1944444444444444 Q[7,7] * H_pos[3,sepal-length]
    + 0.5833333333333333 Q[7,7] * H_pos[3,sepal-width]
@@ -12694,15 +9674,7 @@ Subject To
    - 0.5833333333333333 Q[7,7] * H_neg[3,sepal-width]
    - 0.0847457627118644 Q[7,7] * H_neg[3,petal-length]
    - 0.0416666666666667 Q[7,7] * H_neg[3,petal-width] + Q[7,7] * C4278
-   - Q[7,7] * C4285 - 0.1944444444444444 Q[7,8] * H_pos[3,sepal-length]
-   - 0.5833333333333333 Q[7,8] * H_pos[3,sepal-width]
-   - 0.0847457627118644 Q[7,8] * H_pos[3,petal-length]
-   - 0.0416666666666667 Q[7,8] * H_pos[3,petal-width]
-   + 0.1944444444444444 Q[7,8] * H_neg[3,sepal-length]
-   + 0.5833333333333333 Q[7,8] * H_neg[3,sepal-width]
-   + 0.0847457627118644 Q[7,8] * H_neg[3,petal-length]
-   + 0.0416666666666667 Q[7,8] * H_neg[3,petal-width] - Q[7,8] * C4278
-   + Q[7,8] * C4285 ] >= 1
+   - Q[7,7] * C4285 ] >= 1
  qc384: E[107,3] + [ 0.833333333333333 Q[107,7] * H_pos[3,sepal-length]
    + 0.375 Q[107,7] * H_pos[3,sepal-width]
    + 0.8983050847457625 Q[107,7] * H_pos[3,petal-length]
@@ -12711,15 +9683,7 @@ Subject To
    - 0.375 Q[107,7] * H_neg[3,sepal-width]
    - 0.8983050847457625 Q[107,7] * H_neg[3,petal-length]
    - 0.7083333333333334 Q[107,7] * H_neg[3,petal-width] + Q[107,7] * C4278
-   - Q[107,7] * C4285 - 0.833333333333333 Q[107,8] * H_pos[3,sepal-length]
-   - 0.375 Q[107,8] * H_pos[3,sepal-width]
-   - 0.8983050847457625 Q[107,8] * H_pos[3,petal-length]
-   - 0.7083333333333334 Q[107,8] * H_pos[3,petal-width]
-   + 0.833333333333333 Q[107,8] * H_neg[3,sepal-length]
-   + 0.375 Q[107,8] * H_neg[3,sepal-width]
-   + 0.8983050847457625 Q[107,8] * H_neg[3,petal-length]
-   + 0.7083333333333334 Q[107,8] * H_neg[3,petal-width] - Q[107,8] * C4278
-   + Q[107,8] * C4285 ] >= 1
+   - Q[107,7] * C4285 ] >= 1
  qc385: E[123,3] + [ 0.5555555555555556 Q[123,7] * H_pos[3,sepal-length]
    + 0.2916666666666667 Q[123,7] * H_pos[3,sepal-width]
    + 0.6610169491525424 Q[123,7] * H_pos[3,petal-length]
@@ -12728,15 +9692,7 @@ Subject To
    - 0.2916666666666667 Q[123,7] * H_neg[3,sepal-width]
    - 0.6610169491525424 Q[123,7] * H_neg[3,petal-length]
    - 0.7083333333333334 Q[123,7] * H_neg[3,petal-width] + Q[123,7] * C4278
-   - Q[123,7] * C4285 - 0.5555555555555556 Q[123,8] * H_pos[3,sepal-length]
-   - 0.2916666666666667 Q[123,8] * H_pos[3,sepal-width]
-   - 0.6610169491525424 Q[123,8] * H_pos[3,petal-length]
-   - 0.7083333333333334 Q[123,8] * H_pos[3,petal-width]
-   + 0.5555555555555556 Q[123,8] * H_neg[3,sepal-length]
-   + 0.2916666666666667 Q[123,8] * H_neg[3,sepal-width]
-   + 0.6610169491525424 Q[123,8] * H_neg[3,petal-length]
-   + 0.7083333333333334 Q[123,8] * H_neg[3,petal-width] - Q[123,8] * C4278
-   + Q[123,8] * C4285 ] >= 1
+   - Q[123,7] * C4285 ] >= 1
  qc386: E[118,3] + [ 0.9444444444444442 Q[118,7] * H_pos[3,sepal-length]
    + 0.25 Q[118,7] * H_pos[3,sepal-width]
    + Q[118,7] * H_pos[3,petal-length]
@@ -12745,15 +9701,7 @@ Subject To
    - 0.25 Q[118,7] * H_neg[3,sepal-width]
    - Q[118,7] * H_neg[3,petal-length]
    - 0.9166666666666666 Q[118,7] * H_neg[3,petal-width] + Q[118,7] * C4278
-   - Q[118,7] * C4285 - 0.9444444444444442 Q[118,8] * H_pos[3,sepal-length]
-   - 0.25 Q[118,8] * H_pos[3,sepal-width]
-   - Q[118,8] * H_pos[3,petal-length]
-   - 0.9166666666666666 Q[118,8] * H_pos[3,petal-width]
-   + 0.9444444444444442 Q[118,8] * H_neg[3,sepal-length]
-   + 0.25 Q[118,8] * H_neg[3,sepal-width]
-   + Q[118,8] * H_neg[3,petal-length]
-   + 0.9166666666666666 Q[118,8] * H_neg[3,petal-width] - Q[118,8] * C4278
-   + Q[118,8] * C4285 ] >= 1
+   - Q[118,7] * C4285 ] >= 1
  qc387: E[66,3] + [ 0.3611111111111109 Q[66,7] * H_pos[3,sepal-length]
    + 0.4166666666666667 Q[66,7] * H_pos[3,sepal-width]
    + 0.5932203389830508 Q[66,7] * H_pos[3,petal-length]
@@ -12762,15 +9710,7 @@ Subject To
    - 0.4166666666666667 Q[66,7] * H_neg[3,sepal-width]
    - 0.5932203389830508 Q[66,7] * H_neg[3,petal-length]
    - 0.5833333333333334 Q[66,7] * H_neg[3,petal-width] + Q[66,7] * C4278
-   - Q[66,7] * C4285 - 0.3611111111111109 Q[66,8] * H_pos[3,sepal-length]
-   - 0.4166666666666667 Q[66,8] * H_pos[3,sepal-width]
-   - 0.5932203389830508 Q[66,8] * H_pos[3,petal-length]
-   - 0.5833333333333334 Q[66,8] * H_pos[3,petal-width]
-   + 0.3611111111111109 Q[66,8] * H_neg[3,sepal-length]
-   + 0.4166666666666667 Q[66,8] * H_neg[3,sepal-width]
-   + 0.5932203389830508 Q[66,8] * H_neg[3,petal-length]
-   + 0.5833333333333334 Q[66,8] * H_neg[3,petal-width] - Q[66,8] * C4278
-   + Q[66,8] * C4285 ] >= 1
+   - Q[66,7] * C4285 ] >= 1
  qc388: E[124,3] + [ 0.6666666666666667 Q[124,7] * H_pos[3,sepal-length]
    + 0.5416666666666665 Q[124,7] * H_pos[3,sepal-width]
    + 0.7966101694915254 Q[124,7] * H_pos[3,petal-length]
@@ -12779,15 +9719,7 @@ Subject To
    - 0.5416666666666665 Q[124,7] * H_neg[3,sepal-width]
    - 0.7966101694915254 Q[124,7] * H_neg[3,petal-length]
    - 0.8333333333333335 Q[124,7] * H_neg[3,petal-width] + Q[124,7] * C4278
-   - Q[124,7] * C4285 - 0.6666666666666667 Q[124,8] * H_pos[3,sepal-length]
-   - 0.5416666666666665 Q[124,8] * H_pos[3,sepal-width]
-   - 0.7966101694915254 Q[124,8] * H_pos[3,petal-length]
-   - 0.8333333333333335 Q[124,8] * H_pos[3,petal-width]
-   + 0.6666666666666667 Q[124,8] * H_neg[3,sepal-length]
-   + 0.5416666666666665 Q[124,8] * H_neg[3,sepal-width]
-   + 0.7966101694915254 Q[124,8] * H_neg[3,petal-length]
-   + 0.8333333333333335 Q[124,8] * H_neg[3,petal-width] - Q[124,8] * C4278
-   + Q[124,8] * C4285 ] >= 1
+   - Q[124,7] * C4285 ] >= 1
  qc389: E[142,3] + [ 0.4166666666666665 Q[142,7] * H_pos[3,sepal-length]
    + 0.2916666666666667 Q[142,7] * H_pos[3,sepal-width]
    + 0.6949152542372881 Q[142,7] * H_pos[3,petal-length]
@@ -12796,15 +9728,7 @@ Subject To
    - 0.2916666666666667 Q[142,7] * H_neg[3,sepal-width]
    - 0.6949152542372881 Q[142,7] * H_neg[3,petal-length]
    - 0.75 Q[142,7] * H_neg[3,petal-width] + Q[142,7] * C4278
-   - Q[142,7] * C4285 - 0.4166666666666665 Q[142,8] * H_pos[3,sepal-length]
-   - 0.2916666666666667 Q[142,8] * H_pos[3,sepal-width]
-   - 0.6949152542372881 Q[142,8] * H_pos[3,petal-length]
-   - 0.75 Q[142,8] * H_pos[3,petal-width]
-   + 0.4166666666666665 Q[142,8] * H_neg[3,sepal-length]
-   + 0.2916666666666667 Q[142,8] * H_neg[3,sepal-width]
-   + 0.6949152542372881 Q[142,8] * H_neg[3,petal-length]
-   + 0.75 Q[142,8] * H_neg[3,petal-width] - Q[142,8] * C4278
-   + Q[142,8] * C4285 ] >= 1
+   - Q[142,7] * C4285 ] >= 1
  qc390: E[101,3] + [ 0.4166666666666665 Q[101,7] * H_pos[3,sepal-length]
    + 0.2916666666666667 Q[101,7] * H_pos[3,sepal-width]
    + 0.6949152542372881 Q[101,7] * H_pos[3,petal-length]
@@ -12813,15 +9737,7 @@ Subject To
    - 0.2916666666666667 Q[101,7] * H_neg[3,sepal-width]
    - 0.6949152542372881 Q[101,7] * H_neg[3,petal-length]
    - 0.75 Q[101,7] * H_neg[3,petal-width] + Q[101,7] * C4278
-   - Q[101,7] * C4285 - 0.4166666666666665 Q[101,8] * H_pos[3,sepal-length]
-   - 0.2916666666666667 Q[101,8] * H_pos[3,sepal-width]
-   - 0.6949152542372881 Q[101,8] * H_pos[3,petal-length]
-   - 0.75 Q[101,8] * H_pos[3,petal-width]
-   + 0.4166666666666665 Q[101,8] * H_neg[3,sepal-length]
-   + 0.2916666666666667 Q[101,8] * H_neg[3,sepal-width]
-   + 0.6949152542372881 Q[101,8] * H_neg[3,petal-length]
-   + 0.75 Q[101,8] * H_neg[3,petal-width] - Q[101,8] * C4278
-   + Q[101,8] * C4285 ] >= 1
+   - Q[101,7] * C4285 ] >= 1
  qc391: E[63,3] + [ 0.5 Q[63,7] * H_pos[3,sepal-length]
    + 0.375 Q[63,7] * H_pos[3,sepal-width]
    + 0.6271186440677966 Q[63,7] * H_pos[3,petal-length]
@@ -12830,15 +9746,7 @@ Subject To
    - 0.375 Q[63,7] * H_neg[3,sepal-width]
    - 0.6271186440677966 Q[63,7] * H_neg[3,petal-length]
    - 0.5416666666666667 Q[63,7] * H_neg[3,petal-width] + Q[63,7] * C4278
-   - Q[63,7] * C4285 - 0.5 Q[63,8] * H_pos[3,sepal-length]
-   - 0.375 Q[63,8] * H_pos[3,sepal-width]
-   - 0.6271186440677966 Q[63,8] * H_pos[3,petal-length]
-   - 0.5416666666666667 Q[63,8] * H_pos[3,petal-width]
-   + 0.5 Q[63,8] * H_neg[3,sepal-length]
-   + 0.375 Q[63,8] * H_neg[3,sepal-width]
-   + 0.6271186440677966 Q[63,8] * H_neg[3,petal-length]
-   + 0.5416666666666667 Q[63,8] * H_neg[3,petal-width] - Q[63,8] * C4278
-   + Q[63,8] * C4285 ] >= 1
+   - Q[63,7] * C4285 ] >= 1
  qc392: E[77,3] + [ 0.6666666666666667 Q[77,7] * H_pos[3,sepal-length]
    + 0.4166666666666667 Q[77,7] * H_pos[3,sepal-width]
    + 0.6779661016949152 Q[77,7] * H_pos[3,petal-length]
@@ -12847,15 +9755,7 @@ Subject To
    - 0.4166666666666667 Q[77,7] * H_neg[3,sepal-width]
    - 0.6779661016949152 Q[77,7] * H_neg[3,petal-length]
    - 0.6666666666666667 Q[77,7] * H_neg[3,petal-width] + Q[77,7] * C4278
-   - Q[77,7] * C4285 - 0.6666666666666667 Q[77,8] * H_pos[3,sepal-length]
-   - 0.4166666666666667 Q[77,8] * H_pos[3,sepal-width]
-   - 0.6779661016949152 Q[77,8] * H_pos[3,petal-length]
-   - 0.6666666666666667 Q[77,8] * H_pos[3,petal-width]
-   + 0.6666666666666667 Q[77,8] * H_neg[3,sepal-length]
-   + 0.4166666666666667 Q[77,8] * H_neg[3,sepal-width]
-   + 0.6779661016949152 Q[77,8] * H_neg[3,petal-length]
-   + 0.6666666666666667 Q[77,8] * H_neg[3,petal-width] - Q[77,8] * C4278
-   + Q[77,8] * C4285 ] >= 1
+   - Q[77,7] * C4285 ] >= 1
  qc393: E[35,3] + [ 0.1944444444444444 Q[35,7] * H_pos[3,sepal-length]
    + 0.5 Q[35,7] * H_pos[3,sepal-width]
    + 0.0338983050847458 Q[35,7] * H_pos[3,petal-length]
@@ -12864,28 +9764,14 @@ Subject To
    - 0.5 Q[35,7] * H_neg[3,sepal-width]
    - 0.0338983050847458 Q[35,7] * H_neg[3,petal-length]
    - 0.0416666666666667 Q[35,7] * H_neg[3,petal-width] + Q[35,7] * C4278
-   - Q[35,7] * C4285 - 0.1944444444444444 Q[35,8] * H_pos[3,sepal-length]
-   - 0.5 Q[35,8] * H_pos[3,sepal-width]
-   - 0.0338983050847458 Q[35,8] * H_pos[3,petal-length]
-   - 0.0416666666666667 Q[35,8] * H_pos[3,petal-width]
-   + 0.1944444444444444 Q[35,8] * H_neg[3,sepal-length]
-   + 0.5 Q[35,8] * H_neg[3,sepal-width]
-   + 0.0338983050847458 Q[35,8] * H_neg[3,petal-length]
-   + 0.0416666666666667 Q[35,8] * H_neg[3,petal-width] - Q[35,8] * C4278
-   + Q[35,8] * C4285 ] >= 1
+   - Q[35,7] * C4285 ] >= 1
  qc394: E[22,3] + [ 0.0833333333333333 Q[22,7] * H_pos[3,sepal-length]
    + 0.6666666666666667 Q[22,7] * H_pos[3,sepal-width]
    + 0.0416666666666667 Q[22,7] * H_pos[3,petal-width]
    - 0.0833333333333333 Q[22,7] * H_neg[3,sepal-length]
    - 0.6666666666666667 Q[22,7] * H_neg[3,sepal-width]
    - 0.0416666666666667 Q[22,7] * H_neg[3,petal-width] + Q[22,7] * C4278
-   - Q[22,7] * C4285 - 0.0833333333333333 Q[22,8] * H_pos[3,sepal-length]
-   - 0.6666666666666667 Q[22,8] * H_pos[3,sepal-width]
-   - 0.0416666666666667 Q[22,8] * H_pos[3,petal-width]
-   + 0.0833333333333333 Q[22,8] * H_neg[3,sepal-length]
-   + 0.6666666666666667 Q[22,8] * H_neg[3,sepal-width]
-   + 0.0416666666666667 Q[22,8] * H_neg[3,petal-width] - Q[22,8] * C4278
-   + Q[22,8] * C4285 ] >= 1
+   - Q[22,7] * C4285 ] >= 1
  qc395: E[127,3] + [ 0.5 Q[127,7] * H_pos[3,sepal-length]
    + 0.4166666666666667 Q[127,7] * H_pos[3,sepal-width]
    + 0.6610169491525424 Q[127,7] * H_pos[3,petal-length]
@@ -12894,15 +9780,7 @@ Subject To
    - 0.4166666666666667 Q[127,7] * H_neg[3,sepal-width]
    - 0.6610169491525424 Q[127,7] * H_neg[3,petal-length]
    - 0.7083333333333334 Q[127,7] * H_neg[3,petal-width] + Q[127,7] * C4278
-   - Q[127,7] * C4285 - 0.5 Q[127,8] * H_pos[3,sepal-length]
-   - 0.4166666666666667 Q[127,8] * H_pos[3,sepal-width]
-   - 0.6610169491525424 Q[127,8] * H_pos[3,petal-length]
-   - 0.7083333333333334 Q[127,8] * H_pos[3,petal-width]
-   + 0.5 Q[127,8] * H_neg[3,sepal-length]
-   + 0.4166666666666667 Q[127,8] * H_neg[3,sepal-width]
-   + 0.6610169491525424 Q[127,8] * H_neg[3,petal-length]
-   + 0.7083333333333334 Q[127,8] * H_neg[3,petal-width] - Q[127,8] * C4278
-   + Q[127,8] * C4285 ] >= 1
+   - Q[127,7] * C4285 ] >= 1
  qc396: E[102,3] + [ 0.7777777777777777 Q[102,7] * H_pos[3,sepal-length]
    + 0.4166666666666667 Q[102,7] * H_pos[3,sepal-width]
    + 0.8305084745762712 Q[102,7] * H_pos[3,petal-length]
@@ -12911,15 +9789,7 @@ Subject To
    - 0.4166666666666667 Q[102,7] * H_neg[3,sepal-width]
    - 0.8305084745762712 Q[102,7] * H_neg[3,petal-length]
    - 0.8333333333333335 Q[102,7] * H_neg[3,petal-width] + Q[102,7] * C4278
-   - Q[102,7] * C4285 - 0.7777777777777777 Q[102,8] * H_pos[3,sepal-length]
-   - 0.4166666666666667 Q[102,8] * H_pos[3,sepal-width]
-   - 0.8305084745762712 Q[102,8] * H_pos[3,petal-length]
-   - 0.8333333333333335 Q[102,8] * H_pos[3,petal-width]
-   + 0.7777777777777777 Q[102,8] * H_neg[3,sepal-length]
-   + 0.4166666666666667 Q[102,8] * H_neg[3,sepal-width]
-   + 0.8305084745762712 Q[102,8] * H_neg[3,petal-length]
-   + 0.8333333333333335 Q[102,8] * H_neg[3,petal-width] - Q[102,8] * C4278
-   + Q[102,8] * C4285 ] >= 1
+   - Q[102,7] * C4285 ] >= 1
  qc397: E[148,3] + [ 0.5277777777777779 Q[148,7] * H_pos[3,sepal-length]
    + 0.5833333333333333 Q[148,7] * H_pos[3,sepal-width]
    + 0.7457627118644068 Q[148,7] * H_pos[3,petal-length]
@@ -12928,15 +9798,7 @@ Subject To
    - 0.5833333333333333 Q[148,7] * H_neg[3,sepal-width]
    - 0.7457627118644068 Q[148,7] * H_neg[3,petal-length]
    - 0.9166666666666666 Q[148,7] * H_neg[3,petal-width] + Q[148,7] * C4278
-   - Q[148,7] * C4285 - 0.5277777777777779 Q[148,8] * H_pos[3,sepal-length]
-   - 0.5833333333333333 Q[148,8] * H_pos[3,sepal-width]
-   - 0.7457627118644068 Q[148,8] * H_pos[3,petal-length]
-   - 0.9166666666666666 Q[148,8] * H_pos[3,petal-width]
-   + 0.5277777777777779 Q[148,8] * H_neg[3,sepal-length]
-   + 0.5833333333333333 Q[148,8] * H_neg[3,sepal-width]
-   + 0.7457627118644068 Q[148,8] * H_neg[3,petal-length]
-   + 0.9166666666666666 Q[148,8] * H_neg[3,petal-width] - Q[148,8] * C4278
-   + Q[148,8] * C4285 ] >= 1
+   - Q[148,7] * C4285 ] >= 1
  qc398: E[64,3] + [ 0.3611111111111109 Q[64,7] * H_pos[3,sepal-length]
    + 0.375 Q[64,7] * H_pos[3,sepal-width]
    + 0.440677966101695 Q[64,7] * H_pos[3,petal-length]
@@ -12945,14 +9807,6 @@ Subject To
    - 0.375 Q[64,7] * H_neg[3,sepal-width]
    - 0.440677966101695 Q[64,7] * H_neg[3,petal-length]
    - 0.5 Q[64,7] * H_neg[3,petal-width] + Q[64,7] * C4278 - Q[64,7] * C4285
-   - 0.3611111111111109 Q[64,8] * H_pos[3,sepal-length]
-   - 0.375 Q[64,8] * H_pos[3,sepal-width]
-   - 0.440677966101695 Q[64,8] * H_pos[3,petal-length]
-   - 0.5 Q[64,8] * H_pos[3,petal-width]
-   + 0.3611111111111109 Q[64,8] * H_neg[3,sepal-length]
-   + 0.375 Q[64,8] * H_neg[3,sepal-width]
-   + 0.440677966101695 Q[64,8] * H_neg[3,petal-length]
-   + 0.5 Q[64,8] * H_neg[3,petal-width] - Q[64,8] * C4278 + Q[64,8] * C4285
    ] >= 1
  qc399: E[68,3] + [ 0.5277777777777779 Q[68,7] * H_pos[3,sepal-length]
    + 0.0833333333333334 Q[68,7] * H_pos[3,sepal-width]
@@ -12962,15 +9816,7 @@ Subject To
    - 0.0833333333333334 Q[68,7] * H_neg[3,sepal-width]
    - 0.5932203389830508 Q[68,7] * H_neg[3,petal-length]
    - 0.5833333333333334 Q[68,7] * H_neg[3,petal-width] + Q[68,7] * C4278
-   - Q[68,7] * C4285 - 0.5277777777777779 Q[68,8] * H_pos[3,sepal-length]
-   - 0.0833333333333334 Q[68,8] * H_pos[3,sepal-width]
-   - 0.5932203389830508 Q[68,8] * H_pos[3,petal-length]
-   - 0.5833333333333334 Q[68,8] * H_pos[3,petal-width]
-   + 0.5277777777777779 Q[68,8] * H_neg[3,sepal-length]
-   + 0.0833333333333334 Q[68,8] * H_neg[3,sepal-width]
-   + 0.5932203389830508 Q[68,8] * H_neg[3,petal-length]
-   + 0.5833333333333334 Q[68,8] * H_neg[3,petal-width] - Q[68,8] * C4278
-   + Q[68,8] * C4285 ] >= 1
+   - Q[68,7] * C4285 ] >= 1
  qc400: E[27,3] + [ 0.25 Q[27,7] * H_pos[3,sepal-length]
    + 0.625 Q[27,7] * H_pos[3,sepal-width]
    + 0.0847457627118644 Q[27,7] * H_pos[3,petal-length]
@@ -12979,15 +9825,7 @@ Subject To
    - 0.625 Q[27,7] * H_neg[3,sepal-width]
    - 0.0847457627118644 Q[27,7] * H_neg[3,petal-length]
    - 0.0416666666666667 Q[27,7] * H_neg[3,petal-width] + Q[27,7] * C4278
-   - Q[27,7] * C4285 - 0.25 Q[27,8] * H_pos[3,sepal-length]
-   - 0.625 Q[27,8] * H_pos[3,sepal-width]
-   - 0.0847457627118644 Q[27,8] * H_pos[3,petal-length]
-   - 0.0416666666666667 Q[27,8] * H_pos[3,petal-width]
-   + 0.25 Q[27,8] * H_neg[3,sepal-length]
-   + 0.625 Q[27,8] * H_neg[3,sepal-width]
-   + 0.0847457627118644 Q[27,8] * H_neg[3,petal-length]
-   + 0.0416666666666667 Q[27,8] * H_neg[3,petal-width] - Q[27,8] * C4278
-   + Q[27,8] * C4285 ] >= 1
+   - Q[27,7] * C4285 ] >= 1
  qc401: E[149,3] + [ 0.4444444444444446 Q[149,7] * H_pos[3,sepal-length]
    + 0.4166666666666667 Q[149,7] * H_pos[3,sepal-width]
    + 0.6949152542372881 Q[149,7] * H_pos[3,petal-length]
@@ -12996,15 +9834,7 @@ Subject To
    - 0.4166666666666667 Q[149,7] * H_neg[3,sepal-width]
    - 0.6949152542372881 Q[149,7] * H_neg[3,petal-length]
    - 0.7083333333333334 Q[149,7] * H_neg[3,petal-width] + Q[149,7] * C4278
-   - Q[149,7] * C4285 - 0.4444444444444446 Q[149,8] * H_pos[3,sepal-length]
-   - 0.4166666666666667 Q[149,8] * H_pos[3,sepal-width]
-   - 0.6949152542372881 Q[149,8] * H_pos[3,petal-length]
-   - 0.7083333333333334 Q[149,8] * H_pos[3,petal-width]
-   + 0.4444444444444446 Q[149,8] * H_neg[3,sepal-length]
-   + 0.4166666666666667 Q[149,8] * H_neg[3,sepal-width]
-   + 0.6949152542372881 Q[149,8] * H_neg[3,petal-length]
-   + 0.7083333333333334 Q[149,8] * H_neg[3,petal-width] - Q[149,8] * C4278
-   + Q[149,8] * C4285 ] >= 1
+   - Q[149,7] * C4285 ] >= 1
  qc402: E[39,3] + [ 0.2222222222222221 Q[39,7] * H_pos[3,sepal-length]
    + 0.5833333333333333 Q[39,7] * H_pos[3,sepal-width]
    + 0.0847457627118644 Q[39,7] * H_pos[3,petal-length]
@@ -13013,15 +9843,7 @@ Subject To
    - 0.5833333333333333 Q[39,7] * H_neg[3,sepal-width]
    - 0.0847457627118644 Q[39,7] * H_neg[3,petal-length]
    - 0.0416666666666667 Q[39,7] * H_neg[3,petal-width] + Q[39,7] * C4278
-   - Q[39,7] * C4285 - 0.2222222222222221 Q[39,8] * H_pos[3,sepal-length]
-   - 0.5833333333333333 Q[39,8] * H_pos[3,sepal-width]
-   - 0.0847457627118644 Q[39,8] * H_pos[3,petal-length]
-   - 0.0416666666666667 Q[39,8] * H_pos[3,petal-width]
-   + 0.2222222222222221 Q[39,8] * H_neg[3,sepal-length]
-   + 0.5833333333333333 Q[39,8] * H_neg[3,sepal-width]
-   + 0.0847457627118644 Q[39,8] * H_neg[3,petal-length]
-   + 0.0416666666666667 Q[39,8] * H_neg[3,petal-width] - Q[39,8] * C4278
-   + Q[39,8] * C4285 ] >= 1
+   - Q[39,7] * C4285 ] >= 1
  qc403: E[25,3] + [ 0.1944444444444444 Q[25,7] * H_pos[3,sepal-length]
    + 0.4166666666666667 Q[25,7] * H_pos[3,sepal-width]
    + 0.1016949152542373 Q[25,7] * H_pos[3,petal-length]
@@ -13030,15 +9852,7 @@ Subject To
    - 0.4166666666666667 Q[25,7] * H_neg[3,sepal-width]
    - 0.1016949152542373 Q[25,7] * H_neg[3,petal-length]
    - 0.0416666666666667 Q[25,7] * H_neg[3,petal-width] + Q[25,7] * C4278
-   - Q[25,7] * C4285 - 0.1944444444444444 Q[25,8] * H_pos[3,sepal-length]
-   - 0.4166666666666667 Q[25,8] * H_pos[3,sepal-width]
-   - 0.1016949152542373 Q[25,8] * H_pos[3,petal-length]
-   - 0.0416666666666667 Q[25,8] * H_pos[3,petal-width]
-   + 0.1944444444444444 Q[25,8] * H_neg[3,sepal-length]
-   + 0.4166666666666667 Q[25,8] * H_neg[3,sepal-width]
-   + 0.1016949152542373 Q[25,8] * H_neg[3,petal-length]
-   + 0.0416666666666667 Q[25,8] * H_neg[3,petal-width] - Q[25,8] * C4278
-   + Q[25,8] * C4285 ] >= 1
+   - Q[25,7] * C4285 ] >= 1
  qc404: E[62,3] + [ 0.4722222222222223 Q[62,7] * H_pos[3,sepal-length]
    + 0.0833333333333334 Q[62,7] * H_pos[3,sepal-width]
    + 0.5084745762711864 Q[62,7] * H_pos[3,petal-length]
@@ -13047,28 +9861,14 @@ Subject To
    - 0.0833333333333334 Q[62,7] * H_neg[3,sepal-width]
    - 0.5084745762711864 Q[62,7] * H_neg[3,petal-length]
    - 0.375 Q[62,7] * H_neg[3,petal-width] + Q[62,7] * C4278
-   - Q[62,7] * C4285 - 0.4722222222222223 Q[62,8] * H_pos[3,sepal-length]
-   - 0.0833333333333334 Q[62,8] * H_pos[3,sepal-width]
-   - 0.5084745762711864 Q[62,8] * H_pos[3,petal-length]
-   - 0.375 Q[62,8] * H_pos[3,petal-width]
-   + 0.4722222222222223 Q[62,8] * H_neg[3,sepal-length]
-   + 0.0833333333333334 Q[62,8] * H_neg[3,sepal-width]
-   + 0.5084745762711864 Q[62,8] * H_neg[3,petal-length]
-   + 0.375 Q[62,8] * H_neg[3,petal-width] - Q[62,8] * C4278
-   + Q[62,8] * C4285 ] >= 1
+   - Q[62,7] * C4285 ] >= 1
  qc405: E[32,3] + [ 0.25 Q[32,7] * H_pos[3,sepal-length]
    + 0.875 Q[32,7] * H_pos[3,sepal-width]
    + 0.0847457627118644 Q[32,7] * H_pos[3,petal-length]
    - 0.25 Q[32,7] * H_neg[3,sepal-length]
    - 0.875 Q[32,7] * H_neg[3,sepal-width]
    - 0.0847457627118644 Q[32,7] * H_neg[3,petal-length] + Q[32,7] * C4278
-   - Q[32,7] * C4285 - 0.25 Q[32,8] * H_pos[3,sepal-length]
-   - 0.875 Q[32,8] * H_pos[3,sepal-width]
-   - 0.0847457627118644 Q[32,8] * H_pos[3,petal-length]
-   + 0.25 Q[32,8] * H_neg[3,sepal-length]
-   + 0.875 Q[32,8] * H_neg[3,sepal-width]
-   + 0.0847457627118644 Q[32,8] * H_neg[3,petal-length] - Q[32,8] * C4278
-   + Q[32,8] * C4285 ] >= 1
+   - Q[32,7] * C4285 ] >= 1
  qc406: E[72,3] + [ 0.5555555555555556 Q[72,7] * H_pos[3,sepal-length]
    + 0.2083333333333333 Q[72,7] * H_pos[3,sepal-width]
    + 0.6610169491525424 Q[72,7] * H_pos[3,petal-length]
@@ -13077,15 +9877,7 @@ Subject To
    - 0.2083333333333333 Q[72,7] * H_neg[3,sepal-width]
    - 0.6610169491525424 Q[72,7] * H_neg[3,petal-length]
    - 0.5833333333333334 Q[72,7] * H_neg[3,petal-width] + Q[72,7] * C4278
-   - Q[72,7] * C4285 - 0.5555555555555556 Q[72,8] * H_pos[3,sepal-length]
-   - 0.2083333333333333 Q[72,8] * H_pos[3,sepal-width]
-   - 0.6610169491525424 Q[72,8] * H_pos[3,petal-length]
-   - 0.5833333333333334 Q[72,8] * H_pos[3,petal-width]
-   + 0.5555555555555556 Q[72,8] * H_neg[3,sepal-length]
-   + 0.2083333333333333 Q[72,8] * H_neg[3,sepal-width]
-   + 0.6610169491525424 Q[72,8] * H_neg[3,petal-length]
-   + 0.5833333333333334 Q[72,8] * H_neg[3,petal-width] - Q[72,8] * C4278
-   + Q[72,8] * C4285 ] >= 1
+   - Q[72,7] * C4285 ] >= 1
  qc407: E[26,3] + [ 0.1944444444444444 Q[26,7] * H_pos[3,sepal-length]
    + 0.5833333333333333 Q[26,7] * H_pos[3,sepal-width]
    + 0.1016949152542373 Q[26,7] * H_pos[3,petal-length]
@@ -13094,15 +9886,7 @@ Subject To
    - 0.5833333333333333 Q[26,7] * H_neg[3,sepal-width]
    - 0.1016949152542373 Q[26,7] * H_neg[3,petal-length]
    - 0.125 Q[26,7] * H_neg[3,petal-width] + Q[26,7] * C4278
-   - Q[26,7] * C4285 - 0.1944444444444444 Q[26,8] * H_pos[3,sepal-length]
-   - 0.5833333333333333 Q[26,8] * H_pos[3,sepal-width]
-   - 0.1016949152542373 Q[26,8] * H_pos[3,petal-length]
-   - 0.125 Q[26,8] * H_pos[3,petal-width]
-   + 0.1944444444444444 Q[26,8] * H_neg[3,sepal-length]
-   + 0.5833333333333333 Q[26,8] * H_neg[3,sepal-width]
-   + 0.1016949152542373 Q[26,8] * H_neg[3,petal-length]
-   + 0.125 Q[26,8] * H_neg[3,petal-width] - Q[26,8] * C4278
-   + Q[26,8] * C4285 ] >= 1
+   - Q[26,7] * C4285 ] >= 1
  qc408: E[116,3] + [ 0.6111111111111112 Q[116,7] * H_pos[3,sepal-length]
    + 0.4166666666666667 Q[116,7] * H_pos[3,sepal-width]
    + 0.7627118644067796 Q[116,7] * H_pos[3,petal-length]
@@ -13111,28 +9895,14 @@ Subject To
    - 0.4166666666666667 Q[116,7] * H_neg[3,sepal-width]
    - 0.7627118644067796 Q[116,7] * H_neg[3,petal-length]
    - 0.7083333333333334 Q[116,7] * H_neg[3,petal-width] + Q[116,7] * C4278
-   - Q[116,7] * C4285 - 0.6111111111111112 Q[116,8] * H_pos[3,sepal-length]
-   - 0.4166666666666667 Q[116,8] * H_pos[3,sepal-width]
-   - 0.7627118644067796 Q[116,8] * H_pos[3,petal-length]
-   - 0.7083333333333334 Q[116,8] * H_pos[3,petal-width]
-   + 0.6111111111111112 Q[116,8] * H_neg[3,sepal-length]
-   + 0.4166666666666667 Q[116,8] * H_neg[3,sepal-width]
-   + 0.7627118644067796 Q[116,8] * H_neg[3,petal-length]
-   + 0.7083333333333334 Q[116,8] * H_neg[3,petal-width] - Q[116,8] * C4278
-   + Q[116,8] * C4285 ] >= 1
+   - Q[116,7] * C4285 ] >= 1
  qc409: E[34,3] + [ 0.1666666666666667 Q[34,7] * H_pos[3,sepal-length]
    + 0.4583333333333333 Q[34,7] * H_pos[3,sepal-width]
    + 0.0847457627118644 Q[34,7] * H_pos[3,petal-length]
    - 0.1666666666666667 Q[34,7] * H_neg[3,sepal-length]
    - 0.4583333333333333 Q[34,7] * H_neg[3,sepal-width]
    - 0.0847457627118644 Q[34,7] * H_neg[3,petal-length] + Q[34,7] * C4278
-   - Q[34,7] * C4285 - 0.1666666666666667 Q[34,8] * H_pos[3,sepal-length]
-   - 0.4583333333333333 Q[34,8] * H_pos[3,sepal-width]
-   - 0.0847457627118644 Q[34,8] * H_pos[3,petal-length]
-   + 0.1666666666666667 Q[34,8] * H_neg[3,sepal-length]
-   + 0.4583333333333333 Q[34,8] * H_neg[3,sepal-width]
-   + 0.0847457627118644 Q[34,8] * H_neg[3,petal-length] - Q[34,8] * C4278
-   + Q[34,8] * C4285 ] >= 1
+   - Q[34,7] * C4285 ] >= 1
  qc410: E[117,3] + [ 0.9444444444444442 Q[117,7] * H_pos[3,sepal-length]
    + 0.75 Q[117,7] * H_pos[3,sepal-width]
    + 0.9661016949152543 Q[117,7] * H_pos[3,petal-length]
@@ -13141,15 +9911,7 @@ Subject To
    - 0.75 Q[117,7] * H_neg[3,sepal-width]
    - 0.9661016949152543 Q[117,7] * H_neg[3,petal-length]
    - 0.875 Q[117,7] * H_neg[3,petal-width] + Q[117,7] * C4278
-   - Q[117,7] * C4285 - 0.9444444444444442 Q[117,8] * H_pos[3,sepal-length]
-   - 0.75 Q[117,8] * H_pos[3,sepal-width]
-   - 0.9661016949152543 Q[117,8] * H_pos[3,petal-length]
-   - 0.875 Q[117,8] * H_pos[3,petal-width]
-   + 0.9444444444444442 Q[117,8] * H_neg[3,sepal-length]
-   + 0.75 Q[117,8] * H_neg[3,sepal-width]
-   + 0.9661016949152543 Q[117,8] * H_neg[3,petal-length]
-   + 0.875 Q[117,8] * H_neg[3,petal-width] - Q[117,8] * C4278
-   + Q[117,8] * C4285 ] >= 1
+   - Q[117,7] * C4285 ] >= 1
  qc411: E[30,3] + [ 0.1388888888888888 Q[30,7] * H_pos[3,sepal-length]
    + 0.4583333333333333 Q[30,7] * H_pos[3,sepal-width]
    + 0.1016949152542373 Q[30,7] * H_pos[3,petal-length]
@@ -13158,15 +9920,7 @@ Subject To
    - 0.4583333333333333 Q[30,7] * H_neg[3,sepal-width]
    - 0.1016949152542373 Q[30,7] * H_neg[3,petal-length]
    - 0.0416666666666667 Q[30,7] * H_neg[3,petal-width] + Q[30,7] * C4278
-   - Q[30,7] * C4285 - 0.1388888888888888 Q[30,8] * H_pos[3,sepal-length]
-   - 0.4583333333333333 Q[30,8] * H_pos[3,sepal-width]
-   - 0.1016949152542373 Q[30,8] * H_pos[3,petal-length]
-   - 0.0416666666666667 Q[30,8] * H_pos[3,petal-width]
-   + 0.1388888888888888 Q[30,8] * H_neg[3,sepal-length]
-   + 0.4583333333333333 Q[30,8] * H_neg[3,sepal-width]
-   + 0.1016949152542373 Q[30,8] * H_neg[3,petal-length]
-   + 0.0416666666666667 Q[30,8] * H_neg[3,petal-width] - Q[30,8] * C4278
-   + Q[30,8] * C4285 ] >= 1
+   - Q[30,7] * C4285 ] >= 1
  qc412: E[0,3] + [ 0.2222222222222221 Q[0,7] * H_pos[3,sepal-length]
    + 0.625 Q[0,7] * H_pos[3,sepal-width]
    + 0.0677966101694915 Q[0,7] * H_pos[3,petal-length]
@@ -13175,15 +9929,7 @@ Subject To
    - 0.625 Q[0,7] * H_neg[3,sepal-width]
    - 0.0677966101694915 Q[0,7] * H_neg[3,petal-length]
    - 0.0416666666666667 Q[0,7] * H_neg[3,petal-width] + Q[0,7] * C4278
-   - Q[0,7] * C4285 - 0.2222222222222221 Q[0,8] * H_pos[3,sepal-length]
-   - 0.625 Q[0,8] * H_pos[3,sepal-width]
-   - 0.0677966101694915 Q[0,8] * H_pos[3,petal-length]
-   - 0.0416666666666667 Q[0,8] * H_pos[3,petal-width]
-   + 0.2222222222222221 Q[0,8] * H_neg[3,sepal-length]
-   + 0.625 Q[0,8] * H_neg[3,sepal-width]
-   + 0.0677966101694915 Q[0,8] * H_neg[3,petal-length]
-   + 0.0416666666666667 Q[0,8] * H_neg[3,petal-width] - Q[0,8] * C4278
-   + Q[0,8] * C4285 ] >= 1
+   - Q[0,7] * C4285 ] >= 1
  qc413: E[82,3] + [ 0.4166666666666665 Q[82,7] * H_pos[3,sepal-length]
    + 0.2916666666666667 Q[82,7] * H_pos[3,sepal-width]
    + 0.4915254237288135 Q[82,7] * H_pos[3,petal-length]
@@ -13192,15 +9938,7 @@ Subject To
    - 0.2916666666666667 Q[82,7] * H_neg[3,sepal-width]
    - 0.4915254237288135 Q[82,7] * H_neg[3,petal-length]
    - 0.4583333333333333 Q[82,7] * H_neg[3,petal-width] + Q[82,7] * C4278
-   - Q[82,7] * C4285 - 0.4166666666666665 Q[82,8] * H_pos[3,sepal-length]
-   - 0.2916666666666667 Q[82,8] * H_pos[3,sepal-width]
-   - 0.4915254237288135 Q[82,8] * H_pos[3,petal-length]
-   - 0.4583333333333333 Q[82,8] * H_pos[3,petal-width]
-   + 0.4166666666666665 Q[82,8] * H_neg[3,sepal-length]
-   + 0.2916666666666667 Q[82,8] * H_neg[3,sepal-width]
-   + 0.4915254237288135 Q[82,8] * H_neg[3,petal-length]
-   + 0.4583333333333333 Q[82,8] * H_neg[3,petal-width] - Q[82,8] * C4278
-   + Q[82,8] * C4285 ] >= 1
+   - Q[82,7] * C4285 ] >= 1
  qc414: E[14,3] + [ 0.4166666666666665 Q[14,7] * H_pos[3,sepal-length]
    + 0.8333333333333333 Q[14,7] * H_pos[3,sepal-width]
    + 0.0338983050847458 Q[14,7] * H_pos[3,petal-length]
@@ -13209,15 +9947,7 @@ Subject To
    - 0.8333333333333333 Q[14,7] * H_neg[3,sepal-width]
    - 0.0338983050847458 Q[14,7] * H_neg[3,petal-length]
    - 0.0416666666666667 Q[14,7] * H_neg[3,petal-width] + Q[14,7] * C4278
-   - Q[14,7] * C4285 - 0.4166666666666665 Q[14,8] * H_pos[3,sepal-length]
-   - 0.8333333333333333 Q[14,8] * H_pos[3,sepal-width]
-   - 0.0338983050847458 Q[14,8] * H_pos[3,petal-length]
-   - 0.0416666666666667 Q[14,8] * H_pos[3,petal-width]
-   + 0.4166666666666665 Q[14,8] * H_neg[3,sepal-length]
-   + 0.8333333333333333 Q[14,8] * H_neg[3,sepal-width]
-   + 0.0338983050847458 Q[14,8] * H_neg[3,petal-length]
-   + 0.0416666666666667 Q[14,8] * H_neg[3,petal-width] - Q[14,8] * C4278
-   + Q[14,8] * C4285 ] >= 1
+   - Q[14,7] * C4285 ] >= 1
  qc415: E[125,3] + [ 0.8055555555555556 Q[125,7] * H_pos[3,sepal-length]
    + 0.5 Q[125,7] * H_pos[3,sepal-width]
    + 0.847457627118644 Q[125,7] * H_pos[3,petal-length]
@@ -13226,15 +9956,7 @@ Subject To
    - 0.5 Q[125,7] * H_neg[3,sepal-width]
    - 0.847457627118644 Q[125,7] * H_neg[3,petal-length]
    - 0.7083333333333334 Q[125,7] * H_neg[3,petal-width] + Q[125,7] * C4278
-   - Q[125,7] * C4285 - 0.8055555555555556 Q[125,8] * H_pos[3,sepal-length]
-   - 0.5 Q[125,8] * H_pos[3,sepal-width]
-   - 0.847457627118644 Q[125,8] * H_pos[3,petal-length]
-   - 0.7083333333333334 Q[125,8] * H_pos[3,petal-width]
-   + 0.8055555555555556 Q[125,8] * H_neg[3,sepal-length]
-   + 0.5 Q[125,8] * H_neg[3,sepal-width]
-   + 0.847457627118644 Q[125,8] * H_neg[3,petal-length]
-   + 0.7083333333333334 Q[125,8] * H_neg[3,petal-width] - Q[125,8] * C4278
-   + Q[125,8] * C4285 ] >= 1
+   - Q[125,7] * C4285 ] >= 1
  qc416: E[120,3] + [ 0.7222222222222223 Q[120,7] * H_pos[3,sepal-length]
    + 0.5 Q[120,7] * H_pos[3,sepal-width]
    + 0.7966101694915254 Q[120,7] * H_pos[3,petal-length]
@@ -13243,15 +9965,7 @@ Subject To
    - 0.5 Q[120,7] * H_neg[3,sepal-width]
    - 0.7966101694915254 Q[120,7] * H_neg[3,petal-length]
    - 0.9166666666666666 Q[120,7] * H_neg[3,petal-width] + Q[120,7] * C4278
-   - Q[120,7] * C4285 - 0.7222222222222223 Q[120,8] * H_pos[3,sepal-length]
-   - 0.5 Q[120,8] * H_pos[3,sepal-width]
-   - 0.7966101694915254 Q[120,8] * H_pos[3,petal-length]
-   - 0.9166666666666666 Q[120,8] * H_pos[3,petal-width]
-   + 0.7222222222222223 Q[120,8] * H_neg[3,sepal-length]
-   + 0.5 Q[120,8] * H_neg[3,sepal-width]
-   + 0.7966101694915254 Q[120,8] * H_neg[3,petal-length]
-   + 0.9166666666666666 Q[120,8] * H_neg[3,petal-width] - Q[120,8] * C4278
-   + Q[120,8] * C4285 ] >= 1
+   - Q[120,7] * C4285 ] >= 1
  qc417: E[97,3] + [ 0.5277777777777779 Q[97,7] * H_pos[3,sepal-length]
    + 0.375 Q[97,7] * H_pos[3,sepal-width]
    + 0.559322033898305 Q[97,7] * H_pos[3,petal-length]
@@ -13260,14 +9974,6 @@ Subject To
    - 0.375 Q[97,7] * H_neg[3,sepal-width]
    - 0.559322033898305 Q[97,7] * H_neg[3,petal-length]
    - 0.5 Q[97,7] * H_neg[3,petal-width] + Q[97,7] * C4278 - Q[97,7] * C4285
-   - 0.5277777777777779 Q[97,8] * H_pos[3,sepal-length]
-   - 0.375 Q[97,8] * H_pos[3,sepal-width]
-   - 0.559322033898305 Q[97,8] * H_pos[3,petal-length]
-   - 0.5 Q[97,8] * H_pos[3,petal-width]
-   + 0.5277777777777779 Q[97,8] * H_neg[3,sepal-length]
-   + 0.375 Q[97,8] * H_neg[3,sepal-width]
-   + 0.559322033898305 Q[97,8] * H_neg[3,petal-length]
-   + 0.5 Q[97,8] * H_neg[3,petal-width] - Q[97,8] * C4278 + Q[97,8] * C4285
    ] >= 1
  qc418: E[53,3] + [ 0.3333333333333333 Q[53,7] * H_pos[3,sepal-length]
    + 0.125 Q[53,7] * H_pos[3,sepal-width]
@@ -13277,14 +9983,6 @@ Subject To
    - 0.125 Q[53,7] * H_neg[3,sepal-width]
    - 0.5084745762711864 Q[53,7] * H_neg[3,petal-length]
    - 0.5 Q[53,7] * H_neg[3,petal-width] + Q[53,7] * C4278 - Q[53,7] * C4285
-   - 0.3333333333333333 Q[53,8] * H_pos[3,sepal-length]
-   - 0.125 Q[53,8] * H_pos[3,sepal-width]
-   - 0.5084745762711864 Q[53,8] * H_pos[3,petal-length]
-   - 0.5 Q[53,8] * H_pos[3,petal-width]
-   + 0.3333333333333333 Q[53,8] * H_neg[3,sepal-length]
-   + 0.125 Q[53,8] * H_neg[3,sepal-width]
-   + 0.5084745762711864 Q[53,8] * H_neg[3,petal-length]
-   + 0.5 Q[53,8] * H_neg[3,petal-width] - Q[53,8] * C4278 + Q[53,8] * C4285
    ] >= 1
  qc419: E[103,3] + [ 0.5555555555555556 Q[103,7] * H_pos[3,sepal-length]
    + 0.375 Q[103,7] * H_pos[3,sepal-width]
@@ -13294,15 +9992,7 @@ Subject To
    - 0.375 Q[103,7] * H_neg[3,sepal-width]
    - 0.7796610169491525 Q[103,7] * H_neg[3,petal-length]
    - 0.7083333333333334 Q[103,7] * H_neg[3,petal-width] + Q[103,7] * C4278
-   - Q[103,7] * C4285 - 0.5555555555555556 Q[103,8] * H_pos[3,sepal-length]
-   - 0.375 Q[103,8] * H_pos[3,sepal-width]
-   - 0.7796610169491525 Q[103,8] * H_pos[3,petal-length]
-   - 0.7083333333333334 Q[103,8] * H_pos[3,petal-width]
-   + 0.5555555555555556 Q[103,8] * H_neg[3,sepal-length]
-   + 0.375 Q[103,8] * H_neg[3,sepal-width]
-   + 0.7796610169491525 Q[103,8] * H_neg[3,petal-length]
-   + 0.7083333333333334 Q[103,8] * H_neg[3,petal-width] - Q[103,8] * C4278
-   + Q[103,8] * C4285 ] >= 1
+   - Q[103,7] * C4285 ] >= 1
  qc420: E[84,3] + [ 0.3055555555555556 Q[84,7] * H_pos[3,sepal-length]
    + 0.4166666666666667 Q[84,7] * H_pos[3,sepal-width]
    + 0.5932203389830508 Q[84,7] * H_pos[3,petal-length]
@@ -13311,24 +10001,12 @@ Subject To
    - 0.4166666666666667 Q[84,7] * H_neg[3,sepal-width]
    - 0.5932203389830508 Q[84,7] * H_neg[3,petal-length]
    - 0.5833333333333334 Q[84,7] * H_neg[3,petal-width] + Q[84,7] * C4278
-   - Q[84,7] * C4285 - 0.3055555555555556 Q[84,8] * H_pos[3,sepal-length]
-   - 0.4166666666666667 Q[84,8] * H_pos[3,sepal-width]
-   - 0.5932203389830508 Q[84,8] * H_pos[3,petal-length]
-   - 0.5833333333333334 Q[84,8] * H_pos[3,petal-width]
-   + 0.3055555555555556 Q[84,8] * H_neg[3,sepal-length]
-   + 0.4166666666666667 Q[84,8] * H_neg[3,sepal-width]
-   + 0.5932203389830508 Q[84,8] * H_neg[3,petal-length]
-   + 0.5833333333333334 Q[84,8] * H_neg[3,petal-width] - Q[84,8] * C4278
-   + Q[84,8] * C4285 ] >= 1
+   - Q[84,7] * C4285 ] >= 1
  qc421: E[13,3] + [ 0.4166666666666667 Q[13,7] * H_pos[3,sepal-width]
    + 0.0169491525423729 Q[13,7] * H_pos[3,petal-length]
    - 0.4166666666666667 Q[13,7] * H_neg[3,sepal-width]
    - 0.0169491525423729 Q[13,7] * H_neg[3,petal-length] + Q[13,7] * C4278
-   - Q[13,7] * C4285 - 0.4166666666666667 Q[13,8] * H_pos[3,sepal-width]
-   - 0.0169491525423729 Q[13,8] * H_pos[3,petal-length]
-   + 0.4166666666666667 Q[13,8] * H_neg[3,sepal-width]
-   + 0.0169491525423729 Q[13,8] * H_neg[3,petal-length] - Q[13,8] * C4278
-   + Q[13,8] * C4285 ] >= 1
+   - Q[13,7] * C4285 ] >= 1
  qc422: E[130,3] + [ 0.8611111111111112 Q[130,7] * H_pos[3,sepal-length]
    + 0.3333333333333333 Q[130,7] * H_pos[3,sepal-width]
    + 0.8644067796610169 Q[130,7] * H_pos[3,petal-length]
@@ -13337,15 +10015,7 @@ Subject To
    - 0.3333333333333333 Q[130,7] * H_neg[3,sepal-width]
    - 0.8644067796610169 Q[130,7] * H_neg[3,petal-length]
    - 0.75 Q[130,7] * H_neg[3,petal-width] + Q[130,7] * C4278
-   - Q[130,7] * C4285 - 0.8611111111111112 Q[130,8] * H_pos[3,sepal-length]
-   - 0.3333333333333333 Q[130,8] * H_pos[3,sepal-width]
-   - 0.8644067796610169 Q[130,8] * H_pos[3,petal-length]
-   - 0.75 Q[130,8] * H_pos[3,petal-width]
-   + 0.8611111111111112 Q[130,8] * H_neg[3,sepal-length]
-   + 0.3333333333333333 Q[130,8] * H_neg[3,sepal-width]
-   + 0.8644067796610169 Q[130,8] * H_neg[3,petal-length]
-   + 0.75 Q[130,8] * H_neg[3,petal-width] - Q[130,8] * C4278
-   + Q[130,8] * C4285 ] >= 1
+   - Q[130,7] * C4285 ] >= 1
  qc423: E[23,3] + [ 0.2222222222222221 Q[23,7] * H_pos[3,sepal-length]
    + 0.5416666666666665 Q[23,7] * H_pos[3,sepal-width]
    + 0.1186440677966101 Q[23,7] * H_pos[3,petal-length]
@@ -13354,15 +10024,7 @@ Subject To
    - 0.5416666666666665 Q[23,7] * H_neg[3,sepal-width]
    - 0.1186440677966101 Q[23,7] * H_neg[3,petal-length]
    - 0.1666666666666667 Q[23,7] * H_neg[3,petal-width] + Q[23,7] * C4278
-   - Q[23,7] * C4285 - 0.2222222222222221 Q[23,8] * H_pos[3,sepal-length]
-   - 0.5416666666666665 Q[23,8] * H_pos[3,sepal-width]
-   - 0.1186440677966101 Q[23,8] * H_pos[3,petal-length]
-   - 0.1666666666666667 Q[23,8] * H_pos[3,petal-width]
-   + 0.2222222222222221 Q[23,8] * H_neg[3,sepal-length]
-   + 0.5416666666666665 Q[23,8] * H_neg[3,sepal-width]
-   + 0.1186440677966101 Q[23,8] * H_neg[3,petal-length]
-   + 0.1666666666666667 Q[23,8] * H_neg[3,petal-width] - Q[23,8] * C4278
-   + Q[23,8] * C4285 ] >= 1
+   - Q[23,7] * C4285 ] >= 1
  qc424: E[49,3] + [ 0.1944444444444444 Q[49,7] * H_pos[3,sepal-length]
    + 0.5416666666666665 Q[49,7] * H_pos[3,sepal-width]
    + 0.0677966101694915 Q[49,7] * H_pos[3,petal-length]
@@ -13371,15 +10033,7 @@ Subject To
    - 0.5416666666666665 Q[49,7] * H_neg[3,sepal-width]
    - 0.0677966101694915 Q[49,7] * H_neg[3,petal-length]
    - 0.0416666666666667 Q[49,7] * H_neg[3,petal-width] + Q[49,7] * C4278
-   - Q[49,7] * C4285 - 0.1944444444444444 Q[49,8] * H_pos[3,sepal-length]
-   - 0.5416666666666665 Q[49,8] * H_pos[3,sepal-width]
-   - 0.0677966101694915 Q[49,8] * H_pos[3,petal-length]
-   - 0.0416666666666667 Q[49,8] * H_pos[3,petal-width]
-   + 0.1944444444444444 Q[49,8] * H_neg[3,sepal-length]
-   + 0.5416666666666665 Q[49,8] * H_neg[3,sepal-width]
-   + 0.0677966101694915 Q[49,8] * H_neg[3,petal-length]
-   + 0.0416666666666667 Q[49,8] * H_neg[3,petal-width] - Q[49,8] * C4278
-   + Q[49,8] * C4285 ] >= 1
+   - Q[49,7] * C4285 ] >= 1
  qc425: E[24,3] + [ 0.1388888888888888 Q[24,7] * H_pos[3,sepal-length]
    + 0.5833333333333333 Q[24,7] * H_pos[3,sepal-width]
    + 0.1525423728813559 Q[24,7] * H_pos[3,petal-length]
@@ -13388,15 +10042,7 @@ Subject To
    - 0.5833333333333333 Q[24,7] * H_neg[3,sepal-width]
    - 0.1525423728813559 Q[24,7] * H_neg[3,petal-length]
    - 0.0416666666666667 Q[24,7] * H_neg[3,petal-width] + Q[24,7] * C4278
-   - Q[24,7] * C4285 - 0.1388888888888888 Q[24,8] * H_pos[3,sepal-length]
-   - 0.5833333333333333 Q[24,8] * H_pos[3,sepal-width]
-   - 0.1525423728813559 Q[24,8] * H_pos[3,petal-length]
-   - 0.0416666666666667 Q[24,8] * H_pos[3,petal-width]
-   + 0.1388888888888888 Q[24,8] * H_neg[3,sepal-length]
-   + 0.5833333333333333 Q[24,8] * H_neg[3,sepal-width]
-   + 0.1525423728813559 Q[24,8] * H_neg[3,petal-length]
-   + 0.0416666666666667 Q[24,8] * H_neg[3,petal-width] - Q[24,8] * C4278
-   + Q[24,8] * C4285 ] >= 1
+   - Q[24,7] * C4285 ] >= 1
  qc426: E[78,3] + [ 0.4722222222222223 Q[78,7] * H_pos[3,sepal-length]
    + 0.375 Q[78,7] * H_pos[3,sepal-width]
    + 0.5932203389830508 Q[78,7] * H_pos[3,petal-length]
@@ -13405,15 +10051,7 @@ Subject To
    - 0.375 Q[78,7] * H_neg[3,sepal-width]
    - 0.5932203389830508 Q[78,7] * H_neg[3,petal-length]
    - 0.5833333333333334 Q[78,7] * H_neg[3,petal-width] + Q[78,7] * C4278
-   - Q[78,7] * C4285 - 0.4722222222222223 Q[78,8] * H_pos[3,sepal-length]
-   - 0.375 Q[78,8] * H_pos[3,sepal-width]
-   - 0.5932203389830508 Q[78,8] * H_pos[3,petal-length]
-   - 0.5833333333333334 Q[78,8] * H_pos[3,petal-width]
-   + 0.4722222222222223 Q[78,8] * H_neg[3,sepal-length]
-   + 0.375 Q[78,8] * H_neg[3,sepal-width]
-   + 0.5932203389830508 Q[78,8] * H_neg[3,petal-length]
-   + 0.5833333333333334 Q[78,8] * H_neg[3,petal-width] - Q[78,8] * C4278
-   + Q[78,8] * C4285 ] >= 1
+   - Q[78,7] * C4285 ] >= 1
  qc427: E[45,3] + [ 0.1388888888888888 Q[45,7] * H_pos[3,sepal-length]
    + 0.4166666666666667 Q[45,7] * H_pos[3,sepal-width]
    + 0.0677966101694915 Q[45,7] * H_pos[3,petal-length]
@@ -13422,15 +10060,7 @@ Subject To
    - 0.4166666666666667 Q[45,7] * H_neg[3,sepal-width]
    - 0.0677966101694915 Q[45,7] * H_neg[3,petal-length]
    - 0.0833333333333333 Q[45,7] * H_neg[3,petal-width] + Q[45,7] * C4278
-   - Q[45,7] * C4285 - 0.1388888888888888 Q[45,8] * H_pos[3,sepal-length]
-   - 0.4166666666666667 Q[45,8] * H_pos[3,sepal-width]
-   - 0.0677966101694915 Q[45,8] * H_pos[3,petal-length]
-   - 0.0833333333333333 Q[45,8] * H_pos[3,petal-width]
-   + 0.1388888888888888 Q[45,8] * H_neg[3,sepal-length]
-   + 0.4166666666666667 Q[45,8] * H_neg[3,sepal-width]
-   + 0.0677966101694915 Q[45,8] * H_neg[3,petal-length]
-   + 0.0833333333333333 Q[45,8] * H_neg[3,petal-width] - Q[45,8] * C4278
-   + Q[45,8] * C4285 ] >= 1
+   - Q[45,7] * C4285 ] >= 1
  qc428: E[104,3] + [ 0.6111111111111112 Q[104,7] * H_pos[3,sepal-length]
    + 0.4166666666666667 Q[104,7] * H_pos[3,sepal-width]
    + 0.8135593220338982 Q[104,7] * H_pos[3,petal-length]
@@ -13439,15 +10069,7 @@ Subject To
    - 0.4166666666666667 Q[104,7] * H_neg[3,sepal-width]
    - 0.8135593220338982 Q[104,7] * H_neg[3,petal-length]
    - 0.875 Q[104,7] * H_neg[3,petal-width] + Q[104,7] * C4278
-   - Q[104,7] * C4285 - 0.6111111111111112 Q[104,8] * H_pos[3,sepal-length]
-   - 0.4166666666666667 Q[104,8] * H_pos[3,sepal-width]
-   - 0.8135593220338982 Q[104,8] * H_pos[3,petal-length]
-   - 0.875 Q[104,8] * H_pos[3,petal-width]
-   + 0.6111111111111112 Q[104,8] * H_neg[3,sepal-length]
-   + 0.4166666666666667 Q[104,8] * H_neg[3,sepal-width]
-   + 0.8135593220338982 Q[104,8] * H_neg[3,petal-length]
-   + 0.875 Q[104,8] * H_neg[3,petal-width] - Q[104,8] * C4278
-   + Q[104,8] * C4285 ] >= 1
+   - Q[104,7] * C4285 ] >= 1
  qc429: E[58,3] + [ 0.6388888888888888 Q[58,7] * H_pos[3,sepal-length]
    + 0.375 Q[58,7] * H_pos[3,sepal-width]
    + 0.6101694915254237 Q[58,7] * H_pos[3,petal-length]
@@ -13456,14 +10078,6 @@ Subject To
    - 0.375 Q[58,7] * H_neg[3,sepal-width]
    - 0.6101694915254237 Q[58,7] * H_neg[3,petal-length]
    - 0.5 Q[58,7] * H_neg[3,petal-width] + Q[58,7] * C4278 - Q[58,7] * C4285
-   - 0.6388888888888888 Q[58,8] * H_pos[3,sepal-length]
-   - 0.375 Q[58,8] * H_pos[3,sepal-width]
-   - 0.6101694915254237 Q[58,8] * H_pos[3,petal-length]
-   - 0.5 Q[58,8] * H_pos[3,petal-width]
-   + 0.6388888888888888 Q[58,8] * H_neg[3,sepal-length]
-   + 0.375 Q[58,8] * H_neg[3,sepal-width]
-   + 0.6101694915254237 Q[58,8] * H_neg[3,petal-length]
-   + 0.5 Q[58,8] * H_neg[3,petal-width] - Q[58,8] * C4278 + Q[58,8] * C4285
    ] >= 1
  qc430: E[113,3] + [ 0.3888888888888888 Q[113,7] * H_pos[3,sepal-length]
    + 0.2083333333333333 Q[113,7] * H_pos[3,sepal-width]
@@ -13473,15 +10087,7 @@ Subject To
    - 0.2083333333333333 Q[113,7] * H_neg[3,sepal-width]
    - 0.6779661016949152 Q[113,7] * H_neg[3,petal-length]
    - 0.7916666666666667 Q[113,7] * H_neg[3,petal-width] + Q[113,7] * C4278
-   - Q[113,7] * C4285 - 0.3888888888888888 Q[113,8] * H_pos[3,sepal-length]
-   - 0.2083333333333333 Q[113,8] * H_pos[3,sepal-width]
-   - 0.6779661016949152 Q[113,8] * H_pos[3,petal-length]
-   - 0.7916666666666667 Q[113,8] * H_pos[3,petal-width]
-   + 0.3888888888888888 Q[113,8] * H_neg[3,sepal-length]
-   + 0.2083333333333333 Q[113,8] * H_neg[3,sepal-width]
-   + 0.6779661016949152 Q[113,8] * H_neg[3,petal-length]
-   + 0.7916666666666667 Q[113,8] * H_neg[3,petal-width] - Q[113,8] * C4278
-   + Q[113,8] * C4285 ] >= 1
+   - Q[113,7] * C4285 ] >= 1
  qc431: E[3,3] + [ 0.0833333333333333 Q[3,7] * H_pos[3,sepal-length]
    + 0.4583333333333333 Q[3,7] * H_pos[3,sepal-width]
    + 0.0847457627118644 Q[3,7] * H_pos[3,petal-length]
@@ -13490,15 +10096,7 @@ Subject To
    - 0.4583333333333333 Q[3,7] * H_neg[3,sepal-width]
    - 0.0847457627118644 Q[3,7] * H_neg[3,petal-length]
    - 0.0416666666666667 Q[3,7] * H_neg[3,petal-width] + Q[3,7] * C4278
-   - Q[3,7] * C4285 - 0.0833333333333333 Q[3,8] * H_pos[3,sepal-length]
-   - 0.4583333333333333 Q[3,8] * H_pos[3,sepal-width]
-   - 0.0847457627118644 Q[3,8] * H_pos[3,petal-length]
-   - 0.0416666666666667 Q[3,8] * H_pos[3,petal-width]
-   + 0.0833333333333333 Q[3,8] * H_neg[3,sepal-length]
-   + 0.4583333333333333 Q[3,8] * H_neg[3,sepal-width]
-   + 0.0847457627118644 Q[3,8] * H_neg[3,petal-length]
-   + 0.0416666666666667 Q[3,8] * H_neg[3,petal-width] - Q[3,8] * C4278
-   + Q[3,8] * C4285 ] >= 1
+   - Q[3,7] * C4285 ] >= 1
  qc432: E[146,3] + [ 0.5555555555555556 Q[146,7] * H_pos[3,sepal-length]
    + 0.2083333333333333 Q[146,7] * H_pos[3,sepal-width]
    + 0.6779661016949152 Q[146,7] * H_pos[3,petal-length]
@@ -13507,15 +10105,7 @@ Subject To
    - 0.2083333333333333 Q[146,7] * H_neg[3,sepal-width]
    - 0.6779661016949152 Q[146,7] * H_neg[3,petal-length]
    - 0.75 Q[146,7] * H_neg[3,petal-width] + Q[146,7] * C4278
-   - Q[146,7] * C4285 - 0.5555555555555556 Q[146,8] * H_pos[3,sepal-length]
-   - 0.2083333333333333 Q[146,8] * H_pos[3,sepal-width]
-   - 0.6779661016949152 Q[146,8] * H_pos[3,petal-length]
-   - 0.75 Q[146,8] * H_pos[3,petal-width]
-   + 0.5555555555555556 Q[146,8] * H_neg[3,sepal-length]
-   + 0.2083333333333333 Q[146,8] * H_neg[3,sepal-width]
-   + 0.6779661016949152 Q[146,8] * H_neg[3,petal-length]
-   + 0.75 Q[146,8] * H_neg[3,petal-width] - Q[146,8] * C4278
-   + Q[146,8] * C4285 ] >= 1
+   - Q[146,7] * C4285 ] >= 1
  qc433: E[88,3] + [ 0.3611111111111109 Q[88,7] * H_pos[3,sepal-length]
    + 0.4166666666666667 Q[88,7] * H_pos[3,sepal-width]
    + 0.5254237288135593 Q[88,7] * H_pos[3,petal-length]
@@ -13524,14 +10114,6 @@ Subject To
    - 0.4166666666666667 Q[88,7] * H_neg[3,sepal-width]
    - 0.5254237288135593 Q[88,7] * H_neg[3,petal-length]
    - 0.5 Q[88,7] * H_neg[3,petal-width] + Q[88,7] * C4278 - Q[88,7] * C4285
-   - 0.3611111111111109 Q[88,8] * H_pos[3,sepal-length]
-   - 0.4166666666666667 Q[88,8] * H_pos[3,sepal-width]
-   - 0.5254237288135593 Q[88,8] * H_pos[3,petal-length]
-   - 0.5 Q[88,8] * H_pos[3,petal-width]
-   + 0.3611111111111109 Q[88,8] * H_neg[3,sepal-length]
-   + 0.4166666666666667 Q[88,8] * H_neg[3,sepal-width]
-   + 0.5254237288135593 Q[88,8] * H_neg[3,petal-length]
-   + 0.5 Q[88,8] * H_neg[3,petal-width] - Q[88,8] * C4278 + Q[88,8] * C4285
    ] >= 1
  qc434: E[138,3] + [ 0.4722222222222223 Q[138,7] * H_pos[3,sepal-length]
    + 0.4166666666666667 Q[138,7] * H_pos[3,sepal-width]
@@ -13541,15 +10123,7 @@ Subject To
    - 0.4166666666666667 Q[138,7] * H_neg[3,sepal-width]
    - 0.6440677966101694 Q[138,7] * H_neg[3,petal-length]
    - 0.7083333333333334 Q[138,7] * H_neg[3,petal-width] + Q[138,7] * C4278
-   - Q[138,7] * C4285 - 0.4722222222222223 Q[138,8] * H_pos[3,sepal-length]
-   - 0.4166666666666667 Q[138,8] * H_pos[3,sepal-width]
-   - 0.6440677966101694 Q[138,8] * H_pos[3,petal-length]
-   - 0.7083333333333334 Q[138,8] * H_pos[3,petal-width]
-   + 0.4722222222222223 Q[138,8] * H_neg[3,sepal-length]
-   + 0.4166666666666667 Q[138,8] * H_neg[3,sepal-width]
-   + 0.6440677966101694 Q[138,8] * H_neg[3,petal-length]
-   + 0.7083333333333334 Q[138,8] * H_neg[3,petal-width] - Q[138,8] * C4278
-   + Q[138,8] * C4285 ] >= 1
+   - Q[138,7] * C4285 ] >= 1
  qc435: E[128,3] + [ 0.5833333333333335 Q[128,7] * H_pos[3,sepal-length]
    + 0.3333333333333333 Q[128,7] * H_pos[3,sepal-width]
    + 0.7796610169491525 Q[128,7] * H_pos[3,petal-length]
@@ -13558,15 +10132,7 @@ Subject To
    - 0.3333333333333333 Q[128,7] * H_neg[3,sepal-width]
    - 0.7796610169491525 Q[128,7] * H_neg[3,petal-length]
    - 0.8333333333333335 Q[128,7] * H_neg[3,petal-width] + Q[128,7] * C4278
-   - Q[128,7] * C4285 - 0.5833333333333335 Q[128,8] * H_pos[3,sepal-length]
-   - 0.3333333333333333 Q[128,8] * H_pos[3,sepal-width]
-   - 0.7796610169491525 Q[128,8] * H_pos[3,petal-length]
-   - 0.8333333333333335 Q[128,8] * H_pos[3,petal-width]
-   + 0.5833333333333335 Q[128,8] * H_neg[3,sepal-length]
-   + 0.3333333333333333 Q[128,8] * H_neg[3,sepal-width]
-   + 0.7796610169491525 Q[128,8] * H_neg[3,petal-length]
-   + 0.8333333333333335 Q[128,8] * H_neg[3,petal-width] - Q[128,8] * C4278
-   + Q[128,8] * C4285 ] >= 1
+   - Q[128,7] * C4285 ] >= 1
  qc436: E[76,3] + [ 0.6944444444444444 Q[76,7] * H_pos[3,sepal-length]
    + 0.3333333333333333 Q[76,7] * H_pos[3,sepal-width]
    + 0.6440677966101694 Q[76,7] * H_pos[3,petal-length]
@@ -13575,15 +10141,7 @@ Subject To
    - 0.3333333333333333 Q[76,7] * H_neg[3,sepal-width]
    - 0.6440677966101694 Q[76,7] * H_neg[3,petal-length]
    - 0.5416666666666667 Q[76,7] * H_neg[3,petal-width] + Q[76,7] * C4278
-   - Q[76,7] * C4285 - 0.6944444444444444 Q[76,8] * H_pos[3,sepal-length]
-   - 0.3333333333333333 Q[76,8] * H_pos[3,sepal-width]
-   - 0.6440677966101694 Q[76,8] * H_pos[3,petal-length]
-   - 0.5416666666666667 Q[76,8] * H_pos[3,petal-width]
-   + 0.6944444444444444 Q[76,8] * H_neg[3,sepal-length]
-   + 0.3333333333333333 Q[76,8] * H_neg[3,sepal-width]
-   + 0.6440677966101694 Q[76,8] * H_neg[3,petal-length]
-   + 0.5416666666666667 Q[76,8] * H_neg[3,petal-width] - Q[76,8] * C4278
-   + Q[76,8] * C4285 ] >= 1
+   - Q[76,7] * C4285 ] >= 1
  qc437: E[70,3] + [ 0.4444444444444446 Q[70,7] * H_pos[3,sepal-length]
    + 0.5 Q[70,7] * H_pos[3,sepal-width]
    + 0.6440677966101694 Q[70,7] * H_pos[3,petal-length]
@@ -13592,15 +10150,7 @@ Subject To
    - 0.5 Q[70,7] * H_neg[3,sepal-width]
    - 0.6440677966101694 Q[70,7] * H_neg[3,petal-length]
    - 0.7083333333333334 Q[70,7] * H_neg[3,petal-width] + Q[70,7] * C4278
-   - Q[70,7] * C4285 - 0.4444444444444446 Q[70,8] * H_pos[3,sepal-length]
-   - 0.5 Q[70,8] * H_pos[3,sepal-width]
-   - 0.6440677966101694 Q[70,8] * H_pos[3,petal-length]
-   - 0.7083333333333334 Q[70,8] * H_pos[3,petal-width]
-   + 0.4444444444444446 Q[70,8] * H_neg[3,sepal-length]
-   + 0.5 Q[70,8] * H_neg[3,sepal-width]
-   + 0.6440677966101694 Q[70,8] * H_neg[3,petal-length]
-   + 0.7083333333333334 Q[70,8] * H_neg[3,petal-width] - Q[70,8] * C4278
-   + Q[70,8] * C4285 ] >= 1
+   - Q[70,7] * C4285 ] >= 1
  qc438: E[145,3] + [ 0.6666666666666667 Q[145,7] * H_pos[3,sepal-length]
    + 0.4166666666666667 Q[145,7] * H_pos[3,sepal-width]
    + 0.711864406779661 Q[145,7] * H_pos[3,petal-length]
@@ -13609,15 +10159,7 @@ Subject To
    - 0.4166666666666667 Q[145,7] * H_neg[3,sepal-width]
    - 0.711864406779661 Q[145,7] * H_neg[3,petal-length]
    - 0.9166666666666666 Q[145,7] * H_neg[3,petal-width] + Q[145,7] * C4278
-   - Q[145,7] * C4285 - 0.6666666666666667 Q[145,8] * H_pos[3,sepal-length]
-   - 0.4166666666666667 Q[145,8] * H_pos[3,sepal-width]
-   - 0.711864406779661 Q[145,8] * H_pos[3,petal-length]
-   - 0.9166666666666666 Q[145,8] * H_pos[3,petal-width]
-   + 0.6666666666666667 Q[145,8] * H_neg[3,sepal-length]
-   + 0.4166666666666667 Q[145,8] * H_neg[3,sepal-width]
-   + 0.711864406779661 Q[145,8] * H_neg[3,petal-length]
-   + 0.9166666666666666 Q[145,8] * H_neg[3,petal-width] - Q[145,8] * C4278
-   + Q[145,8] * C4285 ] >= 1
+   - Q[145,7] * C4285 ] >= 1
  qc439: E[91,3] + [ 0.5 Q[91,7] * H_pos[3,sepal-length]
    + 0.4166666666666667 Q[91,7] * H_pos[3,sepal-width]
    + 0.6101694915254237 Q[91,7] * H_pos[3,petal-length]
@@ -13626,15 +10168,7 @@ Subject To
    - 0.4166666666666667 Q[91,7] * H_neg[3,sepal-width]
    - 0.6101694915254237 Q[91,7] * H_neg[3,petal-length]
    - 0.5416666666666667 Q[91,7] * H_neg[3,petal-width] + Q[91,7] * C4278
-   - Q[91,7] * C4285 - 0.5 Q[91,8] * H_pos[3,sepal-length]
-   - 0.4166666666666667 Q[91,8] * H_pos[3,sepal-width]
-   - 0.6101694915254237 Q[91,8] * H_pos[3,petal-length]
-   - 0.5416666666666667 Q[91,8] * H_pos[3,petal-width]
-   + 0.5 Q[91,8] * H_neg[3,sepal-length]
-   + 0.4166666666666667 Q[91,8] * H_neg[3,sepal-width]
-   + 0.6101694915254237 Q[91,8] * H_neg[3,petal-length]
-   + 0.5416666666666667 Q[91,8] * H_neg[3,petal-width] - Q[91,8] * C4278
-   + Q[91,8] * C4285 ] >= 1
+   - Q[91,7] * C4285 ] >= 1
  qc440: E[19,3] + [ 0.2222222222222221 Q[19,7] * H_pos[3,sepal-length]
    + 0.75 Q[19,7] * H_pos[3,sepal-width]
    + 0.0847457627118644 Q[19,7] * H_pos[3,petal-length]
@@ -13643,15 +10177,7 @@ Subject To
    - 0.75 Q[19,7] * H_neg[3,sepal-width]
    - 0.0847457627118644 Q[19,7] * H_neg[3,petal-length]
    - 0.0833333333333333 Q[19,7] * H_neg[3,petal-width] + Q[19,7] * C4278
-   - Q[19,7] * C4285 - 0.2222222222222221 Q[19,8] * H_pos[3,sepal-length]
-   - 0.75 Q[19,8] * H_pos[3,sepal-width]
-   - 0.0847457627118644 Q[19,8] * H_pos[3,petal-length]
-   - 0.0833333333333333 Q[19,8] * H_pos[3,petal-width]
-   + 0.2222222222222221 Q[19,8] * H_neg[3,sepal-length]
-   + 0.75 Q[19,8] * H_neg[3,sepal-width]
-   + 0.0847457627118644 Q[19,8] * H_neg[3,petal-length]
-   + 0.0833333333333333 Q[19,8] * H_neg[3,petal-width] - Q[19,8] * C4278
-   + Q[19,8] * C4285 ] >= 1
+   - Q[19,7] * C4285 ] >= 1
  qc441: E[115,3] + [ 0.5833333333333335 Q[115,7] * H_pos[3,sepal-length]
    + 0.5 Q[115,7] * H_pos[3,sepal-width]
    + 0.7288135593220338 Q[115,7] * H_pos[3,petal-length]
@@ -13660,15 +10186,7 @@ Subject To
    - 0.5 Q[115,7] * H_neg[3,sepal-width]
    - 0.7288135593220338 Q[115,7] * H_neg[3,petal-length]
    - 0.9166666666666666 Q[115,7] * H_neg[3,petal-width] + Q[115,7] * C4278
-   - Q[115,7] * C4285 - 0.5833333333333335 Q[115,8] * H_pos[3,sepal-length]
-   - 0.5 Q[115,8] * H_pos[3,sepal-width]
-   - 0.7288135593220338 Q[115,8] * H_pos[3,petal-length]
-   - 0.9166666666666666 Q[115,8] * H_pos[3,petal-width]
-   + 0.5833333333333335 Q[115,8] * H_neg[3,sepal-length]
-   + 0.5 Q[115,8] * H_neg[3,sepal-width]
-   + 0.7288135593220338 Q[115,8] * H_neg[3,petal-length]
-   + 0.9166666666666666 Q[115,8] * H_neg[3,petal-width] - Q[115,8] * C4278
-   + Q[115,8] * C4285 ] >= 1
+   - Q[115,7] * C4285 ] >= 1
  qc442: E[28,3] + [ 0.25 Q[28,7] * H_pos[3,sepal-length]
    + 0.5833333333333333 Q[28,7] * H_pos[3,sepal-width]
    + 0.0677966101694915 Q[28,7] * H_pos[3,petal-length]
@@ -13677,28 +10195,14 @@ Subject To
    - 0.5833333333333333 Q[28,7] * H_neg[3,sepal-width]
    - 0.0677966101694915 Q[28,7] * H_neg[3,petal-length]
    - 0.0416666666666667 Q[28,7] * H_neg[3,petal-width] + Q[28,7] * C4278
-   - Q[28,7] * C4285 - 0.25 Q[28,8] * H_pos[3,sepal-length]
-   - 0.5833333333333333 Q[28,8] * H_pos[3,sepal-width]
-   - 0.0677966101694915 Q[28,8] * H_pos[3,petal-length]
-   - 0.0416666666666667 Q[28,8] * H_pos[3,petal-width]
-   + 0.25 Q[28,8] * H_neg[3,sepal-length]
-   + 0.5833333333333333 Q[28,8] * H_neg[3,sepal-width]
-   + 0.0677966101694915 Q[28,8] * H_neg[3,petal-length]
-   + 0.0416666666666667 Q[28,8] * H_neg[3,petal-width] - Q[28,8] * C4278
-   + Q[28,8] * C4285 ] >= 1
+   - Q[28,7] * C4285 ] >= 1
  qc443: E[37,3] + [ 0.1666666666666667 Q[37,7] * H_pos[3,sepal-length]
    + 0.4583333333333333 Q[37,7] * H_pos[3,sepal-width]
    + 0.0847457627118644 Q[37,7] * H_pos[3,petal-length]
    - 0.1666666666666667 Q[37,7] * H_neg[3,sepal-length]
    - 0.4583333333333333 Q[37,7] * H_neg[3,sepal-width]
    - 0.0847457627118644 Q[37,7] * H_neg[3,petal-length] + Q[37,7] * C4278
-   - Q[37,7] * C4285 - 0.1666666666666667 Q[37,8] * H_pos[3,sepal-length]
-   - 0.4583333333333333 Q[37,8] * H_pos[3,sepal-width]
-   - 0.0847457627118644 Q[37,8] * H_pos[3,petal-length]
-   + 0.1666666666666667 Q[37,8] * H_neg[3,sepal-length]
-   + 0.4583333333333333 Q[37,8] * H_neg[3,sepal-width]
-   + 0.0847457627118644 Q[37,8] * H_neg[3,petal-length] - Q[37,8] * C4278
-   + Q[37,8] * C4285 ] >= 1
+   - Q[37,7] * C4285 ] >= 1
  qc444: E[29,3] + [ 0.1111111111111112 Q[29,7] * H_pos[3,sepal-length]
    + 0.5 Q[29,7] * H_pos[3,sepal-width]
    + 0.1016949152542373 Q[29,7] * H_pos[3,petal-length]
@@ -13707,15 +10211,7 @@ Subject To
    - 0.5 Q[29,7] * H_neg[3,sepal-width]
    - 0.1016949152542373 Q[29,7] * H_neg[3,petal-length]
    - 0.0416666666666667 Q[29,7] * H_neg[3,petal-width] + Q[29,7] * C4278
-   - Q[29,7] * C4285 - 0.1111111111111112 Q[29,8] * H_pos[3,sepal-length]
-   - 0.5 Q[29,8] * H_pos[3,sepal-width]
-   - 0.1016949152542373 Q[29,8] * H_pos[3,petal-length]
-   - 0.0416666666666667 Q[29,8] * H_pos[3,petal-width]
-   + 0.1111111111111112 Q[29,8] * H_neg[3,sepal-length]
-   + 0.5 Q[29,8] * H_neg[3,sepal-width]
-   + 0.1016949152542373 Q[29,8] * H_neg[3,petal-length]
-   + 0.0416666666666667 Q[29,8] * H_neg[3,petal-width] - Q[29,8] * C4278
-   + Q[29,8] * C4285 ] >= 1
+   - Q[29,7] * C4285 ] >= 1
  qc445: E[122,3] + [ 0.9444444444444442 Q[122,7] * H_pos[3,sepal-length]
    + 0.3333333333333333 Q[122,7] * H_pos[3,sepal-width]
    + 0.9661016949152543 Q[122,7] * H_pos[3,petal-length]
@@ -13724,15 +10220,7 @@ Subject To
    - 0.3333333333333333 Q[122,7] * H_neg[3,sepal-width]
    - 0.9661016949152543 Q[122,7] * H_neg[3,petal-length]
    - 0.7916666666666667 Q[122,7] * H_neg[3,petal-width] + Q[122,7] * C4278
-   - Q[122,7] * C4285 - 0.9444444444444442 Q[122,8] * H_pos[3,sepal-length]
-   - 0.3333333333333333 Q[122,8] * H_pos[3,sepal-width]
-   - 0.9661016949152543 Q[122,8] * H_pos[3,petal-length]
-   - 0.7916666666666667 Q[122,8] * H_pos[3,petal-width]
-   + 0.9444444444444442 Q[122,8] * H_neg[3,sepal-length]
-   + 0.3333333333333333 Q[122,8] * H_neg[3,sepal-width]
-   + 0.9661016949152543 Q[122,8] * H_neg[3,petal-length]
-   + 0.7916666666666667 Q[122,8] * H_neg[3,petal-width] - Q[122,8] * C4278
-   + Q[122,8] * C4285 ] >= 1
+   - Q[122,7] * C4285 ] >= 1
  qc446: E[74,3] + [ 0.5833333333333335 Q[74,7] * H_pos[3,sepal-length]
    + 0.375 Q[74,7] * H_pos[3,sepal-width]
    + 0.559322033898305 Q[74,7] * H_pos[3,petal-length]
@@ -13741,14 +10229,6 @@ Subject To
    - 0.375 Q[74,7] * H_neg[3,sepal-width]
    - 0.559322033898305 Q[74,7] * H_neg[3,petal-length]
    - 0.5 Q[74,7] * H_neg[3,petal-width] + Q[74,7] * C4278 - Q[74,7] * C4285
-   - 0.5833333333333335 Q[74,8] * H_pos[3,sepal-length]
-   - 0.375 Q[74,8] * H_pos[3,sepal-width]
-   - 0.559322033898305 Q[74,8] * H_pos[3,petal-length]
-   - 0.5 Q[74,8] * H_pos[3,petal-width]
-   + 0.5833333333333335 Q[74,8] * H_neg[3,sepal-length]
-   + 0.375 Q[74,8] * H_neg[3,sepal-width]
-   + 0.559322033898305 Q[74,8] * H_neg[3,petal-length]
-   + 0.5 Q[74,8] * H_neg[3,petal-width] - Q[74,8] * C4278 + Q[74,8] * C4285
    ] >= 1
  qc447: E[46,3] + [ 0.2222222222222221 Q[46,7] * H_pos[3,sepal-length]
    + 0.75 Q[46,7] * H_pos[3,sepal-width]
@@ -13758,15 +10238,7 @@ Subject To
    - 0.75 Q[46,7] * H_neg[3,sepal-width]
    - 0.1016949152542373 Q[46,7] * H_neg[3,petal-length]
    - 0.0416666666666667 Q[46,7] * H_neg[3,petal-width] + Q[46,7] * C4278
-   - Q[46,7] * C4285 - 0.2222222222222221 Q[46,8] * H_pos[3,sepal-length]
-   - 0.75 Q[46,8] * H_pos[3,sepal-width]
-   - 0.1016949152542373 Q[46,8] * H_pos[3,petal-length]
-   - 0.0416666666666667 Q[46,8] * H_pos[3,petal-width]
-   + 0.2222222222222221 Q[46,8] * H_neg[3,sepal-length]
-   + 0.75 Q[46,8] * H_neg[3,sepal-width]
-   + 0.1016949152542373 Q[46,8] * H_neg[3,petal-length]
-   + 0.0416666666666667 Q[46,8] * H_neg[3,petal-width] - Q[46,8] * C4278
-   + Q[46,8] * C4285 ] >= 1
+   - Q[46,7] * C4285 ] >= 1
  qc448: E[111,4] + [ 0.5833333333333335 Q[111,9] * H_pos[4,sepal-length]
    + 0.2916666666666667 Q[111,9] * H_pos[4,sepal-width]
    + 0.7288135593220338 Q[111,9] * H_pos[4,petal-length]
@@ -13775,16 +10247,7 @@ Subject To
    - 0.2916666666666667 Q[111,9] * H_neg[4,sepal-width]
    - 0.7288135593220338 Q[111,9] * H_neg[4,petal-length]
    - 0.75 Q[111,9] * H_neg[4,petal-width] + Q[111,9] * C4279
-   - Q[111,9] * C4286
-   - 0.5833333333333335 Q[111,10] * H_pos[4,sepal-length]
-   - 0.2916666666666667 Q[111,10] * H_pos[4,sepal-width]
-   - 0.7288135593220338 Q[111,10] * H_pos[4,petal-length]
-   - 0.75 Q[111,10] * H_pos[4,petal-width]
-   + 0.5833333333333335 Q[111,10] * H_neg[4,sepal-length]
-   + 0.2916666666666667 Q[111,10] * H_neg[4,sepal-width]
-   + 0.7288135593220338 Q[111,10] * H_neg[4,petal-length]
-   + 0.75 Q[111,10] * H_neg[4,petal-width] - Q[111,10] * C4279
-   + Q[111,10] * C4286 ] >= 1
+   - Q[111,9] * C4286 ] >= 1
  qc449: E[134,4] + [ 0.5 Q[134,9] * H_pos[4,sepal-length]
    + 0.25 Q[134,9] * H_pos[4,sepal-width]
    + 0.7796610169491525 Q[134,9] * H_pos[4,petal-length]
@@ -13793,15 +10256,7 @@ Subject To
    - 0.25 Q[134,9] * H_neg[4,sepal-width]
    - 0.7796610169491525 Q[134,9] * H_neg[4,petal-length]
    - 0.5416666666666667 Q[134,9] * H_neg[4,petal-width] + Q[134,9] * C4279
-   - Q[134,9] * C4286 - 0.5 Q[134,10] * H_pos[4,sepal-length]
-   - 0.25 Q[134,10] * H_pos[4,sepal-width]
-   - 0.7796610169491525 Q[134,10] * H_pos[4,petal-length]
-   - 0.5416666666666667 Q[134,10] * H_pos[4,petal-width]
-   + 0.5 Q[134,10] * H_neg[4,sepal-length]
-   + 0.25 Q[134,10] * H_neg[4,sepal-width]
-   + 0.7796610169491525 Q[134,10] * H_neg[4,petal-length]
-   + 0.5416666666666667 Q[134,10] * H_neg[4,petal-width]
-   - Q[134,10] * C4279 + Q[134,10] * C4286 ] >= 1
+   - Q[134,9] * C4286 ] >= 1
  qc450: E[133,4] + [ 0.5555555555555556 Q[133,9] * H_pos[4,sepal-length]
    + 0.3333333333333333 Q[133,9] * H_pos[4,sepal-width]
    + 0.6949152542372881 Q[133,9] * H_pos[4,petal-length]
@@ -13810,16 +10265,7 @@ Subject To
    - 0.3333333333333333 Q[133,9] * H_neg[4,sepal-width]
    - 0.6949152542372881 Q[133,9] * H_neg[4,petal-length]
    - 0.5833333333333334 Q[133,9] * H_neg[4,petal-width] + Q[133,9] * C4279
-   - Q[133,9] * C4286
-   - 0.5555555555555556 Q[133,10] * H_pos[4,sepal-length]
-   - 0.3333333333333333 Q[133,10] * H_pos[4,sepal-width]
-   - 0.6949152542372881 Q[133,10] * H_pos[4,petal-length]
-   - 0.5833333333333334 Q[133,10] * H_pos[4,petal-width]
-   + 0.5555555555555556 Q[133,10] * H_neg[4,sepal-length]
-   + 0.3333333333333333 Q[133,10] * H_neg[4,sepal-width]
-   + 0.6949152542372881 Q[133,10] * H_neg[4,petal-length]
-   + 0.5833333333333334 Q[133,10] * H_neg[4,petal-width]
-   - Q[133,10] * C4279 + Q[133,10] * C4286 ] >= 1
+   - Q[133,9] * C4286 ] >= 1
  qc451: E[93,4] + [ 0.1944444444444444 Q[93,9] * H_pos[4,sepal-length]
    + 0.125 Q[93,9] * H_pos[4,sepal-width]
    + 0.3898305084745762 Q[93,9] * H_pos[4,petal-length]
@@ -13828,15 +10274,7 @@ Subject To
    - 0.125 Q[93,9] * H_neg[4,sepal-width]
    - 0.3898305084745762 Q[93,9] * H_neg[4,petal-length]
    - 0.375 Q[93,9] * H_neg[4,petal-width] + Q[93,9] * C4279
-   - Q[93,9] * C4286 - 0.1944444444444444 Q[93,10] * H_pos[4,sepal-length]
-   - 0.125 Q[93,10] * H_pos[4,sepal-width]
-   - 0.3898305084745762 Q[93,10] * H_pos[4,petal-length]
-   - 0.375 Q[93,10] * H_pos[4,petal-width]
-   + 0.1944444444444444 Q[93,10] * H_neg[4,sepal-length]
-   + 0.125 Q[93,10] * H_neg[4,sepal-width]
-   + 0.3898305084745762 Q[93,10] * H_neg[4,petal-length]
-   + 0.375 Q[93,10] * H_neg[4,petal-width] - Q[93,10] * C4279
-   + Q[93,10] * C4286 ] >= 1
+   - Q[93,9] * C4286 ] >= 1
  qc452: E[51,4] + [ 0.5833333333333335 Q[51,9] * H_pos[4,sepal-length]
    + 0.5 Q[51,9] * H_pos[4,sepal-width]
    + 0.5932203389830508 Q[51,9] * H_pos[4,petal-length]
@@ -13845,15 +10283,7 @@ Subject To
    - 0.5 Q[51,9] * H_neg[4,sepal-width]
    - 0.5932203389830508 Q[51,9] * H_neg[4,petal-length]
    - 0.5833333333333334 Q[51,9] * H_neg[4,petal-width] + Q[51,9] * C4279
-   - Q[51,9] * C4286 - 0.5833333333333335 Q[51,10] * H_pos[4,sepal-length]
-   - 0.5 Q[51,10] * H_pos[4,sepal-width]
-   - 0.5932203389830508 Q[51,10] * H_pos[4,petal-length]
-   - 0.5833333333333334 Q[51,10] * H_pos[4,petal-width]
-   + 0.5833333333333335 Q[51,10] * H_neg[4,sepal-length]
-   + 0.5 Q[51,10] * H_neg[4,sepal-width]
-   + 0.5932203389830508 Q[51,10] * H_neg[4,petal-length]
-   + 0.5833333333333334 Q[51,10] * H_neg[4,petal-width] - Q[51,10] * C4279
-   + Q[51,10] * C4286 ] >= 1
+   - Q[51,9] * C4286 ] >= 1
  qc453: E[41,4] + [ 0.0555555555555556 Q[41,9] * H_pos[4,sepal-length]
    + 0.125 Q[41,9] * H_pos[4,sepal-width]
    + 0.0508474576271186 Q[41,9] * H_pos[4,petal-length]
@@ -13862,15 +10292,7 @@ Subject To
    - 0.125 Q[41,9] * H_neg[4,sepal-width]
    - 0.0508474576271186 Q[41,9] * H_neg[4,petal-length]
    - 0.0833333333333333 Q[41,9] * H_neg[4,petal-width] + Q[41,9] * C4279
-   - Q[41,9] * C4286 - 0.0555555555555556 Q[41,10] * H_pos[4,sepal-length]
-   - 0.125 Q[41,10] * H_pos[4,sepal-width]
-   - 0.0508474576271186 Q[41,10] * H_pos[4,petal-length]
-   - 0.0833333333333333 Q[41,10] * H_pos[4,petal-width]
-   + 0.0555555555555556 Q[41,10] * H_neg[4,sepal-length]
-   + 0.125 Q[41,10] * H_neg[4,sepal-width]
-   + 0.0508474576271186 Q[41,10] * H_neg[4,petal-length]
-   + 0.0833333333333333 Q[41,10] * H_neg[4,petal-width] - Q[41,10] * C4279
-   + Q[41,10] * C4286 ] >= 1
+   - Q[41,9] * C4286 ] >= 1
  qc454: E[90,4] + [ 0.3333333333333333 Q[90,9] * H_pos[4,sepal-length]
    + 0.25 Q[90,9] * H_pos[4,sepal-width]
    + 0.576271186440678 Q[90,9] * H_pos[4,petal-length]
@@ -13879,15 +10301,7 @@ Subject To
    - 0.25 Q[90,9] * H_neg[4,sepal-width]
    - 0.576271186440678 Q[90,9] * H_neg[4,petal-length]
    - 0.4583333333333333 Q[90,9] * H_neg[4,petal-width] + Q[90,9] * C4279
-   - Q[90,9] * C4286 - 0.3333333333333333 Q[90,10] * H_pos[4,sepal-length]
-   - 0.25 Q[90,10] * H_pos[4,sepal-width]
-   - 0.576271186440678 Q[90,10] * H_pos[4,petal-length]
-   - 0.4583333333333333 Q[90,10] * H_pos[4,petal-width]
-   + 0.3333333333333333 Q[90,10] * H_neg[4,sepal-length]
-   + 0.25 Q[90,10] * H_neg[4,sepal-width]
-   + 0.576271186440678 Q[90,10] * H_neg[4,petal-length]
-   + 0.4583333333333333 Q[90,10] * H_neg[4,petal-width] - Q[90,10] * C4279
-   + Q[90,10] * C4286 ] >= 1
+   - Q[90,9] * C4286 ] >= 1
  qc455: E[67,4] + [ 0.4166666666666665 Q[67,9] * H_pos[4,sepal-length]
    + 0.2916666666666667 Q[67,9] * H_pos[4,sepal-width]
    + 0.5254237288135593 Q[67,9] * H_pos[4,petal-length]
@@ -13896,15 +10310,7 @@ Subject To
    - 0.2916666666666667 Q[67,9] * H_neg[4,sepal-width]
    - 0.5254237288135593 Q[67,9] * H_neg[4,petal-length]
    - 0.375 Q[67,9] * H_neg[4,petal-width] + Q[67,9] * C4279
-   - Q[67,9] * C4286 - 0.4166666666666665 Q[67,10] * H_pos[4,sepal-length]
-   - 0.2916666666666667 Q[67,10] * H_pos[4,sepal-width]
-   - 0.5254237288135593 Q[67,10] * H_pos[4,petal-length]
-   - 0.375 Q[67,10] * H_pos[4,petal-width]
-   + 0.4166666666666665 Q[67,10] * H_neg[4,sepal-length]
-   + 0.2916666666666667 Q[67,10] * H_neg[4,sepal-width]
-   + 0.5254237288135593 Q[67,10] * H_neg[4,petal-length]
-   + 0.375 Q[67,10] * H_neg[4,petal-width] - Q[67,10] * C4279
-   + Q[67,10] * C4286 ] >= 1
+   - Q[67,9] * C4286 ] >= 1
  qc456: E[131,4] + [ Q[131,9] * H_pos[4,sepal-length]
    + 0.75 Q[131,9] * H_pos[4,sepal-width]
    + 0.9152542372881356 Q[131,9] * H_pos[4,petal-length]
@@ -13913,15 +10319,7 @@ Subject To
    - 0.75 Q[131,9] * H_neg[4,sepal-width]
    - 0.9152542372881356 Q[131,9] * H_neg[4,petal-length]
    - 0.7916666666666667 Q[131,9] * H_neg[4,petal-width] + Q[131,9] * C4279
-   - Q[131,9] * C4286 - Q[131,10] * H_pos[4,sepal-length]
-   - 0.75 Q[131,10] * H_pos[4,sepal-width]
-   - 0.9152542372881356 Q[131,10] * H_pos[4,petal-length]
-   - 0.7916666666666667 Q[131,10] * H_pos[4,petal-width]
-   + Q[131,10] * H_neg[4,sepal-length]
-   + 0.75 Q[131,10] * H_neg[4,sepal-width]
-   + 0.9152542372881356 Q[131,10] * H_neg[4,petal-length]
-   + 0.7916666666666667 Q[131,10] * H_neg[4,petal-width]
-   - Q[131,10] * C4279 + Q[131,10] * C4286 ] >= 1
+   - Q[131,9] * C4286 ] >= 1
  qc457: E[121,4] + [ 0.3611111111111109 Q[121,9] * H_pos[4,sepal-length]
    + 0.3333333333333333 Q[121,9] * H_pos[4,sepal-width]
    + 0.6610169491525424 Q[121,9] * H_pos[4,petal-length]
@@ -13930,16 +10328,7 @@ Subject To
    - 0.3333333333333333 Q[121,9] * H_neg[4,sepal-width]
    - 0.6610169491525424 Q[121,9] * H_neg[4,petal-length]
    - 0.7916666666666667 Q[121,9] * H_neg[4,petal-width] + Q[121,9] * C4279
-   - Q[121,9] * C4286
-   - 0.3611111111111109 Q[121,10] * H_pos[4,sepal-length]
-   - 0.3333333333333333 Q[121,10] * H_pos[4,sepal-width]
-   - 0.6610169491525424 Q[121,10] * H_pos[4,petal-length]
-   - 0.7916666666666667 Q[121,10] * H_pos[4,petal-width]
-   + 0.3611111111111109 Q[121,10] * H_neg[4,sepal-length]
-   + 0.3333333333333333 Q[121,10] * H_neg[4,sepal-width]
-   + 0.6610169491525424 Q[121,10] * H_neg[4,petal-length]
-   + 0.7916666666666667 Q[121,10] * H_neg[4,petal-width]
-   - Q[121,10] * C4279 + Q[121,10] * C4286 ] >= 1
+   - Q[121,9] * C4286 ] >= 1
  qc458: E[75,4] + [ 0.6388888888888888 Q[75,9] * H_pos[4,sepal-length]
    + 0.4166666666666667 Q[75,9] * H_pos[4,sepal-width]
    + 0.576271186440678 Q[75,9] * H_pos[4,petal-length]
@@ -13948,15 +10337,7 @@ Subject To
    - 0.4166666666666667 Q[75,9] * H_neg[4,sepal-width]
    - 0.576271186440678 Q[75,9] * H_neg[4,petal-length]
    - 0.5416666666666667 Q[75,9] * H_neg[4,petal-width] + Q[75,9] * C4279
-   - Q[75,9] * C4286 - 0.6388888888888888 Q[75,10] * H_pos[4,sepal-length]
-   - 0.4166666666666667 Q[75,10] * H_pos[4,sepal-width]
-   - 0.576271186440678 Q[75,10] * H_pos[4,petal-length]
-   - 0.5416666666666667 Q[75,10] * H_pos[4,petal-width]
-   + 0.6388888888888888 Q[75,10] * H_neg[4,sepal-length]
-   + 0.4166666666666667 Q[75,10] * H_neg[4,sepal-width]
-   + 0.576271186440678 Q[75,10] * H_neg[4,petal-length]
-   + 0.5416666666666667 Q[75,10] * H_neg[4,petal-width] - Q[75,10] * C4279
-   + Q[75,10] * C4286 ] >= 1
+   - Q[75,9] * C4286 ] >= 1
  qc459: E[44,4] + [ 0.2222222222222221 Q[44,9] * H_pos[4,sepal-length]
    + 0.75 Q[44,9] * H_pos[4,sepal-width]
    + 0.1525423728813559 Q[44,9] * H_pos[4,petal-length]
@@ -13965,15 +10346,7 @@ Subject To
    - 0.75 Q[44,9] * H_neg[4,sepal-width]
    - 0.1525423728813559 Q[44,9] * H_neg[4,petal-length]
    - 0.125 Q[44,9] * H_neg[4,petal-width] + Q[44,9] * C4279
-   - Q[44,9] * C4286 - 0.2222222222222221 Q[44,10] * H_pos[4,sepal-length]
-   - 0.75 Q[44,10] * H_pos[4,sepal-width]
-   - 0.1525423728813559 Q[44,10] * H_pos[4,petal-length]
-   - 0.125 Q[44,10] * H_pos[4,petal-width]
-   + 0.2222222222222221 Q[44,10] * H_neg[4,sepal-length]
-   + 0.75 Q[44,10] * H_neg[4,sepal-width]
-   + 0.1525423728813559 Q[44,10] * H_neg[4,petal-length]
-   + 0.125 Q[44,10] * H_neg[4,petal-width] - Q[44,10] * C4279
-   + Q[44,10] * C4286 ] >= 1
+   - Q[44,9] * C4286 ] >= 1
  qc460: E[40,4] + [ 0.1944444444444444 Q[40,9] * H_pos[4,sepal-length]
    + 0.625 Q[40,9] * H_pos[4,sepal-width]
    + 0.0508474576271186 Q[40,9] * H_pos[4,petal-length]
@@ -13982,15 +10355,7 @@ Subject To
    - 0.625 Q[40,9] * H_neg[4,sepal-width]
    - 0.0508474576271186 Q[40,9] * H_neg[4,petal-length]
    - 0.0833333333333333 Q[40,9] * H_neg[4,petal-width] + Q[40,9] * C4279
-   - Q[40,9] * C4286 - 0.1944444444444444 Q[40,10] * H_pos[4,sepal-length]
-   - 0.625 Q[40,10] * H_pos[4,sepal-width]
-   - 0.0508474576271186 Q[40,10] * H_pos[4,petal-length]
-   - 0.0833333333333333 Q[40,10] * H_pos[4,petal-width]
-   + 0.1944444444444444 Q[40,10] * H_neg[4,sepal-length]
-   + 0.625 Q[40,10] * H_neg[4,sepal-width]
-   + 0.0508474576271186 Q[40,10] * H_neg[4,petal-length]
-   + 0.0833333333333333 Q[40,10] * H_neg[4,petal-width] - Q[40,10] * C4279
-   + Q[40,10] * C4286 ] >= 1
+   - Q[40,9] * C4286 ] >= 1
  qc461: E[10,4] + [ 0.3055555555555556 Q[10,9] * H_pos[4,sepal-length]
    + 0.7083333333333333 Q[10,9] * H_pos[4,sepal-width]
    + 0.0847457627118644 Q[10,9] * H_pos[4,petal-length]
@@ -13999,15 +10364,7 @@ Subject To
    - 0.7083333333333333 Q[10,9] * H_neg[4,sepal-width]
    - 0.0847457627118644 Q[10,9] * H_neg[4,petal-length]
    - 0.0416666666666667 Q[10,9] * H_neg[4,petal-width] + Q[10,9] * C4279
-   - Q[10,9] * C4286 - 0.3055555555555556 Q[10,10] * H_pos[4,sepal-length]
-   - 0.7083333333333333 Q[10,10] * H_pos[4,sepal-width]
-   - 0.0847457627118644 Q[10,10] * H_pos[4,petal-length]
-   - 0.0416666666666667 Q[10,10] * H_pos[4,petal-width]
-   + 0.3055555555555556 Q[10,10] * H_neg[4,sepal-length]
-   + 0.7083333333333333 Q[10,10] * H_neg[4,sepal-width]
-   + 0.0847457627118644 Q[10,10] * H_neg[4,petal-length]
-   + 0.0416666666666667 Q[10,10] * H_neg[4,petal-width] - Q[10,10] * C4279
-   + Q[10,10] * C4286 ] >= 1
+   - Q[10,9] * C4286 ] >= 1
  qc462: E[47,4] + [ 0.0833333333333333 Q[47,9] * H_pos[4,sepal-length]
    + 0.5 Q[47,9] * H_pos[4,sepal-width]
    + 0.0677966101694915 Q[47,9] * H_pos[4,petal-length]
@@ -14016,15 +10373,7 @@ Subject To
    - 0.5 Q[47,9] * H_neg[4,sepal-width]
    - 0.0677966101694915 Q[47,9] * H_neg[4,petal-length]
    - 0.0416666666666667 Q[47,9] * H_neg[4,petal-width] + Q[47,9] * C4279
-   - Q[47,9] * C4286 - 0.0833333333333333 Q[47,10] * H_pos[4,sepal-length]
-   - 0.5 Q[47,10] * H_pos[4,sepal-width]
-   - 0.0677966101694915 Q[47,10] * H_pos[4,petal-length]
-   - 0.0416666666666667 Q[47,10] * H_pos[4,petal-width]
-   + 0.0833333333333333 Q[47,10] * H_neg[4,sepal-length]
-   + 0.5 Q[47,10] * H_neg[4,sepal-width]
-   + 0.0677966101694915 Q[47,10] * H_neg[4,petal-length]
-   + 0.0416666666666667 Q[47,10] * H_neg[4,petal-width] - Q[47,10] * C4279
-   + Q[47,10] * C4286 ] >= 1
+   - Q[47,9] * C4286 ] >= 1
  qc463: E[18,4] + [ 0.3888888888888888 Q[18,9] * H_pos[4,sepal-length]
    + 0.75 Q[18,9] * H_pos[4,sepal-width]
    + 0.1186440677966101 Q[18,9] * H_pos[4,petal-length]
@@ -14033,15 +10382,7 @@ Subject To
    - 0.75 Q[18,9] * H_neg[4,sepal-width]
    - 0.1186440677966101 Q[18,9] * H_neg[4,petal-length]
    - 0.0833333333333333 Q[18,9] * H_neg[4,petal-width] + Q[18,9] * C4279
-   - Q[18,9] * C4286 - 0.3888888888888888 Q[18,10] * H_pos[4,sepal-length]
-   - 0.75 Q[18,10] * H_pos[4,sepal-width]
-   - 0.1186440677966101 Q[18,10] * H_pos[4,petal-length]
-   - 0.0833333333333333 Q[18,10] * H_pos[4,petal-width]
-   + 0.3888888888888888 Q[18,10] * H_neg[4,sepal-length]
-   + 0.75 Q[18,10] * H_neg[4,sepal-width]
-   + 0.1186440677966101 Q[18,10] * H_neg[4,petal-length]
-   + 0.0833333333333333 Q[18,10] * H_neg[4,petal-width] - Q[18,10] * C4279
-   + Q[18,10] * C4286 ] >= 1
+   - Q[18,9] * C4286 ] >= 1
  qc464: E[137,4] + [ 0.5833333333333335 Q[137,9] * H_pos[4,sepal-length]
    + 0.4583333333333333 Q[137,9] * H_pos[4,sepal-width]
    + 0.7627118644067796 Q[137,9] * H_pos[4,petal-length]
@@ -14050,16 +10391,7 @@ Subject To
    - 0.4583333333333333 Q[137,9] * H_neg[4,sepal-width]
    - 0.7627118644067796 Q[137,9] * H_neg[4,petal-length]
    - 0.7083333333333334 Q[137,9] * H_neg[4,petal-width] + Q[137,9] * C4279
-   - Q[137,9] * C4286
-   - 0.5833333333333335 Q[137,10] * H_pos[4,sepal-length]
-   - 0.4583333333333333 Q[137,10] * H_pos[4,sepal-width]
-   - 0.7627118644067796 Q[137,10] * H_pos[4,petal-length]
-   - 0.7083333333333334 Q[137,10] * H_pos[4,petal-width]
-   + 0.5833333333333335 Q[137,10] * H_neg[4,sepal-length]
-   + 0.4583333333333333 Q[137,10] * H_neg[4,sepal-width]
-   + 0.7627118644067796 Q[137,10] * H_neg[4,petal-length]
-   + 0.7083333333333334 Q[137,10] * H_neg[4,petal-width]
-   - Q[137,10] * C4279 + Q[137,10] * C4286 ] >= 1
+   - Q[137,9] * C4286 ] >= 1
  qc465: E[136,4] + [ 0.5555555555555556 Q[136,9] * H_pos[4,sepal-length]
    + 0.5833333333333333 Q[136,9] * H_pos[4,sepal-width]
    + 0.7796610169491525 Q[136,9] * H_pos[4,petal-length]
@@ -14068,16 +10400,7 @@ Subject To
    - 0.5833333333333333 Q[136,9] * H_neg[4,sepal-width]
    - 0.7796610169491525 Q[136,9] * H_neg[4,petal-length]
    - 0.9583333333333334 Q[136,9] * H_neg[4,petal-width] + Q[136,9] * C4279
-   - Q[136,9] * C4286
-   - 0.5555555555555556 Q[136,10] * H_pos[4,sepal-length]
-   - 0.5833333333333333 Q[136,10] * H_pos[4,sepal-width]
-   - 0.7796610169491525 Q[136,10] * H_pos[4,petal-length]
-   - 0.9583333333333334 Q[136,10] * H_pos[4,petal-width]
-   + 0.5555555555555556 Q[136,10] * H_neg[4,sepal-length]
-   + 0.5833333333333333 Q[136,10] * H_neg[4,sepal-width]
-   + 0.7796610169491525 Q[136,10] * H_neg[4,petal-length]
-   + 0.9583333333333334 Q[136,10] * H_neg[4,petal-width]
-   - Q[136,10] * C4279 + Q[136,10] * C4286 ] >= 1
+   - Q[136,9] * C4286 ] >= 1
  qc466: E[56,4] + [ 0.5555555555555556 Q[56,9] * H_pos[4,sepal-length]
    + 0.5416666666666665 Q[56,9] * H_pos[4,sepal-width]
    + 0.6271186440677966 Q[56,9] * H_pos[4,petal-length]
@@ -14086,15 +10409,7 @@ Subject To
    - 0.5416666666666665 Q[56,9] * H_neg[4,sepal-width]
    - 0.6271186440677966 Q[56,9] * H_neg[4,petal-length]
    - 0.625 Q[56,9] * H_neg[4,petal-width] + Q[56,9] * C4279
-   - Q[56,9] * C4286 - 0.5555555555555556 Q[56,10] * H_pos[4,sepal-length]
-   - 0.5416666666666665 Q[56,10] * H_pos[4,sepal-width]
-   - 0.6271186440677966 Q[56,10] * H_pos[4,petal-length]
-   - 0.625 Q[56,10] * H_pos[4,petal-width]
-   + 0.5555555555555556 Q[56,10] * H_neg[4,sepal-length]
-   + 0.5416666666666665 Q[56,10] * H_neg[4,sepal-width]
-   + 0.6271186440677966 Q[56,10] * H_neg[4,petal-length]
-   + 0.625 Q[56,10] * H_neg[4,petal-width] - Q[56,10] * C4279
-   + Q[56,10] * C4286 ] >= 1
+   - Q[56,9] * C4286 ] >= 1
  qc467: E[119,4] + [ 0.4722222222222223 Q[119,9] * H_pos[4,sepal-length]
    + 0.0833333333333334 Q[119,9] * H_pos[4,sepal-width]
    + 0.6779661016949152 Q[119,9] * H_pos[4,petal-length]
@@ -14103,29 +10418,14 @@ Subject To
    - 0.0833333333333334 Q[119,9] * H_neg[4,sepal-width]
    - 0.6779661016949152 Q[119,9] * H_neg[4,petal-length]
    - 0.5833333333333334 Q[119,9] * H_neg[4,petal-width] + Q[119,9] * C4279
-   - Q[119,9] * C4286
-   - 0.4722222222222223 Q[119,10] * H_pos[4,sepal-length]
-   - 0.0833333333333334 Q[119,10] * H_pos[4,sepal-width]
-   - 0.6779661016949152 Q[119,10] * H_pos[4,petal-length]
-   - 0.5833333333333334 Q[119,10] * H_pos[4,petal-width]
-   + 0.4722222222222223 Q[119,10] * H_neg[4,sepal-length]
-   + 0.0833333333333334 Q[119,10] * H_neg[4,sepal-width]
-   + 0.6779661016949152 Q[119,10] * H_neg[4,petal-length]
-   + 0.5833333333333334 Q[119,10] * H_neg[4,petal-width]
-   - Q[119,10] * C4279 + Q[119,10] * C4286 ] >= 1
+   - Q[119,9] * C4286 ] >= 1
  qc468: E[9,4] + [ 0.1666666666666667 Q[9,9] * H_pos[4,sepal-length]
    + 0.4583333333333333 Q[9,9] * H_pos[4,sepal-width]
    + 0.0847457627118644 Q[9,9] * H_pos[4,petal-length]
    - 0.1666666666666667 Q[9,9] * H_neg[4,sepal-length]
    - 0.4583333333333333 Q[9,9] * H_neg[4,sepal-width]
    - 0.0847457627118644 Q[9,9] * H_neg[4,petal-length] + Q[9,9] * C4279
-   - Q[9,9] * C4286 - 0.1666666666666667 Q[9,10] * H_pos[4,sepal-length]
-   - 0.4583333333333333 Q[9,10] * H_pos[4,sepal-width]
-   - 0.0847457627118644 Q[9,10] * H_pos[4,petal-length]
-   + 0.1666666666666667 Q[9,10] * H_neg[4,sepal-length]
-   + 0.4583333333333333 Q[9,10] * H_neg[4,sepal-width]
-   + 0.0847457627118644 Q[9,10] * H_neg[4,petal-length] - Q[9,10] * C4279
-   + Q[9,10] * C4286 ] >= 1
+   - Q[9,9] * C4286 ] >= 1
  qc469: E[141,4] + [ 0.7222222222222223 Q[141,9] * H_pos[4,sepal-length]
    + 0.4583333333333333 Q[141,9] * H_pos[4,sepal-width]
    + 0.6949152542372881 Q[141,9] * H_pos[4,petal-length]
@@ -14134,16 +10434,7 @@ Subject To
    - 0.4583333333333333 Q[141,9] * H_neg[4,sepal-width]
    - 0.6949152542372881 Q[141,9] * H_neg[4,petal-length]
    - 0.9166666666666666 Q[141,9] * H_neg[4,petal-width] + Q[141,9] * C4279
-   - Q[141,9] * C4286
-   - 0.7222222222222223 Q[141,10] * H_pos[4,sepal-length]
-   - 0.4583333333333333 Q[141,10] * H_pos[4,sepal-width]
-   - 0.6949152542372881 Q[141,10] * H_pos[4,petal-length]
-   - 0.9166666666666666 Q[141,10] * H_pos[4,petal-width]
-   + 0.7222222222222223 Q[141,10] * H_neg[4,sepal-length]
-   + 0.4583333333333333 Q[141,10] * H_neg[4,sepal-width]
-   + 0.6949152542372881 Q[141,10] * H_neg[4,petal-length]
-   + 0.9166666666666666 Q[141,10] * H_neg[4,petal-width]
-   - Q[141,10] * C4279 + Q[141,10] * C4286 ] >= 1
+   - Q[141,9] * C4286 ] >= 1
  qc470: E[6,4] + [ 0.0833333333333333 Q[6,9] * H_pos[4,sepal-length]
    + 0.5833333333333333 Q[6,9] * H_pos[4,sepal-width]
    + 0.0677966101694915 Q[6,9] * H_pos[4,petal-length]
@@ -14152,15 +10443,7 @@ Subject To
    - 0.5833333333333333 Q[6,9] * H_neg[4,sepal-width]
    - 0.0677966101694915 Q[6,9] * H_neg[4,petal-length]
    - 0.0833333333333333 Q[6,9] * H_neg[4,petal-width] + Q[6,9] * C4279
-   - Q[6,9] * C4286 - 0.0833333333333333 Q[6,10] * H_pos[4,sepal-length]
-   - 0.5833333333333333 Q[6,10] * H_pos[4,sepal-width]
-   - 0.0677966101694915 Q[6,10] * H_pos[4,petal-length]
-   - 0.0833333333333333 Q[6,10] * H_pos[4,petal-width]
-   + 0.0833333333333333 Q[6,10] * H_neg[4,sepal-length]
-   + 0.5833333333333333 Q[6,10] * H_neg[4,sepal-width]
-   + 0.0677966101694915 Q[6,10] * H_neg[4,petal-length]
-   + 0.0833333333333333 Q[6,10] * H_neg[4,petal-width] - Q[6,10] * C4279
-   + Q[6,10] * C4286 ] >= 1
+   - Q[6,9] * C4286 ] >= 1
  qc471: E[114,4] + [ 0.4166666666666665 Q[114,9] * H_pos[4,sepal-length]
    + 0.3333333333333333 Q[114,9] * H_pos[4,sepal-width]
    + 0.6949152542372881 Q[114,9] * H_pos[4,petal-length]
@@ -14169,16 +10452,7 @@ Subject To
    - 0.3333333333333333 Q[114,9] * H_neg[4,sepal-width]
    - 0.6949152542372881 Q[114,9] * H_neg[4,petal-length]
    - 0.9583333333333334 Q[114,9] * H_neg[4,petal-width] + Q[114,9] * C4279
-   - Q[114,9] * C4286
-   - 0.4166666666666665 Q[114,10] * H_pos[4,sepal-length]
-   - 0.3333333333333333 Q[114,10] * H_pos[4,sepal-width]
-   - 0.6949152542372881 Q[114,10] * H_pos[4,petal-length]
-   - 0.9583333333333334 Q[114,10] * H_pos[4,petal-width]
-   + 0.4166666666666665 Q[114,10] * H_neg[4,sepal-length]
-   + 0.3333333333333333 Q[114,10] * H_neg[4,sepal-width]
-   + 0.6949152542372881 Q[114,10] * H_neg[4,petal-length]
-   + 0.9583333333333334 Q[114,10] * H_neg[4,petal-width]
-   - Q[114,10] * C4279 + Q[114,10] * C4286 ] >= 1
+   - Q[114,9] * C4286 ] >= 1
  qc472: E[147,4] + [ 0.6111111111111112 Q[147,9] * H_pos[4,sepal-length]
    + 0.4166666666666667 Q[147,9] * H_pos[4,sepal-width]
    + 0.711864406779661 Q[147,9] * H_pos[4,petal-length]
@@ -14187,16 +10461,7 @@ Subject To
    - 0.4166666666666667 Q[147,9] * H_neg[4,sepal-width]
    - 0.711864406779661 Q[147,9] * H_neg[4,petal-length]
    - 0.7916666666666667 Q[147,9] * H_neg[4,petal-width] + Q[147,9] * C4279
-   - Q[147,9] * C4286
-   - 0.6111111111111112 Q[147,10] * H_pos[4,sepal-length]
-   - 0.4166666666666667 Q[147,10] * H_pos[4,sepal-width]
-   - 0.711864406779661 Q[147,10] * H_pos[4,petal-length]
-   - 0.7916666666666667 Q[147,10] * H_pos[4,petal-width]
-   + 0.6111111111111112 Q[147,10] * H_neg[4,sepal-length]
-   + 0.4166666666666667 Q[147,10] * H_neg[4,sepal-width]
-   + 0.711864406779661 Q[147,10] * H_neg[4,petal-length]
-   + 0.7916666666666667 Q[147,10] * H_neg[4,petal-width]
-   - Q[147,10] * C4279 + Q[147,10] * C4286 ] >= 1
+   - Q[147,9] * C4286 ] >= 1
  qc473: E[55,4] + [ 0.3888888888888888 Q[55,9] * H_pos[4,sepal-length]
    + 0.3333333333333333 Q[55,9] * H_pos[4,sepal-width]
    + 0.5932203389830508 Q[55,9] * H_pos[4,petal-length]
@@ -14205,15 +10470,7 @@ Subject To
    - 0.3333333333333333 Q[55,9] * H_neg[4,sepal-width]
    - 0.5932203389830508 Q[55,9] * H_neg[4,petal-length]
    - 0.5 Q[55,9] * H_neg[4,petal-width] + Q[55,9] * C4279 - Q[55,9] * C4286
-   - 0.3888888888888888 Q[55,10] * H_pos[4,sepal-length]
-   - 0.3333333333333333 Q[55,10] * H_pos[4,sepal-width]
-   - 0.5932203389830508 Q[55,10] * H_pos[4,petal-length]
-   - 0.5 Q[55,10] * H_pos[4,petal-width]
-   + 0.3888888888888888 Q[55,10] * H_neg[4,sepal-length]
-   + 0.3333333333333333 Q[55,10] * H_neg[4,sepal-width]
-   + 0.5932203389830508 Q[55,10] * H_neg[4,petal-length]
-   + 0.5 Q[55,10] * H_neg[4,petal-width] - Q[55,10] * C4279
-   + Q[55,10] * C4286 ] >= 1
+   ] >= 1
  qc474: E[112,4] + [ 0.6944444444444444 Q[112,9] * H_pos[4,sepal-length]
    + 0.4166666666666667 Q[112,9] * H_pos[4,sepal-width]
    + 0.7627118644067796 Q[112,9] * H_pos[4,petal-length]
@@ -14222,16 +10479,7 @@ Subject To
    - 0.4166666666666667 Q[112,9] * H_neg[4,sepal-width]
    - 0.7627118644067796 Q[112,9] * H_neg[4,petal-length]
    - 0.8333333333333335 Q[112,9] * H_neg[4,petal-width] + Q[112,9] * C4279
-   - Q[112,9] * C4286
-   - 0.6944444444444444 Q[112,10] * H_pos[4,sepal-length]
-   - 0.4166666666666667 Q[112,10] * H_pos[4,sepal-width]
-   - 0.7627118644067796 Q[112,10] * H_pos[4,petal-length]
-   - 0.8333333333333335 Q[112,10] * H_pos[4,petal-width]
-   + 0.6944444444444444 Q[112,10] * H_neg[4,sepal-length]
-   + 0.4166666666666667 Q[112,10] * H_neg[4,sepal-width]
-   + 0.7627118644067796 Q[112,10] * H_neg[4,petal-length]
-   + 0.8333333333333335 Q[112,10] * H_neg[4,petal-width]
-   - Q[112,10] * C4279 + Q[112,10] * C4286 ] >= 1
+   - Q[112,9] * C4286 ] >= 1
  qc475: E[96,4] + [ 0.3888888888888888 Q[96,9] * H_pos[4,sepal-length]
    + 0.375 Q[96,9] * H_pos[4,sepal-width]
    + 0.5423728813559322 Q[96,9] * H_pos[4,petal-length]
@@ -14240,15 +10488,7 @@ Subject To
    - 0.375 Q[96,9] * H_neg[4,sepal-width]
    - 0.5423728813559322 Q[96,9] * H_neg[4,petal-length]
    - 0.5 Q[96,9] * H_neg[4,petal-width] + Q[96,9] * C4279 - Q[96,9] * C4286
-   - 0.3888888888888888 Q[96,10] * H_pos[4,sepal-length]
-   - 0.375 Q[96,10] * H_pos[4,sepal-width]
-   - 0.5423728813559322 Q[96,10] * H_pos[4,petal-length]
-   - 0.5 Q[96,10] * H_pos[4,petal-width]
-   + 0.3888888888888888 Q[96,10] * H_neg[4,sepal-length]
-   + 0.375 Q[96,10] * H_neg[4,sepal-width]
-   + 0.5423728813559322 Q[96,10] * H_neg[4,petal-length]
-   + 0.5 Q[96,10] * H_neg[4,petal-width] - Q[96,10] * C4279
-   + Q[96,10] * C4286 ] >= 1
+   ] >= 1
  qc476: E[52,4] + [ 0.7222222222222223 Q[52,9] * H_pos[4,sepal-length]
    + 0.4583333333333333 Q[52,9] * H_pos[4,sepal-width]
    + 0.6610169491525424 Q[52,9] * H_pos[4,petal-length]
@@ -14257,15 +10497,7 @@ Subject To
    - 0.4583333333333333 Q[52,9] * H_neg[4,sepal-width]
    - 0.6610169491525424 Q[52,9] * H_neg[4,petal-length]
    - 0.5833333333333334 Q[52,9] * H_neg[4,petal-width] + Q[52,9] * C4279
-   - Q[52,9] * C4286 - 0.7222222222222223 Q[52,10] * H_pos[4,sepal-length]
-   - 0.4583333333333333 Q[52,10] * H_pos[4,sepal-width]
-   - 0.6610169491525424 Q[52,10] * H_pos[4,petal-length]
-   - 0.5833333333333334 Q[52,10] * H_pos[4,petal-width]
-   + 0.7222222222222223 Q[52,10] * H_neg[4,sepal-length]
-   + 0.4583333333333333 Q[52,10] * H_neg[4,sepal-width]
-   + 0.6610169491525424 Q[52,10] * H_neg[4,petal-length]
-   + 0.5833333333333334 Q[52,10] * H_neg[4,petal-width] - Q[52,10] * C4279
-   + Q[52,10] * C4286 ] >= 1
+   - Q[52,9] * C4286 ] >= 1
  qc477: E[50,4] + [ 0.75 Q[50,9] * H_pos[4,sepal-length]
    + 0.5 Q[50,9] * H_pos[4,sepal-width]
    + 0.6271186440677966 Q[50,9] * H_pos[4,petal-length]
@@ -14274,15 +10506,7 @@ Subject To
    - 0.5 Q[50,9] * H_neg[4,sepal-width]
    - 0.6271186440677966 Q[50,9] * H_neg[4,petal-length]
    - 0.5416666666666667 Q[50,9] * H_neg[4,petal-width] + Q[50,9] * C4279
-   - Q[50,9] * C4286 - 0.75 Q[50,10] * H_pos[4,sepal-length]
-   - 0.5 Q[50,10] * H_pos[4,sepal-width]
-   - 0.6271186440677966 Q[50,10] * H_pos[4,petal-length]
-   - 0.5416666666666667 Q[50,10] * H_pos[4,petal-width]
-   + 0.75 Q[50,10] * H_neg[4,sepal-length]
-   + 0.5 Q[50,10] * H_neg[4,sepal-width]
-   + 0.6271186440677966 Q[50,10] * H_neg[4,petal-length]
-   + 0.5416666666666667 Q[50,10] * H_neg[4,petal-width] - Q[50,10] * C4279
-   + Q[50,10] * C4286 ] >= 1
+   - Q[50,9] * C4286 ] >= 1
  qc478: E[69,4] + [ 0.3611111111111109 Q[69,9] * H_pos[4,sepal-length]
    + 0.2083333333333333 Q[69,9] * H_pos[4,sepal-width]
    + 0.4915254237288135 Q[69,9] * H_pos[4,petal-length]
@@ -14291,15 +10515,7 @@ Subject To
    - 0.2083333333333333 Q[69,9] * H_neg[4,sepal-width]
    - 0.4915254237288135 Q[69,9] * H_neg[4,petal-length]
    - 0.4166666666666667 Q[69,9] * H_neg[4,petal-width] + Q[69,9] * C4279
-   - Q[69,9] * C4286 - 0.3611111111111109 Q[69,10] * H_pos[4,sepal-length]
-   - 0.2083333333333333 Q[69,10] * H_pos[4,sepal-width]
-   - 0.4915254237288135 Q[69,10] * H_pos[4,petal-length]
-   - 0.4166666666666667 Q[69,10] * H_pos[4,petal-width]
-   + 0.3611111111111109 Q[69,10] * H_neg[4,sepal-length]
-   + 0.2083333333333333 Q[69,10] * H_neg[4,sepal-width]
-   + 0.4915254237288135 Q[69,10] * H_neg[4,petal-length]
-   + 0.4166666666666667 Q[69,10] * H_neg[4,petal-width] - Q[69,10] * C4279
-   + Q[69,10] * C4286 ] >= 1
+   - Q[69,9] * C4286 ] >= 1
  qc479: E[71,4] + [ 0.5 Q[71,9] * H_pos[4,sepal-length]
    + 0.3333333333333333 Q[71,9] * H_pos[4,sepal-width]
    + 0.5084745762711864 Q[71,9] * H_pos[4,petal-length]
@@ -14308,15 +10524,7 @@ Subject To
    - 0.3333333333333333 Q[71,9] * H_neg[4,sepal-width]
    - 0.5084745762711864 Q[71,9] * H_neg[4,petal-length]
    - 0.5 Q[71,9] * H_neg[4,petal-width] + Q[71,9] * C4279 - Q[71,9] * C4286
-   - 0.5 Q[71,10] * H_pos[4,sepal-length]
-   - 0.3333333333333333 Q[71,10] * H_pos[4,sepal-width]
-   - 0.5084745762711864 Q[71,10] * H_pos[4,petal-length]
-   - 0.5 Q[71,10] * H_pos[4,petal-width]
-   + 0.5 Q[71,10] * H_neg[4,sepal-length]
-   + 0.3333333333333333 Q[71,10] * H_neg[4,sepal-width]
-   + 0.5084745762711864 Q[71,10] * H_neg[4,petal-length]
-   + 0.5 Q[71,10] * H_neg[4,petal-width] - Q[71,10] * C4279
-   + Q[71,10] * C4286 ] >= 1
+   ] >= 1
  qc480: E[92,4] + [ 0.4166666666666665 Q[92,9] * H_pos[4,sepal-length]
    + 0.25 Q[92,9] * H_pos[4,sepal-width]
    + 0.5084745762711864 Q[92,9] * H_pos[4,petal-length]
@@ -14325,15 +10533,7 @@ Subject To
    - 0.25 Q[92,9] * H_neg[4,sepal-width]
    - 0.5084745762711864 Q[92,9] * H_neg[4,petal-length]
    - 0.4583333333333333 Q[92,9] * H_neg[4,petal-width] + Q[92,9] * C4279
-   - Q[92,9] * C4286 - 0.4166666666666665 Q[92,10] * H_pos[4,sepal-length]
-   - 0.25 Q[92,10] * H_pos[4,sepal-width]
-   - 0.5084745762711864 Q[92,10] * H_pos[4,petal-length]
-   - 0.4583333333333333 Q[92,10] * H_pos[4,petal-width]
-   + 0.4166666666666665 Q[92,10] * H_neg[4,sepal-length]
-   + 0.25 Q[92,10] * H_neg[4,sepal-width]
-   + 0.5084745762711864 Q[92,10] * H_neg[4,petal-length]
-   + 0.4583333333333333 Q[92,10] * H_neg[4,petal-width] - Q[92,10] * C4279
-   + Q[92,10] * C4286 ] >= 1
+   - Q[92,9] * C4286 ] >= 1
  qc481: E[61,4] + [ 0.4444444444444446 Q[61,9] * H_pos[4,sepal-length]
    + 0.4166666666666667 Q[61,9] * H_pos[4,sepal-width]
    + 0.5423728813559322 Q[61,9] * H_pos[4,petal-length]
@@ -14342,15 +10542,7 @@ Subject To
    - 0.4166666666666667 Q[61,9] * H_neg[4,sepal-width]
    - 0.5423728813559322 Q[61,9] * H_neg[4,petal-length]
    - 0.5833333333333334 Q[61,9] * H_neg[4,petal-width] + Q[61,9] * C4279
-   - Q[61,9] * C4286 - 0.4444444444444446 Q[61,10] * H_pos[4,sepal-length]
-   - 0.4166666666666667 Q[61,10] * H_pos[4,sepal-width]
-   - 0.5423728813559322 Q[61,10] * H_pos[4,petal-length]
-   - 0.5833333333333334 Q[61,10] * H_pos[4,petal-width]
-   + 0.4444444444444446 Q[61,10] * H_neg[4,sepal-length]
-   + 0.4166666666666667 Q[61,10] * H_neg[4,sepal-width]
-   + 0.5423728813559322 Q[61,10] * H_neg[4,petal-length]
-   + 0.5833333333333334 Q[61,10] * H_neg[4,petal-width] - Q[61,10] * C4279
-   + Q[61,10] * C4286 ] >= 1
+   - Q[61,9] * C4286 ] >= 1
  qc482: E[33,4] + [ 0.3333333333333333 Q[33,9] * H_pos[4,sepal-length]
    + 0.9166666666666667 Q[33,9] * H_pos[4,sepal-width]
    + 0.0677966101694915 Q[33,9] * H_pos[4,petal-length]
@@ -14359,15 +10551,7 @@ Subject To
    - 0.9166666666666667 Q[33,9] * H_neg[4,sepal-width]
    - 0.0677966101694915 Q[33,9] * H_neg[4,petal-length]
    - 0.0416666666666667 Q[33,9] * H_neg[4,petal-width] + Q[33,9] * C4279
-   - Q[33,9] * C4286 - 0.3333333333333333 Q[33,10] * H_pos[4,sepal-length]
-   - 0.9166666666666667 Q[33,10] * H_pos[4,sepal-width]
-   - 0.0677966101694915 Q[33,10] * H_pos[4,petal-length]
-   - 0.0416666666666667 Q[33,10] * H_pos[4,petal-width]
-   + 0.3333333333333333 Q[33,10] * H_neg[4,sepal-length]
-   + 0.9166666666666667 Q[33,10] * H_neg[4,sepal-width]
-   + 0.0677966101694915 Q[33,10] * H_neg[4,petal-length]
-   + 0.0416666666666667 Q[33,10] * H_neg[4,petal-width] - Q[33,10] * C4279
-   + Q[33,10] * C4286 ] >= 1
+   - Q[33,9] * C4286 ] >= 1
  qc483: E[15,4] + [ 0.3888888888888888 Q[15,9] * H_pos[4,sepal-length]
    + Q[15,9] * H_pos[4,sepal-width]
    + 0.0847457627118644 Q[15,9] * H_pos[4,petal-length]
@@ -14376,15 +10560,7 @@ Subject To
    - Q[15,9] * H_neg[4,sepal-width]
    - 0.0847457627118644 Q[15,9] * H_neg[4,petal-length]
    - 0.125 Q[15,9] * H_neg[4,petal-width] + Q[15,9] * C4279
-   - Q[15,9] * C4286 - 0.3888888888888888 Q[15,10] * H_pos[4,sepal-length]
-   - Q[15,10] * H_pos[4,sepal-width]
-   - 0.0847457627118644 Q[15,10] * H_pos[4,petal-length]
-   - 0.125 Q[15,10] * H_pos[4,petal-width]
-   + 0.3888888888888888 Q[15,10] * H_neg[4,sepal-length]
-   + Q[15,10] * H_neg[4,sepal-width]
-   + 0.0847457627118644 Q[15,10] * H_neg[4,petal-length]
-   + 0.125 Q[15,10] * H_neg[4,petal-width] - Q[15,10] * C4279
-   + Q[15,10] * C4286 ] >= 1
+   - Q[15,9] * C4286 ] >= 1
  qc484: E[5,4] + [ 0.3055555555555556 Q[5,9] * H_pos[4,sepal-length]
    + 0.7916666666666665 Q[5,9] * H_pos[4,sepal-width]
    + 0.1186440677966101 Q[5,9] * H_pos[4,petal-length]
@@ -14393,15 +10569,7 @@ Subject To
    - 0.7916666666666665 Q[5,9] * H_neg[4,sepal-width]
    - 0.1186440677966101 Q[5,9] * H_neg[4,petal-length]
    - 0.125 Q[5,9] * H_neg[4,petal-width] + Q[5,9] * C4279 - Q[5,9] * C4286
-   - 0.3055555555555556 Q[5,10] * H_pos[4,sepal-length]
-   - 0.7916666666666665 Q[5,10] * H_pos[4,sepal-width]
-   - 0.1186440677966101 Q[5,10] * H_pos[4,petal-length]
-   - 0.125 Q[5,10] * H_pos[4,petal-width]
-   + 0.3055555555555556 Q[5,10] * H_neg[4,sepal-length]
-   + 0.7916666666666665 Q[5,10] * H_neg[4,sepal-width]
-   + 0.1186440677966101 Q[5,10] * H_neg[4,petal-length]
-   + 0.125 Q[5,10] * H_neg[4,petal-width] - Q[5,10] * C4279
-   + Q[5,10] * C4286 ] >= 1
+   ] >= 1
  qc485: E[126,4] + [ 0.5277777777777779 Q[126,9] * H_pos[4,sepal-length]
    + 0.3333333333333333 Q[126,9] * H_pos[4,sepal-width]
    + 0.6440677966101694 Q[126,9] * H_pos[4,petal-length]
@@ -14410,16 +10578,7 @@ Subject To
    - 0.3333333333333333 Q[126,9] * H_neg[4,sepal-width]
    - 0.6440677966101694 Q[126,9] * H_neg[4,petal-length]
    - 0.7083333333333334 Q[126,9] * H_neg[4,petal-width] + Q[126,9] * C4279
-   - Q[126,9] * C4286
-   - 0.5277777777777779 Q[126,10] * H_pos[4,sepal-length]
-   - 0.3333333333333333 Q[126,10] * H_pos[4,sepal-width]
-   - 0.6440677966101694 Q[126,10] * H_pos[4,petal-length]
-   - 0.7083333333333334 Q[126,10] * H_pos[4,petal-width]
-   + 0.5277777777777779 Q[126,10] * H_neg[4,sepal-length]
-   + 0.3333333333333333 Q[126,10] * H_neg[4,sepal-width]
-   + 0.6440677966101694 Q[126,10] * H_neg[4,petal-length]
-   + 0.7083333333333334 Q[126,10] * H_neg[4,petal-width]
-   - Q[126,10] * C4279 + Q[126,10] * C4286 ] >= 1
+   - Q[126,9] * C4286 ] >= 1
  qc486: E[143,4] + [ 0.6944444444444444 Q[143,9] * H_pos[4,sepal-length]
    + 0.5 Q[143,9] * H_pos[4,sepal-width]
    + 0.8305084745762712 Q[143,9] * H_pos[4,petal-length]
@@ -14428,16 +10587,7 @@ Subject To
    - 0.5 Q[143,9] * H_neg[4,sepal-width]
    - 0.8305084745762712 Q[143,9] * H_neg[4,petal-length]
    - 0.9166666666666666 Q[143,9] * H_neg[4,petal-width] + Q[143,9] * C4279
-   - Q[143,9] * C4286
-   - 0.6944444444444444 Q[143,10] * H_pos[4,sepal-length]
-   - 0.5 Q[143,10] * H_pos[4,sepal-width]
-   - 0.8305084745762712 Q[143,10] * H_pos[4,petal-length]
-   - 0.9166666666666666 Q[143,10] * H_pos[4,petal-width]
-   + 0.6944444444444444 Q[143,10] * H_neg[4,sepal-length]
-   + 0.5 Q[143,10] * H_neg[4,sepal-width]
-   + 0.8305084745762712 Q[143,10] * H_neg[4,petal-length]
-   + 0.9166666666666666 Q[143,10] * H_neg[4,petal-width]
-   - Q[143,10] * C4279 + Q[143,10] * C4286 ] >= 1
+   - Q[143,9] * C4286 ] >= 1
  qc487: E[80,4] + [ 0.3333333333333333 Q[80,9] * H_pos[4,sepal-length]
    + 0.1666666666666666 Q[80,9] * H_pos[4,sepal-width]
    + 0.4745762711864406 Q[80,9] * H_pos[4,petal-length]
@@ -14446,15 +10596,7 @@ Subject To
    - 0.1666666666666666 Q[80,9] * H_neg[4,sepal-width]
    - 0.4745762711864406 Q[80,9] * H_neg[4,petal-length]
    - 0.4166666666666667 Q[80,9] * H_neg[4,petal-width] + Q[80,9] * C4279
-   - Q[80,9] * C4286 - 0.3333333333333333 Q[80,10] * H_pos[4,sepal-length]
-   - 0.1666666666666666 Q[80,10] * H_pos[4,sepal-width]
-   - 0.4745762711864406 Q[80,10] * H_pos[4,petal-length]
-   - 0.4166666666666667 Q[80,10] * H_pos[4,petal-width]
-   + 0.3333333333333333 Q[80,10] * H_neg[4,sepal-length]
-   + 0.1666666666666666 Q[80,10] * H_neg[4,sepal-width]
-   + 0.4745762711864406 Q[80,10] * H_neg[4,petal-length]
-   + 0.4166666666666667 Q[80,10] * H_neg[4,petal-width] - Q[80,10] * C4279
-   + Q[80,10] * C4286 ] >= 1
+   - Q[80,9] * C4286 ] >= 1
  qc488: E[73,4] + [ 0.5 Q[73,9] * H_pos[4,sepal-length]
    + 0.3333333333333333 Q[73,9] * H_pos[4,sepal-width]
    + 0.6271186440677966 Q[73,9] * H_pos[4,petal-length]
@@ -14463,15 +10605,7 @@ Subject To
    - 0.3333333333333333 Q[73,9] * H_neg[4,sepal-width]
    - 0.6271186440677966 Q[73,9] * H_neg[4,petal-length]
    - 0.4583333333333333 Q[73,9] * H_neg[4,petal-width] + Q[73,9] * C4279
-   - Q[73,9] * C4286 - 0.5 Q[73,10] * H_pos[4,sepal-length]
-   - 0.3333333333333333 Q[73,10] * H_pos[4,sepal-width]
-   - 0.6271186440677966 Q[73,10] * H_pos[4,petal-length]
-   - 0.4583333333333333 Q[73,10] * H_pos[4,petal-width]
-   + 0.5 Q[73,10] * H_neg[4,sepal-length]
-   + 0.3333333333333333 Q[73,10] * H_neg[4,sepal-width]
-   + 0.6271186440677966 Q[73,10] * H_neg[4,petal-length]
-   + 0.4583333333333333 Q[73,10] * H_neg[4,petal-width] - Q[73,10] * C4279
-   + Q[73,10] * C4286 ] >= 1
+   - Q[73,9] * C4286 ] >= 1
  qc489: E[54,4] + [ 0.6111111111111112 Q[54,9] * H_pos[4,sepal-length]
    + 0.3333333333333333 Q[54,9] * H_pos[4,sepal-width]
    + 0.6101694915254237 Q[54,9] * H_pos[4,petal-length]
@@ -14480,15 +10614,7 @@ Subject To
    - 0.3333333333333333 Q[54,9] * H_neg[4,sepal-width]
    - 0.6101694915254237 Q[54,9] * H_neg[4,petal-length]
    - 0.5833333333333334 Q[54,9] * H_neg[4,petal-width] + Q[54,9] * C4279
-   - Q[54,9] * C4286 - 0.6111111111111112 Q[54,10] * H_pos[4,sepal-length]
-   - 0.3333333333333333 Q[54,10] * H_pos[4,sepal-width]
-   - 0.6101694915254237 Q[54,10] * H_pos[4,petal-length]
-   - 0.5833333333333334 Q[54,10] * H_pos[4,petal-width]
-   + 0.6111111111111112 Q[54,10] * H_neg[4,sepal-length]
-   + 0.3333333333333333 Q[54,10] * H_neg[4,sepal-width]
-   + 0.6101694915254237 Q[54,10] * H_neg[4,petal-length]
-   + 0.5833333333333334 Q[54,10] * H_neg[4,petal-width] - Q[54,10] * C4279
-   + Q[54,10] * C4286 ] >= 1
+   - Q[54,9] * C4286 ] >= 1
  qc490: E[1,4] + [ 0.1666666666666667 Q[1,9] * H_pos[4,sepal-length]
    + 0.4166666666666667 Q[1,9] * H_pos[4,sepal-width]
    + 0.0677966101694915 Q[1,9] * H_pos[4,petal-length]
@@ -14497,15 +10623,7 @@ Subject To
    - 0.4166666666666667 Q[1,9] * H_neg[4,sepal-width]
    - 0.0677966101694915 Q[1,9] * H_neg[4,petal-length]
    - 0.0416666666666667 Q[1,9] * H_neg[4,petal-width] + Q[1,9] * C4279
-   - Q[1,9] * C4286 - 0.1666666666666667 Q[1,10] * H_pos[4,sepal-length]
-   - 0.4166666666666667 Q[1,10] * H_pos[4,sepal-width]
-   - 0.0677966101694915 Q[1,10] * H_pos[4,petal-length]
-   - 0.0416666666666667 Q[1,10] * H_pos[4,petal-width]
-   + 0.1666666666666667 Q[1,10] * H_neg[4,sepal-length]
-   + 0.4166666666666667 Q[1,10] * H_neg[4,sepal-width]
-   + 0.0677966101694915 Q[1,10] * H_neg[4,petal-length]
-   + 0.0416666666666667 Q[1,10] * H_neg[4,petal-width] - Q[1,10] * C4279
-   + Q[1,10] * C4286 ] >= 1
+   - Q[1,9] * C4286 ] >= 1
  qc491: E[129,4] + [ 0.8055555555555556 Q[129,9] * H_pos[4,sepal-length]
    + 0.4166666666666667 Q[129,9] * H_pos[4,sepal-width]
    + 0.8135593220338982 Q[129,9] * H_pos[4,petal-length]
@@ -14514,16 +10632,7 @@ Subject To
    - 0.4166666666666667 Q[129,9] * H_neg[4,sepal-width]
    - 0.8135593220338982 Q[129,9] * H_neg[4,petal-length]
    - 0.625 Q[129,9] * H_neg[4,petal-width] + Q[129,9] * C4279
-   - Q[129,9] * C4286
-   - 0.8055555555555556 Q[129,10] * H_pos[4,sepal-length]
-   - 0.4166666666666667 Q[129,10] * H_pos[4,sepal-width]
-   - 0.8135593220338982 Q[129,10] * H_pos[4,petal-length]
-   - 0.625 Q[129,10] * H_pos[4,petal-width]
-   + 0.8055555555555556 Q[129,10] * H_neg[4,sepal-length]
-   + 0.4166666666666667 Q[129,10] * H_neg[4,sepal-width]
-   + 0.8135593220338982 Q[129,10] * H_neg[4,petal-length]
-   + 0.625 Q[129,10] * H_neg[4,petal-width] - Q[129,10] * C4279
-   + Q[129,10] * C4286 ] >= 1
+   - Q[129,9] * C4286 ] >= 1
  qc492: E[99,4] + [ 0.3888888888888888 Q[99,9] * H_pos[4,sepal-length]
    + 0.3333333333333333 Q[99,9] * H_pos[4,sepal-width]
    + 0.5254237288135593 Q[99,9] * H_pos[4,petal-length]
@@ -14532,15 +10641,7 @@ Subject To
    - 0.3333333333333333 Q[99,9] * H_neg[4,sepal-width]
    - 0.5254237288135593 Q[99,9] * H_neg[4,petal-length]
    - 0.5 Q[99,9] * H_neg[4,petal-width] + Q[99,9] * C4279 - Q[99,9] * C4286
-   - 0.3888888888888888 Q[99,10] * H_pos[4,sepal-length]
-   - 0.3333333333333333 Q[99,10] * H_pos[4,sepal-width]
-   - 0.5254237288135593 Q[99,10] * H_pos[4,petal-length]
-   - 0.5 Q[99,10] * H_pos[4,petal-width]
-   + 0.3888888888888888 Q[99,10] * H_neg[4,sepal-length]
-   + 0.3333333333333333 Q[99,10] * H_neg[4,sepal-width]
-   + 0.5254237288135593 Q[99,10] * H_neg[4,petal-length]
-   + 0.5 Q[99,10] * H_neg[4,petal-width] - Q[99,10] * C4279
-   + Q[99,10] * C4286 ] >= 1
+   ] >= 1
  qc493: E[105,4] + [ 0.9166666666666665 Q[105,9] * H_pos[4,sepal-length]
    + 0.4166666666666667 Q[105,9] * H_pos[4,sepal-width]
    + 0.9491525423728813 Q[105,9] * H_pos[4,petal-length]
@@ -14549,16 +10650,7 @@ Subject To
    - 0.4166666666666667 Q[105,9] * H_neg[4,sepal-width]
    - 0.9491525423728813 Q[105,9] * H_neg[4,petal-length]
    - 0.8333333333333335 Q[105,9] * H_neg[4,petal-width] + Q[105,9] * C4279
-   - Q[105,9] * C4286
-   - 0.9166666666666665 Q[105,10] * H_pos[4,sepal-length]
-   - 0.4166666666666667 Q[105,10] * H_pos[4,sepal-width]
-   - 0.9491525423728813 Q[105,10] * H_pos[4,petal-length]
-   - 0.8333333333333335 Q[105,10] * H_pos[4,petal-width]
-   + 0.9166666666666665 Q[105,10] * H_neg[4,sepal-length]
-   + 0.4166666666666667 Q[105,10] * H_neg[4,sepal-width]
-   + 0.9491525423728813 Q[105,10] * H_neg[4,petal-length]
-   + 0.8333333333333335 Q[105,10] * H_neg[4,petal-width]
-   - Q[105,10] * C4279 + Q[105,10] * C4286 ] >= 1
+   - Q[105,9] * C4286 ] >= 1
  qc494: E[144,4] + [ 0.6666666666666667 Q[144,9] * H_pos[4,sepal-length]
    + 0.5416666666666665 Q[144,9] * H_pos[4,sepal-width]
    + 0.7966101694915254 Q[144,9] * H_pos[4,petal-length]
@@ -14567,15 +10659,7 @@ Subject To
    - 0.5416666666666665 Q[144,9] * H_neg[4,sepal-width]
    - 0.7966101694915254 Q[144,9] * H_neg[4,petal-length]
    - Q[144,9] * H_neg[4,petal-width] + Q[144,9] * C4279 - Q[144,9] * C4286
-   - 0.6666666666666667 Q[144,10] * H_pos[4,sepal-length]
-   - 0.5416666666666665 Q[144,10] * H_pos[4,sepal-width]
-   - 0.7966101694915254 Q[144,10] * H_pos[4,petal-length]
-   - Q[144,10] * H_pos[4,petal-width]
-   + 0.6666666666666667 Q[144,10] * H_neg[4,sepal-length]
-   + 0.5416666666666665 Q[144,10] * H_neg[4,sepal-width]
-   + 0.7966101694915254 Q[144,10] * H_neg[4,petal-length]
-   + Q[144,10] * H_neg[4,petal-width] - Q[144,10] * C4279
-   + Q[144,10] * C4286 ] >= 1
+   ] >= 1
  qc495: E[7,4] + [ 0.1944444444444444 Q[7,9] * H_pos[4,sepal-length]
    + 0.5833333333333333 Q[7,9] * H_pos[4,sepal-width]
    + 0.0847457627118644 Q[7,9] * H_pos[4,petal-length]
@@ -14584,15 +10668,7 @@ Subject To
    - 0.5833333333333333 Q[7,9] * H_neg[4,sepal-width]
    - 0.0847457627118644 Q[7,9] * H_neg[4,petal-length]
    - 0.0416666666666667 Q[7,9] * H_neg[4,petal-width] + Q[7,9] * C4279
-   - Q[7,9] * C4286 - 0.1944444444444444 Q[7,10] * H_pos[4,sepal-length]
-   - 0.5833333333333333 Q[7,10] * H_pos[4,sepal-width]
-   - 0.0847457627118644 Q[7,10] * H_pos[4,petal-length]
-   - 0.0416666666666667 Q[7,10] * H_pos[4,petal-width]
-   + 0.1944444444444444 Q[7,10] * H_neg[4,sepal-length]
-   + 0.5833333333333333 Q[7,10] * H_neg[4,sepal-width]
-   + 0.0847457627118644 Q[7,10] * H_neg[4,petal-length]
-   + 0.0416666666666667 Q[7,10] * H_neg[4,petal-width] - Q[7,10] * C4279
-   + Q[7,10] * C4286 ] >= 1
+   - Q[7,9] * C4286 ] >= 1
  qc496: E[107,4] + [ 0.833333333333333 Q[107,9] * H_pos[4,sepal-length]
    + 0.375 Q[107,9] * H_pos[4,sepal-width]
    + 0.8983050847457625 Q[107,9] * H_pos[4,petal-length]
@@ -14601,15 +10677,7 @@ Subject To
    - 0.375 Q[107,9] * H_neg[4,sepal-width]
    - 0.8983050847457625 Q[107,9] * H_neg[4,petal-length]
    - 0.7083333333333334 Q[107,9] * H_neg[4,petal-width] + Q[107,9] * C4279
-   - Q[107,9] * C4286 - 0.833333333333333 Q[107,10] * H_pos[4,sepal-length]
-   - 0.375 Q[107,10] * H_pos[4,sepal-width]
-   - 0.8983050847457625 Q[107,10] * H_pos[4,petal-length]
-   - 0.7083333333333334 Q[107,10] * H_pos[4,petal-width]
-   + 0.833333333333333 Q[107,10] * H_neg[4,sepal-length]
-   + 0.375 Q[107,10] * H_neg[4,sepal-width]
-   + 0.8983050847457625 Q[107,10] * H_neg[4,petal-length]
-   + 0.7083333333333334 Q[107,10] * H_neg[4,petal-width]
-   - Q[107,10] * C4279 + Q[107,10] * C4286 ] >= 1
+   - Q[107,9] * C4286 ] >= 1
  qc497: E[123,4] + [ 0.5555555555555556 Q[123,9] * H_pos[4,sepal-length]
    + 0.2916666666666667 Q[123,9] * H_pos[4,sepal-width]
    + 0.6610169491525424 Q[123,9] * H_pos[4,petal-length]
@@ -14618,16 +10686,7 @@ Subject To
    - 0.2916666666666667 Q[123,9] * H_neg[4,sepal-width]
    - 0.6610169491525424 Q[123,9] * H_neg[4,petal-length]
    - 0.7083333333333334 Q[123,9] * H_neg[4,petal-width] + Q[123,9] * C4279
-   - Q[123,9] * C4286
-   - 0.5555555555555556 Q[123,10] * H_pos[4,sepal-length]
-   - 0.2916666666666667 Q[123,10] * H_pos[4,sepal-width]
-   - 0.6610169491525424 Q[123,10] * H_pos[4,petal-length]
-   - 0.7083333333333334 Q[123,10] * H_pos[4,petal-width]
-   + 0.5555555555555556 Q[123,10] * H_neg[4,sepal-length]
-   + 0.2916666666666667 Q[123,10] * H_neg[4,sepal-width]
-   + 0.6610169491525424 Q[123,10] * H_neg[4,petal-length]
-   + 0.7083333333333334 Q[123,10] * H_neg[4,petal-width]
-   - Q[123,10] * C4279 + Q[123,10] * C4286 ] >= 1
+   - Q[123,9] * C4286 ] >= 1
  qc498: E[118,4] + [ 0.9444444444444442 Q[118,9] * H_pos[4,sepal-length]
    + 0.25 Q[118,9] * H_pos[4,sepal-width]
    + Q[118,9] * H_pos[4,petal-length]
@@ -14636,16 +10695,7 @@ Subject To
    - 0.25 Q[118,9] * H_neg[4,sepal-width]
    - Q[118,9] * H_neg[4,petal-length]
    - 0.9166666666666666 Q[118,9] * H_neg[4,petal-width] + Q[118,9] * C4279
-   - Q[118,9] * C4286
-   - 0.9444444444444442 Q[118,10] * H_pos[4,sepal-length]
-   - 0.25 Q[118,10] * H_pos[4,sepal-width]
-   - Q[118,10] * H_pos[4,petal-length]
-   - 0.9166666666666666 Q[118,10] * H_pos[4,petal-width]
-   + 0.9444444444444442 Q[118,10] * H_neg[4,sepal-length]
-   + 0.25 Q[118,10] * H_neg[4,sepal-width]
-   + Q[118,10] * H_neg[4,petal-length]
-   + 0.9166666666666666 Q[118,10] * H_neg[4,petal-width]
-   - Q[118,10] * C4279 + Q[118,10] * C4286 ] >= 1
+   - Q[118,9] * C4286 ] >= 1
  qc499: E[66,4] + [ 0.3611111111111109 Q[66,9] * H_pos[4,sepal-length]
    + 0.4166666666666667 Q[66,9] * H_pos[4,sepal-width]
    + 0.5932203389830508 Q[66,9] * H_pos[4,petal-length]
@@ -14654,15 +10704,7 @@ Subject To
    - 0.4166666666666667 Q[66,9] * H_neg[4,sepal-width]
    - 0.5932203389830508 Q[66,9] * H_neg[4,petal-length]
    - 0.5833333333333334 Q[66,9] * H_neg[4,petal-width] + Q[66,9] * C4279
-   - Q[66,9] * C4286 - 0.3611111111111109 Q[66,10] * H_pos[4,sepal-length]
-   - 0.4166666666666667 Q[66,10] * H_pos[4,sepal-width]
-   - 0.5932203389830508 Q[66,10] * H_pos[4,petal-length]
-   - 0.5833333333333334 Q[66,10] * H_pos[4,petal-width]
-   + 0.3611111111111109 Q[66,10] * H_neg[4,sepal-length]
-   + 0.4166666666666667 Q[66,10] * H_neg[4,sepal-width]
-   + 0.5932203389830508 Q[66,10] * H_neg[4,petal-length]
-   + 0.5833333333333334 Q[66,10] * H_neg[4,petal-width] - Q[66,10] * C4279
-   + Q[66,10] * C4286 ] >= 1
+   - Q[66,9] * C4286 ] >= 1
  qc500: E[124,4] + [ 0.6666666666666667 Q[124,9] * H_pos[4,sepal-length]
    + 0.5416666666666665 Q[124,9] * H_pos[4,sepal-width]
    + 0.7966101694915254 Q[124,9] * H_pos[4,petal-length]
@@ -14671,16 +10713,7 @@ Subject To
    - 0.5416666666666665 Q[124,9] * H_neg[4,sepal-width]
    - 0.7966101694915254 Q[124,9] * H_neg[4,petal-length]
    - 0.8333333333333335 Q[124,9] * H_neg[4,petal-width] + Q[124,9] * C4279
-   - Q[124,9] * C4286
-   - 0.6666666666666667 Q[124,10] * H_pos[4,sepal-length]
-   - 0.5416666666666665 Q[124,10] * H_pos[4,sepal-width]
-   - 0.7966101694915254 Q[124,10] * H_pos[4,petal-length]
-   - 0.8333333333333335 Q[124,10] * H_pos[4,petal-width]
-   + 0.6666666666666667 Q[124,10] * H_neg[4,sepal-length]
-   + 0.5416666666666665 Q[124,10] * H_neg[4,sepal-width]
-   + 0.7966101694915254 Q[124,10] * H_neg[4,petal-length]
-   + 0.8333333333333335 Q[124,10] * H_neg[4,petal-width]
-   - Q[124,10] * C4279 + Q[124,10] * C4286 ] >= 1
+   - Q[124,9] * C4286 ] >= 1
  qc501: E[142,4] + [ 0.4166666666666665 Q[142,9] * H_pos[4,sepal-length]
    + 0.2916666666666667 Q[142,9] * H_pos[4,sepal-width]
    + 0.6949152542372881 Q[142,9] * H_pos[4,petal-length]
@@ -14689,16 +10722,7 @@ Subject To
    - 0.2916666666666667 Q[142,9] * H_neg[4,sepal-width]
    - 0.6949152542372881 Q[142,9] * H_neg[4,petal-length]
    - 0.75 Q[142,9] * H_neg[4,petal-width] + Q[142,9] * C4279
-   - Q[142,9] * C4286
-   - 0.4166666666666665 Q[142,10] * H_pos[4,sepal-length]
-   - 0.2916666666666667 Q[142,10] * H_pos[4,sepal-width]
-   - 0.6949152542372881 Q[142,10] * H_pos[4,petal-length]
-   - 0.75 Q[142,10] * H_pos[4,petal-width]
-   + 0.4166666666666665 Q[142,10] * H_neg[4,sepal-length]
-   + 0.2916666666666667 Q[142,10] * H_neg[4,sepal-width]
-   + 0.6949152542372881 Q[142,10] * H_neg[4,petal-length]
-   + 0.75 Q[142,10] * H_neg[4,petal-width] - Q[142,10] * C4279
-   + Q[142,10] * C4286 ] >= 1
+   - Q[142,9] * C4286 ] >= 1
  qc502: E[101,4] + [ 0.4166666666666665 Q[101,9] * H_pos[4,sepal-length]
    + 0.2916666666666667 Q[101,9] * H_pos[4,sepal-width]
    + 0.6949152542372881 Q[101,9] * H_pos[4,petal-length]
@@ -14707,16 +10731,7 @@ Subject To
    - 0.2916666666666667 Q[101,9] * H_neg[4,sepal-width]
    - 0.6949152542372881 Q[101,9] * H_neg[4,petal-length]
    - 0.75 Q[101,9] * H_neg[4,petal-width] + Q[101,9] * C4279
-   - Q[101,9] * C4286
-   - 0.4166666666666665 Q[101,10] * H_pos[4,sepal-length]
-   - 0.2916666666666667 Q[101,10] * H_pos[4,sepal-width]
-   - 0.6949152542372881 Q[101,10] * H_pos[4,petal-length]
-   - 0.75 Q[101,10] * H_pos[4,petal-width]
-   + 0.4166666666666665 Q[101,10] * H_neg[4,sepal-length]
-   + 0.2916666666666667 Q[101,10] * H_neg[4,sepal-width]
-   + 0.6949152542372881 Q[101,10] * H_neg[4,petal-length]
-   + 0.75 Q[101,10] * H_neg[4,petal-width] - Q[101,10] * C4279
-   + Q[101,10] * C4286 ] >= 1
+   - Q[101,9] * C4286 ] >= 1
  qc503: E[63,4] + [ 0.5 Q[63,9] * H_pos[4,sepal-length]
    + 0.375 Q[63,9] * H_pos[4,sepal-width]
    + 0.6271186440677966 Q[63,9] * H_pos[4,petal-length]
@@ -14725,15 +10740,7 @@ Subject To
    - 0.375 Q[63,9] * H_neg[4,sepal-width]
    - 0.6271186440677966 Q[63,9] * H_neg[4,petal-length]
    - 0.5416666666666667 Q[63,9] * H_neg[4,petal-width] + Q[63,9] * C4279
-   - Q[63,9] * C4286 - 0.5 Q[63,10] * H_pos[4,sepal-length]
-   - 0.375 Q[63,10] * H_pos[4,sepal-width]
-   - 0.6271186440677966 Q[63,10] * H_pos[4,petal-length]
-   - 0.5416666666666667 Q[63,10] * H_pos[4,petal-width]
-   + 0.5 Q[63,10] * H_neg[4,sepal-length]
-   + 0.375 Q[63,10] * H_neg[4,sepal-width]
-   + 0.6271186440677966 Q[63,10] * H_neg[4,petal-length]
-   + 0.5416666666666667 Q[63,10] * H_neg[4,petal-width] - Q[63,10] * C4279
-   + Q[63,10] * C4286 ] >= 1
+   - Q[63,9] * C4286 ] >= 1
  qc504: E[77,4] + [ 0.6666666666666667 Q[77,9] * H_pos[4,sepal-length]
    + 0.4166666666666667 Q[77,9] * H_pos[4,sepal-width]
    + 0.6779661016949152 Q[77,9] * H_pos[4,petal-length]
@@ -14742,15 +10749,7 @@ Subject To
    - 0.4166666666666667 Q[77,9] * H_neg[4,sepal-width]
    - 0.6779661016949152 Q[77,9] * H_neg[4,petal-length]
    - 0.6666666666666667 Q[77,9] * H_neg[4,petal-width] + Q[77,9] * C4279
-   - Q[77,9] * C4286 - 0.6666666666666667 Q[77,10] * H_pos[4,sepal-length]
-   - 0.4166666666666667 Q[77,10] * H_pos[4,sepal-width]
-   - 0.6779661016949152 Q[77,10] * H_pos[4,petal-length]
-   - 0.6666666666666667 Q[77,10] * H_pos[4,petal-width]
-   + 0.6666666666666667 Q[77,10] * H_neg[4,sepal-length]
-   + 0.4166666666666667 Q[77,10] * H_neg[4,sepal-width]
-   + 0.6779661016949152 Q[77,10] * H_neg[4,petal-length]
-   + 0.6666666666666667 Q[77,10] * H_neg[4,petal-width] - Q[77,10] * C4279
-   + Q[77,10] * C4286 ] >= 1
+   - Q[77,9] * C4286 ] >= 1
  qc505: E[35,4] + [ 0.1944444444444444 Q[35,9] * H_pos[4,sepal-length]
    + 0.5 Q[35,9] * H_pos[4,sepal-width]
    + 0.0338983050847458 Q[35,9] * H_pos[4,petal-length]
@@ -14759,28 +10758,14 @@ Subject To
    - 0.5 Q[35,9] * H_neg[4,sepal-width]
    - 0.0338983050847458 Q[35,9] * H_neg[4,petal-length]
    - 0.0416666666666667 Q[35,9] * H_neg[4,petal-width] + Q[35,9] * C4279
-   - Q[35,9] * C4286 - 0.1944444444444444 Q[35,10] * H_pos[4,sepal-length]
-   - 0.5 Q[35,10] * H_pos[4,sepal-width]
-   - 0.0338983050847458 Q[35,10] * H_pos[4,petal-length]
-   - 0.0416666666666667 Q[35,10] * H_pos[4,petal-width]
-   + 0.1944444444444444 Q[35,10] * H_neg[4,sepal-length]
-   + 0.5 Q[35,10] * H_neg[4,sepal-width]
-   + 0.0338983050847458 Q[35,10] * H_neg[4,petal-length]
-   + 0.0416666666666667 Q[35,10] * H_neg[4,petal-width] - Q[35,10] * C4279
-   + Q[35,10] * C4286 ] >= 1
+   - Q[35,9] * C4286 ] >= 1
  qc506: E[22,4] + [ 0.0833333333333333 Q[22,9] * H_pos[4,sepal-length]
    + 0.6666666666666667 Q[22,9] * H_pos[4,sepal-width]
    + 0.0416666666666667 Q[22,9] * H_pos[4,petal-width]
    - 0.0833333333333333 Q[22,9] * H_neg[4,sepal-length]
    - 0.6666666666666667 Q[22,9] * H_neg[4,sepal-width]
    - 0.0416666666666667 Q[22,9] * H_neg[4,petal-width] + Q[22,9] * C4279
-   - Q[22,9] * C4286 - 0.0833333333333333 Q[22,10] * H_pos[4,sepal-length]
-   - 0.6666666666666667 Q[22,10] * H_pos[4,sepal-width]
-   - 0.0416666666666667 Q[22,10] * H_pos[4,petal-width]
-   + 0.0833333333333333 Q[22,10] * H_neg[4,sepal-length]
-   + 0.6666666666666667 Q[22,10] * H_neg[4,sepal-width]
-   + 0.0416666666666667 Q[22,10] * H_neg[4,petal-width] - Q[22,10] * C4279
-   + Q[22,10] * C4286 ] >= 1
+   - Q[22,9] * C4286 ] >= 1
  qc507: E[127,4] + [ 0.5 Q[127,9] * H_pos[4,sepal-length]
    + 0.4166666666666667 Q[127,9] * H_pos[4,sepal-width]
    + 0.6610169491525424 Q[127,9] * H_pos[4,petal-length]
@@ -14789,15 +10774,7 @@ Subject To
    - 0.4166666666666667 Q[127,9] * H_neg[4,sepal-width]
    - 0.6610169491525424 Q[127,9] * H_neg[4,petal-length]
    - 0.7083333333333334 Q[127,9] * H_neg[4,petal-width] + Q[127,9] * C4279
-   - Q[127,9] * C4286 - 0.5 Q[127,10] * H_pos[4,sepal-length]
-   - 0.4166666666666667 Q[127,10] * H_pos[4,sepal-width]
-   - 0.6610169491525424 Q[127,10] * H_pos[4,petal-length]
-   - 0.7083333333333334 Q[127,10] * H_pos[4,petal-width]
-   + 0.5 Q[127,10] * H_neg[4,sepal-length]
-   + 0.4166666666666667 Q[127,10] * H_neg[4,sepal-width]
-   + 0.6610169491525424 Q[127,10] * H_neg[4,petal-length]
-   + 0.7083333333333334 Q[127,10] * H_neg[4,petal-width]
-   - Q[127,10] * C4279 + Q[127,10] * C4286 ] >= 1
+   - Q[127,9] * C4286 ] >= 1
  qc508: E[102,4] + [ 0.7777777777777777 Q[102,9] * H_pos[4,sepal-length]
    + 0.4166666666666667 Q[102,9] * H_pos[4,sepal-width]
    + 0.8305084745762712 Q[102,9] * H_pos[4,petal-length]
@@ -14806,16 +10783,7 @@ Subject To
    - 0.4166666666666667 Q[102,9] * H_neg[4,sepal-width]
    - 0.8305084745762712 Q[102,9] * H_neg[4,petal-length]
    - 0.8333333333333335 Q[102,9] * H_neg[4,petal-width] + Q[102,9] * C4279
-   - Q[102,9] * C4286
-   - 0.7777777777777777 Q[102,10] * H_pos[4,sepal-length]
-   - 0.4166666666666667 Q[102,10] * H_pos[4,sepal-width]
-   - 0.8305084745762712 Q[102,10] * H_pos[4,petal-length]
-   - 0.8333333333333335 Q[102,10] * H_pos[4,petal-width]
-   + 0.7777777777777777 Q[102,10] * H_neg[4,sepal-length]
-   + 0.4166666666666667 Q[102,10] * H_neg[4,sepal-width]
-   + 0.8305084745762712 Q[102,10] * H_neg[4,petal-length]
-   + 0.8333333333333335 Q[102,10] * H_neg[4,petal-width]
-   - Q[102,10] * C4279 + Q[102,10] * C4286 ] >= 1
+   - Q[102,9] * C4286 ] >= 1
  qc509: E[148,4] + [ 0.5277777777777779 Q[148,9] * H_pos[4,sepal-length]
    + 0.5833333333333333 Q[148,9] * H_pos[4,sepal-width]
    + 0.7457627118644068 Q[148,9] * H_pos[4,petal-length]
@@ -14824,16 +10792,7 @@ Subject To
    - 0.5833333333333333 Q[148,9] * H_neg[4,sepal-width]
    - 0.7457627118644068 Q[148,9] * H_neg[4,petal-length]
    - 0.9166666666666666 Q[148,9] * H_neg[4,petal-width] + Q[148,9] * C4279
-   - Q[148,9] * C4286
-   - 0.5277777777777779 Q[148,10] * H_pos[4,sepal-length]
-   - 0.5833333333333333 Q[148,10] * H_pos[4,sepal-width]
-   - 0.7457627118644068 Q[148,10] * H_pos[4,petal-length]
-   - 0.9166666666666666 Q[148,10] * H_pos[4,petal-width]
-   + 0.5277777777777779 Q[148,10] * H_neg[4,sepal-length]
-   + 0.5833333333333333 Q[148,10] * H_neg[4,sepal-width]
-   + 0.7457627118644068 Q[148,10] * H_neg[4,petal-length]
-   + 0.9166666666666666 Q[148,10] * H_neg[4,petal-width]
-   - Q[148,10] * C4279 + Q[148,10] * C4286 ] >= 1
+   - Q[148,9] * C4286 ] >= 1
  qc510: E[64,4] + [ 0.3611111111111109 Q[64,9] * H_pos[4,sepal-length]
    + 0.375 Q[64,9] * H_pos[4,sepal-width]
    + 0.440677966101695 Q[64,9] * H_pos[4,petal-length]
@@ -14842,15 +10801,7 @@ Subject To
    - 0.375 Q[64,9] * H_neg[4,sepal-width]
    - 0.440677966101695 Q[64,9] * H_neg[4,petal-length]
    - 0.5 Q[64,9] * H_neg[4,petal-width] + Q[64,9] * C4279 - Q[64,9] * C4286
-   - 0.3611111111111109 Q[64,10] * H_pos[4,sepal-length]
-   - 0.375 Q[64,10] * H_pos[4,sepal-width]
-   - 0.440677966101695 Q[64,10] * H_pos[4,petal-length]
-   - 0.5 Q[64,10] * H_pos[4,petal-width]
-   + 0.3611111111111109 Q[64,10] * H_neg[4,sepal-length]
-   + 0.375 Q[64,10] * H_neg[4,sepal-width]
-   + 0.440677966101695 Q[64,10] * H_neg[4,petal-length]
-   + 0.5 Q[64,10] * H_neg[4,petal-width] - Q[64,10] * C4279
-   + Q[64,10] * C4286 ] >= 1
+   ] >= 1
  qc511: E[68,4] + [ 0.5277777777777779 Q[68,9] * H_pos[4,sepal-length]
    + 0.0833333333333334 Q[68,9] * H_pos[4,sepal-width]
    + 0.5932203389830508 Q[68,9] * H_pos[4,petal-length]
@@ -14859,15 +10810,7 @@ Subject To
    - 0.0833333333333334 Q[68,9] * H_neg[4,sepal-width]
    - 0.5932203389830508 Q[68,9] * H_neg[4,petal-length]
    - 0.5833333333333334 Q[68,9] * H_neg[4,petal-width] + Q[68,9] * C4279
-   - Q[68,9] * C4286 - 0.5277777777777779 Q[68,10] * H_pos[4,sepal-length]
-   - 0.0833333333333334 Q[68,10] * H_pos[4,sepal-width]
-   - 0.5932203389830508 Q[68,10] * H_pos[4,petal-length]
-   - 0.5833333333333334 Q[68,10] * H_pos[4,petal-width]
-   + 0.5277777777777779 Q[68,10] * H_neg[4,sepal-length]
-   + 0.0833333333333334 Q[68,10] * H_neg[4,sepal-width]
-   + 0.5932203389830508 Q[68,10] * H_neg[4,petal-length]
-   + 0.5833333333333334 Q[68,10] * H_neg[4,petal-width] - Q[68,10] * C4279
-   + Q[68,10] * C4286 ] >= 1
+   - Q[68,9] * C4286 ] >= 1
  qc512: E[27,4] + [ 0.25 Q[27,9] * H_pos[4,sepal-length]
    + 0.625 Q[27,9] * H_pos[4,sepal-width]
    + 0.0847457627118644 Q[27,9] * H_pos[4,petal-length]
@@ -14876,15 +10819,7 @@ Subject To
    - 0.625 Q[27,9] * H_neg[4,sepal-width]
    - 0.0847457627118644 Q[27,9] * H_neg[4,petal-length]
    - 0.0416666666666667 Q[27,9] * H_neg[4,petal-width] + Q[27,9] * C4279
-   - Q[27,9] * C4286 - 0.25 Q[27,10] * H_pos[4,sepal-length]
-   - 0.625 Q[27,10] * H_pos[4,sepal-width]
-   - 0.0847457627118644 Q[27,10] * H_pos[4,petal-length]
-   - 0.0416666666666667 Q[27,10] * H_pos[4,petal-width]
-   + 0.25 Q[27,10] * H_neg[4,sepal-length]
-   + 0.625 Q[27,10] * H_neg[4,sepal-width]
-   + 0.0847457627118644 Q[27,10] * H_neg[4,petal-length]
-   + 0.0416666666666667 Q[27,10] * H_neg[4,petal-width] - Q[27,10] * C4279
-   + Q[27,10] * C4286 ] >= 1
+   - Q[27,9] * C4286 ] >= 1
  qc513: E[149,4] + [ 0.4444444444444446 Q[149,9] * H_pos[4,sepal-length]
    + 0.4166666666666667 Q[149,9] * H_pos[4,sepal-width]
    + 0.6949152542372881 Q[149,9] * H_pos[4,petal-length]
@@ -14893,16 +10828,7 @@ Subject To
    - 0.4166666666666667 Q[149,9] * H_neg[4,sepal-width]
    - 0.6949152542372881 Q[149,9] * H_neg[4,petal-length]
    - 0.7083333333333334 Q[149,9] * H_neg[4,petal-width] + Q[149,9] * C4279
-   - Q[149,9] * C4286
-   - 0.4444444444444446 Q[149,10] * H_pos[4,sepal-length]
-   - 0.4166666666666667 Q[149,10] * H_pos[4,sepal-width]
-   - 0.6949152542372881 Q[149,10] * H_pos[4,petal-length]
-   - 0.7083333333333334 Q[149,10] * H_pos[4,petal-width]
-   + 0.4444444444444446 Q[149,10] * H_neg[4,sepal-length]
-   + 0.4166666666666667 Q[149,10] * H_neg[4,sepal-width]
-   + 0.6949152542372881 Q[149,10] * H_neg[4,petal-length]
-   + 0.7083333333333334 Q[149,10] * H_neg[4,petal-width]
-   - Q[149,10] * C4279 + Q[149,10] * C4286 ] >= 1
+   - Q[149,9] * C4286 ] >= 1
  qc514: E[39,4] + [ 0.2222222222222221 Q[39,9] * H_pos[4,sepal-length]
    + 0.5833333333333333 Q[39,9] * H_pos[4,sepal-width]
    + 0.0847457627118644 Q[39,9] * H_pos[4,petal-length]
@@ -14911,15 +10837,7 @@ Subject To
    - 0.5833333333333333 Q[39,9] * H_neg[4,sepal-width]
    - 0.0847457627118644 Q[39,9] * H_neg[4,petal-length]
    - 0.0416666666666667 Q[39,9] * H_neg[4,petal-width] + Q[39,9] * C4279
-   - Q[39,9] * C4286 - 0.2222222222222221 Q[39,10] * H_pos[4,sepal-length]
-   - 0.5833333333333333 Q[39,10] * H_pos[4,sepal-width]
-   - 0.0847457627118644 Q[39,10] * H_pos[4,petal-length]
-   - 0.0416666666666667 Q[39,10] * H_pos[4,petal-width]
-   + 0.2222222222222221 Q[39,10] * H_neg[4,sepal-length]
-   + 0.5833333333333333 Q[39,10] * H_neg[4,sepal-width]
-   + 0.0847457627118644 Q[39,10] * H_neg[4,petal-length]
-   + 0.0416666666666667 Q[39,10] * H_neg[4,petal-width] - Q[39,10] * C4279
-   + Q[39,10] * C4286 ] >= 1
+   - Q[39,9] * C4286 ] >= 1
  qc515: E[25,4] + [ 0.1944444444444444 Q[25,9] * H_pos[4,sepal-length]
    + 0.4166666666666667 Q[25,9] * H_pos[4,sepal-width]
    + 0.1016949152542373 Q[25,9] * H_pos[4,petal-length]
@@ -14928,15 +10846,7 @@ Subject To
    - 0.4166666666666667 Q[25,9] * H_neg[4,sepal-width]
    - 0.1016949152542373 Q[25,9] * H_neg[4,petal-length]
    - 0.0416666666666667 Q[25,9] * H_neg[4,petal-width] + Q[25,9] * C4279
-   - Q[25,9] * C4286 - 0.1944444444444444 Q[25,10] * H_pos[4,sepal-length]
-   - 0.4166666666666667 Q[25,10] * H_pos[4,sepal-width]
-   - 0.1016949152542373 Q[25,10] * H_pos[4,petal-length]
-   - 0.0416666666666667 Q[25,10] * H_pos[4,petal-width]
-   + 0.1944444444444444 Q[25,10] * H_neg[4,sepal-length]
-   + 0.4166666666666667 Q[25,10] * H_neg[4,sepal-width]
-   + 0.1016949152542373 Q[25,10] * H_neg[4,petal-length]
-   + 0.0416666666666667 Q[25,10] * H_neg[4,petal-width] - Q[25,10] * C4279
-   + Q[25,10] * C4286 ] >= 1
+   - Q[25,9] * C4286 ] >= 1
  qc516: E[62,4] + [ 0.4722222222222223 Q[62,9] * H_pos[4,sepal-length]
    + 0.0833333333333334 Q[62,9] * H_pos[4,sepal-width]
    + 0.5084745762711864 Q[62,9] * H_pos[4,petal-length]
@@ -14945,28 +10855,14 @@ Subject To
    - 0.0833333333333334 Q[62,9] * H_neg[4,sepal-width]
    - 0.5084745762711864 Q[62,9] * H_neg[4,petal-length]
    - 0.375 Q[62,9] * H_neg[4,petal-width] + Q[62,9] * C4279
-   - Q[62,9] * C4286 - 0.4722222222222223 Q[62,10] * H_pos[4,sepal-length]
-   - 0.0833333333333334 Q[62,10] * H_pos[4,sepal-width]
-   - 0.5084745762711864 Q[62,10] * H_pos[4,petal-length]
-   - 0.375 Q[62,10] * H_pos[4,petal-width]
-   + 0.4722222222222223 Q[62,10] * H_neg[4,sepal-length]
-   + 0.0833333333333334 Q[62,10] * H_neg[4,sepal-width]
-   + 0.5084745762711864 Q[62,10] * H_neg[4,petal-length]
-   + 0.375 Q[62,10] * H_neg[4,petal-width] - Q[62,10] * C4279
-   + Q[62,10] * C4286 ] >= 1
+   - Q[62,9] * C4286 ] >= 1
  qc517: E[32,4] + [ 0.25 Q[32,9] * H_pos[4,sepal-length]
    + 0.875 Q[32,9] * H_pos[4,sepal-width]
    + 0.0847457627118644 Q[32,9] * H_pos[4,petal-length]
    - 0.25 Q[32,9] * H_neg[4,sepal-length]
    - 0.875 Q[32,9] * H_neg[4,sepal-width]
    - 0.0847457627118644 Q[32,9] * H_neg[4,petal-length] + Q[32,9] * C4279
-   - Q[32,9] * C4286 - 0.25 Q[32,10] * H_pos[4,sepal-length]
-   - 0.875 Q[32,10] * H_pos[4,sepal-width]
-   - 0.0847457627118644 Q[32,10] * H_pos[4,petal-length]
-   + 0.25 Q[32,10] * H_neg[4,sepal-length]
-   + 0.875 Q[32,10] * H_neg[4,sepal-width]
-   + 0.0847457627118644 Q[32,10] * H_neg[4,petal-length] - Q[32,10] * C4279
-   + Q[32,10] * C4286 ] >= 1
+   - Q[32,9] * C4286 ] >= 1
  qc518: E[72,4] + [ 0.5555555555555556 Q[72,9] * H_pos[4,sepal-length]
    + 0.2083333333333333 Q[72,9] * H_pos[4,sepal-width]
    + 0.6610169491525424 Q[72,9] * H_pos[4,petal-length]
@@ -14975,15 +10871,7 @@ Subject To
    - 0.2083333333333333 Q[72,9] * H_neg[4,sepal-width]
    - 0.6610169491525424 Q[72,9] * H_neg[4,petal-length]
    - 0.5833333333333334 Q[72,9] * H_neg[4,petal-width] + Q[72,9] * C4279
-   - Q[72,9] * C4286 - 0.5555555555555556 Q[72,10] * H_pos[4,sepal-length]
-   - 0.2083333333333333 Q[72,10] * H_pos[4,sepal-width]
-   - 0.6610169491525424 Q[72,10] * H_pos[4,petal-length]
-   - 0.5833333333333334 Q[72,10] * H_pos[4,petal-width]
-   + 0.5555555555555556 Q[72,10] * H_neg[4,sepal-length]
-   + 0.2083333333333333 Q[72,10] * H_neg[4,sepal-width]
-   + 0.6610169491525424 Q[72,10] * H_neg[4,petal-length]
-   + 0.5833333333333334 Q[72,10] * H_neg[4,petal-width] - Q[72,10] * C4279
-   + Q[72,10] * C4286 ] >= 1
+   - Q[72,9] * C4286 ] >= 1
  qc519: E[26,4] + [ 0.1944444444444444 Q[26,9] * H_pos[4,sepal-length]
    + 0.5833333333333333 Q[26,9] * H_pos[4,sepal-width]
    + 0.1016949152542373 Q[26,9] * H_pos[4,petal-length]
@@ -14992,15 +10880,7 @@ Subject To
    - 0.5833333333333333 Q[26,9] * H_neg[4,sepal-width]
    - 0.1016949152542373 Q[26,9] * H_neg[4,petal-length]
    - 0.125 Q[26,9] * H_neg[4,petal-width] + Q[26,9] * C4279
-   - Q[26,9] * C4286 - 0.1944444444444444 Q[26,10] * H_pos[4,sepal-length]
-   - 0.5833333333333333 Q[26,10] * H_pos[4,sepal-width]
-   - 0.1016949152542373 Q[26,10] * H_pos[4,petal-length]
-   - 0.125 Q[26,10] * H_pos[4,petal-width]
-   + 0.1944444444444444 Q[26,10] * H_neg[4,sepal-length]
-   + 0.5833333333333333 Q[26,10] * H_neg[4,sepal-width]
-   + 0.1016949152542373 Q[26,10] * H_neg[4,petal-length]
-   + 0.125 Q[26,10] * H_neg[4,petal-width] - Q[26,10] * C4279
-   + Q[26,10] * C4286 ] >= 1
+   - Q[26,9] * C4286 ] >= 1
  qc520: E[116,4] + [ 0.6111111111111112 Q[116,9] * H_pos[4,sepal-length]
    + 0.4166666666666667 Q[116,9] * H_pos[4,sepal-width]
    + 0.7627118644067796 Q[116,9] * H_pos[4,petal-length]
@@ -15009,29 +10889,14 @@ Subject To
    - 0.4166666666666667 Q[116,9] * H_neg[4,sepal-width]
    - 0.7627118644067796 Q[116,9] * H_neg[4,petal-length]
    - 0.7083333333333334 Q[116,9] * H_neg[4,petal-width] + Q[116,9] * C4279
-   - Q[116,9] * C4286
-   - 0.6111111111111112 Q[116,10] * H_pos[4,sepal-length]
-   - 0.4166666666666667 Q[116,10] * H_pos[4,sepal-width]
-   - 0.7627118644067796 Q[116,10] * H_pos[4,petal-length]
-   - 0.7083333333333334 Q[116,10] * H_pos[4,petal-width]
-   + 0.6111111111111112 Q[116,10] * H_neg[4,sepal-length]
-   + 0.4166666666666667 Q[116,10] * H_neg[4,sepal-width]
-   + 0.7627118644067796 Q[116,10] * H_neg[4,petal-length]
-   + 0.7083333333333334 Q[116,10] * H_neg[4,petal-width]
-   - Q[116,10] * C4279 + Q[116,10] * C4286 ] >= 1
+   - Q[116,9] * C4286 ] >= 1
  qc521: E[34,4] + [ 0.1666666666666667 Q[34,9] * H_pos[4,sepal-length]
    + 0.4583333333333333 Q[34,9] * H_pos[4,sepal-width]
    + 0.0847457627118644 Q[34,9] * H_pos[4,petal-length]
    - 0.1666666666666667 Q[34,9] * H_neg[4,sepal-length]
    - 0.4583333333333333 Q[34,9] * H_neg[4,sepal-width]
    - 0.0847457627118644 Q[34,9] * H_neg[4,petal-length] + Q[34,9] * C4279
-   - Q[34,9] * C4286 - 0.1666666666666667 Q[34,10] * H_pos[4,sepal-length]
-   - 0.4583333333333333 Q[34,10] * H_pos[4,sepal-width]
-   - 0.0847457627118644 Q[34,10] * H_pos[4,petal-length]
-   + 0.1666666666666667 Q[34,10] * H_neg[4,sepal-length]
-   + 0.4583333333333333 Q[34,10] * H_neg[4,sepal-width]
-   + 0.0847457627118644 Q[34,10] * H_neg[4,petal-length] - Q[34,10] * C4279
-   + Q[34,10] * C4286 ] >= 1
+   - Q[34,9] * C4286 ] >= 1
  qc522: E[117,4] + [ 0.9444444444444442 Q[117,9] * H_pos[4,sepal-length]
    + 0.75 Q[117,9] * H_pos[4,sepal-width]
    + 0.9661016949152543 Q[117,9] * H_pos[4,petal-length]
@@ -15040,16 +10905,7 @@ Subject To
    - 0.75 Q[117,9] * H_neg[4,sepal-width]
    - 0.9661016949152543 Q[117,9] * H_neg[4,petal-length]
    - 0.875 Q[117,9] * H_neg[4,petal-width] + Q[117,9] * C4279
-   - Q[117,9] * C4286
-   - 0.9444444444444442 Q[117,10] * H_pos[4,sepal-length]
-   - 0.75 Q[117,10] * H_pos[4,sepal-width]
-   - 0.9661016949152543 Q[117,10] * H_pos[4,petal-length]
-   - 0.875 Q[117,10] * H_pos[4,petal-width]
-   + 0.9444444444444442 Q[117,10] * H_neg[4,sepal-length]
-   + 0.75 Q[117,10] * H_neg[4,sepal-width]
-   + 0.9661016949152543 Q[117,10] * H_neg[4,petal-length]
-   + 0.875 Q[117,10] * H_neg[4,petal-width] - Q[117,10] * C4279
-   + Q[117,10] * C4286 ] >= 1
+   - Q[117,9] * C4286 ] >= 1
  qc523: E[30,4] + [ 0.1388888888888888 Q[30,9] * H_pos[4,sepal-length]
    + 0.4583333333333333 Q[30,9] * H_pos[4,sepal-width]
    + 0.1016949152542373 Q[30,9] * H_pos[4,petal-length]
@@ -15058,15 +10914,7 @@ Subject To
    - 0.4583333333333333 Q[30,9] * H_neg[4,sepal-width]
    - 0.1016949152542373 Q[30,9] * H_neg[4,petal-length]
    - 0.0416666666666667 Q[30,9] * H_neg[4,petal-width] + Q[30,9] * C4279
-   - Q[30,9] * C4286 - 0.1388888888888888 Q[30,10] * H_pos[4,sepal-length]
-   - 0.4583333333333333 Q[30,10] * H_pos[4,sepal-width]
-   - 0.1016949152542373 Q[30,10] * H_pos[4,petal-length]
-   - 0.0416666666666667 Q[30,10] * H_pos[4,petal-width]
-   + 0.1388888888888888 Q[30,10] * H_neg[4,sepal-length]
-   + 0.4583333333333333 Q[30,10] * H_neg[4,sepal-width]
-   + 0.1016949152542373 Q[30,10] * H_neg[4,petal-length]
-   + 0.0416666666666667 Q[30,10] * H_neg[4,petal-width] - Q[30,10] * C4279
-   + Q[30,10] * C4286 ] >= 1
+   - Q[30,9] * C4286 ] >= 1
  qc524: E[0,4] + [ 0.2222222222222221 Q[0,9] * H_pos[4,sepal-length]
    + 0.625 Q[0,9] * H_pos[4,sepal-width]
    + 0.0677966101694915 Q[0,9] * H_pos[4,petal-length]
@@ -15075,15 +10923,7 @@ Subject To
    - 0.625 Q[0,9] * H_neg[4,sepal-width]
    - 0.0677966101694915 Q[0,9] * H_neg[4,petal-length]
    - 0.0416666666666667 Q[0,9] * H_neg[4,petal-width] + Q[0,9] * C4279
-   - Q[0,9] * C4286 - 0.2222222222222221 Q[0,10] * H_pos[4,sepal-length]
-   - 0.625 Q[0,10] * H_pos[4,sepal-width]
-   - 0.0677966101694915 Q[0,10] * H_pos[4,petal-length]
-   - 0.0416666666666667 Q[0,10] * H_pos[4,petal-width]
-   + 0.2222222222222221 Q[0,10] * H_neg[4,sepal-length]
-   + 0.625 Q[0,10] * H_neg[4,sepal-width]
-   + 0.0677966101694915 Q[0,10] * H_neg[4,petal-length]
-   + 0.0416666666666667 Q[0,10] * H_neg[4,petal-width] - Q[0,10] * C4279
-   + Q[0,10] * C4286 ] >= 1
+   - Q[0,9] * C4286 ] >= 1
  qc525: E[82,4] + [ 0.4166666666666665 Q[82,9] * H_pos[4,sepal-length]
    + 0.2916666666666667 Q[82,9] * H_pos[4,sepal-width]
    + 0.4915254237288135 Q[82,9] * H_pos[4,petal-length]
@@ -15092,15 +10932,7 @@ Subject To
    - 0.2916666666666667 Q[82,9] * H_neg[4,sepal-width]
    - 0.4915254237288135 Q[82,9] * H_neg[4,petal-length]
    - 0.4583333333333333 Q[82,9] * H_neg[4,petal-width] + Q[82,9] * C4279
-   - Q[82,9] * C4286 - 0.4166666666666665 Q[82,10] * H_pos[4,sepal-length]
-   - 0.2916666666666667 Q[82,10] * H_pos[4,sepal-width]
-   - 0.4915254237288135 Q[82,10] * H_pos[4,petal-length]
-   - 0.4583333333333333 Q[82,10] * H_pos[4,petal-width]
-   + 0.4166666666666665 Q[82,10] * H_neg[4,sepal-length]
-   + 0.2916666666666667 Q[82,10] * H_neg[4,sepal-width]
-   + 0.4915254237288135 Q[82,10] * H_neg[4,petal-length]
-   + 0.4583333333333333 Q[82,10] * H_neg[4,petal-width] - Q[82,10] * C4279
-   + Q[82,10] * C4286 ] >= 1
+   - Q[82,9] * C4286 ] >= 1
  qc526: E[14,4] + [ 0.4166666666666665 Q[14,9] * H_pos[4,sepal-length]
    + 0.8333333333333333 Q[14,9] * H_pos[4,sepal-width]
    + 0.0338983050847458 Q[14,9] * H_pos[4,petal-length]
@@ -15109,15 +10941,7 @@ Subject To
    - 0.8333333333333333 Q[14,9] * H_neg[4,sepal-width]
    - 0.0338983050847458 Q[14,9] * H_neg[4,petal-length]
    - 0.0416666666666667 Q[14,9] * H_neg[4,petal-width] + Q[14,9] * C4279
-   - Q[14,9] * C4286 - 0.4166666666666665 Q[14,10] * H_pos[4,sepal-length]
-   - 0.8333333333333333 Q[14,10] * H_pos[4,sepal-width]
-   - 0.0338983050847458 Q[14,10] * H_pos[4,petal-length]
-   - 0.0416666666666667 Q[14,10] * H_pos[4,petal-width]
-   + 0.4166666666666665 Q[14,10] * H_neg[4,sepal-length]
-   + 0.8333333333333333 Q[14,10] * H_neg[4,sepal-width]
-   + 0.0338983050847458 Q[14,10] * H_neg[4,petal-length]
-   + 0.0416666666666667 Q[14,10] * H_neg[4,petal-width] - Q[14,10] * C4279
-   + Q[14,10] * C4286 ] >= 1
+   - Q[14,9] * C4286 ] >= 1
  qc527: E[125,4] + [ 0.8055555555555556 Q[125,9] * H_pos[4,sepal-length]
    + 0.5 Q[125,9] * H_pos[4,sepal-width]
    + 0.847457627118644 Q[125,9] * H_pos[4,petal-length]
@@ -15126,16 +10950,7 @@ Subject To
    - 0.5 Q[125,9] * H_neg[4,sepal-width]
    - 0.847457627118644 Q[125,9] * H_neg[4,petal-length]
    - 0.7083333333333334 Q[125,9] * H_neg[4,petal-width] + Q[125,9] * C4279
-   - Q[125,9] * C4286
-   - 0.8055555555555556 Q[125,10] * H_pos[4,sepal-length]
-   - 0.5 Q[125,10] * H_pos[4,sepal-width]
-   - 0.847457627118644 Q[125,10] * H_pos[4,petal-length]
-   - 0.7083333333333334 Q[125,10] * H_pos[4,petal-width]
-   + 0.8055555555555556 Q[125,10] * H_neg[4,sepal-length]
-   + 0.5 Q[125,10] * H_neg[4,sepal-width]
-   + 0.847457627118644 Q[125,10] * H_neg[4,petal-length]
-   + 0.7083333333333334 Q[125,10] * H_neg[4,petal-width]
-   - Q[125,10] * C4279 + Q[125,10] * C4286 ] >= 1
+   - Q[125,9] * C4286 ] >= 1
  qc528: E[120,4] + [ 0.7222222222222223 Q[120,9] * H_pos[4,sepal-length]
    + 0.5 Q[120,9] * H_pos[4,sepal-width]
    + 0.7966101694915254 Q[120,9] * H_pos[4,petal-length]
@@ -15144,16 +10959,7 @@ Subject To
    - 0.5 Q[120,9] * H_neg[4,sepal-width]
    - 0.7966101694915254 Q[120,9] * H_neg[4,petal-length]
    - 0.9166666666666666 Q[120,9] * H_neg[4,petal-width] + Q[120,9] * C4279
-   - Q[120,9] * C4286
-   - 0.7222222222222223 Q[120,10] * H_pos[4,sepal-length]
-   - 0.5 Q[120,10] * H_pos[4,sepal-width]
-   - 0.7966101694915254 Q[120,10] * H_pos[4,petal-length]
-   - 0.9166666666666666 Q[120,10] * H_pos[4,petal-width]
-   + 0.7222222222222223 Q[120,10] * H_neg[4,sepal-length]
-   + 0.5 Q[120,10] * H_neg[4,sepal-width]
-   + 0.7966101694915254 Q[120,10] * H_neg[4,petal-length]
-   + 0.9166666666666666 Q[120,10] * H_neg[4,petal-width]
-   - Q[120,10] * C4279 + Q[120,10] * C4286 ] >= 1
+   - Q[120,9] * C4286 ] >= 1
  qc529: E[97,4] + [ 0.5277777777777779 Q[97,9] * H_pos[4,sepal-length]
    + 0.375 Q[97,9] * H_pos[4,sepal-width]
    + 0.559322033898305 Q[97,9] * H_pos[4,petal-length]
@@ -15162,15 +10968,7 @@ Subject To
    - 0.375 Q[97,9] * H_neg[4,sepal-width]
    - 0.559322033898305 Q[97,9] * H_neg[4,petal-length]
    - 0.5 Q[97,9] * H_neg[4,petal-width] + Q[97,9] * C4279 - Q[97,9] * C4286
-   - 0.5277777777777779 Q[97,10] * H_pos[4,sepal-length]
-   - 0.375 Q[97,10] * H_pos[4,sepal-width]
-   - 0.559322033898305 Q[97,10] * H_pos[4,petal-length]
-   - 0.5 Q[97,10] * H_pos[4,petal-width]
-   + 0.5277777777777779 Q[97,10] * H_neg[4,sepal-length]
-   + 0.375 Q[97,10] * H_neg[4,sepal-width]
-   + 0.559322033898305 Q[97,10] * H_neg[4,petal-length]
-   + 0.5 Q[97,10] * H_neg[4,petal-width] - Q[97,10] * C4279
-   + Q[97,10] * C4286 ] >= 1
+   ] >= 1
  qc530: E[53,4] + [ 0.3333333333333333 Q[53,9] * H_pos[4,sepal-length]
    + 0.125 Q[53,9] * H_pos[4,sepal-width]
    + 0.5084745762711864 Q[53,9] * H_pos[4,petal-length]
@@ -15179,15 +10977,7 @@ Subject To
    - 0.125 Q[53,9] * H_neg[4,sepal-width]
    - 0.5084745762711864 Q[53,9] * H_neg[4,petal-length]
    - 0.5 Q[53,9] * H_neg[4,petal-width] + Q[53,9] * C4279 - Q[53,9] * C4286
-   - 0.3333333333333333 Q[53,10] * H_pos[4,sepal-length]
-   - 0.125 Q[53,10] * H_pos[4,sepal-width]
-   - 0.5084745762711864 Q[53,10] * H_pos[4,petal-length]
-   - 0.5 Q[53,10] * H_pos[4,petal-width]
-   + 0.3333333333333333 Q[53,10] * H_neg[4,sepal-length]
-   + 0.125 Q[53,10] * H_neg[4,sepal-width]
-   + 0.5084745762711864 Q[53,10] * H_neg[4,petal-length]
-   + 0.5 Q[53,10] * H_neg[4,petal-width] - Q[53,10] * C4279
-   + Q[53,10] * C4286 ] >= 1
+   ] >= 1
  qc531: E[103,4] + [ 0.5555555555555556 Q[103,9] * H_pos[4,sepal-length]
    + 0.375 Q[103,9] * H_pos[4,sepal-width]
    + 0.7796610169491525 Q[103,9] * H_pos[4,petal-length]
@@ -15196,16 +10986,7 @@ Subject To
    - 0.375 Q[103,9] * H_neg[4,sepal-width]
    - 0.7796610169491525 Q[103,9] * H_neg[4,petal-length]
    - 0.7083333333333334 Q[103,9] * H_neg[4,petal-width] + Q[103,9] * C4279
-   - Q[103,9] * C4286
-   - 0.5555555555555556 Q[103,10] * H_pos[4,sepal-length]
-   - 0.375 Q[103,10] * H_pos[4,sepal-width]
-   - 0.7796610169491525 Q[103,10] * H_pos[4,petal-length]
-   - 0.7083333333333334 Q[103,10] * H_pos[4,petal-width]
-   + 0.5555555555555556 Q[103,10] * H_neg[4,sepal-length]
-   + 0.375 Q[103,10] * H_neg[4,sepal-width]
-   + 0.7796610169491525 Q[103,10] * H_neg[4,petal-length]
-   + 0.7083333333333334 Q[103,10] * H_neg[4,petal-width]
-   - Q[103,10] * C4279 + Q[103,10] * C4286 ] >= 1
+   - Q[103,9] * C4286 ] >= 1
  qc532: E[84,4] + [ 0.3055555555555556 Q[84,9] * H_pos[4,sepal-length]
    + 0.4166666666666667 Q[84,9] * H_pos[4,sepal-width]
    + 0.5932203389830508 Q[84,9] * H_pos[4,petal-length]
@@ -15214,24 +10995,12 @@ Subject To
    - 0.4166666666666667 Q[84,9] * H_neg[4,sepal-width]
    - 0.5932203389830508 Q[84,9] * H_neg[4,petal-length]
    - 0.5833333333333334 Q[84,9] * H_neg[4,petal-width] + Q[84,9] * C4279
-   - Q[84,9] * C4286 - 0.3055555555555556 Q[84,10] * H_pos[4,sepal-length]
-   - 0.4166666666666667 Q[84,10] * H_pos[4,sepal-width]
-   - 0.5932203389830508 Q[84,10] * H_pos[4,petal-length]
-   - 0.5833333333333334 Q[84,10] * H_pos[4,petal-width]
-   + 0.3055555555555556 Q[84,10] * H_neg[4,sepal-length]
-   + 0.4166666666666667 Q[84,10] * H_neg[4,sepal-width]
-   + 0.5932203389830508 Q[84,10] * H_neg[4,petal-length]
-   + 0.5833333333333334 Q[84,10] * H_neg[4,petal-width] - Q[84,10] * C4279
-   + Q[84,10] * C4286 ] >= 1
+   - Q[84,9] * C4286 ] >= 1
  qc533: E[13,4] + [ 0.4166666666666667 Q[13,9] * H_pos[4,sepal-width]
    + 0.0169491525423729 Q[13,9] * H_pos[4,petal-length]
    - 0.4166666666666667 Q[13,9] * H_neg[4,sepal-width]
    - 0.0169491525423729 Q[13,9] * H_neg[4,petal-length] + Q[13,9] * C4279
-   - Q[13,9] * C4286 - 0.4166666666666667 Q[13,10] * H_pos[4,sepal-width]
-   - 0.0169491525423729 Q[13,10] * H_pos[4,petal-length]
-   + 0.4166666666666667 Q[13,10] * H_neg[4,sepal-width]
-   + 0.0169491525423729 Q[13,10] * H_neg[4,petal-length] - Q[13,10] * C4279
-   + Q[13,10] * C4286 ] >= 1
+   - Q[13,9] * C4286 ] >= 1
  qc534: E[130,4] + [ 0.8611111111111112 Q[130,9] * H_pos[4,sepal-length]
    + 0.3333333333333333 Q[130,9] * H_pos[4,sepal-width]
    + 0.8644067796610169 Q[130,9] * H_pos[4,petal-length]
@@ -15240,16 +11009,7 @@ Subject To
    - 0.3333333333333333 Q[130,9] * H_neg[4,sepal-width]
    - 0.8644067796610169 Q[130,9] * H_neg[4,petal-length]
    - 0.75 Q[130,9] * H_neg[4,petal-width] + Q[130,9] * C4279
-   - Q[130,9] * C4286
-   - 0.8611111111111112 Q[130,10] * H_pos[4,sepal-length]
-   - 0.3333333333333333 Q[130,10] * H_pos[4,sepal-width]
-   - 0.8644067796610169 Q[130,10] * H_pos[4,petal-length]
-   - 0.75 Q[130,10] * H_pos[4,petal-width]
-   + 0.8611111111111112 Q[130,10] * H_neg[4,sepal-length]
-   + 0.3333333333333333 Q[130,10] * H_neg[4,sepal-width]
-   + 0.8644067796610169 Q[130,10] * H_neg[4,petal-length]
-   + 0.75 Q[130,10] * H_neg[4,petal-width] - Q[130,10] * C4279
-   + Q[130,10] * C4286 ] >= 1
+   - Q[130,9] * C4286 ] >= 1
  qc535: E[23,4] + [ 0.2222222222222221 Q[23,9] * H_pos[4,sepal-length]
    + 0.5416666666666665 Q[23,9] * H_pos[4,sepal-width]
    + 0.1186440677966101 Q[23,9] * H_pos[4,petal-length]
@@ -15258,15 +11018,7 @@ Subject To
    - 0.5416666666666665 Q[23,9] * H_neg[4,sepal-width]
    - 0.1186440677966101 Q[23,9] * H_neg[4,petal-length]
    - 0.1666666666666667 Q[23,9] * H_neg[4,petal-width] + Q[23,9] * C4279
-   - Q[23,9] * C4286 - 0.2222222222222221 Q[23,10] * H_pos[4,sepal-length]
-   - 0.5416666666666665 Q[23,10] * H_pos[4,sepal-width]
-   - 0.1186440677966101 Q[23,10] * H_pos[4,petal-length]
-   - 0.1666666666666667 Q[23,10] * H_pos[4,petal-width]
-   + 0.2222222222222221 Q[23,10] * H_neg[4,sepal-length]
-   + 0.5416666666666665 Q[23,10] * H_neg[4,sepal-width]
-   + 0.1186440677966101 Q[23,10] * H_neg[4,petal-length]
-   + 0.1666666666666667 Q[23,10] * H_neg[4,petal-width] - Q[23,10] * C4279
-   + Q[23,10] * C4286 ] >= 1
+   - Q[23,9] * C4286 ] >= 1
  qc536: E[49,4] + [ 0.1944444444444444 Q[49,9] * H_pos[4,sepal-length]
    + 0.5416666666666665 Q[49,9] * H_pos[4,sepal-width]
    + 0.0677966101694915 Q[49,9] * H_pos[4,petal-length]
@@ -15275,15 +11027,7 @@ Subject To
    - 0.5416666666666665 Q[49,9] * H_neg[4,sepal-width]
    - 0.0677966101694915 Q[49,9] * H_neg[4,petal-length]
    - 0.0416666666666667 Q[49,9] * H_neg[4,petal-width] + Q[49,9] * C4279
-   - Q[49,9] * C4286 - 0.1944444444444444 Q[49,10] * H_pos[4,sepal-length]
-   - 0.5416666666666665 Q[49,10] * H_pos[4,sepal-width]
-   - 0.0677966101694915 Q[49,10] * H_pos[4,petal-length]
-   - 0.0416666666666667 Q[49,10] * H_pos[4,petal-width]
-   + 0.1944444444444444 Q[49,10] * H_neg[4,sepal-length]
-   + 0.5416666666666665 Q[49,10] * H_neg[4,sepal-width]
-   + 0.0677966101694915 Q[49,10] * H_neg[4,petal-length]
-   + 0.0416666666666667 Q[49,10] * H_neg[4,petal-width] - Q[49,10] * C4279
-   + Q[49,10] * C4286 ] >= 1
+   - Q[49,9] * C4286 ] >= 1
  qc537: E[24,4] + [ 0.1388888888888888 Q[24,9] * H_pos[4,sepal-length]
    + 0.5833333333333333 Q[24,9] * H_pos[4,sepal-width]
    + 0.1525423728813559 Q[24,9] * H_pos[4,petal-length]
@@ -15292,15 +11036,7 @@ Subject To
    - 0.5833333333333333 Q[24,9] * H_neg[4,sepal-width]
    - 0.1525423728813559 Q[24,9] * H_neg[4,petal-length]
    - 0.0416666666666667 Q[24,9] * H_neg[4,petal-width] + Q[24,9] * C4279
-   - Q[24,9] * C4286 - 0.1388888888888888 Q[24,10] * H_pos[4,sepal-length]
-   - 0.5833333333333333 Q[24,10] * H_pos[4,sepal-width]
-   - 0.1525423728813559 Q[24,10] * H_pos[4,petal-length]
-   - 0.0416666666666667 Q[24,10] * H_pos[4,petal-width]
-   + 0.1388888888888888 Q[24,10] * H_neg[4,sepal-length]
-   + 0.5833333333333333 Q[24,10] * H_neg[4,sepal-width]
-   + 0.1525423728813559 Q[24,10] * H_neg[4,petal-length]
-   + 0.0416666666666667 Q[24,10] * H_neg[4,petal-width] - Q[24,10] * C4279
-   + Q[24,10] * C4286 ] >= 1
+   - Q[24,9] * C4286 ] >= 1
  qc538: E[78,4] + [ 0.4722222222222223 Q[78,9] * H_pos[4,sepal-length]
    + 0.375 Q[78,9] * H_pos[4,sepal-width]
    + 0.5932203389830508 Q[78,9] * H_pos[4,petal-length]
@@ -15309,15 +11045,7 @@ Subject To
    - 0.375 Q[78,9] * H_neg[4,sepal-width]
    - 0.5932203389830508 Q[78,9] * H_neg[4,petal-length]
    - 0.5833333333333334 Q[78,9] * H_neg[4,petal-width] + Q[78,9] * C4279
-   - Q[78,9] * C4286 - 0.4722222222222223 Q[78,10] * H_pos[4,sepal-length]
-   - 0.375 Q[78,10] * H_pos[4,sepal-width]
-   - 0.5932203389830508 Q[78,10] * H_pos[4,petal-length]
-   - 0.5833333333333334 Q[78,10] * H_pos[4,petal-width]
-   + 0.4722222222222223 Q[78,10] * H_neg[4,sepal-length]
-   + 0.375 Q[78,10] * H_neg[4,sepal-width]
-   + 0.5932203389830508 Q[78,10] * H_neg[4,petal-length]
-   + 0.5833333333333334 Q[78,10] * H_neg[4,petal-width] - Q[78,10] * C4279
-   + Q[78,10] * C4286 ] >= 1
+   - Q[78,9] * C4286 ] >= 1
  qc539: E[45,4] + [ 0.1388888888888888 Q[45,9] * H_pos[4,sepal-length]
    + 0.4166666666666667 Q[45,9] * H_pos[4,sepal-width]
    + 0.0677966101694915 Q[45,9] * H_pos[4,petal-length]
@@ -15326,15 +11054,7 @@ Subject To
    - 0.4166666666666667 Q[45,9] * H_neg[4,sepal-width]
    - 0.0677966101694915 Q[45,9] * H_neg[4,petal-length]
    - 0.0833333333333333 Q[45,9] * H_neg[4,petal-width] + Q[45,9] * C4279
-   - Q[45,9] * C4286 - 0.1388888888888888 Q[45,10] * H_pos[4,sepal-length]
-   - 0.4166666666666667 Q[45,10] * H_pos[4,sepal-width]
-   - 0.0677966101694915 Q[45,10] * H_pos[4,petal-length]
-   - 0.0833333333333333 Q[45,10] * H_pos[4,petal-width]
-   + 0.1388888888888888 Q[45,10] * H_neg[4,sepal-length]
-   + 0.4166666666666667 Q[45,10] * H_neg[4,sepal-width]
-   + 0.0677966101694915 Q[45,10] * H_neg[4,petal-length]
-   + 0.0833333333333333 Q[45,10] * H_neg[4,petal-width] - Q[45,10] * C4279
-   + Q[45,10] * C4286 ] >= 1
+   - Q[45,9] * C4286 ] >= 1
  qc540: E[104,4] + [ 0.6111111111111112 Q[104,9] * H_pos[4,sepal-length]
    + 0.4166666666666667 Q[104,9] * H_pos[4,sepal-width]
    + 0.8135593220338982 Q[104,9] * H_pos[4,petal-length]
@@ -15343,16 +11063,7 @@ Subject To
    - 0.4166666666666667 Q[104,9] * H_neg[4,sepal-width]
    - 0.8135593220338982 Q[104,9] * H_neg[4,petal-length]
    - 0.875 Q[104,9] * H_neg[4,petal-width] + Q[104,9] * C4279
-   - Q[104,9] * C4286
-   - 0.6111111111111112 Q[104,10] * H_pos[4,sepal-length]
-   - 0.4166666666666667 Q[104,10] * H_pos[4,sepal-width]
-   - 0.8135593220338982 Q[104,10] * H_pos[4,petal-length]
-   - 0.875 Q[104,10] * H_pos[4,petal-width]
-   + 0.6111111111111112 Q[104,10] * H_neg[4,sepal-length]
-   + 0.4166666666666667 Q[104,10] * H_neg[4,sepal-width]
-   + 0.8135593220338982 Q[104,10] * H_neg[4,petal-length]
-   + 0.875 Q[104,10] * H_neg[4,petal-width] - Q[104,10] * C4279
-   + Q[104,10] * C4286 ] >= 1
+   - Q[104,9] * C4286 ] >= 1
  qc541: E[58,4] + [ 0.6388888888888888 Q[58,9] * H_pos[4,sepal-length]
    + 0.375 Q[58,9] * H_pos[4,sepal-width]
    + 0.6101694915254237 Q[58,9] * H_pos[4,petal-length]
@@ -15361,15 +11072,7 @@ Subject To
    - 0.375 Q[58,9] * H_neg[4,sepal-width]
    - 0.6101694915254237 Q[58,9] * H_neg[4,petal-length]
    - 0.5 Q[58,9] * H_neg[4,petal-width] + Q[58,9] * C4279 - Q[58,9] * C4286
-   - 0.6388888888888888 Q[58,10] * H_pos[4,sepal-length]
-   - 0.375 Q[58,10] * H_pos[4,sepal-width]
-   - 0.6101694915254237 Q[58,10] * H_pos[4,petal-length]
-   - 0.5 Q[58,10] * H_pos[4,petal-width]
-   + 0.6388888888888888 Q[58,10] * H_neg[4,sepal-length]
-   + 0.375 Q[58,10] * H_neg[4,sepal-width]
-   + 0.6101694915254237 Q[58,10] * H_neg[4,petal-length]
-   + 0.5 Q[58,10] * H_neg[4,petal-width] - Q[58,10] * C4279
-   + Q[58,10] * C4286 ] >= 1
+   ] >= 1
  qc542: E[113,4] + [ 0.3888888888888888 Q[113,9] * H_pos[4,sepal-length]
    + 0.2083333333333333 Q[113,9] * H_pos[4,sepal-width]
    + 0.6779661016949152 Q[113,9] * H_pos[4,petal-length]
@@ -15378,16 +11081,7 @@ Subject To
    - 0.2083333333333333 Q[113,9] * H_neg[4,sepal-width]
    - 0.6779661016949152 Q[113,9] * H_neg[4,petal-length]
    - 0.7916666666666667 Q[113,9] * H_neg[4,petal-width] + Q[113,9] * C4279
-   - Q[113,9] * C4286
-   - 0.3888888888888888 Q[113,10] * H_pos[4,sepal-length]
-   - 0.2083333333333333 Q[113,10] * H_pos[4,sepal-width]
-   - 0.6779661016949152 Q[113,10] * H_pos[4,petal-length]
-   - 0.7916666666666667 Q[113,10] * H_pos[4,petal-width]
-   + 0.3888888888888888 Q[113,10] * H_neg[4,sepal-length]
-   + 0.2083333333333333 Q[113,10] * H_neg[4,sepal-width]
-   + 0.6779661016949152 Q[113,10] * H_neg[4,petal-length]
-   + 0.7916666666666667 Q[113,10] * H_neg[4,petal-width]
-   - Q[113,10] * C4279 + Q[113,10] * C4286 ] >= 1
+   - Q[113,9] * C4286 ] >= 1
  qc543: E[3,4] + [ 0.0833333333333333 Q[3,9] * H_pos[4,sepal-length]
    + 0.4583333333333333 Q[3,9] * H_pos[4,sepal-width]
    + 0.0847457627118644 Q[3,9] * H_pos[4,petal-length]
@@ -15396,15 +11090,7 @@ Subject To
    - 0.4583333333333333 Q[3,9] * H_neg[4,sepal-width]
    - 0.0847457627118644 Q[3,9] * H_neg[4,petal-length]
    - 0.0416666666666667 Q[3,9] * H_neg[4,petal-width] + Q[3,9] * C4279
-   - Q[3,9] * C4286 - 0.0833333333333333 Q[3,10] * H_pos[4,sepal-length]
-   - 0.4583333333333333 Q[3,10] * H_pos[4,sepal-width]
-   - 0.0847457627118644 Q[3,10] * H_pos[4,petal-length]
-   - 0.0416666666666667 Q[3,10] * H_pos[4,petal-width]
-   + 0.0833333333333333 Q[3,10] * H_neg[4,sepal-length]
-   + 0.4583333333333333 Q[3,10] * H_neg[4,sepal-width]
-   + 0.0847457627118644 Q[3,10] * H_neg[4,petal-length]
-   + 0.0416666666666667 Q[3,10] * H_neg[4,petal-width] - Q[3,10] * C4279
-   + Q[3,10] * C4286 ] >= 1
+   - Q[3,9] * C4286 ] >= 1
  qc544: E[146,4] + [ 0.5555555555555556 Q[146,9] * H_pos[4,sepal-length]
    + 0.2083333333333333 Q[146,9] * H_pos[4,sepal-width]
    + 0.6779661016949152 Q[146,9] * H_pos[4,petal-length]
@@ -15413,16 +11099,7 @@ Subject To
    - 0.2083333333333333 Q[146,9] * H_neg[4,sepal-width]
    - 0.6779661016949152 Q[146,9] * H_neg[4,petal-length]
    - 0.75 Q[146,9] * H_neg[4,petal-width] + Q[146,9] * C4279
-   - Q[146,9] * C4286
-   - 0.5555555555555556 Q[146,10] * H_pos[4,sepal-length]
-   - 0.2083333333333333 Q[146,10] * H_pos[4,sepal-width]
-   - 0.6779661016949152 Q[146,10] * H_pos[4,petal-length]
-   - 0.75 Q[146,10] * H_pos[4,petal-width]
-   + 0.5555555555555556 Q[146,10] * H_neg[4,sepal-length]
-   + 0.2083333333333333 Q[146,10] * H_neg[4,sepal-width]
-   + 0.6779661016949152 Q[146,10] * H_neg[4,petal-length]
-   + 0.75 Q[146,10] * H_neg[4,petal-width] - Q[146,10] * C4279
-   + Q[146,10] * C4286 ] >= 1
+   - Q[146,9] * C4286 ] >= 1
  qc545: E[88,4] + [ 0.3611111111111109 Q[88,9] * H_pos[4,sepal-length]
    + 0.4166666666666667 Q[88,9] * H_pos[4,sepal-width]
    + 0.5254237288135593 Q[88,9] * H_pos[4,petal-length]
@@ -15431,15 +11108,7 @@ Subject To
    - 0.4166666666666667 Q[88,9] * H_neg[4,sepal-width]
    - 0.5254237288135593 Q[88,9] * H_neg[4,petal-length]
    - 0.5 Q[88,9] * H_neg[4,petal-width] + Q[88,9] * C4279 - Q[88,9] * C4286
-   - 0.3611111111111109 Q[88,10] * H_pos[4,sepal-length]
-   - 0.4166666666666667 Q[88,10] * H_pos[4,sepal-width]
-   - 0.5254237288135593 Q[88,10] * H_pos[4,petal-length]
-   - 0.5 Q[88,10] * H_pos[4,petal-width]
-   + 0.3611111111111109 Q[88,10] * H_neg[4,sepal-length]
-   + 0.4166666666666667 Q[88,10] * H_neg[4,sepal-width]
-   + 0.5254237288135593 Q[88,10] * H_neg[4,petal-length]
-   + 0.5 Q[88,10] * H_neg[4,petal-width] - Q[88,10] * C4279
-   + Q[88,10] * C4286 ] >= 1
+   ] >= 1
  qc546: E[138,4] + [ 0.4722222222222223 Q[138,9] * H_pos[4,sepal-length]
    + 0.4166666666666667 Q[138,9] * H_pos[4,sepal-width]
    + 0.6440677966101694 Q[138,9] * H_pos[4,petal-length]
@@ -15448,16 +11117,7 @@ Subject To
    - 0.4166666666666667 Q[138,9] * H_neg[4,sepal-width]
    - 0.6440677966101694 Q[138,9] * H_neg[4,petal-length]
    - 0.7083333333333334 Q[138,9] * H_neg[4,petal-width] + Q[138,9] * C4279
-   - Q[138,9] * C4286
-   - 0.4722222222222223 Q[138,10] * H_pos[4,sepal-length]
-   - 0.4166666666666667 Q[138,10] * H_pos[4,sepal-width]
-   - 0.6440677966101694 Q[138,10] * H_pos[4,petal-length]
-   - 0.7083333333333334 Q[138,10] * H_pos[4,petal-width]
-   + 0.4722222222222223 Q[138,10] * H_neg[4,sepal-length]
-   + 0.4166666666666667 Q[138,10] * H_neg[4,sepal-width]
-   + 0.6440677966101694 Q[138,10] * H_neg[4,petal-length]
-   + 0.7083333333333334 Q[138,10] * H_neg[4,petal-width]
-   - Q[138,10] * C4279 + Q[138,10] * C4286 ] >= 1
+   - Q[138,9] * C4286 ] >= 1
  qc547: E[128,4] + [ 0.5833333333333335 Q[128,9] * H_pos[4,sepal-length]
    + 0.3333333333333333 Q[128,9] * H_pos[4,sepal-width]
    + 0.7796610169491525 Q[128,9] * H_pos[4,petal-length]
@@ -15466,16 +11126,7 @@ Subject To
    - 0.3333333333333333 Q[128,9] * H_neg[4,sepal-width]
    - 0.7796610169491525 Q[128,9] * H_neg[4,petal-length]
    - 0.8333333333333335 Q[128,9] * H_neg[4,petal-width] + Q[128,9] * C4279
-   - Q[128,9] * C4286
-   - 0.5833333333333335 Q[128,10] * H_pos[4,sepal-length]
-   - 0.3333333333333333 Q[128,10] * H_pos[4,sepal-width]
-   - 0.7796610169491525 Q[128,10] * H_pos[4,petal-length]
-   - 0.8333333333333335 Q[128,10] * H_pos[4,petal-width]
-   + 0.5833333333333335 Q[128,10] * H_neg[4,sepal-length]
-   + 0.3333333333333333 Q[128,10] * H_neg[4,sepal-width]
-   + 0.7796610169491525 Q[128,10] * H_neg[4,petal-length]
-   + 0.8333333333333335 Q[128,10] * H_neg[4,petal-width]
-   - Q[128,10] * C4279 + Q[128,10] * C4286 ] >= 1
+   - Q[128,9] * C4286 ] >= 1
  qc548: E[76,4] + [ 0.6944444444444444 Q[76,9] * H_pos[4,sepal-length]
    + 0.3333333333333333 Q[76,9] * H_pos[4,sepal-width]
    + 0.6440677966101694 Q[76,9] * H_pos[4,petal-length]
@@ -15484,15 +11135,7 @@ Subject To
    - 0.3333333333333333 Q[76,9] * H_neg[4,sepal-width]
    - 0.6440677966101694 Q[76,9] * H_neg[4,petal-length]
    - 0.5416666666666667 Q[76,9] * H_neg[4,petal-width] + Q[76,9] * C4279
-   - Q[76,9] * C4286 - 0.6944444444444444 Q[76,10] * H_pos[4,sepal-length]
-   - 0.3333333333333333 Q[76,10] * H_pos[4,sepal-width]
-   - 0.6440677966101694 Q[76,10] * H_pos[4,petal-length]
-   - 0.5416666666666667 Q[76,10] * H_pos[4,petal-width]
-   + 0.6944444444444444 Q[76,10] * H_neg[4,sepal-length]
-   + 0.3333333333333333 Q[76,10] * H_neg[4,sepal-width]
-   + 0.6440677966101694 Q[76,10] * H_neg[4,petal-length]
-   + 0.5416666666666667 Q[76,10] * H_neg[4,petal-width] - Q[76,10] * C4279
-   + Q[76,10] * C4286 ] >= 1
+   - Q[76,9] * C4286 ] >= 1
  qc549: E[70,4] + [ 0.4444444444444446 Q[70,9] * H_pos[4,sepal-length]
    + 0.5 Q[70,9] * H_pos[4,sepal-width]
    + 0.6440677966101694 Q[70,9] * H_pos[4,petal-length]
@@ -15501,15 +11144,7 @@ Subject To
    - 0.5 Q[70,9] * H_neg[4,sepal-width]
    - 0.6440677966101694 Q[70,9] * H_neg[4,petal-length]
    - 0.7083333333333334 Q[70,9] * H_neg[4,petal-width] + Q[70,9] * C4279
-   - Q[70,9] * C4286 - 0.4444444444444446 Q[70,10] * H_pos[4,sepal-length]
-   - 0.5 Q[70,10] * H_pos[4,sepal-width]
-   - 0.6440677966101694 Q[70,10] * H_pos[4,petal-length]
-   - 0.7083333333333334 Q[70,10] * H_pos[4,petal-width]
-   + 0.4444444444444446 Q[70,10] * H_neg[4,sepal-length]
-   + 0.5 Q[70,10] * H_neg[4,sepal-width]
-   + 0.6440677966101694 Q[70,10] * H_neg[4,petal-length]
-   + 0.7083333333333334 Q[70,10] * H_neg[4,petal-width] - Q[70,10] * C4279
-   + Q[70,10] * C4286 ] >= 1
+   - Q[70,9] * C4286 ] >= 1
  qc550: E[145,4] + [ 0.6666666666666667 Q[145,9] * H_pos[4,sepal-length]
    + 0.4166666666666667 Q[145,9] * H_pos[4,sepal-width]
    + 0.711864406779661 Q[145,9] * H_pos[4,petal-length]
@@ -15518,16 +11153,7 @@ Subject To
    - 0.4166666666666667 Q[145,9] * H_neg[4,sepal-width]
    - 0.711864406779661 Q[145,9] * H_neg[4,petal-length]
    - 0.9166666666666666 Q[145,9] * H_neg[4,petal-width] + Q[145,9] * C4279
-   - Q[145,9] * C4286
-   - 0.6666666666666667 Q[145,10] * H_pos[4,sepal-length]
-   - 0.4166666666666667 Q[145,10] * H_pos[4,sepal-width]
-   - 0.711864406779661 Q[145,10] * H_pos[4,petal-length]
-   - 0.9166666666666666 Q[145,10] * H_pos[4,petal-width]
-   + 0.6666666666666667 Q[145,10] * H_neg[4,sepal-length]
-   + 0.4166666666666667 Q[145,10] * H_neg[4,sepal-width]
-   + 0.711864406779661 Q[145,10] * H_neg[4,petal-length]
-   + 0.9166666666666666 Q[145,10] * H_neg[4,petal-width]
-   - Q[145,10] * C4279 + Q[145,10] * C4286 ] >= 1
+   - Q[145,9] * C4286 ] >= 1
  qc551: E[91,4] + [ 0.5 Q[91,9] * H_pos[4,sepal-length]
    + 0.4166666666666667 Q[91,9] * H_pos[4,sepal-width]
    + 0.6101694915254237 Q[91,9] * H_pos[4,petal-length]
@@ -15536,15 +11162,7 @@ Subject To
    - 0.4166666666666667 Q[91,9] * H_neg[4,sepal-width]
    - 0.6101694915254237 Q[91,9] * H_neg[4,petal-length]
    - 0.5416666666666667 Q[91,9] * H_neg[4,petal-width] + Q[91,9] * C4279
-   - Q[91,9] * C4286 - 0.5 Q[91,10] * H_pos[4,sepal-length]
-   - 0.4166666666666667 Q[91,10] * H_pos[4,sepal-width]
-   - 0.6101694915254237 Q[91,10] * H_pos[4,petal-length]
-   - 0.5416666666666667 Q[91,10] * H_pos[4,petal-width]
-   + 0.5 Q[91,10] * H_neg[4,sepal-length]
-   + 0.4166666666666667 Q[91,10] * H_neg[4,sepal-width]
-   + 0.6101694915254237 Q[91,10] * H_neg[4,petal-length]
-   + 0.5416666666666667 Q[91,10] * H_neg[4,petal-width] - Q[91,10] * C4279
-   + Q[91,10] * C4286 ] >= 1
+   - Q[91,9] * C4286 ] >= 1
  qc552: E[19,4] + [ 0.2222222222222221 Q[19,9] * H_pos[4,sepal-length]
    + 0.75 Q[19,9] * H_pos[4,sepal-width]
    + 0.0847457627118644 Q[19,9] * H_pos[4,petal-length]
@@ -15553,15 +11171,7 @@ Subject To
    - 0.75 Q[19,9] * H_neg[4,sepal-width]
    - 0.0847457627118644 Q[19,9] * H_neg[4,petal-length]
    - 0.0833333333333333 Q[19,9] * H_neg[4,petal-width] + Q[19,9] * C4279
-   - Q[19,9] * C4286 - 0.2222222222222221 Q[19,10] * H_pos[4,sepal-length]
-   - 0.75 Q[19,10] * H_pos[4,sepal-width]
-   - 0.0847457627118644 Q[19,10] * H_pos[4,petal-length]
-   - 0.0833333333333333 Q[19,10] * H_pos[4,petal-width]
-   + 0.2222222222222221 Q[19,10] * H_neg[4,sepal-length]
-   + 0.75 Q[19,10] * H_neg[4,sepal-width]
-   + 0.0847457627118644 Q[19,10] * H_neg[4,petal-length]
-   + 0.0833333333333333 Q[19,10] * H_neg[4,petal-width] - Q[19,10] * C4279
-   + Q[19,10] * C4286 ] >= 1
+   - Q[19,9] * C4286 ] >= 1
  qc553: E[115,4] + [ 0.5833333333333335 Q[115,9] * H_pos[4,sepal-length]
    + 0.5 Q[115,9] * H_pos[4,sepal-width]
    + 0.7288135593220338 Q[115,9] * H_pos[4,petal-length]
@@ -15570,16 +11180,7 @@ Subject To
    - 0.5 Q[115,9] * H_neg[4,sepal-width]
    - 0.7288135593220338 Q[115,9] * H_neg[4,petal-length]
    - 0.9166666666666666 Q[115,9] * H_neg[4,petal-width] + Q[115,9] * C4279
-   - Q[115,9] * C4286
-   - 0.5833333333333335 Q[115,10] * H_pos[4,sepal-length]
-   - 0.5 Q[115,10] * H_pos[4,sepal-width]
-   - 0.7288135593220338 Q[115,10] * H_pos[4,petal-length]
-   - 0.9166666666666666 Q[115,10] * H_pos[4,petal-width]
-   + 0.5833333333333335 Q[115,10] * H_neg[4,sepal-length]
-   + 0.5 Q[115,10] * H_neg[4,sepal-width]
-   + 0.7288135593220338 Q[115,10] * H_neg[4,petal-length]
-   + 0.9166666666666666 Q[115,10] * H_neg[4,petal-width]
-   - Q[115,10] * C4279 + Q[115,10] * C4286 ] >= 1
+   - Q[115,9] * C4286 ] >= 1
  qc554: E[28,4] + [ 0.25 Q[28,9] * H_pos[4,sepal-length]
    + 0.5833333333333333 Q[28,9] * H_pos[4,sepal-width]
    + 0.0677966101694915 Q[28,9] * H_pos[4,petal-length]
@@ -15588,28 +11189,14 @@ Subject To
    - 0.5833333333333333 Q[28,9] * H_neg[4,sepal-width]
    - 0.0677966101694915 Q[28,9] * H_neg[4,petal-length]
    - 0.0416666666666667 Q[28,9] * H_neg[4,petal-width] + Q[28,9] * C4279
-   - Q[28,9] * C4286 - 0.25 Q[28,10] * H_pos[4,sepal-length]
-   - 0.5833333333333333 Q[28,10] * H_pos[4,sepal-width]
-   - 0.0677966101694915 Q[28,10] * H_pos[4,petal-length]
-   - 0.0416666666666667 Q[28,10] * H_pos[4,petal-width]
-   + 0.25 Q[28,10] * H_neg[4,sepal-length]
-   + 0.5833333333333333 Q[28,10] * H_neg[4,sepal-width]
-   + 0.0677966101694915 Q[28,10] * H_neg[4,petal-length]
-   + 0.0416666666666667 Q[28,10] * H_neg[4,petal-width] - Q[28,10] * C4279
-   + Q[28,10] * C4286 ] >= 1
+   - Q[28,9] * C4286 ] >= 1
  qc555: E[37,4] + [ 0.1666666666666667 Q[37,9] * H_pos[4,sepal-length]
    + 0.4583333333333333 Q[37,9] * H_pos[4,sepal-width]
    + 0.0847457627118644 Q[37,9] * H_pos[4,petal-length]
    - 0.1666666666666667 Q[37,9] * H_neg[4,sepal-length]
    - 0.4583333333333333 Q[37,9] * H_neg[4,sepal-width]
    - 0.0847457627118644 Q[37,9] * H_neg[4,petal-length] + Q[37,9] * C4279
-   - Q[37,9] * C4286 - 0.1666666666666667 Q[37,10] * H_pos[4,sepal-length]
-   - 0.4583333333333333 Q[37,10] * H_pos[4,sepal-width]
-   - 0.0847457627118644 Q[37,10] * H_pos[4,petal-length]
-   + 0.1666666666666667 Q[37,10] * H_neg[4,sepal-length]
-   + 0.4583333333333333 Q[37,10] * H_neg[4,sepal-width]
-   + 0.0847457627118644 Q[37,10] * H_neg[4,petal-length] - Q[37,10] * C4279
-   + Q[37,10] * C4286 ] >= 1
+   - Q[37,9] * C4286 ] >= 1
  qc556: E[29,4] + [ 0.1111111111111112 Q[29,9] * H_pos[4,sepal-length]
    + 0.5 Q[29,9] * H_pos[4,sepal-width]
    + 0.1016949152542373 Q[29,9] * H_pos[4,petal-length]
@@ -15618,15 +11205,7 @@ Subject To
    - 0.5 Q[29,9] * H_neg[4,sepal-width]
    - 0.1016949152542373 Q[29,9] * H_neg[4,petal-length]
    - 0.0416666666666667 Q[29,9] * H_neg[4,petal-width] + Q[29,9] * C4279
-   - Q[29,9] * C4286 - 0.1111111111111112 Q[29,10] * H_pos[4,sepal-length]
-   - 0.5 Q[29,10] * H_pos[4,sepal-width]
-   - 0.1016949152542373 Q[29,10] * H_pos[4,petal-length]
-   - 0.0416666666666667 Q[29,10] * H_pos[4,petal-width]
-   + 0.1111111111111112 Q[29,10] * H_neg[4,sepal-length]
-   + 0.5 Q[29,10] * H_neg[4,sepal-width]
-   + 0.1016949152542373 Q[29,10] * H_neg[4,petal-length]
-   + 0.0416666666666667 Q[29,10] * H_neg[4,petal-width] - Q[29,10] * C4279
-   + Q[29,10] * C4286 ] >= 1
+   - Q[29,9] * C4286 ] >= 1
  qc557: E[122,4] + [ 0.9444444444444442 Q[122,9] * H_pos[4,sepal-length]
    + 0.3333333333333333 Q[122,9] * H_pos[4,sepal-width]
    + 0.9661016949152543 Q[122,9] * H_pos[4,petal-length]
@@ -15635,16 +11214,7 @@ Subject To
    - 0.3333333333333333 Q[122,9] * H_neg[4,sepal-width]
    - 0.9661016949152543 Q[122,9] * H_neg[4,petal-length]
    - 0.7916666666666667 Q[122,9] * H_neg[4,petal-width] + Q[122,9] * C4279
-   - Q[122,9] * C4286
-   - 0.9444444444444442 Q[122,10] * H_pos[4,sepal-length]
-   - 0.3333333333333333 Q[122,10] * H_pos[4,sepal-width]
-   - 0.9661016949152543 Q[122,10] * H_pos[4,petal-length]
-   - 0.7916666666666667 Q[122,10] * H_pos[4,petal-width]
-   + 0.9444444444444442 Q[122,10] * H_neg[4,sepal-length]
-   + 0.3333333333333333 Q[122,10] * H_neg[4,sepal-width]
-   + 0.9661016949152543 Q[122,10] * H_neg[4,petal-length]
-   + 0.7916666666666667 Q[122,10] * H_neg[4,petal-width]
-   - Q[122,10] * C4279 + Q[122,10] * C4286 ] >= 1
+   - Q[122,9] * C4286 ] >= 1
  qc558: E[74,4] + [ 0.5833333333333335 Q[74,9] * H_pos[4,sepal-length]
    + 0.375 Q[74,9] * H_pos[4,sepal-width]
    + 0.559322033898305 Q[74,9] * H_pos[4,petal-length]
@@ -15653,15 +11223,7 @@ Subject To
    - 0.375 Q[74,9] * H_neg[4,sepal-width]
    - 0.559322033898305 Q[74,9] * H_neg[4,petal-length]
    - 0.5 Q[74,9] * H_neg[4,petal-width] + Q[74,9] * C4279 - Q[74,9] * C4286
-   - 0.5833333333333335 Q[74,10] * H_pos[4,sepal-length]
-   - 0.375 Q[74,10] * H_pos[4,sepal-width]
-   - 0.559322033898305 Q[74,10] * H_pos[4,petal-length]
-   - 0.5 Q[74,10] * H_pos[4,petal-width]
-   + 0.5833333333333335 Q[74,10] * H_neg[4,sepal-length]
-   + 0.375 Q[74,10] * H_neg[4,sepal-width]
-   + 0.559322033898305 Q[74,10] * H_neg[4,petal-length]
-   + 0.5 Q[74,10] * H_neg[4,petal-width] - Q[74,10] * C4279
-   + Q[74,10] * C4286 ] >= 1
+   ] >= 1
  qc559: E[46,4] + [ 0.2222222222222221 Q[46,9] * H_pos[4,sepal-length]
    + 0.75 Q[46,9] * H_pos[4,sepal-width]
    + 0.1016949152542373 Q[46,9] * H_pos[4,petal-length]
@@ -15670,15 +11232,7 @@ Subject To
    - 0.75 Q[46,9] * H_neg[4,sepal-width]
    - 0.1016949152542373 Q[46,9] * H_neg[4,petal-length]
    - 0.0416666666666667 Q[46,9] * H_neg[4,petal-width] + Q[46,9] * C4279
-   - Q[46,9] * C4286 - 0.2222222222222221 Q[46,10] * H_pos[4,sepal-length]
-   - 0.75 Q[46,10] * H_pos[4,sepal-width]
-   - 0.1016949152542373 Q[46,10] * H_pos[4,petal-length]
-   - 0.0416666666666667 Q[46,10] * H_pos[4,petal-width]
-   + 0.2222222222222221 Q[46,10] * H_neg[4,sepal-length]
-   + 0.75 Q[46,10] * H_neg[4,sepal-width]
-   + 0.1016949152542373 Q[46,10] * H_neg[4,petal-length]
-   + 0.0416666666666667 Q[46,10] * H_neg[4,petal-width] - Q[46,10] * C4279
-   + Q[46,10] * C4286 ] >= 1
+   - Q[46,9] * C4286 ] >= 1
  qc560: E[111,5] + [ 0.5833333333333335 Q[111,11] * H_pos[5,sepal-length]
    + 0.2916666666666667 Q[111,11] * H_pos[5,sepal-width]
    + 0.7288135593220338 Q[111,11] * H_pos[5,petal-length]
@@ -15687,16 +11241,7 @@ Subject To
    - 0.2916666666666667 Q[111,11] * H_neg[5,sepal-width]
    - 0.7288135593220338 Q[111,11] * H_neg[5,petal-length]
    - 0.75 Q[111,11] * H_neg[5,petal-width] + Q[111,11] * C4280
-   - Q[111,11] * C4287
-   - 0.5833333333333335 Q[111,12] * H_pos[5,sepal-length]
-   - 0.2916666666666667 Q[111,12] * H_pos[5,sepal-width]
-   - 0.7288135593220338 Q[111,12] * H_pos[5,petal-length]
-   - 0.75 Q[111,12] * H_pos[5,petal-width]
-   + 0.5833333333333335 Q[111,12] * H_neg[5,sepal-length]
-   + 0.2916666666666667 Q[111,12] * H_neg[5,sepal-width]
-   + 0.7288135593220338 Q[111,12] * H_neg[5,petal-length]
-   + 0.75 Q[111,12] * H_neg[5,petal-width] - Q[111,12] * C4280
-   + Q[111,12] * C4287 ] >= 1
+   - Q[111,11] * C4287 ] >= 1
  qc561: E[134,5] + [ 0.5 Q[134,11] * H_pos[5,sepal-length]
    + 0.25 Q[134,11] * H_pos[5,sepal-width]
    + 0.7796610169491525 Q[134,11] * H_pos[5,petal-length]
@@ -15705,16 +11250,7 @@ Subject To
    - 0.25 Q[134,11] * H_neg[5,sepal-width]
    - 0.7796610169491525 Q[134,11] * H_neg[5,petal-length]
    - 0.5416666666666667 Q[134,11] * H_neg[5,petal-width]
-   + Q[134,11] * C4280 - Q[134,11] * C4287
-   - 0.5 Q[134,12] * H_pos[5,sepal-length]
-   - 0.25 Q[134,12] * H_pos[5,sepal-width]
-   - 0.7796610169491525 Q[134,12] * H_pos[5,petal-length]
-   - 0.5416666666666667 Q[134,12] * H_pos[5,petal-width]
-   + 0.5 Q[134,12] * H_neg[5,sepal-length]
-   + 0.25 Q[134,12] * H_neg[5,sepal-width]
-   + 0.7796610169491525 Q[134,12] * H_neg[5,petal-length]
-   + 0.5416666666666667 Q[134,12] * H_neg[5,petal-width]
-   - Q[134,12] * C4280 + Q[134,12] * C4287 ] >= 1
+   + Q[134,11] * C4280 - Q[134,11] * C4287 ] >= 1
  qc562: E[133,5] + [ 0.5555555555555556 Q[133,11] * H_pos[5,sepal-length]
    + 0.3333333333333333 Q[133,11] * H_pos[5,sepal-width]
    + 0.6949152542372881 Q[133,11] * H_pos[5,petal-length]
@@ -15723,16 +11259,7 @@ Subject To
    - 0.3333333333333333 Q[133,11] * H_neg[5,sepal-width]
    - 0.6949152542372881 Q[133,11] * H_neg[5,petal-length]
    - 0.5833333333333334 Q[133,11] * H_neg[5,petal-width]
-   + Q[133,11] * C4280 - Q[133,11] * C4287
-   - 0.5555555555555556 Q[133,12] * H_pos[5,sepal-length]
-   - 0.3333333333333333 Q[133,12] * H_pos[5,sepal-width]
-   - 0.6949152542372881 Q[133,12] * H_pos[5,petal-length]
-   - 0.5833333333333334 Q[133,12] * H_pos[5,petal-width]
-   + 0.5555555555555556 Q[133,12] * H_neg[5,sepal-length]
-   + 0.3333333333333333 Q[133,12] * H_neg[5,sepal-width]
-   + 0.6949152542372881 Q[133,12] * H_neg[5,petal-length]
-   + 0.5833333333333334 Q[133,12] * H_neg[5,petal-width]
-   - Q[133,12] * C4280 + Q[133,12] * C4287 ] >= 1
+   + Q[133,11] * C4280 - Q[133,11] * C4287 ] >= 1
  qc563: E[93,5] + [ 0.1944444444444444 Q[93,11] * H_pos[5,sepal-length]
    + 0.125 Q[93,11] * H_pos[5,sepal-width]
    + 0.3898305084745762 Q[93,11] * H_pos[5,petal-length]
@@ -15741,15 +11268,7 @@ Subject To
    - 0.125 Q[93,11] * H_neg[5,sepal-width]
    - 0.3898305084745762 Q[93,11] * H_neg[5,petal-length]
    - 0.375 Q[93,11] * H_neg[5,petal-width] + Q[93,11] * C4280
-   - Q[93,11] * C4287 - 0.1944444444444444 Q[93,12] * H_pos[5,sepal-length]
-   - 0.125 Q[93,12] * H_pos[5,sepal-width]
-   - 0.3898305084745762 Q[93,12] * H_pos[5,petal-length]
-   - 0.375 Q[93,12] * H_pos[5,petal-width]
-   + 0.1944444444444444 Q[93,12] * H_neg[5,sepal-length]
-   + 0.125 Q[93,12] * H_neg[5,sepal-width]
-   + 0.3898305084745762 Q[93,12] * H_neg[5,petal-length]
-   + 0.375 Q[93,12] * H_neg[5,petal-width] - Q[93,12] * C4280
-   + Q[93,12] * C4287 ] >= 1
+   - Q[93,11] * C4287 ] >= 1
  qc564: E[51,5] + [ 0.5833333333333335 Q[51,11] * H_pos[5,sepal-length]
    + 0.5 Q[51,11] * H_pos[5,sepal-width]
    + 0.5932203389830508 Q[51,11] * H_pos[5,petal-length]
@@ -15758,15 +11277,7 @@ Subject To
    - 0.5 Q[51,11] * H_neg[5,sepal-width]
    - 0.5932203389830508 Q[51,11] * H_neg[5,petal-length]
    - 0.5833333333333334 Q[51,11] * H_neg[5,petal-width] + Q[51,11] * C4280
-   - Q[51,11] * C4287 - 0.5833333333333335 Q[51,12] * H_pos[5,sepal-length]
-   - 0.5 Q[51,12] * H_pos[5,sepal-width]
-   - 0.5932203389830508 Q[51,12] * H_pos[5,petal-length]
-   - 0.5833333333333334 Q[51,12] * H_pos[5,petal-width]
-   + 0.5833333333333335 Q[51,12] * H_neg[5,sepal-length]
-   + 0.5 Q[51,12] * H_neg[5,sepal-width]
-   + 0.5932203389830508 Q[51,12] * H_neg[5,petal-length]
-   + 0.5833333333333334 Q[51,12] * H_neg[5,petal-width] - Q[51,12] * C4280
-   + Q[51,12] * C4287 ] >= 1
+   - Q[51,11] * C4287 ] >= 1
  qc565: E[41,5] + [ 0.0555555555555556 Q[41,11] * H_pos[5,sepal-length]
    + 0.125 Q[41,11] * H_pos[5,sepal-width]
    + 0.0508474576271186 Q[41,11] * H_pos[5,petal-length]
@@ -15775,15 +11286,7 @@ Subject To
    - 0.125 Q[41,11] * H_neg[5,sepal-width]
    - 0.0508474576271186 Q[41,11] * H_neg[5,petal-length]
    - 0.0833333333333333 Q[41,11] * H_neg[5,petal-width] + Q[41,11] * C4280
-   - Q[41,11] * C4287 - 0.0555555555555556 Q[41,12] * H_pos[5,sepal-length]
-   - 0.125 Q[41,12] * H_pos[5,sepal-width]
-   - 0.0508474576271186 Q[41,12] * H_pos[5,petal-length]
-   - 0.0833333333333333 Q[41,12] * H_pos[5,petal-width]
-   + 0.0555555555555556 Q[41,12] * H_neg[5,sepal-length]
-   + 0.125 Q[41,12] * H_neg[5,sepal-width]
-   + 0.0508474576271186 Q[41,12] * H_neg[5,petal-length]
-   + 0.0833333333333333 Q[41,12] * H_neg[5,petal-width] - Q[41,12] * C4280
-   + Q[41,12] * C4287 ] >= 1
+   - Q[41,11] * C4287 ] >= 1
  qc566: E[90,5] + [ 0.3333333333333333 Q[90,11] * H_pos[5,sepal-length]
    + 0.25 Q[90,11] * H_pos[5,sepal-width]
    + 0.576271186440678 Q[90,11] * H_pos[5,petal-length]
@@ -15792,15 +11295,7 @@ Subject To
    - 0.25 Q[90,11] * H_neg[5,sepal-width]
    - 0.576271186440678 Q[90,11] * H_neg[5,petal-length]
    - 0.4583333333333333 Q[90,11] * H_neg[5,petal-width] + Q[90,11] * C4280
-   - Q[90,11] * C4287 - 0.3333333333333333 Q[90,12] * H_pos[5,sepal-length]
-   - 0.25 Q[90,12] * H_pos[5,sepal-width]
-   - 0.576271186440678 Q[90,12] * H_pos[5,petal-length]
-   - 0.4583333333333333 Q[90,12] * H_pos[5,petal-width]
-   + 0.3333333333333333 Q[90,12] * H_neg[5,sepal-length]
-   + 0.25 Q[90,12] * H_neg[5,sepal-width]
-   + 0.576271186440678 Q[90,12] * H_neg[5,petal-length]
-   + 0.4583333333333333 Q[90,12] * H_neg[5,petal-width] - Q[90,12] * C4280
-   + Q[90,12] * C4287 ] >= 1
+   - Q[90,11] * C4287 ] >= 1
  qc567: E[67,5] + [ 0.4166666666666665 Q[67,11] * H_pos[5,sepal-length]
    + 0.2916666666666667 Q[67,11] * H_pos[5,sepal-width]
    + 0.5254237288135593 Q[67,11] * H_pos[5,petal-length]
@@ -15809,15 +11304,7 @@ Subject To
    - 0.2916666666666667 Q[67,11] * H_neg[5,sepal-width]
    - 0.5254237288135593 Q[67,11] * H_neg[5,petal-length]
    - 0.375 Q[67,11] * H_neg[5,petal-width] + Q[67,11] * C4280
-   - Q[67,11] * C4287 - 0.4166666666666665 Q[67,12] * H_pos[5,sepal-length]
-   - 0.2916666666666667 Q[67,12] * H_pos[5,sepal-width]
-   - 0.5254237288135593 Q[67,12] * H_pos[5,petal-length]
-   - 0.375 Q[67,12] * H_pos[5,petal-width]
-   + 0.4166666666666665 Q[67,12] * H_neg[5,sepal-length]
-   + 0.2916666666666667 Q[67,12] * H_neg[5,sepal-width]
-   + 0.5254237288135593 Q[67,12] * H_neg[5,petal-length]
-   + 0.375 Q[67,12] * H_neg[5,petal-width] - Q[67,12] * C4280
-   + Q[67,12] * C4287 ] >= 1
+   - Q[67,11] * C4287 ] >= 1
  qc568: E[131,5] + [ Q[131,11] * H_pos[5,sepal-length]
    + 0.75 Q[131,11] * H_pos[5,sepal-width]
    + 0.9152542372881356 Q[131,11] * H_pos[5,petal-length]
@@ -15826,16 +11313,7 @@ Subject To
    - 0.75 Q[131,11] * H_neg[5,sepal-width]
    - 0.9152542372881356 Q[131,11] * H_neg[5,petal-length]
    - 0.7916666666666667 Q[131,11] * H_neg[5,petal-width]
-   + Q[131,11] * C4280 - Q[131,11] * C4287
-   - Q[131,12] * H_pos[5,sepal-length]
-   - 0.75 Q[131,12] * H_pos[5,sepal-width]
-   - 0.9152542372881356 Q[131,12] * H_pos[5,petal-length]
-   - 0.7916666666666667 Q[131,12] * H_pos[5,petal-width]
-   + Q[131,12] * H_neg[5,sepal-length]
-   + 0.75 Q[131,12] * H_neg[5,sepal-width]
-   + 0.9152542372881356 Q[131,12] * H_neg[5,petal-length]
-   + 0.7916666666666667 Q[131,12] * H_neg[5,petal-width]
-   - Q[131,12] * C4280 + Q[131,12] * C4287 ] >= 1
+   + Q[131,11] * C4280 - Q[131,11] * C4287 ] >= 1
  qc569: E[121,5] + [ 0.3611111111111109 Q[121,11] * H_pos[5,sepal-length]
    + 0.3333333333333333 Q[121,11] * H_pos[5,sepal-width]
    + 0.6610169491525424 Q[121,11] * H_pos[5,petal-length]
@@ -15844,16 +11322,7 @@ Subject To
    - 0.3333333333333333 Q[121,11] * H_neg[5,sepal-width]
    - 0.6610169491525424 Q[121,11] * H_neg[5,petal-length]
    - 0.7916666666666667 Q[121,11] * H_neg[5,petal-width]
-   + Q[121,11] * C4280 - Q[121,11] * C4287
-   - 0.3611111111111109 Q[121,12] * H_pos[5,sepal-length]
-   - 0.3333333333333333 Q[121,12] * H_pos[5,sepal-width]
-   - 0.6610169491525424 Q[121,12] * H_pos[5,petal-length]
-   - 0.7916666666666667 Q[121,12] * H_pos[5,petal-width]
-   + 0.3611111111111109 Q[121,12] * H_neg[5,sepal-length]
-   + 0.3333333333333333 Q[121,12] * H_neg[5,sepal-width]
-   + 0.6610169491525424 Q[121,12] * H_neg[5,petal-length]
-   + 0.7916666666666667 Q[121,12] * H_neg[5,petal-width]
-   - Q[121,12] * C4280 + Q[121,12] * C4287 ] >= 1
+   + Q[121,11] * C4280 - Q[121,11] * C4287 ] >= 1
  qc570: E[75,5] + [ 0.6388888888888888 Q[75,11] * H_pos[5,sepal-length]
    + 0.4166666666666667 Q[75,11] * H_pos[5,sepal-width]
    + 0.576271186440678 Q[75,11] * H_pos[5,petal-length]
@@ -15862,15 +11331,7 @@ Subject To
    - 0.4166666666666667 Q[75,11] * H_neg[5,sepal-width]
    - 0.576271186440678 Q[75,11] * H_neg[5,petal-length]
    - 0.5416666666666667 Q[75,11] * H_neg[5,petal-width] + Q[75,11] * C4280
-   - Q[75,11] * C4287 - 0.6388888888888888 Q[75,12] * H_pos[5,sepal-length]
-   - 0.4166666666666667 Q[75,12] * H_pos[5,sepal-width]
-   - 0.576271186440678 Q[75,12] * H_pos[5,petal-length]
-   - 0.5416666666666667 Q[75,12] * H_pos[5,petal-width]
-   + 0.6388888888888888 Q[75,12] * H_neg[5,sepal-length]
-   + 0.4166666666666667 Q[75,12] * H_neg[5,sepal-width]
-   + 0.576271186440678 Q[75,12] * H_neg[5,petal-length]
-   + 0.5416666666666667 Q[75,12] * H_neg[5,petal-width] - Q[75,12] * C4280
-   + Q[75,12] * C4287 ] >= 1
+   - Q[75,11] * C4287 ] >= 1
  qc571: E[44,5] + [ 0.2222222222222221 Q[44,11] * H_pos[5,sepal-length]
    + 0.75 Q[44,11] * H_pos[5,sepal-width]
    + 0.1525423728813559 Q[44,11] * H_pos[5,petal-length]
@@ -15879,15 +11340,7 @@ Subject To
    - 0.75 Q[44,11] * H_neg[5,sepal-width]
    - 0.1525423728813559 Q[44,11] * H_neg[5,petal-length]
    - 0.125 Q[44,11] * H_neg[5,petal-width] + Q[44,11] * C4280
-   - Q[44,11] * C4287 - 0.2222222222222221 Q[44,12] * H_pos[5,sepal-length]
-   - 0.75 Q[44,12] * H_pos[5,sepal-width]
-   - 0.1525423728813559 Q[44,12] * H_pos[5,petal-length]
-   - 0.125 Q[44,12] * H_pos[5,petal-width]
-   + 0.2222222222222221 Q[44,12] * H_neg[5,sepal-length]
-   + 0.75 Q[44,12] * H_neg[5,sepal-width]
-   + 0.1525423728813559 Q[44,12] * H_neg[5,petal-length]
-   + 0.125 Q[44,12] * H_neg[5,petal-width] - Q[44,12] * C4280
-   + Q[44,12] * C4287 ] >= 1
+   - Q[44,11] * C4287 ] >= 1
  qc572: E[40,5] + [ 0.1944444444444444 Q[40,11] * H_pos[5,sepal-length]
    + 0.625 Q[40,11] * H_pos[5,sepal-width]
    + 0.0508474576271186 Q[40,11] * H_pos[5,petal-length]
@@ -15896,15 +11349,7 @@ Subject To
    - 0.625 Q[40,11] * H_neg[5,sepal-width]
    - 0.0508474576271186 Q[40,11] * H_neg[5,petal-length]
    - 0.0833333333333333 Q[40,11] * H_neg[5,petal-width] + Q[40,11] * C4280
-   - Q[40,11] * C4287 - 0.1944444444444444 Q[40,12] * H_pos[5,sepal-length]
-   - 0.625 Q[40,12] * H_pos[5,sepal-width]
-   - 0.0508474576271186 Q[40,12] * H_pos[5,petal-length]
-   - 0.0833333333333333 Q[40,12] * H_pos[5,petal-width]
-   + 0.1944444444444444 Q[40,12] * H_neg[5,sepal-length]
-   + 0.625 Q[40,12] * H_neg[5,sepal-width]
-   + 0.0508474576271186 Q[40,12] * H_neg[5,petal-length]
-   + 0.0833333333333333 Q[40,12] * H_neg[5,petal-width] - Q[40,12] * C4280
-   + Q[40,12] * C4287 ] >= 1
+   - Q[40,11] * C4287 ] >= 1
  qc573: E[10,5] + [ 0.3055555555555556 Q[10,11] * H_pos[5,sepal-length]
    + 0.7083333333333333 Q[10,11] * H_pos[5,sepal-width]
    + 0.0847457627118644 Q[10,11] * H_pos[5,petal-length]
@@ -15913,15 +11358,7 @@ Subject To
    - 0.7083333333333333 Q[10,11] * H_neg[5,sepal-width]
    - 0.0847457627118644 Q[10,11] * H_neg[5,petal-length]
    - 0.0416666666666667 Q[10,11] * H_neg[5,petal-width] + Q[10,11] * C4280
-   - Q[10,11] * C4287 - 0.3055555555555556 Q[10,12] * H_pos[5,sepal-length]
-   - 0.7083333333333333 Q[10,12] * H_pos[5,sepal-width]
-   - 0.0847457627118644 Q[10,12] * H_pos[5,petal-length]
-   - 0.0416666666666667 Q[10,12] * H_pos[5,petal-width]
-   + 0.3055555555555556 Q[10,12] * H_neg[5,sepal-length]
-   + 0.7083333333333333 Q[10,12] * H_neg[5,sepal-width]
-   + 0.0847457627118644 Q[10,12] * H_neg[5,petal-length]
-   + 0.0416666666666667 Q[10,12] * H_neg[5,petal-width] - Q[10,12] * C4280
-   + Q[10,12] * C4287 ] >= 1
+   - Q[10,11] * C4287 ] >= 1
  qc574: E[47,5] + [ 0.0833333333333333 Q[47,11] * H_pos[5,sepal-length]
    + 0.5 Q[47,11] * H_pos[5,sepal-width]
    + 0.0677966101694915 Q[47,11] * H_pos[5,petal-length]
@@ -15930,15 +11367,7 @@ Subject To
    - 0.5 Q[47,11] * H_neg[5,sepal-width]
    - 0.0677966101694915 Q[47,11] * H_neg[5,petal-length]
    - 0.0416666666666667 Q[47,11] * H_neg[5,petal-width] + Q[47,11] * C4280
-   - Q[47,11] * C4287 - 0.0833333333333333 Q[47,12] * H_pos[5,sepal-length]
-   - 0.5 Q[47,12] * H_pos[5,sepal-width]
-   - 0.0677966101694915 Q[47,12] * H_pos[5,petal-length]
-   - 0.0416666666666667 Q[47,12] * H_pos[5,petal-width]
-   + 0.0833333333333333 Q[47,12] * H_neg[5,sepal-length]
-   + 0.5 Q[47,12] * H_neg[5,sepal-width]
-   + 0.0677966101694915 Q[47,12] * H_neg[5,petal-length]
-   + 0.0416666666666667 Q[47,12] * H_neg[5,petal-width] - Q[47,12] * C4280
-   + Q[47,12] * C4287 ] >= 1
+   - Q[47,11] * C4287 ] >= 1
  qc575: E[18,5] + [ 0.3888888888888888 Q[18,11] * H_pos[5,sepal-length]
    + 0.75 Q[18,11] * H_pos[5,sepal-width]
    + 0.1186440677966101 Q[18,11] * H_pos[5,petal-length]
@@ -15947,15 +11376,7 @@ Subject To
    - 0.75 Q[18,11] * H_neg[5,sepal-width]
    - 0.1186440677966101 Q[18,11] * H_neg[5,petal-length]
    - 0.0833333333333333 Q[18,11] * H_neg[5,petal-width] + Q[18,11] * C4280
-   - Q[18,11] * C4287 - 0.3888888888888888 Q[18,12] * H_pos[5,sepal-length]
-   - 0.75 Q[18,12] * H_pos[5,sepal-width]
-   - 0.1186440677966101 Q[18,12] * H_pos[5,petal-length]
-   - 0.0833333333333333 Q[18,12] * H_pos[5,petal-width]
-   + 0.3888888888888888 Q[18,12] * H_neg[5,sepal-length]
-   + 0.75 Q[18,12] * H_neg[5,sepal-width]
-   + 0.1186440677966101 Q[18,12] * H_neg[5,petal-length]
-   + 0.0833333333333333 Q[18,12] * H_neg[5,petal-width] - Q[18,12] * C4280
-   + Q[18,12] * C4287 ] >= 1
+   - Q[18,11] * C4287 ] >= 1
  qc576: E[137,5] + [ 0.5833333333333335 Q[137,11] * H_pos[5,sepal-length]
    + 0.4583333333333333 Q[137,11] * H_pos[5,sepal-width]
    + 0.7627118644067796 Q[137,11] * H_pos[5,petal-length]
@@ -15964,16 +11385,7 @@ Subject To
    - 0.4583333333333333 Q[137,11] * H_neg[5,sepal-width]
    - 0.7627118644067796 Q[137,11] * H_neg[5,petal-length]
    - 0.7083333333333334 Q[137,11] * H_neg[5,petal-width]
-   + Q[137,11] * C4280 - Q[137,11] * C4287
-   - 0.5833333333333335 Q[137,12] * H_pos[5,sepal-length]
-   - 0.4583333333333333 Q[137,12] * H_pos[5,sepal-width]
-   - 0.7627118644067796 Q[137,12] * H_pos[5,petal-length]
-   - 0.7083333333333334 Q[137,12] * H_pos[5,petal-width]
-   + 0.5833333333333335 Q[137,12] * H_neg[5,sepal-length]
-   + 0.4583333333333333 Q[137,12] * H_neg[5,sepal-width]
-   + 0.7627118644067796 Q[137,12] * H_neg[5,petal-length]
-   + 0.7083333333333334 Q[137,12] * H_neg[5,petal-width]
-   - Q[137,12] * C4280 + Q[137,12] * C4287 ] >= 1
+   + Q[137,11] * C4280 - Q[137,11] * C4287 ] >= 1
  qc577: E[136,5] + [ 0.5555555555555556 Q[136,11] * H_pos[5,sepal-length]
    + 0.5833333333333333 Q[136,11] * H_pos[5,sepal-width]
    + 0.7796610169491525 Q[136,11] * H_pos[5,petal-length]
@@ -15982,16 +11394,7 @@ Subject To
    - 0.5833333333333333 Q[136,11] * H_neg[5,sepal-width]
    - 0.7796610169491525 Q[136,11] * H_neg[5,petal-length]
    - 0.9583333333333334 Q[136,11] * H_neg[5,petal-width]
-   + Q[136,11] * C4280 - Q[136,11] * C4287
-   - 0.5555555555555556 Q[136,12] * H_pos[5,sepal-length]
-   - 0.5833333333333333 Q[136,12] * H_pos[5,sepal-width]
-   - 0.7796610169491525 Q[136,12] * H_pos[5,petal-length]
-   - 0.9583333333333334 Q[136,12] * H_pos[5,petal-width]
-   + 0.5555555555555556 Q[136,12] * H_neg[5,sepal-length]
-   + 0.5833333333333333 Q[136,12] * H_neg[5,sepal-width]
-   + 0.7796610169491525 Q[136,12] * H_neg[5,petal-length]
-   + 0.9583333333333334 Q[136,12] * H_neg[5,petal-width]
-   - Q[136,12] * C4280 + Q[136,12] * C4287 ] >= 1
+   + Q[136,11] * C4280 - Q[136,11] * C4287 ] >= 1
  qc578: E[56,5] + [ 0.5555555555555556 Q[56,11] * H_pos[5,sepal-length]
    + 0.5416666666666665 Q[56,11] * H_pos[5,sepal-width]
    + 0.6271186440677966 Q[56,11] * H_pos[5,petal-length]
@@ -16000,15 +11403,7 @@ Subject To
    - 0.5416666666666665 Q[56,11] * H_neg[5,sepal-width]
    - 0.6271186440677966 Q[56,11] * H_neg[5,petal-length]
    - 0.625 Q[56,11] * H_neg[5,petal-width] + Q[56,11] * C4280
-   - Q[56,11] * C4287 - 0.5555555555555556 Q[56,12] * H_pos[5,sepal-length]
-   - 0.5416666666666665 Q[56,12] * H_pos[5,sepal-width]
-   - 0.6271186440677966 Q[56,12] * H_pos[5,petal-length]
-   - 0.625 Q[56,12] * H_pos[5,petal-width]
-   + 0.5555555555555556 Q[56,12] * H_neg[5,sepal-length]
-   + 0.5416666666666665 Q[56,12] * H_neg[5,sepal-width]
-   + 0.6271186440677966 Q[56,12] * H_neg[5,petal-length]
-   + 0.625 Q[56,12] * H_neg[5,petal-width] - Q[56,12] * C4280
-   + Q[56,12] * C4287 ] >= 1
+   - Q[56,11] * C4287 ] >= 1
  qc579: E[119,5] + [ 0.4722222222222223 Q[119,11] * H_pos[5,sepal-length]
    + 0.0833333333333334 Q[119,11] * H_pos[5,sepal-width]
    + 0.6779661016949152 Q[119,11] * H_pos[5,petal-length]
@@ -16017,29 +11412,14 @@ Subject To
    - 0.0833333333333334 Q[119,11] * H_neg[5,sepal-width]
    - 0.6779661016949152 Q[119,11] * H_neg[5,petal-length]
    - 0.5833333333333334 Q[119,11] * H_neg[5,petal-width]
-   + Q[119,11] * C4280 - Q[119,11] * C4287
-   - 0.4722222222222223 Q[119,12] * H_pos[5,sepal-length]
-   - 0.0833333333333334 Q[119,12] * H_pos[5,sepal-width]
-   - 0.6779661016949152 Q[119,12] * H_pos[5,petal-length]
-   - 0.5833333333333334 Q[119,12] * H_pos[5,petal-width]
-   + 0.4722222222222223 Q[119,12] * H_neg[5,sepal-length]
-   + 0.0833333333333334 Q[119,12] * H_neg[5,sepal-width]
-   + 0.6779661016949152 Q[119,12] * H_neg[5,petal-length]
-   + 0.5833333333333334 Q[119,12] * H_neg[5,petal-width]
-   - Q[119,12] * C4280 + Q[119,12] * C4287 ] >= 1
+   + Q[119,11] * C4280 - Q[119,11] * C4287 ] >= 1
  qc580: E[9,5] + [ 0.1666666666666667 Q[9,11] * H_pos[5,sepal-length]
    + 0.4583333333333333 Q[9,11] * H_pos[5,sepal-width]
    + 0.0847457627118644 Q[9,11] * H_pos[5,petal-length]
    - 0.1666666666666667 Q[9,11] * H_neg[5,sepal-length]
    - 0.4583333333333333 Q[9,11] * H_neg[5,sepal-width]
    - 0.0847457627118644 Q[9,11] * H_neg[5,petal-length] + Q[9,11] * C4280
-   - Q[9,11] * C4287 - 0.1666666666666667 Q[9,12] * H_pos[5,sepal-length]
-   - 0.4583333333333333 Q[9,12] * H_pos[5,sepal-width]
-   - 0.0847457627118644 Q[9,12] * H_pos[5,petal-length]
-   + 0.1666666666666667 Q[9,12] * H_neg[5,sepal-length]
-   + 0.4583333333333333 Q[9,12] * H_neg[5,sepal-width]
-   + 0.0847457627118644 Q[9,12] * H_neg[5,petal-length] - Q[9,12] * C4280
-   + Q[9,12] * C4287 ] >= 1
+   - Q[9,11] * C4287 ] >= 1
  qc581: E[141,5] + [ 0.7222222222222223 Q[141,11] * H_pos[5,sepal-length]
    + 0.4583333333333333 Q[141,11] * H_pos[5,sepal-width]
    + 0.6949152542372881 Q[141,11] * H_pos[5,petal-length]
@@ -16048,16 +11428,7 @@ Subject To
    - 0.4583333333333333 Q[141,11] * H_neg[5,sepal-width]
    - 0.6949152542372881 Q[141,11] * H_neg[5,petal-length]
    - 0.9166666666666666 Q[141,11] * H_neg[5,petal-width]
-   + Q[141,11] * C4280 - Q[141,11] * C4287
-   - 0.7222222222222223 Q[141,12] * H_pos[5,sepal-length]
-   - 0.4583333333333333 Q[141,12] * H_pos[5,sepal-width]
-   - 0.6949152542372881 Q[141,12] * H_pos[5,petal-length]
-   - 0.9166666666666666 Q[141,12] * H_pos[5,petal-width]
-   + 0.7222222222222223 Q[141,12] * H_neg[5,sepal-length]
-   + 0.4583333333333333 Q[141,12] * H_neg[5,sepal-width]
-   + 0.6949152542372881 Q[141,12] * H_neg[5,petal-length]
-   + 0.9166666666666666 Q[141,12] * H_neg[5,petal-width]
-   - Q[141,12] * C4280 + Q[141,12] * C4287 ] >= 1
+   + Q[141,11] * C4280 - Q[141,11] * C4287 ] >= 1
  qc582: E[6,5] + [ 0.0833333333333333 Q[6,11] * H_pos[5,sepal-length]
    + 0.5833333333333333 Q[6,11] * H_pos[5,sepal-width]
    + 0.0677966101694915 Q[6,11] * H_pos[5,petal-length]
@@ -16066,15 +11437,7 @@ Subject To
    - 0.5833333333333333 Q[6,11] * H_neg[5,sepal-width]
    - 0.0677966101694915 Q[6,11] * H_neg[5,petal-length]
    - 0.0833333333333333 Q[6,11] * H_neg[5,petal-width] + Q[6,11] * C4280
-   - Q[6,11] * C4287 - 0.0833333333333333 Q[6,12] * H_pos[5,sepal-length]
-   - 0.5833333333333333 Q[6,12] * H_pos[5,sepal-width]
-   - 0.0677966101694915 Q[6,12] * H_pos[5,petal-length]
-   - 0.0833333333333333 Q[6,12] * H_pos[5,petal-width]
-   + 0.0833333333333333 Q[6,12] * H_neg[5,sepal-length]
-   + 0.5833333333333333 Q[6,12] * H_neg[5,sepal-width]
-   + 0.0677966101694915 Q[6,12] * H_neg[5,petal-length]
-   + 0.0833333333333333 Q[6,12] * H_neg[5,petal-width] - Q[6,12] * C4280
-   + Q[6,12] * C4287 ] >= 1
+   - Q[6,11] * C4287 ] >= 1
  qc583: E[114,5] + [ 0.4166666666666665 Q[114,11] * H_pos[5,sepal-length]
    + 0.3333333333333333 Q[114,11] * H_pos[5,sepal-width]
    + 0.6949152542372881 Q[114,11] * H_pos[5,petal-length]
@@ -16083,16 +11446,7 @@ Subject To
    - 0.3333333333333333 Q[114,11] * H_neg[5,sepal-width]
    - 0.6949152542372881 Q[114,11] * H_neg[5,petal-length]
    - 0.9583333333333334 Q[114,11] * H_neg[5,petal-width]
-   + Q[114,11] * C4280 - Q[114,11] * C4287
-   - 0.4166666666666665 Q[114,12] * H_pos[5,sepal-length]
-   - 0.3333333333333333 Q[114,12] * H_pos[5,sepal-width]
-   - 0.6949152542372881 Q[114,12] * H_pos[5,petal-length]
-   - 0.9583333333333334 Q[114,12] * H_pos[5,petal-width]
-   + 0.4166666666666665 Q[114,12] * H_neg[5,sepal-length]
-   + 0.3333333333333333 Q[114,12] * H_neg[5,sepal-width]
-   + 0.6949152542372881 Q[114,12] * H_neg[5,petal-length]
-   + 0.9583333333333334 Q[114,12] * H_neg[5,petal-width]
-   - Q[114,12] * C4280 + Q[114,12] * C4287 ] >= 1
+   + Q[114,11] * C4280 - Q[114,11] * C4287 ] >= 1
  qc584: E[147,5] + [ 0.6111111111111112 Q[147,11] * H_pos[5,sepal-length]
    + 0.4166666666666667 Q[147,11] * H_pos[5,sepal-width]
    + 0.711864406779661 Q[147,11] * H_pos[5,petal-length]
@@ -16101,16 +11455,7 @@ Subject To
    - 0.4166666666666667 Q[147,11] * H_neg[5,sepal-width]
    - 0.711864406779661 Q[147,11] * H_neg[5,petal-length]
    - 0.7916666666666667 Q[147,11] * H_neg[5,petal-width]
-   + Q[147,11] * C4280 - Q[147,11] * C4287
-   - 0.6111111111111112 Q[147,12] * H_pos[5,sepal-length]
-   - 0.4166666666666667 Q[147,12] * H_pos[5,sepal-width]
-   - 0.711864406779661 Q[147,12] * H_pos[5,petal-length]
-   - 0.7916666666666667 Q[147,12] * H_pos[5,petal-width]
-   + 0.6111111111111112 Q[147,12] * H_neg[5,sepal-length]
-   + 0.4166666666666667 Q[147,12] * H_neg[5,sepal-width]
-   + 0.711864406779661 Q[147,12] * H_neg[5,petal-length]
-   + 0.7916666666666667 Q[147,12] * H_neg[5,petal-width]
-   - Q[147,12] * C4280 + Q[147,12] * C4287 ] >= 1
+   + Q[147,11] * C4280 - Q[147,11] * C4287 ] >= 1
  qc585: E[55,5] + [ 0.3888888888888888 Q[55,11] * H_pos[5,sepal-length]
    + 0.3333333333333333 Q[55,11] * H_pos[5,sepal-width]
    + 0.5932203389830508 Q[55,11] * H_pos[5,petal-length]
@@ -16119,15 +11464,7 @@ Subject To
    - 0.3333333333333333 Q[55,11] * H_neg[5,sepal-width]
    - 0.5932203389830508 Q[55,11] * H_neg[5,petal-length]
    - 0.5 Q[55,11] * H_neg[5,petal-width] + Q[55,11] * C4280
-   - Q[55,11] * C4287 - 0.3888888888888888 Q[55,12] * H_pos[5,sepal-length]
-   - 0.3333333333333333 Q[55,12] * H_pos[5,sepal-width]
-   - 0.5932203389830508 Q[55,12] * H_pos[5,petal-length]
-   - 0.5 Q[55,12] * H_pos[5,petal-width]
-   + 0.3888888888888888 Q[55,12] * H_neg[5,sepal-length]
-   + 0.3333333333333333 Q[55,12] * H_neg[5,sepal-width]
-   + 0.5932203389830508 Q[55,12] * H_neg[5,petal-length]
-   + 0.5 Q[55,12] * H_neg[5,petal-width] - Q[55,12] * C4280
-   + Q[55,12] * C4287 ] >= 1
+   - Q[55,11] * C4287 ] >= 1
  qc586: E[112,5] + [ 0.6944444444444444 Q[112,11] * H_pos[5,sepal-length]
    + 0.4166666666666667 Q[112,11] * H_pos[5,sepal-width]
    + 0.7627118644067796 Q[112,11] * H_pos[5,petal-length]
@@ -16136,16 +11473,7 @@ Subject To
    - 0.4166666666666667 Q[112,11] * H_neg[5,sepal-width]
    - 0.7627118644067796 Q[112,11] * H_neg[5,petal-length]
    - 0.8333333333333335 Q[112,11] * H_neg[5,petal-width]
-   + Q[112,11] * C4280 - Q[112,11] * C4287
-   - 0.6944444444444444 Q[112,12] * H_pos[5,sepal-length]
-   - 0.4166666666666667 Q[112,12] * H_pos[5,sepal-width]
-   - 0.7627118644067796 Q[112,12] * H_pos[5,petal-length]
-   - 0.8333333333333335 Q[112,12] * H_pos[5,petal-width]
-   + 0.6944444444444444 Q[112,12] * H_neg[5,sepal-length]
-   + 0.4166666666666667 Q[112,12] * H_neg[5,sepal-width]
-   + 0.7627118644067796 Q[112,12] * H_neg[5,petal-length]
-   + 0.8333333333333335 Q[112,12] * H_neg[5,petal-width]
-   - Q[112,12] * C4280 + Q[112,12] * C4287 ] >= 1
+   + Q[112,11] * C4280 - Q[112,11] * C4287 ] >= 1
  qc587: E[96,5] + [ 0.3888888888888888 Q[96,11] * H_pos[5,sepal-length]
    + 0.375 Q[96,11] * H_pos[5,sepal-width]
    + 0.5423728813559322 Q[96,11] * H_pos[5,petal-length]
@@ -16154,15 +11482,7 @@ Subject To
    - 0.375 Q[96,11] * H_neg[5,sepal-width]
    - 0.5423728813559322 Q[96,11] * H_neg[5,petal-length]
    - 0.5 Q[96,11] * H_neg[5,petal-width] + Q[96,11] * C4280
-   - Q[96,11] * C4287 - 0.3888888888888888 Q[96,12] * H_pos[5,sepal-length]
-   - 0.375 Q[96,12] * H_pos[5,sepal-width]
-   - 0.5423728813559322 Q[96,12] * H_pos[5,petal-length]
-   - 0.5 Q[96,12] * H_pos[5,petal-width]
-   + 0.3888888888888888 Q[96,12] * H_neg[5,sepal-length]
-   + 0.375 Q[96,12] * H_neg[5,sepal-width]
-   + 0.5423728813559322 Q[96,12] * H_neg[5,petal-length]
-   + 0.5 Q[96,12] * H_neg[5,petal-width] - Q[96,12] * C4280
-   + Q[96,12] * C4287 ] >= 1
+   - Q[96,11] * C4287 ] >= 1
  qc588: E[52,5] + [ 0.7222222222222223 Q[52,11] * H_pos[5,sepal-length]
    + 0.4583333333333333 Q[52,11] * H_pos[5,sepal-width]
    + 0.6610169491525424 Q[52,11] * H_pos[5,petal-length]
@@ -16171,15 +11491,7 @@ Subject To
    - 0.4583333333333333 Q[52,11] * H_neg[5,sepal-width]
    - 0.6610169491525424 Q[52,11] * H_neg[5,petal-length]
    - 0.5833333333333334 Q[52,11] * H_neg[5,petal-width] + Q[52,11] * C4280
-   - Q[52,11] * C4287 - 0.7222222222222223 Q[52,12] * H_pos[5,sepal-length]
-   - 0.4583333333333333 Q[52,12] * H_pos[5,sepal-width]
-   - 0.6610169491525424 Q[52,12] * H_pos[5,petal-length]
-   - 0.5833333333333334 Q[52,12] * H_pos[5,petal-width]
-   + 0.7222222222222223 Q[52,12] * H_neg[5,sepal-length]
-   + 0.4583333333333333 Q[52,12] * H_neg[5,sepal-width]
-   + 0.6610169491525424 Q[52,12] * H_neg[5,petal-length]
-   + 0.5833333333333334 Q[52,12] * H_neg[5,petal-width] - Q[52,12] * C4280
-   + Q[52,12] * C4287 ] >= 1
+   - Q[52,11] * C4287 ] >= 1
  qc589: E[50,5] + [ 0.75 Q[50,11] * H_pos[5,sepal-length]
    + 0.5 Q[50,11] * H_pos[5,sepal-width]
    + 0.6271186440677966 Q[50,11] * H_pos[5,petal-length]
@@ -16188,15 +11500,7 @@ Subject To
    - 0.5 Q[50,11] * H_neg[5,sepal-width]
    - 0.6271186440677966 Q[50,11] * H_neg[5,petal-length]
    - 0.5416666666666667 Q[50,11] * H_neg[5,petal-width] + Q[50,11] * C4280
-   - Q[50,11] * C4287 - 0.75 Q[50,12] * H_pos[5,sepal-length]
-   - 0.5 Q[50,12] * H_pos[5,sepal-width]
-   - 0.6271186440677966 Q[50,12] * H_pos[5,petal-length]
-   - 0.5416666666666667 Q[50,12] * H_pos[5,petal-width]
-   + 0.75 Q[50,12] * H_neg[5,sepal-length]
-   + 0.5 Q[50,12] * H_neg[5,sepal-width]
-   + 0.6271186440677966 Q[50,12] * H_neg[5,petal-length]
-   + 0.5416666666666667 Q[50,12] * H_neg[5,petal-width] - Q[50,12] * C4280
-   + Q[50,12] * C4287 ] >= 1
+   - Q[50,11] * C4287 ] >= 1
  qc590: E[69,5] + [ 0.3611111111111109 Q[69,11] * H_pos[5,sepal-length]
    + 0.2083333333333333 Q[69,11] * H_pos[5,sepal-width]
    + 0.4915254237288135 Q[69,11] * H_pos[5,petal-length]
@@ -16205,15 +11509,7 @@ Subject To
    - 0.2083333333333333 Q[69,11] * H_neg[5,sepal-width]
    - 0.4915254237288135 Q[69,11] * H_neg[5,petal-length]
    - 0.4166666666666667 Q[69,11] * H_neg[5,petal-width] + Q[69,11] * C4280
-   - Q[69,11] * C4287 - 0.3611111111111109 Q[69,12] * H_pos[5,sepal-length]
-   - 0.2083333333333333 Q[69,12] * H_pos[5,sepal-width]
-   - 0.4915254237288135 Q[69,12] * H_pos[5,petal-length]
-   - 0.4166666666666667 Q[69,12] * H_pos[5,petal-width]
-   + 0.3611111111111109 Q[69,12] * H_neg[5,sepal-length]
-   + 0.2083333333333333 Q[69,12] * H_neg[5,sepal-width]
-   + 0.4915254237288135 Q[69,12] * H_neg[5,petal-length]
-   + 0.4166666666666667 Q[69,12] * H_neg[5,petal-width] - Q[69,12] * C4280
-   + Q[69,12] * C4287 ] >= 1
+   - Q[69,11] * C4287 ] >= 1
  qc591: E[71,5] + [ 0.5 Q[71,11] * H_pos[5,sepal-length]
    + 0.3333333333333333 Q[71,11] * H_pos[5,sepal-width]
    + 0.5084745762711864 Q[71,11] * H_pos[5,petal-length]
@@ -16222,15 +11518,7 @@ Subject To
    - 0.3333333333333333 Q[71,11] * H_neg[5,sepal-width]
    - 0.5084745762711864 Q[71,11] * H_neg[5,petal-length]
    - 0.5 Q[71,11] * H_neg[5,petal-width] + Q[71,11] * C4280
-   - Q[71,11] * C4287 - 0.5 Q[71,12] * H_pos[5,sepal-length]
-   - 0.3333333333333333 Q[71,12] * H_pos[5,sepal-width]
-   - 0.5084745762711864 Q[71,12] * H_pos[5,petal-length]
-   - 0.5 Q[71,12] * H_pos[5,petal-width]
-   + 0.5 Q[71,12] * H_neg[5,sepal-length]
-   + 0.3333333333333333 Q[71,12] * H_neg[5,sepal-width]
-   + 0.5084745762711864 Q[71,12] * H_neg[5,petal-length]
-   + 0.5 Q[71,12] * H_neg[5,petal-width] - Q[71,12] * C4280
-   + Q[71,12] * C4287 ] >= 1
+   - Q[71,11] * C4287 ] >= 1
  qc592: E[92,5] + [ 0.4166666666666665 Q[92,11] * H_pos[5,sepal-length]
    + 0.25 Q[92,11] * H_pos[5,sepal-width]
    + 0.5084745762711864 Q[92,11] * H_pos[5,petal-length]
@@ -16239,15 +11527,7 @@ Subject To
    - 0.25 Q[92,11] * H_neg[5,sepal-width]
    - 0.5084745762711864 Q[92,11] * H_neg[5,petal-length]
    - 0.4583333333333333 Q[92,11] * H_neg[5,petal-width] + Q[92,11] * C4280
-   - Q[92,11] * C4287 - 0.4166666666666665 Q[92,12] * H_pos[5,sepal-length]
-   - 0.25 Q[92,12] * H_pos[5,sepal-width]
-   - 0.5084745762711864 Q[92,12] * H_pos[5,petal-length]
-   - 0.4583333333333333 Q[92,12] * H_pos[5,petal-width]
-   + 0.4166666666666665 Q[92,12] * H_neg[5,sepal-length]
-   + 0.25 Q[92,12] * H_neg[5,sepal-width]
-   + 0.5084745762711864 Q[92,12] * H_neg[5,petal-length]
-   + 0.4583333333333333 Q[92,12] * H_neg[5,petal-width] - Q[92,12] * C4280
-   + Q[92,12] * C4287 ] >= 1
+   - Q[92,11] * C4287 ] >= 1
  qc593: E[61,5] + [ 0.4444444444444446 Q[61,11] * H_pos[5,sepal-length]
    + 0.4166666666666667 Q[61,11] * H_pos[5,sepal-width]
    + 0.5423728813559322 Q[61,11] * H_pos[5,petal-length]
@@ -16256,15 +11536,7 @@ Subject To
    - 0.4166666666666667 Q[61,11] * H_neg[5,sepal-width]
    - 0.5423728813559322 Q[61,11] * H_neg[5,petal-length]
    - 0.5833333333333334 Q[61,11] * H_neg[5,petal-width] + Q[61,11] * C4280
-   - Q[61,11] * C4287 - 0.4444444444444446 Q[61,12] * H_pos[5,sepal-length]
-   - 0.4166666666666667 Q[61,12] * H_pos[5,sepal-width]
-   - 0.5423728813559322 Q[61,12] * H_pos[5,petal-length]
-   - 0.5833333333333334 Q[61,12] * H_pos[5,petal-width]
-   + 0.4444444444444446 Q[61,12] * H_neg[5,sepal-length]
-   + 0.4166666666666667 Q[61,12] * H_neg[5,sepal-width]
-   + 0.5423728813559322 Q[61,12] * H_neg[5,petal-length]
-   + 0.5833333333333334 Q[61,12] * H_neg[5,petal-width] - Q[61,12] * C4280
-   + Q[61,12] * C4287 ] >= 1
+   - Q[61,11] * C4287 ] >= 1
  qc594: E[33,5] + [ 0.3333333333333333 Q[33,11] * H_pos[5,sepal-length]
    + 0.9166666666666667 Q[33,11] * H_pos[5,sepal-width]
    + 0.0677966101694915 Q[33,11] * H_pos[5,petal-length]
@@ -16273,15 +11545,7 @@ Subject To
    - 0.9166666666666667 Q[33,11] * H_neg[5,sepal-width]
    - 0.0677966101694915 Q[33,11] * H_neg[5,petal-length]
    - 0.0416666666666667 Q[33,11] * H_neg[5,petal-width] + Q[33,11] * C4280
-   - Q[33,11] * C4287 - 0.3333333333333333 Q[33,12] * H_pos[5,sepal-length]
-   - 0.9166666666666667 Q[33,12] * H_pos[5,sepal-width]
-   - 0.0677966101694915 Q[33,12] * H_pos[5,petal-length]
-   - 0.0416666666666667 Q[33,12] * H_pos[5,petal-width]
-   + 0.3333333333333333 Q[33,12] * H_neg[5,sepal-length]
-   + 0.9166666666666667 Q[33,12] * H_neg[5,sepal-width]
-   + 0.0677966101694915 Q[33,12] * H_neg[5,petal-length]
-   + 0.0416666666666667 Q[33,12] * H_neg[5,petal-width] - Q[33,12] * C4280
-   + Q[33,12] * C4287 ] >= 1
+   - Q[33,11] * C4287 ] >= 1
  qc595: E[15,5] + [ 0.3888888888888888 Q[15,11] * H_pos[5,sepal-length]
    + Q[15,11] * H_pos[5,sepal-width]
    + 0.0847457627118644 Q[15,11] * H_pos[5,petal-length]
@@ -16290,15 +11554,7 @@ Subject To
    - Q[15,11] * H_neg[5,sepal-width]
    - 0.0847457627118644 Q[15,11] * H_neg[5,petal-length]
    - 0.125 Q[15,11] * H_neg[5,petal-width] + Q[15,11] * C4280
-   - Q[15,11] * C4287 - 0.3888888888888888 Q[15,12] * H_pos[5,sepal-length]
-   - Q[15,12] * H_pos[5,sepal-width]
-   - 0.0847457627118644 Q[15,12] * H_pos[5,petal-length]
-   - 0.125 Q[15,12] * H_pos[5,petal-width]
-   + 0.3888888888888888 Q[15,12] * H_neg[5,sepal-length]
-   + Q[15,12] * H_neg[5,sepal-width]
-   + 0.0847457627118644 Q[15,12] * H_neg[5,petal-length]
-   + 0.125 Q[15,12] * H_neg[5,petal-width] - Q[15,12] * C4280
-   + Q[15,12] * C4287 ] >= 1
+   - Q[15,11] * C4287 ] >= 1
  qc596: E[5,5] + [ 0.3055555555555556 Q[5,11] * H_pos[5,sepal-length]
    + 0.7916666666666665 Q[5,11] * H_pos[5,sepal-width]
    + 0.1186440677966101 Q[5,11] * H_pos[5,petal-length]
@@ -16307,15 +11563,7 @@ Subject To
    - 0.7916666666666665 Q[5,11] * H_neg[5,sepal-width]
    - 0.1186440677966101 Q[5,11] * H_neg[5,petal-length]
    - 0.125 Q[5,11] * H_neg[5,petal-width] + Q[5,11] * C4280
-   - Q[5,11] * C4287 - 0.3055555555555556 Q[5,12] * H_pos[5,sepal-length]
-   - 0.7916666666666665 Q[5,12] * H_pos[5,sepal-width]
-   - 0.1186440677966101 Q[5,12] * H_pos[5,petal-length]
-   - 0.125 Q[5,12] * H_pos[5,petal-width]
-   + 0.3055555555555556 Q[5,12] * H_neg[5,sepal-length]
-   + 0.7916666666666665 Q[5,12] * H_neg[5,sepal-width]
-   + 0.1186440677966101 Q[5,12] * H_neg[5,petal-length]
-   + 0.125 Q[5,12] * H_neg[5,petal-width] - Q[5,12] * C4280
-   + Q[5,12] * C4287 ] >= 1
+   - Q[5,11] * C4287 ] >= 1
  qc597: E[126,5] + [ 0.5277777777777779 Q[126,11] * H_pos[5,sepal-length]
    + 0.3333333333333333 Q[126,11] * H_pos[5,sepal-width]
    + 0.6440677966101694 Q[126,11] * H_pos[5,petal-length]
@@ -16324,16 +11572,7 @@ Subject To
    - 0.3333333333333333 Q[126,11] * H_neg[5,sepal-width]
    - 0.6440677966101694 Q[126,11] * H_neg[5,petal-length]
    - 0.7083333333333334 Q[126,11] * H_neg[5,petal-width]
-   + Q[126,11] * C4280 - Q[126,11] * C4287
-   - 0.5277777777777779 Q[126,12] * H_pos[5,sepal-length]
-   - 0.3333333333333333 Q[126,12] * H_pos[5,sepal-width]
-   - 0.6440677966101694 Q[126,12] * H_pos[5,petal-length]
-   - 0.7083333333333334 Q[126,12] * H_pos[5,petal-width]
-   + 0.5277777777777779 Q[126,12] * H_neg[5,sepal-length]
-   + 0.3333333333333333 Q[126,12] * H_neg[5,sepal-width]
-   + 0.6440677966101694 Q[126,12] * H_neg[5,petal-length]
-   + 0.7083333333333334 Q[126,12] * H_neg[5,petal-width]
-   - Q[126,12] * C4280 + Q[126,12] * C4287 ] >= 1
+   + Q[126,11] * C4280 - Q[126,11] * C4287 ] >= 1
  qc598: E[143,5] + [ 0.6944444444444444 Q[143,11] * H_pos[5,sepal-length]
    + 0.5 Q[143,11] * H_pos[5,sepal-width]
    + 0.8305084745762712 Q[143,11] * H_pos[5,petal-length]
@@ -16342,16 +11581,7 @@ Subject To
    - 0.5 Q[143,11] * H_neg[5,sepal-width]
    - 0.8305084745762712 Q[143,11] * H_neg[5,petal-length]
    - 0.9166666666666666 Q[143,11] * H_neg[5,petal-width]
-   + Q[143,11] * C4280 - Q[143,11] * C4287
-   - 0.6944444444444444 Q[143,12] * H_pos[5,sepal-length]
-   - 0.5 Q[143,12] * H_pos[5,sepal-width]
-   - 0.8305084745762712 Q[143,12] * H_pos[5,petal-length]
-   - 0.9166666666666666 Q[143,12] * H_pos[5,petal-width]
-   + 0.6944444444444444 Q[143,12] * H_neg[5,sepal-length]
-   + 0.5 Q[143,12] * H_neg[5,sepal-width]
-   + 0.8305084745762712 Q[143,12] * H_neg[5,petal-length]
-   + 0.9166666666666666 Q[143,12] * H_neg[5,petal-width]
-   - Q[143,12] * C4280 + Q[143,12] * C4287 ] >= 1
+   + Q[143,11] * C4280 - Q[143,11] * C4287 ] >= 1
  qc599: E[80,5] + [ 0.3333333333333333 Q[80,11] * H_pos[5,sepal-length]
    + 0.1666666666666666 Q[80,11] * H_pos[5,sepal-width]
    + 0.4745762711864406 Q[80,11] * H_pos[5,petal-length]
@@ -16360,15 +11590,7 @@ Subject To
    - 0.1666666666666666 Q[80,11] * H_neg[5,sepal-width]
    - 0.4745762711864406 Q[80,11] * H_neg[5,petal-length]
    - 0.4166666666666667 Q[80,11] * H_neg[5,petal-width] + Q[80,11] * C4280
-   - Q[80,11] * C4287 - 0.3333333333333333 Q[80,12] * H_pos[5,sepal-length]
-   - 0.1666666666666666 Q[80,12] * H_pos[5,sepal-width]
-   - 0.4745762711864406 Q[80,12] * H_pos[5,petal-length]
-   - 0.4166666666666667 Q[80,12] * H_pos[5,petal-width]
-   + 0.3333333333333333 Q[80,12] * H_neg[5,sepal-length]
-   + 0.1666666666666666 Q[80,12] * H_neg[5,sepal-width]
-   + 0.4745762711864406 Q[80,12] * H_neg[5,petal-length]
-   + 0.4166666666666667 Q[80,12] * H_neg[5,petal-width] - Q[80,12] * C4280
-   + Q[80,12] * C4287 ] >= 1
+   - Q[80,11] * C4287 ] >= 1
  qc600: E[73,5] + [ 0.5 Q[73,11] * H_pos[5,sepal-length]
    + 0.3333333333333333 Q[73,11] * H_pos[5,sepal-width]
    + 0.6271186440677966 Q[73,11] * H_pos[5,petal-length]
@@ -16377,15 +11599,7 @@ Subject To
    - 0.3333333333333333 Q[73,11] * H_neg[5,sepal-width]
    - 0.6271186440677966 Q[73,11] * H_neg[5,petal-length]
    - 0.4583333333333333 Q[73,11] * H_neg[5,petal-width] + Q[73,11] * C4280
-   - Q[73,11] * C4287 - 0.5 Q[73,12] * H_pos[5,sepal-length]
-   - 0.3333333333333333 Q[73,12] * H_pos[5,sepal-width]
-   - 0.6271186440677966 Q[73,12] * H_pos[5,petal-length]
-   - 0.4583333333333333 Q[73,12] * H_pos[5,petal-width]
-   + 0.5 Q[73,12] * H_neg[5,sepal-length]
-   + 0.3333333333333333 Q[73,12] * H_neg[5,sepal-width]
-   + 0.6271186440677966 Q[73,12] * H_neg[5,petal-length]
-   + 0.4583333333333333 Q[73,12] * H_neg[5,petal-width] - Q[73,12] * C4280
-   + Q[73,12] * C4287 ] >= 1
+   - Q[73,11] * C4287 ] >= 1
  qc601: E[54,5] + [ 0.6111111111111112 Q[54,11] * H_pos[5,sepal-length]
    + 0.3333333333333333 Q[54,11] * H_pos[5,sepal-width]
    + 0.6101694915254237 Q[54,11] * H_pos[5,petal-length]
@@ -16394,15 +11608,7 @@ Subject To
    - 0.3333333333333333 Q[54,11] * H_neg[5,sepal-width]
    - 0.6101694915254237 Q[54,11] * H_neg[5,petal-length]
    - 0.5833333333333334 Q[54,11] * H_neg[5,petal-width] + Q[54,11] * C4280
-   - Q[54,11] * C4287 - 0.6111111111111112 Q[54,12] * H_pos[5,sepal-length]
-   - 0.3333333333333333 Q[54,12] * H_pos[5,sepal-width]
-   - 0.6101694915254237 Q[54,12] * H_pos[5,petal-length]
-   - 0.5833333333333334 Q[54,12] * H_pos[5,petal-width]
-   + 0.6111111111111112 Q[54,12] * H_neg[5,sepal-length]
-   + 0.3333333333333333 Q[54,12] * H_neg[5,sepal-width]
-   + 0.6101694915254237 Q[54,12] * H_neg[5,petal-length]
-   + 0.5833333333333334 Q[54,12] * H_neg[5,petal-width] - Q[54,12] * C4280
-   + Q[54,12] * C4287 ] >= 1
+   - Q[54,11] * C4287 ] >= 1
  qc602: E[1,5] + [ 0.1666666666666667 Q[1,11] * H_pos[5,sepal-length]
    + 0.4166666666666667 Q[1,11] * H_pos[5,sepal-width]
    + 0.0677966101694915 Q[1,11] * H_pos[5,petal-length]
@@ -16411,15 +11617,7 @@ Subject To
    - 0.4166666666666667 Q[1,11] * H_neg[5,sepal-width]
    - 0.0677966101694915 Q[1,11] * H_neg[5,petal-length]
    - 0.0416666666666667 Q[1,11] * H_neg[5,petal-width] + Q[1,11] * C4280
-   - Q[1,11] * C4287 - 0.1666666666666667 Q[1,12] * H_pos[5,sepal-length]
-   - 0.4166666666666667 Q[1,12] * H_pos[5,sepal-width]
-   - 0.0677966101694915 Q[1,12] * H_pos[5,petal-length]
-   - 0.0416666666666667 Q[1,12] * H_pos[5,petal-width]
-   + 0.1666666666666667 Q[1,12] * H_neg[5,sepal-length]
-   + 0.4166666666666667 Q[1,12] * H_neg[5,sepal-width]
-   + 0.0677966101694915 Q[1,12] * H_neg[5,petal-length]
-   + 0.0416666666666667 Q[1,12] * H_neg[5,petal-width] - Q[1,12] * C4280
-   + Q[1,12] * C4287 ] >= 1
+   - Q[1,11] * C4287 ] >= 1
  qc603: E[129,5] + [ 0.8055555555555556 Q[129,11] * H_pos[5,sepal-length]
    + 0.4166666666666667 Q[129,11] * H_pos[5,sepal-width]
    + 0.8135593220338982 Q[129,11] * H_pos[5,petal-length]
@@ -16428,16 +11626,7 @@ Subject To
    - 0.4166666666666667 Q[129,11] * H_neg[5,sepal-width]
    - 0.8135593220338982 Q[129,11] * H_neg[5,petal-length]
    - 0.625 Q[129,11] * H_neg[5,petal-width] + Q[129,11] * C4280
-   - Q[129,11] * C4287
-   - 0.8055555555555556 Q[129,12] * H_pos[5,sepal-length]
-   - 0.4166666666666667 Q[129,12] * H_pos[5,sepal-width]
-   - 0.8135593220338982 Q[129,12] * H_pos[5,petal-length]
-   - 0.625 Q[129,12] * H_pos[5,petal-width]
-   + 0.8055555555555556 Q[129,12] * H_neg[5,sepal-length]
-   + 0.4166666666666667 Q[129,12] * H_neg[5,sepal-width]
-   + 0.8135593220338982 Q[129,12] * H_neg[5,petal-length]
-   + 0.625 Q[129,12] * H_neg[5,petal-width] - Q[129,12] * C4280
-   + Q[129,12] * C4287 ] >= 1
+   - Q[129,11] * C4287 ] >= 1
  qc604: E[99,5] + [ 0.3888888888888888 Q[99,11] * H_pos[5,sepal-length]
    + 0.3333333333333333 Q[99,11] * H_pos[5,sepal-width]
    + 0.5254237288135593 Q[99,11] * H_pos[5,petal-length]
@@ -16446,15 +11635,7 @@ Subject To
    - 0.3333333333333333 Q[99,11] * H_neg[5,sepal-width]
    - 0.5254237288135593 Q[99,11] * H_neg[5,petal-length]
    - 0.5 Q[99,11] * H_neg[5,petal-width] + Q[99,11] * C4280
-   - Q[99,11] * C4287 - 0.3888888888888888 Q[99,12] * H_pos[5,sepal-length]
-   - 0.3333333333333333 Q[99,12] * H_pos[5,sepal-width]
-   - 0.5254237288135593 Q[99,12] * H_pos[5,petal-length]
-   - 0.5 Q[99,12] * H_pos[5,petal-width]
-   + 0.3888888888888888 Q[99,12] * H_neg[5,sepal-length]
-   + 0.3333333333333333 Q[99,12] * H_neg[5,sepal-width]
-   + 0.5254237288135593 Q[99,12] * H_neg[5,petal-length]
-   + 0.5 Q[99,12] * H_neg[5,petal-width] - Q[99,12] * C4280
-   + Q[99,12] * C4287 ] >= 1
+   - Q[99,11] * C4287 ] >= 1
  qc605: E[105,5] + [ 0.9166666666666665 Q[105,11] * H_pos[5,sepal-length]
    + 0.4166666666666667 Q[105,11] * H_pos[5,sepal-width]
    + 0.9491525423728813 Q[105,11] * H_pos[5,petal-length]
@@ -16463,16 +11644,7 @@ Subject To
    - 0.4166666666666667 Q[105,11] * H_neg[5,sepal-width]
    - 0.9491525423728813 Q[105,11] * H_neg[5,petal-length]
    - 0.8333333333333335 Q[105,11] * H_neg[5,petal-width]
-   + Q[105,11] * C4280 - Q[105,11] * C4287
-   - 0.9166666666666665 Q[105,12] * H_pos[5,sepal-length]
-   - 0.4166666666666667 Q[105,12] * H_pos[5,sepal-width]
-   - 0.9491525423728813 Q[105,12] * H_pos[5,petal-length]
-   - 0.8333333333333335 Q[105,12] * H_pos[5,petal-width]
-   + 0.9166666666666665 Q[105,12] * H_neg[5,sepal-length]
-   + 0.4166666666666667 Q[105,12] * H_neg[5,sepal-width]
-   + 0.9491525423728813 Q[105,12] * H_neg[5,petal-length]
-   + 0.8333333333333335 Q[105,12] * H_neg[5,petal-width]
-   - Q[105,12] * C4280 + Q[105,12] * C4287 ] >= 1
+   + Q[105,11] * C4280 - Q[105,11] * C4287 ] >= 1
  qc606: E[144,5] + [ 0.6666666666666667 Q[144,11] * H_pos[5,sepal-length]
    + 0.5416666666666665 Q[144,11] * H_pos[5,sepal-width]
    + 0.7966101694915254 Q[144,11] * H_pos[5,petal-length]
@@ -16481,16 +11653,7 @@ Subject To
    - 0.5416666666666665 Q[144,11] * H_neg[5,sepal-width]
    - 0.7966101694915254 Q[144,11] * H_neg[5,petal-length]
    - Q[144,11] * H_neg[5,petal-width] + Q[144,11] * C4280
-   - Q[144,11] * C4287
-   - 0.6666666666666667 Q[144,12] * H_pos[5,sepal-length]
-   - 0.5416666666666665 Q[144,12] * H_pos[5,sepal-width]
-   - 0.7966101694915254 Q[144,12] * H_pos[5,petal-length]
-   - Q[144,12] * H_pos[5,petal-width]
-   + 0.6666666666666667 Q[144,12] * H_neg[5,sepal-length]
-   + 0.5416666666666665 Q[144,12] * H_neg[5,sepal-width]
-   + 0.7966101694915254 Q[144,12] * H_neg[5,petal-length]
-   + Q[144,12] * H_neg[5,petal-width] - Q[144,12] * C4280
-   + Q[144,12] * C4287 ] >= 1
+   - Q[144,11] * C4287 ] >= 1
  qc607: E[7,5] + [ 0.1944444444444444 Q[7,11] * H_pos[5,sepal-length]
    + 0.5833333333333333 Q[7,11] * H_pos[5,sepal-width]
    + 0.0847457627118644 Q[7,11] * H_pos[5,petal-length]
@@ -16499,15 +11662,7 @@ Subject To
    - 0.5833333333333333 Q[7,11] * H_neg[5,sepal-width]
    - 0.0847457627118644 Q[7,11] * H_neg[5,petal-length]
    - 0.0416666666666667 Q[7,11] * H_neg[5,petal-width] + Q[7,11] * C4280
-   - Q[7,11] * C4287 - 0.1944444444444444 Q[7,12] * H_pos[5,sepal-length]
-   - 0.5833333333333333 Q[7,12] * H_pos[5,sepal-width]
-   - 0.0847457627118644 Q[7,12] * H_pos[5,petal-length]
-   - 0.0416666666666667 Q[7,12] * H_pos[5,petal-width]
-   + 0.1944444444444444 Q[7,12] * H_neg[5,sepal-length]
-   + 0.5833333333333333 Q[7,12] * H_neg[5,sepal-width]
-   + 0.0847457627118644 Q[7,12] * H_neg[5,petal-length]
-   + 0.0416666666666667 Q[7,12] * H_neg[5,petal-width] - Q[7,12] * C4280
-   + Q[7,12] * C4287 ] >= 1
+   - Q[7,11] * C4287 ] >= 1
  qc608: E[107,5] + [ 0.833333333333333 Q[107,11] * H_pos[5,sepal-length]
    + 0.375 Q[107,11] * H_pos[5,sepal-width]
    + 0.8983050847457625 Q[107,11] * H_pos[5,petal-length]
@@ -16516,16 +11671,7 @@ Subject To
    - 0.375 Q[107,11] * H_neg[5,sepal-width]
    - 0.8983050847457625 Q[107,11] * H_neg[5,petal-length]
    - 0.7083333333333334 Q[107,11] * H_neg[5,petal-width]
-   + Q[107,11] * C4280 - Q[107,11] * C4287
-   - 0.833333333333333 Q[107,12] * H_pos[5,sepal-length]
-   - 0.375 Q[107,12] * H_pos[5,sepal-width]
-   - 0.8983050847457625 Q[107,12] * H_pos[5,petal-length]
-   - 0.7083333333333334 Q[107,12] * H_pos[5,petal-width]
-   + 0.833333333333333 Q[107,12] * H_neg[5,sepal-length]
-   + 0.375 Q[107,12] * H_neg[5,sepal-width]
-   + 0.8983050847457625 Q[107,12] * H_neg[5,petal-length]
-   + 0.7083333333333334 Q[107,12] * H_neg[5,petal-width]
-   - Q[107,12] * C4280 + Q[107,12] * C4287 ] >= 1
+   + Q[107,11] * C4280 - Q[107,11] * C4287 ] >= 1
  qc609: E[123,5] + [ 0.5555555555555556 Q[123,11] * H_pos[5,sepal-length]
    + 0.2916666666666667 Q[123,11] * H_pos[5,sepal-width]
    + 0.6610169491525424 Q[123,11] * H_pos[5,petal-length]
@@ -16534,16 +11680,7 @@ Subject To
    - 0.2916666666666667 Q[123,11] * H_neg[5,sepal-width]
    - 0.6610169491525424 Q[123,11] * H_neg[5,petal-length]
    - 0.7083333333333334 Q[123,11] * H_neg[5,petal-width]
-   + Q[123,11] * C4280 - Q[123,11] * C4287
-   - 0.5555555555555556 Q[123,12] * H_pos[5,sepal-length]
-   - 0.2916666666666667 Q[123,12] * H_pos[5,sepal-width]
-   - 0.6610169491525424 Q[123,12] * H_pos[5,petal-length]
-   - 0.7083333333333334 Q[123,12] * H_pos[5,petal-width]
-   + 0.5555555555555556 Q[123,12] * H_neg[5,sepal-length]
-   + 0.2916666666666667 Q[123,12] * H_neg[5,sepal-width]
-   + 0.6610169491525424 Q[123,12] * H_neg[5,petal-length]
-   + 0.7083333333333334 Q[123,12] * H_neg[5,petal-width]
-   - Q[123,12] * C4280 + Q[123,12] * C4287 ] >= 1
+   + Q[123,11] * C4280 - Q[123,11] * C4287 ] >= 1
  qc610: E[118,5] + [ 0.9444444444444442 Q[118,11] * H_pos[5,sepal-length]
    + 0.25 Q[118,11] * H_pos[5,sepal-width]
    + Q[118,11] * H_pos[5,petal-length]
@@ -16552,16 +11689,7 @@ Subject To
    - 0.25 Q[118,11] * H_neg[5,sepal-width]
    - Q[118,11] * H_neg[5,petal-length]
    - 0.9166666666666666 Q[118,11] * H_neg[5,petal-width]
-   + Q[118,11] * C4280 - Q[118,11] * C4287
-   - 0.9444444444444442 Q[118,12] * H_pos[5,sepal-length]
-   - 0.25 Q[118,12] * H_pos[5,sepal-width]
-   - Q[118,12] * H_pos[5,petal-length]
-   - 0.9166666666666666 Q[118,12] * H_pos[5,petal-width]
-   + 0.9444444444444442 Q[118,12] * H_neg[5,sepal-length]
-   + 0.25 Q[118,12] * H_neg[5,sepal-width]
-   + Q[118,12] * H_neg[5,petal-length]
-   + 0.9166666666666666 Q[118,12] * H_neg[5,petal-width]
-   - Q[118,12] * C4280 + Q[118,12] * C4287 ] >= 1
+   + Q[118,11] * C4280 - Q[118,11] * C4287 ] >= 1
  qc611: E[66,5] + [ 0.3611111111111109 Q[66,11] * H_pos[5,sepal-length]
    + 0.4166666666666667 Q[66,11] * H_pos[5,sepal-width]
    + 0.5932203389830508 Q[66,11] * H_pos[5,petal-length]
@@ -16570,15 +11698,7 @@ Subject To
    - 0.4166666666666667 Q[66,11] * H_neg[5,sepal-width]
    - 0.5932203389830508 Q[66,11] * H_neg[5,petal-length]
    - 0.5833333333333334 Q[66,11] * H_neg[5,petal-width] + Q[66,11] * C4280
-   - Q[66,11] * C4287 - 0.3611111111111109 Q[66,12] * H_pos[5,sepal-length]
-   - 0.4166666666666667 Q[66,12] * H_pos[5,sepal-width]
-   - 0.5932203389830508 Q[66,12] * H_pos[5,petal-length]
-   - 0.5833333333333334 Q[66,12] * H_pos[5,petal-width]
-   + 0.3611111111111109 Q[66,12] * H_neg[5,sepal-length]
-   + 0.4166666666666667 Q[66,12] * H_neg[5,sepal-width]
-   + 0.5932203389830508 Q[66,12] * H_neg[5,petal-length]
-   + 0.5833333333333334 Q[66,12] * H_neg[5,petal-width] - Q[66,12] * C4280
-   + Q[66,12] * C4287 ] >= 1
+   - Q[66,11] * C4287 ] >= 1
  qc612: E[124,5] + [ 0.6666666666666667 Q[124,11] * H_pos[5,sepal-length]
    + 0.5416666666666665 Q[124,11] * H_pos[5,sepal-width]
    + 0.7966101694915254 Q[124,11] * H_pos[5,petal-length]
@@ -16587,16 +11707,7 @@ Subject To
    - 0.5416666666666665 Q[124,11] * H_neg[5,sepal-width]
    - 0.7966101694915254 Q[124,11] * H_neg[5,petal-length]
    - 0.8333333333333335 Q[124,11] * H_neg[5,petal-width]
-   + Q[124,11] * C4280 - Q[124,11] * C4287
-   - 0.6666666666666667 Q[124,12] * H_pos[5,sepal-length]
-   - 0.5416666666666665 Q[124,12] * H_pos[5,sepal-width]
-   - 0.7966101694915254 Q[124,12] * H_pos[5,petal-length]
-   - 0.8333333333333335 Q[124,12] * H_pos[5,petal-width]
-   + 0.6666666666666667 Q[124,12] * H_neg[5,sepal-length]
-   + 0.5416666666666665 Q[124,12] * H_neg[5,sepal-width]
-   + 0.7966101694915254 Q[124,12] * H_neg[5,petal-length]
-   + 0.8333333333333335 Q[124,12] * H_neg[5,petal-width]
-   - Q[124,12] * C4280 + Q[124,12] * C4287 ] >= 1
+   + Q[124,11] * C4280 - Q[124,11] * C4287 ] >= 1
  qc613: E[142,5] + [ 0.4166666666666665 Q[142,11] * H_pos[5,sepal-length]
    + 0.2916666666666667 Q[142,11] * H_pos[5,sepal-width]
    + 0.6949152542372881 Q[142,11] * H_pos[5,petal-length]
@@ -16605,16 +11716,7 @@ Subject To
    - 0.2916666666666667 Q[142,11] * H_neg[5,sepal-width]
    - 0.6949152542372881 Q[142,11] * H_neg[5,petal-length]
    - 0.75 Q[142,11] * H_neg[5,petal-width] + Q[142,11] * C4280
-   - Q[142,11] * C4287
-   - 0.4166666666666665 Q[142,12] * H_pos[5,sepal-length]
-   - 0.2916666666666667 Q[142,12] * H_pos[5,sepal-width]
-   - 0.6949152542372881 Q[142,12] * H_pos[5,petal-length]
-   - 0.75 Q[142,12] * H_pos[5,petal-width]
-   + 0.4166666666666665 Q[142,12] * H_neg[5,sepal-length]
-   + 0.2916666666666667 Q[142,12] * H_neg[5,sepal-width]
-   + 0.6949152542372881 Q[142,12] * H_neg[5,petal-length]
-   + 0.75 Q[142,12] * H_neg[5,petal-width] - Q[142,12] * C4280
-   + Q[142,12] * C4287 ] >= 1
+   - Q[142,11] * C4287 ] >= 1
  qc614: E[101,5] + [ 0.4166666666666665 Q[101,11] * H_pos[5,sepal-length]
    + 0.2916666666666667 Q[101,11] * H_pos[5,sepal-width]
    + 0.6949152542372881 Q[101,11] * H_pos[5,petal-length]
@@ -16623,16 +11725,7 @@ Subject To
    - 0.2916666666666667 Q[101,11] * H_neg[5,sepal-width]
    - 0.6949152542372881 Q[101,11] * H_neg[5,petal-length]
    - 0.75 Q[101,11] * H_neg[5,petal-width] + Q[101,11] * C4280
-   - Q[101,11] * C4287
-   - 0.4166666666666665 Q[101,12] * H_pos[5,sepal-length]
-   - 0.2916666666666667 Q[101,12] * H_pos[5,sepal-width]
-   - 0.6949152542372881 Q[101,12] * H_pos[5,petal-length]
-   - 0.75 Q[101,12] * H_pos[5,petal-width]
-   + 0.4166666666666665 Q[101,12] * H_neg[5,sepal-length]
-   + 0.2916666666666667 Q[101,12] * H_neg[5,sepal-width]
-   + 0.6949152542372881 Q[101,12] * H_neg[5,petal-length]
-   + 0.75 Q[101,12] * H_neg[5,petal-width] - Q[101,12] * C4280
-   + Q[101,12] * C4287 ] >= 1
+   - Q[101,11] * C4287 ] >= 1
  qc615: E[63,5] + [ 0.5 Q[63,11] * H_pos[5,sepal-length]
    + 0.375 Q[63,11] * H_pos[5,sepal-width]
    + 0.6271186440677966 Q[63,11] * H_pos[5,petal-length]
@@ -16641,15 +11734,7 @@ Subject To
    - 0.375 Q[63,11] * H_neg[5,sepal-width]
    - 0.6271186440677966 Q[63,11] * H_neg[5,petal-length]
    - 0.5416666666666667 Q[63,11] * H_neg[5,petal-width] + Q[63,11] * C4280
-   - Q[63,11] * C4287 - 0.5 Q[63,12] * H_pos[5,sepal-length]
-   - 0.375 Q[63,12] * H_pos[5,sepal-width]
-   - 0.6271186440677966 Q[63,12] * H_pos[5,petal-length]
-   - 0.5416666666666667 Q[63,12] * H_pos[5,petal-width]
-   + 0.5 Q[63,12] * H_neg[5,sepal-length]
-   + 0.375 Q[63,12] * H_neg[5,sepal-width]
-   + 0.6271186440677966 Q[63,12] * H_neg[5,petal-length]
-   + 0.5416666666666667 Q[63,12] * H_neg[5,petal-width] - Q[63,12] * C4280
-   + Q[63,12] * C4287 ] >= 1
+   - Q[63,11] * C4287 ] >= 1
  qc616: E[77,5] + [ 0.6666666666666667 Q[77,11] * H_pos[5,sepal-length]
    + 0.4166666666666667 Q[77,11] * H_pos[5,sepal-width]
    + 0.6779661016949152 Q[77,11] * H_pos[5,petal-length]
@@ -16658,15 +11743,7 @@ Subject To
    - 0.4166666666666667 Q[77,11] * H_neg[5,sepal-width]
    - 0.6779661016949152 Q[77,11] * H_neg[5,petal-length]
    - 0.6666666666666667 Q[77,11] * H_neg[5,petal-width] + Q[77,11] * C4280
-   - Q[77,11] * C4287 - 0.6666666666666667 Q[77,12] * H_pos[5,sepal-length]
-   - 0.4166666666666667 Q[77,12] * H_pos[5,sepal-width]
-   - 0.6779661016949152 Q[77,12] * H_pos[5,petal-length]
-   - 0.6666666666666667 Q[77,12] * H_pos[5,petal-width]
-   + 0.6666666666666667 Q[77,12] * H_neg[5,sepal-length]
-   + 0.4166666666666667 Q[77,12] * H_neg[5,sepal-width]
-   + 0.6779661016949152 Q[77,12] * H_neg[5,petal-length]
-   + 0.6666666666666667 Q[77,12] * H_neg[5,petal-width] - Q[77,12] * C4280
-   + Q[77,12] * C4287 ] >= 1
+   - Q[77,11] * C4287 ] >= 1
  qc617: E[35,5] + [ 0.1944444444444444 Q[35,11] * H_pos[5,sepal-length]
    + 0.5 Q[35,11] * H_pos[5,sepal-width]
    + 0.0338983050847458 Q[35,11] * H_pos[5,petal-length]
@@ -16675,28 +11752,14 @@ Subject To
    - 0.5 Q[35,11] * H_neg[5,sepal-width]
    - 0.0338983050847458 Q[35,11] * H_neg[5,petal-length]
    - 0.0416666666666667 Q[35,11] * H_neg[5,petal-width] + Q[35,11] * C4280
-   - Q[35,11] * C4287 - 0.1944444444444444 Q[35,12] * H_pos[5,sepal-length]
-   - 0.5 Q[35,12] * H_pos[5,sepal-width]
-   - 0.0338983050847458 Q[35,12] * H_pos[5,petal-length]
-   - 0.0416666666666667 Q[35,12] * H_pos[5,petal-width]
-   + 0.1944444444444444 Q[35,12] * H_neg[5,sepal-length]
-   + 0.5 Q[35,12] * H_neg[5,sepal-width]
-   + 0.0338983050847458 Q[35,12] * H_neg[5,petal-length]
-   + 0.0416666666666667 Q[35,12] * H_neg[5,petal-width] - Q[35,12] * C4280
-   + Q[35,12] * C4287 ] >= 1
+   - Q[35,11] * C4287 ] >= 1
  qc618: E[22,5] + [ 0.0833333333333333 Q[22,11] * H_pos[5,sepal-length]
    + 0.6666666666666667 Q[22,11] * H_pos[5,sepal-width]
    + 0.0416666666666667 Q[22,11] * H_pos[5,petal-width]
    - 0.0833333333333333 Q[22,11] * H_neg[5,sepal-length]
    - 0.6666666666666667 Q[22,11] * H_neg[5,sepal-width]
    - 0.0416666666666667 Q[22,11] * H_neg[5,petal-width] + Q[22,11] * C4280
-   - Q[22,11] * C4287 - 0.0833333333333333 Q[22,12] * H_pos[5,sepal-length]
-   - 0.6666666666666667 Q[22,12] * H_pos[5,sepal-width]
-   - 0.0416666666666667 Q[22,12] * H_pos[5,petal-width]
-   + 0.0833333333333333 Q[22,12] * H_neg[5,sepal-length]
-   + 0.6666666666666667 Q[22,12] * H_neg[5,sepal-width]
-   + 0.0416666666666667 Q[22,12] * H_neg[5,petal-width] - Q[22,12] * C4280
-   + Q[22,12] * C4287 ] >= 1
+   - Q[22,11] * C4287 ] >= 1
  qc619: E[127,5] + [ 0.5 Q[127,11] * H_pos[5,sepal-length]
    + 0.4166666666666667 Q[127,11] * H_pos[5,sepal-width]
    + 0.6610169491525424 Q[127,11] * H_pos[5,petal-length]
@@ -16705,16 +11768,7 @@ Subject To
    - 0.4166666666666667 Q[127,11] * H_neg[5,sepal-width]
    - 0.6610169491525424 Q[127,11] * H_neg[5,petal-length]
    - 0.7083333333333334 Q[127,11] * H_neg[5,petal-width]
-   + Q[127,11] * C4280 - Q[127,11] * C4287
-   - 0.5 Q[127,12] * H_pos[5,sepal-length]
-   - 0.4166666666666667 Q[127,12] * H_pos[5,sepal-width]
-   - 0.6610169491525424 Q[127,12] * H_pos[5,petal-length]
-   - 0.7083333333333334 Q[127,12] * H_pos[5,petal-width]
-   + 0.5 Q[127,12] * H_neg[5,sepal-length]
-   + 0.4166666666666667 Q[127,12] * H_neg[5,sepal-width]
-   + 0.6610169491525424 Q[127,12] * H_neg[5,petal-length]
-   + 0.7083333333333334 Q[127,12] * H_neg[5,petal-width]
-   - Q[127,12] * C4280 + Q[127,12] * C4287 ] >= 1
+   + Q[127,11] * C4280 - Q[127,11] * C4287 ] >= 1
  qc620: E[102,5] + [ 0.7777777777777777 Q[102,11] * H_pos[5,sepal-length]
    + 0.4166666666666667 Q[102,11] * H_pos[5,sepal-width]
    + 0.8305084745762712 Q[102,11] * H_pos[5,petal-length]
@@ -16723,16 +11777,7 @@ Subject To
    - 0.4166666666666667 Q[102,11] * H_neg[5,sepal-width]
    - 0.8305084745762712 Q[102,11] * H_neg[5,petal-length]
    - 0.8333333333333335 Q[102,11] * H_neg[5,petal-width]
-   + Q[102,11] * C4280 - Q[102,11] * C4287
-   - 0.7777777777777777 Q[102,12] * H_pos[5,sepal-length]
-   - 0.4166666666666667 Q[102,12] * H_pos[5,sepal-width]
-   - 0.8305084745762712 Q[102,12] * H_pos[5,petal-length]
-   - 0.8333333333333335 Q[102,12] * H_pos[5,petal-width]
-   + 0.7777777777777777 Q[102,12] * H_neg[5,sepal-length]
-   + 0.4166666666666667 Q[102,12] * H_neg[5,sepal-width]
-   + 0.8305084745762712 Q[102,12] * H_neg[5,petal-length]
-   + 0.8333333333333335 Q[102,12] * H_neg[5,petal-width]
-   - Q[102,12] * C4280 + Q[102,12] * C4287 ] >= 1
+   + Q[102,11] * C4280 - Q[102,11] * C4287 ] >= 1
  qc621: E[148,5] + [ 0.5277777777777779 Q[148,11] * H_pos[5,sepal-length]
    + 0.5833333333333333 Q[148,11] * H_pos[5,sepal-width]
    + 0.7457627118644068 Q[148,11] * H_pos[5,petal-length]
@@ -16741,16 +11786,7 @@ Subject To
    - 0.5833333333333333 Q[148,11] * H_neg[5,sepal-width]
    - 0.7457627118644068 Q[148,11] * H_neg[5,petal-length]
    - 0.9166666666666666 Q[148,11] * H_neg[5,petal-width]
-   + Q[148,11] * C4280 - Q[148,11] * C4287
-   - 0.5277777777777779 Q[148,12] * H_pos[5,sepal-length]
-   - 0.5833333333333333 Q[148,12] * H_pos[5,sepal-width]
-   - 0.7457627118644068 Q[148,12] * H_pos[5,petal-length]
-   - 0.9166666666666666 Q[148,12] * H_pos[5,petal-width]
-   + 0.5277777777777779 Q[148,12] * H_neg[5,sepal-length]
-   + 0.5833333333333333 Q[148,12] * H_neg[5,sepal-width]
-   + 0.7457627118644068 Q[148,12] * H_neg[5,petal-length]
-   + 0.9166666666666666 Q[148,12] * H_neg[5,petal-width]
-   - Q[148,12] * C4280 + Q[148,12] * C4287 ] >= 1
+   + Q[148,11] * C4280 - Q[148,11] * C4287 ] >= 1
  qc622: E[64,5] + [ 0.3611111111111109 Q[64,11] * H_pos[5,sepal-length]
    + 0.375 Q[64,11] * H_pos[5,sepal-width]
    + 0.440677966101695 Q[64,11] * H_pos[5,petal-length]
@@ -16759,15 +11795,7 @@ Subject To
    - 0.375 Q[64,11] * H_neg[5,sepal-width]
    - 0.440677966101695 Q[64,11] * H_neg[5,petal-length]
    - 0.5 Q[64,11] * H_neg[5,petal-width] + Q[64,11] * C4280
-   - Q[64,11] * C4287 - 0.3611111111111109 Q[64,12] * H_pos[5,sepal-length]
-   - 0.375 Q[64,12] * H_pos[5,sepal-width]
-   - 0.440677966101695 Q[64,12] * H_pos[5,petal-length]
-   - 0.5 Q[64,12] * H_pos[5,petal-width]
-   + 0.3611111111111109 Q[64,12] * H_neg[5,sepal-length]
-   + 0.375 Q[64,12] * H_neg[5,sepal-width]
-   + 0.440677966101695 Q[64,12] * H_neg[5,petal-length]
-   + 0.5 Q[64,12] * H_neg[5,petal-width] - Q[64,12] * C4280
-   + Q[64,12] * C4287 ] >= 1
+   - Q[64,11] * C4287 ] >= 1
  qc623: E[68,5] + [ 0.5277777777777779 Q[68,11] * H_pos[5,sepal-length]
    + 0.0833333333333334 Q[68,11] * H_pos[5,sepal-width]
    + 0.5932203389830508 Q[68,11] * H_pos[5,petal-length]
@@ -16776,15 +11804,7 @@ Subject To
    - 0.0833333333333334 Q[68,11] * H_neg[5,sepal-width]
    - 0.5932203389830508 Q[68,11] * H_neg[5,petal-length]
    - 0.5833333333333334 Q[68,11] * H_neg[5,petal-width] + Q[68,11] * C4280
-   - Q[68,11] * C4287 - 0.5277777777777779 Q[68,12] * H_pos[5,sepal-length]
-   - 0.0833333333333334 Q[68,12] * H_pos[5,sepal-width]
-   - 0.5932203389830508 Q[68,12] * H_pos[5,petal-length]
-   - 0.5833333333333334 Q[68,12] * H_pos[5,petal-width]
-   + 0.5277777777777779 Q[68,12] * H_neg[5,sepal-length]
-   + 0.0833333333333334 Q[68,12] * H_neg[5,sepal-width]
-   + 0.5932203389830508 Q[68,12] * H_neg[5,petal-length]
-   + 0.5833333333333334 Q[68,12] * H_neg[5,petal-width] - Q[68,12] * C4280
-   + Q[68,12] * C4287 ] >= 1
+   - Q[68,11] * C4287 ] >= 1
  qc624: E[27,5] + [ 0.25 Q[27,11] * H_pos[5,sepal-length]
    + 0.625 Q[27,11] * H_pos[5,sepal-width]
    + 0.0847457627118644 Q[27,11] * H_pos[5,petal-length]
@@ -16793,15 +11813,7 @@ Subject To
    - 0.625 Q[27,11] * H_neg[5,sepal-width]
    - 0.0847457627118644 Q[27,11] * H_neg[5,petal-length]
    - 0.0416666666666667 Q[27,11] * H_neg[5,petal-width] + Q[27,11] * C4280
-   - Q[27,11] * C4287 - 0.25 Q[27,12] * H_pos[5,sepal-length]
-   - 0.625 Q[27,12] * H_pos[5,sepal-width]
-   - 0.0847457627118644 Q[27,12] * H_pos[5,petal-length]
-   - 0.0416666666666667 Q[27,12] * H_pos[5,petal-width]
-   + 0.25 Q[27,12] * H_neg[5,sepal-length]
-   + 0.625 Q[27,12] * H_neg[5,sepal-width]
-   + 0.0847457627118644 Q[27,12] * H_neg[5,petal-length]
-   + 0.0416666666666667 Q[27,12] * H_neg[5,petal-width] - Q[27,12] * C4280
-   + Q[27,12] * C4287 ] >= 1
+   - Q[27,11] * C4287 ] >= 1
  qc625: E[149,5] + [ 0.4444444444444446 Q[149,11] * H_pos[5,sepal-length]
    + 0.4166666666666667 Q[149,11] * H_pos[5,sepal-width]
    + 0.6949152542372881 Q[149,11] * H_pos[5,petal-length]
@@ -16810,16 +11822,7 @@ Subject To
    - 0.4166666666666667 Q[149,11] * H_neg[5,sepal-width]
    - 0.6949152542372881 Q[149,11] * H_neg[5,petal-length]
    - 0.7083333333333334 Q[149,11] * H_neg[5,petal-width]
-   + Q[149,11] * C4280 - Q[149,11] * C4287
-   - 0.4444444444444446 Q[149,12] * H_pos[5,sepal-length]
-   - 0.4166666666666667 Q[149,12] * H_pos[5,sepal-width]
-   - 0.6949152542372881 Q[149,12] * H_pos[5,petal-length]
-   - 0.7083333333333334 Q[149,12] * H_pos[5,petal-width]
-   + 0.4444444444444446 Q[149,12] * H_neg[5,sepal-length]
-   + 0.4166666666666667 Q[149,12] * H_neg[5,sepal-width]
-   + 0.6949152542372881 Q[149,12] * H_neg[5,petal-length]
-   + 0.7083333333333334 Q[149,12] * H_neg[5,petal-width]
-   - Q[149,12] * C4280 + Q[149,12] * C4287 ] >= 1
+   + Q[149,11] * C4280 - Q[149,11] * C4287 ] >= 1
  qc626: E[39,5] + [ 0.2222222222222221 Q[39,11] * H_pos[5,sepal-length]
    + 0.5833333333333333 Q[39,11] * H_pos[5,sepal-width]
    + 0.0847457627118644 Q[39,11] * H_pos[5,petal-length]
@@ -16828,15 +11831,7 @@ Subject To
    - 0.5833333333333333 Q[39,11] * H_neg[5,sepal-width]
    - 0.0847457627118644 Q[39,11] * H_neg[5,petal-length]
    - 0.0416666666666667 Q[39,11] * H_neg[5,petal-width] + Q[39,11] * C4280
-   - Q[39,11] * C4287 - 0.2222222222222221 Q[39,12] * H_pos[5,sepal-length]
-   - 0.5833333333333333 Q[39,12] * H_pos[5,sepal-width]
-   - 0.0847457627118644 Q[39,12] * H_pos[5,petal-length]
-   - 0.0416666666666667 Q[39,12] * H_pos[5,petal-width]
-   + 0.2222222222222221 Q[39,12] * H_neg[5,sepal-length]
-   + 0.5833333333333333 Q[39,12] * H_neg[5,sepal-width]
-   + 0.0847457627118644 Q[39,12] * H_neg[5,petal-length]
-   + 0.0416666666666667 Q[39,12] * H_neg[5,petal-width] - Q[39,12] * C4280
-   + Q[39,12] * C4287 ] >= 1
+   - Q[39,11] * C4287 ] >= 1
  qc627: E[25,5] + [ 0.1944444444444444 Q[25,11] * H_pos[5,sepal-length]
    + 0.4166666666666667 Q[25,11] * H_pos[5,sepal-width]
    + 0.1016949152542373 Q[25,11] * H_pos[5,petal-length]
@@ -16845,15 +11840,7 @@ Subject To
    - 0.4166666666666667 Q[25,11] * H_neg[5,sepal-width]
    - 0.1016949152542373 Q[25,11] * H_neg[5,petal-length]
    - 0.0416666666666667 Q[25,11] * H_neg[5,petal-width] + Q[25,11] * C4280
-   - Q[25,11] * C4287 - 0.1944444444444444 Q[25,12] * H_pos[5,sepal-length]
-   - 0.4166666666666667 Q[25,12] * H_pos[5,sepal-width]
-   - 0.1016949152542373 Q[25,12] * H_pos[5,petal-length]
-   - 0.0416666666666667 Q[25,12] * H_pos[5,petal-width]
-   + 0.1944444444444444 Q[25,12] * H_neg[5,sepal-length]
-   + 0.4166666666666667 Q[25,12] * H_neg[5,sepal-width]
-   + 0.1016949152542373 Q[25,12] * H_neg[5,petal-length]
-   + 0.0416666666666667 Q[25,12] * H_neg[5,petal-width] - Q[25,12] * C4280
-   + Q[25,12] * C4287 ] >= 1
+   - Q[25,11] * C4287 ] >= 1
  qc628: E[62,5] + [ 0.4722222222222223 Q[62,11] * H_pos[5,sepal-length]
    + 0.0833333333333334 Q[62,11] * H_pos[5,sepal-width]
    + 0.5084745762711864 Q[62,11] * H_pos[5,petal-length]
@@ -16862,28 +11849,14 @@ Subject To
    - 0.0833333333333334 Q[62,11] * H_neg[5,sepal-width]
    - 0.5084745762711864 Q[62,11] * H_neg[5,petal-length]
    - 0.375 Q[62,11] * H_neg[5,petal-width] + Q[62,11] * C4280
-   - Q[62,11] * C4287 - 0.4722222222222223 Q[62,12] * H_pos[5,sepal-length]
-   - 0.0833333333333334 Q[62,12] * H_pos[5,sepal-width]
-   - 0.5084745762711864 Q[62,12] * H_pos[5,petal-length]
-   - 0.375 Q[62,12] * H_pos[5,petal-width]
-   + 0.4722222222222223 Q[62,12] * H_neg[5,sepal-length]
-   + 0.0833333333333334 Q[62,12] * H_neg[5,sepal-width]
-   + 0.5084745762711864 Q[62,12] * H_neg[5,petal-length]
-   + 0.375 Q[62,12] * H_neg[5,petal-width] - Q[62,12] * C4280
-   + Q[62,12] * C4287 ] >= 1
+   - Q[62,11] * C4287 ] >= 1
  qc629: E[32,5] + [ 0.25 Q[32,11] * H_pos[5,sepal-length]
    + 0.875 Q[32,11] * H_pos[5,sepal-width]
    + 0.0847457627118644 Q[32,11] * H_pos[5,petal-length]
    - 0.25 Q[32,11] * H_neg[5,sepal-length]
    - 0.875 Q[32,11] * H_neg[5,sepal-width]
    - 0.0847457627118644 Q[32,11] * H_neg[5,petal-length] + Q[32,11] * C4280
-   - Q[32,11] * C4287 - 0.25 Q[32,12] * H_pos[5,sepal-length]
-   - 0.875 Q[32,12] * H_pos[5,sepal-width]
-   - 0.0847457627118644 Q[32,12] * H_pos[5,petal-length]
-   + 0.25 Q[32,12] * H_neg[5,sepal-length]
-   + 0.875 Q[32,12] * H_neg[5,sepal-width]
-   + 0.0847457627118644 Q[32,12] * H_neg[5,petal-length] - Q[32,12] * C4280
-   + Q[32,12] * C4287 ] >= 1
+   - Q[32,11] * C4287 ] >= 1
  qc630: E[72,5] + [ 0.5555555555555556 Q[72,11] * H_pos[5,sepal-length]
    + 0.2083333333333333 Q[72,11] * H_pos[5,sepal-width]
    + 0.6610169491525424 Q[72,11] * H_pos[5,petal-length]
@@ -16892,15 +11865,7 @@ Subject To
    - 0.2083333333333333 Q[72,11] * H_neg[5,sepal-width]
    - 0.6610169491525424 Q[72,11] * H_neg[5,petal-length]
    - 0.5833333333333334 Q[72,11] * H_neg[5,petal-width] + Q[72,11] * C4280
-   - Q[72,11] * C4287 - 0.5555555555555556 Q[72,12] * H_pos[5,sepal-length]
-   - 0.2083333333333333 Q[72,12] * H_pos[5,sepal-width]
-   - 0.6610169491525424 Q[72,12] * H_pos[5,petal-length]
-   - 0.5833333333333334 Q[72,12] * H_pos[5,petal-width]
-   + 0.5555555555555556 Q[72,12] * H_neg[5,sepal-length]
-   + 0.2083333333333333 Q[72,12] * H_neg[5,sepal-width]
-   + 0.6610169491525424 Q[72,12] * H_neg[5,petal-length]
-   + 0.5833333333333334 Q[72,12] * H_neg[5,petal-width] - Q[72,12] * C4280
-   + Q[72,12] * C4287 ] >= 1
+   - Q[72,11] * C4287 ] >= 1
  qc631: E[26,5] + [ 0.1944444444444444 Q[26,11] * H_pos[5,sepal-length]
    + 0.5833333333333333 Q[26,11] * H_pos[5,sepal-width]
    + 0.1016949152542373 Q[26,11] * H_pos[5,petal-length]
@@ -16909,15 +11874,7 @@ Subject To
    - 0.5833333333333333 Q[26,11] * H_neg[5,sepal-width]
    - 0.1016949152542373 Q[26,11] * H_neg[5,petal-length]
    - 0.125 Q[26,11] * H_neg[5,petal-width] + Q[26,11] * C4280
-   - Q[26,11] * C4287 - 0.1944444444444444 Q[26,12] * H_pos[5,sepal-length]
-   - 0.5833333333333333 Q[26,12] * H_pos[5,sepal-width]
-   - 0.1016949152542373 Q[26,12] * H_pos[5,petal-length]
-   - 0.125 Q[26,12] * H_pos[5,petal-width]
-   + 0.1944444444444444 Q[26,12] * H_neg[5,sepal-length]
-   + 0.5833333333333333 Q[26,12] * H_neg[5,sepal-width]
-   + 0.1016949152542373 Q[26,12] * H_neg[5,petal-length]
-   + 0.125 Q[26,12] * H_neg[5,petal-width] - Q[26,12] * C4280
-   + Q[26,12] * C4287 ] >= 1
+   - Q[26,11] * C4287 ] >= 1
  qc632: E[116,5] + [ 0.6111111111111112 Q[116,11] * H_pos[5,sepal-length]
    + 0.4166666666666667 Q[116,11] * H_pos[5,sepal-width]
    + 0.7627118644067796 Q[116,11] * H_pos[5,petal-length]
@@ -16926,29 +11883,14 @@ Subject To
    - 0.4166666666666667 Q[116,11] * H_neg[5,sepal-width]
    - 0.7627118644067796 Q[116,11] * H_neg[5,petal-length]
    - 0.7083333333333334 Q[116,11] * H_neg[5,petal-width]
-   + Q[116,11] * C4280 - Q[116,11] * C4287
-   - 0.6111111111111112 Q[116,12] * H_pos[5,sepal-length]
-   - 0.4166666666666667 Q[116,12] * H_pos[5,sepal-width]
-   - 0.7627118644067796 Q[116,12] * H_pos[5,petal-length]
-   - 0.7083333333333334 Q[116,12] * H_pos[5,petal-width]
-   + 0.6111111111111112 Q[116,12] * H_neg[5,sepal-length]
-   + 0.4166666666666667 Q[116,12] * H_neg[5,sepal-width]
-   + 0.7627118644067796 Q[116,12] * H_neg[5,petal-length]
-   + 0.7083333333333334 Q[116,12] * H_neg[5,petal-width]
-   - Q[116,12] * C4280 + Q[116,12] * C4287 ] >= 1
+   + Q[116,11] * C4280 - Q[116,11] * C4287 ] >= 1
  qc633: E[34,5] + [ 0.1666666666666667 Q[34,11] * H_pos[5,sepal-length]
    + 0.4583333333333333 Q[34,11] * H_pos[5,sepal-width]
    + 0.0847457627118644 Q[34,11] * H_pos[5,petal-length]
    - 0.1666666666666667 Q[34,11] * H_neg[5,sepal-length]
    - 0.4583333333333333 Q[34,11] * H_neg[5,sepal-width]
    - 0.0847457627118644 Q[34,11] * H_neg[5,petal-length] + Q[34,11] * C4280
-   - Q[34,11] * C4287 - 0.1666666666666667 Q[34,12] * H_pos[5,sepal-length]
-   - 0.4583333333333333 Q[34,12] * H_pos[5,sepal-width]
-   - 0.0847457627118644 Q[34,12] * H_pos[5,petal-length]
-   + 0.1666666666666667 Q[34,12] * H_neg[5,sepal-length]
-   + 0.4583333333333333 Q[34,12] * H_neg[5,sepal-width]
-   + 0.0847457627118644 Q[34,12] * H_neg[5,petal-length] - Q[34,12] * C4280
-   + Q[34,12] * C4287 ] >= 1
+   - Q[34,11] * C4287 ] >= 1
  qc634: E[117,5] + [ 0.9444444444444442 Q[117,11] * H_pos[5,sepal-length]
    + 0.75 Q[117,11] * H_pos[5,sepal-width]
    + 0.9661016949152543 Q[117,11] * H_pos[5,petal-length]
@@ -16957,16 +11899,7 @@ Subject To
    - 0.75 Q[117,11] * H_neg[5,sepal-width]
    - 0.9661016949152543 Q[117,11] * H_neg[5,petal-length]
    - 0.875 Q[117,11] * H_neg[5,petal-width] + Q[117,11] * C4280
-   - Q[117,11] * C4287
-   - 0.9444444444444442 Q[117,12] * H_pos[5,sepal-length]
-   - 0.75 Q[117,12] * H_pos[5,sepal-width]
-   - 0.9661016949152543 Q[117,12] * H_pos[5,petal-length]
-   - 0.875 Q[117,12] * H_pos[5,petal-width]
-   + 0.9444444444444442 Q[117,12] * H_neg[5,sepal-length]
-   + 0.75 Q[117,12] * H_neg[5,sepal-width]
-   + 0.9661016949152543 Q[117,12] * H_neg[5,petal-length]
-   + 0.875 Q[117,12] * H_neg[5,petal-width] - Q[117,12] * C4280
-   + Q[117,12] * C4287 ] >= 1
+   - Q[117,11] * C4287 ] >= 1
  qc635: E[30,5] + [ 0.1388888888888888 Q[30,11] * H_pos[5,sepal-length]
    + 0.4583333333333333 Q[30,11] * H_pos[5,sepal-width]
    + 0.1016949152542373 Q[30,11] * H_pos[5,petal-length]
@@ -16975,15 +11908,7 @@ Subject To
    - 0.4583333333333333 Q[30,11] * H_neg[5,sepal-width]
    - 0.1016949152542373 Q[30,11] * H_neg[5,petal-length]
    - 0.0416666666666667 Q[30,11] * H_neg[5,petal-width] + Q[30,11] * C4280
-   - Q[30,11] * C4287 - 0.1388888888888888 Q[30,12] * H_pos[5,sepal-length]
-   - 0.4583333333333333 Q[30,12] * H_pos[5,sepal-width]
-   - 0.1016949152542373 Q[30,12] * H_pos[5,petal-length]
-   - 0.0416666666666667 Q[30,12] * H_pos[5,petal-width]
-   + 0.1388888888888888 Q[30,12] * H_neg[5,sepal-length]
-   + 0.4583333333333333 Q[30,12] * H_neg[5,sepal-width]
-   + 0.1016949152542373 Q[30,12] * H_neg[5,petal-length]
-   + 0.0416666666666667 Q[30,12] * H_neg[5,petal-width] - Q[30,12] * C4280
-   + Q[30,12] * C4287 ] >= 1
+   - Q[30,11] * C4287 ] >= 1
  qc636: E[0,5] + [ 0.2222222222222221 Q[0,11] * H_pos[5,sepal-length]
    + 0.625 Q[0,11] * H_pos[5,sepal-width]
    + 0.0677966101694915 Q[0,11] * H_pos[5,petal-length]
@@ -16992,15 +11917,7 @@ Subject To
    - 0.625 Q[0,11] * H_neg[5,sepal-width]
    - 0.0677966101694915 Q[0,11] * H_neg[5,petal-length]
    - 0.0416666666666667 Q[0,11] * H_neg[5,petal-width] + Q[0,11] * C4280
-   - Q[0,11] * C4287 - 0.2222222222222221 Q[0,12] * H_pos[5,sepal-length]
-   - 0.625 Q[0,12] * H_pos[5,sepal-width]
-   - 0.0677966101694915 Q[0,12] * H_pos[5,petal-length]
-   - 0.0416666666666667 Q[0,12] * H_pos[5,petal-width]
-   + 0.2222222222222221 Q[0,12] * H_neg[5,sepal-length]
-   + 0.625 Q[0,12] * H_neg[5,sepal-width]
-   + 0.0677966101694915 Q[0,12] * H_neg[5,petal-length]
-   + 0.0416666666666667 Q[0,12] * H_neg[5,petal-width] - Q[0,12] * C4280
-   + Q[0,12] * C4287 ] >= 1
+   - Q[0,11] * C4287 ] >= 1
  qc637: E[82,5] + [ 0.4166666666666665 Q[82,11] * H_pos[5,sepal-length]
    + 0.2916666666666667 Q[82,11] * H_pos[5,sepal-width]
    + 0.4915254237288135 Q[82,11] * H_pos[5,petal-length]
@@ -17009,15 +11926,7 @@ Subject To
    - 0.2916666666666667 Q[82,11] * H_neg[5,sepal-width]
    - 0.4915254237288135 Q[82,11] * H_neg[5,petal-length]
    - 0.4583333333333333 Q[82,11] * H_neg[5,petal-width] + Q[82,11] * C4280
-   - Q[82,11] * C4287 - 0.4166666666666665 Q[82,12] * H_pos[5,sepal-length]
-   - 0.2916666666666667 Q[82,12] * H_pos[5,sepal-width]
-   - 0.4915254237288135 Q[82,12] * H_pos[5,petal-length]
-   - 0.4583333333333333 Q[82,12] * H_pos[5,petal-width]
-   + 0.4166666666666665 Q[82,12] * H_neg[5,sepal-length]
-   + 0.2916666666666667 Q[82,12] * H_neg[5,sepal-width]
-   + 0.4915254237288135 Q[82,12] * H_neg[5,petal-length]
-   + 0.4583333333333333 Q[82,12] * H_neg[5,petal-width] - Q[82,12] * C4280
-   + Q[82,12] * C4287 ] >= 1
+   - Q[82,11] * C4287 ] >= 1
  qc638: E[14,5] + [ 0.4166666666666665 Q[14,11] * H_pos[5,sepal-length]
    + 0.8333333333333333 Q[14,11] * H_pos[5,sepal-width]
    + 0.0338983050847458 Q[14,11] * H_pos[5,petal-length]
@@ -17026,15 +11935,7 @@ Subject To
    - 0.8333333333333333 Q[14,11] * H_neg[5,sepal-width]
    - 0.0338983050847458 Q[14,11] * H_neg[5,petal-length]
    - 0.0416666666666667 Q[14,11] * H_neg[5,petal-width] + Q[14,11] * C4280
-   - Q[14,11] * C4287 - 0.4166666666666665 Q[14,12] * H_pos[5,sepal-length]
-   - 0.8333333333333333 Q[14,12] * H_pos[5,sepal-width]
-   - 0.0338983050847458 Q[14,12] * H_pos[5,petal-length]
-   - 0.0416666666666667 Q[14,12] * H_pos[5,petal-width]
-   + 0.4166666666666665 Q[14,12] * H_neg[5,sepal-length]
-   + 0.8333333333333333 Q[14,12] * H_neg[5,sepal-width]
-   + 0.0338983050847458 Q[14,12] * H_neg[5,petal-length]
-   + 0.0416666666666667 Q[14,12] * H_neg[5,petal-width] - Q[14,12] * C4280
-   + Q[14,12] * C4287 ] >= 1
+   - Q[14,11] * C4287 ] >= 1
  qc639: E[125,5] + [ 0.8055555555555556 Q[125,11] * H_pos[5,sepal-length]
    + 0.5 Q[125,11] * H_pos[5,sepal-width]
    + 0.847457627118644 Q[125,11] * H_pos[5,petal-length]
@@ -17043,16 +11944,7 @@ Subject To
    - 0.5 Q[125,11] * H_neg[5,sepal-width]
    - 0.847457627118644 Q[125,11] * H_neg[5,petal-length]
    - 0.7083333333333334 Q[125,11] * H_neg[5,petal-width]
-   + Q[125,11] * C4280 - Q[125,11] * C4287
-   - 0.8055555555555556 Q[125,12] * H_pos[5,sepal-length]
-   - 0.5 Q[125,12] * H_pos[5,sepal-width]
-   - 0.847457627118644 Q[125,12] * H_pos[5,petal-length]
-   - 0.7083333333333334 Q[125,12] * H_pos[5,petal-width]
-   + 0.8055555555555556 Q[125,12] * H_neg[5,sepal-length]
-   + 0.5 Q[125,12] * H_neg[5,sepal-width]
-   + 0.847457627118644 Q[125,12] * H_neg[5,petal-length]
-   + 0.7083333333333334 Q[125,12] * H_neg[5,petal-width]
-   - Q[125,12] * C4280 + Q[125,12] * C4287 ] >= 1
+   + Q[125,11] * C4280 - Q[125,11] * C4287 ] >= 1
  qc640: E[120,5] + [ 0.7222222222222223 Q[120,11] * H_pos[5,sepal-length]
    + 0.5 Q[120,11] * H_pos[5,sepal-width]
    + 0.7966101694915254 Q[120,11] * H_pos[5,petal-length]
@@ -17061,16 +11953,7 @@ Subject To
    - 0.5 Q[120,11] * H_neg[5,sepal-width]
    - 0.7966101694915254 Q[120,11] * H_neg[5,petal-length]
    - 0.9166666666666666 Q[120,11] * H_neg[5,petal-width]
-   + Q[120,11] * C4280 - Q[120,11] * C4287
-   - 0.7222222222222223 Q[120,12] * H_pos[5,sepal-length]
-   - 0.5 Q[120,12] * H_pos[5,sepal-width]
-   - 0.7966101694915254 Q[120,12] * H_pos[5,petal-length]
-   - 0.9166666666666666 Q[120,12] * H_pos[5,petal-width]
-   + 0.7222222222222223 Q[120,12] * H_neg[5,sepal-length]
-   + 0.5 Q[120,12] * H_neg[5,sepal-width]
-   + 0.7966101694915254 Q[120,12] * H_neg[5,petal-length]
-   + 0.9166666666666666 Q[120,12] * H_neg[5,petal-width]
-   - Q[120,12] * C4280 + Q[120,12] * C4287 ] >= 1
+   + Q[120,11] * C4280 - Q[120,11] * C4287 ] >= 1
  qc641: E[97,5] + [ 0.5277777777777779 Q[97,11] * H_pos[5,sepal-length]
    + 0.375 Q[97,11] * H_pos[5,sepal-width]
    + 0.559322033898305 Q[97,11] * H_pos[5,petal-length]
@@ -17079,15 +11962,7 @@ Subject To
    - 0.375 Q[97,11] * H_neg[5,sepal-width]
    - 0.559322033898305 Q[97,11] * H_neg[5,petal-length]
    - 0.5 Q[97,11] * H_neg[5,petal-width] + Q[97,11] * C4280
-   - Q[97,11] * C4287 - 0.5277777777777779 Q[97,12] * H_pos[5,sepal-length]
-   - 0.375 Q[97,12] * H_pos[5,sepal-width]
-   - 0.559322033898305 Q[97,12] * H_pos[5,petal-length]
-   - 0.5 Q[97,12] * H_pos[5,petal-width]
-   + 0.5277777777777779 Q[97,12] * H_neg[5,sepal-length]
-   + 0.375 Q[97,12] * H_neg[5,sepal-width]
-   + 0.559322033898305 Q[97,12] * H_neg[5,petal-length]
-   + 0.5 Q[97,12] * H_neg[5,petal-width] - Q[97,12] * C4280
-   + Q[97,12] * C4287 ] >= 1
+   - Q[97,11] * C4287 ] >= 1
  qc642: E[53,5] + [ 0.3333333333333333 Q[53,11] * H_pos[5,sepal-length]
    + 0.125 Q[53,11] * H_pos[5,sepal-width]
    + 0.5084745762711864 Q[53,11] * H_pos[5,petal-length]
@@ -17096,15 +11971,7 @@ Subject To
    - 0.125 Q[53,11] * H_neg[5,sepal-width]
    - 0.5084745762711864 Q[53,11] * H_neg[5,petal-length]
    - 0.5 Q[53,11] * H_neg[5,petal-width] + Q[53,11] * C4280
-   - Q[53,11] * C4287 - 0.3333333333333333 Q[53,12] * H_pos[5,sepal-length]
-   - 0.125 Q[53,12] * H_pos[5,sepal-width]
-   - 0.5084745762711864 Q[53,12] * H_pos[5,petal-length]
-   - 0.5 Q[53,12] * H_pos[5,petal-width]
-   + 0.3333333333333333 Q[53,12] * H_neg[5,sepal-length]
-   + 0.125 Q[53,12] * H_neg[5,sepal-width]
-   + 0.5084745762711864 Q[53,12] * H_neg[5,petal-length]
-   + 0.5 Q[53,12] * H_neg[5,petal-width] - Q[53,12] * C4280
-   + Q[53,12] * C4287 ] >= 1
+   - Q[53,11] * C4287 ] >= 1
  qc643: E[103,5] + [ 0.5555555555555556 Q[103,11] * H_pos[5,sepal-length]
    + 0.375 Q[103,11] * H_pos[5,sepal-width]
    + 0.7796610169491525 Q[103,11] * H_pos[5,petal-length]
@@ -17113,16 +11980,7 @@ Subject To
    - 0.375 Q[103,11] * H_neg[5,sepal-width]
    - 0.7796610169491525 Q[103,11] * H_neg[5,petal-length]
    - 0.7083333333333334 Q[103,11] * H_neg[5,petal-width]
-   + Q[103,11] * C4280 - Q[103,11] * C4287
-   - 0.5555555555555556 Q[103,12] * H_pos[5,sepal-length]
-   - 0.375 Q[103,12] * H_pos[5,sepal-width]
-   - 0.7796610169491525 Q[103,12] * H_pos[5,petal-length]
-   - 0.7083333333333334 Q[103,12] * H_pos[5,petal-width]
-   + 0.5555555555555556 Q[103,12] * H_neg[5,sepal-length]
-   + 0.375 Q[103,12] * H_neg[5,sepal-width]
-   + 0.7796610169491525 Q[103,12] * H_neg[5,petal-length]
-   + 0.7083333333333334 Q[103,12] * H_neg[5,petal-width]
-   - Q[103,12] * C4280 + Q[103,12] * C4287 ] >= 1
+   + Q[103,11] * C4280 - Q[103,11] * C4287 ] >= 1
  qc644: E[84,5] + [ 0.3055555555555556 Q[84,11] * H_pos[5,sepal-length]
    + 0.4166666666666667 Q[84,11] * H_pos[5,sepal-width]
    + 0.5932203389830508 Q[84,11] * H_pos[5,petal-length]
@@ -17131,24 +11989,12 @@ Subject To
    - 0.4166666666666667 Q[84,11] * H_neg[5,sepal-width]
    - 0.5932203389830508 Q[84,11] * H_neg[5,petal-length]
    - 0.5833333333333334 Q[84,11] * H_neg[5,petal-width] + Q[84,11] * C4280
-   - Q[84,11] * C4287 - 0.3055555555555556 Q[84,12] * H_pos[5,sepal-length]
-   - 0.4166666666666667 Q[84,12] * H_pos[5,sepal-width]
-   - 0.5932203389830508 Q[84,12] * H_pos[5,petal-length]
-   - 0.5833333333333334 Q[84,12] * H_pos[5,petal-width]
-   + 0.3055555555555556 Q[84,12] * H_neg[5,sepal-length]
-   + 0.4166666666666667 Q[84,12] * H_neg[5,sepal-width]
-   + 0.5932203389830508 Q[84,12] * H_neg[5,petal-length]
-   + 0.5833333333333334 Q[84,12] * H_neg[5,petal-width] - Q[84,12] * C4280
-   + Q[84,12] * C4287 ] >= 1
+   - Q[84,11] * C4287 ] >= 1
  qc645: E[13,5] + [ 0.4166666666666667 Q[13,11] * H_pos[5,sepal-width]
    + 0.0169491525423729 Q[13,11] * H_pos[5,petal-length]
    - 0.4166666666666667 Q[13,11] * H_neg[5,sepal-width]
    - 0.0169491525423729 Q[13,11] * H_neg[5,petal-length] + Q[13,11] * C4280
-   - Q[13,11] * C4287 - 0.4166666666666667 Q[13,12] * H_pos[5,sepal-width]
-   - 0.0169491525423729 Q[13,12] * H_pos[5,petal-length]
-   + 0.4166666666666667 Q[13,12] * H_neg[5,sepal-width]
-   + 0.0169491525423729 Q[13,12] * H_neg[5,petal-length] - Q[13,12] * C4280
-   + Q[13,12] * C4287 ] >= 1
+   - Q[13,11] * C4287 ] >= 1
  qc646: E[130,5] + [ 0.8611111111111112 Q[130,11] * H_pos[5,sepal-length]
    + 0.3333333333333333 Q[130,11] * H_pos[5,sepal-width]
    + 0.8644067796610169 Q[130,11] * H_pos[5,petal-length]
@@ -17157,16 +12003,7 @@ Subject To
    - 0.3333333333333333 Q[130,11] * H_neg[5,sepal-width]
    - 0.8644067796610169 Q[130,11] * H_neg[5,petal-length]
    - 0.75 Q[130,11] * H_neg[5,petal-width] + Q[130,11] * C4280
-   - Q[130,11] * C4287
-   - 0.8611111111111112 Q[130,12] * H_pos[5,sepal-length]
-   - 0.3333333333333333 Q[130,12] * H_pos[5,sepal-width]
-   - 0.8644067796610169 Q[130,12] * H_pos[5,petal-length]
-   - 0.75 Q[130,12] * H_pos[5,petal-width]
-   + 0.8611111111111112 Q[130,12] * H_neg[5,sepal-length]
-   + 0.3333333333333333 Q[130,12] * H_neg[5,sepal-width]
-   + 0.8644067796610169 Q[130,12] * H_neg[5,petal-length]
-   + 0.75 Q[130,12] * H_neg[5,petal-width] - Q[130,12] * C4280
-   + Q[130,12] * C4287 ] >= 1
+   - Q[130,11] * C4287 ] >= 1
  qc647: E[23,5] + [ 0.2222222222222221 Q[23,11] * H_pos[5,sepal-length]
    + 0.5416666666666665 Q[23,11] * H_pos[5,sepal-width]
    + 0.1186440677966101 Q[23,11] * H_pos[5,petal-length]
@@ -17175,15 +12012,7 @@ Subject To
    - 0.5416666666666665 Q[23,11] * H_neg[5,sepal-width]
    - 0.1186440677966101 Q[23,11] * H_neg[5,petal-length]
    - 0.1666666666666667 Q[23,11] * H_neg[5,petal-width] + Q[23,11] * C4280
-   - Q[23,11] * C4287 - 0.2222222222222221 Q[23,12] * H_pos[5,sepal-length]
-   - 0.5416666666666665 Q[23,12] * H_pos[5,sepal-width]
-   - 0.1186440677966101 Q[23,12] * H_pos[5,petal-length]
-   - 0.1666666666666667 Q[23,12] * H_pos[5,petal-width]
-   + 0.2222222222222221 Q[23,12] * H_neg[5,sepal-length]
-   + 0.5416666666666665 Q[23,12] * H_neg[5,sepal-width]
-   + 0.1186440677966101 Q[23,12] * H_neg[5,petal-length]
-   + 0.1666666666666667 Q[23,12] * H_neg[5,petal-width] - Q[23,12] * C4280
-   + Q[23,12] * C4287 ] >= 1
+   - Q[23,11] * C4287 ] >= 1
  qc648: E[49,5] + [ 0.1944444444444444 Q[49,11] * H_pos[5,sepal-length]
    + 0.5416666666666665 Q[49,11] * H_pos[5,sepal-width]
    + 0.0677966101694915 Q[49,11] * H_pos[5,petal-length]
@@ -17192,15 +12021,7 @@ Subject To
    - 0.5416666666666665 Q[49,11] * H_neg[5,sepal-width]
    - 0.0677966101694915 Q[49,11] * H_neg[5,petal-length]
    - 0.0416666666666667 Q[49,11] * H_neg[5,petal-width] + Q[49,11] * C4280
-   - Q[49,11] * C4287 - 0.1944444444444444 Q[49,12] * H_pos[5,sepal-length]
-   - 0.5416666666666665 Q[49,12] * H_pos[5,sepal-width]
-   - 0.0677966101694915 Q[49,12] * H_pos[5,petal-length]
-   - 0.0416666666666667 Q[49,12] * H_pos[5,petal-width]
-   + 0.1944444444444444 Q[49,12] * H_neg[5,sepal-length]
-   + 0.5416666666666665 Q[49,12] * H_neg[5,sepal-width]
-   + 0.0677966101694915 Q[49,12] * H_neg[5,petal-length]
-   + 0.0416666666666667 Q[49,12] * H_neg[5,petal-width] - Q[49,12] * C4280
-   + Q[49,12] * C4287 ] >= 1
+   - Q[49,11] * C4287 ] >= 1
  qc649: E[24,5] + [ 0.1388888888888888 Q[24,11] * H_pos[5,sepal-length]
    + 0.5833333333333333 Q[24,11] * H_pos[5,sepal-width]
    + 0.1525423728813559 Q[24,11] * H_pos[5,petal-length]
@@ -17209,15 +12030,7 @@ Subject To
    - 0.5833333333333333 Q[24,11] * H_neg[5,sepal-width]
    - 0.1525423728813559 Q[24,11] * H_neg[5,petal-length]
    - 0.0416666666666667 Q[24,11] * H_neg[5,petal-width] + Q[24,11] * C4280
-   - Q[24,11] * C4287 - 0.1388888888888888 Q[24,12] * H_pos[5,sepal-length]
-   - 0.5833333333333333 Q[24,12] * H_pos[5,sepal-width]
-   - 0.1525423728813559 Q[24,12] * H_pos[5,petal-length]
-   - 0.0416666666666667 Q[24,12] * H_pos[5,petal-width]
-   + 0.1388888888888888 Q[24,12] * H_neg[5,sepal-length]
-   + 0.5833333333333333 Q[24,12] * H_neg[5,sepal-width]
-   + 0.1525423728813559 Q[24,12] * H_neg[5,petal-length]
-   + 0.0416666666666667 Q[24,12] * H_neg[5,petal-width] - Q[24,12] * C4280
-   + Q[24,12] * C4287 ] >= 1
+   - Q[24,11] * C4287 ] >= 1
  qc650: E[78,5] + [ 0.4722222222222223 Q[78,11] * H_pos[5,sepal-length]
    + 0.375 Q[78,11] * H_pos[5,sepal-width]
    + 0.5932203389830508 Q[78,11] * H_pos[5,petal-length]
@@ -17226,15 +12039,7 @@ Subject To
    - 0.375 Q[78,11] * H_neg[5,sepal-width]
    - 0.5932203389830508 Q[78,11] * H_neg[5,petal-length]
    - 0.5833333333333334 Q[78,11] * H_neg[5,petal-width] + Q[78,11] * C4280
-   - Q[78,11] * C4287 - 0.4722222222222223 Q[78,12] * H_pos[5,sepal-length]
-   - 0.375 Q[78,12] * H_pos[5,sepal-width]
-   - 0.5932203389830508 Q[78,12] * H_pos[5,petal-length]
-   - 0.5833333333333334 Q[78,12] * H_pos[5,petal-width]
-   + 0.4722222222222223 Q[78,12] * H_neg[5,sepal-length]
-   + 0.375 Q[78,12] * H_neg[5,sepal-width]
-   + 0.5932203389830508 Q[78,12] * H_neg[5,petal-length]
-   + 0.5833333333333334 Q[78,12] * H_neg[5,petal-width] - Q[78,12] * C4280
-   + Q[78,12] * C4287 ] >= 1
+   - Q[78,11] * C4287 ] >= 1
  qc651: E[45,5] + [ 0.1388888888888888 Q[45,11] * H_pos[5,sepal-length]
    + 0.4166666666666667 Q[45,11] * H_pos[5,sepal-width]
    + 0.0677966101694915 Q[45,11] * H_pos[5,petal-length]
@@ -17243,15 +12048,7 @@ Subject To
    - 0.4166666666666667 Q[45,11] * H_neg[5,sepal-width]
    - 0.0677966101694915 Q[45,11] * H_neg[5,petal-length]
    - 0.0833333333333333 Q[45,11] * H_neg[5,petal-width] + Q[45,11] * C4280
-   - Q[45,11] * C4287 - 0.1388888888888888 Q[45,12] * H_pos[5,sepal-length]
-   - 0.4166666666666667 Q[45,12] * H_pos[5,sepal-width]
-   - 0.0677966101694915 Q[45,12] * H_pos[5,petal-length]
-   - 0.0833333333333333 Q[45,12] * H_pos[5,petal-width]
-   + 0.1388888888888888 Q[45,12] * H_neg[5,sepal-length]
-   + 0.4166666666666667 Q[45,12] * H_neg[5,sepal-width]
-   + 0.0677966101694915 Q[45,12] * H_neg[5,petal-length]
-   + 0.0833333333333333 Q[45,12] * H_neg[5,petal-width] - Q[45,12] * C4280
-   + Q[45,12] * C4287 ] >= 1
+   - Q[45,11] * C4287 ] >= 1
  qc652: E[104,5] + [ 0.6111111111111112 Q[104,11] * H_pos[5,sepal-length]
    + 0.4166666666666667 Q[104,11] * H_pos[5,sepal-width]
    + 0.8135593220338982 Q[104,11] * H_pos[5,petal-length]
@@ -17260,16 +12057,7 @@ Subject To
    - 0.4166666666666667 Q[104,11] * H_neg[5,sepal-width]
    - 0.8135593220338982 Q[104,11] * H_neg[5,petal-length]
    - 0.875 Q[104,11] * H_neg[5,petal-width] + Q[104,11] * C4280
-   - Q[104,11] * C4287
-   - 0.6111111111111112 Q[104,12] * H_pos[5,sepal-length]
-   - 0.4166666666666667 Q[104,12] * H_pos[5,sepal-width]
-   - 0.8135593220338982 Q[104,12] * H_pos[5,petal-length]
-   - 0.875 Q[104,12] * H_pos[5,petal-width]
-   + 0.6111111111111112 Q[104,12] * H_neg[5,sepal-length]
-   + 0.4166666666666667 Q[104,12] * H_neg[5,sepal-width]
-   + 0.8135593220338982 Q[104,12] * H_neg[5,petal-length]
-   + 0.875 Q[104,12] * H_neg[5,petal-width] - Q[104,12] * C4280
-   + Q[104,12] * C4287 ] >= 1
+   - Q[104,11] * C4287 ] >= 1
  qc653: E[58,5] + [ 0.6388888888888888 Q[58,11] * H_pos[5,sepal-length]
    + 0.375 Q[58,11] * H_pos[5,sepal-width]
    + 0.6101694915254237 Q[58,11] * H_pos[5,petal-length]
@@ -17278,15 +12066,7 @@ Subject To
    - 0.375 Q[58,11] * H_neg[5,sepal-width]
    - 0.6101694915254237 Q[58,11] * H_neg[5,petal-length]
    - 0.5 Q[58,11] * H_neg[5,petal-width] + Q[58,11] * C4280
-   - Q[58,11] * C4287 - 0.6388888888888888 Q[58,12] * H_pos[5,sepal-length]
-   - 0.375 Q[58,12] * H_pos[5,sepal-width]
-   - 0.6101694915254237 Q[58,12] * H_pos[5,petal-length]
-   - 0.5 Q[58,12] * H_pos[5,petal-width]
-   + 0.6388888888888888 Q[58,12] * H_neg[5,sepal-length]
-   + 0.375 Q[58,12] * H_neg[5,sepal-width]
-   + 0.6101694915254237 Q[58,12] * H_neg[5,petal-length]
-   + 0.5 Q[58,12] * H_neg[5,petal-width] - Q[58,12] * C4280
-   + Q[58,12] * C4287 ] >= 1
+   - Q[58,11] * C4287 ] >= 1
  qc654: E[113,5] + [ 0.3888888888888888 Q[113,11] * H_pos[5,sepal-length]
    + 0.2083333333333333 Q[113,11] * H_pos[5,sepal-width]
    + 0.6779661016949152 Q[113,11] * H_pos[5,petal-length]
@@ -17295,16 +12075,7 @@ Subject To
    - 0.2083333333333333 Q[113,11] * H_neg[5,sepal-width]
    - 0.6779661016949152 Q[113,11] * H_neg[5,petal-length]
    - 0.7916666666666667 Q[113,11] * H_neg[5,petal-width]
-   + Q[113,11] * C4280 - Q[113,11] * C4287
-   - 0.3888888888888888 Q[113,12] * H_pos[5,sepal-length]
-   - 0.2083333333333333 Q[113,12] * H_pos[5,sepal-width]
-   - 0.6779661016949152 Q[113,12] * H_pos[5,petal-length]
-   - 0.7916666666666667 Q[113,12] * H_pos[5,petal-width]
-   + 0.3888888888888888 Q[113,12] * H_neg[5,sepal-length]
-   + 0.2083333333333333 Q[113,12] * H_neg[5,sepal-width]
-   + 0.6779661016949152 Q[113,12] * H_neg[5,petal-length]
-   + 0.7916666666666667 Q[113,12] * H_neg[5,petal-width]
-   - Q[113,12] * C4280 + Q[113,12] * C4287 ] >= 1
+   + Q[113,11] * C4280 - Q[113,11] * C4287 ] >= 1
  qc655: E[3,5] + [ 0.0833333333333333 Q[3,11] * H_pos[5,sepal-length]
    + 0.4583333333333333 Q[3,11] * H_pos[5,sepal-width]
    + 0.0847457627118644 Q[3,11] * H_pos[5,petal-length]
@@ -17313,15 +12084,7 @@ Subject To
    - 0.4583333333333333 Q[3,11] * H_neg[5,sepal-width]
    - 0.0847457627118644 Q[3,11] * H_neg[5,petal-length]
    - 0.0416666666666667 Q[3,11] * H_neg[5,petal-width] + Q[3,11] * C4280
-   - Q[3,11] * C4287 - 0.0833333333333333 Q[3,12] * H_pos[5,sepal-length]
-   - 0.4583333333333333 Q[3,12] * H_pos[5,sepal-width]
-   - 0.0847457627118644 Q[3,12] * H_pos[5,petal-length]
-   - 0.0416666666666667 Q[3,12] * H_pos[5,petal-width]
-   + 0.0833333333333333 Q[3,12] * H_neg[5,sepal-length]
-   + 0.4583333333333333 Q[3,12] * H_neg[5,sepal-width]
-   + 0.0847457627118644 Q[3,12] * H_neg[5,petal-length]
-   + 0.0416666666666667 Q[3,12] * H_neg[5,petal-width] - Q[3,12] * C4280
-   + Q[3,12] * C4287 ] >= 1
+   - Q[3,11] * C4287 ] >= 1
  qc656: E[146,5] + [ 0.5555555555555556 Q[146,11] * H_pos[5,sepal-length]
    + 0.2083333333333333 Q[146,11] * H_pos[5,sepal-width]
    + 0.6779661016949152 Q[146,11] * H_pos[5,petal-length]
@@ -17330,16 +12093,7 @@ Subject To
    - 0.2083333333333333 Q[146,11] * H_neg[5,sepal-width]
    - 0.6779661016949152 Q[146,11] * H_neg[5,petal-length]
    - 0.75 Q[146,11] * H_neg[5,petal-width] + Q[146,11] * C4280
-   - Q[146,11] * C4287
-   - 0.5555555555555556 Q[146,12] * H_pos[5,sepal-length]
-   - 0.2083333333333333 Q[146,12] * H_pos[5,sepal-width]
-   - 0.6779661016949152 Q[146,12] * H_pos[5,petal-length]
-   - 0.75 Q[146,12] * H_pos[5,petal-width]
-   + 0.5555555555555556 Q[146,12] * H_neg[5,sepal-length]
-   + 0.2083333333333333 Q[146,12] * H_neg[5,sepal-width]
-   + 0.6779661016949152 Q[146,12] * H_neg[5,petal-length]
-   + 0.75 Q[146,12] * H_neg[5,petal-width] - Q[146,12] * C4280
-   + Q[146,12] * C4287 ] >= 1
+   - Q[146,11] * C4287 ] >= 1
  qc657: E[88,5] + [ 0.3611111111111109 Q[88,11] * H_pos[5,sepal-length]
    + 0.4166666666666667 Q[88,11] * H_pos[5,sepal-width]
    + 0.5254237288135593 Q[88,11] * H_pos[5,petal-length]
@@ -17348,15 +12102,7 @@ Subject To
    - 0.4166666666666667 Q[88,11] * H_neg[5,sepal-width]
    - 0.5254237288135593 Q[88,11] * H_neg[5,petal-length]
    - 0.5 Q[88,11] * H_neg[5,petal-width] + Q[88,11] * C4280
-   - Q[88,11] * C4287 - 0.3611111111111109 Q[88,12] * H_pos[5,sepal-length]
-   - 0.4166666666666667 Q[88,12] * H_pos[5,sepal-width]
-   - 0.5254237288135593 Q[88,12] * H_pos[5,petal-length]
-   - 0.5 Q[88,12] * H_pos[5,petal-width]
-   + 0.3611111111111109 Q[88,12] * H_neg[5,sepal-length]
-   + 0.4166666666666667 Q[88,12] * H_neg[5,sepal-width]
-   + 0.5254237288135593 Q[88,12] * H_neg[5,petal-length]
-   + 0.5 Q[88,12] * H_neg[5,petal-width] - Q[88,12] * C4280
-   + Q[88,12] * C4287 ] >= 1
+   - Q[88,11] * C4287 ] >= 1
  qc658: E[138,5] + [ 0.4722222222222223 Q[138,11] * H_pos[5,sepal-length]
    + 0.4166666666666667 Q[138,11] * H_pos[5,sepal-width]
    + 0.6440677966101694 Q[138,11] * H_pos[5,petal-length]
@@ -17365,16 +12111,7 @@ Subject To
    - 0.4166666666666667 Q[138,11] * H_neg[5,sepal-width]
    - 0.6440677966101694 Q[138,11] * H_neg[5,petal-length]
    - 0.7083333333333334 Q[138,11] * H_neg[5,petal-width]
-   + Q[138,11] * C4280 - Q[138,11] * C4287
-   - 0.4722222222222223 Q[138,12] * H_pos[5,sepal-length]
-   - 0.4166666666666667 Q[138,12] * H_pos[5,sepal-width]
-   - 0.6440677966101694 Q[138,12] * H_pos[5,petal-length]
-   - 0.7083333333333334 Q[138,12] * H_pos[5,petal-width]
-   + 0.4722222222222223 Q[138,12] * H_neg[5,sepal-length]
-   + 0.4166666666666667 Q[138,12] * H_neg[5,sepal-width]
-   + 0.6440677966101694 Q[138,12] * H_neg[5,petal-length]
-   + 0.7083333333333334 Q[138,12] * H_neg[5,petal-width]
-   - Q[138,12] * C4280 + Q[138,12] * C4287 ] >= 1
+   + Q[138,11] * C4280 - Q[138,11] * C4287 ] >= 1
  qc659: E[128,5] + [ 0.5833333333333335 Q[128,11] * H_pos[5,sepal-length]
    + 0.3333333333333333 Q[128,11] * H_pos[5,sepal-width]
    + 0.7796610169491525 Q[128,11] * H_pos[5,petal-length]
@@ -17383,16 +12120,7 @@ Subject To
    - 0.3333333333333333 Q[128,11] * H_neg[5,sepal-width]
    - 0.7796610169491525 Q[128,11] * H_neg[5,petal-length]
    - 0.8333333333333335 Q[128,11] * H_neg[5,petal-width]
-   + Q[128,11] * C4280 - Q[128,11] * C4287
-   - 0.5833333333333335 Q[128,12] * H_pos[5,sepal-length]
-   - 0.3333333333333333 Q[128,12] * H_pos[5,sepal-width]
-   - 0.7796610169491525 Q[128,12] * H_pos[5,petal-length]
-   - 0.8333333333333335 Q[128,12] * H_pos[5,petal-width]
-   + 0.5833333333333335 Q[128,12] * H_neg[5,sepal-length]
-   + 0.3333333333333333 Q[128,12] * H_neg[5,sepal-width]
-   + 0.7796610169491525 Q[128,12] * H_neg[5,petal-length]
-   + 0.8333333333333335 Q[128,12] * H_neg[5,petal-width]
-   - Q[128,12] * C4280 + Q[128,12] * C4287 ] >= 1
+   + Q[128,11] * C4280 - Q[128,11] * C4287 ] >= 1
  qc660: E[76,5] + [ 0.6944444444444444 Q[76,11] * H_pos[5,sepal-length]
    + 0.3333333333333333 Q[76,11] * H_pos[5,sepal-width]
    + 0.6440677966101694 Q[76,11] * H_pos[5,petal-length]
@@ -17401,15 +12129,7 @@ Subject To
    - 0.3333333333333333 Q[76,11] * H_neg[5,sepal-width]
    - 0.6440677966101694 Q[76,11] * H_neg[5,petal-length]
    - 0.5416666666666667 Q[76,11] * H_neg[5,petal-width] + Q[76,11] * C4280
-   - Q[76,11] * C4287 - 0.6944444444444444 Q[76,12] * H_pos[5,sepal-length]
-   - 0.3333333333333333 Q[76,12] * H_pos[5,sepal-width]
-   - 0.6440677966101694 Q[76,12] * H_pos[5,petal-length]
-   - 0.5416666666666667 Q[76,12] * H_pos[5,petal-width]
-   + 0.6944444444444444 Q[76,12] * H_neg[5,sepal-length]
-   + 0.3333333333333333 Q[76,12] * H_neg[5,sepal-width]
-   + 0.6440677966101694 Q[76,12] * H_neg[5,petal-length]
-   + 0.5416666666666667 Q[76,12] * H_neg[5,petal-width] - Q[76,12] * C4280
-   + Q[76,12] * C4287 ] >= 1
+   - Q[76,11] * C4287 ] >= 1
  qc661: E[70,5] + [ 0.4444444444444446 Q[70,11] * H_pos[5,sepal-length]
    + 0.5 Q[70,11] * H_pos[5,sepal-width]
    + 0.6440677966101694 Q[70,11] * H_pos[5,petal-length]
@@ -17418,15 +12138,7 @@ Subject To
    - 0.5 Q[70,11] * H_neg[5,sepal-width]
    - 0.6440677966101694 Q[70,11] * H_neg[5,petal-length]
    - 0.7083333333333334 Q[70,11] * H_neg[5,petal-width] + Q[70,11] * C4280
-   - Q[70,11] * C4287 - 0.4444444444444446 Q[70,12] * H_pos[5,sepal-length]
-   - 0.5 Q[70,12] * H_pos[5,sepal-width]
-   - 0.6440677966101694 Q[70,12] * H_pos[5,petal-length]
-   - 0.7083333333333334 Q[70,12] * H_pos[5,petal-width]
-   + 0.4444444444444446 Q[70,12] * H_neg[5,sepal-length]
-   + 0.5 Q[70,12] * H_neg[5,sepal-width]
-   + 0.6440677966101694 Q[70,12] * H_neg[5,petal-length]
-   + 0.7083333333333334 Q[70,12] * H_neg[5,petal-width] - Q[70,12] * C4280
-   + Q[70,12] * C4287 ] >= 1
+   - Q[70,11] * C4287 ] >= 1
  qc662: E[145,5] + [ 0.6666666666666667 Q[145,11] * H_pos[5,sepal-length]
    + 0.4166666666666667 Q[145,11] * H_pos[5,sepal-width]
    + 0.711864406779661 Q[145,11] * H_pos[5,petal-length]
@@ -17435,16 +12147,7 @@ Subject To
    - 0.4166666666666667 Q[145,11] * H_neg[5,sepal-width]
    - 0.711864406779661 Q[145,11] * H_neg[5,petal-length]
    - 0.9166666666666666 Q[145,11] * H_neg[5,petal-width]
-   + Q[145,11] * C4280 - Q[145,11] * C4287
-   - 0.6666666666666667 Q[145,12] * H_pos[5,sepal-length]
-   - 0.4166666666666667 Q[145,12] * H_pos[5,sepal-width]
-   - 0.711864406779661 Q[145,12] * H_pos[5,petal-length]
-   - 0.9166666666666666 Q[145,12] * H_pos[5,petal-width]
-   + 0.6666666666666667 Q[145,12] * H_neg[5,sepal-length]
-   + 0.4166666666666667 Q[145,12] * H_neg[5,sepal-width]
-   + 0.711864406779661 Q[145,12] * H_neg[5,petal-length]
-   + 0.9166666666666666 Q[145,12] * H_neg[5,petal-width]
-   - Q[145,12] * C4280 + Q[145,12] * C4287 ] >= 1
+   + Q[145,11] * C4280 - Q[145,11] * C4287 ] >= 1
  qc663: E[91,5] + [ 0.5 Q[91,11] * H_pos[5,sepal-length]
    + 0.4166666666666667 Q[91,11] * H_pos[5,sepal-width]
    + 0.6101694915254237 Q[91,11] * H_pos[5,petal-length]
@@ -17453,15 +12156,7 @@ Subject To
    - 0.4166666666666667 Q[91,11] * H_neg[5,sepal-width]
    - 0.6101694915254237 Q[91,11] * H_neg[5,petal-length]
    - 0.5416666666666667 Q[91,11] * H_neg[5,petal-width] + Q[91,11] * C4280
-   - Q[91,11] * C4287 - 0.5 Q[91,12] * H_pos[5,sepal-length]
-   - 0.4166666666666667 Q[91,12] * H_pos[5,sepal-width]
-   - 0.6101694915254237 Q[91,12] * H_pos[5,petal-length]
-   - 0.5416666666666667 Q[91,12] * H_pos[5,petal-width]
-   + 0.5 Q[91,12] * H_neg[5,sepal-length]
-   + 0.4166666666666667 Q[91,12] * H_neg[5,sepal-width]
-   + 0.6101694915254237 Q[91,12] * H_neg[5,petal-length]
-   + 0.5416666666666667 Q[91,12] * H_neg[5,petal-width] - Q[91,12] * C4280
-   + Q[91,12] * C4287 ] >= 1
+   - Q[91,11] * C4287 ] >= 1
  qc664: E[19,5] + [ 0.2222222222222221 Q[19,11] * H_pos[5,sepal-length]
    + 0.75 Q[19,11] * H_pos[5,sepal-width]
    + 0.0847457627118644 Q[19,11] * H_pos[5,petal-length]
@@ -17470,15 +12165,7 @@ Subject To
    - 0.75 Q[19,11] * H_neg[5,sepal-width]
    - 0.0847457627118644 Q[19,11] * H_neg[5,petal-length]
    - 0.0833333333333333 Q[19,11] * H_neg[5,petal-width] + Q[19,11] * C4280
-   - Q[19,11] * C4287 - 0.2222222222222221 Q[19,12] * H_pos[5,sepal-length]
-   - 0.75 Q[19,12] * H_pos[5,sepal-width]
-   - 0.0847457627118644 Q[19,12] * H_pos[5,petal-length]
-   - 0.0833333333333333 Q[19,12] * H_pos[5,petal-width]
-   + 0.2222222222222221 Q[19,12] * H_neg[5,sepal-length]
-   + 0.75 Q[19,12] * H_neg[5,sepal-width]
-   + 0.0847457627118644 Q[19,12] * H_neg[5,petal-length]
-   + 0.0833333333333333 Q[19,12] * H_neg[5,petal-width] - Q[19,12] * C4280
-   + Q[19,12] * C4287 ] >= 1
+   - Q[19,11] * C4287 ] >= 1
  qc665: E[115,5] + [ 0.5833333333333335 Q[115,11] * H_pos[5,sepal-length]
    + 0.5 Q[115,11] * H_pos[5,sepal-width]
    + 0.7288135593220338 Q[115,11] * H_pos[5,petal-length]
@@ -17487,16 +12174,7 @@ Subject To
    - 0.5 Q[115,11] * H_neg[5,sepal-width]
    - 0.7288135593220338 Q[115,11] * H_neg[5,petal-length]
    - 0.9166666666666666 Q[115,11] * H_neg[5,petal-width]
-   + Q[115,11] * C4280 - Q[115,11] * C4287
-   - 0.5833333333333335 Q[115,12] * H_pos[5,sepal-length]
-   - 0.5 Q[115,12] * H_pos[5,sepal-width]
-   - 0.7288135593220338 Q[115,12] * H_pos[5,petal-length]
-   - 0.9166666666666666 Q[115,12] * H_pos[5,petal-width]
-   + 0.5833333333333335 Q[115,12] * H_neg[5,sepal-length]
-   + 0.5 Q[115,12] * H_neg[5,sepal-width]
-   + 0.7288135593220338 Q[115,12] * H_neg[5,petal-length]
-   + 0.9166666666666666 Q[115,12] * H_neg[5,petal-width]
-   - Q[115,12] * C4280 + Q[115,12] * C4287 ] >= 1
+   + Q[115,11] * C4280 - Q[115,11] * C4287 ] >= 1
  qc666: E[28,5] + [ 0.25 Q[28,11] * H_pos[5,sepal-length]
    + 0.5833333333333333 Q[28,11] * H_pos[5,sepal-width]
    + 0.0677966101694915 Q[28,11] * H_pos[5,petal-length]
@@ -17505,28 +12183,14 @@ Subject To
    - 0.5833333333333333 Q[28,11] * H_neg[5,sepal-width]
    - 0.0677966101694915 Q[28,11] * H_neg[5,petal-length]
    - 0.0416666666666667 Q[28,11] * H_neg[5,petal-width] + Q[28,11] * C4280
-   - Q[28,11] * C4287 - 0.25 Q[28,12] * H_pos[5,sepal-length]
-   - 0.5833333333333333 Q[28,12] * H_pos[5,sepal-width]
-   - 0.0677966101694915 Q[28,12] * H_pos[5,petal-length]
-   - 0.0416666666666667 Q[28,12] * H_pos[5,petal-width]
-   + 0.25 Q[28,12] * H_neg[5,sepal-length]
-   + 0.5833333333333333 Q[28,12] * H_neg[5,sepal-width]
-   + 0.0677966101694915 Q[28,12] * H_neg[5,petal-length]
-   + 0.0416666666666667 Q[28,12] * H_neg[5,petal-width] - Q[28,12] * C4280
-   + Q[28,12] * C4287 ] >= 1
+   - Q[28,11] * C4287 ] >= 1
  qc667: E[37,5] + [ 0.1666666666666667 Q[37,11] * H_pos[5,sepal-length]
    + 0.4583333333333333 Q[37,11] * H_pos[5,sepal-width]
    + 0.0847457627118644 Q[37,11] * H_pos[5,petal-length]
    - 0.1666666666666667 Q[37,11] * H_neg[5,sepal-length]
    - 0.4583333333333333 Q[37,11] * H_neg[5,sepal-width]
    - 0.0847457627118644 Q[37,11] * H_neg[5,petal-length] + Q[37,11] * C4280
-   - Q[37,11] * C4287 - 0.1666666666666667 Q[37,12] * H_pos[5,sepal-length]
-   - 0.4583333333333333 Q[37,12] * H_pos[5,sepal-width]
-   - 0.0847457627118644 Q[37,12] * H_pos[5,petal-length]
-   + 0.1666666666666667 Q[37,12] * H_neg[5,sepal-length]
-   + 0.4583333333333333 Q[37,12] * H_neg[5,sepal-width]
-   + 0.0847457627118644 Q[37,12] * H_neg[5,petal-length] - Q[37,12] * C4280
-   + Q[37,12] * C4287 ] >= 1
+   - Q[37,11] * C4287 ] >= 1
  qc668: E[29,5] + [ 0.1111111111111112 Q[29,11] * H_pos[5,sepal-length]
    + 0.5 Q[29,11] * H_pos[5,sepal-width]
    + 0.1016949152542373 Q[29,11] * H_pos[5,petal-length]
@@ -17535,15 +12199,7 @@ Subject To
    - 0.5 Q[29,11] * H_neg[5,sepal-width]
    - 0.1016949152542373 Q[29,11] * H_neg[5,petal-length]
    - 0.0416666666666667 Q[29,11] * H_neg[5,petal-width] + Q[29,11] * C4280
-   - Q[29,11] * C4287 - 0.1111111111111112 Q[29,12] * H_pos[5,sepal-length]
-   - 0.5 Q[29,12] * H_pos[5,sepal-width]
-   - 0.1016949152542373 Q[29,12] * H_pos[5,petal-length]
-   - 0.0416666666666667 Q[29,12] * H_pos[5,petal-width]
-   + 0.1111111111111112 Q[29,12] * H_neg[5,sepal-length]
-   + 0.5 Q[29,12] * H_neg[5,sepal-width]
-   + 0.1016949152542373 Q[29,12] * H_neg[5,petal-length]
-   + 0.0416666666666667 Q[29,12] * H_neg[5,petal-width] - Q[29,12] * C4280
-   + Q[29,12] * C4287 ] >= 1
+   - Q[29,11] * C4287 ] >= 1
  qc669: E[122,5] + [ 0.9444444444444442 Q[122,11] * H_pos[5,sepal-length]
    + 0.3333333333333333 Q[122,11] * H_pos[5,sepal-width]
    + 0.9661016949152543 Q[122,11] * H_pos[5,petal-length]
@@ -17552,16 +12208,7 @@ Subject To
    - 0.3333333333333333 Q[122,11] * H_neg[5,sepal-width]
    - 0.9661016949152543 Q[122,11] * H_neg[5,petal-length]
    - 0.7916666666666667 Q[122,11] * H_neg[5,petal-width]
-   + Q[122,11] * C4280 - Q[122,11] * C4287
-   - 0.9444444444444442 Q[122,12] * H_pos[5,sepal-length]
-   - 0.3333333333333333 Q[122,12] * H_pos[5,sepal-width]
-   - 0.9661016949152543 Q[122,12] * H_pos[5,petal-length]
-   - 0.7916666666666667 Q[122,12] * H_pos[5,petal-width]
-   + 0.9444444444444442 Q[122,12] * H_neg[5,sepal-length]
-   + 0.3333333333333333 Q[122,12] * H_neg[5,sepal-width]
-   + 0.9661016949152543 Q[122,12] * H_neg[5,petal-length]
-   + 0.7916666666666667 Q[122,12] * H_neg[5,petal-width]
-   - Q[122,12] * C4280 + Q[122,12] * C4287 ] >= 1
+   + Q[122,11] * C4280 - Q[122,11] * C4287 ] >= 1
  qc670: E[74,5] + [ 0.5833333333333335 Q[74,11] * H_pos[5,sepal-length]
    + 0.375 Q[74,11] * H_pos[5,sepal-width]
    + 0.559322033898305 Q[74,11] * H_pos[5,petal-length]
@@ -17570,15 +12217,7 @@ Subject To
    - 0.375 Q[74,11] * H_neg[5,sepal-width]
    - 0.559322033898305 Q[74,11] * H_neg[5,petal-length]
    - 0.5 Q[74,11] * H_neg[5,petal-width] + Q[74,11] * C4280
-   - Q[74,11] * C4287 - 0.5833333333333335 Q[74,12] * H_pos[5,sepal-length]
-   - 0.375 Q[74,12] * H_pos[5,sepal-width]
-   - 0.559322033898305 Q[74,12] * H_pos[5,petal-length]
-   - 0.5 Q[74,12] * H_pos[5,petal-width]
-   + 0.5833333333333335 Q[74,12] * H_neg[5,sepal-length]
-   + 0.375 Q[74,12] * H_neg[5,sepal-width]
-   + 0.559322033898305 Q[74,12] * H_neg[5,petal-length]
-   + 0.5 Q[74,12] * H_neg[5,petal-width] - Q[74,12] * C4280
-   + Q[74,12] * C4287 ] >= 1
+   - Q[74,11] * C4287 ] >= 1
  qc671: E[46,5] + [ 0.2222222222222221 Q[46,11] * H_pos[5,sepal-length]
    + 0.75 Q[46,11] * H_pos[5,sepal-width]
    + 0.1016949152542373 Q[46,11] * H_pos[5,petal-length]
@@ -17587,15 +12226,7 @@ Subject To
    - 0.75 Q[46,11] * H_neg[5,sepal-width]
    - 0.1016949152542373 Q[46,11] * H_neg[5,petal-length]
    - 0.0416666666666667 Q[46,11] * H_neg[5,petal-width] + Q[46,11] * C4280
-   - Q[46,11] * C4287 - 0.2222222222222221 Q[46,12] * H_pos[5,sepal-length]
-   - 0.75 Q[46,12] * H_pos[5,sepal-width]
-   - 0.1016949152542373 Q[46,12] * H_pos[5,petal-length]
-   - 0.0416666666666667 Q[46,12] * H_pos[5,petal-width]
-   + 0.2222222222222221 Q[46,12] * H_neg[5,sepal-length]
-   + 0.75 Q[46,12] * H_neg[5,sepal-width]
-   + 0.1016949152542373 Q[46,12] * H_neg[5,petal-length]
-   + 0.0416666666666667 Q[46,12] * H_neg[5,petal-width] - Q[46,12] * C4280
-   + Q[46,12] * C4287 ] >= 1
+   - Q[46,11] * C4287 ] >= 1
  qc672: E[111,6] + [ 0.5833333333333335 Q[111,13] * H_pos[6,sepal-length]
    + 0.2916666666666667 Q[111,13] * H_pos[6,sepal-width]
    + 0.7288135593220338 Q[111,13] * H_pos[6,petal-length]
@@ -17604,16 +12235,7 @@ Subject To
    - 0.2916666666666667 Q[111,13] * H_neg[6,sepal-width]
    - 0.7288135593220338 Q[111,13] * H_neg[6,petal-length]
    - 0.75 Q[111,13] * H_neg[6,petal-width] + Q[111,13] * C4281
-   - Q[111,13] * C4288
-   - 0.5833333333333335 Q[111,14] * H_pos[6,sepal-length]
-   - 0.2916666666666667 Q[111,14] * H_pos[6,sepal-width]
-   - 0.7288135593220338 Q[111,14] * H_pos[6,petal-length]
-   - 0.75 Q[111,14] * H_pos[6,petal-width]
-   + 0.5833333333333335 Q[111,14] * H_neg[6,sepal-length]
-   + 0.2916666666666667 Q[111,14] * H_neg[6,sepal-width]
-   + 0.7288135593220338 Q[111,14] * H_neg[6,petal-length]
-   + 0.75 Q[111,14] * H_neg[6,petal-width] - Q[111,14] * C4281
-   + Q[111,14] * C4288 ] >= 1
+   - Q[111,13] * C4288 ] >= 1
  qc673: E[134,6] + [ 0.5 Q[134,13] * H_pos[6,sepal-length]
    + 0.25 Q[134,13] * H_pos[6,sepal-width]
    + 0.7796610169491525 Q[134,13] * H_pos[6,petal-length]
@@ -17622,16 +12244,7 @@ Subject To
    - 0.25 Q[134,13] * H_neg[6,sepal-width]
    - 0.7796610169491525 Q[134,13] * H_neg[6,petal-length]
    - 0.5416666666666667 Q[134,13] * H_neg[6,petal-width]
-   + Q[134,13] * C4281 - Q[134,13] * C4288
-   - 0.5 Q[134,14] * H_pos[6,sepal-length]
-   - 0.25 Q[134,14] * H_pos[6,sepal-width]
-   - 0.7796610169491525 Q[134,14] * H_pos[6,petal-length]
-   - 0.5416666666666667 Q[134,14] * H_pos[6,petal-width]
-   + 0.5 Q[134,14] * H_neg[6,sepal-length]
-   + 0.25 Q[134,14] * H_neg[6,sepal-width]
-   + 0.7796610169491525 Q[134,14] * H_neg[6,petal-length]
-   + 0.5416666666666667 Q[134,14] * H_neg[6,petal-width]
-   - Q[134,14] * C4281 + Q[134,14] * C4288 ] >= 1
+   + Q[134,13] * C4281 - Q[134,13] * C4288 ] >= 1
  qc674: E[133,6] + [ 0.5555555555555556 Q[133,13] * H_pos[6,sepal-length]
    + 0.3333333333333333 Q[133,13] * H_pos[6,sepal-width]
    + 0.6949152542372881 Q[133,13] * H_pos[6,petal-length]
@@ -17640,16 +12253,7 @@ Subject To
    - 0.3333333333333333 Q[133,13] * H_neg[6,sepal-width]
    - 0.6949152542372881 Q[133,13] * H_neg[6,petal-length]
    - 0.5833333333333334 Q[133,13] * H_neg[6,petal-width]
-   + Q[133,13] * C4281 - Q[133,13] * C4288
-   - 0.5555555555555556 Q[133,14] * H_pos[6,sepal-length]
-   - 0.3333333333333333 Q[133,14] * H_pos[6,sepal-width]
-   - 0.6949152542372881 Q[133,14] * H_pos[6,petal-length]
-   - 0.5833333333333334 Q[133,14] * H_pos[6,petal-width]
-   + 0.5555555555555556 Q[133,14] * H_neg[6,sepal-length]
-   + 0.3333333333333333 Q[133,14] * H_neg[6,sepal-width]
-   + 0.6949152542372881 Q[133,14] * H_neg[6,petal-length]
-   + 0.5833333333333334 Q[133,14] * H_neg[6,petal-width]
-   - Q[133,14] * C4281 + Q[133,14] * C4288 ] >= 1
+   + Q[133,13] * C4281 - Q[133,13] * C4288 ] >= 1
  qc675: E[93,6] + [ 0.1944444444444444 Q[93,13] * H_pos[6,sepal-length]
    + 0.125 Q[93,13] * H_pos[6,sepal-width]
    + 0.3898305084745762 Q[93,13] * H_pos[6,petal-length]
@@ -17658,15 +12262,7 @@ Subject To
    - 0.125 Q[93,13] * H_neg[6,sepal-width]
    - 0.3898305084745762 Q[93,13] * H_neg[6,petal-length]
    - 0.375 Q[93,13] * H_neg[6,petal-width] + Q[93,13] * C4281
-   - Q[93,13] * C4288 - 0.1944444444444444 Q[93,14] * H_pos[6,sepal-length]
-   - 0.125 Q[93,14] * H_pos[6,sepal-width]
-   - 0.3898305084745762 Q[93,14] * H_pos[6,petal-length]
-   - 0.375 Q[93,14] * H_pos[6,petal-width]
-   + 0.1944444444444444 Q[93,14] * H_neg[6,sepal-length]
-   + 0.125 Q[93,14] * H_neg[6,sepal-width]
-   + 0.3898305084745762 Q[93,14] * H_neg[6,petal-length]
-   + 0.375 Q[93,14] * H_neg[6,petal-width] - Q[93,14] * C4281
-   + Q[93,14] * C4288 ] >= 1
+   - Q[93,13] * C4288 ] >= 1
  qc676: E[51,6] + [ 0.5833333333333335 Q[51,13] * H_pos[6,sepal-length]
    + 0.5 Q[51,13] * H_pos[6,sepal-width]
    + 0.5932203389830508 Q[51,13] * H_pos[6,petal-length]
@@ -17675,15 +12271,7 @@ Subject To
    - 0.5 Q[51,13] * H_neg[6,sepal-width]
    - 0.5932203389830508 Q[51,13] * H_neg[6,petal-length]
    - 0.5833333333333334 Q[51,13] * H_neg[6,petal-width] + Q[51,13] * C4281
-   - Q[51,13] * C4288 - 0.5833333333333335 Q[51,14] * H_pos[6,sepal-length]
-   - 0.5 Q[51,14] * H_pos[6,sepal-width]
-   - 0.5932203389830508 Q[51,14] * H_pos[6,petal-length]
-   - 0.5833333333333334 Q[51,14] * H_pos[6,petal-width]
-   + 0.5833333333333335 Q[51,14] * H_neg[6,sepal-length]
-   + 0.5 Q[51,14] * H_neg[6,sepal-width]
-   + 0.5932203389830508 Q[51,14] * H_neg[6,petal-length]
-   + 0.5833333333333334 Q[51,14] * H_neg[6,petal-width] - Q[51,14] * C4281
-   + Q[51,14] * C4288 ] >= 1
+   - Q[51,13] * C4288 ] >= 1
  qc677: E[41,6] + [ 0.0555555555555556 Q[41,13] * H_pos[6,sepal-length]
    + 0.125 Q[41,13] * H_pos[6,sepal-width]
    + 0.0508474576271186 Q[41,13] * H_pos[6,petal-length]
@@ -17692,15 +12280,7 @@ Subject To
    - 0.125 Q[41,13] * H_neg[6,sepal-width]
    - 0.0508474576271186 Q[41,13] * H_neg[6,petal-length]
    - 0.0833333333333333 Q[41,13] * H_neg[6,petal-width] + Q[41,13] * C4281
-   - Q[41,13] * C4288 - 0.0555555555555556 Q[41,14] * H_pos[6,sepal-length]
-   - 0.125 Q[41,14] * H_pos[6,sepal-width]
-   - 0.0508474576271186 Q[41,14] * H_pos[6,petal-length]
-   - 0.0833333333333333 Q[41,14] * H_pos[6,petal-width]
-   + 0.0555555555555556 Q[41,14] * H_neg[6,sepal-length]
-   + 0.125 Q[41,14] * H_neg[6,sepal-width]
-   + 0.0508474576271186 Q[41,14] * H_neg[6,petal-length]
-   + 0.0833333333333333 Q[41,14] * H_neg[6,petal-width] - Q[41,14] * C4281
-   + Q[41,14] * C4288 ] >= 1
+   - Q[41,13] * C4288 ] >= 1
  qc678: E[90,6] + [ 0.3333333333333333 Q[90,13] * H_pos[6,sepal-length]
    + 0.25 Q[90,13] * H_pos[6,sepal-width]
    + 0.576271186440678 Q[90,13] * H_pos[6,petal-length]
@@ -17709,15 +12289,7 @@ Subject To
    - 0.25 Q[90,13] * H_neg[6,sepal-width]
    - 0.576271186440678 Q[90,13] * H_neg[6,petal-length]
    - 0.4583333333333333 Q[90,13] * H_neg[6,petal-width] + Q[90,13] * C4281
-   - Q[90,13] * C4288 - 0.3333333333333333 Q[90,14] * H_pos[6,sepal-length]
-   - 0.25 Q[90,14] * H_pos[6,sepal-width]
-   - 0.576271186440678 Q[90,14] * H_pos[6,petal-length]
-   - 0.4583333333333333 Q[90,14] * H_pos[6,petal-width]
-   + 0.3333333333333333 Q[90,14] * H_neg[6,sepal-length]
-   + 0.25 Q[90,14] * H_neg[6,sepal-width]
-   + 0.576271186440678 Q[90,14] * H_neg[6,petal-length]
-   + 0.4583333333333333 Q[90,14] * H_neg[6,petal-width] - Q[90,14] * C4281
-   + Q[90,14] * C4288 ] >= 1
+   - Q[90,13] * C4288 ] >= 1
  qc679: E[67,6] + [ 0.4166666666666665 Q[67,13] * H_pos[6,sepal-length]
    + 0.2916666666666667 Q[67,13] * H_pos[6,sepal-width]
    + 0.5254237288135593 Q[67,13] * H_pos[6,petal-length]
@@ -17726,15 +12298,7 @@ Subject To
    - 0.2916666666666667 Q[67,13] * H_neg[6,sepal-width]
    - 0.5254237288135593 Q[67,13] * H_neg[6,petal-length]
    - 0.375 Q[67,13] * H_neg[6,petal-width] + Q[67,13] * C4281
-   - Q[67,13] * C4288 - 0.4166666666666665 Q[67,14] * H_pos[6,sepal-length]
-   - 0.2916666666666667 Q[67,14] * H_pos[6,sepal-width]
-   - 0.5254237288135593 Q[67,14] * H_pos[6,petal-length]
-   - 0.375 Q[67,14] * H_pos[6,petal-width]
-   + 0.4166666666666665 Q[67,14] * H_neg[6,sepal-length]
-   + 0.2916666666666667 Q[67,14] * H_neg[6,sepal-width]
-   + 0.5254237288135593 Q[67,14] * H_neg[6,petal-length]
-   + 0.375 Q[67,14] * H_neg[6,petal-width] - Q[67,14] * C4281
-   + Q[67,14] * C4288 ] >= 1
+   - Q[67,13] * C4288 ] >= 1
  qc680: E[131,6] + [ Q[131,13] * H_pos[6,sepal-length]
    + 0.75 Q[131,13] * H_pos[6,sepal-width]
    + 0.9152542372881356 Q[131,13] * H_pos[6,petal-length]
@@ -17743,16 +12307,7 @@ Subject To
    - 0.75 Q[131,13] * H_neg[6,sepal-width]
    - 0.9152542372881356 Q[131,13] * H_neg[6,petal-length]
    - 0.7916666666666667 Q[131,13] * H_neg[6,petal-width]
-   + Q[131,13] * C4281 - Q[131,13] * C4288
-   - Q[131,14] * H_pos[6,sepal-length]
-   - 0.75 Q[131,14] * H_pos[6,sepal-width]
-   - 0.9152542372881356 Q[131,14] * H_pos[6,petal-length]
-   - 0.7916666666666667 Q[131,14] * H_pos[6,petal-width]
-   + Q[131,14] * H_neg[6,sepal-length]
-   + 0.75 Q[131,14] * H_neg[6,sepal-width]
-   + 0.9152542372881356 Q[131,14] * H_neg[6,petal-length]
-   + 0.7916666666666667 Q[131,14] * H_neg[6,petal-width]
-   - Q[131,14] * C4281 + Q[131,14] * C4288 ] >= 1
+   + Q[131,13] * C4281 - Q[131,13] * C4288 ] >= 1
  qc681: E[121,6] + [ 0.3611111111111109 Q[121,13] * H_pos[6,sepal-length]
    + 0.3333333333333333 Q[121,13] * H_pos[6,sepal-width]
    + 0.6610169491525424 Q[121,13] * H_pos[6,petal-length]
@@ -17761,16 +12316,7 @@ Subject To
    - 0.3333333333333333 Q[121,13] * H_neg[6,sepal-width]
    - 0.6610169491525424 Q[121,13] * H_neg[6,petal-length]
    - 0.7916666666666667 Q[121,13] * H_neg[6,petal-width]
-   + Q[121,13] * C4281 - Q[121,13] * C4288
-   - 0.3611111111111109 Q[121,14] * H_pos[6,sepal-length]
-   - 0.3333333333333333 Q[121,14] * H_pos[6,sepal-width]
-   - 0.6610169491525424 Q[121,14] * H_pos[6,petal-length]
-   - 0.7916666666666667 Q[121,14] * H_pos[6,petal-width]
-   + 0.3611111111111109 Q[121,14] * H_neg[6,sepal-length]
-   + 0.3333333333333333 Q[121,14] * H_neg[6,sepal-width]
-   + 0.6610169491525424 Q[121,14] * H_neg[6,petal-length]
-   + 0.7916666666666667 Q[121,14] * H_neg[6,petal-width]
-   - Q[121,14] * C4281 + Q[121,14] * C4288 ] >= 1
+   + Q[121,13] * C4281 - Q[121,13] * C4288 ] >= 1
  qc682: E[75,6] + [ 0.6388888888888888 Q[75,13] * H_pos[6,sepal-length]
    + 0.4166666666666667 Q[75,13] * H_pos[6,sepal-width]
    + 0.576271186440678 Q[75,13] * H_pos[6,petal-length]
@@ -17779,15 +12325,7 @@ Subject To
    - 0.4166666666666667 Q[75,13] * H_neg[6,sepal-width]
    - 0.576271186440678 Q[75,13] * H_neg[6,petal-length]
    - 0.5416666666666667 Q[75,13] * H_neg[6,petal-width] + Q[75,13] * C4281
-   - Q[75,13] * C4288 - 0.6388888888888888 Q[75,14] * H_pos[6,sepal-length]
-   - 0.4166666666666667 Q[75,14] * H_pos[6,sepal-width]
-   - 0.576271186440678 Q[75,14] * H_pos[6,petal-length]
-   - 0.5416666666666667 Q[75,14] * H_pos[6,petal-width]
-   + 0.6388888888888888 Q[75,14] * H_neg[6,sepal-length]
-   + 0.4166666666666667 Q[75,14] * H_neg[6,sepal-width]
-   + 0.576271186440678 Q[75,14] * H_neg[6,petal-length]
-   + 0.5416666666666667 Q[75,14] * H_neg[6,petal-width] - Q[75,14] * C4281
-   + Q[75,14] * C4288 ] >= 1
+   - Q[75,13] * C4288 ] >= 1
  qc683: E[44,6] + [ 0.2222222222222221 Q[44,13] * H_pos[6,sepal-length]
    + 0.75 Q[44,13] * H_pos[6,sepal-width]
    + 0.1525423728813559 Q[44,13] * H_pos[6,petal-length]
@@ -17796,15 +12334,7 @@ Subject To
    - 0.75 Q[44,13] * H_neg[6,sepal-width]
    - 0.1525423728813559 Q[44,13] * H_neg[6,petal-length]
    - 0.125 Q[44,13] * H_neg[6,petal-width] + Q[44,13] * C4281
-   - Q[44,13] * C4288 - 0.2222222222222221 Q[44,14] * H_pos[6,sepal-length]
-   - 0.75 Q[44,14] * H_pos[6,sepal-width]
-   - 0.1525423728813559 Q[44,14] * H_pos[6,petal-length]
-   - 0.125 Q[44,14] * H_pos[6,petal-width]
-   + 0.2222222222222221 Q[44,14] * H_neg[6,sepal-length]
-   + 0.75 Q[44,14] * H_neg[6,sepal-width]
-   + 0.1525423728813559 Q[44,14] * H_neg[6,petal-length]
-   + 0.125 Q[44,14] * H_neg[6,petal-width] - Q[44,14] * C4281
-   + Q[44,14] * C4288 ] >= 1
+   - Q[44,13] * C4288 ] >= 1
  qc684: E[40,6] + [ 0.1944444444444444 Q[40,13] * H_pos[6,sepal-length]
    + 0.625 Q[40,13] * H_pos[6,sepal-width]
    + 0.0508474576271186 Q[40,13] * H_pos[6,petal-length]
@@ -17813,15 +12343,7 @@ Subject To
    - 0.625 Q[40,13] * H_neg[6,sepal-width]
    - 0.0508474576271186 Q[40,13] * H_neg[6,petal-length]
    - 0.0833333333333333 Q[40,13] * H_neg[6,petal-width] + Q[40,13] * C4281
-   - Q[40,13] * C4288 - 0.1944444444444444 Q[40,14] * H_pos[6,sepal-length]
-   - 0.625 Q[40,14] * H_pos[6,sepal-width]
-   - 0.0508474576271186 Q[40,14] * H_pos[6,petal-length]
-   - 0.0833333333333333 Q[40,14] * H_pos[6,petal-width]
-   + 0.1944444444444444 Q[40,14] * H_neg[6,sepal-length]
-   + 0.625 Q[40,14] * H_neg[6,sepal-width]
-   + 0.0508474576271186 Q[40,14] * H_neg[6,petal-length]
-   + 0.0833333333333333 Q[40,14] * H_neg[6,petal-width] - Q[40,14] * C4281
-   + Q[40,14] * C4288 ] >= 1
+   - Q[40,13] * C4288 ] >= 1
  qc685: E[10,6] + [ 0.3055555555555556 Q[10,13] * H_pos[6,sepal-length]
    + 0.7083333333333333 Q[10,13] * H_pos[6,sepal-width]
    + 0.0847457627118644 Q[10,13] * H_pos[6,petal-length]
@@ -17830,15 +12352,7 @@ Subject To
    - 0.7083333333333333 Q[10,13] * H_neg[6,sepal-width]
    - 0.0847457627118644 Q[10,13] * H_neg[6,petal-length]
    - 0.0416666666666667 Q[10,13] * H_neg[6,petal-width] + Q[10,13] * C4281
-   - Q[10,13] * C4288 - 0.3055555555555556 Q[10,14] * H_pos[6,sepal-length]
-   - 0.7083333333333333 Q[10,14] * H_pos[6,sepal-width]
-   - 0.0847457627118644 Q[10,14] * H_pos[6,petal-length]
-   - 0.0416666666666667 Q[10,14] * H_pos[6,petal-width]
-   + 0.3055555555555556 Q[10,14] * H_neg[6,sepal-length]
-   + 0.7083333333333333 Q[10,14] * H_neg[6,sepal-width]
-   + 0.0847457627118644 Q[10,14] * H_neg[6,petal-length]
-   + 0.0416666666666667 Q[10,14] * H_neg[6,petal-width] - Q[10,14] * C4281
-   + Q[10,14] * C4288 ] >= 1
+   - Q[10,13] * C4288 ] >= 1
  qc686: E[47,6] + [ 0.0833333333333333 Q[47,13] * H_pos[6,sepal-length]
    + 0.5 Q[47,13] * H_pos[6,sepal-width]
    + 0.0677966101694915 Q[47,13] * H_pos[6,petal-length]
@@ -17847,15 +12361,7 @@ Subject To
    - 0.5 Q[47,13] * H_neg[6,sepal-width]
    - 0.0677966101694915 Q[47,13] * H_neg[6,petal-length]
    - 0.0416666666666667 Q[47,13] * H_neg[6,petal-width] + Q[47,13] * C4281
-   - Q[47,13] * C4288 - 0.0833333333333333 Q[47,14] * H_pos[6,sepal-length]
-   - 0.5 Q[47,14] * H_pos[6,sepal-width]
-   - 0.0677966101694915 Q[47,14] * H_pos[6,petal-length]
-   - 0.0416666666666667 Q[47,14] * H_pos[6,petal-width]
-   + 0.0833333333333333 Q[47,14] * H_neg[6,sepal-length]
-   + 0.5 Q[47,14] * H_neg[6,sepal-width]
-   + 0.0677966101694915 Q[47,14] * H_neg[6,petal-length]
-   + 0.0416666666666667 Q[47,14] * H_neg[6,petal-width] - Q[47,14] * C4281
-   + Q[47,14] * C4288 ] >= 1
+   - Q[47,13] * C4288 ] >= 1
  qc687: E[18,6] + [ 0.3888888888888888 Q[18,13] * H_pos[6,sepal-length]
    + 0.75 Q[18,13] * H_pos[6,sepal-width]
    + 0.1186440677966101 Q[18,13] * H_pos[6,petal-length]
@@ -17864,15 +12370,7 @@ Subject To
    - 0.75 Q[18,13] * H_neg[6,sepal-width]
    - 0.1186440677966101 Q[18,13] * H_neg[6,petal-length]
    - 0.0833333333333333 Q[18,13] * H_neg[6,petal-width] + Q[18,13] * C4281
-   - Q[18,13] * C4288 - 0.3888888888888888 Q[18,14] * H_pos[6,sepal-length]
-   - 0.75 Q[18,14] * H_pos[6,sepal-width]
-   - 0.1186440677966101 Q[18,14] * H_pos[6,petal-length]
-   - 0.0833333333333333 Q[18,14] * H_pos[6,petal-width]
-   + 0.3888888888888888 Q[18,14] * H_neg[6,sepal-length]
-   + 0.75 Q[18,14] * H_neg[6,sepal-width]
-   + 0.1186440677966101 Q[18,14] * H_neg[6,petal-length]
-   + 0.0833333333333333 Q[18,14] * H_neg[6,petal-width] - Q[18,14] * C4281
-   + Q[18,14] * C4288 ] >= 1
+   - Q[18,13] * C4288 ] >= 1
  qc688: E[137,6] + [ 0.5833333333333335 Q[137,13] * H_pos[6,sepal-length]
    + 0.4583333333333333 Q[137,13] * H_pos[6,sepal-width]
    + 0.7627118644067796 Q[137,13] * H_pos[6,petal-length]
@@ -17881,16 +12379,7 @@ Subject To
    - 0.4583333333333333 Q[137,13] * H_neg[6,sepal-width]
    - 0.7627118644067796 Q[137,13] * H_neg[6,petal-length]
    - 0.7083333333333334 Q[137,13] * H_neg[6,petal-width]
-   + Q[137,13] * C4281 - Q[137,13] * C4288
-   - 0.5833333333333335 Q[137,14] * H_pos[6,sepal-length]
-   - 0.4583333333333333 Q[137,14] * H_pos[6,sepal-width]
-   - 0.7627118644067796 Q[137,14] * H_pos[6,petal-length]
-   - 0.7083333333333334 Q[137,14] * H_pos[6,petal-width]
-   + 0.5833333333333335 Q[137,14] * H_neg[6,sepal-length]
-   + 0.4583333333333333 Q[137,14] * H_neg[6,sepal-width]
-   + 0.7627118644067796 Q[137,14] * H_neg[6,petal-length]
-   + 0.7083333333333334 Q[137,14] * H_neg[6,petal-width]
-   - Q[137,14] * C4281 + Q[137,14] * C4288 ] >= 1
+   + Q[137,13] * C4281 - Q[137,13] * C4288 ] >= 1
  qc689: E[136,6] + [ 0.5555555555555556 Q[136,13] * H_pos[6,sepal-length]
    + 0.5833333333333333 Q[136,13] * H_pos[6,sepal-width]
    + 0.7796610169491525 Q[136,13] * H_pos[6,petal-length]
@@ -17899,16 +12388,7 @@ Subject To
    - 0.5833333333333333 Q[136,13] * H_neg[6,sepal-width]
    - 0.7796610169491525 Q[136,13] * H_neg[6,petal-length]
    - 0.9583333333333334 Q[136,13] * H_neg[6,petal-width]
-   + Q[136,13] * C4281 - Q[136,13] * C4288
-   - 0.5555555555555556 Q[136,14] * H_pos[6,sepal-length]
-   - 0.5833333333333333 Q[136,14] * H_pos[6,sepal-width]
-   - 0.7796610169491525 Q[136,14] * H_pos[6,petal-length]
-   - 0.9583333333333334 Q[136,14] * H_pos[6,petal-width]
-   + 0.5555555555555556 Q[136,14] * H_neg[6,sepal-length]
-   + 0.5833333333333333 Q[136,14] * H_neg[6,sepal-width]
-   + 0.7796610169491525 Q[136,14] * H_neg[6,petal-length]
-   + 0.9583333333333334 Q[136,14] * H_neg[6,petal-width]
-   - Q[136,14] * C4281 + Q[136,14] * C4288 ] >= 1
+   + Q[136,13] * C4281 - Q[136,13] * C4288 ] >= 1
  qc690: E[56,6] + [ 0.5555555555555556 Q[56,13] * H_pos[6,sepal-length]
    + 0.5416666666666665 Q[56,13] * H_pos[6,sepal-width]
    + 0.6271186440677966 Q[56,13] * H_pos[6,petal-length]
@@ -17917,15 +12397,7 @@ Subject To
    - 0.5416666666666665 Q[56,13] * H_neg[6,sepal-width]
    - 0.6271186440677966 Q[56,13] * H_neg[6,petal-length]
    - 0.625 Q[56,13] * H_neg[6,petal-width] + Q[56,13] * C4281
-   - Q[56,13] * C4288 - 0.5555555555555556 Q[56,14] * H_pos[6,sepal-length]
-   - 0.5416666666666665 Q[56,14] * H_pos[6,sepal-width]
-   - 0.6271186440677966 Q[56,14] * H_pos[6,petal-length]
-   - 0.625 Q[56,14] * H_pos[6,petal-width]
-   + 0.5555555555555556 Q[56,14] * H_neg[6,sepal-length]
-   + 0.5416666666666665 Q[56,14] * H_neg[6,sepal-width]
-   + 0.6271186440677966 Q[56,14] * H_neg[6,petal-length]
-   + 0.625 Q[56,14] * H_neg[6,petal-width] - Q[56,14] * C4281
-   + Q[56,14] * C4288 ] >= 1
+   - Q[56,13] * C4288 ] >= 1
  qc691: E[119,6] + [ 0.4722222222222223 Q[119,13] * H_pos[6,sepal-length]
    + 0.0833333333333334 Q[119,13] * H_pos[6,sepal-width]
    + 0.6779661016949152 Q[119,13] * H_pos[6,petal-length]
@@ -17934,29 +12406,14 @@ Subject To
    - 0.0833333333333334 Q[119,13] * H_neg[6,sepal-width]
    - 0.6779661016949152 Q[119,13] * H_neg[6,petal-length]
    - 0.5833333333333334 Q[119,13] * H_neg[6,petal-width]
-   + Q[119,13] * C4281 - Q[119,13] * C4288
-   - 0.4722222222222223 Q[119,14] * H_pos[6,sepal-length]
-   - 0.0833333333333334 Q[119,14] * H_pos[6,sepal-width]
-   - 0.6779661016949152 Q[119,14] * H_pos[6,petal-length]
-   - 0.5833333333333334 Q[119,14] * H_pos[6,petal-width]
-   + 0.4722222222222223 Q[119,14] * H_neg[6,sepal-length]
-   + 0.0833333333333334 Q[119,14] * H_neg[6,sepal-width]
-   + 0.6779661016949152 Q[119,14] * H_neg[6,petal-length]
-   + 0.5833333333333334 Q[119,14] * H_neg[6,petal-width]
-   - Q[119,14] * C4281 + Q[119,14] * C4288 ] >= 1
+   + Q[119,13] * C4281 - Q[119,13] * C4288 ] >= 1
  qc692: E[9,6] + [ 0.1666666666666667 Q[9,13] * H_pos[6,sepal-length]
    + 0.4583333333333333 Q[9,13] * H_pos[6,sepal-width]
    + 0.0847457627118644 Q[9,13] * H_pos[6,petal-length]
    - 0.1666666666666667 Q[9,13] * H_neg[6,sepal-length]
    - 0.4583333333333333 Q[9,13] * H_neg[6,sepal-width]
    - 0.0847457627118644 Q[9,13] * H_neg[6,petal-length] + Q[9,13] * C4281
-   - Q[9,13] * C4288 - 0.1666666666666667 Q[9,14] * H_pos[6,sepal-length]
-   - 0.4583333333333333 Q[9,14] * H_pos[6,sepal-width]
-   - 0.0847457627118644 Q[9,14] * H_pos[6,petal-length]
-   + 0.1666666666666667 Q[9,14] * H_neg[6,sepal-length]
-   + 0.4583333333333333 Q[9,14] * H_neg[6,sepal-width]
-   + 0.0847457627118644 Q[9,14] * H_neg[6,petal-length] - Q[9,14] * C4281
-   + Q[9,14] * C4288 ] >= 1
+   - Q[9,13] * C4288 ] >= 1
  qc693: E[141,6] + [ 0.7222222222222223 Q[141,13] * H_pos[6,sepal-length]
    + 0.4583333333333333 Q[141,13] * H_pos[6,sepal-width]
    + 0.6949152542372881 Q[141,13] * H_pos[6,petal-length]
@@ -17965,16 +12422,7 @@ Subject To
    - 0.4583333333333333 Q[141,13] * H_neg[6,sepal-width]
    - 0.6949152542372881 Q[141,13] * H_neg[6,petal-length]
    - 0.9166666666666666 Q[141,13] * H_neg[6,petal-width]
-   + Q[141,13] * C4281 - Q[141,13] * C4288
-   - 0.7222222222222223 Q[141,14] * H_pos[6,sepal-length]
-   - 0.4583333333333333 Q[141,14] * H_pos[6,sepal-width]
-   - 0.6949152542372881 Q[141,14] * H_pos[6,petal-length]
-   - 0.9166666666666666 Q[141,14] * H_pos[6,petal-width]
-   + 0.7222222222222223 Q[141,14] * H_neg[6,sepal-length]
-   + 0.4583333333333333 Q[141,14] * H_neg[6,sepal-width]
-   + 0.6949152542372881 Q[141,14] * H_neg[6,petal-length]
-   + 0.9166666666666666 Q[141,14] * H_neg[6,petal-width]
-   - Q[141,14] * C4281 + Q[141,14] * C4288 ] >= 1
+   + Q[141,13] * C4281 - Q[141,13] * C4288 ] >= 1
  qc694: E[6,6] + [ 0.0833333333333333 Q[6,13] * H_pos[6,sepal-length]
    + 0.5833333333333333 Q[6,13] * H_pos[6,sepal-width]
    + 0.0677966101694915 Q[6,13] * H_pos[6,petal-length]
@@ -17983,15 +12431,7 @@ Subject To
    - 0.5833333333333333 Q[6,13] * H_neg[6,sepal-width]
    - 0.0677966101694915 Q[6,13] * H_neg[6,petal-length]
    - 0.0833333333333333 Q[6,13] * H_neg[6,petal-width] + Q[6,13] * C4281
-   - Q[6,13] * C4288 - 0.0833333333333333 Q[6,14] * H_pos[6,sepal-length]
-   - 0.5833333333333333 Q[6,14] * H_pos[6,sepal-width]
-   - 0.0677966101694915 Q[6,14] * H_pos[6,petal-length]
-   - 0.0833333333333333 Q[6,14] * H_pos[6,petal-width]
-   + 0.0833333333333333 Q[6,14] * H_neg[6,sepal-length]
-   + 0.5833333333333333 Q[6,14] * H_neg[6,sepal-width]
-   + 0.0677966101694915 Q[6,14] * H_neg[6,petal-length]
-   + 0.0833333333333333 Q[6,14] * H_neg[6,petal-width] - Q[6,14] * C4281
-   + Q[6,14] * C4288 ] >= 1
+   - Q[6,13] * C4288 ] >= 1
  qc695: E[114,6] + [ 0.4166666666666665 Q[114,13] * H_pos[6,sepal-length]
    + 0.3333333333333333 Q[114,13] * H_pos[6,sepal-width]
    + 0.6949152542372881 Q[114,13] * H_pos[6,petal-length]
@@ -18000,16 +12440,7 @@ Subject To
    - 0.3333333333333333 Q[114,13] * H_neg[6,sepal-width]
    - 0.6949152542372881 Q[114,13] * H_neg[6,petal-length]
    - 0.9583333333333334 Q[114,13] * H_neg[6,petal-width]
-   + Q[114,13] * C4281 - Q[114,13] * C4288
-   - 0.4166666666666665 Q[114,14] * H_pos[6,sepal-length]
-   - 0.3333333333333333 Q[114,14] * H_pos[6,sepal-width]
-   - 0.6949152542372881 Q[114,14] * H_pos[6,petal-length]
-   - 0.9583333333333334 Q[114,14] * H_pos[6,petal-width]
-   + 0.4166666666666665 Q[114,14] * H_neg[6,sepal-length]
-   + 0.3333333333333333 Q[114,14] * H_neg[6,sepal-width]
-   + 0.6949152542372881 Q[114,14] * H_neg[6,petal-length]
-   + 0.9583333333333334 Q[114,14] * H_neg[6,petal-width]
-   - Q[114,14] * C4281 + Q[114,14] * C4288 ] >= 1
+   + Q[114,13] * C4281 - Q[114,13] * C4288 ] >= 1
  qc696: E[147,6] + [ 0.6111111111111112 Q[147,13] * H_pos[6,sepal-length]
    + 0.4166666666666667 Q[147,13] * H_pos[6,sepal-width]
    + 0.711864406779661 Q[147,13] * H_pos[6,petal-length]
@@ -18018,16 +12449,7 @@ Subject To
    - 0.4166666666666667 Q[147,13] * H_neg[6,sepal-width]
    - 0.711864406779661 Q[147,13] * H_neg[6,petal-length]
    - 0.7916666666666667 Q[147,13] * H_neg[6,petal-width]
-   + Q[147,13] * C4281 - Q[147,13] * C4288
-   - 0.6111111111111112 Q[147,14] * H_pos[6,sepal-length]
-   - 0.4166666666666667 Q[147,14] * H_pos[6,sepal-width]
-   - 0.711864406779661 Q[147,14] * H_pos[6,petal-length]
-   - 0.7916666666666667 Q[147,14] * H_pos[6,petal-width]
-   + 0.6111111111111112 Q[147,14] * H_neg[6,sepal-length]
-   + 0.4166666666666667 Q[147,14] * H_neg[6,sepal-width]
-   + 0.711864406779661 Q[147,14] * H_neg[6,petal-length]
-   + 0.7916666666666667 Q[147,14] * H_neg[6,petal-width]
-   - Q[147,14] * C4281 + Q[147,14] * C4288 ] >= 1
+   + Q[147,13] * C4281 - Q[147,13] * C4288 ] >= 1
  qc697: E[55,6] + [ 0.3888888888888888 Q[55,13] * H_pos[6,sepal-length]
    + 0.3333333333333333 Q[55,13] * H_pos[6,sepal-width]
    + 0.5932203389830508 Q[55,13] * H_pos[6,petal-length]
@@ -18036,15 +12458,7 @@ Subject To
    - 0.3333333333333333 Q[55,13] * H_neg[6,sepal-width]
    - 0.5932203389830508 Q[55,13] * H_neg[6,petal-length]
    - 0.5 Q[55,13] * H_neg[6,petal-width] + Q[55,13] * C4281
-   - Q[55,13] * C4288 - 0.3888888888888888 Q[55,14] * H_pos[6,sepal-length]
-   - 0.3333333333333333 Q[55,14] * H_pos[6,sepal-width]
-   - 0.5932203389830508 Q[55,14] * H_pos[6,petal-length]
-   - 0.5 Q[55,14] * H_pos[6,petal-width]
-   + 0.3888888888888888 Q[55,14] * H_neg[6,sepal-length]
-   + 0.3333333333333333 Q[55,14] * H_neg[6,sepal-width]
-   + 0.5932203389830508 Q[55,14] * H_neg[6,petal-length]
-   + 0.5 Q[55,14] * H_neg[6,petal-width] - Q[55,14] * C4281
-   + Q[55,14] * C4288 ] >= 1
+   - Q[55,13] * C4288 ] >= 1
  qc698: E[112,6] + [ 0.6944444444444444 Q[112,13] * H_pos[6,sepal-length]
    + 0.4166666666666667 Q[112,13] * H_pos[6,sepal-width]
    + 0.7627118644067796 Q[112,13] * H_pos[6,petal-length]
@@ -18053,16 +12467,7 @@ Subject To
    - 0.4166666666666667 Q[112,13] * H_neg[6,sepal-width]
    - 0.7627118644067796 Q[112,13] * H_neg[6,petal-length]
    - 0.8333333333333335 Q[112,13] * H_neg[6,petal-width]
-   + Q[112,13] * C4281 - Q[112,13] * C4288
-   - 0.6944444444444444 Q[112,14] * H_pos[6,sepal-length]
-   - 0.4166666666666667 Q[112,14] * H_pos[6,sepal-width]
-   - 0.7627118644067796 Q[112,14] * H_pos[6,petal-length]
-   - 0.8333333333333335 Q[112,14] * H_pos[6,petal-width]
-   + 0.6944444444444444 Q[112,14] * H_neg[6,sepal-length]
-   + 0.4166666666666667 Q[112,14] * H_neg[6,sepal-width]
-   + 0.7627118644067796 Q[112,14] * H_neg[6,petal-length]
-   + 0.8333333333333335 Q[112,14] * H_neg[6,petal-width]
-   - Q[112,14] * C4281 + Q[112,14] * C4288 ] >= 1
+   + Q[112,13] * C4281 - Q[112,13] * C4288 ] >= 1
  qc699: E[96,6] + [ 0.3888888888888888 Q[96,13] * H_pos[6,sepal-length]
    + 0.375 Q[96,13] * H_pos[6,sepal-width]
    + 0.5423728813559322 Q[96,13] * H_pos[6,petal-length]
@@ -18071,15 +12476,7 @@ Subject To
    - 0.375 Q[96,13] * H_neg[6,sepal-width]
    - 0.5423728813559322 Q[96,13] * H_neg[6,petal-length]
    - 0.5 Q[96,13] * H_neg[6,petal-width] + Q[96,13] * C4281
-   - Q[96,13] * C4288 - 0.3888888888888888 Q[96,14] * H_pos[6,sepal-length]
-   - 0.375 Q[96,14] * H_pos[6,sepal-width]
-   - 0.5423728813559322 Q[96,14] * H_pos[6,petal-length]
-   - 0.5 Q[96,14] * H_pos[6,petal-width]
-   + 0.3888888888888888 Q[96,14] * H_neg[6,sepal-length]
-   + 0.375 Q[96,14] * H_neg[6,sepal-width]
-   + 0.5423728813559322 Q[96,14] * H_neg[6,petal-length]
-   + 0.5 Q[96,14] * H_neg[6,petal-width] - Q[96,14] * C4281
-   + Q[96,14] * C4288 ] >= 1
+   - Q[96,13] * C4288 ] >= 1
  qc700: E[52,6] + [ 0.7222222222222223 Q[52,13] * H_pos[6,sepal-length]
    + 0.4583333333333333 Q[52,13] * H_pos[6,sepal-width]
    + 0.6610169491525424 Q[52,13] * H_pos[6,petal-length]
@@ -18088,15 +12485,7 @@ Subject To
    - 0.4583333333333333 Q[52,13] * H_neg[6,sepal-width]
    - 0.6610169491525424 Q[52,13] * H_neg[6,petal-length]
    - 0.5833333333333334 Q[52,13] * H_neg[6,petal-width] + Q[52,13] * C4281
-   - Q[52,13] * C4288 - 0.7222222222222223 Q[52,14] * H_pos[6,sepal-length]
-   - 0.4583333333333333 Q[52,14] * H_pos[6,sepal-width]
-   - 0.6610169491525424 Q[52,14] * H_pos[6,petal-length]
-   - 0.5833333333333334 Q[52,14] * H_pos[6,petal-width]
-   + 0.7222222222222223 Q[52,14] * H_neg[6,sepal-length]
-   + 0.4583333333333333 Q[52,14] * H_neg[6,sepal-width]
-   + 0.6610169491525424 Q[52,14] * H_neg[6,petal-length]
-   + 0.5833333333333334 Q[52,14] * H_neg[6,petal-width] - Q[52,14] * C4281
-   + Q[52,14] * C4288 ] >= 1
+   - Q[52,13] * C4288 ] >= 1
  qc701: E[50,6] + [ 0.75 Q[50,13] * H_pos[6,sepal-length]
    + 0.5 Q[50,13] * H_pos[6,sepal-width]
    + 0.6271186440677966 Q[50,13] * H_pos[6,petal-length]
@@ -18105,15 +12494,7 @@ Subject To
    - 0.5 Q[50,13] * H_neg[6,sepal-width]
    - 0.6271186440677966 Q[50,13] * H_neg[6,petal-length]
    - 0.5416666666666667 Q[50,13] * H_neg[6,petal-width] + Q[50,13] * C4281
-   - Q[50,13] * C4288 - 0.75 Q[50,14] * H_pos[6,sepal-length]
-   - 0.5 Q[50,14] * H_pos[6,sepal-width]
-   - 0.6271186440677966 Q[50,14] * H_pos[6,petal-length]
-   - 0.5416666666666667 Q[50,14] * H_pos[6,petal-width]
-   + 0.75 Q[50,14] * H_neg[6,sepal-length]
-   + 0.5 Q[50,14] * H_neg[6,sepal-width]
-   + 0.6271186440677966 Q[50,14] * H_neg[6,petal-length]
-   + 0.5416666666666667 Q[50,14] * H_neg[6,petal-width] - Q[50,14] * C4281
-   + Q[50,14] * C4288 ] >= 1
+   - Q[50,13] * C4288 ] >= 1
  qc702: E[69,6] + [ 0.3611111111111109 Q[69,13] * H_pos[6,sepal-length]
    + 0.2083333333333333 Q[69,13] * H_pos[6,sepal-width]
    + 0.4915254237288135 Q[69,13] * H_pos[6,petal-length]
@@ -18122,15 +12503,7 @@ Subject To
    - 0.2083333333333333 Q[69,13] * H_neg[6,sepal-width]
    - 0.4915254237288135 Q[69,13] * H_neg[6,petal-length]
    - 0.4166666666666667 Q[69,13] * H_neg[6,petal-width] + Q[69,13] * C4281
-   - Q[69,13] * C4288 - 0.3611111111111109 Q[69,14] * H_pos[6,sepal-length]
-   - 0.2083333333333333 Q[69,14] * H_pos[6,sepal-width]
-   - 0.4915254237288135 Q[69,14] * H_pos[6,petal-length]
-   - 0.4166666666666667 Q[69,14] * H_pos[6,petal-width]
-   + 0.3611111111111109 Q[69,14] * H_neg[6,sepal-length]
-   + 0.2083333333333333 Q[69,14] * H_neg[6,sepal-width]
-   + 0.4915254237288135 Q[69,14] * H_neg[6,petal-length]
-   + 0.4166666666666667 Q[69,14] * H_neg[6,petal-width] - Q[69,14] * C4281
-   + Q[69,14] * C4288 ] >= 1
+   - Q[69,13] * C4288 ] >= 1
  qc703: E[71,6] + [ 0.5 Q[71,13] * H_pos[6,sepal-length]
    + 0.3333333333333333 Q[71,13] * H_pos[6,sepal-width]
    + 0.5084745762711864 Q[71,13] * H_pos[6,petal-length]
@@ -18139,15 +12512,7 @@ Subject To
    - 0.3333333333333333 Q[71,13] * H_neg[6,sepal-width]
    - 0.5084745762711864 Q[71,13] * H_neg[6,petal-length]
    - 0.5 Q[71,13] * H_neg[6,petal-width] + Q[71,13] * C4281
-   - Q[71,13] * C4288 - 0.5 Q[71,14] * H_pos[6,sepal-length]
-   - 0.3333333333333333 Q[71,14] * H_pos[6,sepal-width]
-   - 0.5084745762711864 Q[71,14] * H_pos[6,petal-length]
-   - 0.5 Q[71,14] * H_pos[6,petal-width]
-   + 0.5 Q[71,14] * H_neg[6,sepal-length]
-   + 0.3333333333333333 Q[71,14] * H_neg[6,sepal-width]
-   + 0.5084745762711864 Q[71,14] * H_neg[6,petal-length]
-   + 0.5 Q[71,14] * H_neg[6,petal-width] - Q[71,14] * C4281
-   + Q[71,14] * C4288 ] >= 1
+   - Q[71,13] * C4288 ] >= 1
  qc704: E[92,6] + [ 0.4166666666666665 Q[92,13] * H_pos[6,sepal-length]
    + 0.25 Q[92,13] * H_pos[6,sepal-width]
    + 0.5084745762711864 Q[92,13] * H_pos[6,petal-length]
@@ -18156,15 +12521,7 @@ Subject To
    - 0.25 Q[92,13] * H_neg[6,sepal-width]
    - 0.5084745762711864 Q[92,13] * H_neg[6,petal-length]
    - 0.4583333333333333 Q[92,13] * H_neg[6,petal-width] + Q[92,13] * C4281
-   - Q[92,13] * C4288 - 0.4166666666666665 Q[92,14] * H_pos[6,sepal-length]
-   - 0.25 Q[92,14] * H_pos[6,sepal-width]
-   - 0.5084745762711864 Q[92,14] * H_pos[6,petal-length]
-   - 0.4583333333333333 Q[92,14] * H_pos[6,petal-width]
-   + 0.4166666666666665 Q[92,14] * H_neg[6,sepal-length]
-   + 0.25 Q[92,14] * H_neg[6,sepal-width]
-   + 0.5084745762711864 Q[92,14] * H_neg[6,petal-length]
-   + 0.4583333333333333 Q[92,14] * H_neg[6,petal-width] - Q[92,14] * C4281
-   + Q[92,14] * C4288 ] >= 1
+   - Q[92,13] * C4288 ] >= 1
  qc705: E[61,6] + [ 0.4444444444444446 Q[61,13] * H_pos[6,sepal-length]
    + 0.4166666666666667 Q[61,13] * H_pos[6,sepal-width]
    + 0.5423728813559322 Q[61,13] * H_pos[6,petal-length]
@@ -18173,15 +12530,7 @@ Subject To
    - 0.4166666666666667 Q[61,13] * H_neg[6,sepal-width]
    - 0.5423728813559322 Q[61,13] * H_neg[6,petal-length]
    - 0.5833333333333334 Q[61,13] * H_neg[6,petal-width] + Q[61,13] * C4281
-   - Q[61,13] * C4288 - 0.4444444444444446 Q[61,14] * H_pos[6,sepal-length]
-   - 0.4166666666666667 Q[61,14] * H_pos[6,sepal-width]
-   - 0.5423728813559322 Q[61,14] * H_pos[6,petal-length]
-   - 0.5833333333333334 Q[61,14] * H_pos[6,petal-width]
-   + 0.4444444444444446 Q[61,14] * H_neg[6,sepal-length]
-   + 0.4166666666666667 Q[61,14] * H_neg[6,sepal-width]
-   + 0.5423728813559322 Q[61,14] * H_neg[6,petal-length]
-   + 0.5833333333333334 Q[61,14] * H_neg[6,petal-width] - Q[61,14] * C4281
-   + Q[61,14] * C4288 ] >= 1
+   - Q[61,13] * C4288 ] >= 1
  qc706: E[33,6] + [ 0.3333333333333333 Q[33,13] * H_pos[6,sepal-length]
    + 0.9166666666666667 Q[33,13] * H_pos[6,sepal-width]
    + 0.0677966101694915 Q[33,13] * H_pos[6,petal-length]
@@ -18190,15 +12539,7 @@ Subject To
    - 0.9166666666666667 Q[33,13] * H_neg[6,sepal-width]
    - 0.0677966101694915 Q[33,13] * H_neg[6,petal-length]
    - 0.0416666666666667 Q[33,13] * H_neg[6,petal-width] + Q[33,13] * C4281
-   - Q[33,13] * C4288 - 0.3333333333333333 Q[33,14] * H_pos[6,sepal-length]
-   - 0.9166666666666667 Q[33,14] * H_pos[6,sepal-width]
-   - 0.0677966101694915 Q[33,14] * H_pos[6,petal-length]
-   - 0.0416666666666667 Q[33,14] * H_pos[6,petal-width]
-   + 0.3333333333333333 Q[33,14] * H_neg[6,sepal-length]
-   + 0.9166666666666667 Q[33,14] * H_neg[6,sepal-width]
-   + 0.0677966101694915 Q[33,14] * H_neg[6,petal-length]
-   + 0.0416666666666667 Q[33,14] * H_neg[6,petal-width] - Q[33,14] * C4281
-   + Q[33,14] * C4288 ] >= 1
+   - Q[33,13] * C4288 ] >= 1
  qc707: E[15,6] + [ 0.3888888888888888 Q[15,13] * H_pos[6,sepal-length]
    + Q[15,13] * H_pos[6,sepal-width]
    + 0.0847457627118644 Q[15,13] * H_pos[6,petal-length]
@@ -18207,15 +12548,7 @@ Subject To
    - Q[15,13] * H_neg[6,sepal-width]
    - 0.0847457627118644 Q[15,13] * H_neg[6,petal-length]
    - 0.125 Q[15,13] * H_neg[6,petal-width] + Q[15,13] * C4281
-   - Q[15,13] * C4288 - 0.3888888888888888 Q[15,14] * H_pos[6,sepal-length]
-   - Q[15,14] * H_pos[6,sepal-width]
-   - 0.0847457627118644 Q[15,14] * H_pos[6,petal-length]
-   - 0.125 Q[15,14] * H_pos[6,petal-width]
-   + 0.3888888888888888 Q[15,14] * H_neg[6,sepal-length]
-   + Q[15,14] * H_neg[6,sepal-width]
-   + 0.0847457627118644 Q[15,14] * H_neg[6,petal-length]
-   + 0.125 Q[15,14] * H_neg[6,petal-width] - Q[15,14] * C4281
-   + Q[15,14] * C4288 ] >= 1
+   - Q[15,13] * C4288 ] >= 1
  qc708: E[5,6] + [ 0.3055555555555556 Q[5,13] * H_pos[6,sepal-length]
    + 0.7916666666666665 Q[5,13] * H_pos[6,sepal-width]
    + 0.1186440677966101 Q[5,13] * H_pos[6,petal-length]
@@ -18224,15 +12557,7 @@ Subject To
    - 0.7916666666666665 Q[5,13] * H_neg[6,sepal-width]
    - 0.1186440677966101 Q[5,13] * H_neg[6,petal-length]
    - 0.125 Q[5,13] * H_neg[6,petal-width] + Q[5,13] * C4281
-   - Q[5,13] * C4288 - 0.3055555555555556 Q[5,14] * H_pos[6,sepal-length]
-   - 0.7916666666666665 Q[5,14] * H_pos[6,sepal-width]
-   - 0.1186440677966101 Q[5,14] * H_pos[6,petal-length]
-   - 0.125 Q[5,14] * H_pos[6,petal-width]
-   + 0.3055555555555556 Q[5,14] * H_neg[6,sepal-length]
-   + 0.7916666666666665 Q[5,14] * H_neg[6,sepal-width]
-   + 0.1186440677966101 Q[5,14] * H_neg[6,petal-length]
-   + 0.125 Q[5,14] * H_neg[6,petal-width] - Q[5,14] * C4281
-   + Q[5,14] * C4288 ] >= 1
+   - Q[5,13] * C4288 ] >= 1
  qc709: E[126,6] + [ 0.5277777777777779 Q[126,13] * H_pos[6,sepal-length]
    + 0.3333333333333333 Q[126,13] * H_pos[6,sepal-width]
    + 0.6440677966101694 Q[126,13] * H_pos[6,petal-length]
@@ -18241,16 +12566,7 @@ Subject To
    - 0.3333333333333333 Q[126,13] * H_neg[6,sepal-width]
    - 0.6440677966101694 Q[126,13] * H_neg[6,petal-length]
    - 0.7083333333333334 Q[126,13] * H_neg[6,petal-width]
-   + Q[126,13] * C4281 - Q[126,13] * C4288
-   - 0.5277777777777779 Q[126,14] * H_pos[6,sepal-length]
-   - 0.3333333333333333 Q[126,14] * H_pos[6,sepal-width]
-   - 0.6440677966101694 Q[126,14] * H_pos[6,petal-length]
-   - 0.7083333333333334 Q[126,14] * H_pos[6,petal-width]
-   + 0.5277777777777779 Q[126,14] * H_neg[6,sepal-length]
-   + 0.3333333333333333 Q[126,14] * H_neg[6,sepal-width]
-   + 0.6440677966101694 Q[126,14] * H_neg[6,petal-length]
-   + 0.7083333333333334 Q[126,14] * H_neg[6,petal-width]
-   - Q[126,14] * C4281 + Q[126,14] * C4288 ] >= 1
+   + Q[126,13] * C4281 - Q[126,13] * C4288 ] >= 1
  qc710: E[143,6] + [ 0.6944444444444444 Q[143,13] * H_pos[6,sepal-length]
    + 0.5 Q[143,13] * H_pos[6,sepal-width]
    + 0.8305084745762712 Q[143,13] * H_pos[6,petal-length]
@@ -18259,16 +12575,7 @@ Subject To
    - 0.5 Q[143,13] * H_neg[6,sepal-width]
    - 0.8305084745762712 Q[143,13] * H_neg[6,petal-length]
    - 0.9166666666666666 Q[143,13] * H_neg[6,petal-width]
-   + Q[143,13] * C4281 - Q[143,13] * C4288
-   - 0.6944444444444444 Q[143,14] * H_pos[6,sepal-length]
-   - 0.5 Q[143,14] * H_pos[6,sepal-width]
-   - 0.8305084745762712 Q[143,14] * H_pos[6,petal-length]
-   - 0.9166666666666666 Q[143,14] * H_pos[6,petal-width]
-   + 0.6944444444444444 Q[143,14] * H_neg[6,sepal-length]
-   + 0.5 Q[143,14] * H_neg[6,sepal-width]
-   + 0.8305084745762712 Q[143,14] * H_neg[6,petal-length]
-   + 0.9166666666666666 Q[143,14] * H_neg[6,petal-width]
-   - Q[143,14] * C4281 + Q[143,14] * C4288 ] >= 1
+   + Q[143,13] * C4281 - Q[143,13] * C4288 ] >= 1
  qc711: E[80,6] + [ 0.3333333333333333 Q[80,13] * H_pos[6,sepal-length]
    + 0.1666666666666666 Q[80,13] * H_pos[6,sepal-width]
    + 0.4745762711864406 Q[80,13] * H_pos[6,petal-length]
@@ -18277,15 +12584,7 @@ Subject To
    - 0.1666666666666666 Q[80,13] * H_neg[6,sepal-width]
    - 0.4745762711864406 Q[80,13] * H_neg[6,petal-length]
    - 0.4166666666666667 Q[80,13] * H_neg[6,petal-width] + Q[80,13] * C4281
-   - Q[80,13] * C4288 - 0.3333333333333333 Q[80,14] * H_pos[6,sepal-length]
-   - 0.1666666666666666 Q[80,14] * H_pos[6,sepal-width]
-   - 0.4745762711864406 Q[80,14] * H_pos[6,petal-length]
-   - 0.4166666666666667 Q[80,14] * H_pos[6,petal-width]
-   + 0.3333333333333333 Q[80,14] * H_neg[6,sepal-length]
-   + 0.1666666666666666 Q[80,14] * H_neg[6,sepal-width]
-   + 0.4745762711864406 Q[80,14] * H_neg[6,petal-length]
-   + 0.4166666666666667 Q[80,14] * H_neg[6,petal-width] - Q[80,14] * C4281
-   + Q[80,14] * C4288 ] >= 1
+   - Q[80,13] * C4288 ] >= 1
  qc712: E[73,6] + [ 0.5 Q[73,13] * H_pos[6,sepal-length]
    + 0.3333333333333333 Q[73,13] * H_pos[6,sepal-width]
    + 0.6271186440677966 Q[73,13] * H_pos[6,petal-length]
@@ -18294,15 +12593,7 @@ Subject To
    - 0.3333333333333333 Q[73,13] * H_neg[6,sepal-width]
    - 0.6271186440677966 Q[73,13] * H_neg[6,petal-length]
    - 0.4583333333333333 Q[73,13] * H_neg[6,petal-width] + Q[73,13] * C4281
-   - Q[73,13] * C4288 - 0.5 Q[73,14] * H_pos[6,sepal-length]
-   - 0.3333333333333333 Q[73,14] * H_pos[6,sepal-width]
-   - 0.6271186440677966 Q[73,14] * H_pos[6,petal-length]
-   - 0.4583333333333333 Q[73,14] * H_pos[6,petal-width]
-   + 0.5 Q[73,14] * H_neg[6,sepal-length]
-   + 0.3333333333333333 Q[73,14] * H_neg[6,sepal-width]
-   + 0.6271186440677966 Q[73,14] * H_neg[6,petal-length]
-   + 0.4583333333333333 Q[73,14] * H_neg[6,petal-width] - Q[73,14] * C4281
-   + Q[73,14] * C4288 ] >= 1
+   - Q[73,13] * C4288 ] >= 1
  qc713: E[54,6] + [ 0.6111111111111112 Q[54,13] * H_pos[6,sepal-length]
    + 0.3333333333333333 Q[54,13] * H_pos[6,sepal-width]
    + 0.6101694915254237 Q[54,13] * H_pos[6,petal-length]
@@ -18311,15 +12602,7 @@ Subject To
    - 0.3333333333333333 Q[54,13] * H_neg[6,sepal-width]
    - 0.6101694915254237 Q[54,13] * H_neg[6,petal-length]
    - 0.5833333333333334 Q[54,13] * H_neg[6,petal-width] + Q[54,13] * C4281
-   - Q[54,13] * C4288 - 0.6111111111111112 Q[54,14] * H_pos[6,sepal-length]
-   - 0.3333333333333333 Q[54,14] * H_pos[6,sepal-width]
-   - 0.6101694915254237 Q[54,14] * H_pos[6,petal-length]
-   - 0.5833333333333334 Q[54,14] * H_pos[6,petal-width]
-   + 0.6111111111111112 Q[54,14] * H_neg[6,sepal-length]
-   + 0.3333333333333333 Q[54,14] * H_neg[6,sepal-width]
-   + 0.6101694915254237 Q[54,14] * H_neg[6,petal-length]
-   + 0.5833333333333334 Q[54,14] * H_neg[6,petal-width] - Q[54,14] * C4281
-   + Q[54,14] * C4288 ] >= 1
+   - Q[54,13] * C4288 ] >= 1
  qc714: E[1,6] + [ 0.1666666666666667 Q[1,13] * H_pos[6,sepal-length]
    + 0.4166666666666667 Q[1,13] * H_pos[6,sepal-width]
    + 0.0677966101694915 Q[1,13] * H_pos[6,petal-length]
@@ -18328,15 +12611,7 @@ Subject To
    - 0.4166666666666667 Q[1,13] * H_neg[6,sepal-width]
    - 0.0677966101694915 Q[1,13] * H_neg[6,petal-length]
    - 0.0416666666666667 Q[1,13] * H_neg[6,petal-width] + Q[1,13] * C4281
-   - Q[1,13] * C4288 - 0.1666666666666667 Q[1,14] * H_pos[6,sepal-length]
-   - 0.4166666666666667 Q[1,14] * H_pos[6,sepal-width]
-   - 0.0677966101694915 Q[1,14] * H_pos[6,petal-length]
-   - 0.0416666666666667 Q[1,14] * H_pos[6,petal-width]
-   + 0.1666666666666667 Q[1,14] * H_neg[6,sepal-length]
-   + 0.4166666666666667 Q[1,14] * H_neg[6,sepal-width]
-   + 0.0677966101694915 Q[1,14] * H_neg[6,petal-length]
-   + 0.0416666666666667 Q[1,14] * H_neg[6,petal-width] - Q[1,14] * C4281
-   + Q[1,14] * C4288 ] >= 1
+   - Q[1,13] * C4288 ] >= 1
  qc715: E[129,6] + [ 0.8055555555555556 Q[129,13] * H_pos[6,sepal-length]
    + 0.4166666666666667 Q[129,13] * H_pos[6,sepal-width]
    + 0.8135593220338982 Q[129,13] * H_pos[6,petal-length]
@@ -18345,16 +12620,7 @@ Subject To
    - 0.4166666666666667 Q[129,13] * H_neg[6,sepal-width]
    - 0.8135593220338982 Q[129,13] * H_neg[6,petal-length]
    - 0.625 Q[129,13] * H_neg[6,petal-width] + Q[129,13] * C4281
-   - Q[129,13] * C4288
-   - 0.8055555555555556 Q[129,14] * H_pos[6,sepal-length]
-   - 0.4166666666666667 Q[129,14] * H_pos[6,sepal-width]
-   - 0.8135593220338982 Q[129,14] * H_pos[6,petal-length]
-   - 0.625 Q[129,14] * H_pos[6,petal-width]
-   + 0.8055555555555556 Q[129,14] * H_neg[6,sepal-length]
-   + 0.4166666666666667 Q[129,14] * H_neg[6,sepal-width]
-   + 0.8135593220338982 Q[129,14] * H_neg[6,petal-length]
-   + 0.625 Q[129,14] * H_neg[6,petal-width] - Q[129,14] * C4281
-   + Q[129,14] * C4288 ] >= 1
+   - Q[129,13] * C4288 ] >= 1
  qc716: E[99,6] + [ 0.3888888888888888 Q[99,13] * H_pos[6,sepal-length]
    + 0.3333333333333333 Q[99,13] * H_pos[6,sepal-width]
    + 0.5254237288135593 Q[99,13] * H_pos[6,petal-length]
@@ -18363,15 +12629,7 @@ Subject To
    - 0.3333333333333333 Q[99,13] * H_neg[6,sepal-width]
    - 0.5254237288135593 Q[99,13] * H_neg[6,petal-length]
    - 0.5 Q[99,13] * H_neg[6,petal-width] + Q[99,13] * C4281
-   - Q[99,13] * C4288 - 0.3888888888888888 Q[99,14] * H_pos[6,sepal-length]
-   - 0.3333333333333333 Q[99,14] * H_pos[6,sepal-width]
-   - 0.5254237288135593 Q[99,14] * H_pos[6,petal-length]
-   - 0.5 Q[99,14] * H_pos[6,petal-width]
-   + 0.3888888888888888 Q[99,14] * H_neg[6,sepal-length]
-   + 0.3333333333333333 Q[99,14] * H_neg[6,sepal-width]
-   + 0.5254237288135593 Q[99,14] * H_neg[6,petal-length]
-   + 0.5 Q[99,14] * H_neg[6,petal-width] - Q[99,14] * C4281
-   + Q[99,14] * C4288 ] >= 1
+   - Q[99,13] * C4288 ] >= 1
  qc717: E[105,6] + [ 0.9166666666666665 Q[105,13] * H_pos[6,sepal-length]
    + 0.4166666666666667 Q[105,13] * H_pos[6,sepal-width]
    + 0.9491525423728813 Q[105,13] * H_pos[6,petal-length]
@@ -18380,16 +12638,7 @@ Subject To
    - 0.4166666666666667 Q[105,13] * H_neg[6,sepal-width]
    - 0.9491525423728813 Q[105,13] * H_neg[6,petal-length]
    - 0.8333333333333335 Q[105,13] * H_neg[6,petal-width]
-   + Q[105,13] * C4281 - Q[105,13] * C4288
-   - 0.9166666666666665 Q[105,14] * H_pos[6,sepal-length]
-   - 0.4166666666666667 Q[105,14] * H_pos[6,sepal-width]
-   - 0.9491525423728813 Q[105,14] * H_pos[6,petal-length]
-   - 0.8333333333333335 Q[105,14] * H_pos[6,petal-width]
-   + 0.9166666666666665 Q[105,14] * H_neg[6,sepal-length]
-   + 0.4166666666666667 Q[105,14] * H_neg[6,sepal-width]
-   + 0.9491525423728813 Q[105,14] * H_neg[6,petal-length]
-   + 0.8333333333333335 Q[105,14] * H_neg[6,petal-width]
-   - Q[105,14] * C4281 + Q[105,14] * C4288 ] >= 1
+   + Q[105,13] * C4281 - Q[105,13] * C4288 ] >= 1
  qc718: E[144,6] + [ 0.6666666666666667 Q[144,13] * H_pos[6,sepal-length]
    + 0.5416666666666665 Q[144,13] * H_pos[6,sepal-width]
    + 0.7966101694915254 Q[144,13] * H_pos[6,petal-length]
@@ -18398,16 +12647,7 @@ Subject To
    - 0.5416666666666665 Q[144,13] * H_neg[6,sepal-width]
    - 0.7966101694915254 Q[144,13] * H_neg[6,petal-length]
    - Q[144,13] * H_neg[6,petal-width] + Q[144,13] * C4281
-   - Q[144,13] * C4288
-   - 0.6666666666666667 Q[144,14] * H_pos[6,sepal-length]
-   - 0.5416666666666665 Q[144,14] * H_pos[6,sepal-width]
-   - 0.7966101694915254 Q[144,14] * H_pos[6,petal-length]
-   - Q[144,14] * H_pos[6,petal-width]
-   + 0.6666666666666667 Q[144,14] * H_neg[6,sepal-length]
-   + 0.5416666666666665 Q[144,14] * H_neg[6,sepal-width]
-   + 0.7966101694915254 Q[144,14] * H_neg[6,petal-length]
-   + Q[144,14] * H_neg[6,petal-width] - Q[144,14] * C4281
-   + Q[144,14] * C4288 ] >= 1
+   - Q[144,13] * C4288 ] >= 1
  qc719: E[7,6] + [ 0.1944444444444444 Q[7,13] * H_pos[6,sepal-length]
    + 0.5833333333333333 Q[7,13] * H_pos[6,sepal-width]
    + 0.0847457627118644 Q[7,13] * H_pos[6,petal-length]
@@ -18416,15 +12656,7 @@ Subject To
    - 0.5833333333333333 Q[7,13] * H_neg[6,sepal-width]
    - 0.0847457627118644 Q[7,13] * H_neg[6,petal-length]
    - 0.0416666666666667 Q[7,13] * H_neg[6,petal-width] + Q[7,13] * C4281
-   - Q[7,13] * C4288 - 0.1944444444444444 Q[7,14] * H_pos[6,sepal-length]
-   - 0.5833333333333333 Q[7,14] * H_pos[6,sepal-width]
-   - 0.0847457627118644 Q[7,14] * H_pos[6,petal-length]
-   - 0.0416666666666667 Q[7,14] * H_pos[6,petal-width]
-   + 0.1944444444444444 Q[7,14] * H_neg[6,sepal-length]
-   + 0.5833333333333333 Q[7,14] * H_neg[6,sepal-width]
-   + 0.0847457627118644 Q[7,14] * H_neg[6,petal-length]
-   + 0.0416666666666667 Q[7,14] * H_neg[6,petal-width] - Q[7,14] * C4281
-   + Q[7,14] * C4288 ] >= 1
+   - Q[7,13] * C4288 ] >= 1
  qc720: E[107,6] + [ 0.833333333333333 Q[107,13] * H_pos[6,sepal-length]
    + 0.375 Q[107,13] * H_pos[6,sepal-width]
    + 0.8983050847457625 Q[107,13] * H_pos[6,petal-length]
@@ -18433,16 +12665,7 @@ Subject To
    - 0.375 Q[107,13] * H_neg[6,sepal-width]
    - 0.8983050847457625 Q[107,13] * H_neg[6,petal-length]
    - 0.7083333333333334 Q[107,13] * H_neg[6,petal-width]
-   + Q[107,13] * C4281 - Q[107,13] * C4288
-   - 0.833333333333333 Q[107,14] * H_pos[6,sepal-length]
-   - 0.375 Q[107,14] * H_pos[6,sepal-width]
-   - 0.8983050847457625 Q[107,14] * H_pos[6,petal-length]
-   - 0.7083333333333334 Q[107,14] * H_pos[6,petal-width]
-   + 0.833333333333333 Q[107,14] * H_neg[6,sepal-length]
-   + 0.375 Q[107,14] * H_neg[6,sepal-width]
-   + 0.8983050847457625 Q[107,14] * H_neg[6,petal-length]
-   + 0.7083333333333334 Q[107,14] * H_neg[6,petal-width]
-   - Q[107,14] * C4281 + Q[107,14] * C4288 ] >= 1
+   + Q[107,13] * C4281 - Q[107,13] * C4288 ] >= 1
  qc721: E[123,6] + [ 0.5555555555555556 Q[123,13] * H_pos[6,sepal-length]
    + 0.2916666666666667 Q[123,13] * H_pos[6,sepal-width]
    + 0.6610169491525424 Q[123,13] * H_pos[6,petal-length]
@@ -18451,16 +12674,7 @@ Subject To
    - 0.2916666666666667 Q[123,13] * H_neg[6,sepal-width]
    - 0.6610169491525424 Q[123,13] * H_neg[6,petal-length]
    - 0.7083333333333334 Q[123,13] * H_neg[6,petal-width]
-   + Q[123,13] * C4281 - Q[123,13] * C4288
-   - 0.5555555555555556 Q[123,14] * H_pos[6,sepal-length]
-   - 0.2916666666666667 Q[123,14] * H_pos[6,sepal-width]
-   - 0.6610169491525424 Q[123,14] * H_pos[6,petal-length]
-   - 0.7083333333333334 Q[123,14] * H_pos[6,petal-width]
-   + 0.5555555555555556 Q[123,14] * H_neg[6,sepal-length]
-   + 0.2916666666666667 Q[123,14] * H_neg[6,sepal-width]
-   + 0.6610169491525424 Q[123,14] * H_neg[6,petal-length]
-   + 0.7083333333333334 Q[123,14] * H_neg[6,petal-width]
-   - Q[123,14] * C4281 + Q[123,14] * C4288 ] >= 1
+   + Q[123,13] * C4281 - Q[123,13] * C4288 ] >= 1
  qc722: E[118,6] + [ 0.9444444444444442 Q[118,13] * H_pos[6,sepal-length]
    + 0.25 Q[118,13] * H_pos[6,sepal-width]
    + Q[118,13] * H_pos[6,petal-length]
@@ -18469,16 +12683,7 @@ Subject To
    - 0.25 Q[118,13] * H_neg[6,sepal-width]
    - Q[118,13] * H_neg[6,petal-length]
    - 0.9166666666666666 Q[118,13] * H_neg[6,petal-width]
-   + Q[118,13] * C4281 - Q[118,13] * C4288
-   - 0.9444444444444442 Q[118,14] * H_pos[6,sepal-length]
-   - 0.25 Q[118,14] * H_pos[6,sepal-width]
-   - Q[118,14] * H_pos[6,petal-length]
-   - 0.9166666666666666 Q[118,14] * H_pos[6,petal-width]
-   + 0.9444444444444442 Q[118,14] * H_neg[6,sepal-length]
-   + 0.25 Q[118,14] * H_neg[6,sepal-width]
-   + Q[118,14] * H_neg[6,petal-length]
-   + 0.9166666666666666 Q[118,14] * H_neg[6,petal-width]
-   - Q[118,14] * C4281 + Q[118,14] * C4288 ] >= 1
+   + Q[118,13] * C4281 - Q[118,13] * C4288 ] >= 1
  qc723: E[66,6] + [ 0.3611111111111109 Q[66,13] * H_pos[6,sepal-length]
    + 0.4166666666666667 Q[66,13] * H_pos[6,sepal-width]
    + 0.5932203389830508 Q[66,13] * H_pos[6,petal-length]
@@ -18487,15 +12692,7 @@ Subject To
    - 0.4166666666666667 Q[66,13] * H_neg[6,sepal-width]
    - 0.5932203389830508 Q[66,13] * H_neg[6,petal-length]
    - 0.5833333333333334 Q[66,13] * H_neg[6,petal-width] + Q[66,13] * C4281
-   - Q[66,13] * C4288 - 0.3611111111111109 Q[66,14] * H_pos[6,sepal-length]
-   - 0.4166666666666667 Q[66,14] * H_pos[6,sepal-width]
-   - 0.5932203389830508 Q[66,14] * H_pos[6,petal-length]
-   - 0.5833333333333334 Q[66,14] * H_pos[6,petal-width]
-   + 0.3611111111111109 Q[66,14] * H_neg[6,sepal-length]
-   + 0.4166666666666667 Q[66,14] * H_neg[6,sepal-width]
-   + 0.5932203389830508 Q[66,14] * H_neg[6,petal-length]
-   + 0.5833333333333334 Q[66,14] * H_neg[6,petal-width] - Q[66,14] * C4281
-   + Q[66,14] * C4288 ] >= 1
+   - Q[66,13] * C4288 ] >= 1
  qc724: E[124,6] + [ 0.6666666666666667 Q[124,13] * H_pos[6,sepal-length]
    + 0.5416666666666665 Q[124,13] * H_pos[6,sepal-width]
    + 0.7966101694915254 Q[124,13] * H_pos[6,petal-length]
@@ -18504,16 +12701,7 @@ Subject To
    - 0.5416666666666665 Q[124,13] * H_neg[6,sepal-width]
    - 0.7966101694915254 Q[124,13] * H_neg[6,petal-length]
    - 0.8333333333333335 Q[124,13] * H_neg[6,petal-width]
-   + Q[124,13] * C4281 - Q[124,13] * C4288
-   - 0.6666666666666667 Q[124,14] * H_pos[6,sepal-length]
-   - 0.5416666666666665 Q[124,14] * H_pos[6,sepal-width]
-   - 0.7966101694915254 Q[124,14] * H_pos[6,petal-length]
-   - 0.8333333333333335 Q[124,14] * H_pos[6,petal-width]
-   + 0.6666666666666667 Q[124,14] * H_neg[6,sepal-length]
-   + 0.5416666666666665 Q[124,14] * H_neg[6,sepal-width]
-   + 0.7966101694915254 Q[124,14] * H_neg[6,petal-length]
-   + 0.8333333333333335 Q[124,14] * H_neg[6,petal-width]
-   - Q[124,14] * C4281 + Q[124,14] * C4288 ] >= 1
+   + Q[124,13] * C4281 - Q[124,13] * C4288 ] >= 1
  qc725: E[142,6] + [ 0.4166666666666665 Q[142,13] * H_pos[6,sepal-length]
    + 0.2916666666666667 Q[142,13] * H_pos[6,sepal-width]
    + 0.6949152542372881 Q[142,13] * H_pos[6,petal-length]
@@ -18522,16 +12710,7 @@ Subject To
    - 0.2916666666666667 Q[142,13] * H_neg[6,sepal-width]
    - 0.6949152542372881 Q[142,13] * H_neg[6,petal-length]
    - 0.75 Q[142,13] * H_neg[6,petal-width] + Q[142,13] * C4281
-   - Q[142,13] * C4288
-   - 0.4166666666666665 Q[142,14] * H_pos[6,sepal-length]
-   - 0.2916666666666667 Q[142,14] * H_pos[6,sepal-width]
-   - 0.6949152542372881 Q[142,14] * H_pos[6,petal-length]
-   - 0.75 Q[142,14] * H_pos[6,petal-width]
-   + 0.4166666666666665 Q[142,14] * H_neg[6,sepal-length]
-   + 0.2916666666666667 Q[142,14] * H_neg[6,sepal-width]
-   + 0.6949152542372881 Q[142,14] * H_neg[6,petal-length]
-   + 0.75 Q[142,14] * H_neg[6,petal-width] - Q[142,14] * C4281
-   + Q[142,14] * C4288 ] >= 1
+   - Q[142,13] * C4288 ] >= 1
  qc726: E[101,6] + [ 0.4166666666666665 Q[101,13] * H_pos[6,sepal-length]
    + 0.2916666666666667 Q[101,13] * H_pos[6,sepal-width]
    + 0.6949152542372881 Q[101,13] * H_pos[6,petal-length]
@@ -18540,16 +12719,7 @@ Subject To
    - 0.2916666666666667 Q[101,13] * H_neg[6,sepal-width]
    - 0.6949152542372881 Q[101,13] * H_neg[6,petal-length]
    - 0.75 Q[101,13] * H_neg[6,petal-width] + Q[101,13] * C4281
-   - Q[101,13] * C4288
-   - 0.4166666666666665 Q[101,14] * H_pos[6,sepal-length]
-   - 0.2916666666666667 Q[101,14] * H_pos[6,sepal-width]
-   - 0.6949152542372881 Q[101,14] * H_pos[6,petal-length]
-   - 0.75 Q[101,14] * H_pos[6,petal-width]
-   + 0.4166666666666665 Q[101,14] * H_neg[6,sepal-length]
-   + 0.2916666666666667 Q[101,14] * H_neg[6,sepal-width]
-   + 0.6949152542372881 Q[101,14] * H_neg[6,petal-length]
-   + 0.75 Q[101,14] * H_neg[6,petal-width] - Q[101,14] * C4281
-   + Q[101,14] * C4288 ] >= 1
+   - Q[101,13] * C4288 ] >= 1
  qc727: E[63,6] + [ 0.5 Q[63,13] * H_pos[6,sepal-length]
    + 0.375 Q[63,13] * H_pos[6,sepal-width]
    + 0.6271186440677966 Q[63,13] * H_pos[6,petal-length]
@@ -18558,15 +12728,7 @@ Subject To
    - 0.375 Q[63,13] * H_neg[6,sepal-width]
    - 0.6271186440677966 Q[63,13] * H_neg[6,petal-length]
    - 0.5416666666666667 Q[63,13] * H_neg[6,petal-width] + Q[63,13] * C4281
-   - Q[63,13] * C4288 - 0.5 Q[63,14] * H_pos[6,sepal-length]
-   - 0.375 Q[63,14] * H_pos[6,sepal-width]
-   - 0.6271186440677966 Q[63,14] * H_pos[6,petal-length]
-   - 0.5416666666666667 Q[63,14] * H_pos[6,petal-width]
-   + 0.5 Q[63,14] * H_neg[6,sepal-length]
-   + 0.375 Q[63,14] * H_neg[6,sepal-width]
-   + 0.6271186440677966 Q[63,14] * H_neg[6,petal-length]
-   + 0.5416666666666667 Q[63,14] * H_neg[6,petal-width] - Q[63,14] * C4281
-   + Q[63,14] * C4288 ] >= 1
+   - Q[63,13] * C4288 ] >= 1
  qc728: E[77,6] + [ 0.6666666666666667 Q[77,13] * H_pos[6,sepal-length]
    + 0.4166666666666667 Q[77,13] * H_pos[6,sepal-width]
    + 0.6779661016949152 Q[77,13] * H_pos[6,petal-length]
@@ -18575,15 +12737,7 @@ Subject To
    - 0.4166666666666667 Q[77,13] * H_neg[6,sepal-width]
    - 0.6779661016949152 Q[77,13] * H_neg[6,petal-length]
    - 0.6666666666666667 Q[77,13] * H_neg[6,petal-width] + Q[77,13] * C4281
-   - Q[77,13] * C4288 - 0.6666666666666667 Q[77,14] * H_pos[6,sepal-length]
-   - 0.4166666666666667 Q[77,14] * H_pos[6,sepal-width]
-   - 0.6779661016949152 Q[77,14] * H_pos[6,petal-length]
-   - 0.6666666666666667 Q[77,14] * H_pos[6,petal-width]
-   + 0.6666666666666667 Q[77,14] * H_neg[6,sepal-length]
-   + 0.4166666666666667 Q[77,14] * H_neg[6,sepal-width]
-   + 0.6779661016949152 Q[77,14] * H_neg[6,petal-length]
-   + 0.6666666666666667 Q[77,14] * H_neg[6,petal-width] - Q[77,14] * C4281
-   + Q[77,14] * C4288 ] >= 1
+   - Q[77,13] * C4288 ] >= 1
  qc729: E[35,6] + [ 0.1944444444444444 Q[35,13] * H_pos[6,sepal-length]
    + 0.5 Q[35,13] * H_pos[6,sepal-width]
    + 0.0338983050847458 Q[35,13] * H_pos[6,petal-length]
@@ -18592,28 +12746,14 @@ Subject To
    - 0.5 Q[35,13] * H_neg[6,sepal-width]
    - 0.0338983050847458 Q[35,13] * H_neg[6,petal-length]
    - 0.0416666666666667 Q[35,13] * H_neg[6,petal-width] + Q[35,13] * C4281
-   - Q[35,13] * C4288 - 0.1944444444444444 Q[35,14] * H_pos[6,sepal-length]
-   - 0.5 Q[35,14] * H_pos[6,sepal-width]
-   - 0.0338983050847458 Q[35,14] * H_pos[6,petal-length]
-   - 0.0416666666666667 Q[35,14] * H_pos[6,petal-width]
-   + 0.1944444444444444 Q[35,14] * H_neg[6,sepal-length]
-   + 0.5 Q[35,14] * H_neg[6,sepal-width]
-   + 0.0338983050847458 Q[35,14] * H_neg[6,petal-length]
-   + 0.0416666666666667 Q[35,14] * H_neg[6,petal-width] - Q[35,14] * C4281
-   + Q[35,14] * C4288 ] >= 1
+   - Q[35,13] * C4288 ] >= 1
  qc730: E[22,6] + [ 0.0833333333333333 Q[22,13] * H_pos[6,sepal-length]
    + 0.6666666666666667 Q[22,13] * H_pos[6,sepal-width]
    + 0.0416666666666667 Q[22,13] * H_pos[6,petal-width]
    - 0.0833333333333333 Q[22,13] * H_neg[6,sepal-length]
    - 0.6666666666666667 Q[22,13] * H_neg[6,sepal-width]
    - 0.0416666666666667 Q[22,13] * H_neg[6,petal-width] + Q[22,13] * C4281
-   - Q[22,13] * C4288 - 0.0833333333333333 Q[22,14] * H_pos[6,sepal-length]
-   - 0.6666666666666667 Q[22,14] * H_pos[6,sepal-width]
-   - 0.0416666666666667 Q[22,14] * H_pos[6,petal-width]
-   + 0.0833333333333333 Q[22,14] * H_neg[6,sepal-length]
-   + 0.6666666666666667 Q[22,14] * H_neg[6,sepal-width]
-   + 0.0416666666666667 Q[22,14] * H_neg[6,petal-width] - Q[22,14] * C4281
-   + Q[22,14] * C4288 ] >= 1
+   - Q[22,13] * C4288 ] >= 1
  qc731: E[127,6] + [ 0.5 Q[127,13] * H_pos[6,sepal-length]
    + 0.4166666666666667 Q[127,13] * H_pos[6,sepal-width]
    + 0.6610169491525424 Q[127,13] * H_pos[6,petal-length]
@@ -18622,16 +12762,7 @@ Subject To
    - 0.4166666666666667 Q[127,13] * H_neg[6,sepal-width]
    - 0.6610169491525424 Q[127,13] * H_neg[6,petal-length]
    - 0.7083333333333334 Q[127,13] * H_neg[6,petal-width]
-   + Q[127,13] * C4281 - Q[127,13] * C4288
-   - 0.5 Q[127,14] * H_pos[6,sepal-length]
-   - 0.4166666666666667 Q[127,14] * H_pos[6,sepal-width]
-   - 0.6610169491525424 Q[127,14] * H_pos[6,petal-length]
-   - 0.7083333333333334 Q[127,14] * H_pos[6,petal-width]
-   + 0.5 Q[127,14] * H_neg[6,sepal-length]
-   + 0.4166666666666667 Q[127,14] * H_neg[6,sepal-width]
-   + 0.6610169491525424 Q[127,14] * H_neg[6,petal-length]
-   + 0.7083333333333334 Q[127,14] * H_neg[6,petal-width]
-   - Q[127,14] * C4281 + Q[127,14] * C4288 ] >= 1
+   + Q[127,13] * C4281 - Q[127,13] * C4288 ] >= 1
  qc732: E[102,6] + [ 0.7777777777777777 Q[102,13] * H_pos[6,sepal-length]
    + 0.4166666666666667 Q[102,13] * H_pos[6,sepal-width]
    + 0.8305084745762712 Q[102,13] * H_pos[6,petal-length]
@@ -18640,16 +12771,7 @@ Subject To
    - 0.4166666666666667 Q[102,13] * H_neg[6,sepal-width]
    - 0.8305084745762712 Q[102,13] * H_neg[6,petal-length]
    - 0.8333333333333335 Q[102,13] * H_neg[6,petal-width]
-   + Q[102,13] * C4281 - Q[102,13] * C4288
-   - 0.7777777777777777 Q[102,14] * H_pos[6,sepal-length]
-   - 0.4166666666666667 Q[102,14] * H_pos[6,sepal-width]
-   - 0.8305084745762712 Q[102,14] * H_pos[6,petal-length]
-   - 0.8333333333333335 Q[102,14] * H_pos[6,petal-width]
-   + 0.7777777777777777 Q[102,14] * H_neg[6,sepal-length]
-   + 0.4166666666666667 Q[102,14] * H_neg[6,sepal-width]
-   + 0.8305084745762712 Q[102,14] * H_neg[6,petal-length]
-   + 0.8333333333333335 Q[102,14] * H_neg[6,petal-width]
-   - Q[102,14] * C4281 + Q[102,14] * C4288 ] >= 1
+   + Q[102,13] * C4281 - Q[102,13] * C4288 ] >= 1
  qc733: E[148,6] + [ 0.5277777777777779 Q[148,13] * H_pos[6,sepal-length]
    + 0.5833333333333333 Q[148,13] * H_pos[6,sepal-width]
    + 0.7457627118644068 Q[148,13] * H_pos[6,petal-length]
@@ -18658,16 +12780,7 @@ Subject To
    - 0.5833333333333333 Q[148,13] * H_neg[6,sepal-width]
    - 0.7457627118644068 Q[148,13] * H_neg[6,petal-length]
    - 0.9166666666666666 Q[148,13] * H_neg[6,petal-width]
-   + Q[148,13] * C4281 - Q[148,13] * C4288
-   - 0.5277777777777779 Q[148,14] * H_pos[6,sepal-length]
-   - 0.5833333333333333 Q[148,14] * H_pos[6,sepal-width]
-   - 0.7457627118644068 Q[148,14] * H_pos[6,petal-length]
-   - 0.9166666666666666 Q[148,14] * H_pos[6,petal-width]
-   + 0.5277777777777779 Q[148,14] * H_neg[6,sepal-length]
-   + 0.5833333333333333 Q[148,14] * H_neg[6,sepal-width]
-   + 0.7457627118644068 Q[148,14] * H_neg[6,petal-length]
-   + 0.9166666666666666 Q[148,14] * H_neg[6,petal-width]
-   - Q[148,14] * C4281 + Q[148,14] * C4288 ] >= 1
+   + Q[148,13] * C4281 - Q[148,13] * C4288 ] >= 1
  qc734: E[64,6] + [ 0.3611111111111109 Q[64,13] * H_pos[6,sepal-length]
    + 0.375 Q[64,13] * H_pos[6,sepal-width]
    + 0.440677966101695 Q[64,13] * H_pos[6,petal-length]
@@ -18676,15 +12789,7 @@ Subject To
    - 0.375 Q[64,13] * H_neg[6,sepal-width]
    - 0.440677966101695 Q[64,13] * H_neg[6,petal-length]
    - 0.5 Q[64,13] * H_neg[6,petal-width] + Q[64,13] * C4281
-   - Q[64,13] * C4288 - 0.3611111111111109 Q[64,14] * H_pos[6,sepal-length]
-   - 0.375 Q[64,14] * H_pos[6,sepal-width]
-   - 0.440677966101695 Q[64,14] * H_pos[6,petal-length]
-   - 0.5 Q[64,14] * H_pos[6,petal-width]
-   + 0.3611111111111109 Q[64,14] * H_neg[6,sepal-length]
-   + 0.375 Q[64,14] * H_neg[6,sepal-width]
-   + 0.440677966101695 Q[64,14] * H_neg[6,petal-length]
-   + 0.5 Q[64,14] * H_neg[6,petal-width] - Q[64,14] * C4281
-   + Q[64,14] * C4288 ] >= 1
+   - Q[64,13] * C4288 ] >= 1
  qc735: E[68,6] + [ 0.5277777777777779 Q[68,13] * H_pos[6,sepal-length]
    + 0.0833333333333334 Q[68,13] * H_pos[6,sepal-width]
    + 0.5932203389830508 Q[68,13] * H_pos[6,petal-length]
@@ -18693,15 +12798,7 @@ Subject To
    - 0.0833333333333334 Q[68,13] * H_neg[6,sepal-width]
    - 0.5932203389830508 Q[68,13] * H_neg[6,petal-length]
    - 0.5833333333333334 Q[68,13] * H_neg[6,petal-width] + Q[68,13] * C4281
-   - Q[68,13] * C4288 - 0.5277777777777779 Q[68,14] * H_pos[6,sepal-length]
-   - 0.0833333333333334 Q[68,14] * H_pos[6,sepal-width]
-   - 0.5932203389830508 Q[68,14] * H_pos[6,petal-length]
-   - 0.5833333333333334 Q[68,14] * H_pos[6,petal-width]
-   + 0.5277777777777779 Q[68,14] * H_neg[6,sepal-length]
-   + 0.0833333333333334 Q[68,14] * H_neg[6,sepal-width]
-   + 0.5932203389830508 Q[68,14] * H_neg[6,petal-length]
-   + 0.5833333333333334 Q[68,14] * H_neg[6,petal-width] - Q[68,14] * C4281
-   + Q[68,14] * C4288 ] >= 1
+   - Q[68,13] * C4288 ] >= 1
  qc736: E[27,6] + [ 0.25 Q[27,13] * H_pos[6,sepal-length]
    + 0.625 Q[27,13] * H_pos[6,sepal-width]
    + 0.0847457627118644 Q[27,13] * H_pos[6,petal-length]
@@ -18710,15 +12807,7 @@ Subject To
    - 0.625 Q[27,13] * H_neg[6,sepal-width]
    - 0.0847457627118644 Q[27,13] * H_neg[6,petal-length]
    - 0.0416666666666667 Q[27,13] * H_neg[6,petal-width] + Q[27,13] * C4281
-   - Q[27,13] * C4288 - 0.25 Q[27,14] * H_pos[6,sepal-length]
-   - 0.625 Q[27,14] * H_pos[6,sepal-width]
-   - 0.0847457627118644 Q[27,14] * H_pos[6,petal-length]
-   - 0.0416666666666667 Q[27,14] * H_pos[6,petal-width]
-   + 0.25 Q[27,14] * H_neg[6,sepal-length]
-   + 0.625 Q[27,14] * H_neg[6,sepal-width]
-   + 0.0847457627118644 Q[27,14] * H_neg[6,petal-length]
-   + 0.0416666666666667 Q[27,14] * H_neg[6,petal-width] - Q[27,14] * C4281
-   + Q[27,14] * C4288 ] >= 1
+   - Q[27,13] * C4288 ] >= 1
  qc737: E[149,6] + [ 0.4444444444444446 Q[149,13] * H_pos[6,sepal-length]
    + 0.4166666666666667 Q[149,13] * H_pos[6,sepal-width]
    + 0.6949152542372881 Q[149,13] * H_pos[6,petal-length]
@@ -18727,16 +12816,7 @@ Subject To
    - 0.4166666666666667 Q[149,13] * H_neg[6,sepal-width]
    - 0.6949152542372881 Q[149,13] * H_neg[6,petal-length]
    - 0.7083333333333334 Q[149,13] * H_neg[6,petal-width]
-   + Q[149,13] * C4281 - Q[149,13] * C4288
-   - 0.4444444444444446 Q[149,14] * H_pos[6,sepal-length]
-   - 0.4166666666666667 Q[149,14] * H_pos[6,sepal-width]
-   - 0.6949152542372881 Q[149,14] * H_pos[6,petal-length]
-   - 0.7083333333333334 Q[149,14] * H_pos[6,petal-width]
-   + 0.4444444444444446 Q[149,14] * H_neg[6,sepal-length]
-   + 0.4166666666666667 Q[149,14] * H_neg[6,sepal-width]
-   + 0.6949152542372881 Q[149,14] * H_neg[6,petal-length]
-   + 0.7083333333333334 Q[149,14] * H_neg[6,petal-width]
-   - Q[149,14] * C4281 + Q[149,14] * C4288 ] >= 1
+   + Q[149,13] * C4281 - Q[149,13] * C4288 ] >= 1
  qc738: E[39,6] + [ 0.2222222222222221 Q[39,13] * H_pos[6,sepal-length]
    + 0.5833333333333333 Q[39,13] * H_pos[6,sepal-width]
    + 0.0847457627118644 Q[39,13] * H_pos[6,petal-length]
@@ -18745,15 +12825,7 @@ Subject To
    - 0.5833333333333333 Q[39,13] * H_neg[6,sepal-width]
    - 0.0847457627118644 Q[39,13] * H_neg[6,petal-length]
    - 0.0416666666666667 Q[39,13] * H_neg[6,petal-width] + Q[39,13] * C4281
-   - Q[39,13] * C4288 - 0.2222222222222221 Q[39,14] * H_pos[6,sepal-length]
-   - 0.5833333333333333 Q[39,14] * H_pos[6,sepal-width]
-   - 0.0847457627118644 Q[39,14] * H_pos[6,petal-length]
-   - 0.0416666666666667 Q[39,14] * H_pos[6,petal-width]
-   + 0.2222222222222221 Q[39,14] * H_neg[6,sepal-length]
-   + 0.5833333333333333 Q[39,14] * H_neg[6,sepal-width]
-   + 0.0847457627118644 Q[39,14] * H_neg[6,petal-length]
-   + 0.0416666666666667 Q[39,14] * H_neg[6,petal-width] - Q[39,14] * C4281
-   + Q[39,14] * C4288 ] >= 1
+   - Q[39,13] * C4288 ] >= 1
  qc739: E[25,6] + [ 0.1944444444444444 Q[25,13] * H_pos[6,sepal-length]
    + 0.4166666666666667 Q[25,13] * H_pos[6,sepal-width]
    + 0.1016949152542373 Q[25,13] * H_pos[6,petal-length]
@@ -18762,15 +12834,7 @@ Subject To
    - 0.4166666666666667 Q[25,13] * H_neg[6,sepal-width]
    - 0.1016949152542373 Q[25,13] * H_neg[6,petal-length]
    - 0.0416666666666667 Q[25,13] * H_neg[6,petal-width] + Q[25,13] * C4281
-   - Q[25,13] * C4288 - 0.1944444444444444 Q[25,14] * H_pos[6,sepal-length]
-   - 0.4166666666666667 Q[25,14] * H_pos[6,sepal-width]
-   - 0.1016949152542373 Q[25,14] * H_pos[6,petal-length]
-   - 0.0416666666666667 Q[25,14] * H_pos[6,petal-width]
-   + 0.1944444444444444 Q[25,14] * H_neg[6,sepal-length]
-   + 0.4166666666666667 Q[25,14] * H_neg[6,sepal-width]
-   + 0.1016949152542373 Q[25,14] * H_neg[6,petal-length]
-   + 0.0416666666666667 Q[25,14] * H_neg[6,petal-width] - Q[25,14] * C4281
-   + Q[25,14] * C4288 ] >= 1
+   - Q[25,13] * C4288 ] >= 1
  qc740: E[62,6] + [ 0.4722222222222223 Q[62,13] * H_pos[6,sepal-length]
    + 0.0833333333333334 Q[62,13] * H_pos[6,sepal-width]
    + 0.5084745762711864 Q[62,13] * H_pos[6,petal-length]
@@ -18779,28 +12843,14 @@ Subject To
    - 0.0833333333333334 Q[62,13] * H_neg[6,sepal-width]
    - 0.5084745762711864 Q[62,13] * H_neg[6,petal-length]
    - 0.375 Q[62,13] * H_neg[6,petal-width] + Q[62,13] * C4281
-   - Q[62,13] * C4288 - 0.4722222222222223 Q[62,14] * H_pos[6,sepal-length]
-   - 0.0833333333333334 Q[62,14] * H_pos[6,sepal-width]
-   - 0.5084745762711864 Q[62,14] * H_pos[6,petal-length]
-   - 0.375 Q[62,14] * H_pos[6,petal-width]
-   + 0.4722222222222223 Q[62,14] * H_neg[6,sepal-length]
-   + 0.0833333333333334 Q[62,14] * H_neg[6,sepal-width]
-   + 0.5084745762711864 Q[62,14] * H_neg[6,petal-length]
-   + 0.375 Q[62,14] * H_neg[6,petal-width] - Q[62,14] * C4281
-   + Q[62,14] * C4288 ] >= 1
+   - Q[62,13] * C4288 ] >= 1
  qc741: E[32,6] + [ 0.25 Q[32,13] * H_pos[6,sepal-length]
    + 0.875 Q[32,13] * H_pos[6,sepal-width]
    + 0.0847457627118644 Q[32,13] * H_pos[6,petal-length]
    - 0.25 Q[32,13] * H_neg[6,sepal-length]
    - 0.875 Q[32,13] * H_neg[6,sepal-width]
    - 0.0847457627118644 Q[32,13] * H_neg[6,petal-length] + Q[32,13] * C4281
-   - Q[32,13] * C4288 - 0.25 Q[32,14] * H_pos[6,sepal-length]
-   - 0.875 Q[32,14] * H_pos[6,sepal-width]
-   - 0.0847457627118644 Q[32,14] * H_pos[6,petal-length]
-   + 0.25 Q[32,14] * H_neg[6,sepal-length]
-   + 0.875 Q[32,14] * H_neg[6,sepal-width]
-   + 0.0847457627118644 Q[32,14] * H_neg[6,petal-length] - Q[32,14] * C4281
-   + Q[32,14] * C4288 ] >= 1
+   - Q[32,13] * C4288 ] >= 1
  qc742: E[72,6] + [ 0.5555555555555556 Q[72,13] * H_pos[6,sepal-length]
    + 0.2083333333333333 Q[72,13] * H_pos[6,sepal-width]
    + 0.6610169491525424 Q[72,13] * H_pos[6,petal-length]
@@ -18809,15 +12859,7 @@ Subject To
    - 0.2083333333333333 Q[72,13] * H_neg[6,sepal-width]
    - 0.6610169491525424 Q[72,13] * H_neg[6,petal-length]
    - 0.5833333333333334 Q[72,13] * H_neg[6,petal-width] + Q[72,13] * C4281
-   - Q[72,13] * C4288 - 0.5555555555555556 Q[72,14] * H_pos[6,sepal-length]
-   - 0.2083333333333333 Q[72,14] * H_pos[6,sepal-width]
-   - 0.6610169491525424 Q[72,14] * H_pos[6,petal-length]
-   - 0.5833333333333334 Q[72,14] * H_pos[6,petal-width]
-   + 0.5555555555555556 Q[72,14] * H_neg[6,sepal-length]
-   + 0.2083333333333333 Q[72,14] * H_neg[6,sepal-width]
-   + 0.6610169491525424 Q[72,14] * H_neg[6,petal-length]
-   + 0.5833333333333334 Q[72,14] * H_neg[6,petal-width] - Q[72,14] * C4281
-   + Q[72,14] * C4288 ] >= 1
+   - Q[72,13] * C4288 ] >= 1
  qc743: E[26,6] + [ 0.1944444444444444 Q[26,13] * H_pos[6,sepal-length]
    + 0.5833333333333333 Q[26,13] * H_pos[6,sepal-width]
    + 0.1016949152542373 Q[26,13] * H_pos[6,petal-length]
@@ -18826,15 +12868,7 @@ Subject To
    - 0.5833333333333333 Q[26,13] * H_neg[6,sepal-width]
    - 0.1016949152542373 Q[26,13] * H_neg[6,petal-length]
    - 0.125 Q[26,13] * H_neg[6,petal-width] + Q[26,13] * C4281
-   - Q[26,13] * C4288 - 0.1944444444444444 Q[26,14] * H_pos[6,sepal-length]
-   - 0.5833333333333333 Q[26,14] * H_pos[6,sepal-width]
-   - 0.1016949152542373 Q[26,14] * H_pos[6,petal-length]
-   - 0.125 Q[26,14] * H_pos[6,petal-width]
-   + 0.1944444444444444 Q[26,14] * H_neg[6,sepal-length]
-   + 0.5833333333333333 Q[26,14] * H_neg[6,sepal-width]
-   + 0.1016949152542373 Q[26,14] * H_neg[6,petal-length]
-   + 0.125 Q[26,14] * H_neg[6,petal-width] - Q[26,14] * C4281
-   + Q[26,14] * C4288 ] >= 1
+   - Q[26,13] * C4288 ] >= 1
  qc744: E[116,6] + [ 0.6111111111111112 Q[116,13] * H_pos[6,sepal-length]
    + 0.4166666666666667 Q[116,13] * H_pos[6,sepal-width]
    + 0.7627118644067796 Q[116,13] * H_pos[6,petal-length]
@@ -18843,29 +12877,14 @@ Subject To
    - 0.4166666666666667 Q[116,13] * H_neg[6,sepal-width]
    - 0.7627118644067796 Q[116,13] * H_neg[6,petal-length]
    - 0.7083333333333334 Q[116,13] * H_neg[6,petal-width]
-   + Q[116,13] * C4281 - Q[116,13] * C4288
-   - 0.6111111111111112 Q[116,14] * H_pos[6,sepal-length]
-   - 0.4166666666666667 Q[116,14] * H_pos[6,sepal-width]
-   - 0.7627118644067796 Q[116,14] * H_pos[6,petal-length]
-   - 0.7083333333333334 Q[116,14] * H_pos[6,petal-width]
-   + 0.6111111111111112 Q[116,14] * H_neg[6,sepal-length]
-   + 0.4166666666666667 Q[116,14] * H_neg[6,sepal-width]
-   + 0.7627118644067796 Q[116,14] * H_neg[6,petal-length]
-   + 0.7083333333333334 Q[116,14] * H_neg[6,petal-width]
-   - Q[116,14] * C4281 + Q[116,14] * C4288 ] >= 1
+   + Q[116,13] * C4281 - Q[116,13] * C4288 ] >= 1
  qc745: E[34,6] + [ 0.1666666666666667 Q[34,13] * H_pos[6,sepal-length]
    + 0.4583333333333333 Q[34,13] * H_pos[6,sepal-width]
    + 0.0847457627118644 Q[34,13] * H_pos[6,petal-length]
    - 0.1666666666666667 Q[34,13] * H_neg[6,sepal-length]
    - 0.4583333333333333 Q[34,13] * H_neg[6,sepal-width]
    - 0.0847457627118644 Q[34,13] * H_neg[6,petal-length] + Q[34,13] * C4281
-   - Q[34,13] * C4288 - 0.1666666666666667 Q[34,14] * H_pos[6,sepal-length]
-   - 0.4583333333333333 Q[34,14] * H_pos[6,sepal-width]
-   - 0.0847457627118644 Q[34,14] * H_pos[6,petal-length]
-   + 0.1666666666666667 Q[34,14] * H_neg[6,sepal-length]
-   + 0.4583333333333333 Q[34,14] * H_neg[6,sepal-width]
-   + 0.0847457627118644 Q[34,14] * H_neg[6,petal-length] - Q[34,14] * C4281
-   + Q[34,14] * C4288 ] >= 1
+   - Q[34,13] * C4288 ] >= 1
  qc746: E[117,6] + [ 0.9444444444444442 Q[117,13] * H_pos[6,sepal-length]
    + 0.75 Q[117,13] * H_pos[6,sepal-width]
    + 0.9661016949152543 Q[117,13] * H_pos[6,petal-length]
@@ -18874,16 +12893,7 @@ Subject To
    - 0.75 Q[117,13] * H_neg[6,sepal-width]
    - 0.9661016949152543 Q[117,13] * H_neg[6,petal-length]
    - 0.875 Q[117,13] * H_neg[6,petal-width] + Q[117,13] * C4281
-   - Q[117,13] * C4288
-   - 0.9444444444444442 Q[117,14] * H_pos[6,sepal-length]
-   - 0.75 Q[117,14] * H_pos[6,sepal-width]
-   - 0.9661016949152543 Q[117,14] * H_pos[6,petal-length]
-   - 0.875 Q[117,14] * H_pos[6,petal-width]
-   + 0.9444444444444442 Q[117,14] * H_neg[6,sepal-length]
-   + 0.75 Q[117,14] * H_neg[6,sepal-width]
-   + 0.9661016949152543 Q[117,14] * H_neg[6,petal-length]
-   + 0.875 Q[117,14] * H_neg[6,petal-width] - Q[117,14] * C4281
-   + Q[117,14] * C4288 ] >= 1
+   - Q[117,13] * C4288 ] >= 1
  qc747: E[30,6] + [ 0.1388888888888888 Q[30,13] * H_pos[6,sepal-length]
    + 0.4583333333333333 Q[30,13] * H_pos[6,sepal-width]
    + 0.1016949152542373 Q[30,13] * H_pos[6,petal-length]
@@ -18892,15 +12902,7 @@ Subject To
    - 0.4583333333333333 Q[30,13] * H_neg[6,sepal-width]
    - 0.1016949152542373 Q[30,13] * H_neg[6,petal-length]
    - 0.0416666666666667 Q[30,13] * H_neg[6,petal-width] + Q[30,13] * C4281
-   - Q[30,13] * C4288 - 0.1388888888888888 Q[30,14] * H_pos[6,sepal-length]
-   - 0.4583333333333333 Q[30,14] * H_pos[6,sepal-width]
-   - 0.1016949152542373 Q[30,14] * H_pos[6,petal-length]
-   - 0.0416666666666667 Q[30,14] * H_pos[6,petal-width]
-   + 0.1388888888888888 Q[30,14] * H_neg[6,sepal-length]
-   + 0.4583333333333333 Q[30,14] * H_neg[6,sepal-width]
-   + 0.1016949152542373 Q[30,14] * H_neg[6,petal-length]
-   + 0.0416666666666667 Q[30,14] * H_neg[6,petal-width] - Q[30,14] * C4281
-   + Q[30,14] * C4288 ] >= 1
+   - Q[30,13] * C4288 ] >= 1
  qc748: E[0,6] + [ 0.2222222222222221 Q[0,13] * H_pos[6,sepal-length]
    + 0.625 Q[0,13] * H_pos[6,sepal-width]
    + 0.0677966101694915 Q[0,13] * H_pos[6,petal-length]
@@ -18909,15 +12911,7 @@ Subject To
    - 0.625 Q[0,13] * H_neg[6,sepal-width]
    - 0.0677966101694915 Q[0,13] * H_neg[6,petal-length]
    - 0.0416666666666667 Q[0,13] * H_neg[6,petal-width] + Q[0,13] * C4281
-   - Q[0,13] * C4288 - 0.2222222222222221 Q[0,14] * H_pos[6,sepal-length]
-   - 0.625 Q[0,14] * H_pos[6,sepal-width]
-   - 0.0677966101694915 Q[0,14] * H_pos[6,petal-length]
-   - 0.0416666666666667 Q[0,14] * H_pos[6,petal-width]
-   + 0.2222222222222221 Q[0,14] * H_neg[6,sepal-length]
-   + 0.625 Q[0,14] * H_neg[6,sepal-width]
-   + 0.0677966101694915 Q[0,14] * H_neg[6,petal-length]
-   + 0.0416666666666667 Q[0,14] * H_neg[6,petal-width] - Q[0,14] * C4281
-   + Q[0,14] * C4288 ] >= 1
+   - Q[0,13] * C4288 ] >= 1
  qc749: E[82,6] + [ 0.4166666666666665 Q[82,13] * H_pos[6,sepal-length]
    + 0.2916666666666667 Q[82,13] * H_pos[6,sepal-width]
    + 0.4915254237288135 Q[82,13] * H_pos[6,petal-length]
@@ -18926,15 +12920,7 @@ Subject To
    - 0.2916666666666667 Q[82,13] * H_neg[6,sepal-width]
    - 0.4915254237288135 Q[82,13] * H_neg[6,petal-length]
    - 0.4583333333333333 Q[82,13] * H_neg[6,petal-width] + Q[82,13] * C4281
-   - Q[82,13] * C4288 - 0.4166666666666665 Q[82,14] * H_pos[6,sepal-length]
-   - 0.2916666666666667 Q[82,14] * H_pos[6,sepal-width]
-   - 0.4915254237288135 Q[82,14] * H_pos[6,petal-length]
-   - 0.4583333333333333 Q[82,14] * H_pos[6,petal-width]
-   + 0.4166666666666665 Q[82,14] * H_neg[6,sepal-length]
-   + 0.2916666666666667 Q[82,14] * H_neg[6,sepal-width]
-   + 0.4915254237288135 Q[82,14] * H_neg[6,petal-length]
-   + 0.4583333333333333 Q[82,14] * H_neg[6,petal-width] - Q[82,14] * C4281
-   + Q[82,14] * C4288 ] >= 1
+   - Q[82,13] * C4288 ] >= 1
  qc750: E[14,6] + [ 0.4166666666666665 Q[14,13] * H_pos[6,sepal-length]
    + 0.8333333333333333 Q[14,13] * H_pos[6,sepal-width]
    + 0.0338983050847458 Q[14,13] * H_pos[6,petal-length]
@@ -18943,15 +12929,7 @@ Subject To
    - 0.8333333333333333 Q[14,13] * H_neg[6,sepal-width]
    - 0.0338983050847458 Q[14,13] * H_neg[6,petal-length]
    - 0.0416666666666667 Q[14,13] * H_neg[6,petal-width] + Q[14,13] * C4281
-   - Q[14,13] * C4288 - 0.4166666666666665 Q[14,14] * H_pos[6,sepal-length]
-   - 0.8333333333333333 Q[14,14] * H_pos[6,sepal-width]
-   - 0.0338983050847458 Q[14,14] * H_pos[6,petal-length]
-   - 0.0416666666666667 Q[14,14] * H_pos[6,petal-width]
-   + 0.4166666666666665 Q[14,14] * H_neg[6,sepal-length]
-   + 0.8333333333333333 Q[14,14] * H_neg[6,sepal-width]
-   + 0.0338983050847458 Q[14,14] * H_neg[6,petal-length]
-   + 0.0416666666666667 Q[14,14] * H_neg[6,petal-width] - Q[14,14] * C4281
-   + Q[14,14] * C4288 ] >= 1
+   - Q[14,13] * C4288 ] >= 1
  qc751: E[125,6] + [ 0.8055555555555556 Q[125,13] * H_pos[6,sepal-length]
    + 0.5 Q[125,13] * H_pos[6,sepal-width]
    + 0.847457627118644 Q[125,13] * H_pos[6,petal-length]
@@ -18960,16 +12938,7 @@ Subject To
    - 0.5 Q[125,13] * H_neg[6,sepal-width]
    - 0.847457627118644 Q[125,13] * H_neg[6,petal-length]
    - 0.7083333333333334 Q[125,13] * H_neg[6,petal-width]
-   + Q[125,13] * C4281 - Q[125,13] * C4288
-   - 0.8055555555555556 Q[125,14] * H_pos[6,sepal-length]
-   - 0.5 Q[125,14] * H_pos[6,sepal-width]
-   - 0.847457627118644 Q[125,14] * H_pos[6,petal-length]
-   - 0.7083333333333334 Q[125,14] * H_pos[6,petal-width]
-   + 0.8055555555555556 Q[125,14] * H_neg[6,sepal-length]
-   + 0.5 Q[125,14] * H_neg[6,sepal-width]
-   + 0.847457627118644 Q[125,14] * H_neg[6,petal-length]
-   + 0.7083333333333334 Q[125,14] * H_neg[6,petal-width]
-   - Q[125,14] * C4281 + Q[125,14] * C4288 ] >= 1
+   + Q[125,13] * C4281 - Q[125,13] * C4288 ] >= 1
  qc752: E[120,6] + [ 0.7222222222222223 Q[120,13] * H_pos[6,sepal-length]
    + 0.5 Q[120,13] * H_pos[6,sepal-width]
    + 0.7966101694915254 Q[120,13] * H_pos[6,petal-length]
@@ -18978,16 +12947,7 @@ Subject To
    - 0.5 Q[120,13] * H_neg[6,sepal-width]
    - 0.7966101694915254 Q[120,13] * H_neg[6,petal-length]
    - 0.9166666666666666 Q[120,13] * H_neg[6,petal-width]
-   + Q[120,13] * C4281 - Q[120,13] * C4288
-   - 0.7222222222222223 Q[120,14] * H_pos[6,sepal-length]
-   - 0.5 Q[120,14] * H_pos[6,sepal-width]
-   - 0.7966101694915254 Q[120,14] * H_pos[6,petal-length]
-   - 0.9166666666666666 Q[120,14] * H_pos[6,petal-width]
-   + 0.7222222222222223 Q[120,14] * H_neg[6,sepal-length]
-   + 0.5 Q[120,14] * H_neg[6,sepal-width]
-   + 0.7966101694915254 Q[120,14] * H_neg[6,petal-length]
-   + 0.9166666666666666 Q[120,14] * H_neg[6,petal-width]
-   - Q[120,14] * C4281 + Q[120,14] * C4288 ] >= 1
+   + Q[120,13] * C4281 - Q[120,13] * C4288 ] >= 1
  qc753: E[97,6] + [ 0.5277777777777779 Q[97,13] * H_pos[6,sepal-length]
    + 0.375 Q[97,13] * H_pos[6,sepal-width]
    + 0.559322033898305 Q[97,13] * H_pos[6,petal-length]
@@ -18996,15 +12956,7 @@ Subject To
    - 0.375 Q[97,13] * H_neg[6,sepal-width]
    - 0.559322033898305 Q[97,13] * H_neg[6,petal-length]
    - 0.5 Q[97,13] * H_neg[6,petal-width] + Q[97,13] * C4281
-   - Q[97,13] * C4288 - 0.5277777777777779 Q[97,14] * H_pos[6,sepal-length]
-   - 0.375 Q[97,14] * H_pos[6,sepal-width]
-   - 0.559322033898305 Q[97,14] * H_pos[6,petal-length]
-   - 0.5 Q[97,14] * H_pos[6,petal-width]
-   + 0.5277777777777779 Q[97,14] * H_neg[6,sepal-length]
-   + 0.375 Q[97,14] * H_neg[6,sepal-width]
-   + 0.559322033898305 Q[97,14] * H_neg[6,petal-length]
-   + 0.5 Q[97,14] * H_neg[6,petal-width] - Q[97,14] * C4281
-   + Q[97,14] * C4288 ] >= 1
+   - Q[97,13] * C4288 ] >= 1
  qc754: E[53,6] + [ 0.3333333333333333 Q[53,13] * H_pos[6,sepal-length]
    + 0.125 Q[53,13] * H_pos[6,sepal-width]
    + 0.5084745762711864 Q[53,13] * H_pos[6,petal-length]
@@ -19013,15 +12965,7 @@ Subject To
    - 0.125 Q[53,13] * H_neg[6,sepal-width]
    - 0.5084745762711864 Q[53,13] * H_neg[6,petal-length]
    - 0.5 Q[53,13] * H_neg[6,petal-width] + Q[53,13] * C4281
-   - Q[53,13] * C4288 - 0.3333333333333333 Q[53,14] * H_pos[6,sepal-length]
-   - 0.125 Q[53,14] * H_pos[6,sepal-width]
-   - 0.5084745762711864 Q[53,14] * H_pos[6,petal-length]
-   - 0.5 Q[53,14] * H_pos[6,petal-width]
-   + 0.3333333333333333 Q[53,14] * H_neg[6,sepal-length]
-   + 0.125 Q[53,14] * H_neg[6,sepal-width]
-   + 0.5084745762711864 Q[53,14] * H_neg[6,petal-length]
-   + 0.5 Q[53,14] * H_neg[6,petal-width] - Q[53,14] * C4281
-   + Q[53,14] * C4288 ] >= 1
+   - Q[53,13] * C4288 ] >= 1
  qc755: E[103,6] + [ 0.5555555555555556 Q[103,13] * H_pos[6,sepal-length]
    + 0.375 Q[103,13] * H_pos[6,sepal-width]
    + 0.7796610169491525 Q[103,13] * H_pos[6,petal-length]
@@ -19030,16 +12974,7 @@ Subject To
    - 0.375 Q[103,13] * H_neg[6,sepal-width]
    - 0.7796610169491525 Q[103,13] * H_neg[6,petal-length]
    - 0.7083333333333334 Q[103,13] * H_neg[6,petal-width]
-   + Q[103,13] * C4281 - Q[103,13] * C4288
-   - 0.5555555555555556 Q[103,14] * H_pos[6,sepal-length]
-   - 0.375 Q[103,14] * H_pos[6,sepal-width]
-   - 0.7796610169491525 Q[103,14] * H_pos[6,petal-length]
-   - 0.7083333333333334 Q[103,14] * H_pos[6,petal-width]
-   + 0.5555555555555556 Q[103,14] * H_neg[6,sepal-length]
-   + 0.375 Q[103,14] * H_neg[6,sepal-width]
-   + 0.7796610169491525 Q[103,14] * H_neg[6,petal-length]
-   + 0.7083333333333334 Q[103,14] * H_neg[6,petal-width]
-   - Q[103,14] * C4281 + Q[103,14] * C4288 ] >= 1
+   + Q[103,13] * C4281 - Q[103,13] * C4288 ] >= 1
  qc756: E[84,6] + [ 0.3055555555555556 Q[84,13] * H_pos[6,sepal-length]
    + 0.4166666666666667 Q[84,13] * H_pos[6,sepal-width]
    + 0.5932203389830508 Q[84,13] * H_pos[6,petal-length]
@@ -19048,24 +12983,12 @@ Subject To
    - 0.4166666666666667 Q[84,13] * H_neg[6,sepal-width]
    - 0.5932203389830508 Q[84,13] * H_neg[6,petal-length]
    - 0.5833333333333334 Q[84,13] * H_neg[6,petal-width] + Q[84,13] * C4281
-   - Q[84,13] * C4288 - 0.3055555555555556 Q[84,14] * H_pos[6,sepal-length]
-   - 0.4166666666666667 Q[84,14] * H_pos[6,sepal-width]
-   - 0.5932203389830508 Q[84,14] * H_pos[6,petal-length]
-   - 0.5833333333333334 Q[84,14] * H_pos[6,petal-width]
-   + 0.3055555555555556 Q[84,14] * H_neg[6,sepal-length]
-   + 0.4166666666666667 Q[84,14] * H_neg[6,sepal-width]
-   + 0.5932203389830508 Q[84,14] * H_neg[6,petal-length]
-   + 0.5833333333333334 Q[84,14] * H_neg[6,petal-width] - Q[84,14] * C4281
-   + Q[84,14] * C4288 ] >= 1
+   - Q[84,13] * C4288 ] >= 1
  qc757: E[13,6] + [ 0.4166666666666667 Q[13,13] * H_pos[6,sepal-width]
    + 0.0169491525423729 Q[13,13] * H_pos[6,petal-length]
    - 0.4166666666666667 Q[13,13] * H_neg[6,sepal-width]
    - 0.0169491525423729 Q[13,13] * H_neg[6,petal-length] + Q[13,13] * C4281
-   - Q[13,13] * C4288 - 0.4166666666666667 Q[13,14] * H_pos[6,sepal-width]
-   - 0.0169491525423729 Q[13,14] * H_pos[6,petal-length]
-   + 0.4166666666666667 Q[13,14] * H_neg[6,sepal-width]
-   + 0.0169491525423729 Q[13,14] * H_neg[6,petal-length] - Q[13,14] * C4281
-   + Q[13,14] * C4288 ] >= 1
+   - Q[13,13] * C4288 ] >= 1
  qc758: E[130,6] + [ 0.8611111111111112 Q[130,13] * H_pos[6,sepal-length]
    + 0.3333333333333333 Q[130,13] * H_pos[6,sepal-width]
    + 0.8644067796610169 Q[130,13] * H_pos[6,petal-length]
@@ -19074,16 +12997,7 @@ Subject To
    - 0.3333333333333333 Q[130,13] * H_neg[6,sepal-width]
    - 0.8644067796610169 Q[130,13] * H_neg[6,petal-length]
    - 0.75 Q[130,13] * H_neg[6,petal-width] + Q[130,13] * C4281
-   - Q[130,13] * C4288
-   - 0.8611111111111112 Q[130,14] * H_pos[6,sepal-length]
-   - 0.3333333333333333 Q[130,14] * H_pos[6,sepal-width]
-   - 0.8644067796610169 Q[130,14] * H_pos[6,petal-length]
-   - 0.75 Q[130,14] * H_pos[6,petal-width]
-   + 0.8611111111111112 Q[130,14] * H_neg[6,sepal-length]
-   + 0.3333333333333333 Q[130,14] * H_neg[6,sepal-width]
-   + 0.8644067796610169 Q[130,14] * H_neg[6,petal-length]
-   + 0.75 Q[130,14] * H_neg[6,petal-width] - Q[130,14] * C4281
-   + Q[130,14] * C4288 ] >= 1
+   - Q[130,13] * C4288 ] >= 1
  qc759: E[23,6] + [ 0.2222222222222221 Q[23,13] * H_pos[6,sepal-length]
    + 0.5416666666666665 Q[23,13] * H_pos[6,sepal-width]
    + 0.1186440677966101 Q[23,13] * H_pos[6,petal-length]
@@ -19092,15 +13006,7 @@ Subject To
    - 0.5416666666666665 Q[23,13] * H_neg[6,sepal-width]
    - 0.1186440677966101 Q[23,13] * H_neg[6,petal-length]
    - 0.1666666666666667 Q[23,13] * H_neg[6,petal-width] + Q[23,13] * C4281
-   - Q[23,13] * C4288 - 0.2222222222222221 Q[23,14] * H_pos[6,sepal-length]
-   - 0.5416666666666665 Q[23,14] * H_pos[6,sepal-width]
-   - 0.1186440677966101 Q[23,14] * H_pos[6,petal-length]
-   - 0.1666666666666667 Q[23,14] * H_pos[6,petal-width]
-   + 0.2222222222222221 Q[23,14] * H_neg[6,sepal-length]
-   + 0.5416666666666665 Q[23,14] * H_neg[6,sepal-width]
-   + 0.1186440677966101 Q[23,14] * H_neg[6,petal-length]
-   + 0.1666666666666667 Q[23,14] * H_neg[6,petal-width] - Q[23,14] * C4281
-   + Q[23,14] * C4288 ] >= 1
+   - Q[23,13] * C4288 ] >= 1
  qc760: E[49,6] + [ 0.1944444444444444 Q[49,13] * H_pos[6,sepal-length]
    + 0.5416666666666665 Q[49,13] * H_pos[6,sepal-width]
    + 0.0677966101694915 Q[49,13] * H_pos[6,petal-length]
@@ -19109,15 +13015,7 @@ Subject To
    - 0.5416666666666665 Q[49,13] * H_neg[6,sepal-width]
    - 0.0677966101694915 Q[49,13] * H_neg[6,petal-length]
    - 0.0416666666666667 Q[49,13] * H_neg[6,petal-width] + Q[49,13] * C4281
-   - Q[49,13] * C4288 - 0.1944444444444444 Q[49,14] * H_pos[6,sepal-length]
-   - 0.5416666666666665 Q[49,14] * H_pos[6,sepal-width]
-   - 0.0677966101694915 Q[49,14] * H_pos[6,petal-length]
-   - 0.0416666666666667 Q[49,14] * H_pos[6,petal-width]
-   + 0.1944444444444444 Q[49,14] * H_neg[6,sepal-length]
-   + 0.5416666666666665 Q[49,14] * H_neg[6,sepal-width]
-   + 0.0677966101694915 Q[49,14] * H_neg[6,petal-length]
-   + 0.0416666666666667 Q[49,14] * H_neg[6,petal-width] - Q[49,14] * C4281
-   + Q[49,14] * C4288 ] >= 1
+   - Q[49,13] * C4288 ] >= 1
  qc761: E[24,6] + [ 0.1388888888888888 Q[24,13] * H_pos[6,sepal-length]
    + 0.5833333333333333 Q[24,13] * H_pos[6,sepal-width]
    + 0.1525423728813559 Q[24,13] * H_pos[6,petal-length]
@@ -19126,15 +13024,7 @@ Subject To
    - 0.5833333333333333 Q[24,13] * H_neg[6,sepal-width]
    - 0.1525423728813559 Q[24,13] * H_neg[6,petal-length]
    - 0.0416666666666667 Q[24,13] * H_neg[6,petal-width] + Q[24,13] * C4281
-   - Q[24,13] * C4288 - 0.1388888888888888 Q[24,14] * H_pos[6,sepal-length]
-   - 0.5833333333333333 Q[24,14] * H_pos[6,sepal-width]
-   - 0.1525423728813559 Q[24,14] * H_pos[6,petal-length]
-   - 0.0416666666666667 Q[24,14] * H_pos[6,petal-width]
-   + 0.1388888888888888 Q[24,14] * H_neg[6,sepal-length]
-   + 0.5833333333333333 Q[24,14] * H_neg[6,sepal-width]
-   + 0.1525423728813559 Q[24,14] * H_neg[6,petal-length]
-   + 0.0416666666666667 Q[24,14] * H_neg[6,petal-width] - Q[24,14] * C4281
-   + Q[24,14] * C4288 ] >= 1
+   - Q[24,13] * C4288 ] >= 1
  qc762: E[78,6] + [ 0.4722222222222223 Q[78,13] * H_pos[6,sepal-length]
    + 0.375 Q[78,13] * H_pos[6,sepal-width]
    + 0.5932203389830508 Q[78,13] * H_pos[6,petal-length]
@@ -19143,15 +13033,7 @@ Subject To
    - 0.375 Q[78,13] * H_neg[6,sepal-width]
    - 0.5932203389830508 Q[78,13] * H_neg[6,petal-length]
    - 0.5833333333333334 Q[78,13] * H_neg[6,petal-width] + Q[78,13] * C4281
-   - Q[78,13] * C4288 - 0.4722222222222223 Q[78,14] * H_pos[6,sepal-length]
-   - 0.375 Q[78,14] * H_pos[6,sepal-width]
-   - 0.5932203389830508 Q[78,14] * H_pos[6,petal-length]
-   - 0.5833333333333334 Q[78,14] * H_pos[6,petal-width]
-   + 0.4722222222222223 Q[78,14] * H_neg[6,sepal-length]
-   + 0.375 Q[78,14] * H_neg[6,sepal-width]
-   + 0.5932203389830508 Q[78,14] * H_neg[6,petal-length]
-   + 0.5833333333333334 Q[78,14] * H_neg[6,petal-width] - Q[78,14] * C4281
-   + Q[78,14] * C4288 ] >= 1
+   - Q[78,13] * C4288 ] >= 1
  qc763: E[45,6] + [ 0.1388888888888888 Q[45,13] * H_pos[6,sepal-length]
    + 0.4166666666666667 Q[45,13] * H_pos[6,sepal-width]
    + 0.0677966101694915 Q[45,13] * H_pos[6,petal-length]
@@ -19160,15 +13042,7 @@ Subject To
    - 0.4166666666666667 Q[45,13] * H_neg[6,sepal-width]
    - 0.0677966101694915 Q[45,13] * H_neg[6,petal-length]
    - 0.0833333333333333 Q[45,13] * H_neg[6,petal-width] + Q[45,13] * C4281
-   - Q[45,13] * C4288 - 0.1388888888888888 Q[45,14] * H_pos[6,sepal-length]
-   - 0.4166666666666667 Q[45,14] * H_pos[6,sepal-width]
-   - 0.0677966101694915 Q[45,14] * H_pos[6,petal-length]
-   - 0.0833333333333333 Q[45,14] * H_pos[6,petal-width]
-   + 0.1388888888888888 Q[45,14] * H_neg[6,sepal-length]
-   + 0.4166666666666667 Q[45,14] * H_neg[6,sepal-width]
-   + 0.0677966101694915 Q[45,14] * H_neg[6,petal-length]
-   + 0.0833333333333333 Q[45,14] * H_neg[6,petal-width] - Q[45,14] * C4281
-   + Q[45,14] * C4288 ] >= 1
+   - Q[45,13] * C4288 ] >= 1
  qc764: E[104,6] + [ 0.6111111111111112 Q[104,13] * H_pos[6,sepal-length]
    + 0.4166666666666667 Q[104,13] * H_pos[6,sepal-width]
    + 0.8135593220338982 Q[104,13] * H_pos[6,petal-length]
@@ -19177,16 +13051,7 @@ Subject To
    - 0.4166666666666667 Q[104,13] * H_neg[6,sepal-width]
    - 0.8135593220338982 Q[104,13] * H_neg[6,petal-length]
    - 0.875 Q[104,13] * H_neg[6,petal-width] + Q[104,13] * C4281
-   - Q[104,13] * C4288
-   - 0.6111111111111112 Q[104,14] * H_pos[6,sepal-length]
-   - 0.4166666666666667 Q[104,14] * H_pos[6,sepal-width]
-   - 0.8135593220338982 Q[104,14] * H_pos[6,petal-length]
-   - 0.875 Q[104,14] * H_pos[6,petal-width]
-   + 0.6111111111111112 Q[104,14] * H_neg[6,sepal-length]
-   + 0.4166666666666667 Q[104,14] * H_neg[6,sepal-width]
-   + 0.8135593220338982 Q[104,14] * H_neg[6,petal-length]
-   + 0.875 Q[104,14] * H_neg[6,petal-width] - Q[104,14] * C4281
-   + Q[104,14] * C4288 ] >= 1
+   - Q[104,13] * C4288 ] >= 1
  qc765: E[58,6] + [ 0.6388888888888888 Q[58,13] * H_pos[6,sepal-length]
    + 0.375 Q[58,13] * H_pos[6,sepal-width]
    + 0.6101694915254237 Q[58,13] * H_pos[6,petal-length]
@@ -19195,15 +13060,7 @@ Subject To
    - 0.375 Q[58,13] * H_neg[6,sepal-width]
    - 0.6101694915254237 Q[58,13] * H_neg[6,petal-length]
    - 0.5 Q[58,13] * H_neg[6,petal-width] + Q[58,13] * C4281
-   - Q[58,13] * C4288 - 0.6388888888888888 Q[58,14] * H_pos[6,sepal-length]
-   - 0.375 Q[58,14] * H_pos[6,sepal-width]
-   - 0.6101694915254237 Q[58,14] * H_pos[6,petal-length]
-   - 0.5 Q[58,14] * H_pos[6,petal-width]
-   + 0.6388888888888888 Q[58,14] * H_neg[6,sepal-length]
-   + 0.375 Q[58,14] * H_neg[6,sepal-width]
-   + 0.6101694915254237 Q[58,14] * H_neg[6,petal-length]
-   + 0.5 Q[58,14] * H_neg[6,petal-width] - Q[58,14] * C4281
-   + Q[58,14] * C4288 ] >= 1
+   - Q[58,13] * C4288 ] >= 1
  qc766: E[113,6] + [ 0.3888888888888888 Q[113,13] * H_pos[6,sepal-length]
    + 0.2083333333333333 Q[113,13] * H_pos[6,sepal-width]
    + 0.6779661016949152 Q[113,13] * H_pos[6,petal-length]
@@ -19212,16 +13069,7 @@ Subject To
    - 0.2083333333333333 Q[113,13] * H_neg[6,sepal-width]
    - 0.6779661016949152 Q[113,13] * H_neg[6,petal-length]
    - 0.7916666666666667 Q[113,13] * H_neg[6,petal-width]
-   + Q[113,13] * C4281 - Q[113,13] * C4288
-   - 0.3888888888888888 Q[113,14] * H_pos[6,sepal-length]
-   - 0.2083333333333333 Q[113,14] * H_pos[6,sepal-width]
-   - 0.6779661016949152 Q[113,14] * H_pos[6,petal-length]
-   - 0.7916666666666667 Q[113,14] * H_pos[6,petal-width]
-   + 0.3888888888888888 Q[113,14] * H_neg[6,sepal-length]
-   + 0.2083333333333333 Q[113,14] * H_neg[6,sepal-width]
-   + 0.6779661016949152 Q[113,14] * H_neg[6,petal-length]
-   + 0.7916666666666667 Q[113,14] * H_neg[6,petal-width]
-   - Q[113,14] * C4281 + Q[113,14] * C4288 ] >= 1
+   + Q[113,13] * C4281 - Q[113,13] * C4288 ] >= 1
  qc767: E[3,6] + [ 0.0833333333333333 Q[3,13] * H_pos[6,sepal-length]
    + 0.4583333333333333 Q[3,13] * H_pos[6,sepal-width]
    + 0.0847457627118644 Q[3,13] * H_pos[6,petal-length]
@@ -19230,15 +13078,7 @@ Subject To
    - 0.4583333333333333 Q[3,13] * H_neg[6,sepal-width]
    - 0.0847457627118644 Q[3,13] * H_neg[6,petal-length]
    - 0.0416666666666667 Q[3,13] * H_neg[6,petal-width] + Q[3,13] * C4281
-   - Q[3,13] * C4288 - 0.0833333333333333 Q[3,14] * H_pos[6,sepal-length]
-   - 0.4583333333333333 Q[3,14] * H_pos[6,sepal-width]
-   - 0.0847457627118644 Q[3,14] * H_pos[6,petal-length]
-   - 0.0416666666666667 Q[3,14] * H_pos[6,petal-width]
-   + 0.0833333333333333 Q[3,14] * H_neg[6,sepal-length]
-   + 0.4583333333333333 Q[3,14] * H_neg[6,sepal-width]
-   + 0.0847457627118644 Q[3,14] * H_neg[6,petal-length]
-   + 0.0416666666666667 Q[3,14] * H_neg[6,petal-width] - Q[3,14] * C4281
-   + Q[3,14] * C4288 ] >= 1
+   - Q[3,13] * C4288 ] >= 1
  qc768: E[146,6] + [ 0.5555555555555556 Q[146,13] * H_pos[6,sepal-length]
    + 0.2083333333333333 Q[146,13] * H_pos[6,sepal-width]
    + 0.6779661016949152 Q[146,13] * H_pos[6,petal-length]
@@ -19247,16 +13087,7 @@ Subject To
    - 0.2083333333333333 Q[146,13] * H_neg[6,sepal-width]
    - 0.6779661016949152 Q[146,13] * H_neg[6,petal-length]
    - 0.75 Q[146,13] * H_neg[6,petal-width] + Q[146,13] * C4281
-   - Q[146,13] * C4288
-   - 0.5555555555555556 Q[146,14] * H_pos[6,sepal-length]
-   - 0.2083333333333333 Q[146,14] * H_pos[6,sepal-width]
-   - 0.6779661016949152 Q[146,14] * H_pos[6,petal-length]
-   - 0.75 Q[146,14] * H_pos[6,petal-width]
-   + 0.5555555555555556 Q[146,14] * H_neg[6,sepal-length]
-   + 0.2083333333333333 Q[146,14] * H_neg[6,sepal-width]
-   + 0.6779661016949152 Q[146,14] * H_neg[6,petal-length]
-   + 0.75 Q[146,14] * H_neg[6,petal-width] - Q[146,14] * C4281
-   + Q[146,14] * C4288 ] >= 1
+   - Q[146,13] * C4288 ] >= 1
  qc769: E[88,6] + [ 0.3611111111111109 Q[88,13] * H_pos[6,sepal-length]
    + 0.4166666666666667 Q[88,13] * H_pos[6,sepal-width]
    + 0.5254237288135593 Q[88,13] * H_pos[6,petal-length]
@@ -19265,15 +13096,7 @@ Subject To
    - 0.4166666666666667 Q[88,13] * H_neg[6,sepal-width]
    - 0.5254237288135593 Q[88,13] * H_neg[6,petal-length]
    - 0.5 Q[88,13] * H_neg[6,petal-width] + Q[88,13] * C4281
-   - Q[88,13] * C4288 - 0.3611111111111109 Q[88,14] * H_pos[6,sepal-length]
-   - 0.4166666666666667 Q[88,14] * H_pos[6,sepal-width]
-   - 0.5254237288135593 Q[88,14] * H_pos[6,petal-length]
-   - 0.5 Q[88,14] * H_pos[6,petal-width]
-   + 0.3611111111111109 Q[88,14] * H_neg[6,sepal-length]
-   + 0.4166666666666667 Q[88,14] * H_neg[6,sepal-width]
-   + 0.5254237288135593 Q[88,14] * H_neg[6,petal-length]
-   + 0.5 Q[88,14] * H_neg[6,petal-width] - Q[88,14] * C4281
-   + Q[88,14] * C4288 ] >= 1
+   - Q[88,13] * C4288 ] >= 1
  qc770: E[138,6] + [ 0.4722222222222223 Q[138,13] * H_pos[6,sepal-length]
    + 0.4166666666666667 Q[138,13] * H_pos[6,sepal-width]
    + 0.6440677966101694 Q[138,13] * H_pos[6,petal-length]
@@ -19282,16 +13105,7 @@ Subject To
    - 0.4166666666666667 Q[138,13] * H_neg[6,sepal-width]
    - 0.6440677966101694 Q[138,13] * H_neg[6,petal-length]
    - 0.7083333333333334 Q[138,13] * H_neg[6,petal-width]
-   + Q[138,13] * C4281 - Q[138,13] * C4288
-   - 0.4722222222222223 Q[138,14] * H_pos[6,sepal-length]
-   - 0.4166666666666667 Q[138,14] * H_pos[6,sepal-width]
-   - 0.6440677966101694 Q[138,14] * H_pos[6,petal-length]
-   - 0.7083333333333334 Q[138,14] * H_pos[6,petal-width]
-   + 0.4722222222222223 Q[138,14] * H_neg[6,sepal-length]
-   + 0.4166666666666667 Q[138,14] * H_neg[6,sepal-width]
-   + 0.6440677966101694 Q[138,14] * H_neg[6,petal-length]
-   + 0.7083333333333334 Q[138,14] * H_neg[6,petal-width]
-   - Q[138,14] * C4281 + Q[138,14] * C4288 ] >= 1
+   + Q[138,13] * C4281 - Q[138,13] * C4288 ] >= 1
  qc771: E[128,6] + [ 0.5833333333333335 Q[128,13] * H_pos[6,sepal-length]
    + 0.3333333333333333 Q[128,13] * H_pos[6,sepal-width]
    + 0.7796610169491525 Q[128,13] * H_pos[6,petal-length]
@@ -19300,16 +13114,7 @@ Subject To
    - 0.3333333333333333 Q[128,13] * H_neg[6,sepal-width]
    - 0.7796610169491525 Q[128,13] * H_neg[6,petal-length]
    - 0.8333333333333335 Q[128,13] * H_neg[6,petal-width]
-   + Q[128,13] * C4281 - Q[128,13] * C4288
-   - 0.5833333333333335 Q[128,14] * H_pos[6,sepal-length]
-   - 0.3333333333333333 Q[128,14] * H_pos[6,sepal-width]
-   - 0.7796610169491525 Q[128,14] * H_pos[6,petal-length]
-   - 0.8333333333333335 Q[128,14] * H_pos[6,petal-width]
-   + 0.5833333333333335 Q[128,14] * H_neg[6,sepal-length]
-   + 0.3333333333333333 Q[128,14] * H_neg[6,sepal-width]
-   + 0.7796610169491525 Q[128,14] * H_neg[6,petal-length]
-   + 0.8333333333333335 Q[128,14] * H_neg[6,petal-width]
-   - Q[128,14] * C4281 + Q[128,14] * C4288 ] >= 1
+   + Q[128,13] * C4281 - Q[128,13] * C4288 ] >= 1
  qc772: E[76,6] + [ 0.6944444444444444 Q[76,13] * H_pos[6,sepal-length]
    + 0.3333333333333333 Q[76,13] * H_pos[6,sepal-width]
    + 0.6440677966101694 Q[76,13] * H_pos[6,petal-length]
@@ -19318,15 +13123,7 @@ Subject To
    - 0.3333333333333333 Q[76,13] * H_neg[6,sepal-width]
    - 0.6440677966101694 Q[76,13] * H_neg[6,petal-length]
    - 0.5416666666666667 Q[76,13] * H_neg[6,petal-width] + Q[76,13] * C4281
-   - Q[76,13] * C4288 - 0.6944444444444444 Q[76,14] * H_pos[6,sepal-length]
-   - 0.3333333333333333 Q[76,14] * H_pos[6,sepal-width]
-   - 0.6440677966101694 Q[76,14] * H_pos[6,petal-length]
-   - 0.5416666666666667 Q[76,14] * H_pos[6,petal-width]
-   + 0.6944444444444444 Q[76,14] * H_neg[6,sepal-length]
-   + 0.3333333333333333 Q[76,14] * H_neg[6,sepal-width]
-   + 0.6440677966101694 Q[76,14] * H_neg[6,petal-length]
-   + 0.5416666666666667 Q[76,14] * H_neg[6,petal-width] - Q[76,14] * C4281
-   + Q[76,14] * C4288 ] >= 1
+   - Q[76,13] * C4288 ] >= 1
  qc773: E[70,6] + [ 0.4444444444444446 Q[70,13] * H_pos[6,sepal-length]
    + 0.5 Q[70,13] * H_pos[6,sepal-width]
    + 0.6440677966101694 Q[70,13] * H_pos[6,petal-length]
@@ -19335,15 +13132,7 @@ Subject To
    - 0.5 Q[70,13] * H_neg[6,sepal-width]
    - 0.6440677966101694 Q[70,13] * H_neg[6,petal-length]
    - 0.7083333333333334 Q[70,13] * H_neg[6,petal-width] + Q[70,13] * C4281
-   - Q[70,13] * C4288 - 0.4444444444444446 Q[70,14] * H_pos[6,sepal-length]
-   - 0.5 Q[70,14] * H_pos[6,sepal-width]
-   - 0.6440677966101694 Q[70,14] * H_pos[6,petal-length]
-   - 0.7083333333333334 Q[70,14] * H_pos[6,petal-width]
-   + 0.4444444444444446 Q[70,14] * H_neg[6,sepal-length]
-   + 0.5 Q[70,14] * H_neg[6,sepal-width]
-   + 0.6440677966101694 Q[70,14] * H_neg[6,petal-length]
-   + 0.7083333333333334 Q[70,14] * H_neg[6,petal-width] - Q[70,14] * C4281
-   + Q[70,14] * C4288 ] >= 1
+   - Q[70,13] * C4288 ] >= 1
  qc774: E[145,6] + [ 0.6666666666666667 Q[145,13] * H_pos[6,sepal-length]
    + 0.4166666666666667 Q[145,13] * H_pos[6,sepal-width]
    + 0.711864406779661 Q[145,13] * H_pos[6,petal-length]
@@ -19352,16 +13141,7 @@ Subject To
    - 0.4166666666666667 Q[145,13] * H_neg[6,sepal-width]
    - 0.711864406779661 Q[145,13] * H_neg[6,petal-length]
    - 0.9166666666666666 Q[145,13] * H_neg[6,petal-width]
-   + Q[145,13] * C4281 - Q[145,13] * C4288
-   - 0.6666666666666667 Q[145,14] * H_pos[6,sepal-length]
-   - 0.4166666666666667 Q[145,14] * H_pos[6,sepal-width]
-   - 0.711864406779661 Q[145,14] * H_pos[6,petal-length]
-   - 0.9166666666666666 Q[145,14] * H_pos[6,petal-width]
-   + 0.6666666666666667 Q[145,14] * H_neg[6,sepal-length]
-   + 0.4166666666666667 Q[145,14] * H_neg[6,sepal-width]
-   + 0.711864406779661 Q[145,14] * H_neg[6,petal-length]
-   + 0.9166666666666666 Q[145,14] * H_neg[6,petal-width]
-   - Q[145,14] * C4281 + Q[145,14] * C4288 ] >= 1
+   + Q[145,13] * C4281 - Q[145,13] * C4288 ] >= 1
  qc775: E[91,6] + [ 0.5 Q[91,13] * H_pos[6,sepal-length]
    + 0.4166666666666667 Q[91,13] * H_pos[6,sepal-width]
    + 0.6101694915254237 Q[91,13] * H_pos[6,petal-length]
@@ -19370,15 +13150,7 @@ Subject To
    - 0.4166666666666667 Q[91,13] * H_neg[6,sepal-width]
    - 0.6101694915254237 Q[91,13] * H_neg[6,petal-length]
    - 0.5416666666666667 Q[91,13] * H_neg[6,petal-width] + Q[91,13] * C4281
-   - Q[91,13] * C4288 - 0.5 Q[91,14] * H_pos[6,sepal-length]
-   - 0.4166666666666667 Q[91,14] * H_pos[6,sepal-width]
-   - 0.6101694915254237 Q[91,14] * H_pos[6,petal-length]
-   - 0.5416666666666667 Q[91,14] * H_pos[6,petal-width]
-   + 0.5 Q[91,14] * H_neg[6,sepal-length]
-   + 0.4166666666666667 Q[91,14] * H_neg[6,sepal-width]
-   + 0.6101694915254237 Q[91,14] * H_neg[6,petal-length]
-   + 0.5416666666666667 Q[91,14] * H_neg[6,petal-width] - Q[91,14] * C4281
-   + Q[91,14] * C4288 ] >= 1
+   - Q[91,13] * C4288 ] >= 1
  qc776: E[19,6] + [ 0.2222222222222221 Q[19,13] * H_pos[6,sepal-length]
    + 0.75 Q[19,13] * H_pos[6,sepal-width]
    + 0.0847457627118644 Q[19,13] * H_pos[6,petal-length]
@@ -19387,15 +13159,7 @@ Subject To
    - 0.75 Q[19,13] * H_neg[6,sepal-width]
    - 0.0847457627118644 Q[19,13] * H_neg[6,petal-length]
    - 0.0833333333333333 Q[19,13] * H_neg[6,petal-width] + Q[19,13] * C4281
-   - Q[19,13] * C4288 - 0.2222222222222221 Q[19,14] * H_pos[6,sepal-length]
-   - 0.75 Q[19,14] * H_pos[6,sepal-width]
-   - 0.0847457627118644 Q[19,14] * H_pos[6,petal-length]
-   - 0.0833333333333333 Q[19,14] * H_pos[6,petal-width]
-   + 0.2222222222222221 Q[19,14] * H_neg[6,sepal-length]
-   + 0.75 Q[19,14] * H_neg[6,sepal-width]
-   + 0.0847457627118644 Q[19,14] * H_neg[6,petal-length]
-   + 0.0833333333333333 Q[19,14] * H_neg[6,petal-width] - Q[19,14] * C4281
-   + Q[19,14] * C4288 ] >= 1
+   - Q[19,13] * C4288 ] >= 1
  qc777: E[115,6] + [ 0.5833333333333335 Q[115,13] * H_pos[6,sepal-length]
    + 0.5 Q[115,13] * H_pos[6,sepal-width]
    + 0.7288135593220338 Q[115,13] * H_pos[6,petal-length]
@@ -19404,16 +13168,7 @@ Subject To
    - 0.5 Q[115,13] * H_neg[6,sepal-width]
    - 0.7288135593220338 Q[115,13] * H_neg[6,petal-length]
    - 0.9166666666666666 Q[115,13] * H_neg[6,petal-width]
-   + Q[115,13] * C4281 - Q[115,13] * C4288
-   - 0.5833333333333335 Q[115,14] * H_pos[6,sepal-length]
-   - 0.5 Q[115,14] * H_pos[6,sepal-width]
-   - 0.7288135593220338 Q[115,14] * H_pos[6,petal-length]
-   - 0.9166666666666666 Q[115,14] * H_pos[6,petal-width]
-   + 0.5833333333333335 Q[115,14] * H_neg[6,sepal-length]
-   + 0.5 Q[115,14] * H_neg[6,sepal-width]
-   + 0.7288135593220338 Q[115,14] * H_neg[6,petal-length]
-   + 0.9166666666666666 Q[115,14] * H_neg[6,petal-width]
-   - Q[115,14] * C4281 + Q[115,14] * C4288 ] >= 1
+   + Q[115,13] * C4281 - Q[115,13] * C4288 ] >= 1
  qc778: E[28,6] + [ 0.25 Q[28,13] * H_pos[6,sepal-length]
    + 0.5833333333333333 Q[28,13] * H_pos[6,sepal-width]
    + 0.0677966101694915 Q[28,13] * H_pos[6,petal-length]
@@ -19422,28 +13177,14 @@ Subject To
    - 0.5833333333333333 Q[28,13] * H_neg[6,sepal-width]
    - 0.0677966101694915 Q[28,13] * H_neg[6,petal-length]
    - 0.0416666666666667 Q[28,13] * H_neg[6,petal-width] + Q[28,13] * C4281
-   - Q[28,13] * C4288 - 0.25 Q[28,14] * H_pos[6,sepal-length]
-   - 0.5833333333333333 Q[28,14] * H_pos[6,sepal-width]
-   - 0.0677966101694915 Q[28,14] * H_pos[6,petal-length]
-   - 0.0416666666666667 Q[28,14] * H_pos[6,petal-width]
-   + 0.25 Q[28,14] * H_neg[6,sepal-length]
-   + 0.5833333333333333 Q[28,14] * H_neg[6,sepal-width]
-   + 0.0677966101694915 Q[28,14] * H_neg[6,petal-length]
-   + 0.0416666666666667 Q[28,14] * H_neg[6,petal-width] - Q[28,14] * C4281
-   + Q[28,14] * C4288 ] >= 1
+   - Q[28,13] * C4288 ] >= 1
  qc779: E[37,6] + [ 0.1666666666666667 Q[37,13] * H_pos[6,sepal-length]
    + 0.4583333333333333 Q[37,13] * H_pos[6,sepal-width]
    + 0.0847457627118644 Q[37,13] * H_pos[6,petal-length]
    - 0.1666666666666667 Q[37,13] * H_neg[6,sepal-length]
    - 0.4583333333333333 Q[37,13] * H_neg[6,sepal-width]
    - 0.0847457627118644 Q[37,13] * H_neg[6,petal-length] + Q[37,13] * C4281
-   - Q[37,13] * C4288 - 0.1666666666666667 Q[37,14] * H_pos[6,sepal-length]
-   - 0.4583333333333333 Q[37,14] * H_pos[6,sepal-width]
-   - 0.0847457627118644 Q[37,14] * H_pos[6,petal-length]
-   + 0.1666666666666667 Q[37,14] * H_neg[6,sepal-length]
-   + 0.4583333333333333 Q[37,14] * H_neg[6,sepal-width]
-   + 0.0847457627118644 Q[37,14] * H_neg[6,petal-length] - Q[37,14] * C4281
-   + Q[37,14] * C4288 ] >= 1
+   - Q[37,13] * C4288 ] >= 1
  qc780: E[29,6] + [ 0.1111111111111112 Q[29,13] * H_pos[6,sepal-length]
    + 0.5 Q[29,13] * H_pos[6,sepal-width]
    + 0.1016949152542373 Q[29,13] * H_pos[6,petal-length]
@@ -19452,15 +13193,7 @@ Subject To
    - 0.5 Q[29,13] * H_neg[6,sepal-width]
    - 0.1016949152542373 Q[29,13] * H_neg[6,petal-length]
    - 0.0416666666666667 Q[29,13] * H_neg[6,petal-width] + Q[29,13] * C4281
-   - Q[29,13] * C4288 - 0.1111111111111112 Q[29,14] * H_pos[6,sepal-length]
-   - 0.5 Q[29,14] * H_pos[6,sepal-width]
-   - 0.1016949152542373 Q[29,14] * H_pos[6,petal-length]
-   - 0.0416666666666667 Q[29,14] * H_pos[6,petal-width]
-   + 0.1111111111111112 Q[29,14] * H_neg[6,sepal-length]
-   + 0.5 Q[29,14] * H_neg[6,sepal-width]
-   + 0.1016949152542373 Q[29,14] * H_neg[6,petal-length]
-   + 0.0416666666666667 Q[29,14] * H_neg[6,petal-width] - Q[29,14] * C4281
-   + Q[29,14] * C4288 ] >= 1
+   - Q[29,13] * C4288 ] >= 1
  qc781: E[122,6] + [ 0.9444444444444442 Q[122,13] * H_pos[6,sepal-length]
    + 0.3333333333333333 Q[122,13] * H_pos[6,sepal-width]
    + 0.9661016949152543 Q[122,13] * H_pos[6,petal-length]
@@ -19469,16 +13202,7 @@ Subject To
    - 0.3333333333333333 Q[122,13] * H_neg[6,sepal-width]
    - 0.9661016949152543 Q[122,13] * H_neg[6,petal-length]
    - 0.7916666666666667 Q[122,13] * H_neg[6,petal-width]
-   + Q[122,13] * C4281 - Q[122,13] * C4288
-   - 0.9444444444444442 Q[122,14] * H_pos[6,sepal-length]
-   - 0.3333333333333333 Q[122,14] * H_pos[6,sepal-width]
-   - 0.9661016949152543 Q[122,14] * H_pos[6,petal-length]
-   - 0.7916666666666667 Q[122,14] * H_pos[6,petal-width]
-   + 0.9444444444444442 Q[122,14] * H_neg[6,sepal-length]
-   + 0.3333333333333333 Q[122,14] * H_neg[6,sepal-width]
-   + 0.9661016949152543 Q[122,14] * H_neg[6,petal-length]
-   + 0.7916666666666667 Q[122,14] * H_neg[6,petal-width]
-   - Q[122,14] * C4281 + Q[122,14] * C4288 ] >= 1
+   + Q[122,13] * C4281 - Q[122,13] * C4288 ] >= 1
  qc782: E[74,6] + [ 0.5833333333333335 Q[74,13] * H_pos[6,sepal-length]
    + 0.375 Q[74,13] * H_pos[6,sepal-width]
    + 0.559322033898305 Q[74,13] * H_pos[6,petal-length]
@@ -19487,15 +13211,7 @@ Subject To
    - 0.375 Q[74,13] * H_neg[6,sepal-width]
    - 0.559322033898305 Q[74,13] * H_neg[6,petal-length]
    - 0.5 Q[74,13] * H_neg[6,petal-width] + Q[74,13] * C4281
-   - Q[74,13] * C4288 - 0.5833333333333335 Q[74,14] * H_pos[6,sepal-length]
-   - 0.375 Q[74,14] * H_pos[6,sepal-width]
-   - 0.559322033898305 Q[74,14] * H_pos[6,petal-length]
-   - 0.5 Q[74,14] * H_pos[6,petal-width]
-   + 0.5833333333333335 Q[74,14] * H_neg[6,sepal-length]
-   + 0.375 Q[74,14] * H_neg[6,sepal-width]
-   + 0.559322033898305 Q[74,14] * H_neg[6,petal-length]
-   + 0.5 Q[74,14] * H_neg[6,petal-width] - Q[74,14] * C4281
-   + Q[74,14] * C4288 ] >= 1
+   - Q[74,13] * C4288 ] >= 1
  qc783: E[46,6] + [ 0.2222222222222221 Q[46,13] * H_pos[6,sepal-length]
    + 0.75 Q[46,13] * H_pos[6,sepal-width]
    + 0.1016949152542373 Q[46,13] * H_pos[6,petal-length]
@@ -19504,15 +13220,7 @@ Subject To
    - 0.75 Q[46,13] * H_neg[6,sepal-width]
    - 0.1016949152542373 Q[46,13] * H_neg[6,petal-length]
    - 0.0416666666666667 Q[46,13] * H_neg[6,petal-width] + Q[46,13] * C4281
-   - Q[46,13] * C4288 - 0.2222222222222221 Q[46,14] * H_pos[6,sepal-length]
-   - 0.75 Q[46,14] * H_pos[6,sepal-width]
-   - 0.1016949152542373 Q[46,14] * H_pos[6,petal-length]
-   - 0.0416666666666667 Q[46,14] * H_pos[6,petal-width]
-   + 0.2222222222222221 Q[46,14] * H_neg[6,sepal-length]
-   + 0.75 Q[46,14] * H_neg[6,sepal-width]
-   + 0.1016949152542373 Q[46,14] * H_neg[6,petal-length]
-   + 0.0416666666666667 Q[46,14] * H_neg[6,petal-width] - Q[46,14] * C4281
-   + Q[46,14] * C4288 ] >= 1
+   - Q[46,13] * C4288 ] >= 1
 Bounds
  B[7] = 0
  B[8] = 0

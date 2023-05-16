@@ -12,15 +12,16 @@ class MBDT:
     def __init__(self, data, tree, modeltype, time_limit, target, warmstart, modelextras, log=None, log_to_console=0):
         """"
         Parameters
-        data: training data
+        training_data: training training_data
         tree: input decision tree object of prespecified user height
         modeltype: modeltype to use for connectivity and optimization
         time_limit: gurobi time limit in seconds
-        target: target column of training data
+        target: target column of training training_data
         warm_start: dictionary warm start values
         model_extras: list of modeltype extras
         """
-        self.data = data
+        self.training_data = data.dataset
+        self.datatype = data.datatype
         self.tree = tree
         self.modeltype = modeltype
         self.time_limit = time_limit
@@ -32,9 +33,9 @@ class MBDT:
         self.b_type = '2-Step'
 
         # Feature, Class and Index Sets
-        self.classes = data[target].unique()
-        self.featureset = [col for col in self.data.columns.values if col != target]
-        self.datapoints = data.index
+        self.classes = data.dataset[target].unique()
+        self.featureset = [col for col in self.training_data.columns.values if col != target]
+        self.datapoints = data.dataset.index
 
         """ Decision Variables """
         self.B = 0
@@ -136,7 +137,7 @@ class MBDT:
         # Terminal vertex of correctly classified datapoint matches datapoint class
         # S[i,v] <= W[v,k=y^i] for v in V, for i in I
         for v in self.tree.V:
-            self.model.addConstrs(self.S[i, v] <= self.W[v, self.data.at[i, self.target]] for i in self.datapoints)
+            self.model.addConstrs(self.S[i, v] <= self.W[v, self.training_data.at[i, self.target]] for i in self.datapoints)
 
         # If v not branching then all datapoints sent to right child
         for v in self.tree.B:
@@ -145,6 +146,9 @@ class MBDT:
 
         # Each datapoint has at most one terminal vertex
         self.model.addConstrs(self.S.sum(i, '*') <= 1 for i in self.datapoints)
+        if self.datatype == 'categorical':
+            for v in self.tree.B:
+                self.model.addConstrs(self.Q[i, self.tree.LC[v]] <= self.B[v] for i in self.datapoints)
 
         # Lazy feasible path constraints (for fractional separation procedure)
         if any(ele in self.cut_type for ele in ['GRB', 'FF', 'ALL', 'MV']):
@@ -189,7 +193,7 @@ class MBDT:
         self.model._P = self.P
         self.model._Q = self.Q
         self.model._vis_weight, self.model._cut_type = self.vis_weight, self.cut_type
-        self.model._data, self.model._tree = self.data, self.tree
+        self.model._data, self.model._tree = self.training_data, self.tree
         self.model._featureset, self.model._target = self.featureset, self.target
 
     ##############################################
@@ -392,7 +396,7 @@ class MBDT:
             else:
                 # print('BRANCHING!!')
                 # print('branching at', v)
-                data_svm = self.data.loc[Lv_I + Rv_I, self.data.columns != self.target]
+                data_svm = self.training_data.loc[Lv_I + Rv_I, self.training_data.columns != self.target]
                 data_svm['svm'] = pd.Series(svm)
                 svm = UTILS.Linear_Separator()
                 svm.SVM_fit(data_svm)
@@ -418,7 +422,7 @@ class MBDT:
         if not self.warmstart['use']:
             return self
         if self.warmstart['values'] is None:
-            warm_start_values = UTILS.random_tree(self.tree, self.data, self.target)
+            warm_start_values = UTILS.random_tree(self.tree, self.training_data, self.target)
             print('Warm starting model with randomly generated tree')
         else:
             warm_start_values = self.warmstart['values']

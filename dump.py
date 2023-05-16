@@ -1,5 +1,5 @@
 """
-def random_tree(tree, data, target):
+def random_tree(tree, training_data, target):
     # Clear any existing node assignments
     for v in tree.V:
         if 'class' in tree.DG_prime.nodes[v]:
@@ -12,16 +12,16 @@ def random_tree(tree, data, target):
     TD_best_acc = -1
     BU_best_acc = -1
     for i in range(50):
-        TD_tree = TD_rand_tree(tree, data, target)
-        TD_acc, TD_results = data_predict(TD_tree, data, target)
+        TD_tree = TD_rand_tree(tree, training_data, target)
+        TD_acc, TD_results = data_predict(TD_tree, training_data, target)
         if TD_acc > TD_best_acc:
             TD_best_acc = TD_acc
             TD_best_results = TD_results
             best_TD_tree = TD_tree
 
     for i in range(50):
-        BU_tree = BU_rand_tree(tree, data, target)
-        BU_acc, BU_results = data_predict(BU_tree, data, target)
+        BU_tree = BU_rand_tree(tree, training_data, target)
+        BU_acc, BU_results = data_predict(BU_tree, training_data, target)
         if BU_acc > BU_best_acc:
             BU_best_acc = BU_acc
             BU_best_results = BU_results
@@ -32,7 +32,7 @@ def random_tree(tree, data, target):
         return {'tree': best_BU_tree, 'results': BU_best_results}
 
 
-def TD_rand_tree(tree, data, target):
+def TD_rand_tree(tree, training_data, target):
     # Clear any existing node assignments
     for v in tree.V:
         if 'class' in tree.DG_prime.nodes[v]:
@@ -41,8 +41,8 @@ def TD_rand_tree(tree, data, target):
             del tree.DG_prime.nodes[v]['branching']
         if 'pruned' in tree.DG_prime.nodes[v]:
             del tree.DG_prime.nodes[v]['pruned']
-    classes = data[target].unique()
-    feature_set = [col for col in data.columns if col != target]
+    classes = training_data[target].unique()
+    feature_set = [col for col in training_data.columns if col != target]
 
     # Top-down random tree
     tree.a_v[0], tree.c_v[0] = {f: random.random() for f in feature_set}, random.random()
@@ -62,7 +62,7 @@ def TD_rand_tree(tree, data, target):
     return tree
 
 
-def BU_rand_tree(tree, data, target):
+def BU_rand_tree(tree, training_data, target):
     # Clear any existing node assignments
     for v in tree.V:
         if 'class' in tree.DG_prime.nodes[v]:
@@ -72,8 +72,8 @@ def BU_rand_tree(tree, data, target):
         if 'pruned' in tree.DG_prime.nodes[v]:
             del tree.DG_prime.nodes[v]['pruned']
 
-    classes = data[target].unique()
-    feature_set = [col for col in data.columns if col != target]
+    classes = training_data[target].unique()
+    feature_set = [col for col in training_data.columns if col != target]
 
     # Bottoms-up random tree
     node_list = tree.V.copy()
@@ -103,7 +103,7 @@ def BU_rand_tree(tree, data, target):
         elif hp_type == 'double-cube':
             m = Model("MIP SVM normalized")
             u = m.addVars(feature_set, vtype=GRB.BINARY, name='u')
-            err = m.addVars(data.index, vtype=GRB.CONTINUOUS, lb=0, name='err')
+            err = m.addVars(training_data.index, vtype=GRB.CONTINUOUS, lb=0, name='err')
             b = m.addVar(vtype=GRB.CONTINUOUS, name='b')
             w = m.addVars(feature_set, vtype=GRB.CONTINUOUS, lb=-1, name='w')
             if hp_obj == 'linear':
@@ -112,8 +112,8 @@ def BU_rand_tree(tree, data, target):
                 m.setObjective((1 / 2) * quicksum(w[f]*w[f] for f in feature_set) + epsilon * err.sum(), GRB.MINIMIZE)
             elif hp_obj == 'rank':
                 m.setObjective(u.sum() + 10 * err.sum(), GRB.MINIMIZE)
-            m.addConstrs(data.at[i, 'svm'] * (quicksum(w[f] * data.at[i, f] for f in feature_set) + b)
-                         >= 1 - err[i] for i in data.index)
+            m.addConstrs(training_data.at[i, 'svm'] * (quicksum(w[f] * training_data.at[i, f] for f in feature_set) + b)
+                         >= 1 - err[i] for i in training_data.index)
             m.addConstr(quicksum(u[f] for f in feature_set) <= B-1)
             m.addConstrs(w[f] <= u[f] for f in feature_set)
             m.addConstr(w.sum() <= 1)
@@ -137,13 +137,13 @@ def BU_rand_tree(tree, data, target):
             m = Model("MIP SVM normalized")
             m.Params.LogToConsole = 0
             u = m.addVars(feature_set, vtype=GRB.BINARY, name='U')
-            err = m.addVars(data.index, vtype=GRB.CONTINUOUS, lb=0, name='err')
+            err = m.addVars(training_data.index, vtype=GRB.CONTINUOUS, lb=0, name='err')
             b_mip = m.addVar(vtype=GRB.CONTINUOUS, name='b')
             w = m.addVars(vtype=GRB.CONTINUOUS, lb=0, name='w')
 
             m.setObjective(u.sum()+C[0]*err.sum(), GRB.MINIMIZE)
-            m.addConstrs(data.at[i, 'svm'] * (quicksum(w[f]*data.at[i, f] for f in feature_set) + b_mip) >= 1 - err[i]
-                         for i in data.index)
+            m.addConstrs(training_data.at[i, 'svm'] * (quicksum(w[f]*training_data.at[i, f] for f in feature_set) + b_mip) >= 1 - err[i]
+                         for i in training_data.index)
             m.addConstrs(u.sum() <= B)
             m.addConstrs(w[f] <= u[f] for f in feature_set)
             m.addConstr(w.sum() <= 1)
@@ -155,19 +155,19 @@ def BU_rand_tree(tree, data, target):
                 m = Model("HM_Linear_SVM")
                 m.Params.LogToConsole = 0
                 m.Params.NumericFocus = 3
-                alpha = m.addVars(data.index, vtype=GRB.CONTINUOUS, lb=0, ub=GRB.INFINITY)
+                alpha = m.addVars(training_data.index, vtype=GRB.CONTINUOUS, lb=0, ub=GRB.INFINITY)
                 W = m.addVars(feature_set, vtype=GRB.CONTINUOUS, lb=-GRB.INFINITY, ub=GRB.INFINITY)
 
-                m.addConstrs(W[f] == quicksum(alpha[i] * data.at[i, 'svm'] * data.at[i, f] for i in data.index)
+                m.addConstrs(W[f] == quicksum(alpha[i] * training_data.at[i, 'svm'] * training_data.at[i, f] for i in training_data.index)
                              for f in feature_set)
-                m.addConstr(quicksum(alpha[i] * data.at[i, 'svm'] for i in data.index) == 0)
+                m.addConstr(quicksum(alpha[i] * training_data.at[i, 'svm'] for i in training_data.index) == 0)
                 m.setObjective(alpha.sum() - (1 / 2) * quicksum(W[f] * W[f] for f in feature_set), GRB.MAXIMIZE)
                 m.optimize()
 
                 # Any i with positive alpha[i] works
-                for i in data.index:
+                for i in training_data.index:
                     if alpha[i].x > m.Params.FeasibilityTol:
-                        b = data.at[i, 'svm'] - sum(W[f].x * data.at[i, f] for f in feature_set)
+                        b = training_data.at[i, 'svm'] - sum(W[f].x * training_data.at[i, f] for f in feature_set)
                         break
                 a_v = {f: W[f].x for f in feature_set}
                 c_v = -b  # Must flip intercept because of how QP was setup
@@ -182,7 +182,7 @@ def BU_rand_tree(tree, data, target):
                         convex_combo = Model("Left Index Convex Combination")
                         convex_combo.Params.LogToConsole = 0
                         lambdas = convex_combo.addVars(Rv_I, vtype=GRB.CONTINUOUS, lb=0)
-                        convex_combo.addConstrs(quicksum(lambdas[i]*data.at[i, f] for i in Rv_I) == data.at[i, f]
+                        convex_combo.addConstrs(quicksum(lambdas[i]*training_data.at[i, f] for i in Rv_I) == training_data.at[i, f]
                                                 for f in feature_set)
                         convex_combo.addConstr(lambdas.sum() == 1)
                         convex_combo.setObjective(0, GRB.MINIMIZE)
@@ -193,7 +193,7 @@ def BU_rand_tree(tree, data, target):
                         convex_combo = Model("Right Index Convex Combination")
                         convex_combo.Params.LogToConsole = 0
                         lambdas = convex_combo.addVars(Lv_I, vtype=GRB.CONTINUOUS, lb=0)
-                        convex_combo.addConstrs(quicksum(lambdas[i]*data.at[i, f] for i in Lv_I) == data.at[i, f]
+                        convex_combo.addConstrs(quicksum(lambdas[i]*training_data.at[i, f] for i in Lv_I) == training_data.at[i, f]
                                                 for f in feature_set)
                         convex_combo.addConstr(lambdas.sum() == 1)
                         convex_combo.setObjective(0, GRB.MINIMIZE)
@@ -204,8 +204,8 @@ def BU_rand_tree(tree, data, target):
                     # Find noramlized max inner product of convex combinations
                     # to use as upper bound in dual of Lagrangian of soft margin SVM
                     margin_ub = GRB.INFINITY
-                    inner_products = {item: np.inner(data.loc[item[0], feature_set],
-                                              data.loc[item[1], feature_set])
+                    inner_products = {item: np.inner(training_data.loc[item[0], feature_set],
+                                              training_data.loc[item[1], feature_set])
                                       for item in list(combinations(cc_L|cc_R, 2))}
                     if inner_products:
                         margin_ub = max(inner_products.values()) / \
@@ -215,19 +215,19 @@ def BU_rand_tree(tree, data, target):
                     m = Model("SM_Linear_SVM")
                     m.Params.LogToConsole = 0
                     m.Params.NumericFocus = 3
-                    alpha = m.addVars(data.index, vtype=GRB.CONTINUOUS, lb=0, ub=margin_ub)
+                    alpha = m.addVars(training_data.index, vtype=GRB.CONTINUOUS, lb=0, ub=margin_ub)
                     W = m.addVars(feature_set, vtype=GRB.CONTINUOUS, lb=-GRB.INFINITY, ub=GRB.INFINITY)
 
-                    m.addConstrs(W[f] == quicksum(alpha[i] * data.at[i, 'svm'] * data.at[i, f] for i in data.index)
+                    m.addConstrs(W[f] == quicksum(alpha[i] * training_data.at[i, 'svm'] * training_data.at[i, f] for i in training_data.index)
                                  for f in feature_set)
-                    m.addConstr(quicksum(alpha[i] * data.at[i, 'svm'] for i in data.index) == 0)
+                    m.addConstr(quicksum(alpha[i] * training_data.at[i, 'svm'] for i in training_data.index) == 0)
                     m.setObjective(alpha.sum() - (1 / 2) * quicksum(W[f] * W[f] for f in feature_set), GRB.MAXIMIZE)
                     m.optimize()
 
                     # Any i with positive alpha[i] works
-                    for i in data.index:
+                    for i in training_data.index:
                         if alpha[i].x > m.Params.FeasibilityTol:
-                            b = data.at[i, 'svm'] - sum(W[f].x * data.at[i, f] for f in feature_set)
+                            b = training_data.at[i, 'svm'] - sum(W[f].x * training_data.at[i, f] for f in feature_set)
                             break
                     a_v = {f: W[f].x for f in feature_set}
                     c_v = -b  # Must flip intercept because of how QP was setup
@@ -241,10 +241,10 @@ def BU_rand_tree(tree, data, target):
                         a_hyperplane = gen_hyperplane.addVars(feature_set, lb=-GRB.INFINITY, ub=GRB.INFINITY)
                         c_hyperplane = gen_hyperplane.addVar(lb=-GRB.INFINITY, ub=GRB.INFINITY)
                         gen_hyperplane.addConstrs(
-                            quicksum(a_hyperplane[f] * data.at[i, f] for f in feature_set) + 1 <= c_hyperplane
+                            quicksum(a_hyperplane[f] * training_data.at[i, f] for f in feature_set) + 1 <= c_hyperplane
                             for i in Lv_I)
                         gen_hyperplane.addConstrs(
-                            quicksum(a_hyperplane[f] * data.at[i, f] for f in feature_set) - 1 >= c_hyperplane
+                            quicksum(a_hyperplane[f] * training_data.at[i, f] for f in feature_set) - 1 >= c_hyperplane
                             for i in Rv_I)
                         gen_hyperplane.setObjective(0, GRB.MINIMIZE)
                         gen_hyperplane.optimize()
@@ -261,10 +261,10 @@ def BU_rand_tree(tree, data, target):
                             a_hyperplane = gen_hyperplane.addVars(feature_set, lb=-GRB.INFINITY, ub=GRB.INFINITY)
                             c_hyperplane = gen_hyperplane.addVar(lb=-GRB.INFINITY, ub=GRB.INFINITY)
                             gen_hyperplane.addConstrs(
-                                quicksum(a_hyperplane[f] * data.at[i, f] for f in feature_set) <= c_hyperplane
+                                quicksum(a_hyperplane[f] * training_data.at[i, f] for f in feature_set) <= c_hyperplane
                                 for i in Lv_I)
                             gen_hyperplane.addConstrs(
-                                quicksum(a_hyperplane[f] * data.at[i, f] for f in feature_set) >= c_hyperplane
+                                quicksum(a_hyperplane[f] * training_data.at[i, f] for f in feature_set) >= c_hyperplane
                                 for i in Rv_I)
                             gen_hyperplane.setObjective(0, GRB.MINIMIZE)
                             gen_hyperplane.optimize()

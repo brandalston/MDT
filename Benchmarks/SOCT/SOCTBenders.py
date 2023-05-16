@@ -48,7 +48,7 @@ class SOCTBenders(ClassifierMixin, BaseEstimator):
         self
         """
         #
-        # Input validation, defining MIP model data
+        # Input validation, defining MIP model training_data
         #
         
         # Check that dimensions are consistent, convert X and y to ndarrays
@@ -84,7 +84,7 @@ class SOCTBenders(ClassifierMixin, BaseEstimator):
         if self.log:
             model.Params.LogFile = self.log
         
-        # Pack data into model
+        # Pack training_data into model
         model._X_y = X, y
         model._nodes = (branch_nodes, leaf_nodes)
         model._callback_calls = 0
@@ -133,7 +133,7 @@ class SOCTBenders(ClassifierMixin, BaseEstimator):
         return self
     
     def _warm_start(self):
-        # Extract variables and data from model
+        # Extract variables and training_data from model
         branch_rules, classification_rules = self.warm_start_tree
         model = self.model_
         (c, d, w, z) = model._vars
@@ -187,7 +187,7 @@ class SOCTBenders(ClassifierMixin, BaseEstimator):
         if where == GRB.Callback.MIPSOL:
             start_time = time.time()
             
-            # Extract variables and data from model
+            # Extract variables and training_data from model
             (c, d, w, z) = model._vars
             d_vals = model.cbGetSolution(d)
             w_vals = model.cbGetSolution(w)
@@ -298,7 +298,7 @@ class SOCTBenders(ClassifierMixin, BaseEstimator):
     
     def _construct_decision_tree(self):
         """ After initial MIP training, define the learned decision tree. """
-        # Extract variables and data from model
+        # Extract variables and training_data from model
         model = self.model_
         (c, d, w, z) = model._vars
         (X, y) = model._X_y

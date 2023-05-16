@@ -70,7 +70,7 @@ def main(argv):
         data = OU.get_data(file.replace('.csv', ''))
         for h in heights:
             for i in rand_states:
-                # data split
+                # training_data split
                 train_set, test_set = train_test_split(data, train_size=0.75, random_state=i)
                 X_train, Y_train = train_set.drop('target', axis=1), train_set['target']
                 X_test, Y_test = test_set.drop('target', axis=1), test_set['target']

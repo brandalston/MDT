@@ -81,20 +81,19 @@ def main(argv):
     """ We assume the target column of dataset is labeled 'target'
     Change value at your discretion """
     target = 'target'
-    numerical_datasets = ['iris', 'banknote', 'blood', 'climate', 'wine-white', 'wine-red'
-                          'glass', 'image_segmentation', 'ionosphere', 'parkinsons', 'iris']
-    categorical_datasets = ['balance_scale', 'car', 'kr_vs_kp', 'house-votes-84', 'hayes_roth', 'breast_cancer',
-                            'monk1', 'monk2', 'monk3', 'soybean_small', 'spect', 'tic_tac_toe', 'fico_binary']
+
     for file in data_files:
         # if file in numerical_datasets: binarization = 'all-candidates'
         # else: binarization = False
         # pull dataset to train model with
-        data = UTILS.get_data(file.replace('.csv', ''), binarization=None)
+        data = UTILS.data(dataname=file.replace('.csv', ''), binarization=None)
+        data.get_data()
         for h in heights:
             for i in rand_states:
-                train_set, test_set = train_test_split(data, train_size=0.5, random_state=i)
+                train_set, test_set = train_test_split(data.dataset, train_size=0.5, random_state=i)
                 cal_set, test_set = train_test_split(test_set, train_size=0.5, random_state=i)
                 model_set = pd.concat([train_set, cal_set])
+                data.dataset = model_set
                 for modeltype in modeltypes:
                     print('\n'+str(modeltype)+'-'+str(b_type) +
                           ', Dataset: ' + str(file) + ', H: ' + str(h) + ', ''Rand State: ' + str(i) +
@@ -108,11 +107,11 @@ def main(argv):
                     # Model with 75% training set and time limit
                     # Specify model datapoint branching type
                     if b_type == 'one-step':
-                        mbdt = MBDT_one_step(data=model_set, tree=tree, target=target, modeltype=modeltype,
+                        mbdt = MBDT_one_step(data=data, tree=tree, target=target, modeltype=modeltype,
                                              time_limit=time_limit, warmstart=warmstart,
                                              modelextras=model_extras, log=log, log_to_console=console_log)
                     else:
-                        mbdt = MBDT(data=model_set, tree=tree, target=target, modeltype=modeltype,
+                        mbdt = MBDT(data=data, tree=tree, target=target, modeltype=modeltype,
                                     time_limit=time_limit, warmstart=warmstart,
                                     modelextras=model_extras, log=log, log_to_console=console_log)
                     # Add connectivity constraints according to model type and solve
@@ -120,8 +119,8 @@ def main(argv):
                     if warmstart['use']: mbdt.warm_start()
                     if model_extras is not None: mbdt.extras()
                     mbdt.model.update()
-                    # if log_files:
-                    #    model.model.write(log + '.lp')
+                    if log_files:
+                        mbdt.model.write(log + '.lp')
                     mbdt.optimization()
                     if mbdt.model.RunTime < time_limit:
                         print(f'Optimal solution found in {round(mbdt.model.RunTime,4)}s. '
@@ -131,6 +130,8 @@ def main(argv):
                     mbdt.assign_tree()
                     # Uncomment to print model results
                     # UTILS.model_results(opt_model, tree)
+                    print(tree.branch_nodes)
+                    print(tree.class_nodes)
                     test_acc, test_assignments = UTILS.data_predict(tree=tree, data=test_set, target=mbdt.target)
                     train_acc, train_assignments = UTILS.data_predict(tree=tree, data=model_set, target=mbdt.target)
                     with open(out_file, mode='a') as results:

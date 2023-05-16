@@ -200,19 +200,19 @@ def get_r_squared(grb_model, local_data, b, beta, p):
 
 
 def get_left_exp_integer(master, b, n, i):
-    lhs = quicksum(-master.m[i] * master.b[n, f] for f in master.cat_features if master.data.at[i, f] == 0)
+    lhs = quicksum(-master.m[i] * master.b[n, f] for f in master.cat_features if master.training_data.at[i, f] == 0)
 
     return lhs
 
 
 def get_right_exp_integer(master, b, n, i):
-    lhs = quicksum(-master.m[i] * master.b[n, f] for f in master.cat_features if master.data.at[i, f] == 1)
+    lhs = quicksum(-master.m[i] * master.b[n, f] for f in master.cat_features if master.training_data.at[i, f] == 1)
 
     return lhs
 
 
 def get_target_exp_integer(master, p, beta, n, i):
-    label_i = master.data.at[i, master.label]
+    label_i = master.training_data.at[i, master.label]
 
     if master.mode == "classification":
         lhs = -1 * master.beta[n, label_i]
@@ -244,7 +244,7 @@ def get_cut_integer(master, b, p, beta, left, right, target, i):
 
 
 def subproblem(master, b, p, beta, i):
-    label_i = master.data.at[i, master.label]
+    label_i = master.training_data.at[i, master.label]
     current = 1
     right = []
     left = []
@@ -264,7 +264,7 @@ def subproblem(master, b, p, beta, i):
                 subproblem_value = 1
             break
         elif branching:
-            if master.data.at[i, selected_feature] == 1:  # going right on the branch
+            if master.training_data.at[i, selected_feature] == 1:  # going right on the branch
                 left.append(current)
                 target.append(current)
                 current = master.tree.get_right_children(current)
@@ -289,7 +289,7 @@ def mycallback(model, where):
     :param where: the node where the callback function is called from
     :return:
     '''
-    data_train = model._master.data
+    data_train = model._master.training_data
     mode = model._master.mode
 
     local_eps = 0.0001
