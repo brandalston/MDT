@@ -64,7 +64,7 @@ def main(argv):
     # Using logger we log the output of the console in a text file
     # sys.stdout = OU.logger(output_path + output_name + '.txt')
 
-    ''' We assume the target column of dataset is labeled 'target'
+    ''' We assume the target column of dataname is labeled 'target'
     Change value at your discretion '''
     target = 'target'
     numerical_datasets = ['iris', 'banknote', 'blood', 'climate', 'wine-white', 'wine-red'
@@ -72,7 +72,8 @@ def main(argv):
     categorical_datasets = ['balance_scale', 'car', 'kr_vs_kp', 'house-votes-84', 'hayes_roth', 'breast_cancer',
                             'monk1', 'monk2', 'monk3', 'soybean_small', 'spect', 'tic_tac_toe', 'fico_binary']
     for file in data_files:
-        data = OU.get_data(file.replace('.csv', ''))
+        data = OU.get_data(dataname=file.replace('.csv', ''), binarization=None)
+        data.get_data()
         for h in heights:
             for i in rand_states:
                 train_set, test_set = train_test_split(data, train_size=0.5, random_state=i)

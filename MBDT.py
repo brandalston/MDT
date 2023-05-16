@@ -20,8 +20,7 @@ class MBDT:
         warm_start: dictionary warm start values
         model_extras: list of modeltype extras
         """
-        self.training_data = data.dataset
-        self.datatype = data.datatype
+        self.training_data = data
         self.tree = tree
         self.modeltype = modeltype
         self.time_limit = time_limit
@@ -33,9 +32,9 @@ class MBDT:
         self.b_type = '2-Step'
 
         # Feature, Class and Index Sets
-        self.classes = data.dataset[target].unique()
+        self.classes = data[target].unique()
         self.featureset = [col for col in self.training_data.columns.values if col != target]
-        self.datapoints = data.dataset.index
+        self.datapoints = data.index
 
         """ Decision Variables """
         self.B = 0
@@ -146,9 +145,6 @@ class MBDT:
 
         # Each datapoint has at most one terminal vertex
         self.model.addConstrs(self.S.sum(i, '*') <= 1 for i in self.datapoints)
-        if self.datatype == 'categorical':
-            for v in self.tree.B:
-                self.model.addConstrs(self.Q[i, self.tree.LC[v]] <= self.B[v] for i in self.datapoints)
 
         # Lazy feasible path constraints (for fractional separation procedure)
         if any(ele in self.cut_type for ele in ['GRB', 'FF', 'ALL', 'MV']):

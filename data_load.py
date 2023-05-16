@@ -1,6 +1,6 @@
 import pandas as pd
 
-""" We assume the target column of dataset is labeled 'target'
+""" We assume the target column of dataname is labeled 'target'
     Change value at your discretion """
 
 cols_dict = {
@@ -63,10 +63,10 @@ cols_dict = {
 
 
 def load_acute_inflammations(decision_number):
-   """ Load the Acute Inflammations dataset.
+   """ Load the Acute Inflammations dataname.
 
     Contains a mix of numerical and categorical attributes. Decided to not use
-    this dataset in the paper for this reason.
+    this dataname in the paper for this reason.
 
     https://archive.ics.uci.edu/ml/datasets/Acute+Inflammations
     """
@@ -81,7 +81,7 @@ def load_acute_inflammations(decision_number):
 
 
 def load_acute_inflammations_1():
-   """ Load the Acute Inflammations dataset with decision 1 as the label.
+   """ Load the Acute Inflammations dataname with decision 1 as the label.
 
     Contains a mix of numerical and categorical attributes.
     """
@@ -89,7 +89,7 @@ def load_acute_inflammations_1():
 
 
 def load_acute_inflammations_2():
-   """ Load the Acute Inflammations dataset with decision 1 as the label.
+   """ Load the Acute Inflammations dataname with decision 1 as the label.
 
     Contains a mix of numerical and categorical attributes.
     """
@@ -97,7 +97,7 @@ def load_acute_inflammations_2():
 
 
 def load_balance_scale():
-   """ Load the Balance Scale dataset.
+   """ Load the Balance Scale dataname.
 
     Contains only categorical attributes.
 
@@ -111,7 +111,7 @@ def load_balance_scale():
 
 
 def load_banknote_authentication():
-   """ Load the Banknote Authentication dataset.
+   """ Load the Banknote Authentication dataname.
 
     Contains only numerical attributes.
 
@@ -125,7 +125,7 @@ def load_banknote_authentication():
 
 
 def load_blood_transfusion():
-   """ Load the Blood Transfusion dataset.
+   """ Load the Blood Transfusion dataname.
 
     Contains only numerical attributes.
 
@@ -139,7 +139,7 @@ def load_blood_transfusion():
 
 
 def load_breast_cancer():
-   """ Load the Breast-cancer dataset.
+   """ Load the Breast-cancer dataname.
 
        Contains only categorical attributes. Dataset already partitions examples
        into train and test sets.
@@ -156,7 +156,7 @@ def load_breast_cancer():
 
 
 def load_car_evaluation():
-   """ Load the Car Evaluation dataset.
+   """ Load the Car Evaluation dataname.
 
     Contains only categorical attributes.
 
@@ -170,7 +170,7 @@ def load_car_evaluation():
 
 
 def load_chess():
-   """ Load the Chess (King-Rook vs. King-Pawn) dataset.
+   """ Load the Chess (King-Rook vs. King-Pawn) dataname.
 
     Contains only categorical attributes.
 
@@ -184,7 +184,7 @@ def load_chess():
 
 
 def load_climate_model_crashes():
-   """ Load the Climate Model Crashes dataset.
+   """ Load the Climate Model Crashes dataname.
 
     Contains only numerical attributes.
 
@@ -208,7 +208,7 @@ def load_fico_binary():
 
 
 def load_glass_identification():
-   """ Load the Glass Identification dataset.
+   """ Load the Glass Identification dataname.
 
     Contains only numerical attributes.
 
@@ -222,7 +222,7 @@ def load_glass_identification():
 
 
 def load_hayes_roth():
-   """ Load the Hayes-Roth dataset.
+   """ Load the Hayes-Roth dataname.
 
     Contains only categorical attributes. Dataset already partitions examples
     into train and test sets.
@@ -241,7 +241,7 @@ def load_hayes_roth():
 
 
 def load_house_votes_84():
-   """ Load the Congressional Voting Records dataset.
+   """ Load the Congressional Voting Records dataname.
 
    Contains only categorical attributes.
 
@@ -255,7 +255,7 @@ def load_house_votes_84():
 
 
 def load_image_segmentation():
-   """ Load the Image Segmentation dataset.
+   """ Load the Image Segmentation dataname.
 
     Contains only numerical attributes. Dataset already partitions examples
     into train and test sets.
@@ -270,7 +270,7 @@ def load_image_segmentation():
 
 
 def load_ionosphere():
-   """ Load the Ionosphere dataset.
+   """ Load the Ionosphere dataname.
 
     Contains only numerical attributes.
 
@@ -292,7 +292,7 @@ def load_iris():
 
 
 def load_monk(problem_number):
-   """ Load the MONK's Problems dataset.
+   """ Load the MONK's Problems dataname.
 
     Contains only categorical attributes. Test set is a "full" set of examples
     and the training set is simply a subset of the test set.
@@ -320,7 +320,7 @@ def load_monk(problem_number):
 
 
 def load_monk1():
-   """ Load the MONK's problem 1 dataset.
+   """ Load the MONK's problem 1 dataname.
 
     Contains only categorical attributes. Test set is a "full" set of examples
     and the training set is simply a subset of the test set.
@@ -329,7 +329,7 @@ def load_monk1():
 
 
 def load_monk2():
-   """ Load the MONK's problem 2 dataset.
+   """ Load the MONK's problem 2 dataname.
 
     Contains only categorical attributes. Test set is a "full" set of examples
     and the training set is simply a subset of the test set.
@@ -338,7 +338,7 @@ def load_monk2():
 
 
 def load_monk3():
-   """ Load the MONK's problem 3 dataset.
+   """ Load the MONK's problem 3 dataname.
 
     Contains only categorical attributes. Test set is a "full" set of examples
     and the training set is simply a subset of the test set.
@@ -347,7 +347,7 @@ def load_monk3():
 
 
 def load_parkinsons():
-   """ Load the Parkinsons dataset.
+   """ Load the Parkinsons dataname.
 
     Contains only numerical attributes.
 
@@ -364,7 +364,7 @@ def load_parkinsons():
 
 
 def load_soybean_small():
-   """ Load the Soybean (Small) dataset.
+   """ Load the Soybean (Small) dataname.
 
     Contains only categorical attributes.
 
@@ -388,7 +388,7 @@ def load_spect():
 
 
 def load_tictactoe_endgame():
-   """ Load the Tic-Tac-Toe Endgame dataset.
+   """ Load the Tic-Tac-Toe Endgame dataname.
 
     Contains only categorical attributes.
 

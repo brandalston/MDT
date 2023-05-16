@@ -55,7 +55,7 @@ def main(argv):
             writer.writerow(summary_columns)
             f.close()
 
-    ''' We assume the target column of dataset is labeled 'target'
+    ''' We assume the target column of dataname is labeled 'target'
         Change value at your discretion '''
     target = 'target'
     numerical_datasets = ['iris', 'banknote', 'blood', 'climate', 'wine-white', 'wine-red'
@@ -64,12 +64,11 @@ def main(argv):
     categorical_datasets = ['balance_scale', 'car', 'kr_vs_kp', 'house-votes-84', 'hayes_roth', 'breast_cancer',
                             'monk1', 'monk2', 'monk3', 'soybean_small', 'spect', 'tic_tac_toe', 'fico_binary']
     for file in data_files:
-        data = OU.data(file.replace('.csv', ''), binarization='all-candidates')
-        data.get_data()
+        data = OU.get_data(dataname=file.replace('.csv', ''), binarization=None)
         for h in heights:
             for i in rand_states:
                 # training_data split
-                train_set, test_set = train_test_split(data.dataset, train_size=0.75, random_state=i)
+                train_set, test_set = train_test_split(data, train_size=0.75, random_state=i)
                 X_train, Y_train = train_set.drop('target', axis=1), train_set['target']
                 X_test, Y_test = test_set.drop('target', axis=1), test_set['target']
 

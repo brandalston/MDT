@@ -65,7 +65,7 @@ def main(argv):
     # Using logger we log the output of the console in a text file
     # sys.stdout = OU.logger(output_path + output_name + '.txt')
 
-    ''' We assume the target column of dataset is labeled 'target'
+    ''' We assume the target column of dataname is labeled 'target'
     Change value at your discretion '''
     target = 'target'
     numerical_datasets = ['iris', 'banknote', 'blood', 'climate', 'wine-white', 'wine-red'

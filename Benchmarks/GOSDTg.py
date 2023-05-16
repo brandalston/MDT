@@ -57,7 +57,7 @@ def main(argv):
             writer.writerow(summary_columns)
             f.close()
 
-    ''' We assume the target column of dataset is labeled 'target'
+    ''' We assume the target column of dataname is labeled 'target'
         Change value at your discretion '''
     target = 'target'
     numerical_datasets = ['iris', 'banknote', 'blood', 'climate', 'wine-white', 'wine-red'
@@ -67,7 +67,7 @@ def main(argv):
                             'monk1', 'monk2', 'monk3', 'soybean_small', 'spect', 'tic_tac_toe', 'fico_binary']
 
     for file in data_files:
-        data = OU.get_data(file.replace('.csv', ''))
+        data = OU.get_data(dataname=file.replace('.csv', ''), binarization=None)
         for h in heights:
             for i in rand_states:
                 # training_data split

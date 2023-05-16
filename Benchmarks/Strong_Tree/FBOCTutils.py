@@ -88,12 +88,12 @@ def get_predicted_value(grb_model, local_data, b, beta, p, i):
     '''
     This function returns the predicted value for a given datapoint
     :param grb_model: The gurobi model we solved
-    :param local_data: The dataset we want to compute accuracy for
+    :param local_data: The dataname we want to compute accuracy for
     :param b: The value of decision variable b
     :param beta: The value of decision variable w
     :param p: The value of decision variable p
     :param i: Index of the datapoint we are interested in
-    :return: The predicted value for datapoint i in dataset local_data
+    :return: The predicted value for datapoint i in dataname local_data
     '''
     tree = grb_model.tree
     current = 1
@@ -111,9 +111,9 @@ def get_predicted_value(grb_model, local_data, b, beta, p, i):
 
 def get_acc(grb_model, local_data, b, beta, p):
     '''
-    This function returns the accuracy of the prediction for a given dataset
+    This function returns the accuracy of the prediction for a given dataname
     :param grb_model: The gurobi model we solved
-    :param local_data: The dataset we want to compute accuracy for
+    :param local_data: The dataname we want to compute accuracy for
     :param b: The value of decision variable b
     :param beta: The value of decision variable w
     :param p: The value of decision variable p
@@ -133,9 +133,9 @@ def get_acc(grb_model, local_data, b, beta, p):
 
 def get_mae(grb_model, local_data, b, beta, p):
     '''
-    This function returns the MAE for a given dataset
+    This function returns the MAE for a given dataname
     :param grb_model: The gurobi model we solved
-    :param local_data: The dataset we want to compute accuracy for
+    :param local_data: The dataname we want to compute accuracy for
     :param b: The value of decision variable b
     :param beta: The value of decision variable w
     :param p: The value of decision variable p
@@ -154,9 +154,9 @@ def get_mae(grb_model, local_data, b, beta, p):
 
 def get_mse(grb_model, local_data, b, beta, p):
     '''
-    This function returns the MSE for a given dataset
+    This function returns the MSE for a given dataname
     :param grb_model: The gurobi model we solved
-    :param local_data: The dataset we want to compute accuracy for
+    :param local_data: The dataname we want to compute accuracy for
     :param b: The value of decision variable b
     :param beta: The value of decision variable w
     :param p: The value of decision variable p
@@ -175,9 +175,9 @@ def get_mse(grb_model, local_data, b, beta, p):
 
 def get_r_squared(grb_model, local_data, b, beta, p):
     '''
-    This function returns the R^2 for a given dataset
+    This function returns the R^2 for a given dataname
     :param grb_model: The gurobi model we solved
-    :param local_data: The dataset we want to compute accuracy for
+    :param local_data: The dataname we want to compute accuracy for
     :param b: The value of decision variable b
     :param beta: The value of decision variable w
     :param p: The value of decision variable p

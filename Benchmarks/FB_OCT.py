@@ -68,7 +68,7 @@ def main(argv):
     # Using logger we log the output of the console in a text file
     # sys.stdout = OU.logger(output_path + output_name + '.txt')
 
-    ''' We assume the target column of dataset is labeled 'target'
+    ''' We assume the target column of dataname is labeled 'target'
     Change value at your discretion '''
     target = 'target'
     numerical_datasets = ['iris', 'banknote', 'blood', 'climate', 'wine-white', 'wine-red'
@@ -78,8 +78,8 @@ def main(argv):
     for file in data_files:
         if file in numerical_datasets: binarization = 'all-candidates'
         else: binarization = False
-        # pull dataset to train model with
-        data = OU.get_data(file.replace('.csv', ''), binarization=binarization)
+        # pull dataname to train model with
+        data = OU.get_data(dataname=file.replace('.csv', ''), binarization=None)
         for h in heights:
             for i in rand_states:
                 train_set, test_set = train_test_split(data, train_size=0.5, random_state=i)

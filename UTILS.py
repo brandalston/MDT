@@ -52,7 +52,7 @@ class data:
 
         load_function = datasetloadfcn[self.dataname]
         X, y = load_function()
-        """ We assume the target column of dataset is labeled 'target'
+        """ We assume the target column of dataname is labeled 'target'
             Change value at your discretion """
         codes, uniques = pd.factorize(y)
         y = pd.Series(codes, name='target')
@@ -77,7 +77,7 @@ class data:
         self.dataset = pd.concat([X_new, y], axis=1)
 
     def preprocess(self, X, y=None, numerical_features=None, categorical_features=None):
-        """ Preprocess a dataset.
+        """ Preprocess a dataname.
 
         Numerical features are scaled to the [0,1] interval by default, but can also
         be binarized, either by considering all candidate thresholds for a
@@ -124,6 +124,116 @@ class data:
         X_train_new = ct.fit_transform(X, y)
 
         return X_train_new, ct
+
+
+def get_data(dataname, binarization=None):
+    datasetloadfcn = {
+        'balance_scale': load_balance_scale,
+        'banknote': load_banknote_authentication,
+        'blood': load_blood_transfusion,
+        'breast_cancer': load_breast_cancer,
+        'car': load_car_evaluation,
+        'kr_vs_kp': load_chess,
+        'climate': load_climate_model_crashes,
+        'house_votes_84': load_house_votes_84,
+        'fico_binary': load_fico_binary,
+        'glass': load_glass_identification,
+        'hayes_roth': load_hayes_roth,
+        'image': load_image_segmentation,
+        'ionosphere': load_ionosphere,
+        'iris': load_iris,
+        'monk1': load_monk1,
+        'monk2': load_monk2,
+        'monk3': load_monk3,
+        'parkinsons': load_parkinsons,
+        'soybean_small': load_soybean_small,
+        'spect': load_spect,
+        'tic_tac_toe': load_tictactoe_endgame,
+        'wine_red': load_wine_red,
+        'wine_white': load_wine_white
+    }
+
+    numerical_datasets = ['iris', 'banknote', 'blood', 'climate', 'wine_white', 'wine_red',
+                          'glass', 'image', 'ionosphere', 'parkinsons']
+    categorical_datasets = ['balance_scale', 'car', 'kr_vs_kp', 'house_votes_84', 'hayes_roth', 'breast_cancer',
+                            'monk1', 'monk2', 'monk3', 'soybean_small', 'spect', 'tic_tac_toe', 'fico_binary']
+    already_processed = ['fico_binary']
+    load_function = datasetloadfcn[dataname]
+    X, y = load_function()
+    """ We assume the target column of dataname is labeled 'target'
+        Change value at your discretion """
+    codes, uniques = pd.factorize(y)
+    y = pd.Series(codes, name='target')
+    if dataname in categorical_datasets:
+        X_new, ct = preprocess(X, categorical_features=X.columns)
+        X_new = pd.DataFrame(X_new, columns=ct.get_feature_names_out(X.columns))
+        X_new.columns = X_new.columns.str.replace('cat__', '')
+    else:
+        X_new = X
+        if dataname in numerical_datasets:
+            if binarization is None:
+                X_new, ct = preprocess(X, numerical_features=X.columns)
+                X_new = pd.DataFrame(X_new, columns=X.columns)
+            else:
+                X_new, ct = preprocess(X, y=y, binarization=binarization, numerical_features=X.columns)
+                cols = []
+                for key in ct.transformers_[0][1].candidate_thresholds_:
+                    for item in ct.transformers_[0][1].candidate_thresholds_[key]:
+                        cols.append(f"{key}<={item}")
+                X_new = pd.DataFrame(X_new, columns=cols)
+    if dataname in categorical_datasets: X_new = X_new.astype(int)
+    data_new = pd.concat([X_new, y], axis=1)
+    return data_new
+
+
+def preprocess(X, y=None, numerical_features=None, categorical_features=None, binarization=None):
+    """ Preprocess a dataname.
+
+    Numerical features are scaled to the [0,1] interval by default, but can also
+    be binarized, either by considering all candidate thresholds for a
+    univariate split, or by binning. Categorical features are one-hot encoded.
+
+    Parameters
+    ----------
+    X
+    X_test
+    y_train : pandas Series of training labels, only needed for binarization
+        with candidate thresholds
+    numerical_features : list of numerical features
+    categorical_features : list of categorical features
+    binarization : {'all-candidates', 'binning'}, default=None
+        Binarization technique for numerical features.
+        all-candidates
+            Use all candidate thresholds.
+        binning
+            Perform binning using scikit-learn's KBinsDiscretizer.
+        None
+            No binarization is performed, features scaled to the [0,1] interval.
+
+    Returns
+    -------
+    X_train_new : pandas DataFrame that is the result of binarizing X
+    """
+
+    if numerical_features is None:
+        numerical_features = []
+    if categorical_features is None:
+        categorical_features = []
+
+    numerical_transformer = MinMaxScaler()
+    if binarization == 'all-candidates':
+        numerical_transformer = CandidateThresholdBinarizer()
+    elif binarization == 'binning':
+        numerical_transformer = KBinsDiscretizer(encode='onehot-dense')
+    elif binarization is None:
+        numerical_transformer = MinMaxScaler()
+    # categorical_transformer = OneHotEncoder(drop='if_binary', sparse=False, handle_unknown='ignore') # Should work in scikit-learn 1.0
+    categorical_transformer = OneHotEncoder(sparse=False, handle_unknown='ignore')
+    ct = ColumnTransformer([("num", numerical_transformer, numerical_features),
+                            ("cat", categorical_transformer, categorical_features)])
+    X_train_new = ct.fit_transform(X, y)
+
+    return X_train_new, ct
 
 
 class CandidateThresholdBinarizer(TransformerMixin, BaseEstimator):
@@ -195,7 +305,7 @@ class Linear_Separator():
     Attempt to find the hyperplane using the following methods (in order):
         normalized l1-SVM MIP formulation
         Lagrangian dual of hard-margin linear SVM
-        reduced dataset Lagrangian dual of hard-margin linear SVM
+        reduced dataname Lagrangian dual of hard-margin linear SVM
         generic hard margin hyperplane
         any generic hyperplane
         random hyperplane

@@ -61,7 +61,7 @@ class TreeNode:
                 train_indices = [i for i in range(X.shape[0]) if y[i] in pair]
                 X_train, y_train = X[train_indices,:], y[train_indices]
                 clf.fit(X_train, y_train)
-                score = clf.score(X, y) # Score on whole dataset
+                score = clf.score(X, y) # Score on whole dataname
                 if score > best_score:
                     best_pair, best_score = pair, score
         # Refit on best pair of classes
