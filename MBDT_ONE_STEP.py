@@ -233,6 +233,18 @@ class MBDT_one_step:
                             quicksum(self.H[v, f] * self.training_data.at[i, f] for f in self.featureset)
                             + self.D[v]) >= 1 - self.E[i, v]
                     for i in self.datapoints)
+        elif 'trad-2' in self.cut_type:
+            # Hyperplane variables
+            self.D = self.model.addVars(self.tree.B, vtype=GRB.CONTINUOUS, lb=-GRB.INFINITY, name='D')
+            self.H = self.model.addVars(self.tree.B, self.featureset, vtype=GRB.CONTINUOUS, lb=-GRB.INFINITY, name='H')
+            self.E = self.model.addVars(self.datapoints, self.tree.B, vtype=GRB.CONTINUOUS, lb=0, name='E')
+
+            for v in self.tree.B:
+                self.model.addConstrs(
+                    (self.Q[i, self.tree.LC[v]]-self.Q[i, self.tree.RC[v]]) * (
+                            quicksum(self.H[v, f] * self.training_data.at[i, f] for f in self.featureset)
+                            + self.D[v]) >= 1 - self.E[i, v]
+                    for i in self.datapoints)
 
         """ Pass to Model DV for Callback / Optimization Purposes """
         self.model._B = self.B
@@ -402,11 +414,12 @@ class MBDT_one_step:
                 D_neg_sol = self.model.getAttr('X', self.D_neg)
                 H_pos_sol = self.model.getAttr('X', self.H_pos)
                 H_neg_sol = self.model.getAttr('X', self.H_neg)
-            elif 'abs' in self.cut_type:
+            if 'norm' in self.cut_type:
+                D_pos_sol = self.model.getAttr('X', self.D_pos)
+                D_neg_sol = self.model.getAttr('X', self.D_neg)
                 H_pos_sol = self.model.getAttr('X', self.H_pos)
                 H_neg_sol = self.model.getAttr('X', self.H_neg)
-                D_sol = self.model.getAttr('X', self.D)
-            elif 'trad' in self.cut_type:
+            if 'trad' in self.cut_type:
                 H_sol = self.model.getAttr('X', self.H)
                 D_sol = self.model.getAttr('X', self.D)
 
@@ -438,8 +451,8 @@ class MBDT_one_step:
                 elif 'trad' in self.cut_type:
                     self.tree.c_v[v] = D_sol[v]
                     self.tree.a_v[v] = {f: H_sol[v, f] for f in self.featureset}
-                elif 'abs' in self.cut_type:
-                    self.tree.c_v[v] = D_sol[v]
+                elif 'norm' in self.cut_type:
+                    self.tree.c_v[v] = D_pos_sol[v] - D_neg_sol[v]
                     self.tree.a_v[v] = {f: H_pos_sol[v, f] - H_neg_sol[v, f] for f in self.featureset}
                 self.tree.branch_nodes[v] = (self.tree.a_v[v], self.tree.c_v[v])
 

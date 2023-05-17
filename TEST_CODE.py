@@ -14,7 +14,7 @@ time_limit = 600
 rand_states = [138]
 file = 'test_dump.csv'
 log_file = False
-test_data = ['soybean_small']
+test_data = ['iris']
 heights = [3]
 
 ############ SOCT ###############
@@ -32,7 +32,7 @@ MBDT_runs.main(
      "-r", rand_states, "-f", file, "-e", None, "-w", {'use': False}, "-l", log_file])
 
 ############ MBDT ONE STEP ###############
-models = ['CUT1-UF-trad'] # , 'CUT1-UF-abs', 'CUT1-UF-trad']
+models = ['CUT1-UF-trad', 'CUT1-trad-2'] # , 'CUT1-UF-abs', 'CUT1-UF-trad']
 b_type = 'one-step'
 MBDT_runs.main(
    ["-d", test_data, "-h", heights, "-t", time_limit, "-m", models, "-b", b_type, "-c", 0,
@@ -42,4 +42,9 @@ MBDT_runs.main(
 models = ['CUT1-UF-trad']
 warm_start_runs.main(
     ["-d", test_data, "-h", heights, "-t", time_limit, "-m", models,
-     "-r", rand_states, "-f", file, "-e", None, "-l", log_file])
+     "-r", rand_states, "-f", file, "-e", None, "-l", log_file, "-c", 1])
+
+models = ['CUT1-UF-trad-2']
+warm_start_runs.main(
+    ["-d", test_data, "-h", heights, "-t", time_limit, "-m", models,
+     "-r", rand_states, "-f", file, "-e", None, "-l", log_file, "-c", 1])

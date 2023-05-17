@@ -127,21 +127,19 @@ def main(argv):
                     else:
                         print('Time limit reached. ('+str(time.strftime("%I:%M %p", time.localtime()))+')')
                     mbdt.assign_tree()
-                    # Uncomment to print model results
-                    # UTILS.model_results(opt_model, tree)
-                    print(tree.branch_nodes)
-                    print(tree.class_nodes)
                     test_acc, test_assignments = UTILS.data_predict(tree=tree, data=test_set, target=mbdt.target)
                     train_acc, train_assignments = UTILS.data_predict(tree=tree, data=model_set, target=mbdt.target)
+                    print(tree.branch_nodes)
+                    print(tree.class_nodes)
+                    print(mbdt.model.ObjVal, train_acc)
                     with open(out_file, mode='a') as results:
                         results_writer = csv.writer(results, delimiter=',', quotechar='"')
                         results_writer.writerow(
                             [file, tree.height, len(mbdt.datapoints),
                              test_acc / len(test_set), train_acc / len(mbdt.datapoints), mbdt.model.Runtime,
-                             mbdt.modeltype, False, 0, mbdt.time_limit, i,
                              mbdt.model.MIPGap, mbdt.model.ObjVal, mbdt.model.ObjBound,
+                             mbdt.modeltype, warmstart['use'], 0, mbdt.time_limit, i,
                              mbdt.model._visnum, mbdt.model._viscuts, mbdt.model._vistime,
-                             mbdt.HP_time,
-                             mbdt.model._septime, mbdt.model._sepnum, mbdt.model._sepcuts,
+                             mbdt.HP_time, mbdt.model._septime, mbdt.model._sepnum, mbdt.model._sepcuts,
                              mbdt.model._eps, mbdt.b_type])
                         results.close()

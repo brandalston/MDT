@@ -18,10 +18,12 @@ def main(argv):
     model_extras = None
     file_out = None
     log_files = None
+    console_log = None
+    ws_size = None
     try:
-        opts, args = getopt.getopt(argv, "d:h:t:m:r:f:e:w:l:",
+        opts, args = getopt.getopt(argv, "d:h:t:m:r:f:e:w:l:c:",
                                    ["data_files=", "heights=", "time_limit=", "models=",
-                                    "rand_states=", "results_file=", "model_extras=", "log_files"])
+                                    "rand_states=", "results_file=", "model_extras=", "log_files", "console_log"])
     except getopt.GetoptError:
         sys.exit(2)
     for opt, arg in opts:
@@ -41,6 +43,10 @@ def main(argv):
             model_extras = arg
         elif opt in ("-l", "--log_files"):
             log_files = arg
+        elif opt in ("-c", "--console_log"):
+            console_log = arg
+        elif opt in ("-w", "--ws_size"):
+            ws_size = arg
 
     ''' Columns of the results file generated '''
     summary_columns = ['Data', 'H', '|I|', 'Out_Acc', 'In_Acc', 'Sol_Time',
@@ -84,7 +90,7 @@ def main(argv):
                 train_set, test_set = train_test_split(data, train_size=0.5, random_state=i)
                 cal_set, test_set = train_test_split(test_set, train_size=0.5, random_state=i)
                 model_set = pd.concat([train_set, cal_set])
-                data.dataset = model_set
+                ws_set, ws_set2 = train_test_split(data, train_size=ws_size, random_state=i)
                 for modeltype in modeltypes:
                     print('\n'+str(modeltype) +
                           ', Dataset: ' + str(file) + ', H: ' + str(h) + ', ''Rand State: ' + str(i) +
@@ -96,7 +102,7 @@ def main(argv):
                     # Generate tree and necessary structure information
                     tree_ws = TREE(h=h)
                     # Model with 75% training set and time limit
-                    mbdt_ws = MBDT(data=model_set, tree=tree_ws, target=target, modeltype=modeltype,
+                    mbdt_ws = MBDT(data=ws_set, tree=tree_ws, target=target, modeltype=modeltype,
                                    time_limit=time_limit, warmstart=False,
                                    modelextras=model_extras, log=log, log_to_console=0)
                     mbdt_ws.formulation()
@@ -106,7 +112,7 @@ def main(argv):
 
                     ws_acc, ws_assignments = UTILS.data_predict(tree=tree_ws, data=model_set, target=mbdt_ws.target)
                     # print(tree_ws.branch_nodes)
-                    # print(tree_ws.class_nodes)
+                    print(mbdt_ws.model.ObjVal, ws_acc)
 
                     """a_v_norm, c_v_norm, branch_norm = {}, {}, {}
                     for v in tree_ws.branch_nodes:
@@ -126,7 +132,7 @@ def main(argv):
                     tree = TREE(h=h)
                     mbdt = MBDT_one_step(data=model_set, tree=tree, target=target, modeltype=modeltype,
                                          time_limit=time_limit, warmstart=warm_start_dict,
-                                         modelextras=model_extras, log=log, log_to_console=0)
+                                         modelextras=model_extras, log=log, log_to_console=console_log)
                     # Add connectivity constraints according to model type and solve
                     mbdt.formulation()
                     mbdt.warm_start()
@@ -140,17 +146,18 @@ def main(argv):
                     else:
                         print('Time limit reached. ('+str(time.strftime("%I:%M %p", time.localtime()))+')')
                     mbdt.assign_tree()
-                    print(tree.branch_nodes)
-                    print(tree.class_nodes)
                     test_acc, test_assignments = UTILS.data_predict(tree=tree, data=test_set, target=mbdt.target)
                     train_acc, train_assignments = UTILS.data_predict(tree=tree, data=model_set, target=mbdt.target)
+                    print(tree.branch_nodes)
+                    print(tree.class_nodes)
+                    print(mbdt.model.ObjVal, train_acc)
                     with open(out_file, mode='a') as results:
                         results_writer = csv.writer(results, delimiter=',', quotechar='"')
                         results_writer.writerow(
                             [file, tree.height, len(mbdt.datapoints),
                              test_acc / len(test_set), train_acc / len(mbdt.datapoints), mbdt.model.Runtime,
-                             mbdt.modeltype, True, mbdt_ws.model.RunTime, mbdt.time_limit, i,
                              mbdt.model.MIPGap, mbdt.model.ObjVal, mbdt.model.ObjBound,
+                             mbdt.modeltype, warm_start_dict['use'], mbdt_ws.model.RunTime, mbdt.time_limit, i,
                              mbdt.model._visnum, mbdt.model._viscuts, mbdt.model._vistime,
                              mbdt.HP_time,
                              mbdt.model._septime, mbdt.model._sepnum, mbdt.model._sepcuts,
