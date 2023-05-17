@@ -149,7 +149,7 @@ def main(argv):
                         results_writer = csv.writer(results, delimiter=',', quotechar='"')
                         results_writer.writerow(
                             [file.replace('.csv', ''), h, len(model_set), test_acc, train_acc, soct.model_.RunTime,
-                             modeltype, str(warm_start), warm_start_time, time_limit, i,
                              soct.model_.MIPGap, soct.model_.ObjBound, soct.model_.ObjVal,
+                             modeltype, str(warm_start), warm_start_time, time_limit, i,
                              soct.model_._callback_calls, soct.model_._callback_cuts, soct.model_._callback_time, soct.hp_time])
                         results.close()

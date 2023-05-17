@@ -117,8 +117,8 @@ def main(argv):
                         results_writer = csv.writer(results, delimiter=',', quotechar='"')
                         results_writer.writerow(
                             [file.replace('.csv', ''), h, len(model_set), test_acc, train_acc, stoct.model.Runtime,
-                             modeltype, 'N/A', 0, time_limit, i,
-                             stoct.model.MIPGap, stoct.model.ObjBound, stoct.model.ObjVal])
+                             stoct.model.MIPGap, stoct.model.ObjBound, stoct.model.ObjVal,
+                             modeltype, 'N/A', 0, time_limit, i])
                         results.close()
                     if log_files:
                         log = log_path + '_' + str(file) + '_H:' + str(h) + '_M:' + str(modeltype) + \

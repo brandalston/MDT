@@ -45,7 +45,7 @@ for file in datasets
                     print("Time limit reached. ","(", Dates.format(now(), "HH:MM"),")")
             end
             push!(summary, [file, h, size(X_train)[1], 1-opt_test/size(X_test)[1], 1-opt_train/size(X_train)[1], opt_time,
-            "QuantBnB", "False", 0, timelimit, seed])
+            "N/A", "N/A", "N/A", "QuantBnB", "False", 0, timelimit, seed])
             CSV.write(outfile, last(summary,1),append=true)
         end
     end

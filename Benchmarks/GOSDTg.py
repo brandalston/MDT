@@ -114,5 +114,5 @@ def main(argv):
                     results_writer = csv.writer(results, delimiter=',', quotechar='"')
                     results_writer.writerow(
                         [file.replace('.csv', ''), h, len(train_set), test_acc, train_acc, model_time,
-                         'GOSDT+g', 'SVM', lb_time,  time_limit, i])
+                         'N/A', 'N/A', 'N/A', 'GOSDT+g', 'SVM', lb_time,  time_limit, i])
                     results.close()

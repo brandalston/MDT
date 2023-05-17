@@ -104,8 +104,8 @@ def main(argv):
                         results_writer = csv.writer(results, delimiter=',', quotechar='"')
                         results_writer.writerow(
                             [file.replace('.csv', ''), h, len(model_set), test_acc, train_acc, oct.model_.RunTime,
-                             modeltype, False, 0, time_limit, i,
-                             oct.model_.MIPGap, oct.model_.ObjBound, oct.model_.ObjVal])
+                             oct.model_.MIPGap, oct.model_.ObjBound, oct.model_.ObjVal,
+                             modeltype, False, 0, time_limit, i])
                         results.close()
                     if log_files:
                         log = log_path + '_' + str(file) + '_H:' + str(h) + '_M:' + str(modeltype) + \

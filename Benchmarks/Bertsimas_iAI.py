@@ -106,5 +106,5 @@ def main(argv):
                         results_writer = csv.writer(results, delimiter=',', quotechar='"')
                         results_writer.writerow(
                             [file.replace('.csv', ''), h, len(model_set), test_acc, train_acc, run_time,
-                             modeltype, False, 0, time_limit, i])
+                             'N/A', 'N/A', 'N/A', modeltype, False, 0, time_limit, i])
                         results.close()

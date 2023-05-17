@@ -90,5 +90,6 @@ def main(argv):
                     results_writer = csv.writer(results, delimiter=',', quotechar='"')
                     results_writer.writerow(
                         [file.replace('.csv', ''), h, len(train_set), test_acc, train_acc, clf.runtime_,
+                         'N/A', 'N/A', 'N/A',
                          'DL8.5', False, 0, time_limit, i])
                     results.close()
