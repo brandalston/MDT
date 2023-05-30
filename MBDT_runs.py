@@ -52,19 +52,10 @@ def main(argv):
             console_log = arg
 
     ''' Columns of the results file generated '''
-    summary_columns = ['Data', 'H', '|I|', 'Out_Acc', 'In_Acc', 'Sol_Time',
+    summary_columns = ['Data', 'H', '|I|', 'Out_Acc', 'In_Acc', 'Sol_Time', 'MIP_Gap', 'Obj_Val', 'Obj_Bound',
                        'Model', 'Warm_Start', 'Warm_Start_Time', 'Time_Limit', 'Rand_State',
-                       'MIP_Gap', 'Obj_Val', 'Obj_Bound', 'VIS_calls', 'VIS_cuts', 'VIS_time', 'HP_time',
-                       'FP_CB_Time', 'FP_Num_CB', 'FP_Cuts', 'Eps', 'Branch_Type']
-    """summary_columns = ['Data', 'H', '|I|', '|F|',
-                       'Out_Acc', 'In_Acc', 'Sol_Time',
-                       'MIP_Gap', 'Obj_Val', 'Obj_Bound',
-                       'Model', 'Branch_Type',
-                       'HP_Time', 'HP_Size', 'HP_Obj', 'HP_Rank',
-                       'FP_CB_Time', 'FP_Num_CB', 'FP_Cuts', 'FP_Avg',
-                       'VIS_CB_Time', 'VIS_Num_CB', 'VIS_Cuts',
-                       'Eps', 'Time_Limit', 'Rand_State',
-                       'Warm Start', 'Regularization', 'Max_Features']"""
+                       'VIS_Calls', 'VIS_Cuts', 'VIS_Time', 'HP_Time', 'FP_Time', 'FP_Num_CB', 'FP_Num_Cuts',
+                       'Eps', 'Branch_Type']
     output_path = os.getcwd() + '/results_files/'
     log_path = os.getcwd() + '/log_files/'
     if file_out is None:

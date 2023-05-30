@@ -14,7 +14,7 @@ def main(argv):
     heights = None
     time_limit = None
     modeltypes = None
-    rand_states = None
+    seed = None
     model_extras = None
     file_out = None
     log_files = None
@@ -23,7 +23,7 @@ def main(argv):
     try:
         opts, args = getopt.getopt(argv, "d:h:t:m:r:f:e:w:l:c:",
                                    ["data_files=", "heights=", "time_limit=", "models=",
-                                    "rand_states=", "results_file=", "model_extras=", "log_files", "console_log"])
+                                    "seed=", "results_file=", "model_extras=", "log_files", "console_log"])
     except getopt.GetoptError:
         sys.exit(2)
     for opt, arg in opts:
@@ -35,8 +35,8 @@ def main(argv):
             time_limit = int(arg)
         elif opt in ("-m", "--model"):
             modeltypes = arg
-        elif opt in ("-r", "--rand_states"):
-            rand_states = arg
+        elif opt in ("-r", "--seed"):
+            seed = arg
         elif opt in ("-f", "--results_file"):
             file_out = arg
         elif opt in ("-e", "--model_extras"):
@@ -45,8 +45,6 @@ def main(argv):
             log_files = arg
         elif opt in ("-c", "--console_log"):
             console_log = arg
-        elif opt in ("-w", "--ws_size"):
-            ws_size = arg
 
     ''' Columns of the results file generated '''
     summary_columns = ['Data', 'H', '|I|', 'Out_Acc', 'In_Acc', 'Sol_Time',
@@ -86,11 +84,10 @@ def main(argv):
         # training_data = UTILS.get_data(file.replace('.csv', ''), binarization=None)
         data = UTILS.get_data(dataname=file.replace('.csv', ''), binarization=None)
         for h in heights:
-            for i in rand_states:
+            for i in seed:
                 train_set, test_set = train_test_split(data, train_size=0.5, random_state=i)
                 cal_set, test_set = train_test_split(test_set, train_size=0.5, random_state=i)
                 model_set = pd.concat([train_set, cal_set])
-                ws_set, ws_set2 = train_test_split(data, train_size=ws_size, random_state=i)
                 for modeltype in modeltypes:
                     print('\n'+str(modeltype) +
                           ', Dataset: ' + str(file) + ', H: ' + str(h) + ', ''Rand State: ' + str(i) +
@@ -102,7 +99,7 @@ def main(argv):
                     # Generate tree and necessary structure information
                     tree_ws = TREE(h=h)
                     # Model with 75% training set and time limit
-                    mbdt_ws = MBDT(data=ws_set, tree=tree_ws, target=target, modeltype=modeltype,
+                    mbdt_ws = MBDT(data=model_set, tree=tree_ws, target=target, modeltype=modeltype,
                                    time_limit=time_limit, warmstart=False,
                                    modelextras=model_extras, log=log, log_to_console=0)
                     mbdt_ws.formulation()
@@ -111,24 +108,18 @@ def main(argv):
                     mbdt_ws.assign_tree()
 
                     ws_acc, ws_assignments = UTILS.data_predict(tree=tree_ws, data=model_set, target=mbdt_ws.target)
-                    # print(tree_ws.branch_nodes)
-                    print(mbdt_ws.model.ObjVal, ws_acc)
-
-                    """a_v_norm, c_v_norm, branch_norm = {}, {}, {}
-                    for v in tree_ws.branch_nodes:
-                        factor = 1.0 / sum(tree_ws.branch_nodes[v][0].values(),tree_ws.branch_nodes[v][1])
-                        a_v_norm[v] = {k: v*factor for k, v in tree_ws.branch_nodes[v][0].items()}
-                        c_v_norm[v] = tree_ws.branch_nodes[v][1]*factor
-                        branch_norm[v] = (a_v_norm[v], c_v_norm[v])
-                    print(branch_norm)
-                    tree_ws_norm = TREE(h=h)
-                    tree_ws_norm.a_v = a_v_norm
-                    tree_ws_norm.c_v = c_v_norm
-                    tree_ws_norm.class_nodes = tree_ws.class_nodes"""
-
                     warm_start_dict = {'class': tree_ws.class_nodes, 'pruned': tree_ws.pruned_nodes,
                                        'branched': tree_ws.branch_nodes, 'results': ws_assignments, 'use': True}
-
+                    # print(mbdt_ws.model.ObjVal, ws_acc)
+                    # print(tree_ws.branch_nodes)
+                    # print(tree_ws.class_nodes)
+                    # print(mbdt_ws.paths, ws_assignments)
+                    incorrect_data = {}
+                    for i in model_set.index:
+                        if mbdt_ws.paths[i] != ws_assignments[i][0]:
+                            incorrect_data[i] = (ws_assignments[i][0], mbdt_ws.paths[i])
+                    # print(incorrect_data)
+                    print(tree_ws.branch_nodes)
                     tree = TREE(h=h)
                     mbdt = MBDT_one_step(data=model_set, tree=tree, target=target, modeltype=modeltype,
                                          time_limit=time_limit, warmstart=warm_start_dict,
@@ -146,11 +137,10 @@ def main(argv):
                     else:
                         print('Time limit reached. ('+str(time.strftime("%I:%M %p", time.localtime()))+')')
                     mbdt.assign_tree()
+                    print(tree.branch_nodes)
                     test_acc, test_assignments = UTILS.data_predict(tree=tree, data=test_set, target=mbdt.target)
                     train_acc, train_assignments = UTILS.data_predict(tree=tree, data=model_set, target=mbdt.target)
-                    print(tree.branch_nodes)
-                    print(tree.class_nodes)
-                    print(mbdt.model.ObjVal, train_acc)
+
                     with open(out_file, mode='a') as results:
                         results_writer = csv.writer(results, delimiter=',', quotechar='"')
                         results_writer.writerow(

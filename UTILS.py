@@ -379,8 +379,8 @@ class Linear_Separator():
             alpha = m.addVars(data.index, lb=0, ub=GRB.INFINITY)
             w = m.addVars(feature_set, lb=-GRB.INFINITY, ub=GRB.INFINITY)
             m.setObjective(alpha.sum() - (1/2)*quicksum(w[f]*w[f] for f in feature_set), GRB.MAXIMIZE)
-            m.addConstrs((w[f] == quicksum(alpha[i]*data.at[i, 'svm']*data.at[i, f] for i in data.index)
-                          for f in feature_set))
+            m.addConstrs(w[f] == quicksum(alpha[i]*data.at[i, 'svm']*data.at[i, f] for i in data.index)
+                         for f in feature_set)
             m.addConstr(quicksum(alpha[i]*data.at[i, 'svm'] for i in data.index) == 0)
             m.optimize()
             # Any i with positive alpha[i] works

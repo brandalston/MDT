@@ -352,6 +352,10 @@ class MBDT:
                 self.tree.pruned_nodes[v] = 0
             return
         branched = []
+        self.paths = {i: [0] for i in self.datapoints}
+        for i in self.datapoints:
+            for v in self.tree.V:
+                if Q_sol[i, v] == 1: self.paths[i].append(v)
         for v in self.tree.V:
             # Assign class k to classification nodes
             if P_sol[v] > 0.5:

@@ -177,7 +177,7 @@ class MBDT_one_step:
                                               self.Q[i, c] for c in self.tree.path[v][1:])
 
         # Left-right branching using hard-margin SVM
-        # Split SVM
+        # Normed SVM
         if 'norm' in self.cut_type:
             # Hyperplane variables
             self.H_pos = self.model.addVars(self.tree.B, self.featureset, vtype=GRB.CONTINUOUS, lb=0, name='H_pos')
@@ -197,7 +197,7 @@ class MBDT_one_step:
                             + self.D_pos[v])
                     >= 1 #- self.E[i, v]
                     for i in self.datapoints)
-        # Abs SVM
+        # Split SVM
         elif 'split' in self.cut_type:
             # Hyperplane variables
             self.H_pos = self.model.addVars(self.tree.B, self.featureset, vtype=GRB.CONTINUOUS, name='H_pos')
@@ -221,11 +221,12 @@ class MBDT_one_step:
                             + (self.D_pos[v]-self.D_neg[v]))
                     >= 1 - self.E[i, v]
                     for i in self.datapoints)
+        # Trad SVM
         elif 'trad' in self.cut_type:
             # Hyperplane variables
             self.D = self.model.addVars(self.tree.B, vtype=GRB.CONTINUOUS, name='D')
             self.H = self.model.addVars(self.tree.B, self.featureset, vtype=GRB.CONTINUOUS, name='H')
-            self.E = self.model.addVars(self.datapoints, self.tree.B, vtype=GRB.CONTINUOUS, lb=0, name='E')
+            self.E = self.model.addVars(self.datapoints, self.tree.B, vtype=GRB.CONTINUOUS, lb=0, ub=1, name='E')
 
             for v in self.tree.B:
                 self.model.addConstrs(
@@ -235,13 +236,13 @@ class MBDT_one_step:
                     for i in self.datapoints)
         elif 'trad-2' in self.cut_type:
             # Hyperplane variables
-            self.D = self.model.addVars(self.tree.B, vtype=GRB.CONTINUOUS, lb=-GRB.INFINITY, name='D')
-            self.H = self.model.addVars(self.tree.B, self.featureset, vtype=GRB.CONTINUOUS, lb=-GRB.INFINITY, name='H')
+            self.D = self.model.addVars(self.tree.B, vtype=GRB.CONTINUOUS, lb=-GRB.INFINITY, ub=GRB.INFINITY, name='D')
+            self.H = self.model.addVars(self.tree.B, self.featureset, vtype=GRB.CONTINUOUS, lb=-GRB.INFINITY, ub=GRB.INFINITY, name='H')
             self.E = self.model.addVars(self.datapoints, self.tree.B, vtype=GRB.CONTINUOUS, lb=0, name='E')
 
             for v in self.tree.B:
                 self.model.addConstrs(
-                    (self.Q[i, self.tree.LC[v]]-self.Q[i, self.tree.RC[v]]) * (
+                    (self.Q[i, self.tree.LC[v]] - self.Q[i, self.tree.RC[v]]) * (
                             quicksum(self.H[v, f] * self.training_data.at[i, f] for f in self.featureset)
                             + self.D[v]) >= 1 - self.E[i, v]
                     for i in self.datapoints)
@@ -409,6 +410,7 @@ class MBDT_one_step:
             B_sol = self.model.getAttr('X', self.B)
             W_sol = self.model.getAttr('X', self.W)
             P_sol = self.model.getAttr('X', self.P)
+            E_sol = self.model.getAttr('X', self.E)
             if 'split' in self.cut_type:
                 D_pos_sol = self.model.getAttr('X', self.D_pos)
                 D_neg_sol = self.model.getAttr('X', self.D_neg)
