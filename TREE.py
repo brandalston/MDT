@@ -33,6 +33,7 @@ class TREE():
         self.path = nx.single_source_shortest_path(self.DG_prime, 0)
         self.child = {n: list(nx.descendants(self.DG_prime, n)) for n in self.DG_prime.nodes}
         self.direct_ancestor = {n: self.path[n][-2] for n in self.DG_prime.nodes if n != 0}
+        self.direct_ancestor[0] = 0
         self.successor = {n: list(self.DG_prime.successors(n)) for n in self.DG_prime.nodes}
         self.LC = {n: v for v in self.DG_prime.nodes
                    for n in self.B

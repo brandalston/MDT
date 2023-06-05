@@ -110,12 +110,7 @@ class MBDT_one_step:
         # Left-right branching variable
         self.Z = self.model.addVars(self.datapoints, self.tree.B, name='Z')
 
-        """ Model Objective and Constraints """
-        # Objective: Maximize the number of correctly classified datapoints
-        # Max sum(S[i,v], i in I, v in V\1)
-        self.model.setObjective(quicksum(self.S[i, v] for i in self.datapoints for v in self.tree.V if v != 0),
-                                GRB.MAXIMIZE)
-
+        """ Model Constraints """
         # Pruned vertices not assigned to class
         # P[v] = sum(W[v,k], k in K) for v in V
         self.model.addConstrs(self.P[v] == self.W.sum(v, '*')
@@ -177,64 +172,53 @@ class MBDT_one_step:
                                               self.Q[i, c] for c in self.tree.path[v][1:])
 
         # Left-right branching using hard-margin SVM
-        # Normed SVM
-        if 'norm' in self.cut_type:
-            # Hyperplane variables
-            self.H_pos = self.model.addVars(self.tree.B, self.featureset, vtype=GRB.CONTINUOUS, lb=0, name='H_pos')
-            self.H_neg = self.model.addVars(self.tree.B, self.featureset, vtype=GRB.CONTINUOUS, lb=0, name='H_neg')
-            self.D_pos = self.model.addVars(self.tree.B, vtype=GRB.CONTINUOUS, lb=0, name='D_pos')
-            self.D_neg = self.model.addVars(self.tree.B, vtype=GRB.CONTINUOUS, lb=0, name='D_neg')
-            self.E = self.model.addVars(self.datapoints, self.tree.B, vtype=GRB.CONTINUOUS, lb=0, name='E')
-            for v in self.tree.B:
-                self.model.addConstr(self.H_pos.sum(v, '*') <= 1)
-                self.model.addConstr(self.H_neg.sum(v, '*') <= 1)
-                self.model.addConstrs(self.H_pos[v, f] - self.H_neg[v, f] >= 0 for f in self.featureset)
-                self.model.addConstr(self.D_pos[v]-self.D_neg[v] >= 0)
-                self.model.addConstrs(
-                    (self.Q[i, self.tree.LC[v]] - self.Q[i, self.tree.RC[v]]) * (
-                            quicksum(
-                                (self.H_pos[v, f] - self.H_neg[v, f]) * self.training_data.at[i, f] for f in self.featureset)
-                            + self.D_pos[v])
-                    >= 1 #- self.E[i, v]
-                    for i in self.datapoints)
-        # Split SVM
-        elif 'split' in self.cut_type:
-            # Hyperplane variables
-            self.H_pos = self.model.addVars(self.tree.B, self.featureset, vtype=GRB.CONTINUOUS, name='H_pos')
-            self.H_neg = self.model.addVars(self.tree.B, self.featureset, vtype=GRB.CONTINUOUS, name='H_neg')
-            self.D_pos = self.model.addVars(self.tree.B, vtype=GRB.CONTINUOUS)
-            self.D_neg = self.model.addVars(self.tree.B, vtype=GRB.CONTINUOUS)
-            self.E = self.model.addVars(self.datapoints, self.tree.B, vtype=GRB.CONTINUOUS, lb=0, name='E')
-
-            for v in self.tree.B:
-                """self.model.addConstr(self.H_pos.sum(v, '*') <= 1)
-                self.model.addConstr(self.H_neg.sum(v, '*') <= 1)
-                self.model.addConstrs(self.H_pos[v, f] <= self.B[v] for f in self.featureset)
-                self.model.addConstrs(self.H_neg[v, f] <= self.B[v] for f in self.featureset)
-                self.model.addConstr(quicksum(self.H_pos[v, f]-self.H_neg[v, f] for f in self.featureset) <= 1)
-                self.model.addConstr(self.H_pos.sum(v, '*') - self.H_neg.sum(v, '*') >= 0)
-                self.model.addConstrs(self.H_pos[v, f] - self.H_neg[v, f] >= 0 for f in self.featureset)"""
-                self.model.addConstrs(
-                    self.Q[i, self.tree.LC[v]] * (
-                            quicksum(
-                                (self.H_pos[v, f] - self.H_neg[v, f]) * self.training_data.at[i, f] for f in self.featureset)
-                            + (self.D_pos[v]-self.D_neg[v]))
-                    >= 1 - self.E[i, v]
-                    for i in self.datapoints)
         # Trad SVM
-        elif 'trad' in self.cut_type:
-            # Hyperplane variables
-            self.D = self.model.addVars(self.tree.B, vtype=GRB.CONTINUOUS, name='D')
-            self.H = self.model.addVars(self.tree.B, self.featureset, vtype=GRB.CONTINUOUS, name='H')
-            self.E = self.model.addVars(self.datapoints, self.tree.B, vtype=GRB.CONTINUOUS, lb=0, ub=1, name='E')
+        # Hyperplane variables
+        self.D = self.model.addVars(self.tree.B, vtype=GRB.CONTINUOUS, name='D')
+        self.H = self.model.addVars(self.tree.B, self.featureset, vtype=GRB.CONTINUOUS, name='H')
+        self.E = self.model.addVars(self.datapoints, self.tree.V, vtype=GRB.CONTINUOUS, lb=0, name='E')
 
-            for v in self.tree.B:
-                self.model.addConstrs(
-                    self.Q[i, self.tree.LC[v]] * (
-                            quicksum(self.H[v, f] * self.training_data.at[i, f] for f in self.featureset)
-                            + self.D[v]) >= 1 - self.E[i, v]
-                    for i in self.datapoints)
-        elif 'trad-2' in self.cut_type:
+        for v in self.tree.B:
+            self.model.addConstrs(
+                self.Q[i, self.tree.LC[v]] * (
+                        quicksum(self.H[v, f] * self.training_data.at[i, f] for f in self.featureset)
+                        + self.D[v]) >= 1 - self.E[i, v]
+                for i in self.datapoints)
+
+        if 'v1' in self.cut_type:
+            self.Z = self.model.addVars(self.datapoints, self.tree.V, vtype=GRB.CONTINUOUS, lb=0, name='Z')
+            for i in self.datapoints:
+                self.model.addConstrs(self.Z[i, v] <= self.S[i, v]
+                                      for v in self.tree.V if v != 0)
+                self.model.addConstrs(-(1 - self.S[i, v]) <= self.Z[i, v] - self.E[i, v]
+                                      for v in self.tree.V if v != 0)
+                self.model.addConstrs(self.Z[i, v] - self.E[i, v] <= 0
+                                      for v in self.tree.V if v != 0)
+        elif 'v2' in self.cut_type:
+            self.Z = self.model.addVars(self.datapoints, vtype=GRB.CONTINUOUS, lb=0, name='Z')
+            self.model.addConstrs(self.Z[i] == quicksum(self.E[i, v] for v in self.tree.V)
+                                  for i in self.datapoints)
+        elif 'v3' in self.cut_type:
+            self.Z = self.model.addVars(self.tree.B, vtype=GRB.CONTINUOUS, lb=0, name='Z')
+            self.model.addConstrs(self.Z[v] == self.B[v] * quicksum(self.E[i, self.tree.LC[v]] for i in self.datapoints)
+                                  + self.B[v] * quicksum(self.E[i, self.tree.RC[v]] for i in self.datapoints)
+                                  for v in self.tree.B)
+        elif 'v4' in self.cut_type:
+            self.Z = self.model.addVars(self.datapoints, vtype=GRB.CONTINUOUS, lb=0, name='Z')
+            self.model.addConstrs(self.Z[i] == quicksum(self.Q[i, self.tree.direct_ancestor[v]]*self.E[i, v]
+                                                        for v in self.tree.V)
+                                  for i in self.datapoints)
+        elif 'v5' in self.cut_type:
+            self.Z = self.model.addVars(self.datapoints, self.tree.V, vtype=GRB.CONTINUOUS, lb=0, name='Z')
+            for i in self.datapoints:
+                self.model.addConstrs(self.Z[i, v] <= self.Q[i, self.tree.direct_ancestor[v]]
+                                      for v in self.tree.V if v != 0)
+                self.model.addConstrs(-(1 - self.Q[i, self.tree.direct_ancestor[v]]) <= self.Z[i, v] - self.E[i, v]
+                                      for v in self.tree.V if v != 0)
+                self.model.addConstrs(self.Z[i, v] - self.E[i, v] <= 0
+                                      for v in self.tree.V if v != 0)
+
+        """elif 'trad-2' in self.cut_type:
             # Hyperplane variables
             self.D = self.model.addVars(self.tree.B, vtype=GRB.CONTINUOUS, lb=-GRB.INFINITY, ub=GRB.INFINITY, name='D')
             self.H = self.model.addVars(self.tree.B, self.featureset, vtype=GRB.CONTINUOUS, lb=-GRB.INFINITY, ub=GRB.INFINITY, name='H')
@@ -246,7 +230,65 @@ class MBDT_one_step:
                             quicksum(self.H[v, f] * self.training_data.at[i, f] for f in self.featureset)
                             + self.D[v]) >= 1 - self.E[i, v]
                     for i in self.datapoints)
+                # Normed SVM
+        elif 'norm' in self.cut_type:
+            # Hyperplane variables
+            self.H_pos = self.model.addVars(self.tree.B, self.featureset, vtype=GRB.CONTINUOUS, lb=0,
+                                            name='H_pos')
+            self.H_neg = self.model.addVars(self.tree.B, self.featureset, vtype=GRB.CONTINUOUS, lb=0,
+                                            name='H_neg')
+            self.D_pos = self.model.addVars(self.tree.B, vtype=GRB.CONTINUOUS, lb=0, name='D_pos')
+            self.D_neg = self.model.addVars(self.tree.B, vtype=GRB.CONTINUOUS, lb=0, name='D_neg')
+            self.E = self.model.addVars(self.datapoints, self.tree.B, vtype=GRB.CONTINUOUS, lb=0, name='E')
+            for v in self.tree.B:
+                self.model.addConstr(self.H_pos.sum(v, '*') <= 1)
+                self.model.addConstr(self.H_neg.sum(v, '*') <= 1)
+                self.model.addConstrs(self.H_pos[v, f] - self.H_neg[v, f] >= 0 for f in self.featureset)
+                self.model.addConstr(self.D_pos[v] - self.D_neg[v] >= 0)
+                self.model.addConstrs(
+                    (self.Q[i, self.tree.LC[v]] - self.Q[i, self.tree.RC[v]]) * (
+                            quicksum(
+                                (self.H_pos[v, f] - self.H_neg[v, f]) * self.training_data.at[i, f] for f in
+                                self.featureset)
+                            + self.D_pos[v])
+                    >= 1  # - self.E[i, v]
+                    for i in self.datapoints)
+        # Split SVM
+        elif 'split' in self.cut_type:
+            # Hyperplane variables
+            self.H_pos = self.model.addVars(self.tree.B, self.featureset, vtype=GRB.CONTINUOUS, name='H_pos')
+            self.H_neg = self.model.addVars(self.tree.B, self.featureset, vtype=GRB.CONTINUOUS, name='H_neg')
+            self.D_pos = self.model.addVars(self.tree.B, vtype=GRB.CONTINUOUS)
+            self.D_neg = self.model.addVars(self.tree.B, vtype=GRB.CONTINUOUS)
+            self.E = self.model.addVars(self.datapoints, self.tree.B, vtype=GRB.CONTINUOUS, lb=0, name='E')
 
+            for v in self.tree.B:
+                self.model.addConstr(self.H_pos.sum(v, '*') <= 1)
+                self.model.addConstr(self.H_neg.sum(v, '*') <= 1)
+                self.model.addConstrs(self.H_pos[v, f] <= self.B[v] for f in self.featureset)
+                self.model.addConstrs(self.H_neg[v, f] <= self.B[v] for f in self.featureset)
+                self.model.addConstr(quicksum(self.H_pos[v, f]-self.H_neg[v, f] for f in self.featureset) <= 1)
+                self.model.addConstr(self.H_pos.sum(v, '*') - self.H_neg.sum(v, '*') >= 0)
+                self.model.addConstrs(self.H_pos[v, f] - self.H_neg[v, f] >= 0 for f in self.featureset)
+                self.model.addConstrs(
+                    self.Q[i, self.tree.LC[v]] * (
+                            quicksum(
+                                (self.H_pos[v, f] - self.H_neg[v, f]) * self.training_data.at[i, f] for f in
+                                self.featureset)
+                            + (self.D_pos[v] - self.D_neg[v]))
+                    >= 1 - self.E[i, v]
+                    for i in self.datapoints)"""
+
+        '''Model Objective '''
+        # Objective: Maximize the number of correctly classified datapoints
+        # Max sum(S[i,v], i in I, v in V\1)
+        if 'v' not in self.cut_type:
+            self.model.setObjective(quicksum(self.S[i, v] for i in self.datapoints for v in self.tree.V if v != 0),
+                                    GRB.MAXIMIZE)
+        else:
+            self.model.setObjective(len(self.datapoints) -
+                                    quicksum(self.S[i, v] for v in self.tree.V if v != 0 for i in self.datapoints)
+                                    + self.Z.sum(), GRB.MINIMIZE)
         """ Pass to Model DV for Callback / Optimization Purposes """
         self.model._B = self.B
         self.model._W = self.W
@@ -411,7 +453,10 @@ class MBDT_one_step:
             W_sol = self.model.getAttr('X', self.W)
             P_sol = self.model.getAttr('X', self.P)
             E_sol = self.model.getAttr('X', self.E)
-            if 'split' in self.cut_type:
+            H_sol = self.model.getAttr('X', self.H)
+            D_sol = self.model.getAttr('X', self.D)
+
+            """if 'split' in self.cut_type:
                 D_pos_sol = self.model.getAttr('X', self.D_pos)
                 D_neg_sol = self.model.getAttr('X', self.D_neg)
                 H_pos_sol = self.model.getAttr('X', self.H_pos)
@@ -420,10 +465,7 @@ class MBDT_one_step:
                 D_pos_sol = self.model.getAttr('X', self.D_pos)
                 D_neg_sol = self.model.getAttr('X', self.D_neg)
                 H_pos_sol = self.model.getAttr('X', self.H_pos)
-                H_neg_sol = self.model.getAttr('X', self.H_neg)
-            if 'trad' in self.cut_type:
-                H_sol = self.model.getAttr('X', self.H)
-                D_sol = self.model.getAttr('X', self.D)
+                H_neg_sol = self.model.getAttr('X', self.H_neg)"""
 
         # If no incumbent was found, then predict arbitrary class at root node
         except GurobiError:
@@ -447,15 +489,14 @@ class MBDT_one_step:
             # Define (a_v, c_v) on branching nodes
             elif P_sol[v] < 0.5 and B_sol[v] > 0.5:
                 # print(f'{v} branched')
-                if 'split' in self.cut_type:
+                self.tree.a_v[v] = {f: H_sol[v, f] for f in self.featureset}
+                self.tree.c_v[v] = D_sol[v]
+                """if 'split' in self.cut_type:
                     self.tree.c_v[v] = D_pos_sol[v] - D_neg_sol[v]
                     self.tree.a_v[v] = {f: H_pos_sol[v, f] - H_neg_sol[v, f] for f in self.featureset}
-                elif 'trad' in self.cut_type:
-                    self.tree.c_v[v] = D_sol[v]
-                    self.tree.a_v[v] = {f: H_sol[v, f] for f in self.featureset}
                 elif 'norm' in self.cut_type:
                     self.tree.c_v[v] = D_pos_sol[v] - D_neg_sol[v]
-                    self.tree.a_v[v] = {f: H_pos_sol[v, f] - H_neg_sol[v, f] for f in self.featureset}
+                    self.tree.a_v[v] = {f: H_pos_sol[v, f] - H_neg_sol[v, f] for f in self.featureset}"""
                 self.tree.branch_nodes[v] = (self.tree.a_v[v], self.tree.c_v[v])
 
     ##############################################
@@ -482,7 +523,8 @@ class MBDT_one_step:
             for k in self.classes:
                 if self.warmstart['class'][v] == k:
                     self.W[v, k].start = 1
-                else: self.W[v, k].start = 0
+                else:
+                    self.W[v, k].start = 0
         for v in self.warmstart['pruned']:
             self.P[v].Start = 0.0
             self.B[v].Start = 0.0
@@ -494,7 +536,10 @@ class MBDT_one_step:
             self.P[v].Start = 0.0
             self.B[v].Start = 1.0
             (a_v, c_v) = self.warmstart['branched'][v]
-            if 'split' in self.cut_type:
+            self.D[v].start = c_v
+            for f in self.featureset:
+                self.H[v, f].start = a_v[f]
+            """if 'split' in self.cut_type:
                 if c_v >= 0:
                     self.D_pos[v].start = c_v
                     self.D_neg[v].start = 0
@@ -508,21 +553,18 @@ class MBDT_one_step:
                     else:
                         self.H_pos[v, f].start = 0
                         self.H_neg[v, f].start = a_v[f]
-            elif 'trad' in self.cut_type:
-                self.D[v].start = c_v
-                for f in self.featureset:
-                    self.H[v, f].start = a_v[f]
             elif 'norm' in self.cut_type:
                 self.D[v].start = c_v
                 for f in self.featureset:
                     self.H_pos[v, f].start = a_v[f]
                     self.H_neg[v, f].start = 0
-                    """if a_v[f] >= 0:
+                    if a_v[f] >= 0:
                         self.H_pos[v, f].start = a_v[f]
                         self.H_neg[v, f].start = 0
                     else:
                         self.H_pos[v, f].start = 0
                         self.H_neg[v, f].start = a_v[f]"""
+
     ##############################################
     # Model Extras
     ##############################################
