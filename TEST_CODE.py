@@ -13,7 +13,7 @@ time_limit = 600
 # rand_states = [138, 15, 89, 42, 0]
 rand_states = [138]
 file = 'test_dump.csv'
-log_file = False
+log_file = True
 test_data = ['iris']
 heights = [3]
 
@@ -29,22 +29,22 @@ models = ['CUT1-UF']
 b_type = 'two-step'  # CHOOSE ONE
 MBDT_runs.main(
     ["-d", test_data, "-h", heights, "-t", time_limit, "-m", models, "-b", b_type, "-c", 0,
-     "-r", rand_states, "-f", file, "-e", None, "-w", {'use': False}, "-l", log_file])
+     "-r", rand_states, "-f", file, "-e", None, "-w", {'use': False}, "-l", log_file])"""
 
-############ MBDT ONE STEP ###############
-models = ['CUT1-UF-trad', 'CUT1-trad-2'] # , 'CUT1-UF-abs', 'CUT1-UF-trad']
-b_type = 'one-step'
-MBDT_runs.main(
-   ["-d", test_data, "-h", heights, "-t", time_limit, "-m", models, "-b", b_type, "-c", 0,
-    "-r", rand_states, "-f", file, "-e", None, "-w", {'use': False, 'values': None}, "-l", log_file])"""
-
-############ MBDT ISING w/ 2-STEP WARM START ###############
-models = ['CUT1-UF-trad']
-warm_start_runs.main(
-    ["-d", test_data, "-h", heights, "-t", time_limit, "-m", models,
-     "-r", rand_states, "-f", file, "-e", None, "-l", log_file, "-c", 0])
-
-models = ['CUT1-UF-trad-2']
+############ MBDT ONE STEP W/ WARM START ###############
+models = ['CUT1-UF']
 warm_start_runs.main(
     ["-d", test_data, "-h", heights, "-t", time_limit, "-m", models,
      "-r", rand_states, "-f", file, "-e", None, "-l", log_file, "-c", 1])
+
+############ MBDT ONE STEP ###############
+models = ['CUT1-UF'] # , 'CUT1-UF-abs', 'CUT1-UF-trad']
+b_type = 'one-step'
+MBDT_runs.main(
+   ["-d", test_data, "-h", heights, "-t", time_limit, "-m", models, "-b", b_type, "-c", 1,
+    "-r", rand_states, "-f", file, "-e", None, "-w", {'use': False, 'values': None}, "-l", log_file])
+
+"""models = ['CUT1-UF-v5']
+warm_start_runs.main(
+    ["-d", test_data, "-h", heights, "-t", time_limit, "-m", models,
+     "-r", rand_states, "-f", file, "-e", None, "-l", log_file, "-c", 1])"""

@@ -174,8 +174,8 @@ class MBDT_one_step:
         # Left-right branching using hard-margin SVM
         # Trad SVM
         # Hyperplane variables
-        self.D = self.model.addVars(self.tree.B, vtype=GRB.CONTINUOUS, name='D')
-        self.H = self.model.addVars(self.tree.B, self.featureset, vtype=GRB.CONTINUOUS, name='H')
+        self.D = self.model.addVars(self.tree.B, vtype=GRB.CONTINUOUS, lb=-GRB.INFINITY, name='D')
+        self.H = self.model.addVars(self.tree.B, self.featureset, vtype=GRB.CONTINUOUS, lb=-GRB.INFINITY, name='H')
         self.E = self.model.addVars(self.datapoints, self.tree.V, vtype=GRB.CONTINUOUS, lb=0, name='E')
 
         for v in self.tree.B:
@@ -289,6 +289,7 @@ class MBDT_one_step:
             self.model.setObjective(len(self.datapoints) -
                                     quicksum(self.S[i, v] for v in self.tree.V if v != 0 for i in self.datapoints)
                                     + self.Z.sum(), GRB.MINIMIZE)
+
         """ Pass to Model DV for Callback / Optimization Purposes """
         self.model._B = self.B
         self.model._W = self.W

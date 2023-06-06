@@ -110,16 +110,13 @@ def main(argv):
                     ws_acc, ws_assignments = UTILS.data_predict(tree=tree_ws, data=model_set, target=mbdt_ws.target)
                     warm_start_dict = {'class': tree_ws.class_nodes, 'pruned': tree_ws.pruned_nodes,
                                        'branched': tree_ws.branch_nodes, 'results': ws_assignments, 'use': True}
-                    # print(mbdt_ws.model.ObjVal, ws_acc)
-                    # print(tree_ws.branch_nodes)
-                    # print(tree_ws.class_nodes)
-                    # print(mbdt_ws.paths, ws_assignments)
                     incorrect_data = {}
                     for i in model_set.index:
                         if mbdt_ws.paths[i] != ws_assignments[i][0]:
                             incorrect_data[i] = (ws_assignments[i][0], mbdt_ws.paths[i])
                     # print(incorrect_data)
-                    print(tree_ws.branch_nodes)
+                    print('\n\nWarm start values\n', tree_ws.branch_nodes)
+                    print('\nWarm start Obj. Val:', mbdt_ws.model.ObjVal,'\n')
                     tree = TREE(h=h)
                     mbdt = MBDT_one_step(data=model_set, tree=tree, target=target, modeltype=modeltype,
                                          time_limit=time_limit, warmstart=warm_start_dict,
@@ -137,7 +134,8 @@ def main(argv):
                     else:
                         print('Time limit reached. ('+str(time.strftime("%I:%M %p", time.localtime()))+')')
                     mbdt.assign_tree()
-                    print(tree.branch_nodes)
+                    print('Solution values\n', tree.branch_nodes)
+                    print('\nSolution Obj Val:', mbdt.model.ObjVal)
                     test_acc, test_assignments = UTILS.data_predict(tree=tree, data=test_set, target=mbdt.target)
                     train_acc, train_assignments = UTILS.data_predict(tree=tree, data=model_set, target=mbdt.target)
 

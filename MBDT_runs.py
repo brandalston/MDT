@@ -120,9 +120,8 @@ def main(argv):
                     mbdt.assign_tree()
                     test_acc, test_assignments = UTILS.data_predict(tree=tree, data=test_set, target=mbdt.target)
                     train_acc, train_assignments = UTILS.data_predict(tree=tree, data=model_set, target=mbdt.target)
-                    print(tree.branch_nodes)
-                    print(tree.class_nodes)
-                    print(mbdt.model.ObjVal, train_acc)
+                    print('Solution values (no warm start)\n', tree.branch_nodes)
+                    print('\nSolution (no warm start) Obj Val:', mbdt.model.ObjVal)
                     with open(out_file, mode='a') as results:
                         results_writer = csv.writer(results, delimiter=',', quotechar='"')
                         results_writer.writerow(
