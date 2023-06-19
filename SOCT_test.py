@@ -13,12 +13,12 @@ test_cat = ['fico_binary', 'soybean_small', 'monk1', 'breast-cancer', 'monk2']
 heights = [2, 3, 4, 5]
 time_limit = 600
 rand_states = [138, 15, 89, 42, 0]
-file = 'paper_runs_2.csv'
+file = 'benchmark_runs_.csv'
 log_file = False
 
 ############ SOCT ###############
 models = ['SOCT-Benders']
-warm_start = [None, 'STUMP', 'SVM']  # CHOOSE ONE
+# warm_start = [None, 'STUMP', 'SVM']  # CHOOSE ONE
 SOCT_run.main(
-   ["-d", test_num+test_cat, "-h", heights, "-t", time_limit, "-m", models,
-    "-r", rand_states, "-f", file, "-w", warm_start[0], "-l", log_file])
+    ["-d", test_set, "-h", heights, "-t", time_limit, "-m", models,
+     "-r", rand_states, "-f", file, "-w", None, "-l", log_file])

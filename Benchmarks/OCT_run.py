@@ -73,7 +73,6 @@ def main(argv):
                             'monk1', 'monk2', 'monk3', 'soybean_small', 'spect', 'tic_tac_toe', 'fico_binary']
     for file in data_files:
         data = OU.get_data(dataname=file.replace('.csv', ''), binarization=None)
-        data.get_data()
         for h in heights:
             for i in rand_states:
                 train_set, test_set = train_test_split(data, train_size=0.5, random_state=i)
