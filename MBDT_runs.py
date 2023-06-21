@@ -54,8 +54,8 @@ def main(argv):
     ''' Columns of the results file generated '''
     summary_columns = ['Data', 'H', '|I|', 'Out_Acc', 'In_Acc', 'Sol_Time', 'MIP_Gap', 'Obj_Val', 'Obj_Bound',
                        'Model', 'Warm_Start', 'Warm_Start_Time', 'Time_Limit', 'Rand_State',
-                       'VIS_Calls', 'VIS_Cuts', 'VIS_Time', 'HP_Time', 'FP_Time', 'FP_Num_CB', 'FP_Num_Cuts',
-                       'Eps', 'Branch_Type']
+                       'VIS_Calls', 'VIS_Cuts', 'VIS_Time', 'HP_Time', 'SVM_Num', 'Branch_Num',
+                       'FP_Time', 'FP_Num_CB', 'FP_Num_Cuts', 'Eps', 'Branch_Type']
     output_path = os.getcwd() + '/results_files/'
     log_path = os.getcwd() + '/log_files/'
     if file_out is None:
@@ -128,6 +128,6 @@ def main(argv):
                              mbdt.model.MIPGap, mbdt.model.ObjVal, mbdt.model.ObjBound,
                              mbdt.modeltype, warmstart['use'], 0, mbdt.time_limit, i,
                              mbdt.model._visnum, mbdt.model._viscuts, mbdt.model._vistime,
-                             mbdt.HP_time, mbdt.model._septime, mbdt.model._sepnum, mbdt.model._sepcuts,
+                             mbdt.HP_time, mbdt.svm_branches, len(tree.branch_nodes), mbdt.model._septime, mbdt.model._sepnum, mbdt.model._sepcuts,
                              mbdt.model._eps, mbdt.b_type])
                         results.close()

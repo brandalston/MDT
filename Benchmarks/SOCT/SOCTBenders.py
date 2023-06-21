@@ -34,6 +34,7 @@ class SOCTBenders(ClassifierMixin, BaseEstimator):
         self.time_limit = time_limit
         self.log_to_console = log_to_console
         self.log = log
+        self.svm_branches = 0
     
     def fit(self, X, y):
         """ Trains a classification tree using the S-OCT model, solved using Benders decomposition.
@@ -343,6 +344,8 @@ class SOCTBenders(ClassifierMixin, BaseEstimator):
                 svm = HardMarginLinearSVM()
                 svm.fit(X_svm, y_svm)
                 self.hp_time += time.perf_counter()-start
+                if svm.svm_plane:
+                    self.svm_branches += 1
                 (a_vals[t], b_vals[t]) = (svm.w_, svm.b_)
         
         # Construct rules

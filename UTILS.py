@@ -372,6 +372,7 @@ class Linear_Separator():
         feature_set = [f for f in data.columns if f != 'svm']
         left_index_set = [i for i in data.index if data.at[i, 'svm'] == -1]
         right_index_set = [i for i in data.index if data.at[i, 'svm'] == +1]
+        self.svm_plane = False
         try:
             m = Model("SVM")
             m.Params.LogToConsole = 0
@@ -390,6 +391,7 @@ class Linear_Separator():
                     break
             self.a_v = {f: w[f].X for f in feature_set}
             self.c_v = -b # Must flip intercept because of how QP was setup
+            self.svm_plane = True
             return self
         except Exception:
             # If QP fails to solve, just return any separating hyperplane

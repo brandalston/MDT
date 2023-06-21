@@ -139,8 +139,8 @@ class MBDT:
             self.model.addConstrs(self.S[i, v] <= self.W[v, self.training_data.at[i, self.target]] for i in self.datapoints)
 
         # If v not branching then all datapoints sent to right child
-        for v in self.tree.B:
-            self.model.addConstrs(self.Q[i, self.tree.LC[v]] <= self.B[v] for i in self.datapoints)
+        # for v in self.tree.B:
+            # self.model.addConstrs(self.Q[i, self.tree.LC[v]] <= self.B[v] for i in self.datapoints)
             # self.model.addConstrs(self.Q[i, self.tree.RC[v]] <= self.B[v] for i in self.datapoints)
 
         # Each datapoint has at most one terminal vertex
@@ -328,7 +328,6 @@ class MBDT:
         Define (a_v, c_v) for v when P[v].x = 0, B[v].x = 1
             Use hard margin linear SVM on B_v(Q) to find (a_v, c_v)
         """
-        start = time.perf_counter()
         # clear any existing node assignments
         for v in self.tree.DG_prime.nodes():
             if 'class' in self.tree.DG_prime.nodes[v]:
@@ -369,6 +368,7 @@ class MBDT:
             # Define (a_v, c_v) on branching nodes
             elif P_sol[v] < 0.5 and B_sol[v] > 0.5:
                 branched.append(v)
+
         for v in branched:
             # Lv_I, Rv_I index sets of observations sent to left, right child vertex of branching vertex v
             # svm_y maps Lv_I to -1, Rv_I to +1 for training hyperplane
@@ -396,16 +396,16 @@ class MBDT:
             else:
                 # print('BRANCHING!!')
                 # print('branching at', v)
+                start = time.perf_counter()
                 data_svm = self.training_data.loc[Lv_I + Rv_I, self.training_data.columns != self.target]
                 data_svm['svm'] = pd.Series(svm)
                 svm = UTILS.Linear_Separator()
                 svm.SVM_fit(data_svm)
                 self.tree.a_v[v], self.tree.c_v[v] = svm.a_v, svm.c_v
-                if svm.hp_size != 0:
+                self.HP_time += time.perf_counter() - start
+                if svm.svm_plane:
                     self.svm_branches += 1
-                    self.HP_size += svm.hp_size
             self.tree.branch_nodes[v] = (self.tree.a_v[v], self.tree.c_v[v])
-        self.HP_time = time.perf_counter() - start
         # print(f'Hyperplanes found in {round(self.HP_time,4)}s. ({time.strftime("%I:%M %p", time.localtime())})\n')
 
     ##############################################

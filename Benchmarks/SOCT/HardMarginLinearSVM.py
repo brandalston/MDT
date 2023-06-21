@@ -15,6 +15,7 @@ class HardMarginLinearSVM(ClassifierMixin, BaseEstimator):
         # Check that dimensions are consistent, convert X and y to ndarrays
         X, y = check_X_y(X, y)
         (N, p) = X.shape
+        self.svm_plane = False
 
         if not np.array_equal(np.unique(y), [-1,1]):
             raise ValueError("Class labels must be -1 and +1")
@@ -36,6 +37,7 @@ class HardMarginLinearSVM(ClassifierMixin, BaseEstimator):
             w_vals = np.array([w[j].X for j in range(p)])
             b = -b # Must flip intercept because of how QP was setup
             self.w_, self.b_ = w_vals, b
+            self.svm_plane = True
             return self
         except Exception:
             left_index_set = [i for i in range(N) if y[i] == -1]
