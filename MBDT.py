@@ -52,10 +52,10 @@ class MBDT:
         self.rootcuts = False
         self.eps = 0
         self.cut_type = self.modeltype[5:]
-        if len(self.cut_type) == 0:
-            self.cut_type = 'GRB'
         if any(ele in self.cut_type for ele in ['FF', 'ALL', 'MV']):
             self.eps = 4
+        else:
+            self.cut_type = "GRB-" + self.cut_type
 
         """ Model extras """
         self.regularization = 'None'
@@ -136,15 +136,21 @@ class MBDT:
         # Terminal vertex of correctly classified datapoint matches datapoint class
         # S[i,v] <= W[v,k=y^i] for v in V, for i in I
         for v in self.tree.V:
-            self.model.addConstrs(self.S[i, v] <= self.W[v, self.training_data.at[i, self.target]] for i in self.datapoints)
+            self.model.addConstrs(
+                self.S[i, v] <= self.W[v, self.training_data.at[i, self.target]] for i in self.datapoints)
 
         # If v not branching then all datapoints sent to right child
-        # for v in self.tree.B:
-            # self.model.addConstrs(self.Q[i, self.tree.LC[v]] <= self.B[v] for i in self.datapoints)
+        for v in self.tree.B:
+            self.model.addConstrs(self.Q[i, self.tree.LC[v]] <= self.B[v] for i in self.datapoints)
             # self.model.addConstrs(self.Q[i, self.tree.RC[v]] <= self.B[v] for i in self.datapoints)
 
         # Each datapoint has at most one terminal vertex
         self.model.addConstrs(self.S.sum(i, '*') <= 1 for i in self.datapoints)
+
+        if 'balance' in self.cut_type:
+            for v in self.tree.B:
+                for k in self.classes:
+                    self.W[v, k].ub = 0
 
         # Lazy feasible path constraints (for fractional separation procedure)
         if any(ele in self.cut_type for ele in ['GRB', 'FF', 'ALL', 'MV']):
@@ -328,6 +334,7 @@ class MBDT:
         Define (a_v, c_v) for v when P[v].x = 0, B[v].x = 1
             Use hard margin linear SVM on B_v(Q) to find (a_v, c_v)
         """
+        start = time.perf_counter()
         # clear any existing node assignments
         for v in self.tree.DG_prime.nodes():
             if 'class' in self.tree.DG_prime.nodes[v]:
@@ -368,7 +375,6 @@ class MBDT:
             # Define (a_v, c_v) on branching nodes
             elif P_sol[v] < 0.5 and B_sol[v] > 0.5:
                 branched.append(v)
-
         for v in branched:
             # Lv_I, Rv_I index sets of observations sent to left, right child vertex of branching vertex v
             # svm_y maps Lv_I to -1, Rv_I to +1 for training hyperplane
@@ -396,16 +402,16 @@ class MBDT:
             else:
                 # print('BRANCHING!!')
                 # print('branching at', v)
-                start = time.perf_counter()
                 data_svm = self.training_data.loc[Lv_I + Rv_I, self.training_data.columns != self.target]
                 data_svm['svm'] = pd.Series(svm)
                 svm = UTILS.Linear_Separator()
                 svm.SVM_fit(data_svm)
                 self.tree.a_v[v], self.tree.c_v[v] = svm.a_v, svm.c_v
-                self.HP_time += time.perf_counter() - start
-                if svm.svm_plane:
+                if svm.hp_size != 0:
                     self.svm_branches += 1
+                    self.HP_size += svm.hp_size
             self.tree.branch_nodes[v] = (self.tree.a_v[v], self.tree.c_v[v])
+        self.HP_time = time.perf_counter() - start
         # print(f'Hyperplanes found in {round(self.HP_time,4)}s. ({time.strftime("%I:%M %p", time.localtime())})\n')
 
     ##############################################
@@ -418,57 +424,40 @@ class MBDT:
         Find feasible path and terminal vertex for each datapoint through tree
         Update according decision variable values
         """
+        print('warm starting model')
         # Generate random tree assignments if none were given
         if not self.warmstart['use']:
             return self
-        if self.warmstart['values'] is None:
-            warm_start_values = UTILS.random_tree(self.tree, self.training_data, self.target)
-            print('Warm starting model with randomly generated tree')
-        else:
-            warm_start_values = self.warmstart['values']
-            print('Warm starting model with passed values')
-        # Check tree assignments are valid
-        if not UTILS.tree_check(warm_start_values['tree']):
-            print('Invalid Tree!!')
-
-        # Retrieve node assignments
-        class_nodes = nx.get_node_attributes(warm_start_values['tree'].DG_prime, 'class')
-        branching_nodes = nx.get_node_attributes(warm_start_values['tree'].DG_prime, 'branching')
-        pruned_nodes = nx.get_node_attributes(warm_start_values['tree'].DG_prime, 'pruned')
-
-        # Warm start node assignment decision variables (B, W, P)
-        for v in class_nodes:
-            for k in self.classes:
-                if warm_start_values['tree'].DG_prime.nodes[v]['class'] == k:
-                    self.W[v, k].Start = 1.0
-                else:
-                    self.W[v, k].Start = 0
-            self.P[v].Start = 1.0
-            self.B[v].Start = 0
-        for v in branching_nodes:
-            self.B[v].Start = 1.0
-            for k in self.classes:
-                self.W[v, k].Start = 0
-            self.P[v].Start = 0
-        for v in pruned_nodes:
-            self.P[v].Start = 0
-            self.B[v].Start = 0
-            for k in self.classes:
-                self.W[v, k].Start = 0
-
         # Warm start datapoint selected source-terminal nodes decision variables (S, Q)
         for i in self.datapoints:
-            for v in warm_start_values['tree'].V:
-                if v == warm_start_values['results'][i][1][-1] and 'correct' in warm_start_values['results'][i]:
+            for v in self.tree.V:
+                if v == self.warmstart['results'][i][0][-1] and 'correct' in self.warmstart['results'][i]:
                     self.S[i, v].Start = 1.0
-                elif v == warm_start_values['results'][i][1][-1]:
-                    self.S[i, v].Start = 0.0
                 else:
                     self.S[i, v].Start = 0.0
-                if v in warm_start_values['results'][i][1]:
+                if v in self.warmstart['results'][i][0]:
                     self.Q[i, v].Start = 1.0
                 else:
                     self.Q[i, v].Start = 0.0
+
+        for v in self.warmstart['class']:
+            self.P[v].Start = 1.0
+            self.B[v].Start = 0.0
+            for k in self.classes:
+                if self.warmstart['class'][v] == k:
+                    self.W[v, k].start = 1
+                else:
+                    self.W[v, k].start = 0
+        for v in self.warmstart['pruned']:
+            self.P[v].Start = 0.0
+            self.B[v].Start = 0.0
+            for k in self.classes:
+                self.W[v, k].Start = 0.0
+        for v in self.warmstart['branched']:
+            for k in self.classes:
+                self.W[v, k].Start = 0.0
+            self.P[v].Start = 0.0
+            self.B[v].Start = 1.0
 
     ##############################################
     # Model Extras
@@ -477,18 +466,18 @@ class MBDT:
         # number of maximum branching nodes
         if any((match := elem).startswith('max_branch') for elem in self.modelextras):
             self.max_features = int(re.sub("[^0-9]", "", match))
-            print('No more than ' + str(self.max_features) + ' branching vertices used')
+            # print('No more than ' + str(self.max_features) + ' branching vertices used')
             self.model.addConstr(quicksum(self.B[v] for v in self.tree.B) <= self.max_features)
 
         # exact number of branching nodes
         if any((match := elem).startswith('num_branch') for elem in self.modelextras):
             self.max_features = int(re.sub("[^0-9]", "", match))
-            print(str(self.max_features) + ' branching vertices used')
+            # print(str(self.max_features) + ' branching vertices used')
             self.model.addConstr(quicksum(self.B[v] for v in self.tree.B) == self.max_features)
 
         # regularization
         if any((match := elem).startswith('regularization') for elem in self.modelextras):
             self.regularization = int(re.sub("[^0-9]", "", match))
-            print('Regularization: ' + str(self.regularization) + ' datapoints required for classification vertices')
+            # print('Regularization: ' + str(self.regularization) + ' datapoints required for classification vertices')
             self.model.addConstrs(quicksum(self.S[i, v] for i in self.datapoints) >= self.regularization * self.P[v]
                                   for v in self.tree.V)

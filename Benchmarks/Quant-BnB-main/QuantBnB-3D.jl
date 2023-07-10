@@ -5,7 +5,7 @@ include("lowerbound_middle.jl")
 include("Algorithms.jl")
 
 function QuantBnB_3D(X, y, s, s2, ub, mid_method, mid_ratio, AALL = nothing, treetype = "R",
-                         timelimit = 1e10, ifprint = false)
+                         timelimit = 1e10)
 
     n, p = size(X)
     if AALL === nothing
@@ -34,13 +34,11 @@ function QuantBnB_3D(X, y, s, s2, ub, mid_method, mid_ratio, AALL = nothing, tre
     num_loop = 0
     total_time = 0
     best_tree = 0
-    if ifprint
-        println("Total number of trees = ", remain_tree)
-        println("Total number of intervals = ", remain_interval)
-        println("--------------------------------------")
-    end
-    st = time()   
-    
+    println("Total number of trees = ", remain_tree)
+    println("Total number of intervals = ", remain_interval)
+    println("--------------------------------------")
+    st = time()
+
     while remain_tree > 5000 && num_loop < 20 && total_time < timelimit && remain_tree > remain_interval * 10
         st = time()
         AALL, ub, best_tree = screening_search_3D(X, y, s, s2, AALL,
@@ -50,14 +48,12 @@ function QuantBnB_3D(X, y, s, s2, ub, mid_method, mid_ratio, AALL = nothing, tre
         time_loop = time() - st
         num_loop += 1
         total_time += time_loop
-        if ifprint
-            println("Loop ", num_loop)
-            println("Number of remaining trees = ", remain_tree)
-            println("Total number of intervals = ", remain_interval)
-            println("Current objective = ", ub)
-            println("time = ", time_loop)
-            println("--------------------------------------")
-        end
+        println("Loop ", num_loop)
+        println("Number of remaining trees = ", remain_tree)
+        println("Total number of intervals = ", remain_interval)
+        println("Current objective = ", ub)
+        println("time = ", time_loop)
+        println("--------------------------------------")
     end
     st = time()
     if remain_tree > 0 && total_time < timelimit
@@ -66,13 +62,11 @@ function QuantBnB_3D(X, y, s, s2, ub, mid_method, mid_ratio, AALL = nothing, tre
     total_time += time() - st
 
 
-    if ifprint
-        println("Obj = ", ub)
-        println("Tree is ", best_tree)
-        println("total time = ", total_time)
-    end
-    return ub, best_tree, total_time
-    
+    println("Obj = ", ub)
+    println("Tree is ", best_tree)
+    println("total time = ", total_time)
+    return ub, best_tree
+
 end
 
 function exhaustive_search_3D(X, y, AALL, ub, best_tree, treetype, timelimit = 1e10)
@@ -82,15 +76,15 @@ function exhaustive_search_3D(X, y, AALL, ub, best_tree, treetype, timelimit = 1
     if n_rows == 0
         return 0
     end
-    for i = 1:n_rows   
-        
+    for i = 1:n_rows
+
         f0 = AALL[i,1]
         range = AALL[i,2]
         AL_left = AALL[i,3]
         AL_right = AALL[i,4]
-        
+
         order_f0 = X_sortperm[:,f0]
-        count_s = X_count[range[1],f0] 
+        count_s = X_count[range[1],f0]
         count_e = X_count[range[2],f0] + 1
         unique_f0 = (count_e - count_s)
         part_f0 = X_invcount[f0][count_s:count_e]
@@ -107,7 +101,7 @@ function exhaustive_search_3D(X, y, AALL, ub, best_tree, treetype, timelimit = 1
         counttotal_f0 = unique_f0 + 1
 
         for t2 = 1:counttotal_f0
-            
+
             # left node
             idx_left = order_f0[1:partend_f0[t2]]
             n_left = length(idx_left)
@@ -119,17 +113,17 @@ function exhaustive_search_3D(X, y, AALL, ub, best_tree, treetype, timelimit = 1
                 f1 = AL_left[i_left,1]
                 range_left = AL_left[i_left,2]
                 fs_left = AL_left[i_left,3]
-                fs_right = AL_left[i_left,4] 
+                fs_right = AL_left[i_left,4]
                 num_fs_left = size(fs_left)[1]
-                num_fs_right = size(fs_right)[1]  
-                
+                num_fs_right = size(fs_right)[1]
+
                 if n_left < n / 10
                     X_left = X[idx_left, f1]
                     y_left = y[idx_left,:]
                     od = sortperm(X_left)
-                    x_ordered = X_left[od] 
+                    x_ordered = X_left[od]
                     y_ordered = y_left[od,:]
-                    od_left = idx_left[od] 
+                    od_left = idx_left[od]
                 else
                     od = zeros(Int, n_left+1)
                     tmp = zeros(Int, n)
@@ -145,7 +139,7 @@ function exhaustive_search_3D(X, y, AALL, ub, best_tree, treetype, timelimit = 1
                 end
 
 
-                count_s1 = X_count[range_left[1],f1] 
+                count_s1 = X_count[range_left[1],f1]
                 count_e1 = X_count[range_left[2],f1] + 1
                 unique_f1 = (count_e1 - count_s1)
                 part_f1 = X_invcount[f1][count_s1:count_e1]
@@ -164,7 +158,7 @@ function exhaustive_search_3D(X, y, AALL, ub, best_tree, treetype, timelimit = 1
                     threshold = -1e20
                 elseif part_f1[count_tmp] == n
                     threshold = 1e20
-                else        
+                else
                     threshold = (X_sort[part_f1[count_tmp],f1]+X_sort[part_f1[count_tmp]+1,f1]) / 2
                 end
                 for t_left = 1:n_left
@@ -176,7 +170,7 @@ function exhaustive_search_3D(X, y, AALL, ub, best_tree, treetype, timelimit = 1
                                 threshold = -1e20
                             elseif part_f1[count_tmp] == n
                                 threshold = 1e20
-                            else        
+                            else
                                 threshold = (X_sort[part_f1[count_tmp],f1]+X_sort[part_f1[count_tmp]+1,f1]) / 2
                             end
                         else
@@ -190,7 +184,7 @@ function exhaustive_search_3D(X, y, AALL, ub, best_tree, treetype, timelimit = 1
                 end
                 partend_f1 = part_total
                 partstart_f1 = part_total .+ 1
-                counttotal_f1 = length(part_total) 
+                counttotal_f1 = length(part_total)
 
 
                 llss_leftleft[i_left] = zeros(counttotal_f1, num_fs_left)
@@ -198,7 +192,7 @@ function exhaustive_search_3D(X, y, AALL, ub, best_tree, treetype, timelimit = 1
                 llss_leftstart[i_left] = part_f1
 
                 for t2_left = 1:counttotal_f1
-                    for j1 = 1:num_fs_left 
+                    for j1 = 1:num_fs_left
                         llss_leftleft[i_left][t2_left, j1], _, _, _ = one_pass_search_mr(X, y, od_left[1:partend_f1[t2_left]], fs_left[j1], treetype)
                     end
                     for j2 = 1:num_fs_right
@@ -206,11 +200,11 @@ function exhaustive_search_3D(X, y, AALL, ub, best_tree, treetype, timelimit = 1
                     end
                     if time() - st > timelimit
                         break
-                    end   
+                    end
                 end
                 if time() - st > timelimit
                     break
-                end   
+                end
             end
 
             # right node
@@ -224,17 +218,17 @@ function exhaustive_search_3D(X, y, AALL, ub, best_tree, treetype, timelimit = 1
                 f2 = AL_right[i_right,1]
                 range_right = AL_right[i_right,2]
                 fs_left = AL_right[i_right,3]
-                fs_right = AL_right[i_right,4] 
+                fs_right = AL_right[i_right,4]
                 num_fs_left = size(fs_left)[1]
-                num_fs_right = size(fs_right)[1]  
-                
+                num_fs_right = size(fs_right)[1]
+
                 if n_right < n / 10
                     X_right = X[idx_right, f2]
                     y_right = y[idx_right,:]
                     od = sortperm(X_right)
-                    x_ordered = X_right[od] 
+                    x_ordered = X_right[od]
                     y_ordered = y_right[od,:]
-                    od_right = idx_right[od] 
+                    od_right = idx_right[od]
                 else
                     od = zeros(Int, n_right+1)
                     tmp = zeros(Int, n)
@@ -249,7 +243,7 @@ function exhaustive_search_3D(X, y, AALL, ub, best_tree, treetype, timelimit = 1
                     y_ordered = y[od_right,:]
                 end
 
-                count_s2 = X_count[range_right[1],f2] 
+                count_s2 = X_count[range_right[1],f2]
                 count_e2 = X_count[range_right[2],f2] + 1
                 unique_f2 = (count_e2 - count_s2)
                 part_f2 = X_invcount[f2][count_s2:count_e2]
@@ -268,7 +262,7 @@ function exhaustive_search_3D(X, y, AALL, ub, best_tree, treetype, timelimit = 1
                     threshold = -1e20
                 elseif part_f2[count_tmp] == n
                     threshold = 1e20
-                else        
+                else
                     threshold = (X_sort[part_f2[count_tmp],f2]+X_sort[part_f2[count_tmp]+1,f2]) / 2
                 end
                 for t_right = 1:n_right
@@ -280,7 +274,7 @@ function exhaustive_search_3D(X, y, AALL, ub, best_tree, treetype, timelimit = 1
                                 threshold = -1e20
                             elseif part_f2[count_tmp] == n
                                 threshold = 1e20
-                            else        
+                            else
                                 threshold = (X_sort[part_f2[count_tmp],f2]+X_sort[part_f2[count_tmp]+1,f2]) / 2
                             end
                         else
@@ -294,13 +288,13 @@ function exhaustive_search_3D(X, y, AALL, ub, best_tree, treetype, timelimit = 1
                 end
                 partend_f2 = part_total
                 partstart_f2 = part_total .+ 1
-                counttotal_f2 = length(part_total) 
+                counttotal_f2 = length(part_total)
 
                 llss_rightleft[i_right] = zeros(counttotal_f2, num_fs_left)
                 llss_rightright[i_right] = zeros(counttotal_f2, num_fs_right)
                 llss_rightstart[i_right] = part_f2
                 for t2_right = 1:counttotal_f2
-                    for j1 = 1:num_fs_left 
+                    for j1 = 1:num_fs_left
                         llss_rightleft[i_right][t2_right, j1], _, _, _ = one_pass_search_mr(X, y, od_right[1:partend_f2[t2_right]], fs_left[j1], treetype)
                     end
                     for j2 = 1:num_fs_right
@@ -308,15 +302,15 @@ function exhaustive_search_3D(X, y, AALL, ub, best_tree, treetype, timelimit = 1
                     end
                     if time() - st > timelimit
                         break
-                    end   
+                    end
                 end
                 if time() - st > timelimit
                     break
-                end   
+                end
             end
             if time() - st > timelimit
                 break
-            end    
+            end
 
             ### get upper bound
             llss_left = zeros(n_rows_left)
@@ -372,8 +366,8 @@ function exhaustive_search_3D(X, y, AALL, ub, best_tree, treetype, timelimit = 1
                 l21, b21, lm21, rm21 = one_pass_search_mr(X, y, idx_RL, f21, treetype)
                 l22, b22, lm22, rm22 = one_pass_search_mr(X, y, idx_RR, f22, treetype)
                 if abs(ub - (l11 + l12 + l21 + l22)) > 1e-8
-                    # println(ub)
-                    # println(l11+l12+l21+l22)
+                    println(ub)
+                    println(l11+l12+l21+l22)
                     sleep(0.1)
                     #throw(ErrorException)
                 end
@@ -393,18 +387,19 @@ function exhaustive_search_3D(X, y, AALL, ub, best_tree, treetype, timelimit = 1
                 best_tree[4][3][1], best_tree[4][3][2], best_tree[4][3][3], best_tree[4][3][4] = f21, b21, lm21, rm21
                 best_tree[4][4][1], best_tree[4][4][2], best_tree[4][4][3], best_tree[4][4][4] = f22, b22, lm22, rm22
 
-            end  
-                   
+            end
+
         end
         if time() - st > timelimit
             break
-        end   
+        end
     end
     return ub, best_tree
 end
 
+
 function count_remain_3D(AALL)
-    
+
     value = 0
     n_rows = size(AALL)[1]
     if n_rows == 0
@@ -413,8 +408,8 @@ function count_remain_3D(AALL)
     for i = 1:n_rows
         range = AALL[i,2]
         AL_left = AALL[i,3]
-        AL_right = AALL[i,4]    
-        num_unique = length(unique(X_sort[range[1]:range[2], AALL[i,1]])) 
+        AL_right = AALL[i,4]
+        num_unique = length(unique(X_sort[range[1]:range[2], AALL[i,1]]))
         if num_unique == 0
             num_unique += 1
         end
@@ -424,7 +419,7 @@ function count_remain_3D(AALL)
 end
 
 function count_remain_3D2(AALL)
-    
+
     value = 0
     n_rows = size(AALL)[1]
     if n_rows == 0
@@ -432,14 +427,15 @@ function count_remain_3D2(AALL)
     end
     for i = 1:n_rows
         AL_left = AALL[i,3]
-        AL_right = AALL[i,4]    
+        AL_right = AALL[i,4]
         value += (count_remain2(AL_left) + count_remain2(AL_right))
     end
     return value
 end
-    
+
+
 function screening_search_3D(X, y, s, s2, AALL, ub, best_tree, mid_method, mid_ratio, treetype, timelimit)
-    
+
     st = time()
     n, _ = size(X)
     quantiles = [i/s for i=0:s]
@@ -450,23 +446,23 @@ function screening_search_3D(X, y, s, s2, AALL, ub, best_tree, mid_method, mid_r
     AALL_new = Array{Any, 2}(undef, 0, 4)
     best_tree_label = Array{Any, 1}(undef, 4)
 
-    for i = 1:n_rows   
-        
+    for i = 1:n_rows
+
         f0 = AALL[i,1]
         range = AALL[i,2]
         AL_left = AALL[i,3]
         AL_right = AALL[i,4]
-        
+
         order_f0 = X_sortperm[:,f0]
-        count_s = X_count[range[1],f0] 
+        count_s = X_count[range[1],f0]
         count_e = X_count[range[2],f0] + 1
         unique_f0 = (count_e - count_s)
         part_f0 = X_invcount[f0][count_s:count_e]
         new_pos = count_s .+ convert(Array{Int64,1}, round.(quantiles .* unique_f0))
         spart_f0 = X_invcount[f0][new_pos]
-        count_f0 = length(spart_f0) - 1     
+        count_f0 = length(spart_f0) - 1
 
-        
+
         if unique_f0 <= s + 1
             if part_f0[1] == 0
                 part_f0 = part_f0[2:end]
@@ -481,7 +477,7 @@ function screening_search_3D(X, y, s, s2, AALL, ub, best_tree, mid_method, mid_r
             counttotal_f0 = unique_f0 + 1
             exh_f0 = 1
         else
-            partend_f0 = spart_f0[1:count_f0] 
+            partend_f0 = spart_f0[1:count_f0]
             partstart_f0 = spart_f0[2:count_f0+1] .+ 1
             counttotal_f0 = count_f0
             exh_f0 = 0
@@ -489,14 +485,14 @@ function screening_search_3D(X, y, s, s2, AALL, ub, best_tree, mid_method, mid_r
 
         UPPER_left = ones(counttotal_f0) .* 1e20
         UPPER_right = ones(counttotal_f0) .* 1e20
-        UPPER_LL = zeros(counttotal_f0) 
-        UPPER_LR = zeros(counttotal_f0) 
-        UPPER_RL = zeros(counttotal_f0) 
-        UPPER_RR = zeros(counttotal_f0) 
-        UPPER_f1min = zeros(Int, counttotal_f0) 
-        UPPER_f1split = zeros(counttotal_f0) 
-        UPPER_f2min = zeros(Int, counttotal_f0) 
-        UPPER_f2split = zeros(counttotal_f0) 
+        UPPER_LL = zeros(counttotal_f0)
+        UPPER_LR = zeros(counttotal_f0)
+        UPPER_RL = zeros(counttotal_f0)
+        UPPER_RR = zeros(counttotal_f0)
+        UPPER_f1min = zeros(Int, counttotal_f0)
+        UPPER_f1split = zeros(counttotal_f0)
+        UPPER_f2min = zeros(Int, counttotal_f0)
+        UPPER_f2split = zeros(counttotal_f0)
 
         llss_left = Array{Any, 1}(undef, counttotal_f0)
         llss_leftleft = Array{Any, 1}(undef, counttotal_f0)
@@ -530,7 +526,7 @@ function screening_search_3D(X, y, s, s2, AALL, ub, best_tree, mid_method, mid_r
             idx_left = order_f0[1:partend_f0[t2]]
             n_left = length(idx_left)
             n_rows_left = size(AL_left)[1]
-    
+
             llss_left[t2] = zeros(n_rows_left)
             llss_leftleft[t2] = Array{Any, 1}(undef, n_rows_left)
             llss_leftright[t2] = Array{Any, 1}(undef, n_rows_left)
@@ -547,17 +543,17 @@ function screening_search_3D(X, y, s, s2, AALL, ub, best_tree, mid_method, mid_r
                 f1 = AL_left[i_left,1]
                 range_left = AL_left[i_left,2]
                 fs_left = AL_left[i_left,3]
-                fs_right = AL_left[i_left,4] 
+                fs_right = AL_left[i_left,4]
                 num_fs_left = size(fs_left)[1]
-                num_fs_right = size(fs_right)[1]  
-                
+                num_fs_right = size(fs_right)[1]
+
                 if n_left < n / 10
                     X_left = X[idx_left, f1]
                     y_left = y[idx_left,:]
                     od = sortperm(X_left)
-                    x_ordered = X_left[od] 
+                    x_ordered = X_left[od]
                     y_ordered = y_left[od,:]
-                    od_left = idx_left[od] 
+                    od_left = idx_left[od]
                 else
                     od = zeros(Int, n_left+1)
                     tmp = zeros(Int, n)
@@ -573,13 +569,13 @@ function screening_search_3D(X, y, s, s2, AALL, ub, best_tree, mid_method, mid_r
                 end
 
 
-                count_s1 = X_count[range_left[1],f1] 
+                count_s1 = X_count[range_left[1],f1]
                 count_e1 = X_count[range_left[2],f1] + 1
                 unique_f1 = (count_e1 - count_s1)
                 part_f1 = X_invcount[f1][count_s1:count_e1]
                 new_pos = count_s1 .+ convert(Array{Int64,1}, round.(quantiles2 .* unique_f1))
                 spart_f1 = X_invcount[f1][new_pos]
-                count_f1 = length(spart_f1) - 1 
+                count_f1 = length(spart_f1) - 1
                 partend_f1, partstart_f1, counttotal_f1 = 0, 0, 0
                 if range_left[1] > range_left[2]
                     if range_left[1] > n || range_left[2] == 0
@@ -615,7 +611,7 @@ function screening_search_3D(X, y, s, s2, AALL, ub, best_tree, mid_method, mid_r
                         threshold = -1e20
                     elseif part_f1[count_tmp] == n
                         threshold = 1e20
-                    else        
+                    else
                         threshold = (X_sort[part_f1[count_tmp],f1]+X_sort[part_f1[count_tmp]+1,f1]) / 2
                     end
                     for t_left = 1:n_left
@@ -627,7 +623,7 @@ function screening_search_3D(X, y, s, s2, AALL, ub, best_tree, mid_method, mid_r
                                     threshold = -1e20
                                 elseif part_f1[count_tmp] == n
                                     threshold = 1e20
-                                else        
+                                else
                                     threshold = (X_sort[part_f1[count_tmp],f1]+X_sort[part_f1[count_tmp]+1,f1]) / 2
                                 end
                             else
@@ -642,7 +638,7 @@ function screening_search_3D(X, y, s, s2, AALL, ub, best_tree, mid_method, mid_r
 
                     partend_f1 = part_total
                     partstart_f1 = part_total .+ 1
-                    counttotal_f1 = length(part_total) 
+                    counttotal_f1 = length(part_total)
                 else
                     exh_f1[t2][i_left] = 0
                     issingle_f1[t2][i_left] = 0
@@ -653,7 +649,7 @@ function screening_search_3D(X, y, s, s2, AALL, ub, best_tree, mid_method, mid_r
                         threshold = -1e20
                     elseif spart_f1[count_tmp] == n
                         threshold = 1e20
-                    else        
+                    else
                         threshold = (X_sort[spart_f1[count_tmp],f1]+X_sort[spart_f1[count_tmp]+1,f1]) / 2
                     end
                     for t_left = 1:n_left
@@ -665,7 +661,7 @@ function screening_search_3D(X, y, s, s2, AALL, ub, best_tree, mid_method, mid_r
                                     threshold = -1e20
                                 elseif spart_f1[count_tmp] == n
                                     threshold = 1e20
-                                else        
+                                else
                                     threshold = (X_sort[spart_f1[count_tmp],f1]+X_sort[spart_f1[count_tmp]+1,f1]) / 2
                                 end
                             else
@@ -678,7 +674,7 @@ function screening_search_3D(X, y, s, s2, AALL, ub, best_tree, mid_method, mid_r
                         count_tmp += 1
                     end
                     counttotal_f1 = length(part_total) - 1
-                    partend_f1 = part_total[1:counttotal_f1] 
+                    partend_f1 = part_total[1:counttotal_f1]
                     partstart_f1 = part_total[2:counttotal_f1+1] .+ 1
                 end
 
@@ -693,7 +689,7 @@ function screening_search_3D(X, y, s, s2, AALL, ub, best_tree, mid_method, mid_r
 
 
                 for t2_left = 1:counttotal_f1
-                    for j1 = 1:num_fs_left 
+                    for j1 = 1:num_fs_left
                         llss_leftleft[t2][i_left][t2_left, j1], _, _, _ = one_pass_search_mr(X, y, od_left[1:partend_f1[t2_left]], fs_left[j1], treetype)
                     end
                     llss_leftleft2[t2][i_left][t2_left] = minimum(llss_leftleft[t2][i_left][t2_left, :])
@@ -702,7 +698,7 @@ function screening_search_3D(X, y, s, s2, AALL, ub, best_tree, mid_method, mid_r
                     end
                     llss_leftright2[t2][i_left][t2_left] = minimum(llss_leftright[t2][i_left][t2_left, :])
                     total_compute = n_left * (counttotal_f1 - 1)
-                    n_sub = partstart_f1[t2_left] - partend_f1[t2_left] 
+                    n_sub = partstart_f1[t2_left] - partend_f1[t2_left]
                     s_mid =  Int(ceil(mid_ratio * total_compute / n_sub))
                     if exh_f1[t2][i_left] == 0
                         LB_leftMID[t2][i_left][t2_left,:,:] = lower_bound_mid2(X, y, f1, od_left[partend_f1[t2_left]+1:partstart_f1[t2_left]-1],
@@ -732,7 +728,7 @@ function screening_search_3D(X, y, s, s2, AALL, ub, best_tree, mid_method, mid_r
             idx_right = order_f0[partstart_f0[t2]:n]
             n_right = length(idx_right)
             n_rows_right = size(AL_right)[1]
-    
+
             llss_right[t2] = zeros(n_rows_right)
             llss_rightleft[t2] = Array{Any, 1}(undef, n_rows_right)
             llss_rightright[t2] = Array{Any, 1}(undef, n_rows_right)
@@ -749,17 +745,17 @@ function screening_search_3D(X, y, s, s2, AALL, ub, best_tree, mid_method, mid_r
                 f2 = AL_right[i_right,1]
                 range_right = AL_right[i_right,2]
                 fs_left = AL_right[i_right,3]
-                fs_right = AL_right[i_right,4] 
+                fs_right = AL_right[i_right,4]
                 num_fs_left = size(fs_left)[1]
-                num_fs_right = size(fs_right)[1]  
-                
+                num_fs_right = size(fs_right)[1]
+
                 if n_right < n / 10
                     X_right = X[idx_right, f2]
                     y_right = y[idx_right,:]
                     od = sortperm(X_right)
-                    x_ordered = X_right[od] 
+                    x_ordered = X_right[od]
                     y_ordered = y_right[od,:]
-                    od_right = idx_right[od] 
+                    od_right = idx_right[od]
                 else
                     od = zeros(Int, n_right+1)
                     tmp = zeros(Int, n)
@@ -774,14 +770,14 @@ function screening_search_3D(X, y, s, s2, AALL, ub, best_tree, mid_method, mid_r
                     y_ordered = y[od_right,:]
                 end
 
-                count_s2 = X_count[range_right[1],f2] 
+                count_s2 = X_count[range_right[1],f2]
                 count_e2 = X_count[range_right[2],f2] + 1
                 unique_f2 = (count_e2 - count_s2)
                 part_f2 = X_invcount[f2][count_s2:count_e2]
                 new_pos = count_s2 .+ convert(Array{Int64,1}, round.(quantiles2 .* unique_f2))
                 spart_f2 = X_invcount[f2][new_pos]
-                count_f2 = length(spart_f2) - 1 
-                
+                count_f2 = length(spart_f2) - 1
+
                 partend_f2, partstart_f2, counttotal_f2 = 0, 0, 0
                 if range_right[1] > range_right[2]
                     if range_right[1] > n || range_right[2] == 0
@@ -817,7 +813,7 @@ function screening_search_3D(X, y, s, s2, AALL, ub, best_tree, mid_method, mid_r
                         threshold = -1e20
                     elseif part_f2[count_tmp] == n
                         threshold = 1e20
-                    else        
+                    else
                         threshold = (X_sort[part_f2[count_tmp],f2]+X_sort[part_f2[count_tmp]+1,f2]) / 2
                     end
                     for t_right = 1:n_right
@@ -829,7 +825,7 @@ function screening_search_3D(X, y, s, s2, AALL, ub, best_tree, mid_method, mid_r
                                     threshold = -1e20
                                 elseif part_f2[count_tmp] == n
                                     threshold = 1e20
-                                else        
+                                else
                                     threshold = (X_sort[part_f2[count_tmp],f2]+X_sort[part_f2[count_tmp]+1,f2]) / 2
                                 end
                             else
@@ -844,7 +840,7 @@ function screening_search_3D(X, y, s, s2, AALL, ub, best_tree, mid_method, mid_r
 
                     partend_f2 = part_total
                     partstart_f2 = part_total .+ 1
-                    counttotal_f2 = length(part_total) 
+                    counttotal_f2 = length(part_total)
                 else
                     exh_f2[t2][i_right] = 0
                     issingle_f2[t2][i_right] = 0
@@ -855,7 +851,7 @@ function screening_search_3D(X, y, s, s2, AALL, ub, best_tree, mid_method, mid_r
                         threshold = -1e20
                     elseif spart_f2[count_tmp] == n
                         threshold = 1e20
-                    else        
+                    else
                         threshold = (X_sort[spart_f2[count_tmp],f2]+X_sort[spart_f2[count_tmp]+1,f2]) / 2
                     end
                     for t_right = 1:n_right
@@ -867,7 +863,7 @@ function screening_search_3D(X, y, s, s2, AALL, ub, best_tree, mid_method, mid_r
                                     threshold = -1e20
                                 elseif spart_f2[count_tmp] == n
                                     threshold = 1e20
-                                else        
+                                else
                                     threshold = (X_sort[spart_f2[count_tmp],f2]+X_sort[spart_f2[count_tmp]+1,f2]) / 2
                                 end
                             else
@@ -881,7 +877,7 @@ function screening_search_3D(X, y, s, s2, AALL, ub, best_tree, mid_method, mid_r
                     end
 
                     counttotal_f2 = length(part_total) - 1
-                    partend_f2 = part_total[1:counttotal_f2] 
+                    partend_f2 = part_total[1:counttotal_f2]
                     partstart_f2 = part_total[2:counttotal_f2+1] .+ 1
                 end
 
@@ -893,7 +889,7 @@ function screening_search_3D(X, y, s, s2, AALL, ub, best_tree, mid_method, mid_r
                 llss_rightright3[t2][i_right] = zeros(counttotal_f2, num_fs_right)
                 LB_rightMID[t2][i_right] = zeros(counttotal_f2, num_fs_left, num_fs_right)
 
-                
+
 
                 for t2_right = 1:counttotal_f2
                     for j1 = 1:num_fs_left
@@ -905,7 +901,7 @@ function screening_search_3D(X, y, s, s2, AALL, ub, best_tree, mid_method, mid_r
                     end
                     llss_rightright2[t2][i_right][t2_right] = minimum(llss_rightright[t2][i_right][t2_right, :])
                     total_compute = n_right * (counttotal_f2 - 1)
-                    n_sub = partstart_f2[t2_right] - partend_f2[t2_right] 
+                    n_sub = partstart_f2[t2_right] - partend_f2[t2_right]
                     s_mid =  Int(ceil(mid_ratio * total_compute / n_sub))
                     if exh_f2[t2][i_right] == 0
                         LB_rightMID[t2][i_right][t2_right,:,:] = lower_bound_mid2(X, y, f2, od_right[partend_f2[t2_right]+1:partstart_f2[t2_right]-1],
@@ -930,9 +926,9 @@ function screening_search_3D(X, y, s, s2, AALL, ub, best_tree, mid_method, mid_r
             end
 
             total_compute = n * (counttotal_f0 - 1)^2
-            n_sub = partstart_f0[t2] - partend_f0[t2] 
+            n_sub = partstart_f0[t2] - partend_f0[t2]
             #s_mid =  Int(ceil(sqrt(mid_ratio * total_compute / n_sub / 10)))
-            s_mid = 0 
+            s_mid = 0
             llss_mid[t2, :, :] = lower_bound_mid_3D(X, y, f0, [partend_f0[t2]+1, partstart_f0[t2]-1], AL_left, AL_right, s_mid, mid_method, mid_ratio, treetype)
 
 
@@ -948,7 +944,7 @@ function screening_search_3D(X, y, s, s2, AALL, ub, best_tree, mid_method, mid_r
                     minimum_left[i_left] = minimum(llss_leftleft2[t2][i_left] .+ llss_leftright2[t2][i_left])
                 end
             end
-            
+
             if minimum(minimum_left) < UPPER_left[t2]
                 UPPER_left[t2] = minimum(minimum_left)
                 where_upper = argmin(minimum_left)
@@ -958,13 +954,13 @@ function screening_search_3D(X, y, s, s2, AALL, ub, best_tree, mid_method, mid_r
                 if exh_f1[t2][where_upper] == 0
                     idx_tmp = where_minleft[where_upper] + 1
                 else
-                    idx_tmp = where_minleft[where_upper] 
+                    idx_tmp = where_minleft[where_upper]
                 end
                 if llss_leftstart[t2][where_upper][idx_tmp] == 0
                     UPPER_f1split[t2] = -1e20
                 elseif llss_leftstart[t2][where_upper][idx_tmp] == n
                     UPPER_f1split[t2] = 1e20
-                else        
+                else
                     UPPER_f1split[t2] = (X_sort[llss_leftstart[t2][where_upper][idx_tmp],f1min]+X_sort[llss_leftstart[t2][where_upper][idx_tmp]+1,f1min])/2
                 end
                 fs_left = AL_left[where_upper,3]
@@ -998,13 +994,13 @@ function screening_search_3D(X, y, s, s2, AALL, ub, best_tree, mid_method, mid_r
                 if exh_f2[t2][where_upper] == 0
                     idx_tmp = where_minright[where_upper] + 1
                 else
-                    idx_tmp = where_minright[where_upper] 
+                    idx_tmp = where_minright[where_upper]
                 end
                 if llss_rightstart[t2][where_upper][idx_tmp] == 0
                     UPPER_f2split[t2] = -1e20
                 elseif llss_rightstart[t2][where_upper][idx_tmp] == n
                     UPPER_f2split[t2] = 1e20
-                else        
+                else
                     UPPER_f2split[t2] = (X_sort[llss_rightstart[t2][where_upper][idx_tmp],f2min]+X_sort[llss_rightstart[t2][where_upper][idx_tmp]+1,f2min])/2
                 end
                 fs_left = AL_right[where_upper,3]
@@ -1021,14 +1017,14 @@ function screening_search_3D(X, y, s, s2, AALL, ub, best_tree, mid_method, mid_r
                 #print("OK1")
                 #sleep(0.3)
                 break
-            end   
+            end
         end
         if time() - st > timelimit
             #print("OK2")
             #sleep(0.3)
             break
-        end   
-        
+        end
+
         ### update upper bound
         if exh_f0 == 0
             if minimum(UPPER_left[2:end] .+ UPPER_right[1:end-1]) < ub
@@ -1058,15 +1054,15 @@ function screening_search_3D(X, y, s, s2, AALL, ub, best_tree, mid_method, mid_r
             AL_leftnew = Array{Any,2}(undef, 0, 5)
             n_rows_left = size(AL_left)[1]
 
-    
+
             for i_left = 1:n_rows_left
                 f1 = AL_left[i_left, 1]
                 X_leftf1 = X[idx_leftall,f1]
                 fs_left = AL_left[i_left,3]
-                fs_right = AL_left[i_left,4] 
+                fs_right = AL_left[i_left,4]
                 counttotal_f1 = length(llss_leftleft2[t2][i_left])
                 for t2_left = 1:counttotal_f1
-                    
+
                     LS_RIGHTLEFT2, LS_RIGHTRIGHT2 = 1e20, 1e20
                     if exh_f0 == 0
                         if t2 < counttotal_f0
@@ -1080,16 +1076,16 @@ function screening_search_3D(X, y, s, s2, AALL, ub, best_tree, mid_method, mid_r
                         LS_RIGHTRIGHT2 = UPPER_left[t2]
                         LS_RIGHTLEFT2 = UPPER_left[t2]
                     end
-                    
+
                     LS_RIGHT = minimum(llss_mid[t2, i_left, :] + llss_right[t2])
                     fs_left_new = findall(x -> x < ub - LS_RIGHT + 1e-8, llss_leftleft3[t2][i_left][t2_left,:])
                     fs_left_new2 = findall(x -> x < LS_RIGHTRIGHT2 + 1e-8, llss_leftleft3[t2][i_left][t2_left,fs_left_new])
-                    
+
                     fs_right_new = findall(x -> x < ub - LS_RIGHT + 1e-8, llss_leftright3[t2][i_left][t2_left,:])
                     fs_right_new2 = findall(x -> x < LS_RIGHTLEFT2 + 1e-8, llss_leftright3[t2][i_left][t2_left,fs_right_new])
-                    
+
                     if length(fs_left_new2) > 0 && length(fs_right_new2) > 0
-                        
+
                         AL_leftnew_row = Array{Any}(undef, 1, 5)
                         AL_leftnew_row[1, 1] = AL_left[i_left][1]
                         if exh_f1[t2][i_left] == 0
@@ -1097,14 +1093,14 @@ function screening_search_3D(X, y, s, s2, AALL, ub, best_tree, mid_method, mid_r
                                 threshold1 = -1e20
                             elseif llss_leftstart[t2][i_left][t2_left] == n
                                 threshold1 = 1e20
-                            else        
+                            else
                                 threshold1 = (X_sort[llss_leftstart[t2][i_left][t2_left],f1]+X_sort[llss_leftstart[t2][i_left][t2_left]+1,f1])/2
                             end
                             if llss_leftstart[t2][i_left][t2_left+1] == 0
                                 threshold2 = -1e20
                             elseif llss_leftstart[t2][i_left][t2_left+1] == n
                                 threshold2 = 1e20
-                            else        
+                            else
                                 threshold2 = (X_sort[llss_leftstart[t2][i_left][t2_left+1],f1]+X_sort[llss_leftstart[t2][i_left][t2_left+1]+1,f1])/2
                             end
                             if sum((X_leftf1 .>= threshold1) .& (X_leftf1 .<= threshold2)) >= 1
@@ -1125,9 +1121,9 @@ function screening_search_3D(X, y, s, s2, AALL, ub, best_tree, mid_method, mid_r
                         end
                         AL_leftnew = vcat(AL_leftnew, AL_leftnew_row)
                     end
-                    
+
                 end
-                if counttotal_f1 == 0 
+                if counttotal_f1 == 0
                     AL_leftnew_row = deepcopy(AL_left[i_left:i_left,:])
                     AL_leftnew = vcat(AL_leftnew, AL_leftnew_row)
                 end
@@ -1139,13 +1135,13 @@ function screening_search_3D(X, y, s, s2, AALL, ub, best_tree, mid_method, mid_r
                 f2 = AL_right[i_right, 1]
                 X_rightf2 = X[idx_rightall,f2]
                 fs_left = AL_right[i_right,3]
-                fs_right = AL_right[i_right,4] 
+                fs_right = AL_right[i_right,4]
                 counttotal_f2 = length(llss_rightleft2[t2][i_right])
                 for t2_right = 1:counttotal_f2
 
                     LS_LEFTLEFT2, LS_LEFTRIGHT2 = 1e20, 1e20
                     if exh_f0 == 0
-                        if t2 > 1 
+                        if t2 > 1
                             LS_LEFTRIGHT2 = UPPER_right[t2-1]
                             LS_LEFTLEFT2 = UPPER_right[t2-1]
                         else
@@ -1163,7 +1159,7 @@ function screening_search_3D(X, y, s, s2, AALL, ub, best_tree, mid_method, mid_r
                     fs_right_new2 = findall(x -> x < LS_LEFTLEFT2 + 1e-8, llss_rightright3[t2][i_right][t2_right,fs_right_new])
 
                     if length(fs_left_new2) > 0 && length(fs_right_new2) > 0
-                      
+
                         AL_rightnew_row = Array{Any}(undef, 1, 5)
                         AL_rightnew_row[1, 1] = AL_right[i_right][1]
                         if exh_f2[t2][i_right] == 0
@@ -1171,14 +1167,14 @@ function screening_search_3D(X, y, s, s2, AALL, ub, best_tree, mid_method, mid_r
                                 threshold1 = -1e20
                             elseif llss_rightstart[t2][i_right][t2_right] == n
                                 threshold1 = 1e20
-                            else        
+                            else
                                 threshold1 = (X_sort[llss_rightstart[t2][i_right][t2_right],f2]+X_sort[llss_rightstart[t2][i_right][t2_right]+1,f2])/2
                             end
                             if llss_rightstart[t2][i_right][t2_right+1] == 0
                                 threshold2 = -1e20
                             elseif llss_rightstart[t2][i_right][t2_right+1] == n
                                 threshold2 = 1e20
-                            else        
+                            else
                                 threshold2 = (X_sort[llss_rightstart[t2][i_right][t2_right+1],f2]+X_sort[llss_rightstart[t2][i_right][t2_right+1]+1,f2])/2
                             end
                             if sum((X_rightf2 .>= threshold1) .& (X_rightf2 .<= threshold2)) >= 1
@@ -1224,27 +1220,27 @@ function screening_search_3D(X, y, s, s2, AALL, ub, best_tree, mid_method, mid_r
                 #print("OK3")
                 #sleep(0.3)
                 break
-            end   
+            end
         end
         if time() - st > timelimit
             #print("OK4")
             #sleep(0.3)
             break
-        end   
+        end
     end
 
     ### update AALL_new
     n_rowsnew = size(AALL_new)[1]
     list_new = Vector{Int64}()
     for i = 1:n_rowsnew
-        if i == n_rowsnew || AALL_new[i,:] != AALL_new[i+1,:] 
+        if i == n_rowsnew || AALL_new[i,:] != AALL_new[i+1,:]
             append!(list_new, i)
         end
     end
     AALL_new = AALL_new[list_new,:]
 
     n_rowsnew = size(AALL_new)[1]
-    for i = 1:n_rowsnew   
+    for i = 1:n_rowsnew
         range = AALL_new[i,2]
         AL_left = AALL_new[i,3]
         AL_right = AALL_new[i,4]
@@ -1297,14 +1293,20 @@ function screening_search_3D(X, y, s, s2, AALL, ub, best_tree, mid_method, mid_r
         l21, b21, lm21, rm21 = one_pass_search_mr(X, y, idx_RL, f21, treetype)
         l22, b22, lm22, rm22 = one_pass_search_mr(X, y, idx_RR, f22, treetype)
         if abs(ub - (l11 + l12 + l21 + l22)) > 1e-8
-            # println(ub)
-            # println(l11 + l12 + l21 + l22)
+            println(ub)
+            println(l11 + l12 + l21 + l22)
             sleep(0.1)
             throw(ErrorException)
         end
         best_tree = Array{Any,1}(undef, 4)
         best_tree[1] = best_tree_label[1]
-        best_tree[2] = 0.5 * (x_ordered[split0] + x_ordered[split0+1])
+        if split0 == 0
+            best_tree[2] = -1e20
+        elseif split0 >= length(x_ordered)
+            best_tree[2] = 1e20
+        else
+            best_tree[2] = 0.5*(x_ordered[split0] + x_ordered[split0+1])
+        end
         best_tree[3] = Array{Any,1}(undef, 4)
         best_tree[3][1], best_tree[3][2] = f1, split1
         best_tree[4] = Array{Any,1}(undef, 4)
@@ -1322,8 +1324,5 @@ function screening_search_3D(X, y, s, s2, AALL, ub, best_tree, mid_method, mid_r
     end
 
     return AALL_new, ub, best_tree
-    
-   
 
-    
 end

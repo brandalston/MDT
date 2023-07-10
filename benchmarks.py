@@ -1,4 +1,4 @@
-try: from Benchmarks import GOSDTg
+try: from Benchmarks import GOSDTg_run
 except: pass
 
 """
