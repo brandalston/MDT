@@ -1,4 +1,4 @@
-from Benchmarks import DL8_5
+from Benchmarks import DL85_run
 
 numerical_datasets = ['iris', 'glass', 'blood',  'banknote', 'parkinsons',
                       'climate', 'ionosphere', 'wine_red', 'image', 'wine_white']

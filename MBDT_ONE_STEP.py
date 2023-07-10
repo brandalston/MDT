@@ -27,6 +27,7 @@ class MBDT_one_step:
         self.log = log
         self.b_type = 'one-step'
         self.log_to_console = log_to_console
+        self.svm_branches = 'N/A'
 
         # Feature, Class and Index Sets
         self.classes = data[target].unique()
@@ -48,6 +49,7 @@ class MBDT_one_step:
         self.D_pos = 0
         self.D_neg = 0
         self.E = 0
+        self.A = 0
 
         # VIS Weights
         self.vis_weight = {i: 0 for i in self.datapoints}
@@ -176,47 +178,65 @@ class MBDT_one_step:
         # Hyperplane variables
         self.D = self.model.addVars(self.tree.B, vtype=GRB.CONTINUOUS, lb=-GRB.INFINITY, name='D')
         self.H = self.model.addVars(self.tree.B, self.featureset, vtype=GRB.CONTINUOUS, lb=-GRB.INFINITY, name='H')
-        self.E = self.model.addVars(self.datapoints, self.tree.V, vtype=GRB.CONTINUOUS, lb=0, name='E')
+        self.E = self.model.addVars(self.datapoints, self.tree.B, vtype=GRB.CONTINUOUS, lb=0, name='E')
 
         for v in self.tree.B:
-            self.model.addConstrs(
-                self.Q[i, self.tree.LC[v]] * (
-                        quicksum(self.H[v, f] * self.training_data.at[i, f] for f in self.featureset)
-                        + self.D[v]) >= 1 - self.E[i, v]
-                for i in self.datapoints)
+            if 'lagrange' in self.cut_type:
+                self.model.addConstrs(
+                    (self.Q[i, self.tree.LC[v]]-self.Q[i, self.tree.RC[v]]) * (
+                            quicksum(self.H[v, f] * self.training_data.at[i, f] for f in self.featureset)
+                            + self.D[v]) >= 1 #- self.E[i, v]
+                    for i in self.datapoints)
+            else:
+                self.model.addConstrs(
+                    self.Q[i, self.tree.LC[v]] * (
+                            quicksum(self.H[v, f] * self.training_data.at[i, f] for f in self.featureset)
+                            + self.D[v]) >= 1 - self.E[i, v]
+                    for i in self.datapoints)
 
-        if 'v1' in self.cut_type:
-            self.Z = self.model.addVars(self.datapoints, self.tree.V, vtype=GRB.CONTINUOUS, lb=0, name='Z')
-            for i in self.datapoints:
-                self.model.addConstrs(self.Z[i, v] <= self.S[i, v]
-                                      for v in self.tree.V if v != 0)
-                self.model.addConstrs(-(1 - self.S[i, v]) <= self.Z[i, v] - self.E[i, v]
-                                      for v in self.tree.V if v != 0)
-                self.model.addConstrs(self.Z[i, v] - self.E[i, v] <= 0
-                                      for v in self.tree.V if v != 0)
-        elif 'v2' in self.cut_type:
-            self.Z = self.model.addVars(self.datapoints, vtype=GRB.CONTINUOUS, lb=0, name='Z')
-            self.model.addConstrs(self.Z[i] == quicksum(self.E[i, v] for v in self.tree.V)
-                                  for i in self.datapoints)
-        elif 'v3' in self.cut_type:
-            self.Z = self.model.addVars(self.tree.B, vtype=GRB.CONTINUOUS, lb=0, name='Z')
-            self.model.addConstrs(self.Z[v] == self.B[v] * quicksum(self.E[i, self.tree.LC[v]] for i in self.datapoints)
-                                  + self.B[v] * quicksum(self.E[i, self.tree.RC[v]] for i in self.datapoints)
-                                  for v in self.tree.B)
-        elif 'v4' in self.cut_type:
-            self.Z = self.model.addVars(self.datapoints, vtype=GRB.CONTINUOUS, lb=0, name='Z')
-            self.model.addConstrs(self.Z[i] == quicksum(self.Q[i, self.tree.direct_ancestor[v]]*self.E[i, v]
-                                                        for v in self.tree.V)
-                                  for i in self.datapoints)
-        elif 'v5' in self.cut_type:
-            self.Z = self.model.addVars(self.datapoints, self.tree.V, vtype=GRB.CONTINUOUS, lb=0, name='Z')
-            for i in self.datapoints:
-                self.model.addConstrs(self.Z[i, v] <= self.Q[i, self.tree.direct_ancestor[v]]
-                                      for v in self.tree.V if v != 0)
-                self.model.addConstrs(-(1 - self.Q[i, self.tree.direct_ancestor[v]]) <= self.Z[i, v] - self.E[i, v]
-                                      for v in self.tree.V if v != 0)
-                self.model.addConstrs(self.Z[i, v] - self.E[i, v] <= 0
-                                      for v in self.tree.V if v != 0)
+        if 'v' in self.cut_type:
+            if '1' in self.cut_type:
+                self.Z = self.model.addVars(self.datapoints, self.tree.V, vtype=GRB.CONTINUOUS, lb=0, name='Z')
+                for i in self.datapoints:
+                    self.model.addConstrs(self.Z[i, v] <= self.S[i, v]
+                                          for v in self.tree.V if v != 0)
+                    self.model.addConstrs(-(1 - self.S[i, v]) <= self.Z[i, v] - self.E[i, v]
+                                          for v in self.tree.V if v != 0)
+                    self.model.addConstrs(self.Z[i, v] - self.E[i, v] <= 0
+                                          for v in self.tree.V if v != 0)
+            elif '2' in self.cut_type:
+                self.Z = self.model.addVars(self.datapoints, vtype=GRB.CONTINUOUS, lb=0, name='Z')
+                self.model.addConstrs(self.Z[i] == quicksum(self.E[i, v] for v in self.tree.V)
+                                      for i in self.datapoints)
+            elif '3' in self.cut_type:
+                self.Z = self.model.addVars(self.tree.B, vtype=GRB.CONTINUOUS, lb=0, name='Z')
+                self.model.addConstrs(self.Z[v] == self.B[v] * quicksum(self.E[i, self.tree.LC[v]] for i in self.datapoints)
+                                      + self.B[v] * quicksum(self.E[i, self.tree.RC[v]] for i in self.datapoints)
+                                      for v in self.tree.B)
+            elif '4' in self.cut_type:
+                self.Z = self.model.addVars(self.datapoints, vtype=GRB.CONTINUOUS, lb=0, name='Z')
+                self.model.addConstrs(self.Z[i] == quicksum(self.Q[i, self.tree.direct_ancestor[v]] * self.E[i, v]
+                                                            for v in self.tree.V)
+                                      for i in self.datapoints)
+            elif '5' in self.cut_type:
+                self.Z = self.model.addVars(self.datapoints, self.tree.V, vtype=GRB.CONTINUOUS, lb=0, name='Z')
+                for i in self.datapoints:
+                    self.model.addConstrs(self.Z[i, v] <= self.Q[i, self.tree.direct_ancestor[v]]
+                                          for v in self.tree.V if v != 0)
+                    self.model.addConstrs(-(1 - self.Q[i, self.tree.direct_ancestor[v]]) <= self.Z[i, v] - self.E[i, v]
+                                          for v in self.tree.V if v != 0)
+                    self.model.addConstrs(self.Z[i, v] - self.E[i, v] <= 0
+                                          for v in self.tree.V if v != 0)
+        if 'lagrange' in self.cut_type:
+            self.A = self.model.addVars(self.datapoints, self.tree.V, lb=0, ub=10, vtype=GRB.CONTINUOUS, name='A')
+            for v in self.tree.B:
+                self.model.addConstrs(
+                    self.H[v, f] == quicksum(self.A[i, v]*(self.Q[i, self.tree.LC[v]]-self.Q[i, self.tree.RC[v]])*self.training_data.at[i, f]
+                                             for i in self.datapoints)
+                    for f in self.featureset)
+                self.model.addConstr(
+                    0 == quicksum(self.A[i, v] * (self.Q[i, self.tree.LC[v]]-self.Q[i, self.tree.RC[v]]) for i in self.datapoints)) #-
+                         #quicksum(self.A[i, v] * self.Q[i, self.tree.RC[v]] for i in self.datapoints))
 
         """elif 'trad-2' in self.cut_type:
             # Hyperplane variables
@@ -282,13 +302,19 @@ class MBDT_one_step:
         '''Model Objective '''
         # Objective: Maximize the number of correctly classified datapoints
         # Max sum(S[i,v], i in I, v in V\1)
-        if 'v' not in self.cut_type:
-            self.model.setObjective(quicksum(self.S[i, v] for i in self.datapoints for v in self.tree.V if v != 0),
-                                    GRB.MAXIMIZE)
-        else:
+        if 'v' in self.cut_type:
             self.model.setObjective(len(self.datapoints) -
                                     quicksum(self.S[i, v] for v in self.tree.V if v != 0 for i in self.datapoints)
                                     + self.Z.sum(), GRB.MINIMIZE)
+        elif 'lagrange' in self.cut_type:
+            self.model.setObjective(quicksum(self.S[i, v] for i in self.datapoints for v in self.tree.V if v != 0) +
+                                    quicksum(quicksum(self.A[i, v] for i in self.datapoints) -
+                                             0.5 * quicksum(self.H[v, f]*self.H[v, f] for f in self.featureset)
+                                             for v in self.tree.B),
+                                    GRB.MAXIMIZE)
+        else:
+            self.model.setObjective(quicksum(self.S[i, v] for i in self.datapoints for v in self.tree.V if v != 0),
+                                    GRB.MAXIMIZE)
 
         """ Pass to Model DV for Callback / Optimization Purposes """
         self.model._B = self.B

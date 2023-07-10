@@ -1,6 +1,5 @@
-import MBDT_runs, warm_start_runs
-import UTILS
-from Benchmarks import FB_OCT, DL8_5, OCT_run, SOCT_run
+import MBDT_runs
+from Benchmarks import SOCT_run
 
 numerical = ['iris', 'banknote', 'blood', 'climate', 'wine_white', 'wine_red',
              'glass', 'image_segmentation', 'ionosphere', 'parkinsons']
@@ -13,38 +12,43 @@ time_limit = 600
 # rand_states = [138, 15, 89, 42, 0]
 rand_states = [138]
 file = 'test_dump.csv'
-log_file = True
+log_file = False
 test_data = ['iris']
-heights = [3]
+heights = [2]
 
 """############ SOCT ###############
 models = ['SOCT-Benders']
 # warm_start = [None, 'STUMP', 'SVM']  # CHOOSE ONE
 SOCT_run.main(
     ["-d", test_data, "-h", heights, "-t", time_limit, "-m", models,
-     "-r", rand_states, "-f", file, "-w", None, "-l", log_file])"""
+     "-r", rand_states, "-f", file, "-w", None, "-l", False])"""
 
 """############ MBDT 2-STEP ###############
 models = ['CUT1-UF']
 b_type = 'two-step'  # CHOOSE ONE
 MBDT_runs.main(
     ["-d", test_data, "-h", heights, "-t", time_limit, "-m", models, "-b", b_type, "-c", 0,
-     "-r", rand_states, "-f", file, "-e", None, "-w", {'use': False}, "-l", log_file])"""
-
-############ MBDT ONE STEP W/ WARM START ###############
+     "-r", rand_states, "-f", file, "-e", None, "-w", {'use': False}, "-l", False])
+"""
+"""############ MBDT ONE STEP W/ WARM START ###############
 models = ['CUT1-UF']
 warm_start_runs.main(
     ["-d", test_data, "-h", heights, "-t", time_limit, "-m", models,
-     "-r", rand_states, "-f", file, "-e", None, "-l", log_file, "-c", 1])
+     "-r", rand_states, "-f", file, "-e", None, "-l", False, "-c", 1])"""
+
+"""models = ['CUT1-UF-lagrange']
+warm_start_runs.main(
+    ["-d", test_data, "-h", heights, "-t", time_limit, "-m", models,
+     "-r", rand_states, "-f", file, "-e", None, "-l", False, "-c", 1])"""
 
 ############ MBDT ONE STEP ###############
-models = ['CUT1-UF'] # , 'CUT1-UF-abs', 'CUT1-UF-trad']
+models = ['CUT1-UF-lagrange'] # , 'CUT1-UF-abs', 'CUT1-UF-trad']
 b_type = 'one-step'
 MBDT_runs.main(
    ["-d", test_data, "-h", heights, "-t", time_limit, "-m", models, "-b", b_type, "-c", 1,
-    "-r", rand_states, "-f", file, "-e", None, "-w", {'use': False, 'values': None}, "-l", log_file])
+    "-r", rand_states, "-f", file, "-e", None, "-w", {'use': False, 'values': None}, "-l", True])
 
 """models = ['CUT1-UF-v5']
 warm_start_runs.main(
     ["-d", test_data, "-h", heights, "-t", time_limit, "-m", models,
-     "-r", rand_states, "-f", file, "-e", None, "-l", log_file, "-c", 1])"""
+     "-r", rand_states, "-f", file, "-e", None, "-l", False, "-c", 1])"""

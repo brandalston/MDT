@@ -196,3 +196,69 @@ H 2850  1844                      95.0000000  112.00000  17.9%  18.6   22s
  17705 15678  111.00000  451   77   95.00000  112.00000  17.9%  31.0  135s
  18322 16289   96.00000  480   78   95.00000  112.00000  17.9%  30.9  140s
  18968 16835  105.00000  567   64   95.00000  112.00000  17.9%  30.8  145s
+ 19583 17403  107.00000  576    2   95.00000  112.00000  17.9%  30.8  150s
+ 20004 17736   96.00000  497   62   95.00000  112.00000  17.9%  31.0  155s
+ 20676 18284  111.40000  421 1044   95.00000  112.00000  17.9%  30.9  160s
+ 21349 18888     cutoff  545        95.00000  112.00000  17.9%  31.0  165s
+ 21900 19363  108.50000  572   85   95.00000  112.00000  17.9%  31.2  170s
+ 22391 19822  103.00000  490  120   95.00000  112.00000  17.9%  31.2  175s
+ 22900 20304  112.00000  138  605   95.00000  112.00000  17.9%  31.2  180s
+H22928  5424                     111.0000000  112.00000  0.90%  31.2  180s
+H22931  5156                     112.0000000  112.00000  0.00%  31.2  182s
+
+Cutting planes:
+  Lazy constraints: 5
+
+Explored 22931 nodes (732132 simplex iterations) in 182.38 seconds (216.22 work units)
+Thread count was 1 (of 8 available processors)
+
+Solution count 10: 112 111 95 ... 71
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 1.120000000000e+02, best bound 1.120000000000e+02, gap 0.0000%
+
+User-callback calls 86334, time in user-callback 13.09 sec
+
+Gurobi 10.0.1 (mac64[arm]) logging started Tue Jun  6 12:24:42 2023
+
+Set parameter LogFile to value "/Users/brandonalston/Desktop/Code/MDT/log_files/_iris_H:3_M:CUT1-UF-one-step_T:600_Seed:138_E:None"
+Warning: Q constraint 0 doesn't have a name
+Gurobi Optimizer version 10.0.1 build v10.0.1rc0 (mac64[arm])
+
+CPU model: Apple M1
+Thread count: 8 physical cores, 8 logical processors, using up to 1 threads
+
+Optimize a model with 5630 rows, 5934 columns and 12780 nonzeros
+Model fingerprint: 0xc76b67ee
+Model has 784 quadratic constraints
+Variable types: 2514 continuous, 3420 integer (3420 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  QMatrix range    [2e-02, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+  QRHS range       [1e+00, 1e+00]
+Presolve removed 2260 rows and 28 columns
+Presolve time: 0.03s
+Presolved: 11896 rows, 17519 columns, 33820 nonzeros
+Presolved model has 7742 SOS constraint(s)
+Variable types: 10241 continuous, 7278 integer (7278 binary)
+Found heuristic solution: objective 18.0000000
+
+Root relaxation: objective 1.120000e+02, 1129 iterations, 0.02 seconds (0.04 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+*    0     0               0     112.0000000  112.00000  0.00%     -    0s
+
+Explored 1 nodes (1129 simplex iterations) in 0.19 seconds (0.34 work units)
+Thread count was 1 (of 8 available processors)
+
+Solution count 2: 112 18 
+
+Solve interrupted
+Best objective 1.120000000000e+02, best bound 1.120000000000e+02, gap 0.0000%
+
+User-callback calls 343, time in user-callback 0.00 sec

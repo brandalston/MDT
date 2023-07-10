@@ -1,4 +1,4 @@
-from Benchmarks import GOSDTg
+from Benchmarks import GOSDTg_run
 
 numerical_datasets = ['iris', 'glass', 'blood',  'banknote', 'parkinsons',
                       'climate', 'ionosphere', 'wine_red', 'image', 'wine_white']

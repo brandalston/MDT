@@ -99,7 +99,7 @@ def main(argv):
                     # Generate tree and necessary structure information
                     tree_ws = TREE(h=h)
                     # Model with 75% training set and time limit
-                    mbdt_ws = MBDT(data=model_set, tree=tree_ws, target=target, modeltype=modeltype,
+                    mbdt_ws = MBDT(data=cal_set, tree=tree_ws, target=target, modeltype=modeltype,
                                    time_limit=time_limit, warmstart=False,
                                    modelextras=model_extras, log=log, log_to_console=0)
                     mbdt_ws.formulation()
@@ -110,13 +110,13 @@ def main(argv):
                     ws_acc, ws_assignments = UTILS.data_predict(tree=tree_ws, data=model_set, target=mbdt_ws.target)
                     warm_start_dict = {'class': tree_ws.class_nodes, 'pruned': tree_ws.pruned_nodes,
                                        'branched': tree_ws.branch_nodes, 'results': ws_assignments, 'use': True}
-                    incorrect_data = {}
+                    """incorrect_data = {}
                     for i in model_set.index:
                         if mbdt_ws.paths[i] != ws_assignments[i][0]:
                             incorrect_data[i] = (ws_assignments[i][0], mbdt_ws.paths[i])
-                    # print(incorrect_data)
+                    # print(incorrect_data)"""
                     print('\n\nWarm start values\n', tree_ws.branch_nodes)
-                    print('\nWarm start Obj. Val:', mbdt_ws.model.ObjVal,'\n')
+                    print('\nWarm start Obj. Val:', mbdt_ws.model.ObjVal, 'UB:', len(cal_set),'\n')
                     tree = TREE(h=h)
                     mbdt = MBDT_one_step(data=model_set, tree=tree, target=target, modeltype=modeltype,
                                          time_limit=time_limit, warmstart=warm_start_dict,
