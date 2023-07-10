@@ -1,18 +1,11 @@
-#=
-This file is the implementation of the Quant-BnB model found in the paper ''[Quant-BnB: A Scalable Branch-and-Bound Method for Optimal Decision Trees with Continuous Features](https://proceedings.mlr.press/v162/mazumder22a.html)''.
-and publicly available on https://github.com/mengxianglgal/Quant-BnB
-Code is taken directly from https://github.com/mengxianglgal/Quant-BnB
-All rights and ownership are to the original owners.
-=#
-
 using LinearAlgebra
 include("gen_data.jl")
 include("QuantBnB-2D.jl")
 include("lowerbound_middle.jl")
 include("Algorithms.jl")
 
-function QuantBnB_3D(X, y, s, s2, ub, mid_method, mid_ratio, AALL = nothing, treetype = "R",
-                         timelimit = 1e10)
+function QuantBnB_3D(X, y, s, s2, ub, mid_method, mid_ratio,
+                     AALL = nothing, treetype = "R", ifprint = false, timelimit = 1e10)
 
     n, p = size(X)
     if AALL === nothing
@@ -41,9 +34,11 @@ function QuantBnB_3D(X, y, s, s2, ub, mid_method, mid_ratio, AALL = nothing, tre
     num_loop = 0
     total_time = 0
     best_tree = 0
-    println("Total number of trees = ", remain_tree)
-    println("Total number of intervals = ", remain_interval)
-    println("--------------------------------------")
+    if ifprint
+        println("Total number of trees = ", remain_tree)
+        println("Total number of intervals = ", remain_interval)
+        println("--------------------------------------")
+    end
     st = time()
 
     while remain_tree > 5000 && num_loop < 20 && total_time < timelimit && remain_tree > remain_interval * 10
@@ -55,12 +50,14 @@ function QuantBnB_3D(X, y, s, s2, ub, mid_method, mid_ratio, AALL = nothing, tre
         time_loop = time() - st
         num_loop += 1
         total_time += time_loop
-        println("Loop ", num_loop)
-        println("Number of remaining trees = ", remain_tree)
-        println("Total number of intervals = ", remain_interval)
-        println("Current objective = ", ub)
-        println("time = ", time_loop)
-        println("--------------------------------------")
+        if ifprint
+            println("Loop ", num_loop)
+            println("Number of remaining trees = ", remain_tree)
+            println("Total number of intervals = ", remain_interval)
+            println("Current objective = ", ub)
+            println("time = ", time_loop)
+            println("--------------------------------------")
+        end
     end
     st = time()
     if remain_tree > 0 && total_time < timelimit
@@ -68,11 +65,12 @@ function QuantBnB_3D(X, y, s, s2, ub, mid_method, mid_ratio, AALL = nothing, tre
     end
     total_time += time() - st
 
-
-    println("Obj = ", ub)
-    println("Tree is ", best_tree)
-    println("total time = ", total_time)
-    return ub, best_tree
+    if ifprint
+        println("Obj = ", ub)
+        println("Tree is ", best_tree)
+        println("total time = ", total_time)
+    end
+    return ub, best_tree, total_time
 
 end
 
@@ -1331,5 +1329,4 @@ function screening_search_3D(X, y, s, s2, AALL, ub, best_tree, mid_method, mid_r
     end
 
     return AALL_new, ub, best_tree
-
 end

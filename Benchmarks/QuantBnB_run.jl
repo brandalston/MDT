@@ -15,8 +15,9 @@ using Printf
 using CSV, Tables, DataFrames, Dates
 
 cols = ["Data","H","|I|","Out-Acc","In-Acc","Sol-Time",
+        "MIP_Gap", "OBJ_val", "OBJ_bound",
         "Model","Time Limit", "Rand. State"]
-outfile = pwd()*"/results_files/abcd.csv"
+outfile = pwd()*"test_dump.csv"
 timelimit = 600
 rand_states = [138, 15, 89, 42, 0]
 heights = [2]
@@ -28,17 +29,21 @@ for file in datasets
     for h in heights
         for seed in rand_states
             println("\nQuantBnB, Dataset: ", file, ". H: ", h , ". Rand State: ", seed, ". Run Start: (", Dates.format(now(), "HH:MM"),")")
-            X_train, X_test, Y_train, Y_test = generate_realdata(file,0.75,seed)
+            X_train, X_test, Y_train, Y_test = generate_realdata(file,seed)
             n_train, m = size(Y_train)
             n_test, _ = size(Y_test)
-            if h == 3
-                gre_train, gre_tree = greedy_tree(X_train, Y_train, 3, "C")
-                opt_train, opt_tree, opt_time = QuantBnB_3D(X_train, Y_train, 3, 3, gre_train*(1+1e-6), 0, 0, nothing, "C", timelimit, true)
-            else
+            println("\ncreating tree")
+            if h == 2
                 gre_train, gre_tree = greedy_tree(X_train, Y_train, 2, "C")
-                opt_train, opt_tree, opt_time = QuantBnB_2D(X_train, Y_train, 3, gre_train*(1+1e-6), 2, 0.2, nothing, "C", timelimit, true)
-            end
+                opt_train, opt_tree, opt_time = QuantBnB_2D(X_train, Y_train, 3, gre_train*(1+1e-6), 2, 0.2, nothing, "C", false, timelimit)
+                println("\ntrained tree")
+                opt_test = sum((Y_test - tree_eval(opt_tree, X_test, 2, m)).>0)
+            else
+                gre_train, gre_tree = greedy_tree(X_train, Y_train, 3, "C")
+                opt_train, opt_tree, opt_time = QuantBnB_3D(X_train, Y_train, 3, 3, gre_train*(1+1e-6), 0, 0, nothing, "C", false, timelimit)
+                println("\ntrained tree")
                 opt_test = sum((Y_test - tree_eval(opt_tree, X_test, 3, m)).>0)
+            end
             if opt_time < timelimit
                     println("Optimal solution found in ", round(opt_time;digits=4),"s")
             else

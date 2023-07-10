@@ -1,10 +1,3 @@
-#=
-This file is the implementation of the Quant-BnB model found in the paper ''[Quant-BnB: A Scalable Branch-and-Bound Method for Optimal Decision Trees with Continuous Features](https://proceedings.mlr.press/v162/mazumder22a.html)''.
-and publicly available on https://github.com/mengxianglgal/Quant-BnB
-Code is taken directly from https://github.com/mengxianglgal/Quant-BnB
-All rights and ownership are to the original owners.
-=#
-
 using LinearAlgebra
 using JSON
 using StatsBase
