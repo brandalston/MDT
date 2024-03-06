@@ -9,7 +9,7 @@ import UTILS
 
 class MBDT:
 
-    def __init__(self, data, tree, modeltype, time_limit, target, warmstart, modelextras, log=None, log_to_console=0,
+    def __init__(self, data, tree, modeltype, time_limit, target, warmstart, modelextras=None, log=None, log_to_console=0,
                  priority=None,  weight=0):
         """"
         Parameters
