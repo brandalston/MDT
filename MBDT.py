@@ -9,7 +9,8 @@ import UTILS
 
 class MBDT:
 
-    def __init__(self, data, tree, modeltype, time_limit, target, warmstart, modelextras, log=None, log_to_console=0):
+    def __init__(self, data, tree, modeltype, time_limit, target, warmstart, modelextras, log=None, log_to_console=0,
+                 priority=None,  weight=0):
         """"
         Parameters
         training_data: training training_data
@@ -30,6 +31,9 @@ class MBDT:
         self.log = log
         self.log_to_console = log_to_console
         self.b_type = '2-Step'
+        self.priority = priority
+        self.warmstart_time = self.warmstart['time'] if self.warmstart is not None else 0
+        self.branch_weight = weight
 
         # Feature, Class and Index Sets
         self.classes = data[target].unique()
@@ -80,6 +84,8 @@ class MBDT:
         self.model._vistime, self.model._visnum, self.model._viscuts = 0, 0, 0
         self.model._rootcuts, self.model._eps = self.rootcuts, self.eps
 
+        if self.priority is not None: print('Bibjective priority:', self.priority)
+
         """ Hyperplane Specifications 
         self.HP_obj, self.HP_rank = 'quadratic', len(self.featureset)
         if self.hp_info is not None:
@@ -115,11 +121,23 @@ class MBDT:
         # Datapoint selected vertices in root-terminal path
         self.Q = self.model.addVars(self.datapoints, self.tree.V, vtype=GRB.BINARY, name='Q')
 
-        """ Model Objective and Constraints """
+        """ Model Objective and BASE constraints """
         # Objective: Maximize the number of correctly classified datapoints
         # Max sum(S[i,v], i in I, v in V\1)
-        self.model.setObjective(quicksum(self.S[i, v] for i in self.datapoints for v in self.tree.V if v != 0),
-                                GRB.MAXIMIZE)
+        if self.priority is not None:
+            # self.model.ModelSense = GRB.MINIMIZE
+            p1, p2 = 10, 5
+            if 'equal' == self.priority: p1 = 5
+            elif 'tree_size' == self.priority: p1, p2 = 5, 10
+            self.model.setObjectiveN(quicksum(1 - quicksum(self.S[i, v] for v in self.tree.V if v != 0)
+                                              for i in self.datapoints), index = 0, priority = p1, name = "classification")
+            self.model.setObjectiveN(quicksum(self.B[v, f] for v in self.tree.B for f in self.features),
+                                     index = 1, priority = p2, name = "tree_size")
+        else:
+            self.model.setObjective(
+                (1 - self.branch_weight)*quicksum(self.S[i, v] for i in self.datapoints for v in self.tree.V if v != 0)
+                - self.branch_weight*quicksum(self.B[v, f] for v in self.tree.B for f in self.features),
+                GRB.MAXIMIZE)
 
         # Pruned vertices not assigned to class
         # P[v] = sum(W[v,k], k in K) for v in V

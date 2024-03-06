@@ -1,6 +1,7 @@
 #!/usr/bin/python
 import os, time, getopt, sys, csv
 import pandas as pd
+import numpy as np
 from sklearn.model_selection import train_test_split
 from MBDT import MBDT
 from MBDT_ONE_STEP import MBDT_one_step
@@ -56,7 +57,7 @@ def main(argv):
                        'Model', 'Warm_Start', 'Warm_Start_Time', 'Time_Limit', 'Rand_State',
                        'VIS_Calls', 'VIS_Cuts', 'VIS_Time', 'HP_Time', 'FP_Time', 'FP_Num_CB', 'FP_Num_Cuts',
                        'Eps', 'Branch_Type']
-    output_path = os.getcwd() + '/'
+    output_path = os.getcwd() + '/results_files/'
     log_path = os.getcwd() + '/log_files/'
     if file_out is None:
         output_name = str(data_files) + '_H:' + str(heights) + '_' + str(b_type) + '_' + str(modeltypes) + \
@@ -93,6 +94,43 @@ def main(argv):
                         model_extras)
                     else: log = None
                     # Generate tree and necessary structure information
+                    cb_type = modeltype[5:]
+                    if len(cb_type) == 0: cb_type = 'ALL'
+                    print('\n' + str(file) + ', H_' + str(h) + ', ' + str(modeltype) + ', Rand_' + str(i)
+                          + '. Run Start: ' + str(time.strftime("%I:%M:%S %p", time.localtime())))
+                    # Log .lp and .txt files name
+                    WSV = None
+                    if tuning:
+                        wsm_time_start = time.perf_counter()
+                        best_tree, best_acc = {}, 0
+                        lambda_WSV = None
+                        for cal_lambda in np.linspace(0, .9, 10):
+                            # Calibrate model with number of Num-Tree-size features = k for k in [1, B]
+                            cal_tree = TREE(h=h)
+                            cal_model = MBDT(data=cal_set, tree=cal_tree, target=target, model=modeltype, name=file,
+                                             time_limit=0.5*time_limit, warm_start=lambda_WSV, weight=cal_lambda)
+                            cal_model.formulation()
+                            if lambda_WSV is not None: cal_model.warm_start()
+                            cal_model.model.update()
+                            print('test:', round(cal_lambda, 2), 'start:',str(time.strftime("%I:%M:%S %p", time.localtime())))
+                            if 'GRB' or 'ALL' in cb_type:
+                                cal_model.model.optimize()
+                            if 'FRAC' in cb_type:
+                                # User cb.Cut FRAC S-Q cuts
+                                cal_model.model.Params.PreCrush = 1
+                                if '1' in cb_type: cal_model.model.optimize(CALLBACKS.frac1)
+                                if '2' in cb_type: cal_model.model.optimize(CALLBACKS.frac2)
+                                if '3' in cb_type: cal_model.model.optimize(CALLBACKS.frac3)
+                            UTILS.node_assign(cal_model, cal_tree)
+                            UTILS.tree_check(cal_tree)
+                            cal_acc, cal_assign = UTILS.model_acc(tree=cal_tree, target=target, data=cal_set)
+                            lambda_WSV = {'tree': cal_tree, 'data': cal_assign,
+                                          'time': cal_model.model.RunTime, 'best': False}
+                            if cal_acc > best_acc:
+                                weight, best_acc, best_tree = cal_lambda, cal_acc, cal_tree
+                        cal_time = time.perf_counter()-wsm_time_start
+                        model_wsm_acc, model_wsm_assgn = UTILS.model_acc(tree=best_tree, target=target, data=model_set)
+                        WSV = {'tree': best_tree, 'data': model_wsm_assgn, 'time': cal_time, 'best': True}
                     tree = TREE(h=h)
                     # Model with 75% training set and time limit
                     # Specify model datapoint branching type

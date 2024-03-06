@@ -42,8 +42,8 @@ warm_start_runs.main(
      "-r", rand_states, "-f", file, "-e", None, "-l", False, "-c", 1])"""
 
 ############ MBDT ONE STEP ###############
-models = ['CUT1-UF-lagrange'] # , 'CUT1-UF-abs', 'CUT1-UF-trad']
-b_type = 'one-step'
+models = ['CUT1-UF'] # , 'CUT1-UF-abs', 'CUT1-UF-trad']
+b_type = 'two-step'
 MBDT_runs.main(
    ["-d", test_data, "-h", heights, "-t", time_limit, "-m", models, "-b", b_type, "-c", 1,
     "-r", rand_states, "-f", file, "-e", None, "-w", {'use': False, 'values': None}, "-l", True])
