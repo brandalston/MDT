@@ -92,7 +92,7 @@ def main(argv):
                     print('\n' + str(file) + ', H_' + str(h) + ', ' + str(modeltype) + ', Rand_' + str(i)
                           + '. Run Start: ' + str(time.strftime("%I:%M:%S %p", time.localtime())))
                     # Log .lp and .txt files name
-                    WSV = None
+                    WSV, cal_time = None, 0
                     if tuning:
                         wsm_time_start = time.perf_counter()
                         best_cal_tree, best_cal_acc = {}, 0
@@ -158,10 +158,10 @@ def main(argv):
                             [file, tree.height, len(mbdt.datapoints),
                              test_acc / len(test_set), train_acc / len(mbdt.datapoints), mbdt.model.Runtime,
                              mbdt.model.MIPGap, mbdt.model.ObjVal, mbdt.model.ObjBound,
-                             mbdt.modeltype, warmstart['use'], 0, mbdt.time_limit, i,
+                             mbdt.modeltype, cal_time, mbdt.time_limit, i,
                              mbdt.model._visnum, mbdt.model._viscuts, mbdt.model._vistime,
                              mbdt.HP_time, mbdt.svm_branches, len(tree.branch_nodes),
                              mbdt.model._septime, mbdt.model._sepnum, mbdt.model._sepcuts,
-                             mbdt.model._eps, mbdt.b_type])
+                             mbdt.model._eps])
                         results.close()
                     del tree, mbdt
