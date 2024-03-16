@@ -131,12 +131,12 @@ class MBDT:
             elif 'tree_size' == self.priority: p1, p2 = 5, 10
             self.model.setObjectiveN(quicksum(1 - quicksum(self.S[i, v] for v in self.tree.V if v != 0)
                                               for i in self.datapoints), index = 0, priority = p1, name = "classification")
-            self.model.setObjectiveN(quicksum(self.B[v, f] for v in self.tree.B for f in self.features),
+            self.model.setObjectiveN(quicksum(self.B[v] for v in self.tree.B),
                                      index = 1, priority = p2, name = "tree_size")
         else:
             self.model.setObjective(
                 (1 - self.branch_weight)*quicksum(self.S[i, v] for i in self.datapoints for v in self.tree.V if v != 0)
-                - self.branch_weight*quicksum(self.B[v, f] for v in self.tree.B for f in self.features),
+                - self.branch_weight*quicksum(self.B[v] for v in self.tree.B),
                 GRB.MAXIMIZE)
 
         # Pruned vertices not assigned to class

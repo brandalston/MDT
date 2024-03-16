@@ -106,14 +106,14 @@ def main(argv):
                             if lambda_WSV is not None: cal_model.warm_start()
                             cal_model.model.update()
                             print('test:', round(cal_lambda, 2), 'start:',str(time.strftime("%I:%M:%S %p", time.localtime())))
-                            if 'GRB' or 'ALL' in cb_type:
+                            if 'GRB' or 'UF' in cb_type:
                                 cal_model.model.optimize()
-                            if 'FRAC' in cb_type:
+                            if cb_type in ['ALL', 'FF', 'MV']:
                                 # User cb.Cut FRAC S-Q cuts
                                 cal_model.model.Params.PreCrush = 1
-                                if '1' in cb_type: cal_model.model.optimize(CALLBACKS.frac1)
-                                if '2' in cb_type: cal_model.model.optimize(CALLBACKS.frac2)
-                                if '3' in cb_type: cal_model.model.optimize(CALLBACKS.frac3)
+                                if 'ALL' in cb_type: cal_model.model.optimize(CALLBACKS.frac1)
+                                if 'FF' in cb_type: cal_model.model.optimize(CALLBACKS.frac2)
+                                if 'MV' in cb_type: cal_model.model.optimize(CALLBACKS.frac3)
                             cal_model.assign_tree()
                             test_cal_acc, cal_assign = UTILS.data_predict(tree=cal_tree, data=model_set,
                                                                           target=cal_model.target)
@@ -136,14 +136,14 @@ def main(argv):
                     # if model_extras is not None: mbdt.extras()
                     mbdt.model.update()
                     if log_files: mbdt.model.write(log + '.lp')
-                    if 'GRB' or 'ALL' in cb_type:
+                    if 'GRB' or 'UF' in cb_type:
                         mbdt.model.optimize()
-                    if 'FRAC' in cb_type:
+                    if cb_type in ['ALL', 'FF', 'MV']:
                         # User cb.Cut FRAC S-Q cuts
                         mbdt.model.Params.PreCrush = 1
-                        if '1' in cb_type: mbdt.model.optimize(CALLBACKS.frac1)
-                        if '2' in cb_type: mbdt.model.optimize(CALLBACKS.frac2)
-                        if '3' in cb_type: mbdt.model.optimize(CALLBACKS.frac3)
+                        if 'ALL' in cb_type: mbdt.model.optimize(CALLBACKS.frac1)
+                        if 'FF' in cb_type: mbdt.model.optimize(CALLBACKS.frac2)
+                        if 'MV' in cb_type: mbdt.model.optimize(CALLBACKS.frac3)
                     if mbdt.model.RunTime < time_limit:
                         print(f'Optimal solution found in {round(mbdt.model.RunTime,4)}s. '
                               f'('+str(time.strftime("%I:%M %p", time.localtime()))+')')
