@@ -513,7 +513,7 @@ def sub_opt_tree(mbdt, tree):
     return tree
 
 
-def model_summary(mbdt, tree, test_set, rand_state, out_file, dataname, vis_file):
+def model_summary(mbdt, tree, test_set, rand_state, out_file, dataname, vis_file=None):
     if 'biobj' not in mbdt.modeltype:
         mbdt.assign_tree()
         test_acc, test_assignments = data_predict(tree=tree, data=test_set, target=mbdt.target)
@@ -629,6 +629,78 @@ def pareto_plot(data, types):
         elif type=='time':
             plt.savefig(os.getcwd() + '/pareto_figures/' + str(name) + ' H: '+ str(height)+' Pareto Frontier_time_r.png', dpi=300)
             plt.close()
+
+
+def biobj_plot(data, name, type=None, priority='data'):
+    fig = plt.figure()
+    ax1 = fig.add_subplot(111)
+    markers = {'SCF': 'p', 'MCF': 'X', 'CUT_w': 's', 'CUT': 'P'}
+    colors = {'SCF': 'blue', 'MCF': 'orange', 'CUT_w': 'green', 'CUT': 'red'}
+
+    models = data['Model'].unique()
+    height = 5
+    for model in models:
+        sub_data = data.loc[data['Model'] == model]
+        if type == 'In-Acc':
+            ax1.scatter(sub_data['Sol-Num'], sub_data['In-Acc'], marker=markers[model], color=colors[model],
+                        label=model)
+        elif type == 'Out-Acc':
+            ax1.scatter(sub_data['Sol-Num'], sub_data['Out-Acc'], marker=markers[model], color=colors[model],
+                        label=model)
+        elif type == 'Tree-Size':
+            ax1.scatter(sub_data['Sol-Num'], sub_data['Num-Branch'], marker=markers[model], color=colors[model],
+                        label=model)
+        elif type == 'Overfit':
+            ax1.scatter(sub_data['Sol-Num'], sub_data['Overfit'], marker=markers[model], color=colors[model],
+                        label=model)
+        elif type == 'In-v-Branching':
+            ax1.scatter(sub_data['Num-Branch'], sub_data['In-Acc'], marker=markers[model], color=colors[model],
+                        label=model)
+        elif type == 'Out-v-Branching':
+            ax1.scatter(sub_data['Num-Branch'], sub_data['Out-Acc'], marker=markers[model], color=colors[model],
+                        label=model)
+        elif type == 'Objval':
+            ax1.scatter(sub_data['Sol-Num'], sub_data['ObjVal'], marker=markers[model], color=colors[model],
+                        label=model)
+
+    if type == 'In-Acc':
+        ax1.set_ylabel('In-Sample Acc. (%)')
+        ax1.legend()
+        ax1.set_xlabel('Nth Solution Found in 1hr')
+        ax1.set_title(f'{str(name)} Biobjective Results {type}')
+    elif type == 'Out-Acc':
+        ax1.set_ylabel('Out-of-Sample Acc. (%)')
+        ax1.legend()
+        ax1.set_xlabel('Nth Solution Found in 1hr')
+        ax1.set_title(f'{str(name)} Biobjective Results {type}')
+    elif type == 'Tree-Size':
+        ax1.set_ylabel('Num. Branching Vertices')
+        ax1.legend()
+        ax1.set_xlabel('Nth Solution Found in 1hr')
+        ax1.set_title(f'{str(name)} Biobjective Results Tree Size')
+    elif type == 'Overfit':
+        ax1.set_xlabel('Nth Solution Found in 1hr')
+        ax1.set_ylabel('Overfit %-age')
+        ax1.legend()
+        ax1.set_title(f'{str(name)} Biobjective Results {type}')
+    elif type == 'In-v-Branching':
+        ax1.set_ylabel('In-Sample Acc. (%)')
+        ax1.legend()
+        ax1.set_xlabel('Num. Branching Vertices')
+        ax1.set_title(f'{str(name)} Biobjective Results {type}')
+    elif type == 'Out-v-Branching':
+        ax1.set_ylabel('In-Sample Acc. (%)')
+        ax1.legend()
+        ax1.set_xlabel('Num. Branching Vertices')
+        ax1.set_title(f'{str(name)} Biobjective Results {type}')
+    elif type == 'Objval':
+        ax1.set_ylabel('Instances Solved')
+        ax1.legend()
+        ax1.set_xlabel('Nth Solution Found in 1hr')
+        ax1.set_title(f'{str(name)} Biobjective Results {type}')
+
+    plt.savefig(os.getcwd()+f'/figures/biobj_{priority}/{type}/{name}_H_{int(height)}_Biobj_{priority}_{type}_r.png',dpi=300)
+    fig.tight_layout()
 
 
 class consol_log:

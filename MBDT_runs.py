@@ -165,3 +165,130 @@ def main(argv):
                              mbdt.model._eps])
                         results.close()
                     del tree, mbdt
+
+
+def biobjective(argv):
+    print(argv)
+    data_files = None
+    height = None
+    time_limit = None
+    modeltypes = None
+    priorities = None
+    rand_states = None
+    file_out = None
+    log_files = None
+
+    try:
+        opts, args = getopt.getopt(argv, "d:h:t:m:r:p:f:l:",
+                                   ["data_files=", "height=", "timelimit=",
+                                    "models=", "rand_states=", "priority=",
+                                    "results_file=", "log_files"])
+    except getopt.GetoptError:
+        sys.exit(2)
+    for opt, arg in opts:
+        if opt in ("-d", "--data_files"):
+            data_files = arg
+        elif opt in ("-h", "--heights"):
+            height = arg
+        elif opt in ("-t", "--timelimit"):
+            time_limit = int(arg)
+        elif opt in ("-m", "--model"):
+            modeltypes = arg
+        elif opt in ("-r", "--rand_states"):
+            rand_states = arg
+        elif opt in ("-p", "--priority"):
+            priorities = arg
+        elif opt in ("-f", "--results_file"):
+            file_out = arg
+        elif opt in ("-l", "--log_files"):
+            log_files = arg
+
+    ''' Columns of the results file generated '''
+    summary_columns = ['Data', 'H', '|I|', 'Out_Acc', 'In_Acc',
+                       'Sum_S', 'Obj_Val', 'Num_Branch_Nodes', 'Sol_Num', 'Priority', 'Sol_Time',
+                       'Model', 'Time_Limit', 'Rand_State', 'Warm_Start', 'Warm_Start_Time',
+                       'CB_Eps', 'Num_CB', 'User_Cuts', 'Cuts_per_CB',
+                       'Total_CB_Time', 'FRAC_CB_Time', 'INT_CB_Time']
+    output_path = os.getcwd() + '/results_files/'
+    log_path = os.getcwd() + '/log_files/'
+    if file_out is None:
+        output_name = f'{data_files}_h_{height}_m_{modeltypes}_p_{priorities}_t_{time_limit}.csv'
+    else:
+        output_name = file_out
+    out_file = output_path + output_name
+    if file_out is None:
+        with open(out_file, 'w') as f:
+            writer = csv.writer(f)
+            writer.writerow(summary_columns)
+            f.close()
+
+    # Using logger we log the output of the console in a text file
+    # sys.stdout = UTILS.logger(output_path + output_name + '.txt')
+
+    ''' We assume the target column of dataset is labeled 'target'
+    Change value at your discretion '''
+    target = 'target'
+    numerical_datasets = ['iris', 'banknote', 'blood', 'climate', 'wine_white', 'wine_red',
+                          'glass', 'image', 'ionosphere', 'parkinsons']
+    categorical_datasets = ['balance_scale', 'car', 'kr_vs_kp', 'house_votes_84', 'hayes_roth', 'breast_cancer',
+                            'monk1', 'monk2', 'monk3', 'soybean_small', 'spect', 'tic_tac_toe', 'fico_binary']
+
+    for file in data_files:
+        binarization = 'all-candidates' if file in numerical_datasets else False
+        # pull dataset to train model with
+        data = UTILS.get_data(file.replace('.csv', ''), binarization=binarization)
+        for i in rand_states:
+            # 3:1 train test split data
+            train_set, test_set = train_test_split(data, train_size=0.5, random_state=i)
+            cal_set, test_set = train_test_split(test_set, train_size=0.5, random_state=i)
+            model_set = pd.concat([train_set, cal_set])
+            for modeltype in modeltypes:
+                for priority in priorities:
+                    print(f'\nDataset: {file}, H: {height}, Priority: {priority}, Seed: {i}, '
+                          f'Run Start: {time.strftime("%I:%M:%S %p", time.localtime())}')
+                    # Log .lp and .txt files name
+                    if log_files:
+                        log = f'{log_path}file_H_{height}_M_{modeltype}_P_{priority}_T_{time_limit}_R_{i}'
+                    else:
+                        log = False
+                    # Generate tree and necessary structure information
+                    tree = TREE(h=height)
+                    # Bi-objectiveModel with priority
+                    opt_model = MBDT(data=model_set, tree=tree, target=target, modeltype=modeltype+'-biobj',
+                                     time_limit=time_limit, warmstart=None, log=log, weight=0)
+                    # Add connectivity constraints according to model type
+                    opt_model.formulation()
+                    # Optimize model with callback if applicable
+                    opt_model.model.update()
+                    opt_model.optimization()
+                    # Generate model performance metrics and save to .csv file in .../results_files/
+                    UTILS.model_summary(mbdt=opt_model, tree=tree, test_set=test_set,
+                                        rand_state=i, out_file=out_file, dataname=file)
+                    # Write LP file
+                    if log_files:
+                        opt_model.model.write(log + '.lp')
+
+        # Generate .png images on metrics of bi-objective average results (saved to .../figures/ folder)
+        biobj_data = pd.read_csv(os.getcwd() + '/results_files/' + output_name, na_values='?')
+        for priority in priorities:
+            sub_data = biobj_data[(biobj_data['Data'] == file) & (biobj_data['Priority'] == priority)]
+            sub_data['Model'] = sub_data['Model'].str.replace(r'-biobj', '', regex=True)
+            sub_data['Model'] = sub_data['Model'].str.replace(r'-ALL', '', regex=True)
+            biobj_avg = pd.DataFrame(columns=summary_columns)
+            for model in modeltypes:
+                model_data = sub_data.loc[sub_data['Model'] == model]
+                for sol_num in range(1, model_data['Sol_Num'].max()+1):
+                    model_subdata = model_data.loc[model_data['Sol_Num'] == sol_num]
+                    biobj_avg = biobj_avg.append({
+                        'Data': file.replace('.csv', ''), 'H': int(model_subdata['H'].mean()),
+                        '|I|': int(model_subdata['|I|'].mean()), 'Out_Acc': 100 * model_subdata['Out_Acc'].mean(),
+                        'In_Acc': 100 * model_subdata['In_Acc'].mean(), 'Sol_Time': model_subdata['Sol_Time'].mean(),
+                        'Model': model, 'Obj_Val': model_subdata['Obj_Val'].mean(), 'Sum_S': model_subdata['Sum_S'].mean(),
+                        'Num_Branch_Nodes': model_subdata['Num_Branch_Nodes'].mean(), 'Priority': priority, 'Sol_Num': sol_num,
+                        'Num_CB': model_subdata['Num_CB'].mean(), 'User_Cuts': model_subdata['User_Cuts'].mean(),
+                        'Cuts_per_CB': model_subdata['Cuts_per_CB'].mean(), 'Total_CB_Time': model_subdata['Total_CB_Time'].mean(),
+                        'INT_CB_Time': model_subdata['INT_CB_Time'].mean(), 'FRAC_CB_Time': model_subdata['FRAC_CB_Time'].mean(),
+                        'CB_Eps': model_subdata['CB_Eps'].mean()
+                    }, ignore_index=True)
+            for plot_type in ['out_acc','in_acc','tree_size','overfit','objval','in_v_branching','out_v_branching']:
+                UTILS.biobj_plot(biobj_avg, file, height=height, type=plot_type, priority=priority)
